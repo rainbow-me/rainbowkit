@@ -1,0 +1,102 @@
+---
+title: Benutzerdefinierte Authentifizierung
+description: Verbinde dich mit deinem eigenen Authentifizierungs-Back-End
+---
+
+# Benutzerdefinierte Authentifizierung
+
+## Verbinde dich mit deinem eigenen Authentifizierungs-Back-End
+
+Während RainbowKit [erstklassige Unterstützung für Sign-In mit Ethereum und NextAuth](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bietet, können Sie auch mit benutzerdefinierten Back-Ends und Nachrichtenformaten integrieren.
+
+### Erstellen eines benutzerdefinierten Adapters
+
+Erstelle zuerst einen Authentifizierungsadapter. Dies ermöglicht es RainbowKit, Nachrichten zu erstellen/vorzubereiten und mit deinem Back-End zu kommunizieren.
+
+Als Beispiel könnten wir einen Authentifizierungsadapter erstellen, der es uns ermöglicht, [Sign-In mit Ethereum](https://login.xyz) gegen einige benutzerdefinierte API-Endpunkte zu verwenden, wie [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createSiweMessage } from 'viem/siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return createSiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### Bereitstellung des Authentifizierungsstatus
+
+Wenn deine Anwendung bereits den Authentifizierungs-Lebenszyklus auf irgendeine Weise verwaltet, kannst du den aktuellen Authentifizierungsstatus zusammen mit deinem benutzerdefinierten Adapter an `RainbowKitAuthenticationProvider` übergeben und so deinen bestehenden `RainbowKitProvider` einwickeln.
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+Wenn du es bis hier geschafft hast und einen Adapter für eine bestehende Open-Source-Authentifizierungsbibliothek erstellt hast, ziehe bitte in Betracht, ein Paket zu erstellen, das andere verwenden können!

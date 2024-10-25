@@ -1,7 +1,7 @@
 {
   "name": "with-next-siwe-next-auth",
   "private": true,
-  "version": "0.0.78",
+  "version": "0.0.80",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,15 +10,13 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
-    "ethers": "^5.6.8",
-    "next": "^14.2.9",
+    "next": "^14.2.10",
     "next-auth": "4.24.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "siwe": "^2.1.4",
     "viem": "2.17.0",
-    "wagmi": "^2.12.9",
-    "@tanstack/react-query": "^5.51.11"
+    "wagmi": "^2.12.17",
+    "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",

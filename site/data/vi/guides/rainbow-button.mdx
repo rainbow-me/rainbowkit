@@ -1,0 +1,88 @@
+---
+title: Áp dụng Nút Cầu Vồng trong dApp của bạn
+description: Thư viện plug-and-play cho Wagmi để hỗ trợ ví Rainbow trong dApp của bạn
+image: guide-rainbow-button.png
+---
+
+# Áp dụng Nút Cầu Vồng trong dApp của bạn
+
+Thành phần `RainbowButton` là cách đơn giản nhất để thêm hỗ trợ cho Rainbow Wallet vào dApps sử dụng `wagmi` và ưa thích trải nghiệm kết nối tùy chỉnh hơn so với [RainbowKit](https://www.rainbowkit.com/docs/installation).
+
+**1. Cài đặt `@rainbow-me/rainbow-button` và các peer dependency**
+
+Gói phần mềm này tương thích với Next.js, React và Vite. Đảm bảo rằng bạn tuân theo các cảnh báo peer dependency.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
+```
+
+**2. Cấu hình với Wagmi và cài đặt RainbowButton**
+
+Truyền một instance của `rainbowConnector` vào `createConfig` của Wagmi với `projectId` và `appName`, và bao bọc ứng dụng của bạn trong `RainbowButtonProvider`. Sau đó, thả vào thành phần `RainbowButton`.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const config = createConfig({
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
+});
+
+const queryClient = new QueryClient();
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+Bạn cũng có thể sử dụng thành phần `RainbowButton.Custom` cho các triển khai và tạo kiểu tùy chỉnh.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. Và thế là xong!**
+
+Bây giờ người dùng của bạn có thể tận hưởng trải nghiệm kết nối liền mạch cho Rainbow — mà không cần bảo trì hoặc gặp rắc rối gì.
+
+Một thành phần [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) cũng có sẵn trong [RainbowKit](https://www.rainbowkit.com/docs/installation) nếu bạn muốn áp dụng hỗ trợ cho nhiều ví khác.

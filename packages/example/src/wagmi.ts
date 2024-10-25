@@ -37,6 +37,7 @@ import {
   omniWallet,
   oneInchWallet,
   oneKeyWallet,
+  paraSwapWallet,
   phantomWallet,
   rabbyWallet,
   rainbowWallet,
@@ -54,10 +55,12 @@ import {
   uniswapWallet,
   valoraWallet,
   walletConnectWallet,
+  wigwamWallet,
   xdefiWallet,
   zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { publicActions } from 'viem';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -218,6 +221,7 @@ export const config = getDefaultConfig({
         omniWallet,
         oneInchWallet,
         oneKeyWallet,
+        paraSwapWallet,
         phantomWallet,
         rabbyWallet,
         ramperWallet,
@@ -232,6 +236,7 @@ export const config = getDefaultConfig({
         trustWallet,
         uniswapWallet,
         valoraWallet,
+        wigwamWallet,
         xdefiWallet,
         zealWallet,
         zerionWallet,
@@ -240,3 +245,5 @@ export const config = getDefaultConfig({
   ],
   ssr: true,
 });
+
+export const publicClient = config.getClient().extend(publicActions);

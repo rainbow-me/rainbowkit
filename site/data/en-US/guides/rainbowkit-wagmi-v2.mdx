@@ -102,7 +102,7 @@ If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follo
 
 Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to support all platforms.
 
 **2. Wagmi configuration with getDefaultConfig**
 
@@ -169,7 +169,7 @@ const config = getDefaultConfig({
 +     ...mainnet,
 +     iconBackground: '#000',
 +     iconUrl: 'https://example.com/icons/ethereum.png',
-+   }, /* metadata overides */
++   }, /* metadata overrides */
 + ],
 });
 ```

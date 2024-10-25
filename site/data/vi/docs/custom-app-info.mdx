@@ -1,0 +1,62 @@
+---
+title: Thông tin ứng dụng tùy chỉnh
+description: Tùy chỉnh thông tin ứng dụng của bạn
+---
+
+# Thông tin ứng dụng tùy chỉnh
+
+## Tùy chỉnh thông tin ứng dụng của bạn
+
+Bạn có thể truyền thông tin ứng dụng của mình trong thuộc tính `appInfo` cho `RainbowKitProvider`. Các thuộc tính bạn có thể sửa đổi là tên ứng dụng của bạn (`appName`) và liên kết nơi nút “Tìm hiểu thêm” trong modal kết nối dẫn đến (`learnMoreUrl`):
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Thêm một tuyên bố từ chối
+
+Bạn có thể cung cấp tuyên bố từ chối của riêng mình để hiển thị ở cuối modal kết nối. Thuộc tính `disclaimer` trong `appInfo` sử dụng một `DisclaimerComponent` với các tham số `Text` và `Link`. Bạn có thể sử dụng nó để xây dựng tuyên bố từ chối của riêng mình thừa hưởng hệ thống chủ đề. Chúng tôi xuất `DisclaimerComponent` loại cho người sử dụng TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

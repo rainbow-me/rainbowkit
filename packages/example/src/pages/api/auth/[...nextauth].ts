@@ -1,22 +1,33 @@
-// Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
-// with added process.env.VERCEL_URL detection to support preview deployments
-// and with auth option logic extracted into a 'getAuthOptions' function so it
-// can be used to get the session server-side with 'getServerSession'
 import type { IncomingMessage } from 'node:http';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
-import { SiweMessage } from 'siwe';
+import {
+  type SiweMessage,
+  parseSiweMessage,
+  validateSiweMessage,
+} from 'viem/siwe';
+
+import { publicClient } from '../../../wagmi';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
     CredentialsProvider({
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         try {
-          const siwe = new SiweMessage(
-            JSON.parse(credentials?.message || '{}'),
-          );
+          const siweMessage = parseSiweMessage(
+            credentials?.message,
+          ) as SiweMessage;
+
+          if (
+            !validateSiweMessage({
+              address: siweMessage?.address,
+              message: siweMessage,
+            })
+          ) {
+            return null;
+          }
 
           const nextAuthUrl =
             process.env.NEXTAUTH_URL ||
@@ -28,20 +39,29 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
           }
 
           const nextAuthHost = new URL(nextAuthUrl).host;
-          if (siwe.domain !== nextAuthHost) {
+          if (siweMessage.domain !== nextAuthHost) {
             return null;
           }
 
           if (
-            siwe.nonce !==
+            siweMessage.nonce !==
             (await getCsrfToken({ req: { headers: req.headers } }))
           ) {
             return null;
           }
 
-          await siwe.verify({ signature: credentials?.signature || '' });
+          const valid = await publicClient.verifyMessage({
+            address: siweMessage?.address,
+            message: credentials?.message,
+            signature: credentials?.signature,
+          });
+
+          if (!valid) {
+            return null;
+          }
+
           return {
-            id: siwe.address,
+            id: siweMessage.address,
           };
         } catch (e) {
           console.error('siwe authorization failed', e);

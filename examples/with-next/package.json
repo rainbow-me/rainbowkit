@@ -1,7 +1,7 @@
 {
   "name": "with-next",
   "private": true,
-  "version": "0.0.95",
+  "version": "0.0.97",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^14.2.9",
+    "next": "^14.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "viem": "2.17.0",
-    "wagmi": "^2.12.9",
-    "@tanstack/react-query": "^5.51.11"
+    "wagmi": "^2.12.17",
+    "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",

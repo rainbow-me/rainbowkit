@@ -1,5 +1,5 @@
 import 'iron-session';
-import { SiweMessage } from 'siwe';
+import type { SiweMessage } from 'viem/siwe';
 
 declare module 'iron-session' {
   interface IronSessionData {

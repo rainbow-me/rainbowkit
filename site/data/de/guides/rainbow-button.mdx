@@ -1,0 +1,88 @@
+---
+title: Übernahme des Rainbow Buttons in Ihrer dApp
+description: Eine Plug-and-Play-Bibliothek für Wagmi zur Unterstützung von Rainbow-Wallets in Ihrer dApp
+image: guide-rainbow-button.png
+---
+
+# Übernahme des Rainbow Buttons in Ihrer dApp
+
+Die `RainbowButton`-Komponente ist der einfachste Weg, um Unterstützung für Rainbow Wallet zu dApps hinzuzufügen, die `wagmi` verwenden und eine individuellere Verbindungserfahrung gegenüber [RainbowKit](https://www.rainbowkit.com/docs/installation) bevorzugen.
+
+**1. Installieren Sie `@rainbow-me/rainbow-button` und seine Peer-Abhängigkeiten**
+
+Das Paket ist kompatibel mit Next.js, React und Vite. Stellen Sie sicher, dass Sie Peer-Abhängigkeitswarnungen beachten.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
+```
+
+**2. Konfigurieren Sie mit Wagmi und installieren Sie den RainbowButton**
+
+Übergeben Sie eine Instanz des `rainbowConnector` an Wagmis `createConfig` mit `projectId` und `appName` und umwickeln Sie Ihre App mit dem `RainbowButtonProvider`. Dann fügen Sie die `RainbowButton`-Komponente ein.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const config = createConfig({
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
+});
+
+const queryClient = new QueryClient();
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+Sie können auch die `RainbowButton.Custom`-Komponente für benutzerdefinierte Implementierungen und Styling verwenden.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. Und das ist alles!**
+
+Jetzt können Ihre Nutzer eine nahtlose Verbindungserfahrung für Rainbow genießen - ohne Wartung oder Kopfschmerzen.
+
+Eine [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button)-Komponente ist auch in [RainbowKit](https://www.rainbowkit.com/docs/installation) verfügbar, wenn Sie Unterstützung für zusätzliche Wallets übernehmen möchten.

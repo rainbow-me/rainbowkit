@@ -1,0 +1,202 @@
+---
+title: Nâng cấp ứng dụng dApp của bạn lên RainbowKit v2
+description: RainbowKit và Wagmi đã được nâng cấp lên v2
+image: guide-rainbowkit-v2.png
+---
+
+# Di chuyển sang RainbowKit và Wagmi v2
+
+Các peer dependencies [wagmi](https://wagmi.sh) và [viem](https://viem.sh) đã đạt phiên bản `2.x.x` với các thay đổi phá vỡ.
+
+Làm theo các bước dưới đây để di chuyển.
+
+**1. Nâng cấp RainbowKit, `wagmi` và `viem` lên phiên bản mới nhất**
+
+```bash
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
+```
+
+**2. Cài đặt peer dependency `@tanstack/react-query`**
+
+Với Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) bây giờ là một peer dependency bắt buộc.
+
+Cài đặt nó bằng lệnh sau:
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. Nâng cấp cấu hình RainbowKit và Wagmi của bạn**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. Kiểm tra các thay đổi phá vỡ trong `wagmi` và `viem`**
+
+Nếu bạn sử dụng các hooks `wagmi` và các actions `viem` trong dApp của bạn, bạn sẽ cần theo dõi các hướng dẫn di chuyển cho v2:
+
+- [Hướng dẫn di chuyển Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Thay đổi phá vỡ Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### Thay đổi RainbowKit
+
+**1. Cải thiện hành vi cho các ví EIP-6963**
+
+Các ví hỗ trợ tiêu chuẩn kết nối EIP-6963 mới (bao gồm Rainbow, MetaMask, và nhiều hơn nữa) bây giờ sẽ tự động xuất hiện trong một phần 'Đã cài đặt' trong quá trình kết nối ví. Điều này đảm bảo rằng người dùng luôn có thể tìm thấy các ví ưa thích của họ và kết nối với dApps mà không gặp xung đột hoặc nút dự phòng.
+
+Các nhà phát triển tiếp tục có toàn quyền kiểm soát Danh sách Ví Tùy chỉnh để nhấn mạnh các ví ưa thích cho người dùng cuối. Khuyến nghị rằng bạn tiếp tục bao gồm `injectedWallet` và `walletConnectWallet` trong danh sách của bạn để hỗ trợ tất cả các nền tảng.
+
+**2. Cấu hình Wagmi với getDefaultConfig**
+
+API mới này đơn giản hóa trải nghiệm cấu hình và thay thế nhu cầu sử dụng trực tiếp `createConfig` của Wagmi. Cấu hình chuỗi đơn giản hơn, bao gồm các nhà cung cấp công khai được suy luận cho `transports`.
+
+Danh sách ví mặc định sẽ được tự động bao gồm, bãi bỏ nhu cầu sử dụng `getDefaultWallets` và `connectorsForWallets`.
+
+Bạn có thể tạo một Danh sách Ví Tùy chỉnh bằng cách truyền các connector Ví nhập khẩu hoặc Tùy chỉnh vào `wallets`. Khởi tạo các connector ví và truyền `projectId` và `chains` không còn bắt buộc nữa.
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted */
+})
+```
+
+**3. RainbowKitProvider**
+
+Bạn không còn cần truyền `chains` vào `<RainbowKitProvider>`.
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. Chuỗi Tùy chỉnh**
+
+Loại `Chain` đã thay đổi theo Wagmi v2 và tiếp tục hỗ trợ siêu dữ liệu `iconUrl` và `iconBackground` của RainbowKit.
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+Ví dụ với `getDefaultConfig`:
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overides */
++ ],
+});
+```
+
+Ví dụ với `createConfig`:
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+**5. Ví tùy chỉnh**
+
+Các connector ví RainbowKit đã trải qua nhiều thay đổi đáng kể để hỗ trợ Wagmi v2. Tham khảo [tài liệu cập nhật](https://www.rainbowkit.com/docs/custom-wallets) và một [connector ví ví dụ](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) để nâng cấp bất kỳ Các connector ví Tùy chỉnh nào trong dApp của bạn.
+
+Các connector ví bây giờ cũng hỗ trợ tiêu chuẩn EIP-6963 với thuộc tính `rdns`. Đảm bảo rằng điều này được điền để ngăn chặn các tham chiếu trùng lặp tới các ví hỗ trợ EIP-6963 trong danh sách ví của bạn.
+
+> Vui lòng báo cáo bất kỳ vấn đề hoặc phản hồi nào về RainbowKit v2 trên GitHub [tại đây](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

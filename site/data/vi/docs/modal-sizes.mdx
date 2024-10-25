@@ -1,0 +1,28 @@
+---
+title: Kích thước cửa sổ bật lên
+description: Rộng so với Nhỏ gọn
+---
+
+# Kích thước cửa sổ bật lên
+
+## Kích thước rộng so với nhỏ gọn
+
+Theo mặc định, `modalSize` của RainbowKit được đặt thành `rộng` (và trông như thế này):
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+Chúng tôi cũng cung cấp một kích thước cửa sổ bật lên `nhỏ gọn`, trông như thế này:
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+Để đặt kích thước cửa sổ bật lên của bạn thành `nhỏ gọn`, chỉ cần thêm `modalSize="compact"` như một thuộc tính trong `RainbowKitProvider`:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

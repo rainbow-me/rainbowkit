@@ -1,0 +1,477 @@
+---
+title: Danh sách Ví Tùy chỉnh
+description: Tùy chỉnh danh sách ví
+---
+
+# Danh sách Ví Tùy chỉnh
+
+## Tùy chỉnh danh sách ví
+
+Bạn có thể nhập khẩu các ví cá nhân từ `'@rainbow-me/rainbowkit/wallets'` cùng với hàm `connectorsForWallets` để xây dựng danh sách ví của riêng bạn với các kết nối cần thiết của chúng. Bằng cách này, bạn có toàn quyền kiểm soát về các ví nào được hiển thị, và theo thứ tự nào.
+
+Ví dụ, bạn có thể chỉ chọn hiển thị Rainbow cùng với các ví dự phòng chung.
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  rainbowWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, walletConnectWallet],
+    },
+  ],
+  {
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
+  }
+);
+```
+
+Sau đó, bạn có thể chuyển các kết nối của mình cho hàm `createConfig` của Wagmi.
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { createConfig } from 'wagmi';
+
+const connectors = connectorsForWallets(/* ... */);
+
+const config = createConfig({
+  connectors,
+  {/* Wagmi config */}
+});
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <WagmiProvider config={config}>
+    <QueryClientProvider client={queryClient}>
+      <RainbowKitProvider {...etc}>
+        {/* Your App */}
+      </RainbowKitProvider>
+    </QueryClientProvider>
+  </WagmiProvider>
+);
+```
+
+### Ví tích hợp sẵn
+
+Các ví sau đây được cung cấp thông qua đối tượng `wallet`.
+
+#### Ví Chung
+
+Các ví sau đây được phân phạm vi cho các phương pháp kết nối chung hơn là các ứng dụng cụ thể. Do đó, nên bao gồm luôn các ví này.
+
+##### WalletConnect
+
+Đây là một tùy chọn ví dự phòng được thiết kế cho các ví dựa trên WalletConnect mà chưa được cung cấp bởi một ví khác trong danh sách.
+
+**Khuyến nghị rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví dựa trên WalletConnect đều được hỗ trợ.**
+
+```tsx
+import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+##### Ví Được Tiêm
+
+Đây là một tùy chọn ví dự phòng được thiết kế cho các kịch bản mà `window.ethereum` tồn tại nhưng chưa được cung cấp bởi một ví khác trong danh sách. Ví này sẽ tự động ẩn khỏi danh sách khi không cần thiết sử dụng dự phòng hoặc không có ví được tiêm sẵn có.
+
+**Khuyến nghị rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví được tiêm đều được hỗ trợ.**
+
+```tsx
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+##### Ví An toàn
+
+Đối với các dApps hỗ trợ các Ứng dụng An toàn để cho phép người dùng dễ dàng kết nối với kho an toàn hoặc multi-sig của mình, bao gồm tùy chọn `safeWallet` để kết nối tự động. Tùy chọn An toàn sẽ chỉ xuất hiện trong môi trường trình duyệt của Ví An toàn.
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+### Ví Cụ thể
+
+Các ví sau đây được cung cấp qua đối tượng `wallet` (theo thứ tự chữ cái).
+
+#### Ví 1inch
+
+```tsx
+import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Argent
+
+```tsx
+import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Binance Web3 Wallet
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bitget
+
+```tsx
+import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bifrost Wallet
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bitski
+
+```tsx
+import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bitverse
+
+```tsx
+import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bloom Wallet
+
+```tsx
+import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Brave Wallet
+
+```tsx
+import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bybit Wallet
+
+```tsx
+import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Trình kết nối ví này hỗ trợ cả ứng dụng và phần mở rộng Wallet Coinbase, cũng như Coinbase Smart Wallet trên Web.
+
+Một đối số `preference` có sẵn để kiểm soát xem Smart Wallet có được kích hoạt và có sẵn cho người dùng hay không. Hành vi dựa trên sở thích được tài liệu hóa [tại đây](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+Smart Wallet sẽ được kích hoạt mặc định với `all` vào đầu tháng Sáu mà không cần nâng cấp thêm.
+
+Các nhà phát triển có thể thử nghiệm Smart Wallet với các chuỗi `sepolia` và `baseSepolia` ngay hôm nay bằng cách cài đặt `smartWalletOnly` và bao gồm `coinbaseWallet` trong danh sách ví của họ như sau:
+
+```tsx
+import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
+```
+
+#### Coin98 Wallet
+
+```tsx
+import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Compass Wallet
+
+```tsx
+import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
+```
+
+#### Core
+
+```tsx
+import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Dawn Wallet
+
+```tsx
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Enkrypt Wallet
+
+```tsx
+import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### FoxWallet
+
+```tsx
+import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Frame Wallet
+
+```tsx
+import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Frontier Wallet
+
+```tsx
+import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Gate Wallet
+
+```tsx
+import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### imToken
+
+```tsx
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ioPay Wallet
+
+```tsx
+import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kaia Wallet
+
+```tsx
+import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kaikas
+
+```tsx
+import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kraken Wallet
+
+```tsx
+import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kresus Wallet
+
+```tsx
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ledger Live
+
+```tsx
+import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Magic Eden Wallet
+
+```tsx
+import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MetaMask
+
+```tsx
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### OKX Wallet
+
+```tsx
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Omni
+
+```tsx
+import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### OneKey
+
+```tsx
+import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Phantom
+
+```tsx
+import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Rabby Wallet
+
+```tsx
+import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Rainbow
+
+```tsx
+import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ramper Wallet
+
+```tsx
+import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin Wallet
+
+```tsx
+import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Safeheron
+
+```tsx
+import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Taho
+
+```tsx
+import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Talisman
+
+```tsx
+import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### TokenPocket
+
+```tsx
+import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Trust Wallet
+
+```tsx
+import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Uniswap Wallet
+
+```tsx
+import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### XDEFI Wallet
+
+```tsx
+import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Zerion
+
+```tsx
+import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+### Ví dụ
+
+#### Sắp xếp
+
+Đây là một vài ví dụ về cách hiển thị các ví khác nhau, theo các thứ tự khác nhau.
+
+Hiển thị MetaMask cùng với các ví dự phòng chung.
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  metaMaskWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [metaMaskWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
+```
+
+Hiển thị Rainbow, MetaMask và Coinbase cùng với các ví dự phòng chung.
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Suggested',
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
+```
+
+> Lưu ý: Thứ tự của mảng `wallets` xác định thứ tự mà các ví sẽ được hiển thị trong giao diện người dùng.
+
+#### Nhiều nhóm
+
+Bạn có thể sử dụng khóa `groupName` để đặt tên cho các nhóm ví khác nhau. Điều này hữu ích nếu bạn muốn thông báo cho người dùng của mình biết những ví nào bạn đề xuất, cũng như các ví khác có thể sử dụng.
+
+Đề xuất Rainbow và MetaMask, nhưng cũng cung cấp Coinbase cùng với các ví dự phòng chung.
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, metaMaskWallet],
+    },
+    {
+      groupName: 'Others',
+      wallets: [coinbaseWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
+```
