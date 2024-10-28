@@ -13,11 +13,10 @@ export const bestWallet = ({
   iconUrl: async () => (await import('./bestWallet.svg')).default,
   iconBackground: '#5961FF',
   downloadUrls: {
-    android:
-      'https://play.google.com/store/apps/details?id=com.bestwallet.mobile',
-    ios: 'https://apps.apple.com/in/app/best-wallet-buy-sell-crypto/id6451312105',
-    mobile: 'https://bestwallet.com/',
-    qrCode: 'https://bestwallet.com/',
+    android: 'https://best.sng.link/Dnio2/rto7?_smtype=3',
+    ios: 'https://best.sng.link/Dnio2/rto7?_smtype=3',
+    mobile: 'https://best.sng.link/Dnio2/rto7?_smtype=3',
+    qrCode: 'https://best.sng.link/Dnio2/rto7?_smtype=3',
   },
 
   mobile: {
@@ -28,7 +27,7 @@ export const bestWallet = ({
   qrCode: {
     getUri: (uri: string) => uri,
     instructions: {
-      learnMoreUrl: 'https://bestwallet.com/',
+      learnMoreUrl: 'https://best.sng.link/Dnio2/rto7?_smtype=3',
       steps: [
         {
           description: 'wallet_connectors.best.qr_code.step1.description',
