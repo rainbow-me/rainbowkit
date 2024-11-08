@@ -1,0 +1,149 @@
+---
+title: Xác thực
+description: Xác thực người dùng của bạn
+---
+
+# Xác thực
+
+## Cung cấp quyền truy cập xác thực vào ứng dụng của bạn
+
+Bạn có thể tuỳ chọn bắt buộc người dùng ký một tin nhắn bằng ví của họ trong quá trình kết nối, chứng minh rằng họ sở hữu tài khoản đã được kết nối và cho phép bạn tạo một phiên người dùng xác thực với quyền truy cập đặc biệt vào ứng dụng của bạn.
+
+Trong khi có thể [tích hợp với các back-end và định dạng tin nhắn tùy chỉnh,](/docs/custom-authentication) RainbowKit cung cấp hỗ trợ hàng đầu cho [Sign-In with Ethereum](https://login.xyz) và [NextAuth.js.](https://next-auth.js.org)
+
+### Cài đặt Sign-In với Ethereum và NextAuth.js
+
+Nếu bạn chưa làm thế, trước tiên hãy cài đặt dự án [Next.js](https://nextjs.org) của bạn với [boilerplate Sign-In with Ethereum chính thức cho NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+
+#### Cài đặt
+
+Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth` và gói phụ thuộc của nó, [ethers](https://docs.ethers.org/v5/).
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+```
+
+> Lưu ý: `siwe` yêu cầu gói phụ thuộc [ethers](https://docs.ethers.org/v5/), trong khi [wagmi](https://wagmi.sh/) hiện dựa vào thay thế [viem](https://viem.sh).
+
+#### Thiết lập nhà cung cấp
+
+Trong thành phần `App` của bạn, nhập `RainbowKitSiweNextAuthProvider`.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+Bọc `RainbowKitProvider` với `RainbowKitSiweNextAuthProvider`, đảm bảo nó được lồng trong `SessionProvider` của NextAuth để nó có quyền truy cập vào phiên.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
+  return (
+    <WagmiProvider {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider {...etc}>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </QueryClientProvider>
+      </SessionProvider>
+    </WagmiProvider>;
+  );
+}
+```
+
+Với `RainbowKitSiweNextAuthProvider` được thiết lập, người dùng của bạn sẽ được yêu cầu xác thực bằng cách ký một tin nhắn sau khi họ đã kết nối ví.
+
+#### Tuỳ chỉnh các tuỳ chọn tin nhắn SIWE
+
+Bạn có thể tuỳ chỉnh [các tuỳ chọn tin nhắn SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) bằng cách chuyển một hàm đến thuộc tính `getSiweMessageOptions` trên `RainbowKitSiweNextAuthProvider`.
+
+Hàm này sẽ được gọi bất kỳ khi nào một tin nhắn mới được tạo. Các tuỳ chọn trả về từ hàm này sẽ được gộp với các mặc định.
+
+```tsx
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to my RainbowKit app',
+});
+
+<RainbowKitSiweNextAuthProvider
+  getSiweMessageOptions={getSiweMessageOptions}
+>
+  ...
+</RainbowKitSiweNextAuthProvider>;
+```
+
+#### Truy cập phiên từ phía máy chủ
+
+Bạn có thể truy cập mã phiên bằng hàm `getToken` của NextAuth được nhập từ `next-auth/jwt`. Nếu người dùng đã xác thực thành công, thuộc tính `sub` của mã phiên (chủ đề của mã, tức là người dùng) sẽ là địa chỉ của người dùng.
+
+Bạn cũng có thể chuyển đối tượng phiên đã giải quyết từ máy chủ thông qua `getServerSideProps` để NextAuth không cần phải giải quyết lại trên phía máy khách.
+
+Ví dụ:
+
+```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+Để biết thêm thông tin về quản lý phiên, bạn có thể tham khảo tài liệu sau:
+
+- [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/authentication)
+- [Tài liệu NextAuth.js](https://next-auth.js.org)

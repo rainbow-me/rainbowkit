@@ -1,0 +1,51 @@
+---
+title: Avatars Tùy Chỉnh
+description: Tùy chỉnh avatar người dùng của ứng dụng
+---
+
+# Avatars Tùy Chỉnh
+
+## Tùy chỉnh avatar người dùng của ứng dụng
+
+Theo mặc định, chúng tôi cung cấp một avatar cho người dùng trong trường hợp hình ảnh ENS của họ không được thiết lập, nhưng bạn có thể tùy chỉnh điều này bằng cách cung cấp component avatar của riêng mình. Bạn có thể import kiểu `AvatarComponent` nếu sử dụng TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+`AvatarComponent` được truyền vào prop `avatar` có các loại prop như sau: `<{ address: string; ensImage?: string | null; size: number;}>`

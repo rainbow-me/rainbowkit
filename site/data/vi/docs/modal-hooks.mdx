@@ -1,0 +1,64 @@
+---
+title: Modal Hooks
+description: Mở các modal bằng lập trình thông qua Hooks
+---
+
+# Modal Hooks
+
+## Mở các modal bằng lập trình thông qua Hooks
+
+Các Hooks sau đây được cung cấp để cho phép mở modal bằng lập trình ở bất kỳ đâu trong ứng dụng của bạn.
+
+- `useConnectModal`
+- `useAccountModal`
+- `useChainModal`
+
+Mỗi Hook này trả về một đối tượng với một hàm để mở modal tương ứng của nó. Lưu ý rằng các hàm trả về sẽ là undefined nếu ứng dụng của bạn không ở trạng thái yêu cầu để mở modal.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Mỗi hook cũng trả về một giá trị boolean cho trạng thái của modal. Thông thường, bạn nên dựa vào các hook của Wagmi (tức là `useAccount`) để phản ứng với trạng thái kết nối ví của người dùng trực tiếp, thay vì dựa vào trạng thái của Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit được thiết kế để không gây gián đoạn và đáp ứng, vì vậy dApps nên luôn luôn hiển thị giao diện cho người dùng dù họ có kết nối ví hay không. Người dùng có thể kết nối hoặc ngắt kết nối ví của họ trực tiếp từ MetaMask, do đó dApp phải phản hồi trực tiếp với trạng thái kết nối cơ bản.
+
+Các dApp dựa vào cơ chế như Đăng nhập bằng Ethereum để xác minh người dùng nên dựa vào tính năng [Authentication](/docs/authentication).

@@ -1,5 +1,22 @@
 # with-next-app
 
+## 0.0.45
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+- Updated dependencies [f02bced]
+  - @rainbow-me/rainbowkit@2.2.0
+
+## 0.0.44
+
+### Patch Changes
+
+- Updated dependencies [f93cd0e]
+- Updated dependencies [4014d80]
+- Updated dependencies [6393498]
+  - @rainbow-me/rainbowkit@2.1.7
+
 ## 0.0.43
 
 ### Patch Changes

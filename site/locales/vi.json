@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "Cách tốt nhất để kết nối ví",
+    "subheadline": "Được thiết kế cho mọi người. Được xây dựng cho nhà phát triển.",
+    "cta": "Xem tài liệu",
+    "adopters": "Các đội ngũ Web3 hàng đầu đang sử dụng RainbowKit để cải thiện sản phẩm của họ, làm hài lòng người dùng và tiết kiệm thời gian khi xây dựng.",
+    "playground": {
+      "headline": "Thử RainbowKit",
+      "subheadline": "Làm cho trải nghiệm đăng nhập Ethereum của bạn trở nên thân thiện trên trang web của bạn. RainbowKit cho phép bạn tùy chỉnh hoàn toàn màu sắc, bán kính viền, nhà cung cấp ví và nhiều thứ khác — tất cả đều thông qua API dễ sử dụng. Trải nghiệm thử dưới đây!",
+      "modal": "Modal",
+      "mode": "Chế độ",
+      "accent": "Điểm nhấn",
+      "radius": "Bán kính",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Nhà phát triển",
+      "subheadline": "RainbowKit cung cấp một cách nhanh chóng, dễ dàng và có thể tùy chỉnh cao để các nhà phát triển thêm trải nghiệm ví tuyệt vời vào ứng dụng của họ. Chúng tôi xử lý những việc khó khăn để các nhà phát triển và đội ngũ có thể tập trung vào việc xây dựng các sản phẩm và cộng đồng tuyệt vời cho người dùng của họ.",
+      "installation": "Dễ dàng cài đặt",
+      "themes": "Chủ đề tích hợp sẵn",
+      "darkmode": "Chế độ sáng và tối",
+      "appstore": "Tích hợp App Store và Google Play",
+      "custom_themes": "Chủ đề tùy chỉnh",
+      "custom_wallet_list": "Danh sách ví tùy chỉnh",
+      "custom_chain": "Chuỗi tùy chỉnh",
+      "custom_connect": "Nút kết nối tùy chỉnh"
+    },
+    "madeby": {
+      "headline": "Được tạo bởi ❤️ từ nhóm của bạn tại",
+      "subheadline": "Xây dựng RainbowKit đã là một nỗ lực vô cùng thú vị từ nhiều người tại Rainbow và các công ty khác. Chúng tôi luôn tìm kiếm để cải thiện RainbowKit, vì vậy hãy cho chúng tôi biết cách nào chúng tôi có thể cải thiện.",
+      "twitter_cta": "Theo dõi chúng tôi trên Twitter",
+      "feedback_cta": "Chia sẻ phản hồi với chúng tôi"
+    },
+    "footer": {
+      "mediakit": "bộ công cụ truyền thông",
+      "terms": "điều khoản sử dụng",
+      "privacy": "chính sách bảo mật"
+    },
+    "meta": {
+      "description": "Cách tốt nhất để kết nối ví 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Tổng quan",
+        "getting_started": "Bắt đầu",
+        "advanced": "Nâng cao"
+      }
+    }
+  }
+}

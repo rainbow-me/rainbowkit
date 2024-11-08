@@ -1,7 +1,7 @@
 {
   "name": "with-remix",
   "private": true,
-  "version": "0.0.94",
+  "version": "0.0.96",
   "type": "module",
   "scripts": {
     "build": "remix build",
@@ -16,8 +16,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "viem": "2.17.0",
-    "wagmi": "^2.12.9",
-    "@tanstack/react-query": "^5.51.11"
+    "wagmi": "^2.12.17",
+    "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",

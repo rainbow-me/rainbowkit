@@ -4,6 +4,8 @@ import en_US from './en_US.json';
 export type Locale =
   | 'ar'
   | 'ar-AR'
+  | 'de'
+  | 'de-DE'
   | 'en'
   | 'en-US'
   | 'es'
@@ -28,6 +30,8 @@ export type Locale =
   | 'tr-TR'
   | 'ua'
   | 'uk-UA'
+  | 'vi'
+  | 'vi-VN'
   | 'zh'
   | 'zh-CN'
   | 'zh-HK'
@@ -49,6 +53,9 @@ const fetchTranslations = async (locale: Locale): Promise<any> => {
     case 'ar':
     case 'ar-AR':
       return (await import('./ar_AR.json')).default;
+    case 'de':
+    case 'de-DE':
+      return (await import('./de_DE.json')).default;
     case 'en':
     case 'en-US':
       return (await import('./en_US.json')).default;
@@ -85,6 +92,9 @@ const fetchTranslations = async (locale: Locale): Promise<any> => {
     case 'ua':
     case 'uk-UA':
       return (await import('./uk_UA.json')).default;
+    case 'vi':
+    case 'vi-VN':
+      return (await import('./vi_VN.json')).default;
     case 'zh':
     case 'zh-CN':
     case 'zh-Hans':

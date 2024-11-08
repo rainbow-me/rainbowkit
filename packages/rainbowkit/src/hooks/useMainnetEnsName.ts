@@ -2,7 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import type { Address } from 'viem';
 import { useEnsName } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
-import { enhancedProviderHttp } from '../core/network/enhancedProvider';
+import {
+  ENHANCED_PROVIDER_ENABLED,
+  enhancedProviderHttp,
+} from '../core/network/enhancedProvider';
 import { createQueryKey } from '../core/react-query/createQuery';
 import { addEnsName, getEnsName } from '../utils/ens';
 import { useIsMainnetConfigured } from './useIsMainnetConfigured';
@@ -41,7 +44,7 @@ export function useMainnetEnsName(address?: Address) {
   const { data: enhancedProviderEnsName } = useQuery({
     queryKey: createQueryKey('address', address),
     queryFn: () => getEnhancedProviderEnsName({ address: address! }),
-    enabled: !mainnetConfigured && !!address,
+    enabled: !mainnetConfigured && !!address && ENHANCED_PROVIDER_ENABLED,
     staleTime: 10 * (60 * 1_000), // 10 minutes
     retry: 1, // Retry once before returning undefined if the request fails
   });
