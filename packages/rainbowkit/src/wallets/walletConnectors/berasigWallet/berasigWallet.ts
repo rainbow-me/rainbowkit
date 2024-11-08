@@ -1,17 +1,29 @@
-import type { Wallet } from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export const berasigWallet = (): Wallet => {
+export type BerasigWalletOptions = DefaultWalletOptions;
+
+export const berasigWallet = ({
+  projectId,
+  walletConnectParameters,
+}: BerasigWalletOptions): Wallet => {
+  const isBerasigWalletInjected = hasInjectedProvider({
+    namespace: 'berasig.ethereum',
+  });
+
+  const shouldUseWalletConnect = !isBerasigWalletInjected;
   return {
     id: 'berasig',
     name: 'BeraSig',
     iconUrl: async () => (await import('./berasigWallet.svg')).default,
     iconBackground: '#ffffff',
-    installed: hasInjectedProvider({ namespace: 'berasig.ethereum' }),
+    installed: isBerasigWalletInjected,
     downloadUrls: {
+      android: 'https://play.google.com/store/apps/details?id=io.berasig.ios',
       ios: 'https://apps.apple.com/us/app/berasig-wallet-on-berachain/id6502052535',
       qrCode: 'https://berasig.com',
       mobile: 'https://berasig.com',
@@ -43,8 +55,13 @@ export const berasigWallet = (): Wallet => {
         learnMoreUrl: 'https://berasig.com',
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'berasig.ethereum',
-    }),
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({
+          namespace: 'berasig.ethereum',
+        }),
   };
 };

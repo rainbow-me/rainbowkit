@@ -257,6 +257,7 @@
           "title": "Refresh your browser",
           "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
+      }
     },
 
     "best": {
@@ -273,7 +274,8 @@
           "title": "Tap the QR icon and scan",
           "description": "Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect."
         }
-      },
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
