@@ -21,6 +21,7 @@ export const flowWallet = ({
     name: 'Flow Wallet',
     iconUrl: 'https://lilico.app/logo_mobile.png',
     iconBackground: '#41CC5D',
+    installed: isFlowWalletInjected,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=com.flowfoundation.wallet',
       ios: 'https://apps.apple.com/ca/app/flow-wallet-nfts-and-crypto/id6478996750',
