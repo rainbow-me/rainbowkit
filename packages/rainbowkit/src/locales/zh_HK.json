@@ -490,6 +490,32 @@
         }
       }
     },
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "我們建議將 Flow Wallet 放在您的主畫面，以便更快地存取您的錢包。",
+          "title": "打開 Flow Wallet 應用程式"
+        },
+        "step2": {
+          "description": "您可以在主頁找到掃描按鈕，會出現連接提示以連接您的錢包。",
+          "title": "點擊掃描按鈕"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "我們建議將 Flow Wallet 固定到您的工作列，以便更快地存取您的錢包。",
+          "title": "安裝 Flow Wallet 擴充功能"
+        },
+        "step2": {
+          "description": "請確保使用安全的方法備份您的錢包。切勿與任何人分享您的秘密短語。",
+          "title": "建立或導入錢包"
+        },
+        "step3": {
+          "description": "設置好您的錢包後，點擊下方以刷新瀏覽器並載入擴充功能。",
+          "title": "刷新您的瀏覽器"
+        }
+      }
+    },
     "fox": {
       "qr_code": {
         "step1": {

@@ -31,6 +31,7 @@ export type WalletProviderFlags =
   | 'isExodus'
   | 'isFrame'
   | 'isFrontier'
+  | 'isFrw'
   | 'isGamestop'
   | 'isHyperPay'
   | 'isImToken'

@@ -490,6 +490,32 @@
         }
       }
     },
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişmek için Flow Wallet'ı ana ekranınıza yerleştirmenizi öneririz.",
+          "title": "Flow Wallet uygulamasını açın"
+        },
+        "step2": {
+          "description": "Tarama düğmesini ana sayfada bulabilirsiniz; cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarama düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişmek için Flow Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Flow Wallet eklentisini yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+        },
+        "step3": {
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      }
+    },
     "fox": {
       "qr_code": {
         "step1": {

@@ -490,6 +490,32 @@
         }
       }
     },
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "Nous vous recommandons de placer Flow Wallet sur votre écran d'accueil pour accéder plus rapidement à votre portefeuille.",
+          "title": "Ouvrez l'application Flow Wallet"
+        },
+        "step2": {
+          "description": "Vous pouvez trouver le bouton de scan sur la page d'accueil; une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler Flow Wallet à votre barre des tâches pour accéder plus rapidement à votre portefeuille.",
+          "title": "Installez l'extension Flow Wallet"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit.",
+          "title": "Créez ou importez un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      }
+    },
     "fox": {
       "qr_code": {
         "step1": {

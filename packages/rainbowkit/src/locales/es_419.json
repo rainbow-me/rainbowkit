@@ -490,6 +490,32 @@
         }
       }
     },
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar Flow Wallet en tu pantalla de inicio para acceder más rápido a tu billetera.",
+          "title": "Abre la aplicación Flow Wallet"
+        },
+        "step2": {
+          "description": "Puedes encontrar el botón de escanear en la página principal; aparecerá un mensaje para conectar tu billetera.",
+          "title": "Toca el botón de escanear"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Recomendamos anclar Flow Wallet a tu barra de tareas para acceder más rápido a tu billetera.",
+          "title": "Instala la extensión Flow Wallet"
+        },
+        "step2": {
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crea o importa una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      }
+    },
     "fox": {
       "qr_code": {
         "step1": {

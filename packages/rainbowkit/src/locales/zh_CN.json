@@ -490,6 +490,32 @@
         }
       }
     },
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议将 Flow Wallet 放在您的主屏幕上，以便更快地访问您的钱包。",
+          "title": "打开 Flow Wallet 应用"
+        },
+        "step2": {
+          "description": "您可以在主页上找到扫描按钮，将出现一个连接提示，供您连接您的钱包。",
+          "title": "点击扫描按钮"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "我们建议将 Flow Wallet 固定到任务栏，以便更快地访问您的钱包。",
+          "title": "安装 Flow Wallet 扩展程序"
+        },
+        "step2": {
+          "description": "请务必使用安全的方法备份您的钱包。切勿与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "设置好钱包后，点击下方按钮刷新浏览器并加载扩展程序。",
+          "title": "刷新您的浏览器"
+        }
+      }
+    },
     "fox": {
       "qr_code": {
         "step1": {

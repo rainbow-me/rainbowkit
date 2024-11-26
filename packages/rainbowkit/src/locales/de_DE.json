@@ -492,6 +492,34 @@
         }
       }
     },
+
+    "flow": {
+      "qr_code": {
+        "step1": {
+          "description": "Wir empfehlen, die Flow Wallet auf Ihrem Startbildschirm zu platzieren, um schneller auf Ihr Wallet zugreifen zu können.",
+          "title": "Öffnen Sie die Flow Wallet-App"
+        },
+        "step2": {
+          "description": "Sie finden den Scan-Button auf der Startseite; ein Verbindungsprompt erscheint, damit Sie Ihr Wallet verbinden können.",
+          "title": "Tippen Sie auf den Scan-Button"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Wir empfehlen, die Flow Wallet an Ihre Taskleiste zu heften, um schneller auf Ihr Wallet zugreifen zu können.",
+          "title": "Installieren Sie die Flow Wallet-Erweiterung"
+        },
+        "step2": {
+          "description": "Stellen Sie sicher, dass Sie Ihr Wallet auf sichere Weise sichern. Teilen Sie niemals Ihre Geheimphrase mit jemandem.",
+          "title": "Erstellen oder importieren Sie ein Wallet"
+        },
+        "step3": {
+          "description": "Sobald Sie Ihr Wallet eingerichtet haben, klicken Sie unten, um den Browser zu aktualisieren und die Erweiterung zu laden.",
+          "title": "Aktualisieren Sie Ihren Browser"
+        }
+      }
+    },
+
     "fox": {
       "qr_code": {
         "step1": {
