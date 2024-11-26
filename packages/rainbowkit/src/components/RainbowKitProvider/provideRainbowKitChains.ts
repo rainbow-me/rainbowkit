@@ -4,6 +4,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
+  | 'amoy'
   | 'arbitrum'
   | 'arbitrumGoerli'
   | 'arbitrumSepolia'
@@ -66,6 +67,10 @@ type ChainMetadata = {
   name?: string;
 } & IconMetadata;
 
+const amoyIcon: IconMetadata = {
+  iconBackground:'#9f71ec',
+  iconUrl: async () => (await import ('./chainIcons/polygon.svg')).default,
+}
 const arbitrumIcon: IconMetadata = {
   iconBackground: '#96bedc',
   iconUrl: async () => (await import('./chainIcons/arbitrum.svg')).default,
@@ -172,6 +177,7 @@ const scrollIcon: IconMetadata = {
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
+  amoy: {chainId: 80002, name: 'Amoy Network',... amoyIcon},
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
