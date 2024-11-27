@@ -174,7 +174,6 @@ const scrollIcon: IconMetadata = {
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
-  amoy: {chainId: 80002, name: 'Amoy Network',... amoyIcon},
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
@@ -210,7 +209,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   optimismKovan: { chainId: 69, ...optimismIcon },
   optimismSepolia: { chainId: 11155420, ...optimismIcon },
   polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
-  polygonAmoy: {chainId: 80002, name: 'Amoy Network',... polygonIcon},
+  polygonAmoy: {chainId: 80002, ... polygonIcon},
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
