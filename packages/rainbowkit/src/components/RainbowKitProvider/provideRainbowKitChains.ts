@@ -110,8 +110,8 @@ const ethereumIcon: IconMetadata = {
 
 const flowIcon: IconMetadata = {
   iconBackground: 'transparent',
-  iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
-}
+  iconUrl: async () => (await import('./chainIcons/flow.svg')).default,
+};
 
 const gnosisIcon: IconMetadata = {
   iconBackground: '#04795c',
