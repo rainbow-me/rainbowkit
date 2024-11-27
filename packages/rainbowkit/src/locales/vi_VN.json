@@ -490,32 +490,6 @@
         }
       }
     },
-    "flow": {
-      "qr_code": {
-        "step1": {
-          "description": "Chúng tôi khuyên bạn nên đặt Flow Wallet trên màn hình chính để truy cập nhanh hơn vào ví của bạn.",
-          "title": "Mở ứng dụng Flow Wallet"
-        },
-        "step2": {
-          "description": "Bạn có thể tìm thấy nút quét trên trang chủ; một thông báo kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
-          "title": "Nhấn vào nút quét"
-        }
-      },
-      "extension": {
-        "step1": {
-          "description": "Chúng tôi khuyên bạn nên ghim Flow Wallet vào thanh tác vụ để truy cập nhanh hơn vào ví của bạn.",
-          "title": "Cài đặt tiện ích mở rộng Flow Wallet"
-        },
-        "step2": {
-          "description": "Hãy chắc chắn sao lưu ví của bạn bằng một phương pháp an toàn. Không bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai.",
-          "title": "Tạo hoặc Nhập Ví"
-        },
-        "step3": {
-          "description": "Sau khi bạn thiết lập ví, nhấp vào bên dưới để làm mới trình duyệt và tải tiện ích mở rộng.",
-          "title": "Làm mới trình duyệt của bạn"
-        }
-      }
-    },
     "fox": {
       "qr_code": {
         "step1": {

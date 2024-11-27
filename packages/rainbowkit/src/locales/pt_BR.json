@@ -490,32 +490,6 @@
         }
       }
     },
-    "flow": {
-      "qr_code": {
-        "step1": {
-          "description": "Nós recomendamos colocar o Flow Wallet na sua tela inicial para acessar sua carteira mais rapidamente.",
-          "title": "Abra o aplicativo Flow Wallet"
-        },
-        "step2": {
-          "description": "Você pode encontrar o botão de escanear na página inicial; um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escanear"
-        }
-      },
-      "extension": {
-        "step1": {
-          "description": "Recomendamos fixar o Flow Wallet na sua barra de tarefas para acessar sua carteira mais rapidamente.",
-          "title": "Instale a extensão Flow Wallet"
-        },
-        "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Crie ou importe uma carteira"
-        },
-        "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
-        }
-      }
-    },
     "fox": {
       "qr_code": {
         "step1": {

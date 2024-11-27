@@ -490,32 +490,6 @@
         }
       }
     },
-    "flow": {
-      "qr_code": {
-        "step1": {
-          "description": "Kami merekomendasikan menempatkan Flow Wallet di layar beranda Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Buka aplikasi Flow Wallet"
-        },
-        "step2": {
-          "description": "Anda dapat menemukan tombol pemindaian di halaman utama; prompt koneksi akan muncul untuk menghubungkan dompet Anda.",
-          "title": "Ketuk tombol pemindaian"
-        }
-      },
-      "extension": {
-        "step1": {
-          "description": "Kami merekomendasikan menyematkan Flow Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi Flow Wallet"
-        },
-        "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Dompet"
-        },
-        "step3": {
-          "description": "Setelah Anda mengatur dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
-        }
-      }
-    },
     "fox": {
       "qr_code": {
         "step1": {

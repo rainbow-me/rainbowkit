@@ -490,32 +490,6 @@
         }
       }
     },
-    "flow": {
-      "qr_code": {
-        "step1": {
-          "description": "지갑에 빠르게 액세스하기 위해 Flow Wallet을 홈 화면에 추가하는 것을 추천합니다.",
-          "title": "Flow Wallet 앱 열기"
-        },
-        "step2": {
-          "description": "홈 페이지에서 스캔 버튼을 찾을 수 있으며, 지갑을 연결하기 위한 프롬프트가 나타날 것입니다.",
-          "title": "스캔 버튼을 탭하세요"
-        }
-      },
-      "extension": {
-        "step1": {
-          "description": "지갑에 더 빠르게 접근하기 위해 Flow Wallet을 작업 표시줄에 고정하는 것을 추천합니다.",
-          "title": "Flow Wallet 확장 프로그램 설치"
-        },
-        "step2": {
-          "description": "안전한 방법으로 지갑을 백업하십시오. 비밀 구문을 절대 다른 사람과 공유하지 마세요.",
-          "title": "지갑 생성 또는 가져오기"
-        },
-        "step3": {
-          "description": "지갑 설정이 완료되면 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요.",
-          "title": "브라우저 새로고침"
-        }
-      }
-    },
     "fox": {
       "qr_code": {
         "step1": {
