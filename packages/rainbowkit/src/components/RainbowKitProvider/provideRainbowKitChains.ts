@@ -1,7 +1,7 @@
 import { isNotNullish } from '../../utils/isNotNullish';
 import type { RainbowKitChain } from './RainbowKitChainContext';
 
-// Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
+// Sourced from https://github.com/wevm/wagmi/blob/main/packages/core/src/exports/chains.ts
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrum'
