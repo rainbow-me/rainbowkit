@@ -230,22 +230,6 @@
         }
       }
     },
-    "berasig": {
-      "extension": {
-        "step1": {
-          "title": "BeraSig eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim sağlamak için BeraSig'i görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Bir Cüzdan Oluşturun",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
-        }
-      }
-    },
     "bifrost": {
       "qr_code": {
         "step1": {

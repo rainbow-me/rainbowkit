@@ -230,22 +230,6 @@
         }
       }
     },
-    "berasig": {
-      "extension": {
-        "step1": {
-          "title": "Instale a extensão BeraSig",
-          "description": "Recomendamos fixar BeraSig na sua barra de tarefas para facilitar o acesso à sua carteira."
-        },
-        "step2": {
-          "title": "Criar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
-        },
-        "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
-        }
-      }
-    },
     "bifrost": {
       "qr_code": {
         "step1": {
