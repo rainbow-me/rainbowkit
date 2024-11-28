@@ -20,6 +20,8 @@ type ChainName =
   | 'blastSepolia'
   | 'bsc'
   | 'bscTestnet'
+  | 'flow'
+  | 'flowTestnet'
   | 'goerli'
   | 'gnosis'
   | 'hardhat'
@@ -106,6 +108,11 @@ const ethereumIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
 };
 
+const flowIcon: IconMetadata = {
+  iconBackground: 'transparent',
+  iconUrl: async () => (await import('./chainIcons/flow.svg')).default,
+};
+
 const gnosisIcon: IconMetadata = {
   iconBackground: '#04795c',
   iconUrl: async () => (await import('./chainIcons/gnosis.svg')).default,
@@ -188,6 +195,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   celoAlfajores: { chainId: 44787, name: 'Celo Alfajores', ...celoIcon },
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
+  flow: { chainId: 747, ...flowIcon },
+  flowTestnet: { chainId: 545, ...flowIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   gnosis: { chainId: 100, name: 'Gnosis', ...gnosisIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
