@@ -67,7 +67,6 @@ type ChainMetadata = {
   name?: string;
 } & IconMetadata;
 
-
 const arbitrumIcon: IconMetadata = {
   iconBackground: '#96bedc',
   iconUrl: async () => (await import('./chainIcons/arbitrum.svg')).default,
