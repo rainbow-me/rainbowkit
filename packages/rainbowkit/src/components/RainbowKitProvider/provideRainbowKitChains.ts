@@ -41,6 +41,7 @@ type ChainName =
   | 'optimismGoerli'
   | 'optimismSepolia'
   | 'polygon'
+  | 'polygonAmoy'
   | 'polygonMumbai'
   | 'rinkeby'
   | 'ropsten'
@@ -216,6 +217,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   optimismKovan: { chainId: 69, ...optimismIcon },
   optimismSepolia: { chainId: 11155420, ...optimismIcon },
   polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
+  polygonAmoy: {chainId: 80002, ... polygonIcon},
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
