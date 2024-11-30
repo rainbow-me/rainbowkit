@@ -115,15 +115,222 @@ export const YourApp = () => {
 
 ### 账户属性
 
-
+<PropsTable
+    data={[
+        {
+            name: 'account',
+            required: false,
+            type: 'object | undefined',
+            description:
+                '包含当前账户详细信息的对象，如下所述',
+        },
+        {
+            name: 'account.address',
+            required: false,
+            type: 'string',
+            description: (
+                <>
+                    完整的账户地址，例如 "0x7a3d05c70581bD345fe117c06e45f9669205384f"
+                </>
+            ),
+        },
+        {
+            name: 'account.balanceDecimals',
+            required: false,
+            type: 'string | undefined	',
+            description: '账户余额（以小数表示）',
+        },
+        {
+            name: 'account.balanceFormatted',
+            required: false,
+            type: 'string | undefined	',
+            description: (
+                <>
+                    账户余额格式化为字符串，例如 {' '}
+                    <code>1.234567890123456789</code>
+                </>
+            ),
+        },
+        {
+            name: 'account.balanceSymbol',
+            required: false,
+            type: 'string | undefined	',
+            description: (
+                <>
+                    账户余额的符号，例如 <code>ETH</code>
+                </>
+            ),
+        },
+        {
+            name: 'account.displayBalance',
+            required: false,
+            type: 'string | undefined	',
+            description: (
+                <>
+                    将余额格式化为3位有效数字，并带有符号，例如{' '}<code>1.23 ETH</code>
+                </>
+            ),
+        },
+        {
+            name: 'account.displayName',
+            required: false,
+            type: 'string',
+            description: (
+                <>
+                    ENS 名称或地址的截断版本，例如{' '}<code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
+                </>
+            ),
+        },
+        {
+            name: 'account.ensAvatar',
+            required: false,
+            type: 'string	| undefined',
+            description: 'ENS 头像的 URI',
+        },
+        {
+            name: 'account.ensName',
+            required: false,
+            type: 'string	| undefined',
+            description: (
+                <>
+                    ENS名称，例如{' '}<code>rainbowwallet.eth</code>
+                </>
+            ),
+        },
+        {
+            name: 'account.hasPendingTransactions',
+            required: false,
+            type: 'boolean',
+            description:
+                '布尔值，表示当前链上该账户是否有待处理的交易',
+        },
+    ]}
+/>
 
 ### 链属性
 
-
+<PropsTable
+    data={[
+        {
+            name: 'chain',
+            required: false,
+            type: 'object | undefined',
+            description:
+                '包含当前链的详细信息的对象，如下所述',
+        },
+        {
+            name: 'chain.hasIcon',
+            required: false,
+            type: 'boolean',
+            description: '是否为链指定了图标',
+        },
+        {
+            name: 'chain.iconUrl',
+            required: false,
+            type: 'string | undefined',
+            description:
+                '链图标 URL（在下载 Base64 数据 URL 时可能也是未定义的）',
+        },
+        {
+            name: 'chain.iconBackground',
+            required: false,
+            type: 'string | undefined',
+            description:
+                '图片加载时会显示的链图标背景',
+        },
+        {
+            name: 'chain.id',
+            required: false,
+            type: 'number',
+            description: (
+                <>
+                    链 ID,例如 <code>1</code>
+                </>
+            ),
+        },
+        {
+            name: 'chain.name',
+            required: false,
+            type: 'string | undefined',
+            description: (
+                <>
+                    链名称，例如 <code>"Ethereum"</code>
+                </>
+            ),
+        },
+        {
+            name: 'chain.unsupported',
+            required: false,
+            type: 'boolean | undefined',
+            description:
+                '一个布尔值，表示当前链是否被支持。',
+        },
+    ]}
+/>
 
 ### 模态状态属性
 
-
+<PropsTable
+    data={[
+        {
+            name: 'openAccountModal',
+            required: false,
+            type: '() => void',
+            description: '打开账户模态窗口的函数',
+        },
+        {
+            name: 'openChainModal',
+            required: false,
+            type: '() => void',
+            description: '打开链模态对话框的函数',
+        },
+        {
+            name: 'openConnectModal',
+            required: false,
+            type: '() => void',
+            description: '打开连接钱包模态框的函数',
+        },
+        {
+            name: 'accountModalOpen',
+            required: false,
+            type: 'boolean',
+            description:
+                '指示账户模态窗口是否打开的布尔值',
+        },
+        {
+            name: 'chainModalOpen',
+            required: false,
+            type: 'boolean',
+            description: '一个布尔值，指示链式模态框是否打开',
+        },
+        {
+            name: 'connectModalOpen',
+            required: false,
+            type: 'boolean',
+            description:
+                '表示连接模态框是否打开的布尔值',
+        },
+    ]}
+/>
 
 ### 常规状态属性
+
+<PropsTable
+    data={[
+        {
+            name: 'mounted',
+            required: false,
+            type: 'boolean',
+            description:
+                '布尔值，指示组件是否已挂载',
+        },
+        {
+            name: 'authenticationStatus',
+            required: false,
+            type: '"loading" | "unauthenticated" | "authenticated" | undefined',
+            description:
+                '身份验证状态，如果尚未配置身份验证，则为 undefined',
+        },
+    ]}
+/>
 
