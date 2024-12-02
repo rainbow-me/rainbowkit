@@ -7,17 +7,17 @@ description: Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
 
 ## Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
 
-RainbowKit, Ethereum ve NextAuth.js ile Giriş için [birinci sınıf desteğini sağlasa da,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) özel arka uçlar ve mesaj formatlarıyla da entegrasyon yapabilirsiniz.
+RainbowKit, Ethereum ve NextAuth ile Giriş için birinci sınıf desteğini sağlasa da, özel arka uçlar ve mesaj formatlarıyla da entegrasyon yapabilirsiniz.
 
 ### Özel bir adaptör oluşturma
 
 Öncelikle bir kimlik doğrulama adaptörü oluşturun. Bu, RainbowKit'in mesajlar oluşturmasına/hazırlamasına ve arka uçunuzla iletişim kurmasına olanak sağlar.
 
-Örneğin, bize [Ethereum ile Giriş](https://login.xyz) yapmayı sağlayan özel API uç noktalarına karşı bir [kimlik doğrulama adaptörü](https://wagmi.sh/examples/sign-in-with-ethereum) yapabiliriz
+Örneğin, bize Ethereum ile Giriş yapmayı sağlayan özel API uç noktalarına, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) gibi, karşı bir kimlik doğrulama adaptörü yapabiliriz.
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

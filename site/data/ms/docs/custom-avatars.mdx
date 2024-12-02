@@ -1,0 +1,51 @@
+---
+title: Avatar Tersuai
+description: Menyesuaikan avatar pengguna aplikasi anda
+---
+
+# Avatar Tersuai
+
+## Menyesuaikan avatar pengguna aplikasi anda
+
+Secara asalnya, kami menyediakan avatar untuk pengguna sekiranya imej ENS mereka tidak ditetapkan, tetapi anda boleh menyesuaikan ini dengan menyediakan komponen avatar anda sendiri. Anda boleh mengimport jenis `AvatarComponent` jika menggunakan TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+`AvatarComponent` yang dihantar ke `avatar` prop mempunyai jenis prop seperti berikut: `<{ address: string; ensImage?: string | null; size: number;}>`

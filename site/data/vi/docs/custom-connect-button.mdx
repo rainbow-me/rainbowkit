@@ -219,27 +219,27 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'Đối tượng chứa chi tiết về chuỗi hiện tại, được mô tả dưới đây',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Chuỗi có biểu tượng nào được chỉ định hay không',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'URL biểu tượng của chuỗi (có thể chưa được xác định khi tải xuống URLs dữ liệu Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'Nền của biểu tượng chuỗi sẽ hiển thị trong khi tải hình ảnh',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          ID của chuỗi, ví dụ <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          Tên của chuỗi, ví dụ <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Giá trị boolean cho biết chuỗi hiện tại có được hỗ trợ hay không',
     },
   ]}
 />
@@ -279,39 +279,39 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Hàm để mở hộp thoại tài khoản',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Hàm để mở hộp thoại chuỗi',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Hàm để mở hộp thoại kết nối',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Giá trị boolean cho biết hộp thoại tài khoản có đang mở hay không',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Giá trị boolean cho biết hộp thoại chuỗi có đang mở hay không',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Giá trị boolean cho biết hộp thoại kết nối có đang mở hay không',
     },
   ]}
 />
@@ -325,14 +325,14 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'Boolean cho biết liệu thành phần đã được gắn chưa',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'Trạng thái xác thực hoặc chưa xác định nếu xác thực chưa được cấu hình',
     },
   ]}
 />

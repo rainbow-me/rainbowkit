@@ -15,7 +15,7 @@ Có 3 chức năng chủ đề tích hợp sẵn:
 - `darkTheme`
 - `midnightTheme`
 
-Một chức năng chủ đề trả về một đối tượng chủ đề. Bạn có thể chuyển đối tượng này vào thuộc tính `theme` của `RainbowKitProvider`.
+Một hàm chủ đề trả về một đối tượng chủ đề. Bạn có thể truyền đối tượng này vào thuộc tính `theme` của `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Mỗi chủ đề cũng cung cấp nhiều cài đặt màu điểm nhấn sẵn có (`blue`, `green`, `orange`, `pink`, `purple`, `red`) có thể được thêm vào đối tượng tùy chọn. Ví dụ, để sử dụng cài đặt màu điểm nhấn `pink`:
+Mỗi chủ đề cũng cung cấp một số thiết lập màu sắc nhấn (`blue`, `green`, `orange`, `pink`, `purple`, `red`) có thể được đưa vào đối tượng tùy chọn. Ví dụ, để sử dụng thiết lập màu sắc nhấn `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +260,7 @@ const App = () => {
 
 #### Font stack
 
-Theo mặc định, `fontStack` được đặt thành `rounded`. Đây là cách bạn có thể sử dụng cấu hình `fontStack`.
+Mặc định, `fontStack` được đặt là `rounded`. Nhưng đây là cách bạn có thể sử dụng cấu hình `fontStack`.
 
 Đặt font stack là `system`.
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### Làm mờ lớp phủ
 
-Theo mặc định, `overlayBlur` được đặt thành `none`. Đây là cách bạn có thể sử dụng cấu hình `overlayBlur`.
+Mặc định, `overlayBlur` được đặt là `none`. Nhưng đây là cách bạn có thể sử dụng cấu hình `overlayBlur`.
 
 Đặt làm mờ lớp phủ là `small`.
 

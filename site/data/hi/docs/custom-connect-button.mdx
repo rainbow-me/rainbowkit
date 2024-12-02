@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'वर्तमान खाता के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          पूरा खाता पता, उदाहरण के लिए
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'अंक में खाता शेष',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          एक स्ट्रिंग के रूप में स्वरूपित खाता शेष, उदाहरण के लिए{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          शेष के लिए मुद्रा चिह्न, उदाहरण के लिए <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          शेष को 3 महत्वपूर्ण अंक में स्वरूपित किया गया है, प्लस
+          चिह्न, उदाहरण के लिए <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ENS नाम, या पते का संक्षिप्त संस्करण, उदाहरण के लिए{' '}
+          <code>"rainbowwallet.eth"</code> या <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ export const YourApp = () => {
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'ENS अवतार URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ENS नाम, उदाहरण के लिए <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +205,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'बूलियन जो यह संकेत करता है कि खाते की मौजूदा चेन के लिए लंबित लेनदेन हैं या नहीं',
     },
   ]}
 />
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'वर्तमान चेन के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'चेन का एक चिह्न है या नहीं',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'चेन चिह्न का URL (जो Base64 डेटा URL डाउनलोड करते समय भी अपरिभाषित हो सकता है)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'चेन आइकन की पृष्ठभूमि जो छवियां लोड होने पर दिखाई देगी',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          चेन ID, उदाहरण के लिए <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          चेन का नाम, उदाहरण के लिए <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'बूलियन जो यह दर्शाता है कि वर्तमान चेन असमर्थित है या नहीं',
     },
   ]}
 />
@@ -279,39 +279,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'खाता मोडल खोलने के लिए फ़ंक्शन',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'चेन मोडल खोलने के लिए फ़ंक्शन',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'कनेक्ट मोडल खोलने के लिए फ़ंक्शन',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'बूलियन यह दर्शाने वाला कि खाता मोडल खुला है या नहीं',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'बूलियन यह दर्शाने वाला कि चेन मोडल खुला है या नहीं',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'बूलियन यह दर्शाने वाला कि कनेक्ट मोडल खुला है या नहीं',
     },
   ]}
 />
@@ -325,14 +325,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'बूलियन यह दर्शाने वाला कि घटक माउंट हो गया है या नहीं',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'प्रमाणीकरण स्थिति, या गैर-परिभाषित अगर प्रमाणीकरण कॉन्फ़िगर नहीं किया गया है',
     },
   ]}
 />

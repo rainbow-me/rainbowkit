@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        '현재 계정에 대한 세부 정보를 포함하는 객체, 아래에 설명됨',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          전체 계정 주소, 예:
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -138,16 +138,16 @@ export const YourApp = () => {
     {
       name: 'account.balanceDecimals',
       required: false,
-      type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      type: 'string | undefined\t',
+      description: '소수점 형식의 계정 잔액',
     },
     {
       name: 'account.balanceFormatted',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          문자열로 포맷된 계정 잔액, 예:{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -155,21 +155,20 @@ export const YourApp = () => {
     {
       name: 'account.balanceSymbol',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          잔액의 통화 기호, 예: <code>ETH</code>
         </>
       ),
     },
     {
       name: 'account.displayBalance',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          3자리 유효 숫자로 포맷된 잔액과 기호, 예: <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,24 +178,24 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ENS 이름 또는 주소의 축약 버전, 예:{' '}
+          <code>"rainbowwallet.eth"</code> 또는 <code>"0x7a…384f"</code>
         </>
       ),
     },
     {
       name: 'account.ensAvatar',
       required: false,
-      type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      type: 'string\t| undefined',
+      description: 'ENS 아바타의 URI',
     },
     {
       name: 'account.ensName',
       required: false,
-      type: 'string	| undefined',
+      type: 'string\t| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ENS 이름, 예: <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +204,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        '현재 체인의 보류 중인 거래가 있는지 나타내는 부울 값',
     },
   ]}
 />
@@ -219,27 +218,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        '현재 체인에 대한 세부 정보가 포함된 객체, 아래에 설명됩니다',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: '체인에 아이콘이 지정되어 있는지 여부',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        '체인 아이콘의 URL (Base64 데이터 URL을 다운로드하는 동안 미정의일 수도 있음)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        '이미지가 로드되는 동안 표시될 체인 아이콘 배경',
     },
     {
       name: 'chain.id',
@@ -247,7 +246,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          체인 ID, 예: <code>1</code>
         </>
       ),
     },
@@ -257,7 +256,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          체인 이름, 예: <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +265,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        '현재 체인이 지원되지 않는지 여부를 나타내는 불리언',
     },
   ]}
 />
@@ -279,39 +278,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: '계정 모달을 열기 위한 함수',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: '체인 모달을 열기 위한 함수',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: '연결 모달을 열기 위한 함수',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        '계정 모달이 열려 있는지 여부를 나타내는 불리언',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: '체인 모달이 열려 있는지 여부를 나타내는 불리언',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        '연결 모달이 열려 있는지 여부를 나타내는 불리언',
     },
   ]}
 />
@@ -325,14 +324,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        '컴포넌트가 마운트되었는지를 나타내는 불리언 값입니다.',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        '인증 상태입니다. 인증이 구성되지 않은 경우에는 정의되지 않음입니다.',
     },
   ]}
 />

@@ -7,17 +7,17 @@ description: Hubungkan ke back-end otentikasi Anda sendiri
 
 ## Hubungkan ke back-end otentikasi Anda sendiri
 
-Sementara RainbowKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) Anda juga dapat mengintegrasikan dengan back-end kustom dan format pesan.
+Sementara RainbowKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) Anda juga dapat mengintegrasikan dengan back-end kustom dan format pesan.
 
 ### Membuat adaptor kustom
 
 Pertama, buat adaptor otentikasi. Ini memungkinkan RainbowKit untuk membuat/mempersiapkan pesan dan berkomunikasi dengan back-end Anda.
 
-Sebagai contoh, kita bisa membuat adaptor otentikasi yang memungkinkan kita menggunakan [Sign-In dengan Ethereum](https://login.xyz) melawan beberapa [titik akhir API kustom.](https://wagmi.sh/examples/sign-in-with-ethereum)
+Sebagai contoh, kita bisa membuat adaptor otentikasi yang memungkinkan kita menggunakan [Sign-In dengan Ethereum](https://login.xyz) melawan beberapa endpoint API kustom, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

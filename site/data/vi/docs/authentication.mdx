@@ -9,21 +9,17 @@ description: Xác thực người dùng của bạn
 
 Bạn có thể tuỳ chọn bắt buộc người dùng ký một tin nhắn bằng ví của họ trong quá trình kết nối, chứng minh rằng họ sở hữu tài khoản đã được kết nối và cho phép bạn tạo một phiên người dùng xác thực với quyền truy cập đặc biệt vào ứng dụng của bạn.
 
-Trong khi có thể [tích hợp với các back-end và định dạng tin nhắn tùy chỉnh,](/docs/custom-authentication) RainbowKit cung cấp hỗ trợ hàng đầu cho [Sign-In with Ethereum](https://login.xyz) và [NextAuth.js.](https://next-auth.js.org)
+Trong khi có thể [tích hợp với các back-end tuỳ chỉnh và định dạng tin nhắn,](/docs/custom-authentication) RainbowKit cung cấp hỗ trợ hàng đầu cho [Đăng nhập bằng Ethereum](https://login.xyz) và [NextAuth](https://next-auth.js.org).
 
-### Cài đặt Sign-In với Ethereum và NextAuth.js
-
-Nếu bạn chưa làm thế, trước tiên hãy cài đặt dự án [Next.js](https://nextjs.org) của bạn với [boilerplate Sign-In with Ethereum chính thức cho NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### Thiết lập Đăng nhập bằng Ethereum và NextAuth
 
 #### Cài đặt
 
-Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth` và gói phụ thuộc của nó, [ethers](https://docs.ethers.org/v5/).
+Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Lưu ý: `siwe` yêu cầu gói phụ thuộc [ethers](https://docs.ethers.org/v5/), trong khi [wagmi](https://wagmi.sh/) hiện dựa vào thay thế [viem](https://viem.sh).
 
 #### Thiết lập nhà cung cấp
 
@@ -75,7 +71,7 @@ Với `RainbowKitSiweNextAuthProvider` được thiết lập, người dùng c�
 
 #### Tuỳ chỉnh các tuỳ chọn tin nhắn SIWE
 
-Bạn có thể tuỳ chỉnh [các tuỳ chọn tin nhắn SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) bằng cách chuyển một hàm đến thuộc tính `getSiweMessageOptions` trên `RainbowKitSiweNextAuthProvider`.
+Bạn có thể tùy chỉnh [tùy chọn thông điệp SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) bằng cách truyền một hàm vào thuộc tính `getSiweMessageOptions` trên `RainbowKitSiweNextAuthProvider`.
 
 Hàm này sẽ được gọi bất kỳ khi nào một tin nhắn mới được tạo. Các tuỳ chọn trả về từ hàm này sẽ được gộp với các mặc định.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 Để biết thêm thông tin về quản lý phiên, bạn có thể tham khảo tài liệu sau:
 
 - [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/authentication)
-- [Tài liệu NextAuth.js](https://next-auth.js.org)
+- [Tài liệu NextAuth](https://next-auth.js.org)

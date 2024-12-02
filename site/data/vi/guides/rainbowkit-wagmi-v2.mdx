@@ -102,7 +102,7 @@ Nếu bạn sử dụng các hooks `wagmi` và các actions `viem` trong dApp c�
 
 Các ví hỗ trợ tiêu chuẩn kết nối EIP-6963 mới (bao gồm Rainbow, MetaMask, và nhiều hơn nữa) bây giờ sẽ tự động xuất hiện trong một phần 'Đã cài đặt' trong quá trình kết nối ví. Điều này đảm bảo rằng người dùng luôn có thể tìm thấy các ví ưa thích của họ và kết nối với dApps mà không gặp xung đột hoặc nút dự phòng.
 
-Các nhà phát triển tiếp tục có toàn quyền kiểm soát Danh sách Ví Tùy chỉnh để nhấn mạnh các ví ưa thích cho người dùng cuối. Khuyến nghị rằng bạn tiếp tục bao gồm `injectedWallet` và `walletConnectWallet` trong danh sách của bạn để hỗ trợ tất cả các nền tảng.
+Các nhà phát triển tiếp tục có toàn quyền kiểm soát Danh sách Ví Tùy chỉnh để nhấn mạnh các ví ưa thích cho người dùng cuối. Nên tiếp tục bao gồm `injectedWallet` và `walletConnectWallet` trong danh sách của bạn để hỗ trợ tất cả các nền tảng.
 
 **2. Cấu hình Wagmi với getDefaultConfig**
 
@@ -169,7 +169,7 @@ const config = getDefaultConfig({
 +     ...mainnet,
 +     iconBackground: '#000',
 +     iconUrl: 'https://example.com/icons/ethereum.png',
-+   }, /* metadata overides */
++   }, /* metadata overrides */
 + ],
 });
 ```

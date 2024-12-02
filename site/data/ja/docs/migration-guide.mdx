@@ -102,17 +102,17 @@ dAppで`wagmi`フックと`viem`アクションを使用している場合、v2�
 
 **1. EIP-6963 ウォレットの動作改善**
 
-新しい EIP-6963 接続標準をサポートするウォレット（<b>Rainbow</b>、<b>MetaMask</b> などを含む）は、ウォレットを接続する体験の間に `Installed` セクションに自動的に表示されるようになりました。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。
+新しい EIP-6963 接続標準をサポートするウォレット（<b>Rainbow</b>、<b>MetaMask</b> などを含む）は、ウォレットを接続する体験の間に `Installed` セクションに自動的に表示されるようになりました。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。
 
-開発者は引き続きカスタムウォレットリストを完全に制御でき、エンドユーザーにとって優先されるウォレットを強調表示できます。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。
+開発者は引き続きカスタムウォレットリストを完全に制御でき、エンドユーザーにとって優先されるウォレットを強調表示できます。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。
 
 **2. getDefaultConfig を使用した Wagmi 設定**
 
-この新しいAPIは設定体験を簡素化し、Wagmiの`createConfig`を直接使用する必要を置き換えます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。
+この新しいAPIは設定体験を簡素化し、Wagmiの`createConfig`を直接使用する必要を置き換えます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。
 
 デフォルトのウォレットリストが自動的に含まれるようになり、`getDefaultWallets`や`connectorsForWallets`を使用する必要がなくなります。
 
-インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。
+インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。
 
 ```
 const config = getDefaultConfig({
@@ -197,9 +197,9 @@ const config = getDefaultConfig({
 
 **4. カスタムウォレット**
 
-RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)および[サンプルコネクタ](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。
+RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)および[サンプルコネクタ](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。
 
-ウォレットコネクタは、`rdns`プロパティを使用してEIP-6963標準もサポートするようになりました。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。
+ウォレットコネクタは、`rdns`プロパティを使用してEIP-6963標準もサポートするようになりました。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。
 
 ### 1.x.x 破壊的な変更
 
@@ -217,17 +217,15 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 
 **2. viemのピア依存関係をインストールしてください**
 
-wagmi v1は`viem`ピア依存関係を必要とします。 以下のコマンドでインストールします:
+wagmi v1は`viem`ピア依存関係を必要とします。 以下のコマンドでインストールします: 以下のコマンドでインストールします:
 
 ```bash
 npm i viem
 ```
 
-注：wagmiはもはや`ethers`パッケージを内部的に使用していません。 しかし、 [Authentication](https://www.rainbowkit.com/docs/authentication) APIに依存している場合、`siwe`はまだ`ethers`をピア依存関係として要求します。
-
 **3. バンドラとポリフィルの互換性を確保する**
 
-以前のwagmiバージョンでは、 [ethers](https://docs.ethers.org/v5/)に依存していたため、WalletConnectが必要とする`fs`、`net`、`tls`モジュールが自動的にポリフィルされました。 これは、[viem](https://viem.sh/)をベースに構築されたRainbowKit v1 + wagmi v1ではもはや当てはまりません。
+以前のwagmiバージョンでは、 [ethers](https://docs.ethers.org/v5/)に依存していたため、WalletConnectが必要とする`fs`、`net`、`tls`モジュールが自動的にポリフィルされました。 これは、[viem](https://viem.sh/)をベースに構築されたRainbowKit v1 + wagmi v1ではもはや当てはまりません。 これは、[viem](https://viem.sh/)をベースに構築されたRainbowKit v1 + wagmi v1ではもはや当てはまりません。
 
 プロジェクトの設定指南として[Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)と[Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts)のサンプルを参照してください。
 
@@ -243,11 +241,11 @@ ViteとRemixの追加フレームワークガイドは、 [here](https://www.rai
 
 wagmiのピア依存関係が`0.12.x`に更新されました。
 
-RainbowKitは、継続的なWalletConnect v1のサポートのために、`wagmi`内の`WalletConnectLegacyConnector`コネクタを採用しました。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。
+RainbowKitは、継続的なWalletConnect v1のサポートのために、`wagmi`内の`WalletConnectLegacyConnector`コネクタを採用しました。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。
 
 将来のリリースでは、ウォレットは自動的に移行されます。
 
-すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 RainbowKitは、`projectId`が指定されていない場合、すべてのウォレットに対して静かにv1を優先します。
+すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 RainbowKitは、`projectId`が指定されていない場合、すべてのウォレットに対して静かにv1を優先します。
 
 以下の手順に従って移行してください。
 
@@ -259,7 +257,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2. WalletConnect CloudのprojectIdを提供します
 
-WalletConnectに依存するすべてのdAppは現在、[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。
+WalletConnectに依存するすべてのdAppは現在、[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。
 
 `getDefaultWallets`と個々のRainbowKitウォレットコネクタに`projectId`を提供します。次のように:
 
@@ -359,7 +357,7 @@ npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 
 ### 0.7.x破壊的な変更
 
-カスタムウォレットリストを作成している場合、バンドルサイズを削減するために、各ウォレットを個別にインポートする必要があります。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。
+カスタムウォレットリストを作成している場合、バンドルサイズを削減するために、各ウォレットを個別にインポートする必要があります。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -386,7 +384,7 @@ const wallets = [
 ];
 ```
 
-また、Steakwalletの下位互換性レイヤーが削除されたことに注意してください。 代わりにOmniを使用すべきです。
+また、Steakwalletの下位互換性レイヤーが削除されたことに注意してください。 代わりにOmniを使用すべきです。 代わりにOmniを使用すべきです。
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -422,7 +420,7 @@ npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 
 `Wallet` タイプの `createConnector` から `chainId` パラメータを削除しました。
 
-**すべての組み込みウォレットが新しいAPIを使用していることに注意してください。 ほとんどの消費者には影響がありません。 この変更は、[カスタムウォレット](/docs/custom-wallets)を作成/消費した消費者にのみ影響します。 **
+**すべての組み込みウォレットが新しいAPIを使用していることに注意してください。 ほとんどの消費者には影響がありません。 この変更は、[カスタムウォレット](/docs/custom-wallets)を作成/消費した消費者にのみ影響します。 ** ほとんどの消費者には影響がありません。 この変更は、[カスタムウォレット](/docs/custom-wallets)を作成/消費した消費者にのみ影響します。 \*\*
 
 `createConnector`の`chainId`から以前にRPCのURLを導出していた場合、`wagmi`が`configureChains`と一緒に使用されるときに内部的にRPCのURLを処理するようになったので、そのロジックを削除できます。
 
@@ -503,7 +501,7 @@ RainbowKitの代わりにwagmiから`configureChains`をインポートします
 
 #### 3. プロバイダーを移行する
 
-RainbowKitはもはや`apiProvider` APIをエクスポートしない。 これをwagmiから任意のプロバイダーに置き換えてください。
+RainbowKitはもはや`apiProvider` APIをエクスポートしない。 これをwagmiから任意のプロバイダーに置き換えてください。 これをwagmiから任意のプロバイダーに置き換えてください。
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';

@@ -102,7 +102,7 @@ npm i @tanstack/react-query
 
 现在支持新的EIP-6963连接标准的钱包（包括<b>Rainbow、MetaMask</b>等）将自动显示在连接钱包体验的`Installed`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
 
-开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
+开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在您的列表中包含 `injectedWallet` 和 `walletConnectWallet` ，以支持所有平台。
 
 **2. 使用 getDefaultConfig 进行 Wagmi 配置**
 
@@ -169,7 +169,7 @@ const config = getDefaultConfig({
 +     ...mainnet,
 +     iconBackground: '#000',
 +     iconUrl: 'https://example.com/icons/ethereum.png',
-+   }, /* metadata overides */
++   }, /* metadata overrides */
 + ],
 });
 ```

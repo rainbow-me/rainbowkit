@@ -230,6 +230,38 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "安装 BeraSig 扩展",
+          "description": "我们建议将 BeraSig 固定到任务栏，以便更轻松地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建一个钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      }
+    },
+    "best": {
+      "qr_code": {
+        "step1": {
+          "title": "打开Best Wallet应用",
+          "description": "将Best Wallet添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
@@ -310,20 +342,6 @@
     },
     "bloom": {
       "desktop": {
-        "step1": {
-          "title": "打开 Bloom 钱包应用",
-          "description": "我们建议将 Bloom 钱包添加到主屏幕上，以便更快地访问。"
-        },
-        "step2": {
-          "description": "使用恢复短语创建或导入钱包。",
-          "title": "创建或导入钱包"
-        },
-        "step3": {
-          "description": "拥有钱包后，点击连接以通过 Bloom 连接。应用中会出现一个连接提示，供您确认连接。",
-          "title": "点击连接"
-        }
-      },
-      "qr_code": {
         "step1": {
           "title": "打开 Bloom 钱包应用",
           "description": "我们建议将 Bloom 钱包添加到主屏幕上，以便更快地访问。"
@@ -954,6 +972,22 @@
         }
       }
     },
+    "paraswap": {
+      "qr_code": {
+        "step1": {
+          "title": "打开ParaSwap应用",
+          "description": "将ParaSwap Wallet添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      }
+    },
     "phantom": {
       "extension": {
         "step1": {
@@ -1061,6 +1095,22 @@
         "step3": {
           "title": "刷新您的浏览器",
           "description": "设置好您的钱包后，点击下方以刷新浏览器并加载扩展程序。"
+        }
+      }
+    },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "安装Wigwam扩展程序",
+          "description": "我们建议将Wigwam固定在您的任务栏上，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },
@@ -1275,6 +1325,22 @@
         "step3": {
           "title": "扫描代码",
           "description": "点击 WalletConnect 然后切换到扫描器。你扫描后，会出现一个连接提示让你连接你的钱包。"
+        }
+      }
+    },
+    "valora": {
+      "qr_code": {
+        "step1": {
+          "title": "打开Valora应用程序",
+          "description": "我们建议将 Valora 放在您的主屏幕上以便更快地访问。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
         }
       }
     }

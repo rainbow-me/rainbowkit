@@ -9,21 +9,17 @@ description: Mengotentikasi pengguna Anda
 
 Anda secara opsional dapat mewajibkan pengguna untuk menandatangani pesan dengan dompet mereka selama proses koneksi, membuktikan bahwa mereka memiliki akun yang terhubung dan memungkinkan Anda untuk membuat sesi pengguna terotentikasi dengan akses istimewa ke aplikasi Anda.
 
-Sementara itu mungkin untuk [mengintegrasikan dengan back-end dan format pesan khusus,](/docs/custom-authentication) RainbowKit menyediakan dukungan kelas atas untuk [Masuk Dengan Ethereum](https://login.xyz) dan [NextAuth.js.](https://next-auth.js.org)
+Sementara itu mungkin untuk [mengintegrasikan dengan back-end dan format pesan khusus,](/docs/custom-authentication) RainbowKit menyediakan dukungan kelas atas untuk [Masuk Dengan Ethereum](https://login.xyz) dan [NextAuth](https://next-auth.js.org).
 
-### Atur Masuk Dengan Ethereum dan NextAuth.js
-
-Jika Anda belum, pertama atur proyek [Next.js](https://nextjs.org) Anda dengan [boilerplate Masuk Dengan Ethereum resmi untuk NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### Atur Masuk Dengan Ethereum dan NextAuth
 
 #### Instal
 
-Instal paket `@rainbow-me/rainbowkit-siwe-next-auth` dan dependensi peer-nya, [ethers](https://docs.ethers.org/v5/).
+Instal paket `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Catatan: `siwe` memerlukan dependensi peer [ethers](https://docs.ethers.org/v5/), sementara [wagmi](https://wagmi.sh/) sekarang bergantung pada alternatif [viem](https://viem.sh).
 
 #### Atur penyedia
 
@@ -75,7 +71,7 @@ Dengan `RainbowKitSiweNextAuthProvider` di tempat, pengguna Anda sekarang akan d
 
 #### Sesuaikan opsi pesan SIWE
 
-Anda dapat menyesuaikan [opsi pesan SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) dengan melewatkan fungsi ke prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
+Anda dapat menyesuaikan [opsi pesan SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) dengan melewatkan fungsi ke prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
 
 Fungsi ini akan dipanggil setiap kali pesan baru dibuat. Opsi yang dikembalikan dari fungsi ini akan digabungkan dengan setelan bawaan.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 Untuk informasi lebih lanjut tentang mengelola sesi, Anda dapat merujuk ke dokumentasi berikut:
 
 - [Panduan otentikasi Next.js](https://nextjs.org/docs/authentication)
-- [Dokumentasi NextAuth.js](https://next-auth.js.org)
+- [Dokumentasi NextAuth](https://next-auth.js.org)

@@ -15,7 +15,7 @@ Ada 3 fungsi tema bawaan:
 - `darkTheme`
 - `midnightTheme`
 
-Fungsi tema mengembalikan objek tema. Anda bisa memasukkan objek ke prop `theme` milik `RainbowKitProvider`.
+Fungsi tema mengembalikan objek tema. Anda dapat meneruskan objek tersebut ke prop `theme` dari `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Setiap tema juga menyediakan beberapa preset warna aksen (`blue`, `green`, `orange`, `pink`, `purple`, `red`) yang dapat dimasukkan ke dalam objek pilihan. Sebagai contoh, untuk menggunakan preset warna aksen `pink`:
+Setiap tema juga menyediakan beberapa preset warna aksen (`blue`, `green`, `orange`, `pink`, `purple`, `red`) yang dapat dimasukkan ke dalam objek opsi. Sebagai contoh, untuk menggunakan preset warna aksen `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +260,7 @@ const App = () => {
 
 #### Tumpukan Font
 
-Secara default, `fontStack` diatur ke `rounded`. Namun, berikut cara Anda bisa menggunakan konfigurasi `fontStack`.
+Secara default, `fontStack` disetel ke `rounded`. Namun, berikut adalah cara Anda dapat menggunakan konfigurasi `fontStack`.
 
 Tetapkan font stack ke `system`.
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### Kabur overlay
 
-Secara default, `overlayBlur` diatur ke `none`. Namun, berikut cara Anda bisa menggunakan konfigurasi `overlayBlur`.
+Secara default, `overlayBlur` disetel ke `none`. Tetapi inilah cara Anda dapat menggunakan konfigurasi `overlayBlur`.
 
 Tetapkan kabur overlay ke `small`.
 

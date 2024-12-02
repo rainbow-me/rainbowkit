@@ -224,8 +224,6 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 npm i viem
 ```
 
-ملاحظة: لم يعد wagmi يستخدم حزمة `ethers` داخلياً. ولكن إذا كنت تعتمد على [واجهة برمجة التطبيقات للمصادقة](https://www.rainbowkit.com/docs/authentication)، سيظل `siwe` يتطلب `ethers` كاعتماد نظير.
-
 **3. **تأكد من التوافق بين المجمع و polyfill\*\*
 
 في الإصدارات السابقة من wagmi التي تعتمد على [ethers](https://docs.ethers.org/v5/)، كانت الوحدات `fs`، `net`، و `tls` المطلوبة من WalletConnect تتم تلقائيًا. هذا لم يعد الحال مع RainbowKit v1 + wagmi v1، اللذان تم بناؤهما على [viem](https://viem.sh/).

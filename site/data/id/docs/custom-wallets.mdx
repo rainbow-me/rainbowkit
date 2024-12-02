@@ -7,9 +7,9 @@ description: Buat dompet kustom
 
 ## Buat dompet kustom
 
-> Catatan: API ini tidak stabil dan kemungkinan akan berubah dalam waktu dekat. Kami akan menambahkan lebih banyak dompet bawaan dari waktu ke waktu. [Beritahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika ada dompet tertentu yang Anda minati.
+> Catatan: API ini tidak stabil dan mungkin akan berubah dalam waktu dekat. Kami akan menambahkan lebih banyak dompet bawaan seiring waktu. [Beri tahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika ada dompet tertentu yang Anda minati.
 
-Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom Anda sendiri. Properti berikut dapat dikonfigurasi pada nilai pengembalian fungsi `Wallet` Anda:
+Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom Anda sendiri. Properti berikut dapat dikonfigurasi pada nilai balik fungsi `Wallet` Anda:
 
 ### Properti Dompet
 
@@ -83,7 +83,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Function for calculating whether this wallet should be hidden from the list. Ini berguna untuk mendefinisikan dompet fallback generik, misalnya, fallback "Injected Wallet" bawaan memanfaatkan fitur ini',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Fungsi untuk menyediakan instance konektor dan konfigurasi untuk berbagai metode koneksi, dijelaskan di bawah',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'Fungsi untuk menyelesaikan URI koneksi dompet seluler',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'Fungsi untuk menyelesaikan tautan dalam aplikasi desktop',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'Objek yang berisi fungsi untuk menyelesaikan URI kode QR, plus instruksi pengaturan dompet seluler opsional',
     },
     {
       name: 'extension',
@@ -122,14 +122,14 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'Objek yang berisi instruksi pengaturan ekstensi browser opsional',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'Fungsi untuk menyediakan instance konektor',
     },
   ]}
 />
@@ -142,64 +142,64 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'URL Google Play',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'URL Apple App Store',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        'Halaman arahan untuk pengguna seluler ketika `android` atau `ios` tidak tersedia',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'Halaman arahan untuk pengguna yang memindai Kode QR unduhan seluler',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'URL Chrome Web Store',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'URL Add-on Microsoft Edge',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'URL Add-on Firefox Browser',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'URL Add-on Opera',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'URL Mac App Store',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'Halaman arahan untuk pengguna ekstensi desktop ketika URL yang kompatibel dengan browser tidak tersedia',
     },
   ]}
 />

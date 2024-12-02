@@ -9,21 +9,17 @@ description: 對用戶進行身份驗證
 
 您可以選擇強制用戶在連接過程中使用錢包簽署訊息，證明他們擁有已連接的帳戶，並允許您創建具權限的身份驗證用戶會話，以便訪問您的應用程式。
 
-雖然可以[整合自訂後端和訊息格式，](/docs/custom-authentication) 但 RainbowKit 提供對 [Sign-In with Ethereum](https://login.xyz) 和 [NextAuth.js](https://next-auth.js.org) 的一流支援。
+雖然可以[整合自定後端和消息格式，](/docs/custom-authentication)但RainbowKit對[以太坊登入](https://login.xyz)和[NextAuth](https://next-auth.js.org)提供一流的支援。
 
-### 設置 Sign-In with Ethereum 和 NextAuth.js
-
-如果您還沒有，請先使用 [Sign-In with Ethereum 官方樣板 for NextAuth.js](https://docs.login.xyz/integrations/nextauth.js) 設置您的 [Next.js](https://nextjs.org) 專案。
+### 設置以太坊登入和NextAuth
 
 #### 安裝
 
-安裝 `@rainbow-me/rainbowkit-siwe-next-auth` 套件及其對等依賴項 [ethers](https://docs.ethers.org/v5/).
+安裝 `@rainbow-me/rainbowkit-siwe-next-auth` 套件。
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> 注意：`siwe` 需要 [ethers](https://docs.ethers.org/v5/) 對等依賴項，而 [wagmi](https://wagmi.sh/) 現在依賴於替代 [viem](https://viem.sh)。
 
 #### 設置供應商
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### 自訂 SIWE 訊息選項
 
-您可以透過將函數傳遞給 `RainbowKitSiweNextAuthProvider` 的 `getSiweMessageOptions` 屬性來自訂 [SIWE 訊息選項](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)。
+你可以透過將函數傳遞給`RainbowKitSiweNextAuthProvider`上的`getSiweMessageOptions`屬性來自定[SIWE消息選項](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
 
 每當創建新的訊息時，都會調用此函數。 從此函數返回的選項將與默認選項合併。
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 有關管理會話的更多信息，您可以參考以下文檔：
 
 - [Next.js 認證指南](https://nextjs.org/docs/authentication)
-- [NextAuth.js 文檔](https://next-auth.js.org)
+- [NextAuth 文件](https://next-auth.js.org)

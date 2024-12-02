@@ -223,8 +223,6 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 npm i viem
 ```
 
-Примечание: wagmi больше не использует пакет `ethers` внутри. Но если вы полагаетесь на [Authentication](https://www.rainbowkit.com/docs/authentication) API, `siwe` все еще будет требовать `ethers` в качестве зависимости однорангового узла.
-
 **3. **Обеспечьте совместимость пакетировщика и полифилла\*\*
 
 В предыдущих версиях wagmi, которые полагались на [ethers](https://docs.ethers.org/v5/), модули `fs`, `net` и `tls`, требуемые WalletConnect, автоматически полифилировались. Теперь это уже не так с RainbowKit v1 + wagmi v1, которые построены на [viem](https://viem.sh/).

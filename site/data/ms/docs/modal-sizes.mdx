@@ -1,0 +1,28 @@
+---
+title: Saiz Modalis
+description: Luas vs. Padat
+---
+
+# Saiz Modalis
+
+## Saiz Luas vs. Padat
+
+Secara lalai, `modalSize` RainbowKit ditetapkan kepada `wide` (dan kelihatan seperti ini):
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+Kami juga menyediakan saiz modalis `compact`, yang kelihatan seperti ini:
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+Untuk menetapkan saiz modalis anda kepada `compact`, hanya tambah `modalSize="compact"` sebagai prop dalam `RainbowKitProvider` anda:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

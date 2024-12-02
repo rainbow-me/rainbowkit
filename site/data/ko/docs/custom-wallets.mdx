@@ -19,45 +19,43 @@ description: 사용자 정의 지갑 생성
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: '각 지갑에 대한 고유 ID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '사람이 읽을 수 있는 지갑 이름',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'EIP6963을 지원하는 지갑의 RDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: '모바일 사용을 위한 선택적 단축 이름',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
-      description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+      description: '지갑 아이콘의 URL 또는 Base64 데이터 URL로 처리되는 약속',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
-      description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+      description: '브라우저 확장 기능과 모바일 앱 모두를 가진 지갑을 위한 다운로드 흐름에 사용되는 강조 색상',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '지갑 아이콘이 로드되는 동안의 배경색',
     },
     {
       name: 'installed',
@@ -65,8 +63,8 @@ description: 사용자 정의 지갑 생성
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          지갑이 설치되었는지 여부 또는 불확실한 경우{' '}
+          <code>undefined</code> 
         </>
       ),
     },
@@ -75,15 +73,14 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '다운로드 URL을 포함하는 객체',
     },
     {
       name: 'hidden',
       required: false,
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
-      description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+      description: '목록에서 이 지갑을 숨겨야 하는지 계산하는 함수. 일반적인 대체 지갑을 정의하는 데 유용합니다. 예를 들어, 내장된 "Injected Wallet" 대체는 이 기능을 사용합니다',
     },
     {
       name: 'createConnector',
@@ -91,7 +88,7 @@ description: 사용자 정의 지갑 생성
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '아래에 설명된 다양한 연결 방법에 대한 커넥터 인스턴스와 구성을 제공하는 기능',
     },
     {
       name: 'mobile',
@@ -99,14 +96,14 @@ description: 사용자 정의 지갑 생성
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        '모바일 지갑 연결 URI를 해결하기 위한 함수',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: '데스크톱 앱 딥링크를 해결하기 위한 함수',
     },
     {
       name: 'qrCode',
@@ -114,7 +111,7 @@ description: 사용자 정의 지갑 생성
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'QR 코드 URI를 해결하기 위한 함수를 포함하는 객체, 선택적 모바일 지갑 설정 지침 포함',
     },
     {
       name: 'extension',
@@ -122,15 +119,15 @@ description: 사용자 정의 지갑 생성
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        '선택적 브라우저 확장 기능 설정 지침을 포함하는 객체',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
+      description: '커넥터 인스턴스를 제공하기 위한 함수',
+    }
   ]}
 />
 
@@ -155,51 +152,51 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '`android` 또는 `ios`가 사용 불가능할 때 모바일 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        '모바일 다운로드 QR 코드를 스캔한 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome 웹 스토어 URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge 애드온 URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'Firefox 브라우저 애드온 URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera 애드온 URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac 앱 스토어 URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        '브라우저 호환 URL이 사용 불가능할 때 데스크톱 확장 기능 사용자를 위한 랜딩 페이지',
     },
   ]}
 />

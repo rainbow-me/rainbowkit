@@ -1,0 +1,65 @@
+---
+title: Rangkaian Tersuai
+description: Buat rantaian tersuai
+---
+
+# Rangkaian Tersuai
+
+## Buat rantaian tersuai
+
+Anda boleh menggunakan jenis `Chain` untuk membantu anda membuat rantai tersuai. Kemudian, serahkannya kepada `getDefaultConfig` atau Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
+
+Sebagai contoh, ini adalah cara untuk mencipta rantaian Avalanche untuk [avax.network](https://avax.network).
+
+```tsx
+import {
+  RainbowKitProvider,
+  getDefaultConfig,
+  Chain,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const avalanche = {
+  id: 43_114,
+  name: 'Avalanche',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+} as const satisfies Chain;
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [avalanche],
+});
+
+const queryClient = new QueryClient();
+
+const App = () => {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+```

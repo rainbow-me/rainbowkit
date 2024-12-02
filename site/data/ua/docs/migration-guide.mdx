@@ -223,8 +223,6 @@ wagmi v1 потребує залежність `viem`. Встановіть її
 npm i viem
 ```
 
-Примітка: wagmi більше не використовує пакет `ethers` внутрішньо. Але якщо ви покладаєтесь на API [Authentication](https://www.rainbowkit.com/docs/authentication), `siwe` все ще вимагатиме `ethers` як залежність.
-
 **3. Забезпечте сумісність будівника та поліфіла**
 
 У попередніх версіях wagmi, які використовували [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls`, які вимагалися WalletConnect, автоматично поліфілилися. Це більше не актуально для RainbowKit v1 + wagmi v1, які побудовані на основі [viem](https://viem.sh/).

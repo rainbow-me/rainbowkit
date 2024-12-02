@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'Цвет фона/текста различных интерактивных элементов.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'Цвет элементов переднего плана, отображаемых поверх основного цвета.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'Размер всей шкалы скругления углов.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "Набор шрифтов, используемый во всем интерфейсе пользователя.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,15 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: "Размытие фоновой заставки модального окна. Обратите внимание, что `rounded` пытается использовать SF Pro Rounded, переходя на системные шрифты, когда он не доступен.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'Размытие фоновой заставки модального окна.',
     },
   ]}
 />
@@ -260,7 +268,7 @@ const App = () => {
 
 #### Стек шрифтов
 
-По умолчанию,`fontStack` установлен в значение `rounded`. Но вот как вы можете использовать настройку `fontStack`.
+По умолчанию `fontStack` установлен в значение `rounded`. Но вот как вы можете использовать настройку `fontStack`.
 
 Установите набор шрифтов на `system`.
 
@@ -283,7 +291,7 @@ const App = () => {
 
 #### Размытие наложения
 
-По умолчанию, `overlayBlur` установлен в значение `none`. Но вот как вы можете использовать настройку `overlayBlur`.
+По умолчанию `overlayBlur` установлен в значение `none`. Но вот как вы можете использовать настройку `overlayBlur`.
 
 Установите размытие наложения на `small`.
 

@@ -11,11 +11,11 @@ description: 使用和自訂主題
 
 有3個內建的主題函數：
 
-- `lightTheme`   （預設）
+- `lightTheme` &nbsp; （預設）
 - `darkTheme`
 - `midnightTheme`
 
-主題函數會返回一個主題對象。 您可以將對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+主題函數返回一個主題對象。 您可以將該對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-每個主題還提供幾個強調色預設（`blue`、`green`、`orange`、`pink`、`purple`、`red`），可以擴展到選項對象中。 主題函數
+每個主題也提供了幾種強調顏色預設（`blue`、`green`、`orange`、`pink`、`purple`、`red`）可以擴展到選項對象中。 例如，使用 `pink` 強調色預設：
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +260,7 @@ const App = () => {
 
 #### 但這樣你可以使用`fontStack`配置。
 
-將字體堆疊設置為`system`。 背景模糊
+預設情況下，`fontStack` 設置為 `rounded`。 但是這是您可以使用 `fontStack` 配置的方法。
 
 默認情況下，`overlayBlur`設置為`none`。
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### 但這樣你可以使用`overlayBlur`配置。
 
-將背景模糊設定為`small`。 混合搭配
+預設情況下，`overlayBlur` 設置為 `none`。 但是這是您可以使用 `overlayBlur` 配置的方法。
 
 這裡有一些不同的方式來一起使用不同的主題，連同`accentColor`、`borderRadius`和`fontStack`屬性。
 

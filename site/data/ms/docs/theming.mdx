@@ -1,0 +1,385 @@
+---
+title: Tema
+description: Menggunakan dan menyesuaikan tema
+---
+
+# Tema
+
+## Menggunakan dan menyesuaikan tema
+
+Anda boleh mengubah suai antara muka pengguna RainbowKit untuk disesuaikan dengan jenama anda. Anda boleh memilih dari beberapa warna aksen yang telah ditetapkan dan konfigurasi jejari sempadan.
+
+Terdapat 3 fungsi tema yang telah dibina dalam:
+
+- `lightTheme` &nbsp; (lalai)
+- `darkTheme`
+- `midnightTheme`
+
+Fonksi tema mengembalikan objek tema. Anda boleh menyerahkan objek kepada sifat `theme` dalam `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Jika anda mahu, anda boleh memasukkan `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` dan `overlayBlur` untuk menyesuaikannya.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### Menyesuaikan tema yang telah dibina dalam
+
+Fungsi tema yang telah dibina dalam juga menerima objek pilihan, membolehkan anda memilih daripada beberapa gaya visual yang berbeza.
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+Sebagai contoh, untuk menyesuaikan tema gelap dengan warna aksen ungu dan skala jejari sempadan `medium`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Setiap tema juga menyediakan beberapa praset warna aksen (`blue`, `green`, `orange`, `pink`, `purple`, `red`) yang boleh disebarkan ke dalam objek pilihan. Contohnya, untuk menggunakan prapenyet warna aksen `pink`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Contoh-contoh
+
+#### Fungsi tema
+
+Berikut adalah beberapa cara berbeza yang boleh anda gunakan proprti `theme`.
+
+Gunakan tema `darkTheme`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Gunakan tema `midnightTheme`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### Warna aksen
+
+Berikut adalah beberapa cara berbeza yang boleh anda gunakan tetapan `accentColor`.
+
+Tetapkan warna aksen kepada nilai ungu tersuai.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Tetapkan warna aksen kepada praset `green` yang dibina dalam.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Jejari sempadan
+
+Berikut adalah beberapa cara berbeza yang boleh anda gunakan tetapan `borderRadius`.
+
+Tetapkan jejari sempadan kepada `medium`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Tetapkan jejari sempadan kepada `none`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> Peringatan: nilai jejari sempadan yang tersedia ialah: `large` (lalai), `medium`, `small` dan `none`.
+
+#### Timbunan tulisan
+
+Secara default, `fontStack` ditetapkan kepada `rounded`. Tetapi inilah cara anda boleh menggunakan konfigurasi `fontStack`.
+
+Tetapkan timbunan tulisan kepada `system`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Mengaburkan tindihan
+
+Secara default, `overlayBlur` ditetapkan kepada `none`. Tetapi inilah cara anda boleh menggunakan konfigurasi `overlayBlur`.
+
+Tetapkan kabur tindihan kepada `small`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Campur dan padankan
+
+Berikut adalah beberapa cara berbeza yang boleh anda gunakan tema berlainan, dengan props `accentColor`, `borderRadius` dan `fontStack` bersama-sama.
+
+- Gunakan tema `lightTheme`
+- Tetapkan warna tumpuan kepada nilai ungu tersuai
+- Tetapkan jejari sempadan kepada `medium`
+- Tetapkan timbunan tulisan kepada `system`
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+- Gunakan tema `midnightTheme`
+- Tetapkan warna tumpuan kepada pratetap `pink` terbina dalam.
+- Tetapkan jejari sempadan kepada `small`
+- Tetapkan timbunan tulisan kepada `system`
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Sokongan mod gelap
+
+Jika aplikasi anda menggunakan penyoalan media standard `prefers-color-scheme: dark` untuk bertukar antara mod terang dan gelap, anda boleh memilih untuk menyediakan objek tema dinamik yang mengandungi nilai `lightMode` dan `darkMode`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

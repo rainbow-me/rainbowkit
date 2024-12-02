@@ -130,7 +130,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string',
       description: (
         <>
-          La dirección completa de la cuenta, ej.
+          The full account address, e.g.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'El balance de la cuenta en decimales',
+      description: 'The account balance in decimals',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          El balance de la cuenta formateado como una cadena, ej.{' '}
+          The account balance formatted as a string, e.g.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          El símbolo de la moneda para el balance, ej. <code>ETH</code>
+          The currency symbol for the balance, e.g. <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          El balance formateado con 3 cifras significativas, más el
-          símbolo, ej. <code>1.23 ETH</code>
+          The balance formatted to 3 significant digits, plus the
+          symbol, e.g. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string',
       description: (
         <>
-          El nombre ENS, o una versión truncada de la dirección, ej.{' '}
-          <code>"rainbowwallet.eth"</code> o <code>"0x7a…384f"</code>
+          The ENS name, or a truncated version of the address, e.g.{' '}
+          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'La URI del avatar ENS',
+      description: 'The ENS avatar URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string	| undefined',
       description: (
         <>
-          El nombre ENS, ej. <code>rainbowwallet.eth</code>
+          The ENS name, e.g. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +205,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si la cuenta tiene transacciones pendientes para la cadena actual',
+        'Boolean indicating whether the account has pending transactions for the current chain',
     },
   ]}
 />
@@ -232,14 +232,14 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'string | undefined',
       description:
-        'La URL del icono de la cadena (que también puede estar indefinida mientras se descargan URL de datos Base64)',
+        'La URL del icono de la cadena (que también puede ser indefinida mientras se descargan URLs de datos Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'El fondo del icono de la cadena que será visible mientras se cargan las imágenes',
+        'El fondo del icono de la cadena que será visible mientras las imágenes se están cargando',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'number',
       description: (
         <>
-          El ID de la cadena, ej. <code>1</code>
+          El ID de la cadena, por ejemplo <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined',
       description: (
         <>
-          El nombre de la cadena, ej. <code>"Ethereum"</code>
+          El nombre de la cadena, por ejemplo <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Booleano que indica si la cadena actual no es compatible',
+        'Booleano que indica si la cadena actual no está soportada',
     },
   ]}
 />
@@ -279,13 +279,13 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de la cuenta',
+      description: 'Función para abrir el modal de cuenta',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de la cadena',
+      description: 'Función para abrir el modal de cadena',
     },
     {
       name: 'openConnectModal',
@@ -298,13 +298,13 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el modal de la cuenta está abierto',
+        'Booleano que indica si el modal de cuenta está abierto',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Booleano que indica si el modal de la cadena está abierto',
+      description: 'Booleano que indica si el modal de cadena está abierto',
     },
     {
       name: 'connectModalOpen',
@@ -325,14 +325,14 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el componente se ha montado',
+        'Booleano que indica si el componente ha sido montado',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'El estado de autenticación o indefinido si la autenticación no se ha configurado',
+        'El estado de la autenticación, o indefinido si la autenticación no ha sido configurada',
     },
   ]}
 />

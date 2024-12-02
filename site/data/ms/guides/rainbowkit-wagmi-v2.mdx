@@ -1,0 +1,202 @@
+---
+title: Menaiktaraf dApp anda untuk RainbowKit v2
+description: RainbowKit dan Wagmi telah dinaik taraf kepada v2
+image: panduan-rainbowkit-v2.png
+---
+
+# Beralih ke RainbowKit dan Wagmi v2
+
+Kebergantungan sama [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah mencapai `2.x.x` dengan perubahan mendasar.
+
+Ikuti langkah di bawah untuk berhijrah.
+
+**1. Naik taraf RainbowKit, `wagmi`, dan `viem` kepada versi terkini mereka**
+
+```bash
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
+```
+
+**2. Pasang kebergantungan sama `@tanstack/react-query`**
+
+Dengan Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) kini diperlukan sebagai kebergantungan sama.
+
+Pasangnya dengan arahan berikut:
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. Naik taraf konfigurasi RainbowKit dan Wagmi anda**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. Periksa perubahan mendasar dalam `wagmi` dan `viem`**
+
+Jika anda menggunakan cangkuk `wagmi` dan tindakan `viem` dalam dApp anda, anda perlu mengikuti panduan penghijrahan untuk v2:
+
+- [Panduan Penghijrahan Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Perubahan Mendasar Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### Perubahan RainbowKit
+
+**1. Tingkah laku yang diperbaiki untuk dompet EIP-6963**
+
+Dompet yang menyokong standard sambungan EIP-6963 baharu (termasuk Rainbow, MetaMask, dan lebih banyak lagi) kini akan secara automatik muncul dalam bahagian `Dipasang` semasa pengalaman Connect Wallet. Ini memastikan bahawa pengguna sentiasa dapat mencari dompet kegemaran mereka dan menyambung kepada dApps tanpa konflik atau butang fallback.
+
+Pembangun terus mempunyai kawalan penuh ke atas Senarai Dompet Kustom untuk menekankan dompet pilihan untuk pengguna akhir. Disyorkan agar anda terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam senarai anda untuk menyokong semua platform.
+
+**2. Konfigurasi Wagmi dengan getDefaultConfig**
+
+API baharu ini mempermudahkan pengalaman konfigurasi dan menggantikan keperluan untuk menggunakan `createConfig` dari Wagmi secara langsung. Konfigurasi rantaian dipermudahkan, termasuk penyedia awam yang disimpulkan untuk `transports`.
+
+Senarai dompet lalai akan dimasukkan secara automatik, memansuhkan keperluan untuk menggunakan `getDefaultWallets` dan `connectorsForWallets`.
+
+Anda boleh mencipta Senarai Dompet Kustom dengan menghantar penyambung Dompet yang diimport atau Kustom kepada `wallets`. Memperkenalkan penyambung dompet dan menghantar `projectId` dan `chains` tidak lagi diperlukan.
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted */
+})
+```
+
+**3. RainbowKitProvider**
+
+Anda tidak lagi perlu menghantar `chains` kepada `<RainbowKitProvider>`.
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. Rantaian Kustom**
+
+Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` dari RainbowKit.
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+Contoh dengan `getDefaultConfig`:
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overrides */
++ ],
+});
+```
+
+Contoh dengan `createConfig`:
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+**5. Dompet Tersuai**
+
+Penyambung dompet RainbowKit telah mengalami perubahan ketara untuk menyokong Wagmi v2. Rujuk [dokumentasi terkini](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh penyambung](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk menaik taraf mana-mana Penyambung Dompet Tersuai dalam dApp anda.
+
+Penyambung dompet kini juga menyokong standard EIP-6963 dengan prop `rdns`. Pastikan ini diisi untuk mengelakkan rujukan berulang kepada dompet yang menyokong EIP-6963 dalam senarai dompet anda.
+
+> Sila laporkan sebarang isu atau maklum balas untuk RainbowKit v2 di GitHub [di sini](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

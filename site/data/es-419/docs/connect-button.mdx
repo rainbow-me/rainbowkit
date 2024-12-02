@@ -28,18 +28,18 @@ El componente `ConnectButton` expone varias props para personalizar su aparienci
     {
       name: 'label',
       required: false,
-      default: 'Connect Wallet',
+      default: 'Conectar Billetera',
       type: 'string',
-      description: 'El texto de la etiqueta que se muestra en el botón Connect',
+      description: 'La etiqueta de texto mostrada en el botón Conectar',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'full',
+      default: 'completo',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        "Si se muestra el avatar y/o la dirección de la cuenta activa",
+        'Si se muestra el avatar y/o la dirección de la cuenta activa',
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ El componente `ConnectButton` expone varias props para personalizar su aparienci
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        "Si se muestra el ícono y/o el nombre de la cadena actual, o si está oculto por completo",
+        'Si se muestra o se oculta completamente el icono y/o el nombre de la cadena actual',
     },
     {
       name: 'showBalance',

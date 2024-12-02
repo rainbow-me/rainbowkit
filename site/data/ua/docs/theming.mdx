@@ -15,7 +15,7 @@ description: Використання та налаштування тем
 - `darkTheme`
 - `midnightTheme`
 
-Функція теми повертає об'єкт теми. Ви можете передати об'єкт до пропу `theme` компонента `RainbowKitProvider`.
+Функція теми повертає об'єкт теми. Ви можете передати об'єкт у властивість `theme` провайдера `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "The font stack used throughout the UI. Зверніть увагу, що `rounded` намагається використовувати SF Pro Rounded, повертаючись до системних шрифтів, якщо він недоступний.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'Розмиття модального фону.',
     },
   ]}
 />
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Кожна тема також надає кілька пресетів акцентних кольорів (`blue`, `green`, `orange`, `pink`, `purple`, `red`), які можна включити в об'єкт опцій. Наприклад, щоб використовувати пресет акцентного кольору `pink`:
+Кожна тема також надає кілька попередньо встановлених кольорів акценту (`blue`, `green`, `orange`, `pink`, `purple`, `red`), які можна використовувати у об'єкті параметрів. Наприклад, щоб використовувати встановлений акцентний колір `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +260,7 @@ const App = () => {
 
 #### Набір шрифтів
 
-За замовчуванням, `fontStack` встановлений на `rounded`. Але ось як ви можете використовувати конфігурацію `fontStack`.
+За замовчуванням, `fontStack` встановлено в `rounded`. Але ось як ви можете використовувати конфігурацію `fontStack`.
 
 Встановіть шрифтовий стек на `system`.
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### Розмиття на оверлеї
 
-За замовчуванням, `overlayBlur` встановлений на `none`. Але ось як ви можете використовувати конфігурацію `overlayBlur`.
+За замовчуванням, `overlayBlur` встановлено в `none`. Але ось як ви можете використовувати конфігурацію `overlayBlur`.
 
 Встановіть розмиття оверлею на `small`.
 

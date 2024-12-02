@@ -7,17 +7,17 @@ description: 自身の認証バックエンドに接続する
 
 ## 自身の認証バックエンドに接続する
 
-RainbowKitはエテリアムとNextAuth.jsでのサインインを最優先サポートしていますが、カスタムバックエンドやメッセージフォーマットとも統合することができます。
+RainbowKitはエテリアムとNextAuthでのサインインを最優先サポートしていますが、カスタムバックエンドやメッセージフォーマットとも統合することが出来ます。
 
 ### カスタムアダプタの作成
 
-まず、認証アダプタを作成します。 これにより、RainbowKitがメッセージを作成/準備し、バックエンドと通信することができます。
+まず、認証アダプタを作成します。 まず、認証アダプタを作成します。 これにより、RainbowKitがメッセージを作成/準備し、バックエンドと通信することができます。
 
-例えば、特定のカスタムAPIエンドポイントに対してエテリアムでサインインするための認証アダプタを作成することができます。
+例えば、カスタムAPIエンドポイントに対してエテリアムでサインインするための認証アダプタを作成することができます。例えば、[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)などです。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

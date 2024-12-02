@@ -122,7 +122,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        "Objet contenant des détails sur le compte actuel, décrit ci-dessous",
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          L'adresse complète du compte, par ex.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'Le solde du compte en décimales',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          Le solde du compte formaté en chaîne, par ex.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          Le symbole de la monnaie pour le solde, par ex. <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          Le solde formaté à 3 chiffres significatifs, plus le
+          symbole, par ex. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          Le nom ENS, ou une version tronquée de l'adresse, par ex.{' '}
+          <code>"rainbowwallet.eth"</code> ou <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: "L'URI de l'avatar ENS",
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          Le nom ENS, par ex. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +205,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        "Booléen indiquant si le compte a des transactions en attente pour la chaîne actuelle",
     },
   ]}
 />
@@ -219,27 +219,27 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        "Objet contenant des détails sur la chaîne actuelle, décrit ci-dessous",
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Si la chaîne a une icône spécifiée',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        "L'URL de l'icône de la chaîne (qui peut aussi être indéfinie lors du téléchargement de données en Base64)",
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        "L'arrière-plan de l'icône de la chaîne qui sera visible lors du chargement des images",
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          L'ID de la chaîne, par ex. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          Le nom de la chaîne, par ex. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        "Booléen indiquant si la chaîne actuelle n'est pas prise en charge",
     },
   ]}
 />
@@ -279,39 +279,39 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Fonction pour ouvrir la fenêtre modale du compte',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Fonction pour ouvrir la fenêtre modale de la chaîne',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Fonction pour ouvrir la fenêtre modale de connexion',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        "Booléen indiquant si la fenêtre modale du compte est ouverte",
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: "Booléen indiquant si la fenêtre modale de la chaîne est ouverte",
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        "Booléen indiquant si la fenêtre modale de connexion est ouverte",
     },
   ]}
 />
@@ -325,14 +325,14 @@ Les propriétés suivantes sont passées à votre fonction de rendu.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        "Booléen indiquant si le composant a été monté",
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        "Le statut d'authentification, ou indéfini si l'authentification n'a pas été configurée",
     },
   ]}
 />

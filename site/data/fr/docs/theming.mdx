@@ -60,7 +60,7 @@ Les fonctions de thème intégrées acceptent également un objet d'options, vou
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        "La couleur de fond/texte de divers éléments interactifs.",
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ Les fonctions de thème intégrées acceptent également un objet d'options, vou
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        "La couleur utilisée pour les éléments de premier plan rendus au-dessus de la couleur d'accent.",
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ Les fonctions de thème intégrées acceptent également un objet d'options, vou
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: "La taille de l'ensemble de l'échelle du rayon de bordure.",
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ Les fonctions de thème intégrées acceptent également un objet d'options, vou
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "La pile de polices utilisée dans toute l'interface utilisateur.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,15 @@ Les fonctions de thème intégrées acceptent également un objet d'options, vou
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: "Le flou de l'arrière-plan modale. Notez que `rounded` tente d'utiliser SF Pro Rounded, en revenant aux polices système s'il n'est pas disponible.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: "Le flou de l'arrière-plan modale.",
     },
   ]}
 />

@@ -230,6 +230,38 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "BeraSig 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 쉽게 접근하기 위해 작업 표시줄에 BeraSig을 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
+    "best": {
+      "qr_code": {
+        "step1": {
+          "title": "Best Wallet 앱을 열기",
+          "description": "홈 화면에 Best Wallet을 추가하여 지갑에 더 빠르게 액세스하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "QR 아이콘을 탭하고 스캔하기",
+          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
@@ -310,20 +342,6 @@
     },
     "bloom": {
       "desktop": {
-        "step1": {
-          "title": "Bloom Wallet 앱을 엽니다",
-          "description": "더 빠른 접근을 위해 Bloom Wallet을 홈 화면에 두는 것을 추천합니다."
-        },
-        "step2": {
-          "description": "복구 문구를 사용하여 지갑을 생성하거나 가져옵니다.",
-          "title": "지갑 생성 또는 가져오기"
-        },
-        "step3": {
-          "description": "지갑을 갖춘 후, Bloom을 통해 연결하려면 연결하기를 클릭합니다. 앱에서 연결을 확인하는 프롬프트가 나타납니다.",
-          "title": "연결하기를 클릭"
-        }
-      },
-      "qr_code": {
         "step1": {
           "title": "Bloom Wallet 앱을 엽니다",
           "description": "더 빠른 접근을 위해 Bloom Wallet을 홈 화면에 두는 것을 추천합니다."
@@ -954,6 +972,22 @@
         }
       }
     },
+    "paraswap": {
+      "qr_code": {
+        "step1": {
+          "title": "ParaSwap 앱을 열기",
+          "description": "홈 화면에 ParaSwap Wallet을 추가하여 지갑에 더 빠르게 액세스하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "QR 아이콘을 탭하고 스캔하기",
+          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
+        }
+      }
+    },
     "phantom": {
       "extension": {
         "step1": {
@@ -1061,6 +1095,22 @@
         "step3": {
           "title": "브라우저를 새로고침 하세요",
           "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "Wigwam 확장 프로그램을 설치하세요",
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Wigwam을 작업 표시줄에 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
         }
       }
     },
@@ -1275,6 +1325,22 @@
         "step3": {
           "title": "코드를 스캔하세요",
           "description": "WalletConnect를 탭하고 스캐너로 전환합니다. 스캔 후 연결 요청이 나타나며, 이를 통해 지갑을 연결할 수 있습니다."
+        }
+      }
+    },
+    "valora": {
+      "qr_code": {
+        "step1": {
+          "title": "Valora 앱 열기",
+          "description": "더 빠른 접근을 위해 Valora를 홈 화면에 두는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑을 만들거나 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다."
         }
       }
     }

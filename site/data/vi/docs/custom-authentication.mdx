@@ -7,17 +7,17 @@ description: Kết nối với hệ thống xác thực của bạn
 
 ## Kết nối với hệ thống xác thực của bạn
 
-Mặc dù RainbowKit cung cấp [hỗ trợ hạng nhất cho Đăng nhập bằng Ethereum và NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) bạn cũng có thể tích hợp với các hệ thống và định dạng tin nhắn tùy chỉnh.
+Trong khi RainbowKit cung cấp [hỗ trợ hạng nhất cho Đăng nhập bằng Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các hệ thống back-end tùy chỉnh và định dạng tin nhắn riêng.
 
 ### Tạo bộ điều hợp tùy chỉnh
 
 Đầu tiên, tạo bộ điều hợp xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị các tin nhắn và giao tiếp với hệ thống của bạn.
 
-Lấy ví dụ, chúng ta có thể tạo bộ điều hợp xác thực cho phép chúng ta sử dụng [Đăng nhập bằng Ethereum](https://login.xyz) với một số [điểm cuối API tùy chỉnh.](https://wagmi.sh/examples/sign-in-with-ethereum)
+Ví dụ, chúng ta có thể tạo một bộ điều hợp xác thực cho phép sử dụng [Đăng nhập bằng Ethereum](https://login.xyz) với một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

@@ -7,17 +7,17 @@ description: 자신의 인증 백엔드에 연결
 
 ## 자신의 인증 백엔드에 연결
 
-RainbowKit은 [Ethereum 및 NextAuth.js로의 로그인에 대한 first-class 지원을 제공하는 반면,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) 사용자 정의 백엔드 및 메시지 형식과도 통합할 수 있습니다.
+RainbowKit은 Ethereum 및 NextAuth로의 로그인에 대한 [first-class 지원을 제공하는](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) 반면, 사용자 정의 백엔드 및 메시지 형식과도 통합할 수 있습니다.
 
 ### 사용자 정의 어댑터 생성
 
 먼저 인증 어댑터를 생성합니다. 이를 통해 RainbowKit은 메시지를 생성/준비하고 백엔드와 통신할 수 있습니다.
 
-예를 들어, [사용자 지정 API 엔드포인트](https://wagmi.sh/examples/sign-in-with-ethereum)에 대해 [Sign-In with Ethereum](https://login.xyz)을 사용할 수 있는 인증 어댑터를 만들 수 있습니다.
+예를 들어, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)과 같은 사용자 지정 API 엔드포인트에 대해 [Sign-In with Ethereum](https://login.xyz)을 사용할 수 있는 인증 어댑터를 만들 수 있습니다.
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

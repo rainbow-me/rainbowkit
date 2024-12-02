@@ -60,7 +60,7 @@ Las funciones de tema incorporadas también aceptan un objeto de opciones, permi
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'El color de fondo/texto de varios elementos interactivos.',
     },
     {
       name: 'accentColorForeground',
@@ -68,24 +68,24 @@ Las funciones de tema incorporadas también aceptan un objeto de opciones, permi
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'El color utilizado para elementos de primer plano renderizados sobre el color de acento.',
     },
     {
       name: 'borderRadius',
       required: false,
-      default: 'large',
-      type: '"none" | "small" | "medium" | "large"',
+      default: 'grande',
+      type: '"none" | "pequeño" | "medio" | "grande"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'El tamaño de toda la escala de radios de borde.',
     },
     {
       name: 'fontStack',
       required: false,
-      default: 'rounded',
-      type: '"rounded" | "system"',
+      default: 'redondeado',
+      type: '"redondeado" | "sistema"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "La pila de fuentes utilizada en toda la interfaz de usuario. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -142,7 +142,7 @@ const App = () => {
 
 #### Función de tema
 
-Use el tema `temaOscuro`.
+Utilice el tema `midnightTheme`
 
 Use el tema `temaMedianoche`.
 
@@ -173,7 +173,7 @@ export const App = () => (
 
 #### Color de acento
 
-Establezca el color de acento en un valor personalizado de púrpura.
+Establece el color de acento a un valor morado personalizado
 
 Establezca el color de acento en el preset `verde` incorporado.
 
@@ -260,7 +260,7 @@ const App = () => {
 
 #### Pila de fuentes
 
-Pero aquí está cómo puedes usar la configuración `fontStack`. Establece la pila de fuentes en `system`.
+Por defecto, la `fontStack` está configurada a `rounded`. Pero aquí está cómo puedes usar la configuración `fontStack`.
 
 Establece la pila de fuentes en `system`.
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### Desenfoque de superposición
 
-Pero aquí está cómo puedes usar la configuración `overlayBlur`. Establece el desenfoque de superposición a `small`.
+Por defecto, el `overlayBlur` está configurado a `none`. Pero aquí está cómo puedes usar la configuración `overlayBlur`.
 
 Establece el desenfoque de superposición a `small`.
 
@@ -306,12 +306,12 @@ const App = () => {
 
 #### Aquí hay algunas distintas formas en las que puedes utilizar diferentes temas, con las props `accentColor`, `borderRadius` y `fontStack` juntas.
 
-Utilice el tema `lightTheme`
+Aquí hay algunas distintas formas en las que puedes utilizar diferentes temas, con las props `accentColor`, `borderRadius` y `fontStack` juntas.
 
-- Establece el color de acento a un valor morado personalizado
+- Utilice el tema `lightTheme`
+- Establezca el color de acento en un valor personalizado de púrpura.
 - Establezca el radio del borde en `medio`
-- Establece la pila de fuentes en `system`
-- Utilice el tema `midnightTheme`
+- Establezca el radio del borde en `medio`.
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
+- Utilice el tema `midnightTheme`
 - Establece el color de acento al preset incorporado `pink`.
 - Establece el radio del borde a `small`
-- Soporte para modo oscuro
-- Utilice el tema `midnightTheme`
+- Establece la pila de fuentes en `system`
 
 ```tsx
 import {
@@ -360,7 +360,7 @@ const App = () => {
 };
 ```
 
-#### Si su aplicación utiliza la consulta de medios estándar `prefers-color-scheme: dark` para cambiar entre los modos de luz y oscuridad, puede proporcionar opcionalmente un objeto de tema dinámico que contenga los valores `lightMode` y `darkMode`.
+#### Soporte para modo oscuro
 
 Si su aplicación utiliza la consulta de medios estándar `prefers-color-scheme: dark` para cambiar entre los modos de luz y oscuridad, puede proporcionar opcionalmente un objeto de tema dinámico que contenga los valores `lightMode` y `darkMode`.
 

@@ -9,21 +9,17 @@ description: Аутентифікація користувачів
 
 Ви можете необов'язково вимагати, щоб користувачі підписували повідомлення за допомогою свого гаманця під час процесу підключення, доводячи, що вони володіють підключеним обліковим записом, і дозволяючи вам створити аутентифікований користувацький сеанс з привілейованим доступом до вашого застосунку.
 
-Хоча можливо [інтегруватися з власними бекендами та форматами повідомлень,](/docs/custom-authentication) RainbowKit надає першокласну підтримку для [Входу за допомогою Ethereum](https://login.xyz) та [NextAuth.js.](https://next-auth.js.org)
+Хоча можливо [інтегруватися з власними бекендами та форматами повідомлень,](/docs/custom-authentication) RainbowKit надає першокласну підтримку для [Входу за допомогою Ethereum](https://login.xyz) та [NextAuth](https://next-auth.js.org).
 
-### Налаштування Входу за допомогою Ethereum та NextAuth.js
-
-Якщо ви ще цього не зробили, спершу налаштуйте свій проект [Next.js](https://nextjs.org) за допомогою [офіційного шаблону Sign-In with Ethereum для NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### Налаштування Входу за допомогою Ethereum та NextAuth
 
 #### Встановлення
 
-Встановіть пакет `@rainbow-me/rainbowkit-siwe-next-auth` та його пір-залежність, [ethers](https://docs.ethers.org/v5/).
+Встановіть пакет `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Примітка: `siwe` вимагає пір-залежність [ethers](https://docs.ethers.org/v5/), у той час як [wagmi](https://wagmi.sh/) тепер покладається на альтернативу [viem](https://viem.sh).
 
 #### Налаштуйте провайдера
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### Налаштуйте опції повідомлення SIWE
 
-Ви можете налаштувати [опції повідомлення SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29), передавши функцію до пропу `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
+Ви можете налаштувати [опції повідомлення SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters), передавши функцію до пропу `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
 
 Ця функція буде викликатися кожного разу, коли створюється нове повідомлення. Опції, повернуті з цієї функції, будуть об'єднані з налаштуваннями за замовчуванням.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 Для отримання додаткової інформації про управління сесією ви можете звернутися до наступної документації:
 
 - [Посібник з аутентифікації Next.js](https://nextjs.org/docs/authentication)
-- [Документація NextAuth.js](https://next-auth.js.org)
+- [Документація NextAuth](https://next-auth.js.org)

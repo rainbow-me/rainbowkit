@@ -9,21 +9,17 @@ description: Аутентификация ваших пользователей
 
 Вы можете по желанию требовать, чтобы пользователи подписывали сообщение своим кошельком в процессе подключения, доказывая таким образом, что они владеют подключенным аккаунтом, и позволить вам создать аутентифицированный пользовательский сеанс с привилегированным доступом к вашему приложению.
 
-Хотя возможно интегрироваться с собственными бэк-эндами и форматами сообщений, RainbowKit предоставляет первоклассную поддержку [Вход по Ethereum](https://login.xyz) и [NextAuth.js.](https://next-auth.js.org)
+Хотя возможно интегрироваться с собственными бэк-эндами и форматами сообщений, RainbowKit предоставляет первоклассную поддержку [Вход по Ethereum](https://login.xyz) и [NextAuth](https://next-auth.js.org).
 
-### Настройка Входа по Ethereum и NextAuth.js
-
-Если вы еще этого не сделали, сначала настройте свой проект [Next.js](https://nextjs.org) с [официальным шаблоном Вход по Ethereum для NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### Настройка Входа по Ethereum и NextAuth
 
 #### Установить
 
-Установите пакет `@rainbow-me/rainbowkit-siwe-next-auth` и его зависимость однорангового уровня, [ethers](https://docs.ethers.org/v5/).
+Установите пакет `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Примечание: требуется `siwe` [ethers](https://docs.ethers.org/v5/) одноранговая зависимость, в то время как [wagmi](https://wagmi.sh/) теперь опирается на альтернативу [viem](https://viem.sh).
 
 #### Настройте провайдера
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### Настройте параметры сообщения SIWE
 
-Вы можете настроить [опции сообщений SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29), передав функцию в свойство `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
+Вы можете настроить [опции сообщений SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters), передав функцию в свойство `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
 
 Эта функция будет вызываться всякий раз, когда создается новое сообщение. Опции, возвращенные из этой функции, будут объединены с настройками по умолчанию.
 

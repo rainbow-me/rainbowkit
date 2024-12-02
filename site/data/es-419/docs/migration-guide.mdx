@@ -91,7 +91,7 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Busque cambios significativos en `wagmi` y `viem`**
+**4. Verifique los cambios radicales en `wagmi`**
 
 Si utiliza hooks de `wagmi` y acciones de `viem` en su dApp, necesitará seguir las guías de migración para la v2:
 
@@ -223,8 +223,6 @@ wagmi v1 requiere la dependencia peer `viem`. Instálala con el siguiente comand
 npm i viem
 ```
 
-Nota: wagmi ya no utiliza internamente el paquete `ethers`. Pero si confías en la API de [Autenticación](https://www.rainbowkit.com/docs/authentication), `siwe` todavía requerirá `ethers` como una dependencia peer.
-
 **3. Asegure la compatibilidad del empaquetador y polyfill**
 
 En versiones anteriores de wagmi que confiaban en [ethers](https://docs.ethers.org/v5/), los módulos `fs`, `net` y `tls` requeridos por WalletConnect se rellenaban automáticamente. Este ya no es el caso con RainbowKit v1 + wagmi v1, que están construidos sobre [viem](https://viem.sh/).
@@ -233,7 +231,7 @@ Consulta nuestra [Configuración de Webpack de Next.js](https://github.com/rainb
 
 Guías adicionales del marco para Vite y Remix están disponibles [aquí](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-**4. Verifique los cambios radicales en `wagmi`**
+**4. Busque cambios significativos en `wagmi` y `viem`**
 
 Si utilizas los hooks de `wagmi` en tu aplicación, necesitarás seguir la guía de migración de `wagmi` a v1.
 
