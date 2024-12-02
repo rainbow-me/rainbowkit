@@ -9,21 +9,17 @@ description: Kullanıcılarınızın kimlik doğrulaması
 
 İsteğe bağlı olarak, kullanıcıların bağlantı süreci sırasında cüzdanlarıyla bir mesaj imzalamasını şart koşabilirsiniz, böylece bağlı hesabın sahibi olduklarını kanıtlarlar ve uygulamanıza ayrıcalıklı erişimi olan bir kimlik doğrulamalı kullanıcı oturumu oluşturabilirsiniz.
 
-Özel back-end'lerle ve mesaj formatlarıyla entegrasyon yapmak mümkün olsa da, RainbowKit öncelikli olarak [Ethereum ile Giriş Yapma](https://login.xyz) ve [NextAuth.js](https://next-auth.js.org) için destek sağlar
+Özel back-end'lerle ve mesaj formatlarıyla [entegrasyon yapmak mümkün olsa da,](/docs/custom-authentication) RainbowKit öncelikli olarak [Ethereum ile Giriş Yapma](https://login.xyz) ve [NextAuth](https://next-auth.js.org) için destek sağlar.
 
-### Ethereum ve NextAuth.js ile Giriş Yapmayı Ayarlayın
-
-Henüz yapmadıysanız, önce [Next.js](https://nextjs.org) projenizi [resmi Ethereum ile Giriş Yapma boilerplate'i için NextAuth.js](https://docs.login.xyz/integrations/nextauth.js) ile ayarlayın
+### Ethereum ve NextAuth ile Giriş Yapmayı Ayarlayın
 
 #### Kur
 
-`@rainbow-me/rainbowkit-siwe-next-auth` paketini ve eş bağımlılığı [ethers](https://docs.ethers.org/v5/) kurun.
+`@rainbow-me/rainbowkit-siwe-next-auth` paketini kurun.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Not: `siwe` eş bağımlılığı [ethers](https://docs.ethers.org/v5/) gerektirirken, [wagmi](https://wagmi.sh/) artık alternatif [viem](https://viem.sh) üzerine dayanıyor.
 
 #### Sağlayıcıyı kurun
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### SIWE mesaj seçeneklerini özelleştirin
 
-[SIWE mesaj seçeneklerini](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) `RainbowKitSiweNextAuthProvider` üzerindeki `getSiweMessageOptions` özelliğine bir fonksiyon geçirerek özelleştirebilirsiniz.
+[SIWE mesaj seçeneklerini](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) `RainbowKitSiweNextAuthProvider` üzerindeki `getSiweMessageOptions` özelliğine bir fonksiyon geçirerek özelleştirebilirsiniz.
 
 Bu fonksiyon, yeni bir mesaj oluşturulduğunda çağrılacaktır. Bu fonksiyondan dönen seçenekler varsayılanlarla birleştirilecektir.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 Oturumu yönetmek hakkında daha fazla bilgi için aşağıdaki belgelere başvurabilirsiniz:
 
 - [Next.js kimlik doğrulama rehberi](https://nextjs.org/docs/authentication)
-- [NextAuth.js belgeleri](https://next-auth.js.org)
+- [NextAuth belgeleri](https://next-auth.js.org)

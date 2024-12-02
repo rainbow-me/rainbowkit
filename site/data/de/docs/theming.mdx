@@ -15,7 +15,7 @@ Es gibt 3 eingebaute Themenfunktionen:
 - `darkTheme`
 - `midnightTheme`
 
-Eine Themenfunktion gibt ein Themenobjekt zurück. Sie können das Objekt an die `RainbowKitProvider`-`theme`-Eigenschaft übergeben.
+Eine Themenfunktion gibt ein Themenobjekt zurück. Sie können das Objekt der `theme`-Eigenschaft von `RainbowKitProvider` übergeben.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -60,7 +60,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'Die Hintergrund-/Textfarbe verschiedener interaktiver Elemente.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'Die Farbe, die für Vordergrundelemente verwendet wird, die über der Akzentfarbe gerendert werden.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'Die Größe der gesamten Eckenradius-Skala.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        'Der Schriftstapel, der in der gesamten Benutzeroberfläche verwendet wird.',
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,15 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: "Der Hintergrundunschärfegrad für ein überlagertes Fenster. Beachten Sie, dass `rounded` versucht, SF Pro Rounded zu verwenden und auf Systemschriftarten zurückgreift, wenn diese nicht verfügbar sind.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'Das Weichzeichnen des modalen Hintergrunds.',
     },
   ]}
 />
@@ -119,7 +127,7 @@ const App = () => {
 };
 ```
 
-Jedes Thema bietet auch mehrere vordefinierte Akzentfarben (`blue`, `green`, `orange`, `pink`, `purple`, `red`), die in das Optionsobjekt aufgenommen werden können. Zum Beispiel, um das `pink` Akzentfarb-Preset zu verwenden:
+Jedes Thema bietet auch mehrere Akzentfarben-Voreinstellungen (`blau`, `grün`, `orange`, `rosa`, `lila`, `rot`), die in das Optionsobjekt übernommen werden können. Zum Beispiel, um die Akzentfarben-Voreinstellung `rosa` zu verwenden:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +268,7 @@ const App = () => {
 
 #### Schriftstapel
 
-Standardmäßig ist der `fontStack` auf `rounded` eingestellt. Hier erfahren Sie, wie Sie die `fontStack`-Konfiguration verwenden können.
+Standardmäßig ist der `fontStack` auf `rounded` gesetzt. Aber so können Sie die `fontStack`-Konfiguration verwenden.
 
 Setzen Sie den Schriftstapel auf `system`.
 
@@ -283,7 +291,7 @@ const App = () => {
 
 #### Overlay-Unschärfe
 
-Standardmäßig ist die `overlayBlur` auf `none` eingestellt. Hier erfahren Sie, wie Sie die `overlayBlur`-Konfiguration verwenden können.
+Standardmäßig ist `overlayBlur` auf `none` gesetzt. Aber so können Sie die `overlayBlur`-Konfiguration verwenden.
 
 Setzen Sie die Overlay-Unschärfe auf `small`.
 

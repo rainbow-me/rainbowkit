@@ -7,17 +7,17 @@ description: Подключение к собственному бэк-энду 
 
 ## Подключение к собственному бэк-энду аутентификации
 
-Хотя RainbowKit предоставляет [первоклассную поддержку входа с помощью Ethereum и NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) вы также можете интегрироваться с пользовательскими бэк-эндами и форматами сообщений.
+Хотя RainbowKit предоставляет [первоклассную поддержку входа с помощью Ethereum и NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) вы также можете интегрироваться с пользовательскими бэк-эндами и форматами сообщений.
 
 ### Создание пользовательского адаптера
 
 Сначала создайте адаптер аутентификации. Это позволит RainbowKit создавать/подготавливать сообщения и общаться с вашим бэк-эндом.
 
-В качестве примера мы могли бы создать адаптер аутентификации, который позволяет нам использовать [Вход с Ethereum](https://login.xyz) против некоторых [пользовательских конечных точек API.](https://wagmi.sh/examples/sign-in-with-ethereum)
+В качестве примера мы могли бы создать адаптер аутентификации, который позволяет нам использовать [Вход с Ethereum](https://login.xyz) против некоторых пользовательских конечных точек API, таких как [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

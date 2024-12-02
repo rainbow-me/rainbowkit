@@ -7,17 +7,17 @@ description: الاتصال بنظام المصادقة الخلفي الخاص 
 
 ## الاتصال بنظام المصادقة الخلفي الخاص بك
 
-بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth.js،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل.
+بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل.
 
 ### إنشاء محول مخصص
 
 قم أولاً بإنشاء محول للمصادقة. هذا يسمح لـ RainbowKit بإنشاء / تحضير الرسائل والاتصال بخادم الخلفية الخاص بك.
 
-كمثال، يمكننا صنع محولاً للمصادقة يتيح لنا استخدام [تسجيل الدخول باستخدام Ethereum](https://login.xyz) ضد بعض [النقاط النهائية المخصصة لواجهة برمجة التطبيقات.](https://wagmi.sh/examples/sign-in-with-ethereum)
+كمثال، يمكننا صنع محول مصادقة يتيح لنا استخدام [تسجيل الدخول باستخدام Ethereum](https://login.xyz) ضد بعض النقاط النهائية المخصصة لواجهة برمجة التطبيقات، مثل [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

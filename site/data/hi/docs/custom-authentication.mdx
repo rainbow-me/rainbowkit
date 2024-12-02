@@ -7,17 +7,17 @@ description: अपने स्वयं के प्रमाणीकरण 
 
 ## अपने स्वयं के प्रमाणीकरण बैक-एंड से जुड़ें
 
-हालांकि RainbowKit [Ethereum और NextAuth.js के साथ साइन-इन के लिए पहले दर्जे की सपोर्ट](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) प्रदान करता है, आप कस्टम बैक-एंड्स और संदेश प्रारूपों के साथ भी एकीकृत कर सकते हैं।
+हालांकि RainbowKit [Ethereum और NextAuth के साथ साइन-इन के लिए पहले दर्जे की सपोर्ट](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) प्रदान करता है, आप कस्टम बैक-एंड्स और संदेश प्रारूपों के साथ भी एकीकृत कर सकते हैं।
 
 ### एक कस्टम एडाप्टर बनाना
 
 पहले एक प्रमाणीकरण एडाप्टर बनाएं। यह RainbowKit को संदेशों को बनाने/तैयार करने और आपके बैक-एंड के साथ संचार करने की अनुमति देता है।
 
-उदाहरण के लिए, हम एक प्रमाणीकरण एडाप्टर बना सकते हैं जो हमें [Ethereum के साथ साइन-इन करने](https://login.xyz) की अनुमति देता है कुछ [कस्टम API एंड पॉइंट्स](https://wagmi.sh/examples/sign-in-with-ethereum) के खिलाफ।
+उदाहरण के लिए, हम एक प्रमाणीकरण एडाप्टर बना सकते हैं जो हमें [Ethereum के साथ साइन-इन करने](https://login.xyz) की अनुमति देता है कुछ कस्टम एपीआई एंडपॉइंट्स, [जैसे कि iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

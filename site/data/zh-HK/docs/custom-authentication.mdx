@@ -7,17 +7,17 @@ description: 連接到你自己的身份驗證後端
 
 ## 連接到你自己的身份驗證後端
 
-儘管 RainbowKit 提供[對 Ethereum 和 NextAuth.js 的一流支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) 你也可以與自訂的後端和消息格式進行整合。
+雖然 RainbowKit 提供完善的 [用 Ethereum 和 NextAuth 登入的支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) 你亦可以配合自定後端和訊息格式進行整合。
 
 ### 建立自訂適配器
 
 首先建立一個身份驗證適配器。 這樣 RainbowKit 就可以創建/準備消息並與你的後端通信。
 
-例如，我們可以製作一個身份驗證適配器，讓我們使用 [Sign-In with Ethereum](https://login.xyz) 對一些 [自訂 API 端點。](https://wagmi.sh/examples/sign-in-with-ethereum)
+例如，我們可以製作一個認證適配器，讓我們可以使用 [用 Ethereum 登入](https://login.xyz) 對接一些自定 API 終端，如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

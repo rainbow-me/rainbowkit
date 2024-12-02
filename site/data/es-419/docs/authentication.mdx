@@ -9,21 +9,17 @@ description: Autenticando a tus usuarios
 
 Opcionalmente puedes exigir que los usuarios firmen un mensaje con su billetera durante el proceso de conexión, demostrando que son propietarios de la cuenta conectada y permitiéndote crear una sesión de usuario autenticada con acceso privilegiado a tu aplicación.
 
-Mientras es posible [integrar con back-ends personalizados y formatos de mensajes,](/docs/autenticación-personalizada) RainbowKit proporciona soporte de primera clase para [Ingreso con Ethereum](https://login.xyz) y [NextAuth.js.](https://next-auth.js.org)
+Mientras es posible [integrar con back-ends personalizados y formatos de mensajes,](/docs/autenticación-personalizada) RainbowKit proporciona soporte de primera clase para [Ingreso con Ethereum](https://login.xyz) y [NextAuth](https://next-auth.js.org).
 
-### Configura el Ingreso con Ethereum y NextAuth.js
-
-Si aún no lo has hecho, primero configura tu proyecto [Next.js](https://nextjs.org) con [el boilerplate oficial de Ingreso con Ethereum para NextAuth.js.](https://docs.login.xyz/integraciones/nextauth.js)
+### Configura el Ingreso con Ethereum y NextAuth
 
 #### Instalar
 
-Instale el paquete `@rainbow-me/rainbowkit-siwe-next-auth` y su dependencia de igual nivel, [ethers](https://docs.ethers.org/v5/).
+Instala el paquete `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Nota: `siwe` requiere la dependencia de igual nivel [ethers](https://docs.ethers.org/v5/), mientras que [wagmi](https://wagmi.sh/) ahora se basa en la alternativa [viem](https://viem.sh).
 
 #### Configure el proveedor
 
@@ -75,7 +71,7 @@ Con `RainbowKitSiweNextAuthProvider` en su lugar, ahora se solicitará a sus usu
 
 #### Personalice las opciones de mensaje de SIWE
 
-Puede personalizar las [opciones de mensaje SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) pasando una función a la propiedad `getSiweMessageOptions` en `RainbowKitSiweNextAuthProvider`.
+Puede personalizar las [opciones de mensaje SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) pasando una función a la propiedad `getSiweMessageOptions` en `RainbowKitSiweNextAuthProvider`.
 
 Esta función será llamada siempre que se cree un nuevo mensaje. Las opciones devueltas de esta función se combinarán con las predeterminadas.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 Para obtener más información sobre cómo gestionar la sesión, puede hacer referencia a la siguiente documentación:
 
 - [Guía de autenticación de Next.js](https://nextjs.org/docs/authentication)
-- [Documentación de NextAuth.js](https://next-auth.js.org)
+- [Documentación de NextAuth](https://next-auth.js.org)

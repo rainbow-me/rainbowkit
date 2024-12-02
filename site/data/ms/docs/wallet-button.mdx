@@ -1,0 +1,44 @@
+---
+title: ButangDompet
+description: Menggunakan dan menyesuaikan ButangDompet
+---
+
+# ButangDompet
+
+> Nota: `ButangDompet` pada masa ini bergantung kepada standard dompet EIP-1193, tetapi akan menyokong EIP-6963 dalam masa terdekat.
+
+Komponen baharu `ButangDompet` membantu dApps dengan pelaksanaan senarai dompet tersuai untuk mengadopsi RainbowKit dan semua faedah bebas penyelenggaraannya.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+Seperti `ConnectButton`, komponen `ButangDompet.Custom` tersedia untuk pelaksanaan dan penggayaan tersuai.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+Kebanyakan dApps paling sesuai dengan [ButangSambung](https://www.rainbowkit.com/docs/connect-button). Rujuk dokumen [di sini](https://www.rainbowkit.com/docs/wallet-button) untuk maklumat lanjut tentang penerimaan dan kes penggunaan `ButangDompet`.
+
+#### Demo
+
+Tekan butang di bawah untuk melihat bagaimana rupa titik masuk RainbowKit ini.
+
+<WalletButtonDemo />

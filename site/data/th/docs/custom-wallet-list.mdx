@@ -7,7 +7,7 @@ description: การปรับแต่งรายการ wallet
 
 ## การปรับแต่งรายการ wallet
 
-คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ
+คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ
 
 ตัวอย่างเช่น คุณสามารถเลือกแสดงเฉพาะ Rainbow พร้อมกับ wallet ที่เป็นทั่วไป
 
@@ -64,7 +64,7 @@ Wallet ต่อไปนี้มีผ่านข้อมูล `wallet` obj
 
 #### Wallet ทั่วไป
 
-Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
+Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
 
 ##### WalletConnect
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Injected Wallet
 
-นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
+นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
 
 **แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ถูก Inject ทั้งหมด.**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-สำหรับ dApps ที่รองรับ Safe Apps เพื่อให้ผู้ใช้สามารถเชื่อมต่อกับตู้นิรภัยของพวกเขาหรือ multi-sig ได้อย่างง่ายดาย ให้รวมตัวเลือก `safeWallet` สำหรับการเชื่อมต่ออัตโนมัติ ตัวเลือก Safe จะปรากฏขึ้นเฉพาะในสภาพแวดล้อมของเบราว์เซอร์กระเป๋าเงินที่ปลอดภัยเท่านั้น
+สำหรับ dApps ที่รองรับ Safe Apps เพื่อให้ผู้ใช้สามารถเชื่อมต่อกับตู้นิรภัยของพวกเขาหรือ multi-sig ได้อย่างง่ายดาย ให้รวมตัวเลือก `safeWallet` สำหรับการเชื่อมต่ออัตโนมัติ ตัวเลือก Safe จะปรากฏขึ้นเฉพาะในสภาพแวดล้อมของเบราว์เซอร์กระเป๋าเงินที่ปลอดภัยเท่านั้น ตัวเลือก Safe จะปรากฏขึ้นเฉพาะในสภาพแวดล้อมของเบราว์เซอร์กระเป๋าเงินที่ปลอดภัยเท่านั้น
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -108,6 +108,18 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### BeraSig
+
+```tsx
+import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### กระเป๋าที่ดีที่สุด
+
+```tsx
+import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Binance Web3 Wallet
@@ -162,7 +174,7 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ตัวเชื่อมต่อกระเป๋าเงินนี้รองรับทั้งแอพและส่วนขยายของ Coinbase Wallet รวมถึง Coinbase Smart Wallet บนเว็บ
 
-มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่ การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
+มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่ การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
 
 Smart Wallet จะถูกเปิดใช้งานโดยค่าเริ่มต้นด้วย `all` ในช่วงต้นเดือนมิถุนายน โดยไม่ต้องอัปเกรดเพิ่มเติม
 
@@ -307,6 +319,12 @@ import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### ParaSwap
+
+```tsx
+import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Phantom
 
 ```tsx
@@ -379,6 +397,12 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### วาลอร่า
+
+```tsx
+import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### XDEFI Wallet
 
 ```tsx
@@ -389,6 +413,12 @@ import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### วิกวัม
+
+```tsx
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### ตัวอย่าง

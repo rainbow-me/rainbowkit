@@ -20,6 +20,8 @@ export type Locale =
   | 'ja-JP'
   | 'ko'
   | 'ko-KR'
+  | 'ms'
+  | 'ms-MY'
   | 'pt'
   | 'pt-BR'
   | 'ru'
@@ -77,6 +79,9 @@ const fetchTranslations = async (locale: Locale): Promise<any> => {
     case 'ko':
     case 'ko-KR':
       return (await import('./ko_KR.json')).default;
+    case 'ms':
+    case 'ms-MY':
+      return (await import('./ms_MY.json')).default;
     case 'pt':
     case 'pt-BR':
       return (await import('./pt_BR.json')).default;

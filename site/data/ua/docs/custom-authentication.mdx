@@ -7,17 +7,17 @@ description: Підключення до власного сервера авт�
 
 ## Підключення до власного сервера автентифікації
 
-RainbowKit надає [першокласну підтримку для Sign-In with Ethereum та NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) але ви також можете інтегруватися з власними серверами автентифікації та форматами повідомлень.
+RainbowKit надає [першокласну підтримку для Sign-In with Ethereum та NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) але ви також можете інтегруватися з власними серверами автентифікації та форматами повідомлень.
 
 ### Створення користувацького адаптера
 
 Спершу створіть адаптер автентифікації. Це дозволяє RainbowKit створювати/підготовляти повідомлення та спілкуватися з вашим сервером.
 
-Наприклад, ми можемо зробити адаптер автентифікації, який дозволяє нам використовувати [Sign-In with Ethereum](https://login.xyz) з деякими [користувацькими API-кінцевими точками.](https://wagmi.sh/examples/sign-in-with-ethereum)
+Наприклад, ми можемо зробити адаптер автентифікації, який дозволяє нам використовувати [Sign-In with Ethereum](https://login.xyz) з деякими користувацькими API-кінцевими точками, як от [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

@@ -230,6 +230,38 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "安裝 BeraSig 擴充功能",
+          "description": "我們建議將 BeraSig 固定到工作列上，以便更輕鬆地存取您的錢包。"
+        },
+        "step2": {
+          "title": "創建錢包",
+          "description": "請確保使用安全的方法備份您的錢包。切勿與任何人共享您的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新您的瀏覽器",
+          "description": "一旦設置好您的錢包，點擊下方刷新瀏覽器並加載擴展。"
+        }
+      }
+    },
+    "best": {
+      "qr_code": {
+        "step1": {
+          "title": "打開 Best Wallet 應用程式",
+          "description": "將 Best Wallet 添加到主畫面以更快訪問您的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建一個新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊 QR 圖標並掃描",
+          "description": "在主螢幕上點擊 QR 圖標，掃描代碼並確認提示以進行連接。"
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
@@ -310,20 +342,6 @@
     },
     "bloom": {
       "desktop": {
-        "step1": {
-          "title": "打開 Bloom Wallet 應用程序",
-          "description": "我們建議將 Bloom Wallet 添加到主屏幕以便更快速訪問。"
-        },
-        "step2": {
-          "description": "使用恢復短語創建或導入錢包。",
-          "title": "創建或導入錢包"
-        },
-        "step3": {
-          "description": "擁有錢包後，點擊連接通過 Bloom 連接。應用程序中會出現連接提示，讓您確認連接。",
-          "title": "點擊連接"
-        }
-      },
-      "qr_code": {
         "step1": {
           "title": "打開 Bloom Wallet 應用程序",
           "description": "我們建議將 Bloom Wallet 添加到主屏幕以便更快速訪問。"
@@ -954,6 +972,22 @@
         }
       }
     },
+    "paraswap": {
+      "qr_code": {
+        "step1": {
+          "title": "打開 ParaSwap 應用程式",
+          "description": "將 ParaSwap Wallet 添加到主畫面以更快訪問您的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建一個新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊 QR 圖標並掃描",
+          "description": "在主螢幕上點擊 QR 圖標，掃描代碼並確認提示以進行連接。"
+        }
+      }
+    },
     "phantom": {
       "extension": {
         "step1": {
@@ -1053,6 +1087,22 @@
         "step1": {
           "title": "安裝 Taho 擴展",
           "description": "我們建議將 Taho 固定到您的工作列上，以便更快速地訪問您的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "請確保使用安全的方法備份您的錢包。切勿與任何人共享您的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新您的瀏覽器",
+          "description": "一旦設置好您的錢包，點擊下方刷新瀏覽器並加載擴展。"
+        }
+      }
+    },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "安裝 Wigwam 擴充套件",
+          "description": "我們建議將 Wigwam 鎖定到任務欄，以便更快存取您的錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",
@@ -1275,6 +1325,22 @@
         "step3": {
           "title": "掃描代碼",
           "description": "點擊 WalletConnect 然後切換到掃描儀。掃描後，會出現連接提示，讓您連接錢包。"
+        }
+      }
+    },
+    "valora": {
+      "qr_code": {
+        "step1": {
+          "title": "打開 Valora 應用程式",
+          "description": "我們建議將 Valora 放在您的主畫面上以便更快存取。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建一個新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將出現連接提示以連接您的錢包。"
         }
       }
     }

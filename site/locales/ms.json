@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "Cara terbaik untuk menghubungkan dompet",
+    "subheadline": "Direka untuk semua. Dibina untuk pembangun.",
+    "cta": "Lihat Dokumen",
+    "adopters": "Pasukan Web3 terulung menggunakan RainbowKit untuk meningkatkan produk mereka, menggembirakan pengguna mereka dan menjimatkan masa semasa membina.",
+    "playground": {
+      "headline": "Cuba RainbowKit",
+      "subheadline": "Buat pengalaman log masuk Ethereum anda seakan di rumah di laman web anda. RainbowKit membolehkan anda menyesuaikan sepenuhnya warna, radius sempadan, penyedia dompet dan banyak lagi — semua melalui API yang mudah digunakan. Rasai pengalaman di bawah!",
+      "modal": "Mod",
+      "mode": "Mod",
+      "accent": "Aksen",
+      "radius": "Radiasi",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Pembangun",
+      "subheadline": "RainbowKit menyediakan cara yang pantas, mudah dan boleh diubah suai sepenuhnya bagi pembangun untuk menambah pengalaman dompet yang hebat ke dalam aplikasi mereka. Kami menangani perkara-perkara sukar supaya pembangun dan pasukan dapat menumpukan perhatian kepada membina produk dan komuniti yang menakjubkan untuk pengguna mereka.",
+      "installation": "Pemasangan Mudah",
+      "themes": "Tema Terbina dalam",
+      "darkmode": "Mod Terang dan Gelap",
+      "appstore": "Pengintegrasian App Store dan Google Play",
+      "custom_themes": "Tema Tersuai",
+      "custom_wallet_list": "Senarai Dompet Tersuai",
+      "custom_chain": "Rangkaian Tersuai",
+      "custom_connect": "Butang Sambungan Tersuai"
+    },
+    "madeby": {
+      "headline": "Dibuat dengan ❤️ oleh rakan-rakan anda di",
+      "subheadline": "Membangun RainbowKit adalah usaha yang sangat menyeronokkan oleh banyak orang di Rainbow dan rakan-rakan kami di syarikat lain. Kami sentiasa berusaha untuk menjadikan RainbowKit lebih baik, jadi sila beri tahu kami bagaimana kami boleh memperbaikinya.",
+      "twitter_cta": "Ikuti kami di Twitter",
+      "feedback_cta": "Kongsi maklum balas dengan kami"
+    },
+    "footer": {
+      "mediakit": "kit media",
+      "terms": "terma penggunaan",
+      "privacy": "dasar privasi"
+    },
+    "meta": {
+      "description": "Cara terbaik untuk menghubungkan dompet 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Tinjauan",
+        "getting_started": "Memulakan",
+        "advanced": "Lanjutan"
+      }
+    }
+  }
+}

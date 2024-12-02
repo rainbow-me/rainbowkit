@@ -219,27 +219,27 @@ As seguintes props são passadas para sua função de renderização.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'Objeto contendo detalhes sobre a cadeia atual, descrito abaixo',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Se a cadeia possui um ícone especificado',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'A URL do ícone da cadeia (que também pode ser indefinida enquanto estiver baixando URLs de dados Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'O plano de fundo do ícone da cadeia que será visível enquanto as imagens estão carregando',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ As seguintes props são passadas para sua função de renderização.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          O ID da cadeia, por exemplo <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ As seguintes props são passadas para sua função de renderização.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          O nome da cadeia, por exemplo <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ As seguintes props são passadas para sua função de renderização.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Booleano indicando se a cadeia atual não é suportada',
     },
   ]}
 />
@@ -279,39 +279,39 @@ As seguintes props são passadas para sua função de renderização.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Função para abrir o modal de conta',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Função para abrir o modal de cadeia',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Função para abrir o modal de conexão',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Boolean indicando se o modal de conta está aberto',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Boolean indicando se o modal de cadeia está aberto',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Boolean indicando se o modal de conexão está aberto',
     },
   ]}
 />
@@ -325,14 +325,14 @@ As seguintes props são passadas para sua função de renderização.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'Boolean indicando se o componente foi montado',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'O status de autenticação ou indefinido se a autenticação não foi configurada',
     },
   ]}
 />

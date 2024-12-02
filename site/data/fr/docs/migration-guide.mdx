@@ -223,8 +223,6 @@ wagmi v1 nécessite la dépendance pair à pair `viem`. Installez-le avec la com
 npm i viem
 ```
 
-Remarque : wagmi n'utilise plus le paquet `ethers` en interne. Mais si vous comptez sur l'API [Authentication](https://www.rainbowkit.com/docs/authentication), `siwe` nécessitera toujours `ethers` en tant que dépendance équivalente.
-
 **3. Assurez la compatibilité du regroupeur et du polyfill**
 
 Dans les versions précédentes de wagmi qui dépendaient de [ethers](https://docs.ethers.org/v5/), les modules `fs`, `net`, et `tls` requis par WalletConnect étaient automatiquement polyfillés. Ce n'est plus le cas avec RainbowKit v1 + wagmi v1, qui sont construits sur [viem](https://viem.sh/).

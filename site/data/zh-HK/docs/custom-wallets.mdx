@@ -7,9 +7,9 @@ description: 建立自訂錢包
 
 ## 建立自訂錢包
 
-> 注意：此 API 不穩定，可能在不久的將來發生變化。 我們會逐步添加更多內建錢包。 [讓我們知道](https://github.com/rainbow-me/rainbowkit/issues) 如果您對某些特定的錢包特別感興趣。
+> 注意：此 API 不穩定，可能在不久的將來會發生變化。 我們會隨著時間的推移加入更多內建錢包。 如果您對任何特定的錢包有興趣，[請告訴我們](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`Wallet` 函數類型 提供以幫助您定義自己的自訂錢包。 可以在 `Wallet` 函數的返回值上配置以下屬性：
+`Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性：
 
 ### 錢包屬性
 
@@ -155,14 +155,14 @@ description: 建立自訂錢包
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '行動用戶在 `android` 或 `ios` 不可用時的著陸頁',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        '用戶掃描移動下載二維碼後的著陸頁',
     },
     {
       name: 'chrome',
@@ -174,19 +174,19 @@ description: 建立自訂錢包
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge 附加元件 URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'Firefox 瀏覽器附加元件 URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera 附加元件 URL',
     },
     {
       name: 'safari',
@@ -199,7 +199,7 @@ description: 建立自訂錢包
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        '桌面擴展用戶在瀏覽器兼容 URL 不可用時的著陸頁',
     },
   ]}
 />

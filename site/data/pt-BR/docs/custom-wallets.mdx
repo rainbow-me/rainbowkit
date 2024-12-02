@@ -83,7 +83,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Function for calculating whether this wallet should be hidden from the list. Isso é útil para definir carteiras de fallback genéricas, por exemplo, o fallback embutido "Injected Wallet" faz uso deste recurso',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Função para fornecer a instância do conector e a configuração para diferentes métodos de conexão, descritos abaixo',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'Função para resolver um URI de conexão da carteira móvel',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'Função para resolver um link profundo de aplicativo desktop',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'Objeto contendo uma função para resolver o URI do código QR, além de instruções opcionais de configuração de carteira móvel',
     },
     {
       name: 'extension',
@@ -122,14 +122,14 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'Objeto contendo instruções opcionais de configuração da extensão do navegador',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'Função para fornecer a instância do conector',
     },
   ]}
 />
@@ -142,64 +142,64 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'URL do Google Play',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'URL da Apple App Store',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        'Página de destino para usuários mobile quando `android` ou `ios` não estão disponíveis',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'Página de destino para usuários que escaneiam o QR Code de download mobile',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'URL da Chrome Web Store',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'URL de complementos do Microsoft Edge',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'URL de complementos do navegador Firefox',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'URL de complementos do Opera',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'URL da Mac App Store',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'Página de destino para usuários de extensões de desktop quando URLs compatíveis com o navegador não estão disponíveis',
     },
   ]}
 />

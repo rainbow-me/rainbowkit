@@ -1,0 +1,75 @@
+---
+title: Transaksi Terkini
+description: Tunjukkan transaksi terkini anda
+---
+
+# Transaksi Terkini
+
+## Tunjukkan transaksi terkini anda
+
+Anda boleh memilih untuk memaparkan transaksi terkini dalam mod akaun RainbowKit. Perhatikan bahawa semua transaksi disimpan dalam storan tempatan dan mesti didaftarkan secara manual dengan RainbowKit untuk dipaparkan.
+
+Pelaksanaan `ConnectButton` lalai juga akan memaparkan penunjuk pemuatan di sekitar avatar pengguna jika terdapat sebarang transaksi yang tertunda. Pelaksanaan `ConnectButton` khusus boleh mencipta semula tingkah laku ini melalui sifat `account.hasPendingTransactions` yang dihantar ke fungsi render anda.
+
+Untuk menggunakan ciri ini, mula-mula aktifkan pilihan `showRecentTransactions` pada `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Transaksi kemudiannya boleh didaftarkan dengan RainbowKit menggunakan hook `useAddRecentTransaction`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+Sebaik sahaja transaksi didaftarkan dengan RainbowKit, statusnya akan dikemas kini setelah selesai.
+
+Secara lalai, transaksi akan dianggap selesai sebaik sahaja satu blok dilombong di atas blok di mana transaksi itu dilombong, tetapi ini boleh dikonfigurasikan dengan menentukan nilai `confirmations` tersuai.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```

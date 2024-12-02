@@ -9,21 +9,17 @@ description: 사용자 인증
 
 필요에 따라 사용자가 연결 과정에서 지갑으로 메시지에 서명하도록 요구하여 연결된 계정을 소유하고 있음을 입증하게 할 수 있으며, 이를 통해 응용 프로그램에 대한 특권을 가진 인증된 사용자 세션을 생성할 수 있습니다.
 
-커스텀 백엔드와 메시지 형식에 [통합하는 것](/docs/custom-authentication)이 가능하긴 하지만, RainbowKit은 [Ethereum으로 로그인](https://login.xyz) 및 [NextAuth.js.](https://next-auth.js.org)에 대해 일급 지원을 제공합니다
+커스텀 백엔드와 메시지 형식에 [통합하는 것](/docs/custom-authentication)이 가능하긴 하지만, RainbowKit은 [Ethereum으로 로그인](https://login.xyz) 및 [NextAuth](https://next-auth.js.org)에 대해 일급 지원을 제공합니다.
 
-### Ethereum과 NextAuth.js로 로그인 설정
-
-아직 설정하지 않았다면, 먼저 [NextAuth.js용 공식 Ethereum 로그인 보일러 플레이트](https://docs.login.xyz/integrations/nextauth.js)로 [Next.js](https://nextjs.org) 프로젝트를 설정하세요.
+### Ethereum과 NextAuth로 로그인 설정
 
 #### 설치
 
-`@rainbow-me/rainbowkit-siwe-next-auth` 패키지와 그 피어 종속성을 설치하세요, [ethers](https://docs.ethers.org/v5/).
+`@rainbow-me/rainbowkit-siwe-next-auth` 패키지를 설치하세요.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> 참고: `siwe`는 [ethers](https://docs.ethers.org/v5/) 피어 종속성을 필요로 하는 반면, [wagmi](https://wagmi.sh/)은 현재 대체 수단인 [viem](https://viem.sh)에 의존합니다.
 
 #### 프로바이더 설정
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### SIWE 메시지 옵션 사용자 정의
 
-`RainbowKitSiweNextAuthProvider`의 `getSiweMessageOptions` prop에 함수를 전달하여 [SIWE 메시지 옵션](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)을 사용자 정의할 수 있습니다.
+`RainbowKitSiweNextAuthProvider`의 `getSiweMessageOptions` prop에 함수를 전달하여 [SIWE 메시지 옵션](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)을 사용자 정의할 수 있습니다.
 
 새 메시지가 생성될 때마다 이 함수가 호출됩니다. 이 함수에서 반환된 옵션은 기본값과 병합됩니다.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 세션 관리에 대한 자세한 정보는 다음 문서를 참조하십시오:
 
 - [Next.js 인증 가이드](https://nextjs.org/docs/authentication)
-- [NextAuth.js 문서](https://next-auth.js.org)
+- [NextAuth 문서](https://next-auth.js.org)

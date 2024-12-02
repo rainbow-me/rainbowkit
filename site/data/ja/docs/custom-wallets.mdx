@@ -19,45 +19,45 @@ description: カスタムウォレットを作成
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'ウォレットごとのユニークID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '人間が読めるウォレット名',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'EIP6963をサポートするウォレットのRDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'モバイル用のオプションの短縮名',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'ウォレットアイコンのURL、またはBase64データURLに解決するpromise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'ブラウザ拡張機能とモバイルアプリの両方を持つウォレットで使用される強調表示色',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'ウォレットアイコンがロードされる間の背景色',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: カスタムウォレットを作成
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          ウォレットがインストールされているかどうか、または不明な場合は{' '}
+          <code>undefined</code> 
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: カスタムウォレットを作成
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'ダウンロードURLを含むオブジェクト',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: カスタムウォレットを作成
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'リストからこのウォレットを非表示にするかどうかを計算する関数 これは一般的なフォールバックウォレットを定義するのに便利であり、例えば内蔵の"Injected Wallet" フォールバックはこの機能を利用します',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: カスタムウォレットを作成
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'さまざまな接続方法のためのコネクタインスタンスと設定を提供するための関数',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: カスタムウォレットを作成
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'モバイルウォレット接続URIを解決するための関数',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'デスクトップアプリのディープリンクを解決するための関数',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: カスタムウォレットを作成
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'QRコードURIを解決するための関数を含むオブジェクト、オプションのモバイルウォレット設定の手順付き',
     },
     {
       name: 'extension',
@@ -122,15 +122,15 @@ description: カスタムウォレットを作成
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'オプションのブラウザ拡張機能の設定手順を含むオブジェクト',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
+      description: 'コネクタインスタンスを提供するための関数',
+    }
   ]}
 />
 
@@ -155,14 +155,14 @@ description: カスタムウォレットを作成
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '`android` または `ios` が利用できない場合のモバイルユーザー向けランディングページ',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'モバイルダウンロードQRコードをスキャンしたユーザー向けのランディングページ',
     },
     {
       name: 'chrome',
@@ -174,19 +174,19 @@ description: カスタムウォレットを作成
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge アドオンの URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'Firefox ブラウザーアドオンの URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera アドオンの URL',
     },
     {
       name: 'safari',
@@ -199,7 +199,7 @@ description: カスタムウォレットを作成
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'ブラウザー互換のURLが利用できない場合のデスクトップ拡張機能ユーザー向けランディングページ',
     },
   ]}
 />

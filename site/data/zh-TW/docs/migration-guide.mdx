@@ -223,8 +223,6 @@ wagmi v1 需要 `viem` 相關依賴。 使用以下命令安裝它：
 npm i viem
 ```
 
-注意: wagmi 內部已不再使用 `ethers` 套件。 但是如果你依賴於[認證](https://www.rainbowkit.com/docs/authentication) API，`siwe` 仍將需要 `ethers` 作為相關依賴。
-
 \*\*3. 確保打包工具和 polyfill 的相容性
 
 在以前版本的 wagmi 中，依賴於 [ethers](https://docs.ethers.org/v5/)，WalletConnect 所需的 `fs`、`net` 和 `tls` 模組會自動填充。 在基於 [viem](https://viem.sh/) 構建的 RainbowKit v1 + wagmi v1 中，不再如此。

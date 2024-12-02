@@ -9,21 +9,17 @@ description: ユーザーの認証
 
 接続プロセス中にユーザーがウォレットでメッセージに署名することを必要とすることも可能で、これにより接続されたアカウントを所有していることの証明と、アプリケーションへの特権アクセスを持つ認証されたユーザーセッションを作成することができる。
 
-カスタムのバックエンドやメッセージ形式と統合することも可能ですが、RainbowKitは [Sign-In with Ethereum](https://login.xyz) と [NextAuth.js.](https://next-auth.js.org) のファーストクラスサポートを提供しています。
+カスタムのバックエンドやメッセージ形式と統合することも可能ですが、RainbowKitは[Sign-In with Ethereum](https://login.xyz)と[NextAuth](https://next-auth.js.org)のファーストクラスサポートを提供しています。
 
-### EthereumとNextAuth.jsを使用したサインインを設定する
-
-まだ設定していない場合、最初に [Next.js](https://nextjs.org)プロジェクトを[公式のSign-In with EthereumのボイラープレートとNextAuth.jsで設定します。](https://docs.login.xyz/integrations/nextauth.js)
+### EthereumとNextAuthを使用したサインインを設定する
 
 #### をインストールする
 
-`@rainbow-me/rainbowkit-siwe-next-auth`パッケージとそのピア依存性、 [ethers](https://docs.ethers.org/v5/)をインストールします。
+`@rainbow-me/rainbowkit-siwe-next-auth`パッケージをインストールします。
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> 注：`siwe`では [ethers](https://docs.ethers.org/v5/)のピア依存性が必要ですが、 [wagmi](https://wagmi.sh/)は現在、代替の [viem](https://viem.sh)に依存しています。
 
 #### プロバイダの設定
 
@@ -75,9 +71,9 @@ export default function App({
 
 #### SIWEメッセージオプションのカスタマイズ
 
-[SIWEメッセージオプション](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
+[SIWEメッセージオプション](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
 
-新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
+新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
 
 ```tsx
 import {
@@ -98,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### セッションをサーバーサイドでアクセスします
 
-`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
+`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
 
 また、NextAuthがクライアント側で再度それを解決する必要がないように、解決済みのセッションオブジェクトを`getServerSideProps`経由で渡すこともできます。
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 セッションの管理に関する詳細は、以下のドキュメンテーションを参照してください：
 
 - [Next.js認証ガイド](https://nextjs.org/docs/authentication)
-- [NextAuth.jsドキュメンテーション](https://next-auth.js.org)
+- [NextAuthドキュメンテーション](https://next-auth.js.org)

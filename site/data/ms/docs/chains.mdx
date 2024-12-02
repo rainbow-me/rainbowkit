@@ -1,0 +1,75 @@
+---
+title: Rantai
+description: Menyesuaikan rantai
+---
+
+# Rantai
+
+## Menyesuaikan rantai
+
+RainbowKit direka untuk berintegrasi dengan objek `chain` wagmi [wagmi’s `chain` object](https://wagmi.sh/react/chains). Lihat senarai rantai yang disokong [di sini](https://wagmi.sh/react/chains#supported-chains).
+
+### Menyesuaikan rantai awal
+
+Secara lalai, RainbowKit akan bersambung ke rantai pertama yang dibekalkan kepada Wagmi. Tingkah laku ini boleh disesuaikan melalui prop `initialChain`.
+
+Rantai awal boleh dikonfigurasi menggunakan ID rantai.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+Sebagai kemudahan, anda juga boleh mempass objek rantai.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### Metadata rantai khusus
+
+Beberapa ikon dan latar belakang rantai disediakan secara lalai, tetapi anda boleh menyesuaikan ikon dan latar belakang untuk setiap rantai menggunakan sifat `iconUrl` dan `iconBackground`.
+
+Contoh dengan `getDefaultConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Contoh dengan `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```

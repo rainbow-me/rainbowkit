@@ -19,45 +19,45 @@ description: 创建自定义钱包
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: '每个钱包的唯一 ID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '人类可读的钱包名称',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: '支持 EIP6963 的钱包的 RDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: '用于移动设备的可选短名',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        '钱包图标的URL，或者一个解析为Base64数据URL的promise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        '用于同时具有浏览器扩展和移动应用的钱包的下载流程中使用的强调颜色',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '钱包图标加载时的背景颜色',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: 创建自定义钱包
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          钱包是否已知已安装，或{' '}
+          <code>undefined</code> 若未确定
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: 创建自定义钱包
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '包含下载URL的对象',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: 创建自定义钱包
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '计算此钱包是否应从列表中隐藏的函数。 这是定义通用备用钱包的有用功能，例如，内置的 "Injected Wallet" 备用功能就利用了这一特性',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: 创建自定义钱包
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '用于提供不同连接方法的连接器实例和配置的函数，具体方法如下所述',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: 创建自定义钱包
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        '用于解析移动钱包连接URI的函数',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: '用于解析桌面应用程序深层链接的函数',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: 创建自定义钱包
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        '包含用于解析QR码URI的函数的对象，以及可选的移动钱包设置说明',
     },
     {
       name: 'extension',
@@ -122,14 +122,14 @@ description: 创建自定义钱包
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        '包含可选浏览器扩展设置说明的对象',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: '用于提供连接器实例的函数',
     },
   ]}
 />
@@ -155,14 +155,14 @@ description: 创建自定义钱包
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '移动用户在 `android` 或 `ios` 不可用时的着陆页',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        '用户扫描移动下载二维码后的着陆页',
     },
     {
       name: 'chrome',
@@ -174,19 +174,19 @@ description: 创建自定义钱包
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge 插件 URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'Firefox 浏览器插件 URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera 插件 URL',
     },
     {
       name: 'safari',
@@ -199,7 +199,7 @@ description: 创建自定义钱包
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        '桌面扩展用户当浏览器兼容URL不可用时的着陆页',
     },
   ]}
 />

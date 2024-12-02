@@ -7,9 +7,9 @@ description: एक कस्टम वॉलेट बनाएं
 
 ## एक कस्टम वॉलेट बनाएं
 
-> नोट: यह API अस्थिर है और निकट भविष्य में बदल सकती है। हम समय के साथ अधिक बिल्ट-इन वॉलेट्स जोड़ेंगे। यदि आपको किसी विशेष वॉलेट्स में रुचि है तो [हमें बताएं](https://github.com/rainbow-me/rainbowkit/issues)।
+> नोट: यह एपीआई अस्थिर है और निकट भविष्य में बदल सकती है। समय के साथ हम अधिक बिल्ट-इन वॉलेट्स जोड़ेंगे। [हमें बताएं](https://github.com/rainbow-me/rainbowkit/issues) यदि कोई विशेष वॉलेट्स हैं जिनमें आप रुचि रखते हैं।
 
-`वॉलेट` फ़ंक्शन प्रकार आपके अपने कस्टम वॉलेट्स को परिभाषित करने में आपकी सहायता करने के लिए प्रदान किया गया है। आपके `वॉलेट` फ़ंक्शन के रिटर्न मान पर निम्नलिखित गुण कॉन्फ़िगर किए जा सकते हैं:
+`Wallet` फंक्शन प्रकार आपको अपने स्वयं के कस्टम वॉलेट्स परिभाषित करने में मदद करने के लिए प्रदान किया गया है। आपके `Wallet` फ़ंक्शन के रिटर्न मान पर निम्नलिखित गुण कॉन्फ़िगर किए जा सकते हैं:
 
 ### वॉलेट गुण
 
@@ -142,64 +142,61 @@ description: एक कस्टम वॉलेट बनाएं
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'गूगल प्ले URL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'ऐप्पल ऐप स्टोर URL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
-      description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+      description: 'मोबाइल उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब `android` या `ios` उपलब्ध नहीं हैं',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
-      description:
-        'Landing page for users that scan the mobile download QR Code',
+      description: 'उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जो मोबाइल डाउनलोड QR कोड को स्कैन करते हैं',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'क्रोम वेब स्टोर URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'माइक्रोसॉफ्ट एज ऐड-ऑन URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'फ़ायरफ़ॉक्स ब्राउजर ऐड-ऑन URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'ओपेरा ऐड-ऑन URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'मैक ऐप स्टोर URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
-      description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+      description: 'डेस्कटॉप एक्सटेंशन उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब ब्राउजर-संगत URL उपलब्ध नहीं हैं',
     },
   ]}
 />

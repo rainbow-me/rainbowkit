@@ -23,6 +23,7 @@ const nextConfig = {
       'id',
       'ja',
       'ko',
+      'ms',
       'pt-BR',
       'ru',
       'th',

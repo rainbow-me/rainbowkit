@@ -230,6 +230,38 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "Cài đặt tiện ích mở rộng BeraSig",
+          "description": "Chúng tôi đề xuất ghim BeraSig vào thanh tác vụ của bạn để truy cập ví dễ dàng hơn."
+        },
+        "step2": {
+          "title": "Tạo một Ví",
+          "description": "Hãy chắc chắn rằng bạn đã sao lưu ví của mình bằng phương pháp an toàn. Đừng bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Một khi bạn thiết lập xong ví của mình, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
+        }
+      }
+    },
+    "best": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng Best Wallet",
+          "description": "Thêm Best Wallet vào màn hình chính của bạn để truy cập ví nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn vào biểu tượng QR và quét",
+          "description": "Nhấn vào biểu tượng QR trên màn hình chính của bạn, quét mã và xác nhận nhắc nhở để kết nối."
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
@@ -310,20 +342,6 @@
     },
     "bloom": {
       "desktop": {
-        "step1": {
-          "title": "Mở ứng dụng Bloom Wallet",
-          "description": "Chúng tôi khuyến nghị đặt Bloom Wallet lên màn hình chính để truy cập nhanh hơn."
-        },
-        "step2": {
-          "description": "Tạo hoặc nhập ví bằng cách sử dụng cụm từ khôi phục của bạn.",
-          "title": "Tạo hoặc Nhập ví"
-        },
-        "step3": {
-          "description": "Sau khi bạn có ví, hãy nhấp vào Kết nối để kết nối qua Bloom. Một lời nhắc kết nối trong ứng dụng sẽ xuất hiện để bạn xác nhận kết nối.",
-          "title": "Nhấn vào Kết nối"
-        }
-      },
-      "qr_code": {
         "step1": {
           "title": "Mở ứng dụng Bloom Wallet",
           "description": "Chúng tôi khuyến nghị đặt Bloom Wallet lên màn hình chính để truy cập nhanh hơn."
@@ -954,6 +972,22 @@
         }
       }
     },
+    "paraswap": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng ParaSwap",
+          "description": "Thêm ParaSwap Wallet vào màn hình chính của bạn để truy cập ví nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn vào biểu tượng QR và quét",
+          "description": "Nhấn vào biểu tượng QR trên màn hình chính của bạn, quét mã và xác nhận nhắc nhở để kết nối."
+        }
+      }
+    },
     "phantom": {
       "extension": {
         "step1": {
@@ -1053,6 +1087,22 @@
         "step1": {
           "title": "Cài đặt tiện ích mở rộng Taho",
           "description": "Chúng tôi khuyên bạn nên ghim Taho vào thanh tác vụ để truy cập ví nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Hãy chắc chắn rằng bạn đã sao lưu ví của mình bằng phương pháp an toàn. Đừng bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Một khi bạn thiết lập xong ví của mình, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
+        }
+      }
+    },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "Cài đặt tiện ích mở rộng Wigwam",
+          "description": "Chúng tôi khuyên bạn nên ghim Wigwam vào thanh tác vụ để truy cập ví của bạn nhanh hơn."
         },
         "step2": {
           "title": "Tạo hoặc Nhập ví",
@@ -1275,6 +1325,22 @@
         "step3": {
           "title": "Quét mã",
           "description": "Nhấn vào WalletConnect sau đó Chuyển sang Máy quét. Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      }
+    },
+    "valora": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng Valora",
+          "description": "Chúng tôi khuyến nghị đặt Valora trên màn hình chính của bạn để truy cập nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
     }

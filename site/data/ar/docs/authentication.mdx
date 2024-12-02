@@ -9,21 +9,17 @@ description: مصادقة المستخدمين الخاصين بك
 
 يمكنك اختياريًا إجبار المستخدمين على التوقيع على رسالة باستخدام محفظتهم خلال عملية الاتصال، مما يثبت أنهم يملكون الحساب المتصل ويتيح لك إنشاء جلسة مستخدم مصادق عليها تتمتع بالوصول المميز إلى تطبيقك.
 
-بينما يمكن [الدمج مع خلفيات مخصصة وتنسيقات الرسائل،](/docs/custom-authentication) يوفر RainbowKit دعمًا من الدرجة الأولى لـ [تسجيل الدخول بـ Ethereum](https://login.xyz) و [NextAuth.js.](https://next-auth.js.org)
+بينما يمكن [الدمج مع خلفيات مخصصة وتنسيقات الرسائل،](/docs/custom-authentication) يوفر RainbowKit دعمًا من الدرجة الأولى لـ [تسجيل الدخول بـ Ethereum](https://login.xyz) و [NextAuth](https://next-auth.js.org).
 
-### إعداد تسجيل الدخول بـ Ethereum و NextAuth.js
-
-إذا لم تقم بذلك بالفعل، أعد أولاً مشروعك [Next.js](https://nextjs.org) مع [القالب الرسمي لتسجيل الدخول بـ Ethereum لـ NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### إعداد تسجيل الدخول بـ Ethereum و NextAuth
 
 #### تثبيت
 
-قم بتثبيت حزمة `@rainbow-me/rainbowkit-siwe-next-auth` واعتمادها المشترك ، [ethers](https://docs.ethers.org/v5/).
+قم بتثبيت حزمة `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> ملاحظة: يتطلب `siwe` الاعتماد المشترك [ethers](https://docs.ethers.org/v5/)، بينما [wagmi](https://wagmi.sh/) يعتمد الآن على البديل [viem](https://viem.sh).
 
 #### قم بإعداد الموفر
 
@@ -75,7 +71,7 @@ export default function App({
 
 #### قم بتخصيص خيارات الرسالة SIWE
 
-يمكنك تخصيص [خيارات رسالة SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) عن طريق تمرير وظيفة إلى الدالة `getSiweMessageOptions` prop على `RainbowKitSiweNextAuthProvider`.
+يمكنك تخصيص [خيارات رسالة SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) عن طريق تمرير وظيفة إلى الدالة `getSiweMessageOptions` prop على `RainbowKitSiweNextAuthProvider`.
 
 سيتم استدعاء هذه الوظيفة كلما تم إنشاء رسالة جديدة. سيتم دمج الخيارات المسترجعة من هذه الوظيفة مع القيم الافتراضية.
 
@@ -146,4 +142,4 @@ export default function AuthenticatedPage({
 لمزيد من المعلومات حول إدارة الجلسة، يمكنك الرجوع إلى الوثائق التالية:
 
 - [دليل المصادقة Next.js](https://nextjs.org/docs/authentication)
-- [وثائق NextAuth.js](https://next-auth.js.org)
+- [وثائق NextAuth](https://next-auth.js.org)

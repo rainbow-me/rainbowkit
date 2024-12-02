@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'Объект, содержащий информацию о текущей цепочке, описанный ниже',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Определяет, есть ли у цепочки заданная иконка',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'URL цепочной иконки (который также может быть не определён при загрузке данных Base64-URL)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'Фон цепочной иконки, который будет виден во время загрузки изображений',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          ID цепочки, например <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          Имя цепочки, например <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Булево значение, указывающее, поддерживается ли текущая цепочка',
     },
   ]}
 />
@@ -279,39 +279,37 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Функция для открытия модального окна аккаунта',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Функция для открытия модального окна цепочки',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Функция для открытия модального окна подключения',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
-      description:
-        'Boolean indicating whether the account modal is open',
+      description: 'Логическое значение, указывающее, открыто ли модальное окно аккаунта',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Логическое значение, указывающее, открыто ли модальное окно цепочки',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
-      description:
-        'Boolean indicating whether the connect modal is open',
+      description: 'Логическое значение, указывающее, открыто ли модальное окно подключения',
     },
   ]}
 />
@@ -324,15 +322,13 @@ export const YourApp = () => {
       name: 'mounted',
       required: false,
       type: 'boolean',
-      description:
-        'Boolean indicating whether the component has mounted',
+      description: 'Логическое значение, указывающее, загружен ли компонент',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
-      description:
-        'The authentication status, or undefined if authentication has not been configured',
+      description: 'Статус аутентификации, или undefined, если аутентификация не настроена',
     },
   ]}
 />

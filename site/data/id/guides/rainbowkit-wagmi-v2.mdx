@@ -102,7 +102,7 @@ Jika Anda menggunakan hook `wagmi` dan aksi `viem` dalam dApp Anda, Anda akan pe
 
 Dompet yang mendukung standar koneksi EIP-6963 baru (termasuk Rainbow, MetaMask, dan lainnya) sekarang akan otomatis muncul di bagian `Terpasang` selama pengalaman Connect Wallet. Ini memastikan bahwa pengguna selalu dapat menemukan dompet favorit mereka dan terhubung ke dApps tanpa konflik atau tombol fallback.
 
-Pengembang terus memiliki kontrol penuh atas Daftar Dompet Kustom untuk menekankan dompet yang diutamakan bagi pengguna akhir. Disarankan agar Anda terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam daftar Anda untuk mendukung semua platform.
+Pengembang terus memiliki kontrol penuh atas Daftar Dompet Kustom untuk menekankan dompet yang diutamakan bagi pengguna akhir. Dianjurkan agar Anda terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam daftar Anda untuk mendukung semua platform.
 
 **2. Konfigurasi Wagmi dengan getDefaultConfig**
 
@@ -169,7 +169,7 @@ const config = getDefaultConfig({
 +     ...mainnet,
 +     iconBackground: '#000',
 +     iconUrl: 'https://example.com/icons/ethereum.png',
-+   }, /* metadata overides */
++   }, /* metadata overrides */
 + ],
 });
 ```
