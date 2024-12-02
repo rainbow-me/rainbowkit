@@ -1,5 +1,15 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.1
+
+### Patch Changes
+
+- 3469982: Added Wigwam support with `wigwamWallet` wallet connector
+- 0c6af55: Added icon for Flow chain
+- 5b8e146: Added `de-DE` and `de` locale support for the German language.
+- 9dd23d9: Added BeraSig support with `berasigWallet` wallet connector
+- 7fceab8: Added `ms-MY` and `ms` locale support for the Malay language.
+
 ## 2.2.0
 
 ### Minor Changes
