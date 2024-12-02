@@ -17,6 +17,7 @@ module.exports = {
       'id-ID',
       'ja-JP',
       'ko-KR',
+      'ms-MY',
       'pt-BR',
       'ru-RU',
       'th-TH',

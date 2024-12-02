@@ -21,6 +21,8 @@ module.exports = {
     '/ja/*',
     '/ko',
     '/ko/*',
+    '/ms',
+    '/ms/*',
     '/pt-BR',
     '/pt-BR/*',
     '/ru',
@@ -76,6 +78,10 @@ module.exports = {
     {
       href: 'https://rainbowkit.com/ko/',
       hreflang: 'ko',
+    },
+    {
+      href: 'https://rainbowkit.com/ms/',
+      hreflang: 'ms',
     },
     {
       href: 'https://rainbowkit.com/pt-BR/',
