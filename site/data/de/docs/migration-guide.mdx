@@ -66,6 +66,8 @@ npm i @tanstack/react-query
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
 +   appName: 'RainbowKit demo',
++   appUrl: 'YOUR_APP_URL',
++   appIcon: 'YOUR_APP_ICON,
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -117,6 +119,8 @@ Sie können eine benutzerdefinierte Wallet-Liste erstellen, indem Sie importiert
 ```
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',
+  appUrl: 'YOUR_APP_URL',
+  appIcon: 'YOUR_APP_ICON,
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */

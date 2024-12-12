@@ -460,6 +460,8 @@
     /* New API that includes Wagmi's createConfig and bundles getDefaultWallets and connectorsForWallets */
   + const config = getDefaultConfig({
   +   appName: 'RainbowKit demo',
+  +   appUrl: 'YOUR_APP_URL',
+  +   appIcon: 'YOUR_APP_ICON,
   +   projectId: 'YOUR_PROJECT_ID',
   +   chains: [mainnet],
   +   transports: {

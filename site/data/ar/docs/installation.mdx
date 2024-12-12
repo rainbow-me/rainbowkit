@@ -70,6 +70,8 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
+  appUrl: 'YOUR_APP_URL',
+  appIcon: 'YOUR_APP_ICON,
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
@@ -143,6 +145,8 @@ import { mainnet, sepolia } from 'wagmi/chains';
 
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
+  appUrl: 'YOUR_APP_URL',
+  appIcon: 'YOUR_APP_ICON,
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, sepolia],
   transports: {

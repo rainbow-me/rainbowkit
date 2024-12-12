@@ -18,6 +18,8 @@ coinbaseWallet.preference = 'all';
 
 export const config = getDefaultConfig({
   appName: 'RainbowKit demo',
+  appUrl: 'https://rainbow.me',
+  appIcon: 'https://framerusercontent.com/images/Hml6PtJwt03gwFtTRYmbpo7EarY.png',
   projectId: import.meta.env.VITE_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
   chains: [mainnet, 
     polygon, optimism, arbitrum, base],

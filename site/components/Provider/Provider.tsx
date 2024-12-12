@@ -40,6 +40,9 @@ const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
+  appUrl: 'https://rainbow.me',
+  appIcon:
+    'https://framerusercontent.com/images/Hml6PtJwt03gwFtTRYmbpo7EarY.png',
   projectId,
   chains: [
     mainnet,

@@ -154,6 +154,9 @@ coinbaseWallet.preference = 'all';
 
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
+  appUrl: 'https://rainbow.me',
+  appIcon:
+    'https://framerusercontent.com/images/Hml6PtJwt03gwFtTRYmbpo7EarY.png',
   projectId,
   chains: [
     mainnet,

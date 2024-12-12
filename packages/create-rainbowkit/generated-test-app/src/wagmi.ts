@@ -10,6 +10,8 @@ import {
 
 export const config = getDefaultConfig({
   appName: 'RainbowKit App',
+  appUrl: 'https://rainbow.me',
+  appIcon: 'https://framerusercontent.com/images/Hml6PtJwt03gwFtTRYmbpo7EarY.png',
   projectId: 'YOUR_PROJECT_ID',
   chains: [
     mainnet,

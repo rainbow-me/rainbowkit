@@ -64,6 +64,8 @@ npm i @tanstack/react-query
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
 +   appName: 'RainbowKit demo',
++   appUrl: 'YOUR_APP_URL',
++   appIcon: 'YOUR_APP_ICON,
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -115,6 +117,8 @@ Puedes crear una Lista Personalizada de Carteras pasando conectores importados o
 ```
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',
+  appUrl: 'YOUR_APP_URL',
+  appIcon: 'YOUR_APP_ICON,
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
