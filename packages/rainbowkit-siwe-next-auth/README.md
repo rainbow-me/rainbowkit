@@ -126,7 +126,7 @@ export default function AuthenticatedPage({ address }: AuthenticatedPageProps) {
 
 For more information about managing the session, you can refer to the following documentation:
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
+- [Next.js authentication guide](https://nextjs.org/docs/app/building-your-application/authentication)
 - [NextAuth documentation](https://next-auth.js.org)
 
 ## Contributing
