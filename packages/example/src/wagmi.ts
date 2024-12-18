@@ -75,7 +75,6 @@ import {
   celo,
   celoAlfajores,
   holesky,
-  ink,
   inkSepolia,
   klaytn,
   klaytnBaobab,
@@ -130,6 +129,21 @@ const sei = {
   },
   blockExplorers: {
     default: { name: 'Sei Explorer', url: 'https://www.seiscan.app' },
+  },
+  contracts: {},
+} as const satisfies Chain;
+
+const ink = {
+  id: 57073,
+  name: 'Ink',
+  iconUrl: 'https://inkonchain.com/icons/ink-sepolia-logo.svg',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://rpc-gel.inkonchain.com'] },
+  },
+  blockExplorers: {
+    default: { name: 'Blockscout', url: 'https://explorer.inkonchain.com/' },
   },
   contracts: {},
 } as const satisfies Chain;
