@@ -71,9 +71,11 @@ import {
   blast,
   blastSepolia,
   bsc,
+  bscTestnet,
   celo,
   celoAlfajores,
   holesky,
+  inkSepolia,
   klaytn,
   klaytnBaobab,
   mainnet,
@@ -131,6 +133,21 @@ const sei = {
   contracts: {},
 } as const satisfies Chain;
 
+const ink = {
+  id: 57073,
+  name: 'Ink',
+  iconUrl: 'https://inkonchain.com/icons/ink-sepolia-logo.svg',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://rpc-gel.inkonchain.com'] },
+  },
+  blockExplorers: {
+    default: { name: 'Blockscout', url: 'https://explorer.inkonchain.com/' },
+  },
+  contracts: {},
+} as const satisfies Chain;
+
 // Enable Smart Wallet and EOA
 // Testing `preference` type
 coinbaseWallet.preference = 'all';
@@ -148,6 +165,7 @@ export const config = getDefaultConfig({
     avalanche,
     zora,
     blast,
+    ink,
     zkSync,
     zetachain,
     ronin,
@@ -163,9 +181,11 @@ export const config = getDefaultConfig({
           optimismSepolia,
           arbitrumSepolia,
           baseSepolia,
+          bscTestnet,
+          avalancheFuji,
           zoraSepolia,
           blastSepolia,
-          avalancheFuji,
+          inkSepolia,
           zetachainAthensTestnet,
           klaytnBaobab,
           mantleTestnet,
