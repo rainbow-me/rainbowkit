@@ -12,11 +12,11 @@ description: 定制钱包列表
 例如，您可以选择仅显示 Rainbow 和通用的 Fallback 钱包。
 
 ```tsx
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -73,7 +73,7 @@ const App = () => (
 **建议您总是把这个钱包包含在列表中，以确保支持所有基于 WalletConnect 的钱包。**
 
 ```tsx
-import { walletConnectWallet } from "@rainbow-me/rainbowkit/wallets";
+import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ##### 注入式钱包
@@ -83,7 +83,7 @@ import { walletConnectWallet } from "@rainbow-me/rainbowkit/wallets";
 **建议您始终在列表中包含此钱包，以确保支持所有注入的钱包。**
 
 ```tsx
-import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ##### Safe Wallet
@@ -91,7 +91,7 @@ import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
 对于支持 Safe Apps 的 dApps，以便用户可以轻松地连接到他们的 Safe 保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe 选项仅在 Safe Wallet 浏览器环境中出现。
 
 ```tsx
-import { safeWallet } from "@rainbow-me/rainbowkit/wallets";
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### 特定钱包
@@ -101,73 +101,73 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 #### 1inch Wallet
 
 ```tsx
-import { oneInchWallet } from "@rainbow-me/rainbowkit/wallets";
+import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Argent
 
 ```tsx
-import { argentWallet } from "@rainbow-me/rainbowkit/wallets";
+import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 贝拉签名
 
 ```tsx
-import { berasigWallet } from "@rainbow-me/rainbowkit/wallets";
+import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 最佳钱包
 
 ```tsx
-import { bestWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Binance Web3 Wallet
 
 ```tsx
-import { binanceWallet } from "@rainbow-me/rainbowkit/wallets";
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitget
 
 ```tsx
-import { bitgetWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bifrost Wallet
 
 ```tsx
-import { bifrostWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
 
 ```tsx
-import { bitskiWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitverse
 
 ```tsx
-import { bitverseWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bloom Wallet
 
 ```tsx
-import { bloomWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Brave Wallet
 
 ```tsx
-import { braveWallet } from "@rainbow-me/rainbowkit/wallets";
+import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bybit Wallet
 
 ```tsx
-import { bybitWallet } from "@rainbow-me/rainbowkit/wallets";
+import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Coinbase
@@ -181,244 +181,244 @@ import { bybitWallet } from "@rainbow-me/rainbowkit/wallets";
 开发者可以通过设置`smartWalletOnly`并在其钱包列表中包含`coinbaseWallet`来测试`sepolia`和`baseSepolia`链上的智能钱包，如下所示：
 
 ```tsx
-import { coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
+import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
 // Enable Coinbase Smart Wallet for testing
-coinbaseWallet.preference = "smartWalletOnly";
+coinbaseWallet.preference = "smartWalletOnly';
 ```
 
 #### Coin98 Wallet
 
 ```tsx
-import { coin98Wallet } from "@rainbow-me/rainbowkit/wallets";
+import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Compass Wallet
 
 ```tsx
-import { compassWallet } from "@rainbow-me/rainbowkit/compassWallet";
+import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
 #### Core
 
 ```tsx
-import { coreWallet } from "@rainbow-me/rainbowkit/wallets";
+import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Wallet
 
 ```tsx
-import { dawnWallet } from "@rainbow-me/rainbowkit/wallets";
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Enkrypt Wallet
 
 ```tsx
-import { enkryptWallet } from "@rainbow-me/rainbowkit/wallets";
+import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### FoxWallet
 
 ```tsx
-import { foxWallet } from "@rainbow-me/rainbowkit/wallets";
+import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Frame Wallet
 
 ```tsx
-import { frameWallet } from "@rainbow-me/rainbowkit/wallets";
+import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Frontier Wallet
 
 ```tsx
-import { frontierWallet } from "@rainbow-me/rainbowkit/wallets";
+import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Gate Wallet
 
 ```tsx
-import { gateWallet } from "@rainbow-me/rainbowkit/wallets";
+import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### imToken
 
 ```tsx
-import { imTokenWallet } from "@rainbow-me/rainbowkit/wallets";
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### ioPay Wallet
 
 ```tsx
-import { iopayWallet } from "@rainbow-me/rainbowkit/wallets";
+import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Kaia Wallet
 
 ```tsx
-import { kaiaWallet } from "@rainbow-me/rainbowkit/wallets";
+import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Kaikas
 
 ```tsx
-import { kaikasWallet } from "@rainbow-me/rainbowkit/wallets";
+import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Kraken Wallet
 
 ```tsx
-import { krakenWallet } from "@rainbow-me/rainbowkit/wallets";
+import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Kresus Wallet
 
 ```tsx
-import { kresusWallet } from "@rainbow-me/rainbowkit/wallets";
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ledger Live
 
 ```tsx
-import { ledgerWallet } from "@rainbow-me/rainbowkit/wallets";
+import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Magic Eden Wallet
 
 ```tsx
-import { magicEdenWallet } from "@rainbow-me/rainbowkit/wallets";
+import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MEW Wallet
 
 ```tsx
-import { mewWallet } from "@rainbow-me/rainbowkit/wallets";
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
 
 ```tsx
-import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OKX Wallet
 
 ```tsx
-import { okxWallet } from "@rainbow-me/rainbowkit/wallets";
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Omni
 
 ```tsx
-import { omniWallet } from "@rainbow-me/rainbowkit/wallets";
+import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OneKey
 
 ```tsx
-import { oneKeyWallet } from "@rainbow-me/rainbowkit/wallets";
+import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### ParaSwap
 
 ```tsx
-import { paraSwapWallet } from "@rainbow-me/rainbowkit/wallets";
+import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Phantom
 
 ```tsx
-import { phantomWallet } from "@rainbow-me/rainbowkit/wallets";
+import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Rabby Wallet
 
 ```tsx
-import { rabbyWallet } from "@rainbow-me/rainbowkit/wallets";
+import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Rainbow
 
 ```tsx
-import { rainbowWallet } from "@rainbow-me/rainbowkit/wallets";
+import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ramper Wallet
 
 ```tsx
-import { ramperWallet } from "@rainbow-me/rainbowkit/wallets";
+import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ronin 钱包
 
 ```tsx
-import { roninWallet } from "@rainbow-me/rainbowkit/wallets";
+import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Safeheron
 
 ```tsx
-import { safeheronWallet } from "@rainbow-me/rainbowkit/wallets";
+import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Taho
 
 ```tsx
-import { tahoWallet } from "@rainbow-me/rainbowkit/wallets";
+import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Talisman
 
 ```tsx
-import { talismanWallet } from "@rainbow-me/rainbowkit/wallets";
+import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Tokenary
 
 ```tsx
-import { tokenaryWallet } from "@rainbow-me/rainbowkit/wallets";
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### TokenPocket
 
 ```tsx
-import { tokenPocketWallet } from "@rainbow-me/rainbowkit/wallets";
+import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Trust Wallet
 
 ```tsx
-import { trustWallet } from "@rainbow-me/rainbowkit/wallets";
+import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Uniswap Wallet
 
 ```tsx
-import { uniswapWallet } from "@rainbow-me/rainbowkit/wallets";
+import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Valora
 
 ```tsx
-import { valoraWallet } from "@rainbow-me/rainbowkit/wallets";
+import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ctrl Wallet
 
 ```tsx
-import { ctrlWallet } from "@rainbow-me/rainbowkit/wallets";
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
 
 ```tsx
-import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
+import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 棚屋
 
 ```tsx
-import { wigwamWallet } from "@rainbow-me/rainbowkit/wallets";
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### 示例
@@ -430,11 +430,11 @@ import { wigwamWallet } from "@rainbow-me/rainbowkit/wallets";
 显示 MetaMask 和一般的备选钱包。
 
 ```tsx
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   metaMaskWallet,
   walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -450,13 +450,13 @@ const connectors = connectorsForWallets(
 显示 Rainbow、MetaMask 和 Coinbase 以及一般的备选钱包。
 
 ```tsx
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -483,13 +483,13 @@ const connectors = connectorsForWallets(
 推荐 Rainbow 和 MetaMask，但也提供 Coinbase 以及一般的备选钱包。
 
 ```tsx
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets(
   [
