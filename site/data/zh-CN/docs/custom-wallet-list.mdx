@@ -9,7 +9,7 @@ description: 定制钱包列表
 
 您可以从`'@rainbow-me/rainbowkit/wallets'`中导入各个钱包，同时使用`connectorsForWallets`函数来构建自己的钱包列表和所需连接器。 这样，您可以自由控制显示哪些钱包以及显示的顺序。
 
-例如，您可以选择仅显示 Rainbow 和通用的 Fallback 钱包。
+例如，您可以选择仅显示Rainbow和通用的Fallback钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-对于支持 Safe Apps 的 dApps，以便用户可以轻松地连接到他们的 Safe 保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe 选项仅在 Safe Wallet 浏览器环境中出现。
+对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,7 +172,7 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-此钱包连接器支持 Coinbase Wallet 应用程序和扩展，以及 Coinbase Smart Wallet 在网络上的使用。
+此钱包连接器支持Coinbase Wallet应用程序和扩展，以及Coinbase Smart Wallet在网络上的使用。
 
 提供了一个`preference`参数，用于控制是否为用户启用和提供智能钱包。 基于偏好的行为记录于[此处](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)。
 
@@ -427,7 +427,7 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 这里有一些显示不同钱包，以不同顺序的例子。
 
-显示 MetaMask 和一般的备选钱包。
+显示MetaMask和一般的备选钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -443,11 +443,11 @@ const connectors = connectorsForWallets(
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
-显示 Rainbow、MetaMask 和 Coinbase 以及一般的备选钱包。
+显示Rainbow、MetaMask和Coinbase以及一般的备选钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -470,17 +470,17 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
-> 提醒：`wallets`数组的顺序定义了钱包在 UI 中显示的顺序。
+> 提醒：`wallets`数组的顺序定义了钱包在UI中显示的顺序。
 
 #### 多个组
 
 你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
 
-推荐 Rainbow 和 MetaMask，但也提供 Coinbase 以及一般的备选钱包。
+推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -502,6 +502,6 @@ const connectors = connectorsForWallets(
       wallets: [coinbaseWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```

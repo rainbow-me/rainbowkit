@@ -9,7 +9,7 @@ description: ウォレットリストのカスタマイズ
 
 '@rainbow-me/rainbowkit/wallets'から個々のウォレットをインポートし、その必要なコネクターを持つウォレットのリストを作成するために`connectorsForWallets`関数を使うことができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。
 
-例えば、Rainbow と一般的なフォールバックウォレットのみを表示するように選択できます。
+例えば、Rainbowと一般的なフォールバックウォレットのみを表示するように選択できます。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-次に、コネクタを Wagmi の`createConfig`に渡すことができます。
+次に、コネクタをWagmiの`createConfig`に渡すことができます。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -68,9 +68,9 @@ const App = () => (
 
 ##### WalletConnect
 
-これは、リストの他のウォレットで提供されていない WalletConnect ベースのウォレット用に設計されたフォールバックウォレットオプションです。
+これは、リストの他のウォレットで提供されていないWalletConnectベースのウォレット用に設計されたフォールバックウォレットオプションです。
 
-**全ての WalletConnect ベースのウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
+**全てのWalletConnectベースのウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### セーフウォレット
 
-Safe Apps をサポートする dApps のために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
+Safe AppsをサポートするdAppsのために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +172,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-このウォレットコネクタは、Coinbase Wallet アプリと拡張機能、およびウェブ上での Coinbase Smart Wallet の両方をサポートします。
+このウォレットコネクタは、Coinbase Walletアプリと拡張機能、およびウェブ上でのCoinbase Smart Walletの両方をサポートします。
 
-Smart Wallet がユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 Smart Wallet がユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
+Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
 
-Smart Wallet は、追加のアップグレードなしに、6 月初旬からデフォルトで`all`と共に有効になります。
+Smart Walletは、追加のアップグレードなしに、6月初旬からデフォルトで`all`と共に有効になります。
 
-開発者は今日、`sepolia`および`baseSepolia`チェーンで`smartWalletOnly`を設定し、次のように`coinbaseWallet`をウォレットリストに含めることで Smart Wallet をテストできます:
+開発者は今日、`sepolia`および`baseSepolia`チェーンで`smartWalletOnly`を設定し、次のように`coinbaseWallet`をウォレットリストに含めることでSmart Walletをテストできます:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -427,7 +427,7 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 さまざまなウォレットをさまざまな順序で表示するいくつかの例をここに示します。
 
-Metamask と一般的な fallback ウォレットを並べて表示します。
+Metamaskと一般的なfallbackウォレットを並べて表示します。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -443,11 +443,11 @@ const connectors = connectorsForWallets(
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
-Rainbow、MetaMask、Coinbase および一般的なフォールバックウォレットを表示します。
+Rainbow、MetaMask、Coinbaseおよび一般的なフォールバックウォレットを表示します。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -470,17 +470,17 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
-> リマインダー：`wallets` 配列の順序は、UI でウォレットが表示される順序を定義します。
+> リマインダー：`wallets` 配列の順序は、UIでウォレットが表示される順序を定義します。
 
 #### 複数のグループ
 
 `groupName`キーを使用して、異なるウォレットグループに名前をつけることができます。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。
 
-Rainbow と MetaMask を推奨しますが、Coinbase と一般的なフォールバックウォレットも提供します。
+RainbowとMetaMaskを推奨しますが、Coinbaseと一般的なフォールバックウォレットも提供します。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -502,6 +502,6 @@ const connectors = connectorsForWallets(
       wallets: [coinbaseWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
