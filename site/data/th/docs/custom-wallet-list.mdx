@@ -21,13 +21,13 @@ import {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [rainbowWallet, walletConnectWallet],
     },
   ],
   {
-    appName: "My RainbowKit App",
-    projectId: "YOUR_PROJECT_ID",
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
   }
 );
 ```
@@ -184,7 +184,7 @@ Smart Wallet จะถูกเปิดใช้งานโดยค่าเ�
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
 // Enable Coinbase Smart Wallet for testing
-coinbaseWallet.preference = "smartWalletOnly';
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Coin98 Wallet
@@ -439,11 +439,11 @@ import {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
 );
 ```
 
@@ -461,7 +461,7 @@ import {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Suggested",
+      groupName: 'Suggested',
       wallets: [
         rainbowWallet,
         metaMaskWallet,
@@ -470,7 +470,7 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
 );
 ```
 
@@ -494,14 +494,14 @@ import {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [rainbowWallet, metaMaskWallet],
     },
     {
-      groupName: "Others",
+      groupName: 'Others',
       wallets: [coinbaseWallet, walletConnectWallet],
     },
   ],
-  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" }
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' }
 );
 ```
