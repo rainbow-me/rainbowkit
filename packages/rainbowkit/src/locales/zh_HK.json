@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "安裝 XDEFI Wallet 擴充功能",
-          "description": "我們建議把 XDEFI Wallet 釘在工作列上，以便更快捷地進入你的錢包。"
+          "title": "安裝 Ctrl Wallet 擴充功能",
+          "description": "我們建議把 Ctrl Wallet 釘在工作列上，以便更快捷地進入你的錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",

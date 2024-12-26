@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "قم بتثبيت إضافة XDEFI Wallet",
-          "description": "نوصي بتثبيت XDEFI Wallet على شريط المهام للوصول الأسرع إلى محفظتك."
+          "title": "قم بتثبيت إضافة Ctrl Wallet",
+          "description": "نوصي بتثبيت Ctrl Wallet على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
           "title": "أنشئ محفظة أو استورد محفظة",

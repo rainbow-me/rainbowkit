@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Installez l'extension du portefeuille XDEFI",
-          "description": "Nous vous recommandons d'épingler XDEFI Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+          "title": "Installez l'extension du portefeuille Ctrl",
+          "description": "Nous vous recommandons d'épingler Ctrl Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
           "title": "Créer ou Importer un portefeuille",

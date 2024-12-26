@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de la billetera XDEFI",
-          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
+          "title": "Instala la extensión de la billetera Ctrl",
+          "description": "Recomendamos anclar Ctrl Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
           "title": "Crear o Importar una Billetera",

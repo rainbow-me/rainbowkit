@@ -1199,11 +1199,11 @@
       }
     },
 
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Install the XDEFI Wallet extension",
-          "description": "We recommend pinning XDEFI Wallet to your taskbar for quicker access to your wallet."
+          "title": "Install the Ctrl Wallet extension",
+          "description": "We recommend pinning Ctrl Wallet to your taskbar for quicker access to your wallet."
         },
         "step2": {
           "title": "Create or Import a Wallet",

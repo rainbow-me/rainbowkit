@@ -53,7 +53,7 @@ export type WalletProviderFlags =
   | 'isTokenary'
   | 'isTrust'
   | 'isTrustWallet'
-  | 'isXDEFI'
+  | 'isCtrl'
   | 'isZerion'
   | 'isTalisman'
   | 'isZeal'

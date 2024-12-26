@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão XDEFI Wallet",
-          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "Instale a extensão Ctrl Wallet",
+          "description": "Recomendamos fixar a Carteira Ctrl na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",

@@ -14,6 +14,7 @@ import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { compassWallet } from './compassWallet/compassWallet';
 import { coreWallet } from './coreWallet/coreWallet';
+import { ctrlWallet } from './ctrlWallet/ctrlWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
@@ -58,7 +59,6 @@ import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { wigwamWallet } from './wigwamWallet/wigwamWallet';
-import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
@@ -123,7 +123,7 @@ export {
   valoraWallet,
   walletConnectWallet,
   wigwamWallet,
-  xdefiWallet,
+  ctrlWallet,
   zealWallet,
   zerionWallet,
 };
