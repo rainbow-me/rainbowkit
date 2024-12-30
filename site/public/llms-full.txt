@@ -1,20 +1,8 @@
-*Note: This is llms-full.txt is not complete, please enter a Firecrawl API key to get the entire llms-full.txt at llmstxt.firecrawl.dev or you can access llms.txt via API with curl -X GET 'http://llmstxt.firecrawl.dev/https://rainbowkit.com?FIRECRAWL_API_KEY=YOUR_API_KEY' or llms-full.txt via API with curl -X GET 'http://llmstxt.firecrawl.dev/https://rainbowkit.com/full?FIRECRAWL_API_KEY=YOUR_API_KEY'
-
 # https://rainbowkit.com llms-full.txt
 
 ![Rainbow logo](/rainbow.svg)
 
 RainbowKit
-
-2.2.1
-
-Connect Wallet
-
-MenuSearch
-
-Search
-Search...
-Ctrl K
 
 ### Overview
 
@@ -285,16 +273,6 @@ To try RainbowKit directly in your browser, check out the CodeSandbox links belo
 
 RainbowKit
 
-2.2.1
-
-Cüzdanı Bağla
-
-MenuSearch
-
-Search
-Search...
-Ctrl K
-
 ### Genel Bakış
 
 [Giriş](/tr/docs/introduction) [Geçiş Rehberi](/tr/docs/migration-guide)
@@ -427,10 +405,6 @@ Eğer ek bir dil desteği görmek isterseniz, lütfen bir [GitHub Tartışması]
 [Kimlik DoğrulamaNext](/tr/docs/authentication)![Rainbow logo](/rainbow.svg)
 
 RainbowKit
-
-2.2.1
-
-Connecter le portefeuille
 
 # RainbowKit
 
@@ -687,16 +661,6 @@ Le développement de RainbowKit a été un effort incroyablement amusant impliqu
 
 RainbowKit
 
-2.2.1
-
-Connect Wallet
-
-MenuSearch
-
-Search
-Search...
-Ctrl K
-
 ### Overview
 
 [Introduction](/docs/introduction) [Migration Guide](/docs/migration-guide)
@@ -830,10 +794,6 @@ If you would like to see support for an additional language, please open a [GitH
 [AuthenticationNext](/docs/authentication)![Rainbow logo](/rainbow.svg)
 
 RainbowKit
-
-2.2.1
-
-连接钱包
 
 # RainbowKit
 
@@ -1090,10 +1050,6 @@ App Store 和 Google Play 集成
 
 RainbowKit
 
-2.2.1
-
-Hubungkan Dompet
-
 # RainbowKit
 
 ## Cara terbaik untuk menghubungkan dompet
@@ -1348,10 +1304,6 @@ Membangun RainbowKit telah menjadi upaya yang sangat menyenangkan di antara bany
 © Rainbow![Rainbow logo](/rainbow.svg)
 
 RainbowKit
-
-2.2.1
-
-Connect Wallet
 
 # RainbowKit
 
@@ -1608,10 +1560,6 @@ Building RainbowKit has been an incredibly fun effort across many people at Rain
 
 RainbowKit
 
-2.2.1
-
-Cüzdanı Bağla
-
 # RainbowKit
 
 ## Cüzdan bağlamak için en iyi yöntem
@@ -1867,16 +1815,6 @@ RainbowKit'i geliştirmek eğlenceli bir çaba oldu ve birçok kişi tarafından
 
 RainbowKit
 
-2.2.1
-
-Kết nối Ví
-
-MenuSearch
-
-Search
-Search...
-Ctrl K
-
 ### Tổng quan
 
 [Giới thiệu](/vi/docs/introduction) [Hướng Dẫn Di Chuyển](/vi/docs/migration-guide)
@@ -1929,16 +1867,6 @@ Chúng tôi rất háo hức khi thấy cộng đồng chấp nhận RainbowKit,
 [Hướng Dẫn Di ChuyểnNext](/vi/docs/migration-guide)![Rainbow logo](/rainbow.svg)
 
 RainbowKit
-
-2.2.1
-
-เชื่อมต่อกระเป๋าเงิน
-
-MenuSearch
-
-Search
-Search...
-Ctrl K
 
 ### ภาพรวม
 
