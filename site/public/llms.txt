@@ -1,0 +1,25 @@
+# rainbowkit.com llms.txt
+
+> RainbowKit offers a customizable wallet connection framework designed for developers, enabling them to easily integrate enhanced wallet experiences into their Web3 applications.
+
+- [RainbowKit Documentation](https://rainbowkit.com/docs): Provide documentation for integrating the RainbowKit wallet connection library in React applications.
+- [ConnectButton Documentation](https://rainbowkit.com/docs/connect-button): Guide for using and customizing the ConnectButton component in RainbowKit.
+- [RainbowKit Theming Guide](https://rainbowkit.com/docs/theming): Guide for customizing themes in RainbowKit.
+- [RainbowKit Migration Guide](https://rainbowkit.com/docs/migration-guide): Guide users on migrating RainbowKit with detailed steps and information on breaking changes.
+- [RainbowKit Documentation](https://rainbowkit.com/docs/introduction): To provide documentation on using RainbowKit for wallet connection in dapps with customization options.
+- [Cool Mode Instructions](https://rainbowkit.com/docs/cool-mode): Describes how to enable and use Cool Mode in RainbowKit for enhanced wallet selection animations.
+- [RainbowKit Modal Sizes](https://rainbowkit.com/docs/modal-sizes): To guide users on the usage of different modal sizes in RainbowKit.
+- [Wallet Integration for Developers](https://rainbowkit.com): Offering developers an easy, customizable way to integrate wallet connections into their applications.
+- [Custom Avatars Guide](https://rainbowkit.com/docs/custom-avatars): Guide on customizing user avatars in RainbowKit applications.
+- [Customizing RainbowKit Info](https://rainbowkit.com/docs/custom-app-info): Guide on customizing app information for RainbowKit integration.
+- [Authentication Guide](https://rainbowkit.com/docs/authentication): Guide to implement user authentication using RainbowKit with Sign-In with Ethereum and NextAuth.
+- [Custom Theme in RainbowKit](https://rainbowkit.com/docs/custom-theme): Guidance on creating and managing custom themes in RainbowKit.
+- [Localization Guide](https://rainbowkit.com/docs/localization): Guide for implementing localization in dApps using RainbowKit.
+- [WalletButton Documentation](https://rainbowkit.com/docs/wallet-button): Guide for using the WalletButton component in the RainbowKit for decentralized applications.
+- [Email Protection Info](https://rainbowkit.com/cdn-cgi/l/email-protection): Inform users about email protection and encourage Cloudflare sign-ups.
+- [Recent Transactions Feature](https://rainbowkit.com/docs/recent-transactions): Instructions for displaying recent transactions in RainbowKit's account modal.
+- [Chain Customization Guide](https://rainbowkit.com/docs/chains): Guide for customizing blockchain integration with RainbowKit.
+- [Modal Hooks Documentation](https://rainbowkit.com/docs/modal-hooks): Explains how to use modal hooks in RainbowKit for dApps.
+- [Custom Chains Guide](https://rainbowkit.com/docs/custom-chains): Guide to creating custom blockchain integrations for RainbowKit.
+- [RainbowKit Installation Guide](https://rainbowkit.com/docs/installation): Guide users on installing and setting up RainbowKit for their React applications.
+- [Custom Authentication Integration](https://rainbowkit.com/docs/custom-authentication): Guide for integrating custom authentication with RainbowKit.
