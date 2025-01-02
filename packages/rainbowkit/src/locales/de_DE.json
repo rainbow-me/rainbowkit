@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Installieren Sie die XDEFI Wallet-Erweiterung",
-          "description": "Wir empfehlen, die XDEFI Wallet an Ihre Taskleiste anzuheften, um schnelleren Zugriff auf Ihre Wallet zu haben."
+          "title": "Installieren Sie die Ctrl Wallet-Erweiterung",
+          "description": "Wir empfehlen, die Ctrl Wallet an Ihre Taskleiste anzuheften, um schnelleren Zugriff auf Ihre Wallet zu haben."
         },
         "step2": {
           "title": "Erstellen oder importieren Sie ein Wallet",

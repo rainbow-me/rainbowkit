@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "安装 XDEFI 钱包扩展程序",
-          "description": "我们建议将XDEFI钱包固定到您的任务栏，以便更快地访问您的钱包。"
+          "title": "安装 Ctrl 钱包扩展程序",
+          "description": "我们建议将Ctrl钱包固定到您的任务栏，以便更快地访问您的钱包。"
         },
         "step2": {
           "title": "创建或导入钱包",

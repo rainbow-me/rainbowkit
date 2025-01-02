@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Pasang sambungan XDEFI Wallet",
-          "description": "Kami mengesyorkan anda pin XDEFI Wallet ke taskbar anda untuk akses lebih cepat ke dompet anda."
+          "title": "Pasang sambungan Ctrl Wallet",
+          "description": "Kami mengesyorkan anda pin Ctrl Wallet ke taskbar anda untuk akses lebih cepat ke dompet anda."
         },
         "step2": {
           "title": "Cipta atau Import Dompet",

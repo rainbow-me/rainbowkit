@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Dompet XDEFI",
-          "description": "Kami merekomendasikan menempelkan XDEFI Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "Instal ekstensi Dompet Ctrl",
+          "description": "Kami merekomendasikan menempelkan Ctrl Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",

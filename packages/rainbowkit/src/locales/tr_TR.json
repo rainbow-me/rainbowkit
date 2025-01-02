@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Ctrl Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Ctrl Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",

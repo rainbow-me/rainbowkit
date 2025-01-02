@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI 지갑 확장 프로그램을 설치하세요",
-          "description": "지갑에 빠르게 액세스하기 위해 작업 표시줄에 XDEFI Wallet을 고정하는 것을 권장합니다."
+          "title": "Ctrl 지갑 확장 프로그램을 설치하세요",
+          "description": "지갑에 빠르게 액세스하기 위해 작업 표시줄에 Ctrl Wallet을 고정하는 것을 권장합니다."
         },
         "step2": {
           "title": "지갑을 만들거나 가져오기",

@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Cài đặt tiện ích mở rộng XDEFI Wallet",
-          "description": "Chúng tôi khuyên bạn nên ghim XDEFI Wallet vào thanh tác vụ để truy cập ví nhanh hơn."
+          "title": "Cài đặt tiện ích mở rộng Ctrl Wallet",
+          "description": "Chúng tôi khuyên bạn nên ghim Ctrl Wallet vào thanh tác vụ để truy cập ví nhanh hơn."
         },
         "step2": {
           "title": "Tạo hoặc Nhập ví",
