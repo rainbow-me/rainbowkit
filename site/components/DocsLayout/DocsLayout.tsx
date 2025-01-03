@@ -46,7 +46,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       doc.slug === allDocsRoutes[currentPageIndex + 1]?.slug &&
       doc.locale === router.locale,
   );
-  const docsMobileMenuRef = React.useRef<HTMLDivElement>(null);
+  const docsMobileMenuRef = React.useRef<HTMLDivElement>(
+    null,
+  ) as React.RefObject<HTMLDivElement>;
 
   const { isConnected } = useAccount();
   const ref = useCoolMode(
