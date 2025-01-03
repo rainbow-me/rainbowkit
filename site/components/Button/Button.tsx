@@ -1,5 +1,5 @@
 import type { Theme } from 'css/types';
-import React from 'react';
+import React, { type JSX } from 'react';
 import { Box, type BoxProps } from '../Box/Box';
 import * as styles from './Button.css';
 
