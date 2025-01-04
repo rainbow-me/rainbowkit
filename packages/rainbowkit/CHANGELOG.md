@@ -245,7 +245,7 @@
 ### Patch Changes
 
 - 2180ddd: Added Nest Wallet support with `nestWallet` wallet connector
-- fea278a: The `coinbaseWallet` wallet connector now has a `preference` argument to control whether Smart Wallet is enabled and available for users. Preference based behavior is documented [here](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+- fea278a: The `coinbaseWallet` wallet connector now has a `preference` argument to control whether Smart Wallet is enabled and available for users. Preference based behavior is documented [here](https://www.smartwallet.dev/sdk/make-web3-provider#parameters).
 
   Smart Wallet will be enabled by default with `all` in early June, without a further upgrade.
 
@@ -1272,7 +1272,7 @@
     downloadUrls: {
       chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
       edge: 'https://microsoftedge.microsoft.com/addons/detail/my-wallet',
-      firefox: 'https://addons.mozilla.org/firefox/addon/my-wallet',
+      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/mytonwallet',
       opera: 'https://addons.opera.com/extensions/details/my-wallet',
       browserExtension: 'https://my-wallet/', */ fallback download page */
     }
@@ -2312,7 +2312,7 @@
 
 - c0c494a: **Breaking:** Updated the `wagmi` peer dependency to `^0.4` & removed the `configureChains` & `apiProvider` exports.
 
-  You now need to use [wagmi's configureChains](https://wagmi.sh/docs/providers/configuring-chains) function and providers.
+  You now need to use [wagmi's configureChains](https://1.x.wagmi.sh/react/providers/configuring-chains) function and providers.
 
   ## Migration guide
 
