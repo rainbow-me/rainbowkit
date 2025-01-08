@@ -10,7 +10,7 @@
     "@rainbow-me/rainbow-button": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
     "next": "^14.2.10",
-    "next-auth": "4.24.5",
+    "next-auth": "4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "viem": "2.21.55",
