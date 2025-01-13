@@ -71,7 +71,7 @@
     "@vanilla-extract/sprinkles": "1.6.3",
     "clsx": "2.1.1",
     "qrcode": "1.5.4",
-    "react-remove-scroll": "2.6.0",
+    "react-remove-scroll": "2.6.2",
     "ua-parser-js": "^1.0.37"
   },
   "repository": {
