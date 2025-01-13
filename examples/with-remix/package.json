@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
     "typescript": "5.5.2"
   },
   "engines": {
