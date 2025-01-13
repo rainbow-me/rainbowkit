@@ -1,5 +1,15 @@
 # example
 
+## 0.0.109
+
+### Patch Changes
+
+- f533ac2: Upgraded to Next 15 at `15.1.4` and resolved [breaking changes](https://nextjs.org/docs/app/building-your-application/upgrading/version-15). Upgraded to React 19 at `19.0.0` and resolved [breaking changes](https://react.dev/blog/2024/04/25/react-19-upgrade-guide). Upgraded `wagmi` to `^2.14.7`.
+- Updated dependencies [f533ac2]
+  - @rainbow-me/rainbowkit@2.2.2
+  - @rainbow-me/rainbow-button@0.2.19
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.108
 
 ### Patch Changes
