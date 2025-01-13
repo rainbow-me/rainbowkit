@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^14.2.10",
+    "next": "^15.1.4",
     "next-intl": "^3.19.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -20,7 +20,6 @@
   "devDependencies": {
     "@types/node": "^20.14.8",
     "@types/react": "^19.0.6",
-    "next": "^14.2.10",
     "typescript": "5.5.2"
   },
   "engines": {

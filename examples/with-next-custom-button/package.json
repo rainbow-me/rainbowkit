@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^14.2.10",
+    "next": "^15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "viem": "2.21.55",
