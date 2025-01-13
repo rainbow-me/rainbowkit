@@ -74,8 +74,10 @@
     "wagmi": "^2.14.3"
   },
   "resolutions": {
-    "@types/react": "19.0.6",
-    "@types/react-dom": "19.0.3"
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "packageManager": "pnpm@9.15.0",
   "pnpm": {
