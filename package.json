@@ -71,7 +71,7 @@
     "typescript": "5.5.2",
     "viem": "2.21.55",
     "vitest": "2.0.5",
-    "wagmi": "^2.14.3"
+    "wagmi": "^2.14.7"
   },
   "resolutions": {
     "@types/react": "^19.0.6",
