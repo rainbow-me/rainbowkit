@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.2
+
+### Patch Changes
+
+- f533ac2: Support for React 19.
+
 ## 2.2.1
 
 ### Patch Changes
