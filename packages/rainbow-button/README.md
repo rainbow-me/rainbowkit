@@ -36,7 +36,7 @@ import { createConfig, WagmiConfig } from 'wagmi';
 
 The `RainbowConnector` supports connecting with Rainbow just like Wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
 
-Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud]https://cloud.reown.com/sign-in). This is absolutely free and only takes a few minutes.
+Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.reown.com/sign-in). This is absolutely free and only takes a few minutes.
 
 ```tsx
 const config = createConfig({
