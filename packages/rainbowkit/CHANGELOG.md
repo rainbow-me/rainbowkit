@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.3
+
+### Patch Changes
+
+- b5a7878: Updated OP Mainnet branding
+
 ## 2.2.2
 
 ### Patch Changes
