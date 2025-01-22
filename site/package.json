@@ -18,6 +18,7 @@
     "@vanilla-extract/next-plugin": "2.4.5",
     "@vanilla-extract/recipes": "0.5.5",
     "@vanilla-extract/sprinkles": "1.6.3",
+    "@vercel/speed-insights": "^1.1.0",
     "clsx": "2.1.1",
     "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
