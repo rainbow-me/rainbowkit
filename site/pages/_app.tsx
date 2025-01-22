@@ -1,12 +1,14 @@
 import '@rainbow-me/rainbowkit/styles.css';
-import { Provider } from 'components/Provider/Provider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { NextIntlClientProvider } from 'next-intl';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+
+import { Provider } from 'components/Provider/Provider';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
-import { NextIntlClientProvider } from 'next-intl';
 import '../css/docsSearch.css';
 import '../css/global.css';
 import { vars } from '../css/vars.css';
@@ -60,25 +62,28 @@ function App({ Component, pageProps }: AppProps) {
   }, [isDocs, isGuides]);
 
   return (
-    <NextIntlClientProvider
-      locale={router.locale}
-      messages={pageProps.messages}
-      timeZone="America/New_York" // Required to not get warnings
-    >
-      <Provider>
-        {isDocs ? (
-          <DocsLayout>
+    <>
+      <NextIntlClientProvider
+        locale={router.locale}
+        messages={pageProps.messages}
+        timeZone="America/New_York" // Required to not get warnings
+      >
+        <Provider>
+          {isDocs ? (
+            <DocsLayout>
+              <Component {...pageProps} />
+            </DocsLayout>
+          ) : isGuides ? (
+            <GuidesLayout>
+              <Component {...pageProps} />
+            </GuidesLayout>
+          ) : (
             <Component {...pageProps} />
-          </DocsLayout>
-        ) : isGuides ? (
-          <GuidesLayout>
-            <Component {...pageProps} />
-          </GuidesLayout>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </Provider>
-    </NextIntlClientProvider>
+          )}
+        </Provider>
+      </NextIntlClientProvider>
+      <SpeedInsights />
+    </>
   );
 }
 
