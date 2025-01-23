@@ -23,6 +23,7 @@ export type WalletProviderFlags =
   | 'isBifrost'
   | 'isBitKeep'
   | 'isBitski'
+  | 'isBinance'
   | 'isBlockWallet'
   | 'isBraveWallet'
   | 'isCoinbaseWallet'
