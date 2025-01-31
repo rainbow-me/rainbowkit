@@ -14,6 +14,9 @@ export const beamWallet = (): Wallet => ({
     flag: "isBeam",
     namespace: "beam.provider",
   }),
+  downloadUrls: {
+    // We expect Beam to be explicitly installed by the app that uses it, a download URL is not required.
+  },
   createConnector: getInjectedConnector({
     flag: "isBeam",
     namespace: "beam.provider",
