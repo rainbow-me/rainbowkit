@@ -2,7 +2,7 @@ import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import { config } from 'dotenv';
 import * as esbuild from 'esbuild';
-import { replace } from 'esbuild-plugin-replace';
+import replace from 'esbuild-plugin-replace';
 import postcss from 'postcss';
 import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
