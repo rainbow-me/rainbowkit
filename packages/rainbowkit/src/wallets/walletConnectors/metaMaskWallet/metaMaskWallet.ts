@@ -20,6 +20,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isApexWallet) return false;
   if (ethereum.isAvalanche) return false;
   if (ethereum.isBackpack) return false;
+  if (ethereum.isBeam) return false;
   if (ethereum.isBifrost) return false;
   if (ethereum.isBitKeep) return false;
   if (ethereum.isBitski) return false;

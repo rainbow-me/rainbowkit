@@ -20,6 +20,7 @@ export type WalletProviderFlags =
   | 'isApexWallet'
   | 'isAvalanche'
   | 'isBackpack'
+  | 'isBeam'
   | 'isBifrost'
   | 'isBitKeep'
   | 'isBitski'
