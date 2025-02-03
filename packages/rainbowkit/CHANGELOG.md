@@ -759,7 +759,7 @@
   ]);
   ```
 
-- b0022aea: Desig Wallet support
+- b0022aea: Design Wallet support
 
   **Example usage**
 
