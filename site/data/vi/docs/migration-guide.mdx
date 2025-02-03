@@ -8,7 +8,7 @@ title: Hướng Dẫn Di Chuyển
 
 ### Thay Đổi Phá Vỡ 2.x.x
 
-Các peer dependencies [wagmi](https://wagmi.sh) và [viem](https://viem.sh) đã đạt phiên bản `2.x.x` với các thay đổi phá vỡ.
+Các peer dependencies [wagmi](https://wagmi.sh) và [viem](https://viem.sh) đã đạt phiên bản `2.x.x` với các they, that đổi phá vỡ.
 
 Làm theo các bước dưới đây để di chuyển.
 
@@ -91,7 +91,7 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Kiểm tra các thay đổi phá vỡ trong `wagmi` và `viem`**
+**4. Kiểm tra các they, that đổi phá vỡ trong `wagmi` và `viem`**
 
 Nếu bạn sử dụng các hooks `wagmi` và các actions `viem` trong dApp của bạn, bạn sẽ cần theo dõi các hướng dẫn di chuyển cho v2:
 
@@ -108,7 +108,7 @@ Các nhà phát triển tiếp tục có toàn quyền kiểm soát Danh sách V
 
 **2. Cấu hình Wagmi với getDefaultConfig**
 
-API mới này đơn giản hóa trải nghiệm cấu hình và thay thế nhu cầu sử dụng trực tiếp `createConfig` của Wagmi. Cấu hình chuỗi đơn giản hơn, bao gồm các nhà cung cấp công khai được suy luận cho `transports`.
+API mới này đơn giản hóa trải nghiệm cấu hình và they, that thế nhu cầu sử dụng trực tiếp `createConfig` của Wagmi. Cấu hình chuỗi đơn giản hơn, bao gồm các nhà cung cấp công khai được suy luận cho `transports`.
 
 Danh sách ví mặc định sẽ được tự động bao gồm, bãi bỏ nhu cầu sử dụng `getDefaultWallets` và `connectorsForWallets`.
 
@@ -135,7 +135,7 @@ Bạn không còn cần truyền `chains` vào `<RainbowKitProvider>`.
 
 **4. Chuỗi Tùy chỉnh**
 
-Loại `Chain` đã thay đổi theo Wagmi v2 và tiếp tục hỗ trợ siêu dữ liệu `iconUrl` và `iconBackground` của RainbowKit.
+Loại `Chain` đã they, that đổi theo Wagmi v2 và tiếp tục hỗ trợ siêu dữ liệu `iconUrl` và `iconBackground` của RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -197,7 +197,7 @@ Ví dụ với `createConfig`:
 
 **5. Ví tùy chỉnh**
 
-Các connector ví RainbowKit đã trải qua nhiều thay đổi đáng kể để hỗ trợ Wagmi v2. Tham khảo [tài liệu đã được cập nhật](https://www.rainbowkit.com/docs/custom-wallets) và một [ví dụ về connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) để nâng cấp bất kỳ Kết Nối Ví Tùy Chỉnh nào trong dApp của bạn.
+Các connector ví RainbowKit đã trải qua nhiều they, that đổi đáng kể để hỗ trợ Wagmi v2. Tham khảo [tài liệu đã được cập nhật](https://www.rainbowkit.com/docs/custom-wallets) và một [ví dụ về connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) để nâng cấp bất kỳ Kết Nối Ví Tùy Chỉnh nào trong dApp của bạn.
 
 Các connector ví bây giờ cũng hỗ trợ tiêu chuẩn EIP-6963 với thuộc tính `rdns`. Đảm bảo rằng điều này được điền để ngăn chặn các tham chiếu trùng lặp tới các ví hỗ trợ EIP-6963 trong danh sách ví của bạn.
 
@@ -231,7 +231,7 @@ Tham khảo [Cấu Hình Webpack của Next.js](https://github.com/rainbow-me/ra
 
 Hướng dẫn khung bổ sung cho Vite và Remix có sẵn [tại đây](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-\*\*4. Kiểm tra thay đổi phá vỡ trong `wagmi`
+\*\*4. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần theo dõi hướng dẫn di chuyển `wagmi` lên v1.
 
@@ -241,7 +241,7 @@ Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, 
 
 Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.12.x`.
 
-RainbowKit đã thông qua kết nối `WalletConnectLegacyConnector` trong `wagmi` để tiếp tục hỗ trợ WalletConnect v1. Hỗ trợ cho WalletConnect v2 và `WalletConnectConnector` sẽ sớm có bản phát hành bản vá mà không có thay đổi phá vỡ.
+RainbowKit đã thông qua kết nối `WalletConnectLegacyConnector` trong `wagmi` để tiếp tục hỗ trợ WalletConnect v1. Hỗ trợ cho WalletConnect v2 và `WalletConnectConnector` sẽ sớm có bản phát hành bản vá mà không có they, that đổi phá vỡ.
 
 Ví sẽ được chuyển tự động trong các bản phát hành tương lai.
 
@@ -295,9 +295,9 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các they, that đổi phá vỡ trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
@@ -313,9 +313,9 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các they, that đổi phá vỡ trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
@@ -331,9 +331,9 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các they, that đổi phá vỡ trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
@@ -349,9 +349,9 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các they, that đổi phá vỡ trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
@@ -384,7 +384,7 @@ const wallets = [
 ];
 ```
 
-Cũng lưu ý rằng lớp tương thích ngược của Steakwallet đã bị loại bỏ. Nên sử dụng Omni thay thế.
+Cũng lưu ý rằng lớp tương thích ngược của Steakwallet đã bị loại bỏ. Nên sử dụng Omni they, that thế.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -410,13 +410,13 @@ Nâng cấp RainbowKit và wagmi lên phiên bản mới nhất
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra they, that đổi phá vỡ trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các they, that đổi phá vỡ trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ ở đây](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.x Những thay đổi quan trọng
+### 0.3.x Những they, that đổi quan trọng
 
 Đã xóa tham số `chainId` khỏi `createConnector` trên loại `Wallet`.
 
@@ -476,7 +476,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x Những thay đổi quan trọng
+### 0.2.x Những they, that đổi quan trọng
 
 RainbowKit đã cập nhật phụ thuộc đối tác `wagmi` lên `^0.4`.
 
@@ -492,7 +492,7 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 
 #### 2. Thay thế nhập khẩu configureChains
 
-Nhập `configureChains` từ wagmi thay vì RainbowKit:
+Nhập `configureChains` từ wagmi they, that vì RainbowKit:
 
 ```diff
 - import { configureChains } from '@rainbow-me/rainbowkit';
