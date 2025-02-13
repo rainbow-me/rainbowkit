@@ -47,8 +47,8 @@
     "@commitlint/config-conventional": "^19.4.1",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
     "@tanstack/react-query": "^5.55.3",
-    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.14.8",
@@ -70,9 +70,9 @@
     "react-dom": "^19.0.0",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
-    "viem": "2.21.55",
+    "viem": "2.23.3",
     "vitest": "2.0.5",
-    "wagmi": "^2.14.7"
+    "wagmi": "^2.14.11"
   },
   "resolutions": {
     "@types/react": "^19.0.6",
@@ -80,8 +80,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.4.1",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "@vercel/speed-insights",
+      "esbuild"
+    ]
   }
 }

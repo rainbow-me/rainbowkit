@@ -13,8 +13,8 @@
     "next-auth": "4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "viem": "2.21.55",
-    "wagmi": "^2.14.7"
+    "viem": "2.23.3",
+    "wagmi": "^2.14.11"
   },
   "scripts": {
     "dev": "next dev",
