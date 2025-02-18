@@ -57,7 +57,8 @@ type ChainName =
   | 'zoraSepolia'
   | 'zoraTestnet'
   | 'scroll'
-  | 'scrollSepolia';
+  | 'scrollSepolia'
+  | 'hyperevm';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -179,6 +180,11 @@ const scrollIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
 };
 
+const hyperevmIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -238,6 +244,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zoraTestnet: { chainId: 999, ...zoraIcon },
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
+  hyperevm: { chainId: 999, ...hyperevmIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
