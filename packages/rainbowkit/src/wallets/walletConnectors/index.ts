@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { backpackWallet } from './backpackWallet/backpackWallet';
 import { berasigWallet } from './berasigWallet/berasigWallet';
 import { bestWallet } from './bestWallet/bestWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
@@ -64,6 +65,7 @@ import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
   argentWallet,
+  backpackWallet,
   berasigWallet,
   bestWallet,
   bifrostWallet,
@@ -108,10 +110,10 @@ export {
   rabbyWallet,
   rainbowWallet,
   ramperWallet,
-  roninWallet,
-  safeWallet,
+  roninWallet, 
   safeheronWallet,
-  safepalWallet,
+  safepalWallet, 
+  safeWallet, 
   seifWallet,
   subWallet,
   tahoWallet,
@@ -125,5 +127,5 @@ export {
   wigwamWallet,
   xdefiWallet,
   zealWallet,
-  zerionWallet,
+  zerionWallet
 };
