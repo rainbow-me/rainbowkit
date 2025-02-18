@@ -208,6 +208,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   gnosis: { chainId: 100, name: 'Gnosis', ...gnosisIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
+  hyperevm: { chainId: 999, ...hyperevmIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   kaia: { chainId: 8_217, name: 'Kaia', ...kaiaIcon },
   kairos: { chainId: 1_001, name: 'Kairos', ...kaiaIcon },
@@ -229,6 +230,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   ropsten: { chainId: 3, ...ethereumIcon },
   ronin: { chainId: 2020, ...roninIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  scroll: { chainId: 534352, ...scrollIcon },
+  scrollSepolia: { chainId: 534351, ...scrollIcon },
   xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
   xdcTestnet: { chainId: 51, ...xdcIcon },
   zetachain: { chainId: 7000, name: 'ZetaChain', ...zetachainIcon },
@@ -242,9 +245,6 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraSepolia: { chainId: 999999999, ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
-  scroll: { chainId: 534352, ...scrollIcon },
-  scrollSepolia: { chainId: 534351, ...scrollIcon },
-  hyperevm: { chainId: 999, ...hyperevmIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
