@@ -182,7 +182,7 @@ const scrollIcon: IconMetadata = {
 
 const hyperevmIcon: IconMetadata = {
   iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
+  iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
