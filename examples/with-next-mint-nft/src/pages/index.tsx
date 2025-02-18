@@ -8,12 +8,12 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi';
-import { abi } from '../../contract-abi';
+import { rainbowKitNftAbi } from '../../contract/abi/';
 import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
 
 const contractConfig = {
   address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
-  abi,
+  abi: rainbowKitNftAbi,
 } as const;
 
 const Home: NextPage = () => {
