@@ -129,14 +129,14 @@ const Home: NextPage = () => {
                 </p>
                 <p style={{ marginBottom: 6 }}>
                   View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
+                  <a href={`https://sepolia.etherscan.io/tx/${hash}`}>
                     Etherscan
                   </a>
                 </p>
                 <p>
                   View on{' '}
                   <a
-                    href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
+                    href={`https://testnets.opensea.io/assets/sepolia/${txData?.to}/1`}
                   >
                     Opensea
                   </a>
