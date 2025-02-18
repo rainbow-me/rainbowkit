@@ -1,18 +1,18 @@
-import React from 'react';
-import Image from 'next/legacy/image';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import React from "react";
+import Image from "next/legacy/image";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import type { NextPage } from "next";
 import {
   useAccount,
   useReadContract,
   useWaitForTransactionReceipt,
   useWriteContract,
-} from 'wagmi';
-import { abi } from '../../contract-abi';
-import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
+} from "wagmi";
+import { abi } from "../../contract-abi";
+import FlipCard, { BackCard, FrontCard } from "../../components/FlipCard";
 
 const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  address: "0xc1C1Ad6Fa1D08CbdC171FcccF79FA948A6E4393B",
   abi,
 } as const;
 
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(BigInt(0));
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
 
   const {
     data: hash,
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
   const { data: totalSupplyData } = useReadContract({
     ...contractConfig,
-    functionName: 'totalSupply',
+    functionName: "totalSupply",
   });
 
   const {
@@ -58,21 +58,21 @@ const Home: NextPage = () => {
   return (
     <div className="page">
       <div className="container">
-        <div style={{ flex: '1 1 auto' }}>
-          <div style={{ padding: '24px 24px 24px 0' }}>
+        <div style={{ flex: "1 1 auto" }}>
+          <div style={{ padding: "24px 24px 24px 0" }}>
             <h1>NFT Demo Mint</h1>
-            <p style={{ margin: '12px 0 24px' }}>
+            <p style={{ margin: "12px 0 24px" }}>
               {Number(totalMinted)} minted so far!
             </p>
             <ConnectButton />
 
             {mintError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {mintError.message}
               </p>
             )}
             {txError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {txError.message}
               </p>
             )}
@@ -87,19 +87,20 @@ const Home: NextPage = () => {
                 onClick={() =>
                   mint?.({
                     ...contractConfig,
-                    functionName: 'mint',
+                    functionName: "mint",
+                    args: [address as `0x${string}`],
                   })
                 }
               >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
+                {isMintLoading && "Waiting for approval"}
+                {isMintStarted && "Minting..."}
+                {!isMintLoading && !isMintStarted && "Mint"}
               </button>
             )}
           </div>
         </div>
 
-        <div style={{ flex: '0 0 auto' }}>
+        <div style={{ flex: "0 0 auto" }}>
           <FlipCard>
             <FrontCard isCardFlipped={isMinted}>
               <Image
@@ -128,15 +129,15 @@ const Home: NextPage = () => {
                   Your NFT will show up in your wallet in the next few minutes.
                 </p>
                 <p style={{ marginBottom: 6 }}>
-                  View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
+                  View on{" "}
+                  <a href={`https://sepolia.etherscan.io/tx/${hash}`}>
                     Etherscan
                   </a>
                 </p>
                 <p>
-                  View on{' '}
+                  View on{" "}
                   <a
-                    href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
+                    href={`https://testnets.opensea.io/assets/sepolia/${txData?.to}/${totalMinted}`}
                   >
                     Opensea
                   </a>
