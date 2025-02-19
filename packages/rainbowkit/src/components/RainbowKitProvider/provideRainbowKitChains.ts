@@ -5,6 +5,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'apechain'
+  | 'apechainCurtis'
   | 'arbitrum'
   | 'arbitrumGoerli'
   | 'arbitrumSepolia'
@@ -242,6 +243,7 @@ const zoraIcon: IconMetadata = {
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
+  apechainCurtis: { chainId: 33139, name: 'ApeChain Curtis', ...apeChainIcon },
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
