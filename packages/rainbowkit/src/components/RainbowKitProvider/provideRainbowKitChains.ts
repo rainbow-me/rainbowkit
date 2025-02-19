@@ -4,32 +4,45 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // Sourced from https://github.com/wevm/viem/tree/main/src/chains/definitions
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
+  | 'apechain'
+  | 'apechainCurtis'
   | 'arbitrum'
   | 'arbitrumGoerli'
   | 'arbitrumSepolia'
   | 'avalanche'
   | 'avalancheFuji'
-  | 'celo'
-  | 'celoAlfajores'
-  | 'cronos'
-  | 'cronosTestnet'
   | 'base'
   | 'baseGoerli'
   | 'baseSepolia'
+  | 'berachain'
+  | 'berachainArtio'
+  | 'berachainBArtio'
   | 'blast'
   | 'blastSepolia'
   | 'bsc'
   | 'bscTestnet'
+  | 'celo'
+  | 'celoAlfajores'
+  | 'cronos'
+  | 'cronosTestnet'
+  | 'degen'
   | 'flow'
   | 'flowTestnet'
-  | 'goerli'
   | 'gnosis'
+  | 'goerli'
+  | 'gravity'
+  | 'gravitySepolia'
   | 'hardhat'
   | 'holesky'
   | 'hyperevm'
+  | 'ink'
+  | 'inkSepolia'
   | 'kaia'
   | 'kairos'
   | 'kovan'
+  | 'linea'
+  | 'lineaGoerli'
+  | 'lineaSepolia'
   | 'localhost'
   | 'mainnet'
   | 'manta'
@@ -38,15 +51,18 @@ type ChainName =
   | 'mantle'
   | 'mantleTestnet'
   | 'optimism'
-  | 'optimismKovan'
   | 'optimismGoerli'
+  | 'optimismKovan'
   | 'optimismSepolia'
   | 'polygon'
   | 'polygonAmoy'
   | 'polygonMumbai'
   | 'rinkeby'
-  | 'ropsten'
   | 'ronin'
+  | 'ropsten'
+  | 'sanko'
+  | 'scroll'
+  | 'scrollSepolia'
   | 'sepolia'
   | 'unichain'
   | 'unichainSepolia'
@@ -58,9 +74,7 @@ type ChainName =
   | 'zkSyncTestnet'
   | 'zora'
   | 'zoraSepolia'
-  | 'zoraTestnet'
-  | 'scroll'
-  | 'scrollSepolia';
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -71,6 +85,11 @@ type ChainMetadata = {
   chainId: number;
   name?: string;
 } & IconMetadata;
+
+const apeChainIcon: IconMetadata = {
+  iconBackground: '#7290CC',
+  iconUrl: async () => (await import('./chainIcons/apechain.svg')).default,
+};
 
 const arbitrumIcon: IconMetadata = {
   iconBackground: '#96bedc',
@@ -85,6 +104,11 @@ const avalancheIcon: IconMetadata = {
 const baseIcon: IconMetadata = {
   iconBackground: '#0052ff',
   iconUrl: async () => (await import('./chainIcons/base.svg')).default,
+};
+
+const berachainIcon: IconMetadata = {
+  iconBackground: '#814625',
+  iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
 };
 
 const blastIcon: IconMetadata = {
@@ -107,6 +131,11 @@ const cronosIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/cronos.svg')).default,
 };
 
+const degenIcon: IconMetadata = {
+  iconBackground: '#A36EFD',
+  iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -122,6 +151,11 @@ const gnosisIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/gnosis.svg')).default,
 };
 
+const gravityIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/gravity.svg')).default,
+};
+
 const hardhatIcon: IconMetadata = {
   iconBackground: '#f9f7ec',
   iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
@@ -132,14 +166,19 @@ const hyperevmIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
 };
 
+const inkIcon: IconMetadata = {
+  iconBackground: '#7132F5',
+  iconUrl: async () => (await import('./chainIcons/ink.svg')).default,
+};
+
 const kaiaIcon: IconMetadata = {
   iconBackground: 'transparent',
   iconUrl: async () => (await import('./chainIcons/kaia.svg')).default,
 };
 
-const optimismIcon: IconMetadata = {
-  iconBackground: '#ff5a57',
-  iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
+const lineaIcon: IconMetadata = {
+  iconBackground: '#ffffff',
+  iconUrl: async () => (await import('./chainIcons/linea.svg')).default,
 };
 
 const mantaIcon: IconMetadata = {
@@ -152,13 +191,33 @@ const mantleIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/mantle.svg')).default,
 };
 
+const optimismIcon: IconMetadata = {
+  iconBackground: '#ff5a57',
+  iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
+};
+
 const polygonIcon: IconMetadata = {
   iconBackground: '#9f71ec',
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
-const unichainIcon: IconMetadata = {
+const roninIcon: IconMetadata = {
+  iconBackground: '#1273EA',
+  iconUrl: async () => (await import('./chainIcons/ronin.svg')).default,
+};
+
+const sankoIcon: IconMetadata = {
   iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/sanko.png')).default,
+};
+
+const scrollIcon: IconMetadata = {
+  iconBackground: '#FFEEDA',
+  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
+};
+
+const unichainIcon: IconMetadata = {
+  iconBackground: '#F50DB4',
   iconUrl: async () => (await import('./chainIcons/unichain.svg')).default,
 };
 
@@ -174,7 +233,7 @@ const zetachainIcon: IconMetadata = {
 
 const zkSyncIcon: IconMetadata = {
   iconBackground: '#f9f7ec',
-  iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
+  iconUrl: async () => (await import('./chainIcons/zksync.svg')).default,
 };
 
 const zoraIcon: IconMetadata = {
@@ -182,17 +241,9 @@ const zoraIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
-const roninIcon: IconMetadata = {
-  iconBackground: '#1273EA',
-  iconUrl: async () => (await import('./chainIcons/ronin.svg')).default,
-};
-
-const scrollIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
-};
-
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
+  apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
+  apechainCurtis: { chainId: 33_111, name: 'ApeChain Curtis', ...apeChainIcon },
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
@@ -201,6 +252,13 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
   baseSepolia: { chainId: 84532, ...baseIcon },
+  berachain: { chainId: 80094, name: 'Berachain', ...berachainIcon },
+  berachainArtio: { chainId: 80085, name: 'Berachain Artio', ...berachainIcon },
+  berachainBArtio: {
+    chainId: 80084,
+    name: 'Berachain bArtio',
+    ...berachainIcon,
+  },
   blast: { chainId: 81457, name: 'Blast', ...blastIcon },
   blastSepolia: { chainId: 168_587_773, ...blastIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
@@ -209,16 +267,24 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   celoAlfajores: { chainId: 44787, name: 'Celo Alfajores', ...celoIcon },
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
+  degen: { chainId: 666666666, name: 'Degen', ...degenIcon },
   flow: { chainId: 747, ...flowIcon },
   flowTestnet: { chainId: 545, ...flowIcon },
-  goerli: { chainId: 5, ...ethereumIcon },
   gnosis: { chainId: 100, name: 'Gnosis', ...gnosisIcon },
+  goerli: { chainId: 5, ...ethereumIcon },
+  gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
+  gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   hyperevm: { chainId: 999, ...hyperevmIcon },
-  kovan: { chainId: 42, ...ethereumIcon },
+  ink: { chainId: 57073, ...inkIcon },
+  inkSepolia: { chainId: 763373, ...inkIcon },
   kaia: { chainId: 8_217, name: 'Kaia', ...kaiaIcon },
   kairos: { chainId: 1_001, name: 'Kairos', ...kaiaIcon },
+  kovan: { chainId: 42, ...ethereumIcon },
+  linea: { chainId: 59144, name: 'Linea', ...lineaIcon },
+  lineaGoerli: { chainId: 59140, name: 'Linea Goerli', ...lineaIcon },
+  lineaSepolia: { chainId: 59141, name: 'Linea Sepolia', ...lineaIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
   manta: { chainId: 169, name: 'Manta', ...mantaIcon },
@@ -234,11 +300,12 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   polygonAmoy: { chainId: 80002, ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
-  ropsten: { chainId: 3, ...ethereumIcon },
   ronin: { chainId: 2020, ...roninIcon },
-  sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  ropsten: { chainId: 3, ...ethereumIcon },
+  sanko: { chainId: 1996, name: 'Sanko', ...sankoIcon },
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
+  sepolia: { chainId: 11_155_111, ...ethereumIcon },
   unichain: { chainId: 130, ...unichainIcon },
   unichainSepolia: { chainId: 1301, ...unichainIcon },
   xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
