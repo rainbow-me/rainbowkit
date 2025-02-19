@@ -70,7 +70,7 @@
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
     "viem": "2.23.3",
-    "vitest": "2.0.5",
+    "vitest": "2.1.9",
     "wagmi": "^2.14.11"
   },
   "resolutions": {
