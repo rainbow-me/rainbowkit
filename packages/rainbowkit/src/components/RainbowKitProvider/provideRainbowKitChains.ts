@@ -69,7 +69,10 @@ type ChainName =
   | 'lineaSepolia'
   | 'gravity'
   | 'gravitySepolia'
-  | 'degen';
+  | 'degen'
+  | 'berachain'
+  | 'berachainBArtio'
+  | 'berachainArtio';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -226,6 +229,11 @@ const degenIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
 };
 
+const berachainIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -297,6 +305,13 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
   gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
   degen: { chainId: 666666666, name: 'Degen', ...degenIcon },
+  berachain: { chainId: 80094, name: 'Berachain', ...berachainIcon },
+  berachainBArtio: {
+    chainId: 80084,
+    name: 'Berachain bArtio',
+    ...berachainIcon,
+  },
+  berachainArtio: { chainId: 80085, name: 'Berachain Artio', ...berachainIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
