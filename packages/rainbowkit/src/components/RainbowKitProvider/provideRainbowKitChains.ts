@@ -72,7 +72,8 @@ type ChainName =
   | 'degen'
   | 'berachain'
   | 'berachainBArtio'
-  | 'berachainArtio';
+  | 'berachainArtio'
+  | 'apechain';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -234,6 +235,11 @@ const berachainIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
 };
 
+const apeChainIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/apechain.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -312,6 +318,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
     ...berachainIcon,
   },
   berachainArtio: { chainId: 80085, name: 'Berachain Artio', ...berachainIcon },
+  apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
