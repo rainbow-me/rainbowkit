@@ -1,5 +1,18 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.4
+
+### Patch Changes
+
+- f89eb92: Improved support for the Binance Wallet dApp browser
+- a765cfc: Added icons for ApeChain, Berachain, Degen, Gravity, Ink, Linea, and Sanko
+
+  Updated icons for Arbitrum, Blast, Gnosis, Scroll, and zkSync
+
+- 9c9c491: Added Backpack support with `backpackWallet` wallet connector
+- f5a7cec: Added icon for Unichain
+- e4547b8: Added icon for HyperEVM chain
+
 ## 2.2.3
 
 ### Patch Changes

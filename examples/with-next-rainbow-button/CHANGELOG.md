@@ -1,5 +1,13 @@
 # with-next-rainbow-button
 
+## 0.0.30
+
+### Patch Changes
+
+- 182440a: Upgraded `wagmi` to `^2.14.11` and `viem` to `2.23.3`
+- 3f82fe8: Adopted Biome formatting, modernized tsconfig
+  - @rainbow-me/rainbow-button@0.2.21
+
 ## 0.0.29
 
 ### Patch Changes
