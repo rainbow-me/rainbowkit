@@ -10,7 +10,7 @@ overrides:
   react: ^19.0.0
   react-dom: ^19.0.0
 
-pnpmfileChecksum: sha256-LdDCFIEO+heEhSVCBiR9hO0Mi8oo1Sb7pbjvVKWUWD0=
+pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
 
 importers:
 
@@ -265,12 +265,68 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   packages/create-rainbowkit/templates/next-app:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../../rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   packages/example:
     dependencies:
@@ -15056,7 +15112,7 @@ snapshots:
 
   '@types/qrcode@1.5.5':
     dependencies:
-      '@types/node': 18.19.47
+      '@types/node': 20.16.5
 
   '@types/qs@6.9.15': {}
 
@@ -19498,7 +19554,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.14.8
+      '@types/node': 20.16.5
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
