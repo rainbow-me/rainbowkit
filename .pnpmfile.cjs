@@ -48,8 +48,5 @@ function omitRootDependencies(packageName, dependencies) {
     }
   }
 
-  // Temporary fix for `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH`
-  // Favor the original dependencies object
-  // to preserve lockfile checksum consistency
-  return dependencies;
+  return filteredDependencies;
 }
