@@ -1,7 +1,7 @@
 import { isNotNullish } from '../../utils/isNotNullish';
 import type { RainbowKitChain } from './RainbowKitChainContext';
 
-// Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
+// Sourced from https://github.com/wevm/viem/tree/main/src/chains/definitions
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrum'
@@ -26,6 +26,7 @@ type ChainName =
   | 'gnosis'
   | 'hardhat'
   | 'holesky'
+  | 'hyperevm'
   | 'kaia'
   | 'kairos'
   | 'kovan'
@@ -47,6 +48,8 @@ type ChainName =
   | 'ropsten'
   | 'ronin'
   | 'sepolia'
+  | 'unichain'
+  | 'unichainSepolia'
   | 'xdc'
   | 'xdcTestnet'
   | 'zetachain'
@@ -57,8 +60,7 @@ type ChainName =
   | 'zoraSepolia'
   | 'zoraTestnet'
   | 'scroll'
-  | 'scrollSepolia'
-  | 'hyperevm';
+  | 'scrollSepolia';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -125,6 +127,11 @@ const hardhatIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
 };
 
+const hyperevmIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
+};
+
 const kaiaIcon: IconMetadata = {
   iconBackground: 'transparent',
   iconUrl: async () => (await import('./chainIcons/kaia.svg')).default,
@@ -148,6 +155,11 @@ const mantleIcon: IconMetadata = {
 const polygonIcon: IconMetadata = {
   iconBackground: '#9f71ec',
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
+};
+
+const unichainIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/unichain.svg')).default,
 };
 
 const xdcIcon: IconMetadata = {
@@ -178,11 +190,6 @@ const roninIcon: IconMetadata = {
 const scrollIcon: IconMetadata = {
   iconBackground: '#000000',
   iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
-};
-
-const hyperevmIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
@@ -232,6 +239,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
+  unichain: { chainId: 130, ...unichainIcon },
+  unichainSepolia: { chainId: 1301, ...unichainIcon },
   xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
   xdcTestnet: { chainId: 51, ...xdcIcon },
   zetachain: { chainId: 7000, name: 'ZetaChain', ...zetachainIcon },

@@ -87,6 +87,8 @@ import {
   polygonMumbai,
   ronin,
   sepolia,
+  unichain,
+  unichainSepolia,
   zetachain,
   zetachainAthensTestnet,
   zkSync,
@@ -171,6 +173,7 @@ export const config = getDefaultConfig({
     ronin,
     kaia,
     sei,
+    unichain,
     mantle,
     celo,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
@@ -189,6 +192,7 @@ export const config = getDefaultConfig({
           zetachainAthensTestnet,
           kairos,
           mantleTestnet,
+          unichainSepolia,
           celoAlfajores,
         ]
       : []),
