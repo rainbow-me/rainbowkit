@@ -110,10 +110,10 @@ export {
   rabbyWallet,
   rainbowWallet,
   ramperWallet,
-  roninWallet, 
+  roninWallet,
   safeheronWallet,
-  safepalWallet, 
-  safeWallet, 
+  safepalWallet,
+  safeWallet,
   seifWallet,
   subWallet,
   tahoWallet,
@@ -127,5 +127,5 @@ export {
   wigwamWallet,
   xdefiWallet,
   zealWallet,
-  zerionWallet
+  zerionWallet,
 };
