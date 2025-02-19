@@ -87,7 +87,7 @@ type ChainMetadata = {
 } & IconMetadata;
 
 const apeChainIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#7290CC',
   iconUrl: async () => (await import('./chainIcons/apechain.svg')).default,
 };
 
@@ -107,7 +107,7 @@ const baseIcon: IconMetadata = {
 };
 
 const berachainIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#814625',
   iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
 };
 
@@ -132,7 +132,7 @@ const cronosIcon: IconMetadata = {
 };
 
 const degenIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#A36EFD',
   iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
 };
 
@@ -167,7 +167,7 @@ const hyperevmIcon: IconMetadata = {
 };
 
 const inkIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#7132F5',
   iconUrl: async () => (await import('./chainIcons/ink.svg')).default,
 };
 
@@ -212,12 +212,12 @@ const sankoIcon: IconMetadata = {
 };
 
 const scrollIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#FFEEDA',
   iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
 };
 
 const unichainIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#F50DB4',
   iconUrl: async () => (await import('./chainIcons/unichain.svg')).default,
 };
 
