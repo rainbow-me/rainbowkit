@@ -1,3 +1,7 @@
 #!/bin/bash
 
-pnpm lint && pnpm test
+if git diff --cached --name-only | grep -q "packages/create-rainbowkit/templates"; then
+  pnpm lint && pnpm test && pnpm test:cli
+else
+  pnpm lint && pnpm test
+fi
