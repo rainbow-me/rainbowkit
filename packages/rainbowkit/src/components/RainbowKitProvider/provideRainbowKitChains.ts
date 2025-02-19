@@ -4,6 +4,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // Sourced from https://github.com/wevm/viem/tree/main/src/chains/definitions
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
+  | 'apechain'
   | 'arbitrum'
   | 'arbitrumGoerli'
   | 'arbitrumSepolia'
@@ -12,6 +13,9 @@ type ChainName =
   | 'base'
   | 'baseGoerli'
   | 'baseSepolia'
+  | 'berachain'
+  | 'berachainArtio'
+  | 'berachainBArtio'
   | 'blast'
   | 'blastSepolia'
   | 'bsc'
@@ -20,10 +24,13 @@ type ChainName =
   | 'celoAlfajores'
   | 'cronos'
   | 'cronosTestnet'
+  | 'degen'
   | 'flow'
   | 'flowTestnet'
   | 'gnosis'
   | 'goerli'
+  | 'gravity'
+  | 'gravitySepolia'
   | 'hardhat'
   | 'holesky'
   | 'hyperevm'
@@ -32,6 +39,9 @@ type ChainName =
   | 'kaia'
   | 'kairos'
   | 'kovan'
+  | 'linea'
+  | 'lineaGoerli'
+  | 'lineaSepolia'
   | 'localhost'
   | 'mainnet'
   | 'manta'
@@ -63,17 +73,7 @@ type ChainName =
   | 'zkSyncTestnet'
   | 'zora'
   | 'zoraSepolia'
-  | 'zoraTestnet'
-  | 'linea'
-  | 'lineaGoerli'
-  | 'lineaSepolia'
-  | 'gravity'
-  | 'gravitySepolia'
-  | 'degen'
-  | 'berachain'
-  | 'berachainBArtio'
-  | 'berachainArtio'
-  | 'apechain';
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -84,6 +84,11 @@ type ChainMetadata = {
   chainId: number;
   name?: string;
 } & IconMetadata;
+
+const apeChainIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/apechain.svg')).default,
+};
 
 const arbitrumIcon: IconMetadata = {
   iconBackground: '#96bedc',
@@ -98,6 +103,11 @@ const avalancheIcon: IconMetadata = {
 const baseIcon: IconMetadata = {
   iconBackground: '#0052ff',
   iconUrl: async () => (await import('./chainIcons/base.svg')).default,
+};
+
+const berachainIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
 };
 
 const blastIcon: IconMetadata = {
@@ -120,6 +130,11 @@ const cronosIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/cronos.svg')).default,
 };
 
+const degenIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -133,6 +148,11 @@ const flowIcon: IconMetadata = {
 const gnosisIcon: IconMetadata = {
   iconBackground: '#04795c',
   iconUrl: async () => (await import('./chainIcons/gnosis.svg')).default,
+};
+
+const gravityIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/gravity.svg')).default,
 };
 
 const hardhatIcon: IconMetadata = {
@@ -153,6 +173,11 @@ const inkIcon: IconMetadata = {
 const kaiaIcon: IconMetadata = {
   iconBackground: 'transparent',
   iconUrl: async () => (await import('./chainIcons/kaia.svg')).default,
+};
+
+const lineaIcon: IconMetadata = {
+  iconBackground: '#ffffff',
+  iconUrl: async () => (await import('./chainIcons/linea.svg')).default,
 };
 
 const mantaIcon: IconMetadata = {
@@ -215,32 +240,8 @@ const zoraIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
-const lineaIcon: IconMetadata = {
-  iconBackground: '#ffffff',
-  iconUrl: async () => (await import('./chainIcons/linea.svg')).default,
-};
-
-const gravityIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/gravity.svg')).default,
-};
-
-const degenIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
-};
-
-const berachainIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/berachain.svg')).default,
-};
-
-const apeChainIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/apechain.svg')).default,
-};
-
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
+  apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
@@ -249,6 +250,13 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
   baseSepolia: { chainId: 84532, ...baseIcon },
+  berachain: { chainId: 80094, name: 'Berachain', ...berachainIcon },
+  berachainArtio: { chainId: 80085, name: 'Berachain Artio', ...berachainIcon },
+  berachainBArtio: {
+    chainId: 80084,
+    name: 'Berachain bArtio',
+    ...berachainIcon,
+  },
   blast: { chainId: 81457, name: 'Blast', ...blastIcon },
   blastSepolia: { chainId: 168_587_773, ...blastIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
@@ -257,18 +265,24 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   celoAlfajores: { chainId: 44787, name: 'Celo Alfajores', ...celoIcon },
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
+  degen: { chainId: 666666666, name: 'Degen', ...degenIcon },
   flow: { chainId: 747, ...flowIcon },
   flowTestnet: { chainId: 545, ...flowIcon },
-  goerli: { chainId: 5, ...ethereumIcon },
   gnosis: { chainId: 100, name: 'Gnosis', ...gnosisIcon },
+  goerli: { chainId: 5, ...ethereumIcon },
+  gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
+  gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   hyperevm: { chainId: 999, ...hyperevmIcon },
   ink: { chainId: 57073, ...inkIcon },
   inkSepolia: { chainId: 763373, ...inkIcon },
-  kovan: { chainId: 42, ...ethereumIcon },
   kaia: { chainId: 8_217, name: 'Kaia', ...kaiaIcon },
   kairos: { chainId: 1_001, name: 'Kairos', ...kaiaIcon },
+  kovan: { chainId: 42, ...ethereumIcon },
+  linea: { chainId: 59144, name: 'Linea', ...lineaIcon },
+  lineaGoerli: { chainId: 59140, name: 'Linea Goerli', ...lineaIcon },
+  lineaSepolia: { chainId: 59141, name: 'Linea Sepolia', ...lineaIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
   manta: { chainId: 169, name: 'Manta', ...mantaIcon },
@@ -284,12 +298,12 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   polygonAmoy: { chainId: 80002, ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
-  ropsten: { chainId: 3, ...ethereumIcon },
   ronin: { chainId: 2020, ...roninIcon },
+  ropsten: { chainId: 3, ...ethereumIcon },
   sanko: { chainId: 1996, name: 'Sanko', ...sankoIcon },
-  sepolia: { chainId: 11_155_111, ...ethereumIcon },
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
+  sepolia: { chainId: 11_155_111, ...ethereumIcon },
   unichain: { chainId: 130, ...unichainIcon },
   unichainSepolia: { chainId: 1301, ...unichainIcon },
   xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
@@ -305,20 +319,6 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraSepolia: { chainId: 999999999, ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
-  linea: { chainId: 59144, name: 'Linea', ...lineaIcon },
-  lineaGoerli: { chainId: 59140, name: 'Linea Goerli', ...lineaIcon },
-  lineaSepolia: { chainId: 59141, name: 'Linea Sepolia', ...lineaIcon },
-  gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
-  gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
-  degen: { chainId: 666666666, name: 'Degen', ...degenIcon },
-  berachain: { chainId: 80094, name: 'Berachain', ...berachainIcon },
-  berachainBArtio: {
-    chainId: 80084,
-    name: 'Berachain bArtio',
-    ...berachainIcon,
-  },
-  berachainArtio: { chainId: 80085, name: 'Berachain Artio', ...berachainIcon },
-  apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
