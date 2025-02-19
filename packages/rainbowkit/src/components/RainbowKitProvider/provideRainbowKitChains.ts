@@ -233,7 +233,7 @@ const zetachainIcon: IconMetadata = {
 
 const zkSyncIcon: IconMetadata = {
   iconBackground: '#f9f7ec',
-  iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
+  iconUrl: async () => (await import('./chainIcons/zksync.svg')).default,
 };
 
 const zoraIcon: IconMetadata = {
