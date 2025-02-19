@@ -28,6 +28,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.4.1
         version: 19.4.1
+      '@lavamoat/preinstall-always-fail':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@tanstack/react-query':
         specifier: ^5.55.3
         version: 5.59.0(react@19.0.0)
@@ -2531,6 +2534,10 @@ packages:
 
   '@jspm/core@2.0.1':
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
+
+  '@lavamoat/preinstall-always-fail@2.1.0':
+    resolution: {integrity: sha512-9xSsxxryPMyBWxfV+Ver7FZhvC1PhE1wDCsYFwsiqZzmeWH8e7Y7gWRFJqPw4M8WNbfeuPhKbLdCK3GsPz9gKg==}
+    engines: {node: ^16.20.0 || ^18.0.0 || ^20.0.0 || ^22.0.0}
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
@@ -13812,6 +13819,8 @@ snapshots:
       tslib: 2.8.1
 
   '@jspm/core@2.0.1': {}
+
+  '@lavamoat/preinstall-always-fail@2.1.0': {}
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
