@@ -243,7 +243,7 @@ const zoraIcon: IconMetadata = {
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   apechain: { chainId: 33139, name: 'ApeChain', ...apeChainIcon },
-  apechainCurtis: { chainId: 33139, name: 'ApeChain Curtis', ...apeChainIcon },
+  apechainCurtis: { chainId: 33_111, name: 'ApeChain Curtis', ...apeChainIcon },
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },

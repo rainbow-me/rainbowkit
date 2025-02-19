@@ -165,7 +165,6 @@ export const config = getDefaultConfig({
           inkSepolia,
           lineaSepolia,
           optimismSepolia,
-          optimismSepolia,
           polygonMumbai,
           scrollSepolia,
           sepolia,
