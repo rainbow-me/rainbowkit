@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  pnpm: 9.15.0
+  pnpm: 10.4.1
   RAINBOW_PROVIDER_API_KEY: RAINBOW_PROVIDER_API_KEY
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}

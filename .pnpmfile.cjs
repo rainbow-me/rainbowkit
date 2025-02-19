@@ -2,7 +2,7 @@ function readPackage(pkg) {
   // Filter dependencies in app templates that are present in the root package.json.
   // This allows us to provide complete package.json files for all app templates.
   if (
-    /-app$/.test(pkg.name) || // create-rainbowkit templates (e.g. next-app)
+    /^packages\/create-rainbowkit\/.*-app$/.test(pkg.name) || // create-rainbowkit templates (e.g. next-app)
     /^with-/.test(pkg.name) // example apps (e.g. with-next)
   ) {
     pkg.dependencies = omitRootDependencies(pkg.name, pkg.dependencies);
