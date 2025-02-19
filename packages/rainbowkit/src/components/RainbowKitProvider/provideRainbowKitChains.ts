@@ -66,7 +66,9 @@ type ChainName =
   | 'zoraTestnet'
   | 'linea'
   | 'lineaGoerli'
-  | 'lineaSepolia';
+  | 'lineaSepolia'
+  | 'gravity'
+  | 'gravitySepolia';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -213,6 +215,11 @@ const lineaIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/linea.svg')).default,
 };
 
+const gravityIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/gravity.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -281,6 +288,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   linea: { chainId: 59144, name: 'Linea', ...lineaIcon },
   lineaGoerli: { chainId: 59140, name: 'Linea Goerli', ...lineaIcon },
   lineaSepolia: { chainId: 59141, name: 'Linea Sepolia', ...lineaIcon },
+  gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
+  gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
