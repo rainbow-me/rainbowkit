@@ -154,6 +154,8 @@ export const config = getDefaultConfig({
     zksync,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
+          sepolia,
+          holesky,
           arbitrumSepolia,
           avalancheFuji,
           baseSepolia,
@@ -161,13 +163,11 @@ export const config = getDefaultConfig({
           blastSepolia,
           bscTestnet,
           curtis,
-          holesky,
           inkSepolia,
           lineaSepolia,
           optimismSepolia,
           polygonMumbai,
           scrollSepolia,
-          sepolia,
           unichainSepolia,
           zoraSepolia,
         ]
