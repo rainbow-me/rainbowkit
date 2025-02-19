@@ -7,6 +7,7 @@ on:
 
 env:
   pnpm: 10.4.1
+  HUSKY: 0 # Avoid pre-commit hook tests
   RAINBOW_PROVIDER_API_KEY: RAINBOW_PROVIDER_API_KEY
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
