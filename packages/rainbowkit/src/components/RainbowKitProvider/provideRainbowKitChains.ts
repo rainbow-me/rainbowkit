@@ -208,7 +208,7 @@ const roninIcon: IconMetadata = {
 
 const sankoIcon: IconMetadata = {
   iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/sanko.svg')).default,
+  iconUrl: async () => (await import('./chainIcons/sanko.png')).default,
 };
 
 const scrollIcon: IconMetadata = {
