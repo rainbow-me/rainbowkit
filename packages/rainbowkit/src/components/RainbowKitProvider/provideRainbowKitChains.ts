@@ -27,6 +27,8 @@ type ChainName =
   | 'hardhat'
   | 'holesky'
   | 'hyperevm'
+  | 'ink'
+  | 'inkSepolia'
   | 'kaia'
   | 'kairos'
   | 'kovan'
@@ -132,14 +134,14 @@ const hyperevmIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
 };
 
+const inkIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/ink.svg')).default,
+};
+
 const kaiaIcon: IconMetadata = {
   iconBackground: 'transparent',
   iconUrl: async () => (await import('./chainIcons/kaia.svg')).default,
-};
-
-const optimismIcon: IconMetadata = {
-  iconBackground: '#ff5a57',
-  iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
 };
 
 const mantaIcon: IconMetadata = {
@@ -152,9 +154,24 @@ const mantleIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/mantle.svg')).default,
 };
 
+const optimismIcon: IconMetadata = {
+  iconBackground: '#ff5a57',
+  iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
+};
+
 const polygonIcon: IconMetadata = {
   iconBackground: '#9f71ec',
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
+};
+
+const roninIcon: IconMetadata = {
+  iconBackground: '#1273EA',
+  iconUrl: async () => (await import('./chainIcons/ronin.svg')).default,
+};
+
+const scrollIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
 };
 
 const unichainIcon: IconMetadata = {
@@ -182,16 +199,6 @@ const zoraIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
-const roninIcon: IconMetadata = {
-  iconBackground: '#1273EA',
-  iconUrl: async () => (await import('./chainIcons/ronin.svg')).default,
-};
-
-const scrollIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
-};
-
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -216,6 +223,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   hyperevm: { chainId: 999, ...hyperevmIcon },
+  ink: { chainId: 57073, ...inkIcon },
+  inkSepolia: { chainId: 763373, ...inkIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   kaia: { chainId: 8_217, name: 'Kaia', ...kaiaIcon },
   kairos: { chainId: 1_001, name: 'Kairos', ...kaiaIcon },
