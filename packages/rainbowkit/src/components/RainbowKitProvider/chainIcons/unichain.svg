@@ -1,3 +1,1 @@
-<svg width="116" height="115" viewBox="0 0 116 115" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M115.476 56.406C84.3089 56.406 59.07 31.1416 59.07 0H56.8819V56.406H0.47583V58.594C31.6429 58.594 56.8819 83.8584 56.8819 115H59.07V58.594H115.476V56.406Z" fill="#fc0fa4"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40"><g clip-path="url(#a)"><path fill="url(#b)" d="M0 0h40v40H0z"/><path fill="#fff" d="M36 19.696c-8.672 0-15.696-7.03-15.696-15.696h-.608v15.696H4v.608c8.673 0 15.696 7.03 15.696 15.696h.608V20.304H36v-.608Z"/></g><defs><radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="matrix(0 20 -20 0 20 20)" gradientUnits="userSpaceOnUse"><stop stop-color="#FC74FE"/><stop offset="1" stop-color="#F50DB4"/></radialGradient><clipPath id="a"><path fill="#fff" d="M0 0h40v40H0z"/></clipPath></defs></svg>
