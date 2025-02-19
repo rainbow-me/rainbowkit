@@ -7,8 +7,8 @@
       "package.json",
       "tsconfig.json",
       "tsconfig.*.json",
-      "examples/*",
-      "*-app"
+      "./packages/create-rainbowkit/generated-test-app/",
+      "build/"
     ]
   },
   "formatter": {
@@ -56,7 +56,7 @@
     }
   },
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "vcs": {
     "enabled": true,

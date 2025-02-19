@@ -1,5 +1,5 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { parseSiweMessage, type SiweMessage } from 'viem/siwe';
 
 import { ironOptions } from '../../../lib/iron';

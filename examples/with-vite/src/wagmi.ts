@@ -1,4 +1,3 @@
-
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
 

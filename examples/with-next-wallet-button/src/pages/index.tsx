@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import { WalletButton } from "@rainbow-me/rainbowkit";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import type { NextPage } from 'next';
+import { WalletButton } from '@rainbow-me/rainbowkit';
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
@@ -11,18 +11,18 @@ const Home: NextPage = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
       }}
     >
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
           gap: 14,
         }}
       >
@@ -44,11 +44,17 @@ const Home: NextPage = () => {
 
         <span>Wagmi Connectors</span>
 
-        <button onClick={() => connect({ connector: metaMaskConnector })} key={metaMaskConnector.id}>
+        <button
+          onClick={() => connect({ connector: metaMaskConnector })}
+          key={metaMaskConnector.id}
+        >
           MetaMask SDK
         </button>
 
-        <button onClick={() => connect({ connector: coinbaseConnector })} key={coinbaseConnector.id}>
+        <button
+          onClick={() => connect({ connector: coinbaseConnector })}
+          key={coinbaseConnector.id}
+        >
           Coinbase SDK
         </button>
 

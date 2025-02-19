@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             <div
               {...(!mounted && {
                 'aria-hidden': true,
-                'style': {
+                style: {
                   opacity: 0,
                   pointerEvents: 'none',
                   userSelect: 'none',

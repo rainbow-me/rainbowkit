@@ -1,6 +1,6 @@
-import { IncomingMessage } from 'http';
-import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import type { IncomingMessage } from 'node:http';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import NextAuth, { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import {
@@ -64,6 +64,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
             id: siweMessage.address,
           };
         } catch (e) {
+          console.error('Error authorizing user', e);
           return null;
         }
       },
@@ -77,7 +78,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
           label: 'Signature',
           placeholder: '0x0',
           type: 'text',
-        }
+        },
       },
       name: 'Ethereum',
     }),
@@ -114,7 +115,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
 
   const isDefaultSigninPage =
     req.method === 'GET' &&
-    req.query.nextauth.find(value => value === 'signin');
+    req.query.nextauth.find((value) => value === 'signin');
 
   // Hide Sign-In with Ethereum from default sign page
   if (isDefaultSigninPage) {
