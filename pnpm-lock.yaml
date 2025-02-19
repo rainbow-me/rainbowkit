@@ -10,7 +10,7 @@ overrides:
   react: ^19.0.0
   react-dom: ^19.0.0
 
-pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
+pnpmfileChecksum: sha256-GVwRsWa2IC98Kmp5UCtqbnrYKjmL9YgpvQhUiEgy6ow=
 
 importers:
 
@@ -118,66 +118,295 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      '@testing-library/jest-dom':
+        specifier: ^6.6.3
+        version: 6.6.3
+      '@testing-library/react':
+        specifier: ^16.1.0
+        version: 16.1.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.3(@types/react@19.0.6))(@types/react@19.0.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@testing-library/user-event':
+        specifier: ^14.5.2
+        version: 14.5.2(@testing-library/dom@10.4.0)
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.24.7(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.25.2(@babel/core@7.25.2))(@types/babel__core@7.20.5)(bufferutil@4.0.8)(esbuild@0.20.2)(eslint@8.57.0)(react@19.0.0)(type-fest@4.26.1)(typescript@5.5.4)(utf-8-validate@5.0.10)
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
       util:
         specifier: 0.12.5
         version: 0.12.5
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
 
   examples/with-next:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-app:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-app-i18n:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-intl:
         specifier: ^3.26.3
         version: 3.26.3(next@15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-custom-button:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-mint-nft:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
       framer-motion:
         specifier: ^11.15.0
         version: 11.15.0(@emotion/is-prop-valid@0.8.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-rainbow-button:
     dependencies:
       '@rainbow-me/rainbow-button':
         specifier: workspace:*
         version: link:../../packages/rainbow-button
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-siwe-iron-session:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
       iron-session:
         specifier: ^6.3.1
         version: 6.3.1(express@4.19.2)(next@15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-siwe-next-auth:
     dependencies:
@@ -187,12 +416,71 @@ importers:
       '@rainbow-me/rainbowkit-siwe-next-auth':
         specifier: workspace:*
         version: link:../../packages/rainbowkit-siwe-next-auth
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next-auth:
+        specifier: 4.24.11
+        version: 4.24.11(next@15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-next-wallet-button:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      next:
+        specifier: ^15.1.4
+        version: 15.1.4(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.14.8
+        version: 20.16.5
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-remix:
     dependencies:
@@ -208,20 +496,68 @@ importers:
       '@remix-run/serve':
         specifier: ^2.9.2
         version: 2.11.2(typescript@5.5.4)
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.9.2
         version: 2.11.2(@remix-run/react@2.11.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.5.4))(@remix-run/serve@2.11.2(typescript@5.5.4))(@types/node@20.16.5)(babel-plugin-macros@3.1.0)(bufferutil@4.0.8)(terser@5.32.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(vite@5.4.2(@types/node@20.16.5)(terser@5.32.0))
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.0.3(@types/react@19.0.6)
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
 
   examples/with-vite:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@tanstack/react-query':
+        specifier: ^5.55.3
+        version: 5.59.0(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: 2.23.3
+        version: 2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.11(@tanstack/query-core@5.59.0)(@tanstack/react-query@5.59.0(react@19.0.0))(@types/react@19.0.6)(bufferutil@4.0.8)(encoding@0.1.13)(immer@9.0.21)(react@19.0.0)(typescript@5.5.4)(utf-8-validate@5.0.10)(viem@2.23.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8)
     devDependencies:
+      '@types/react':
+        specifier: ^19.0.6
+        version: 19.0.6
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.0.3(@types/react@19.0.6)
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.4.2(@types/node@20.16.5)(terser@5.32.0))
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
       vite:
         specifier: ^5.2.11
         version: 5.4.2(@types/node@20.16.5)(terser@5.32.0)
@@ -3918,9 +4254,6 @@ packages:
 
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
-
-  '@types/node@18.19.47':
-    resolution: {integrity: sha512-1f7dB3BL/bpd9tnDJrrHb66Y+cVrhxSOTGorRNdHwYTUlTay3HuTDPKo9a/4vX9pMQkhYBcAbL4jQdNlhCFP9A==}
 
   '@types/node@20.14.8':
     resolution: {integrity: sha512-DO+2/jZinXfROG7j7WKFn/3C6nFwxy2lLpgLjEXJz+0XKphZlTLJ14mo8Vfg8X5BWN6XjyESXq+LcYdT7tR3bA==}
@@ -15004,7 +15337,7 @@ snapshots:
 
   '@types/fs-extra@9.0.13':
     dependencies:
-      '@types/node': 18.19.47
+      '@types/node': 20.16.5
 
   '@types/graceful-fs@4.1.9':
     dependencies:
@@ -15086,10 +15419,6 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@18.19.47':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@20.14.8':
     dependencies:
       undici-types: 5.26.5
@@ -15106,7 +15435,7 @@ snapshots:
 
   '@types/prompts@2.0.14':
     dependencies:
-      '@types/node': 18.19.47
+      '@types/node': 20.16.5
 
   '@types/q@1.5.8': {}
 
