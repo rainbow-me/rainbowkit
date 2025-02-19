@@ -68,7 +68,8 @@ type ChainName =
   | 'lineaGoerli'
   | 'lineaSepolia'
   | 'gravity'
-  | 'gravitySepolia';
+  | 'gravitySepolia'
+  | 'degen';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -220,6 +221,11 @@ const gravityIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/gravity.svg')).default,
 };
 
+const degenIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/degen.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -290,6 +296,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   lineaSepolia: { chainId: 59141, name: 'Linea Sepolia', ...lineaIcon },
   gravity: { chainId: 1625, name: 'Gravity', ...gravityIcon },
   gravitySepolia: { chainId: 13505, name: 'Gravity Sepolia', ...gravityIcon },
+  degen: { chainId: 666666666, name: 'Degen', ...degenIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
