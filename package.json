@@ -45,7 +45,6 @@
     "@changesets/cli": "2.27.8",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
-    "@lavamoat/preinstall-always-fail": "^2.0.0",
     "@tanstack/react-query": "^5.55.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -82,8 +81,19 @@
   },
   "packageManager": "pnpm@10.4.1",
   "pnpm": {
-    "onlyBuiltDependencies": [
+    "ignoredBuiltDependencies": [
+      "@biomejs/biome",
       "@vercel/speed-insights",
+      "bufferutil",
+      "contentlayer2",
+      "core-js",
+      "core-js-pure",
+      "keccak",
+      "protobufjs",
+      "sharp",
+      "utf-8-validate"
+    ],
+    "onlyBuiltDependencies": [
       "esbuild"
     ]
   }
