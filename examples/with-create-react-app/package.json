@@ -13,7 +13,7 @@
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
     "react": "^19.0.0",
-    "typescript": "5.5.2",
+    "typescript": "5.5.4",
     "util": "0.12.5",
     "viem": "2.21.55",
     "wagmi": "^2.14.7",
