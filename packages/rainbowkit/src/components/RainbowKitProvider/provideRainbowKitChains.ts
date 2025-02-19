@@ -9,10 +9,6 @@ type ChainName =
   | 'arbitrumSepolia'
   | 'avalanche'
   | 'avalancheFuji'
-  | 'celo'
-  | 'celoAlfajores'
-  | 'cronos'
-  | 'cronosTestnet'
   | 'base'
   | 'baseGoerli'
   | 'baseSepolia'
@@ -20,10 +16,14 @@ type ChainName =
   | 'blastSepolia'
   | 'bsc'
   | 'bscTestnet'
+  | 'celo'
+  | 'celoAlfajores'
+  | 'cronos'
+  | 'cronosTestnet'
   | 'flow'
   | 'flowTestnet'
-  | 'goerli'
   | 'gnosis'
+  | 'goerli'
   | 'hardhat'
   | 'holesky'
   | 'hyperevm'
@@ -40,15 +40,18 @@ type ChainName =
   | 'mantle'
   | 'mantleTestnet'
   | 'optimism'
-  | 'optimismKovan'
   | 'optimismGoerli'
+  | 'optimismKovan'
   | 'optimismSepolia'
   | 'polygon'
   | 'polygonAmoy'
   | 'polygonMumbai'
   | 'rinkeby'
-  | 'ropsten'
   | 'ronin'
+  | 'ropsten'
+  | 'sanko'
+  | 'scroll'
+  | 'scrollSepolia'
   | 'sepolia'
   | 'unichain'
   | 'unichainSepolia'
@@ -60,9 +63,7 @@ type ChainName =
   | 'zkSyncTestnet'
   | 'zora'
   | 'zoraSepolia'
-  | 'zoraTestnet'
-  | 'scroll'
-  | 'scrollSepolia';
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -169,6 +170,11 @@ const roninIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/ronin.svg')).default,
 };
 
+const sankoIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/sanko.svg')).default,
+};
+
 const scrollIcon: IconMetadata = {
   iconBackground: '#000000',
   iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
@@ -245,6 +251,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   ronin: { chainId: 2020, ...roninIcon },
+  sanko: { chainId: 1996, name: 'Sanko', ...sankoIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
