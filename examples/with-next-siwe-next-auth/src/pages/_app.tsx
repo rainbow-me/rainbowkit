@@ -1,16 +1,15 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-
-import { SessionProvider } from 'next-auth/react';
-import type { Session } from 'next-auth';
 import {
   RainbowKitSiweNextAuthProvider,
-  GetSiweMessageOptions,
+  type GetSiweMessageOptions,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 
 import { config } from '../wagmi';

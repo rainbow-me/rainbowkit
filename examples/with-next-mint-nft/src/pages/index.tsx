@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
 
-  const [totalMinted, setTotalMinted] = React.useState(0n);
+  const [totalMinted, setTotalMinted] = React.useState(BigInt(0));
   const { isConnected } = useAccount();
 
   const {

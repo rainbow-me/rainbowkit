@@ -7,22 +7,22 @@ export function generateStaticParams() {
 }
 
 // Dynamic metadata with locale
-export async function generateMetadata(props: { params: Promise<{ locale: Locale }> }) {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: Locale }>;
+}) {
   const params = await props.params;
   const { locale } = params;
 
   const t = await getTranslations({ locale, namespace: 'Metadata' });
   return {
-    title: t('title')
+    title: t('title'),
   };
 }
 
-export default async function LocaleLayout(
-  props: {
-    children: React.ReactNode;
-    params: Promise<{ locale: Locale }>;
-  }
-) {
+export default async function LocaleLayout(props: {
+  children: React.ReactNode;
+  params: Promise<{ locale: Locale }>;
+}) {
   const { children } = props;
   const params = await props.params;
   const { locale } = params;

@@ -11,7 +11,7 @@ import {
   RainbowKitProvider,
   createAuthenticationAdapter,
   RainbowKitAuthenticationProvider,
-  AuthenticationStatus,
+  type AuthenticationStatus,
 } from '@rainbow-me/rainbowkit';
 import { createSiweMessage } from 'viem/siwe';
 
@@ -89,6 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
           return authenticated;
         } catch (error) {
+          console.error('Error verifying signature', error);
           return false;
         } finally {
           verifyingRef.current = false;

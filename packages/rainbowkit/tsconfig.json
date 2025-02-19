@@ -1,8 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES2019",
+    "module": "esnext",
+    "target": "es2019",
     "preserveSymlinks": false,
     "declaration": true,
     "declarationDir": "dist",

@@ -1,6 +1,9 @@
 {
   "$schema": "https://codesandbox.io/schemas/tasks.json",
-  "setupTasks": ["yarn add @rainbow-me/rainbowkit@latest @rainbow-me/rainbowkit-siwe-next-auth@latest", "yarn build"],
+  "setupTasks": [
+    "yarn add @rainbow-me/rainbowkit@latest @rainbow-me/rainbowkit-siwe-next-auth@latest",
+    "yarn build"
+  ],
   "tasks": {
     "install-dependencies": {
       "name": "Install Dependencies",

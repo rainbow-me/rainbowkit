@@ -11,7 +11,7 @@ import App from './App';
 import { config } from './wagmi';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 
 const queryClient = new QueryClient();
@@ -25,5 +25,5 @@ root.render(
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
