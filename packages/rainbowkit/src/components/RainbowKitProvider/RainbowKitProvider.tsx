@@ -31,6 +31,7 @@ import { WalletButtonProvider } from './WalletButtonContext';
 import { useFingerprint } from './useFingerprint';
 import { usePreloadImages } from './usePreloadImages';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
+import { clearWalletConnected } from './walletConnectConnectionStatus';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
@@ -92,7 +93,12 @@ export function RainbowKitProvider({
   usePreloadImages();
   useFingerprint();
 
-  useAccountEffect({ onDisconnect: clearWalletConnectDeepLink });
+  const onDisconnect = () => {
+    clearWalletConnectDeepLink();
+    clearWalletConnected();
+  };
+
+  useAccountEffect({ onDisconnect });
 
   if (typeof theme === 'function') {
     throw new Error(
