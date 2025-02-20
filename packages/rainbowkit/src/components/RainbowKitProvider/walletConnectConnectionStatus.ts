@@ -14,6 +14,6 @@ export function isWalletConnectConnected(): boolean {
   return localStorage.getItem(storageKey) === 'true';
 }
 
-export function clearWalletConnected() {
+export function clearWalletConnectConnected() {
   localStorage.removeItem(storageKey);
 }
