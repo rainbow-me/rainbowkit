@@ -7,6 +7,7 @@ import type {
   RainbowKitWalletConnectParameters,
   WalletDetailsParams,
 } from './Wallet';
+import { isWalletConnectConnected } from '../components/RainbowKitProvider/walletConnectConnectionStatus';
 
 interface GetWalletConnectConnectorParams {
   projectId: string;
@@ -45,7 +46,7 @@ const getOrCreateWalletConnectInstance = ({
   };
 
   // `rkDetailsShowQrModal` should always be `true`
-  if (rkDetailsShowQrModal) {
+  if (rkDetailsShowQrModal || isWalletConnectConnected()) {
     config = { ...config, showQrModal: true };
   }
 
@@ -72,7 +73,7 @@ function createWalletConnectConnector({
   walletConnectParameters,
 }: CreateWalletConnectConnectorParams): CreateConnectorFn {
   // Create and configure the WalletConnect connector with project ID and options.
-  return createConnector((config) => ({
+  return createConnector(config => ({
     ...getOrCreateWalletConnectInstance({
       projectId,
       walletConnectParameters,
@@ -96,7 +97,7 @@ export function getWalletConnectConnector({
 
   if (!projectId || projectId === '') {
     throw new Error(
-      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
+      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure'
     );
   }
 
