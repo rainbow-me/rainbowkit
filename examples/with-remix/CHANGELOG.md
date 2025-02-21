@@ -1,5 +1,18 @@
 # with-remix
 
+## 0.0.100
+
+### Patch Changes
+
+- 182440a: Upgraded `wagmi` to `^2.14.11` and `viem` to `2.23.3`
+- 3f82fe8: Adopted Biome formatting, modernized tsconfig
+- Updated dependencies [f89eb92]
+- Updated dependencies [a765cfc]
+- Updated dependencies [9c9c491]
+- Updated dependencies [f5a7cec]
+- Updated dependencies [e4547b8]
+  - @rainbow-me/rainbowkit@2.2.4
+
 ## 0.0.99
 
 ### Patch Changes
