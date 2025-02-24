@@ -92,7 +92,8 @@ export const siweAuthOptions = ({
       async session({ session, token }) {
         return {
           ...session,
-          ...token,
+          id: token.id,
+          address: token.address,
           user: {
             ...session.user,
             ...token,
