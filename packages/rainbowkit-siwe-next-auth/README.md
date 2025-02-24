@@ -18,7 +18,12 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 ### 1. Create the auth API route
 
-First, create a Next.js API route for authentication. You have two options depending on your Next.js routing style:
+First, create a Next.js API route for authentication. The `NextAuthHandler` utility simplifies setting up SIWE authentication by:
+- Configuring NextAuth.js with the correct SIWE settings
+- Setting up the necessary API endpoints for authentication
+- Handling message verification and session management
+
+You have two options depending on your Next.js routing style:
 
 #### Option A: App Router (Next.js 13+)
 
@@ -27,10 +32,10 @@ First, create a Next.js API route for authentication. You have two options depen
 import { mainnet } from "viem/chains";
 import { NextAuthHandler } from "@rainbow-me/rainbowkit-siwe-next-auth";
 
+// The handler creates both GET and POST endpoints required by NextAuth.js
 const { GET, POST } = NextAuthHandler({ 
-  chain: mainnet,
-  // Optional: Custom auth options
-  authOptions: {
+  chain: mainnet,  // The chain to use for SIWE message verification
+  authOptions: {   // Optional: Additional NextAuth.js configuration
     // ...
   }
 });
@@ -45,8 +50,13 @@ export { GET, POST };
 import { mainnet } from "viem/chains";
 import { NextAuthHandler } from "@rainbow-me/rainbowkit-siwe-next-auth";
 
+// The handler creates a Next.js API route handler with SIWE configuration
 export default NextAuthHandler({ chain: mainnet });
 ```
+
+The `NextAuthHandler` accepts the following options:
+- `chain`: The chain to use for verifying SIWE messages (e.g., mainnet, sepolia)
+- `authOptions`: Optional NextAuth.js configuration that will be merged with the SIWE settings
 
 ### 2. Set up the providers
 
@@ -144,31 +154,129 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
+### 4. Configure Authentication Options (Optional)
+
+The `NextAuthHandler` accepts additional authentication options that let you customize the authentication behavior:
+
+```typescript
+// app/api/auth/[...nextauth]/route.ts
+import { mainnet } from "viem/chains";
+import { NextAuthHandler } from "@rainbow-me/rainbowkit-siwe-next-auth";
+
+const { GET, POST } = NextAuthHandler({ 
+  chain: mainnet,
+  authOptions: {
+    // Add custom user data on successful authentication
+    onSuccess: async (address) => {
+      // Fetch user data from your database
+      const userData = await db.users.findUnique({ 
+        where: { address: address.toLowerCase() } 
+      });
+      
+      // Return additional user data to include in the session
+      return {
+        id: address,
+        address,
+        username: userData?.username,
+        role: userData?.role,
+      };
+    },
+    
+    // Handle authentication errors
+    onError: async (error) => {
+      // Log the error or notify monitoring service
+      console.error("Authentication error:", error);
+      await notifyError(error);
+    },
+  }
+});
+
+export { GET, POST };
+```
+
+#### Available Options
+
+The `authOptions` object accepts the following configuration:
+
+- `onSuccess`: Async callback that runs after successful authentication
+  - Receives the user's address as a parameter
+  - Can return additional user data to include in the session
+  - Useful for loading user data from a database
+  
+- `onError`: Async callback that runs when authentication fails
+  - Receives the error object as a parameter
+  - Useful for error logging and monitoring
+
+- Any other [NextAuth.js options](https://next-auth.js.org/configuration/options) are also supported and will be merged with the SIWE configuration
+
+#### Accessing Custom Data
+
+Any data returned from `onSuccess` will be available in the session:
+
+```typescript
+// In server components/pages
+const token = await getToken();
+const username = token.username;
+const role = token.role;
+
+// In client components
+const { data: session } = useSession();
+const username = session?.user?.username;
+const role = session?.user?.role;
+```
+
+For more information about session handling, see the [NextAuth.js documentation](https://next-auth.js.org/getting-started/client#usesession).
+
 ## Usage
 
-### Access the session server-side
+### Access the session
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+You can access the session data in different ways depending on where you need it:
 
-#### App Router (Next.js 13+)
+#### In Client Components
 
-```tsx
+```typescript
+// app/components/Profile.tsx
+'use client';
+
+import { useSession } from "next-auth/react";
+
+export function Profile() {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  const address = session?.user?.address;
+  return address ? (
+    <div>Connected as {address}</div>
+  ) : (
+    <div>Not connected</div>
+  );
+}
+```
+
+This method:
+- Provides real-time session state
+- Automatically handles session updates
+- Includes loading states
+- Works with React Suspense
+
+#### In Server Components (Recommended)
+
+```typescript
 // app/page.tsx
-import { headers } from "next/headers";
-import { getToken } from "next-auth/jwt";
+import { getServerSession } from "next-auth";
+import { siweAuthOptions } from "@rainbow-me/rainbowkit-siwe-next-auth";
+import { mainnet } from "viem/chains";
 
 export default async function Page() {
-  const token = await getToken({ 
-    req: { 
-      headers: Object.fromEntries(headers()),
-      cookies: headers().get("cookie"),
-    } as any,
-  });
+  const session = await getServerSession(
+    siweAuthOptions({ chain: mainnet })
+  );
   
-  const address = token?.sub ?? null;
-  // If you have a value for "address" here, your
-  // server knows the user is authenticated.
-
+  const address = session?.user?.address;
   return address ? (
     <h1>Authenticated as {address}</h1>
   ) : (
@@ -177,46 +285,15 @@ export default async function Page() {
 }
 ```
 
-#### Pages Router
+This method:
+- Works in both server components and API routes
+- Is more efficient than alternatives
+- Prevents unnecessary client-side requests
+- Uses the same auth options as your API route
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+#### Alternative Methods
 
-```tsx
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
-
-export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
-
-  const address = token?.sub ?? null;
-  // If you have a value for "address" here, your
-  // server knows the user is authenticated.
-
-  // You can then pass any data you want
-  // to the page component here.
-  return {
-    props: {
-      address,
-      session,
-    },
-  };
-};
-
-type AuthenticatedPageProps = InferGetServerSidePropsType<
-  typeof getServerSideProps
->;
-
-export default function AuthenticatedPage({ address }: AuthenticatedPageProps) {
-  return address ? (
-    <h1>Authenticated as {address}</h1>
-  ) : (
-    <h1>Unauthenticated</h1>
-  );
-}
-```
+For specific use cases, you can also use `getToken` or `getSession`, though these are generally not recommended over the above methods.
 
 For more information about managing the session, you can refer to the following documentation:
 - [Next.js authentication guide](https://nextjs.org/docs/app/building-your-application/authentication)
@@ -231,3 +308,71 @@ Please follow our [contributing guidelines](/.github/CONTRIBUTING.md).
 Licensed under the MIT License, Copyright © 2022-present [Rainbow](https://rainbow.me).
 
 See [LICENSE](/LICENSE) for more information.
+
+#### Provider Options
+
+Both providers accept the following props:
+
+##### RainbowKitSiweNextAuthProviderWithSession
+
+```typescript
+interface RainbowKitSiweNextAuthProviderWithSessionProps {
+  // RainbowKitSiweNextAuthProvider props
+  enabled?: boolean;                    // Enable/disable SIWE authentication
+  getSiweMessageOptions?: GetSiweMessageOptions;  // Customize SIWE message
+
+  // SessionProvider props
+  session?: Session | null;             // Initial session state
+  refetchInterval?: number;             // How often to refetch the session
+  refetchOnWindowFocus?: boolean;       // Refetch session on window focus
+
+  children: ReactNode;
+}
+```
+
+##### RainbowKitSiweNextAuthProvider
+
+```typescript
+interface RainbowKitSiweNextAuthProviderProps {
+  enabled?: boolean;                    // Enable/disable SIWE authentication
+  getSiweMessageOptions?: GetSiweMessageOptions;  // Customize SIWE message
+  children: ReactNode;
+}
+```
+
+Example usage with all options:
+
+```tsx
+// Combined provider (recommended for App Router)
+<RainbowKitSiweNextAuthProviderWithSession
+  enabled={true}
+  getSiweMessageOptions={() => ({
+    statement: 'Sign in to my app',
+    // ... other SIWE message options
+  })}
+  session={session}
+  refetchInterval={0}
+  refetchOnWindowFocus={false}
+>
+  {children}
+</RainbowKitSiweNextAuthProviderWithSession>
+
+// Separate providers
+<SessionProvider
+  session={session}
+  refetchInterval={0}
+  refetchOnWindowFocus={false}
+>
+  <RainbowKitSiweNextAuthProvider
+    enabled={true}
+    getSiweMessageOptions={() => ({
+      statement: 'Sign in to my app',
+      // ... other SIWE message options
+    })}
+  >
+    {children}
+  </RainbowKitSiweNextAuthProvider>
+</SessionProvider>
+```
+
+The `enabled` prop can be used to conditionally enable/disable SIWE authentication. When `false`, users can connect their wallets without signing a message.
