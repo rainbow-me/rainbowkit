@@ -6,11 +6,7 @@
 
 [Sign-In with Ethereum](https://login.xyz) and [NextAuth](https://next-auth.js.org) authentication adapter for [RainbowKit](https://www.rainbowkit.com).
 
-## Usage
-
-### Set up Sign-In with Ethereum and NextAuth
-
-### Install
+## Installation
 
 Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
 
@@ -18,15 +14,85 @@ Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-### Set up the provider
+## Setup
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+### 1. Create the auth API route
 
-```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+First, create a Next.js API route for authentication. You have two options depending on your Next.js routing style:
+
+#### Option A: App Router (Next.js 13+)
+
+```typescript
+// app/api/auth/[...nextauth]/route.ts
+import { mainnet } from "viem/chains";
+import { NextAuthHandler } from "@rainbow-me/rainbowkit-siwe-next-auth";
+
+const { GET, POST } = NextAuthHandler({ 
+  chain: mainnet,
+  // Optional: Custom auth options
+  authOptions: {
+    // ...
+  }
+});
+
+export { GET, POST };
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+#### Option B: Pages Router
+
+```typescript
+// pages/api/auth/[...nextauth].ts
+import { mainnet } from "viem/chains";
+import { NextAuthHandler } from "@rainbow-me/rainbowkit-siwe-next-auth";
+
+export default NextAuthHandler({ chain: mainnet });
+```
+
+### 2. Set up the providers
+
+In your `App` component, wrap your application with the required providers. You have two options:
+
+#### Option A: Combined Provider (Recommended for App Router)
+
+```tsx
+// app/providers.tsx
+"use client";
+
+import { RainbowKitSiweNextAuthProviderWithSession } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { WagmiConfig } from 'wagmi';
+
+export function Providers({ children }) {
+  return (
+    <WagmiConfig {...etc}>
+      <RainbowKitSiweNextAuthProviderWithSession>
+        <RainbowKitProvider {...etc}>
+          {children}
+        </RainbowKitProvider>
+      </RainbowKitSiweNextAuthProviderWithSession>
+    </WagmiConfig>
+  );
+}
+
+// app/layout.tsx
+import { Providers } from './providers';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
+```
+
+#### Option B: Separate Providers (Traditional Setup)
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -56,13 +122,11 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+With these providers in place, your users will be prompted to authenticate by signing a message once they've connected their wallet.
 
-### Customize the SIWE message options
+### 3. Customize the SIWE message (Optional)
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
-
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on either provider:
 
 ```tsx
 import {
@@ -74,18 +138,48 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to my RainbowKit app',
 });
 
+// Use with either provider:
 <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
   ...
 </RainbowKitSiweNextAuthProvider>;
 ```
 
+## Usage
+
 ### Access the session server-side
 
 You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+#### App Router (Next.js 13+)
 
-For example:
+```tsx
+// app/page.tsx
+import { headers } from "next/headers";
+import { getToken } from "next-auth/jwt";
+
+export default async function Page() {
+  const token = await getToken({ 
+    req: { 
+      headers: Object.fromEntries(headers()),
+      cookies: headers().get("cookie"),
+    } as any,
+  });
+  
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+#### Pages Router
+
+You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -125,7 +219,6 @@ export default function AuthenticatedPage({ address }: AuthenticatedPageProps) {
 ```
 
 For more information about managing the session, you can refer to the following documentation:
-
 - [Next.js authentication guide](https://nextjs.org/docs/app/building-your-application/authentication)
 - [NextAuth documentation](https://next-auth.js.org)
 
