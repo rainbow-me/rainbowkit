@@ -43,7 +43,7 @@ export const xPortalWallet = ({
         getUri,
         instructions: {
           learnMoreUrl:
-            'https://xportal.io/blog/announcing-the-xportal-smart-wallet/',
+            'https://help.xportal.com/en/articles/7038000-register-create-account',
           steps: [
             {
               description:
