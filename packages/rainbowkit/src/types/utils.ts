@@ -45,7 +45,7 @@ export type WalletProviderFlags =
   | 'isOneInchIOSWallet'
   | 'isOpera'
   | 'isPhantom'
-  | 'isPortal'
+  | 'isxPortal'
   | 'isRabby'
   | 'isRainbow'
   | 'isStatus'

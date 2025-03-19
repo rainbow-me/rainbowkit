@@ -14,8 +14,7 @@ export const xPortalWallet = ({
   walletConnectParameters,
 }: XPortalWalletOptions): Wallet => {
   const isXPortalInjected = hasInjectedProvider({
-    namespace: 'xPortalWallet',
-    flag: 'isPortal',
+    flag: 'isxPortal',
   });
   const shouldUseWalletConnect = !isXPortalInjected;
 
@@ -41,63 +40,40 @@ export const xPortalWallet = ({
     },
     qrCode: shouldUseWalletConnect
       ? {
-          getUri,
-          instructions: {
-            learnMoreUrl:
-              'https://xportal.io/blog/announcing-the-xportal-smart-wallet/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.xportal.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.xportal.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.xportal.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.xportal.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.xportal.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.xportal.qr_code.step3.title',
-              },
-            ],
-          },
-        }
+        getUri,
+        instructions: {
+          learnMoreUrl:
+            'https://xportal.io/blog/announcing-the-xportal-smart-wallet/',
+          steps: [
+            {
+              description:
+                'wallet_connectors.xportal.qr_code.step1.description',
+              step: 'install',
+              title: 'wallet_connectors.xportal.qr_code.step1.title',
+            },
+            {
+              description:
+                'wallet_connectors.xportal.qr_code.step2.description',
+              step: 'create',
+              title: 'wallet_connectors.xportal.qr_code.step2.title',
+            },
+            {
+              description:
+                'wallet_connectors.xportal.qr_code.step3.description',
+              step: 'scan',
+              title: 'wallet_connectors.xportal.qr_code.step3.title',
+            },
+          ],
+        },
+      }
       : undefined,
-    extension: {
-      instructions: {
-        learnMoreUrl: 'https://help.xportal.io/en/',
-        steps: [
-          {
-            description: 'wallet_connectors.xportal.extension.step1.description',
-            step: 'install',
-            title: 'wallet_connectors.xportal.extension.step1.title',
-          },
-          {
-            description: 'wallet_connectors.xportal.extension.step2.description',
-            step: 'create',
-            title: 'wallet_connectors.xportal.extension.step2.title',
-          },
-          {
-            description: 'wallet_connectors.xportal.extension.step3.description',
-            step: 'refresh',
-            title: 'wallet_connectors.xportal.extension.step3.title',
-          },
-        ],
-      },
-    },
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+        projectId,
+        walletConnectParameters,
+      })
       : getInjectedConnector({
-          namespace: 'xPortalWallet',
-          flag: 'isPortal',
-        }),
+        flag: 'isxPortal',
+      }),
   };
 };
