@@ -1343,6 +1343,22 @@
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Tambahkan xPortal ke layar utama Anda untuk akses lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi xPortal"
+        },
+        "step2": {
+          "description": "Buat dompet atau impor dompet yang sudah ada.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah memindai, prompt koneksi akan muncul untuk menghubungkan dompet Anda.",
+          "title": "Ketuk tombol Pindai QR"
+        }
+      }
     }
   }
 }

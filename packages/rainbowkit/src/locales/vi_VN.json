@@ -377,7 +377,7 @@
           "title": "Cài đặt tiện ích mở rộng Bybit Wallet"
         },
         "step2": {
-          "description": "Tạo ví mới hoặc nhập ví hiện có.",
+          "title": "Tạo ví mới hoặc nhập ví hiện có.",
           "title": "Tạo hoặc Nhập ví"
         },
         "step3": {
@@ -423,7 +423,7 @@
           "title": "Cài đặt tiện ích mở rộng Coin98 Wallet"
         },
         "step2": {
-          "description": "Tạo ví mới hoặc nhập ví hiện có.",
+          "title": "Tạo ví mới hoặc nhập ví hiện có.",
           "title": "Tạo hoặc Nhập ví"
         },
         "step3": {
@@ -1343,6 +1343,11 @@
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Thêm xPortal vào màn hình chính của bạn để truy cập ví nhanh hơn.",
     }
   }
 }

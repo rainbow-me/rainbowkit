@@ -935,6 +935,7 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
+          "title": "Atualize o seu navegador",
           "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
           "title": "Atualize o seu navegador"
         }
@@ -1341,6 +1342,22 @@
         "step3": {
           "title": "Toque no botão de escanear",
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Adicione o xPortal à sua tela inicial para acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo xPortal"
+        },
+        "step2": {
+          "description": "Crie uma carteira ou importe uma existente.",
+          "title": "Criar ou Importar Carteira"
+        },
+        "step3": {
+          "description": "Após escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão Escanear QR"
         }
       }
     }

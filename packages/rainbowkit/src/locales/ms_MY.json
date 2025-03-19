@@ -1343,6 +1343,22 @@
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
         }
       }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Tambah xPortal ke skrin utama anda untuk akses lebih pantas ke dompet anda.",
+          "title": "Buka aplikasi xPortal"
+        },
+        "step2": {
+          "description": "Cipta dompet atau import dompet yang sedia ada.",
+          "title": "Cipta atau Import Dompet"
+        },
+        "step3": {
+          "description": "Selepas mengimbas, prompt sambungan akan muncul untuk menyambungkan dompet anda.",
+          "title": "Ketik butang Imbas QR"
+        }
+      }
     }
   }
 }

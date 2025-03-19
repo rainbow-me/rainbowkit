@@ -1343,6 +1343,22 @@
           "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
         }
       }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Fügen Sie xPortal zu Ihrem Startbildschirm hinzu, um schneller auf Ihre Wallet zugreifen zu können.",
+          "title": "Öffnen Sie die xPortal-App"
+        },
+        "step2": {
+          "description": "Erstellen Sie eine Wallet oder importieren Sie eine bestehende.",
+          "title": "Wallet erstellen oder importieren"
+        },
+        "step3": {
+          "description": "Nach dem Scannen erscheint eine Verbindungsanfrage, um Ihre Wallet zu verbinden.",
+          "title": "Tippen Sie auf den QR-Scan-Button"
+        }
+      }
     }
   }
 }

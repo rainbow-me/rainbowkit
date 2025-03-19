@@ -60,6 +60,7 @@ import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { wigwamWallet } from './wigwamWallet/wigwamWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
+import { xPortalWallet } from './xPortalWallet/xPortalWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
@@ -126,6 +127,7 @@ export {
   walletConnectWallet,
   wigwamWallet,
   xdefiWallet,
+  xPortalWallet,
   zealWallet,
   zerionWallet,
 };
