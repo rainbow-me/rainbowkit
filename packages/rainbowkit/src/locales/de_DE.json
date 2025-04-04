@@ -1343,6 +1343,52 @@
           "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffnen Sie die Gate-App",
+          "description": "Wir empfehlen, Gate auf Ihrem Startbildschirm abzulegen, um schnellen Zugriff zu erhalten."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Installieren Sie die Gate-Erweiterung",
+          "description": "Wir empfehlen, Gate in Ihre Taskleiste zu heften, um leichteren Zugriff auf Ihr Wallet zu haben."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Stellen Sie sicher, dass Sie Ihre Wallet auf sichere Weise sichern. Teilen Sie niemals Ihren geheimen Wiederherstellungssatz mit anderen."
+        },
+        "step3": {
+          "title": "Aktualisieren Sie Ihren Browser",
+          "description": "Sobald Sie Ihr Wallet eingerichtet haben, klicken Sie unten, um den Browser zu aktualisieren und die Erweiterung zu laden."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Legen Sie xPortal auf Ihrem Startbildschirm ab, um schneller auf Ihr Wallet zuzugreifen.",
+          "title": "Öffnen Sie die xPortal-App"
+        },
+        "step2": {
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes.",
+          "title": "Erstellen oder importieren Sie ein Wallet"
+        },
+        "step3": {
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden.",
+          "title": "Tippen Sie auf die Schaltfläche QR-Scan"
+        }
+      }
     }
   }
 }

@@ -1343,6 +1343,52 @@
           "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application Gate",
+          "description": "Nous vous recommandons de mettre Gate sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension Gate",
+          "description": "Nous vous recommandons d'épingler Gate à votre barre des tâches pour un accès plus facile à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase de récupération secrète avec personne."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Mettez xPortal sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application xPortal"
+        },
+        "step2": {
+          "description": "Créez un portefeuille ou importez-en un existant.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton Scan QR"
+        }
+      }
     }
   }
 }

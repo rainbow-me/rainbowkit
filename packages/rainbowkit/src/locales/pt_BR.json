@@ -1343,6 +1343,52 @@
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Gate",
+          "description": "Recomendamos colocar o Gate na sua tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Gate",
+          "description": "Recomendamos fixar o Gate na sua barra de tarefas para facilitar o acesso à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta de recuperação com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Coloque o xPortal na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo xPortal"
+        },
+        "step2": {
+          "description": "Crie uma nova carteira ou importe uma existente.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão Scan QR"
+        }
+      }
     }
   }
 }

@@ -1343,6 +1343,52 @@
           "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 Gate 应用",
+          "description": "我们建议将 Gate 放在您的主屏幕上以便更快地访问。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "安装 Gate 扩展程序",
+          "description": "我们建议将 Gate 固定到任务栏，以便更轻松地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "确保使用安全的方法备份您的钱包。切勿与任何人分享您的秘密恢复短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "将 xPortal 放到您的主屏幕上，以便更快地访问您的钱包。",
+          "title": "打开 xPortal 应用"
+        },
+        "step2": {
+          "description": "创建钱包或导入现有钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击扫描二维码按钮"
+        }
+      }
     }
   }
 }
