@@ -34,6 +34,7 @@ export const xPortalWallet = ({
       android:
         'https://play.google.com/store/apps/details?id=com.elrond.maiar.wallet',
       ios: 'https://apps.apple.com/us/app/xportal-btc-crypto-wallet/id1519405832',
+      qrCode: 'https://xportal.com/app',
     },
     mobile: {
       getUri: shouldUseWalletConnect ? getUri : undefined,
