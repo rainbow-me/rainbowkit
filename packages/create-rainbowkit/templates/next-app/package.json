@@ -10,7 +10,7 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
-    "next": "^15.1.4",
+    "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "viem": "2.23.3",
