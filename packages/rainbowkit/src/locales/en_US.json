@@ -1425,7 +1425,7 @@
     "gate": {
       "qr_code": {
         "step1": {
-          "title": "Open the Gate.io app",
+          "title": "Open the Gate app",
           "description": "We recommend putting Gate on your home screen for quicker access."
         },
         "step2": {
