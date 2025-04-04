@@ -5,7 +5,6 @@ import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 type Props = {
-  ecl?: 'L' | 'M' | 'Q' | 'H';
   logoBackground?: string;
   logoUrl?: string | (() => Promise<string>);
   logoMargin?: number;
@@ -15,7 +14,6 @@ type Props = {
 };
 
 export function QRCode({
-  ecl = 'M',
   logoBackground,
   logoMargin = 10,
   logoSize = 50,
@@ -27,13 +25,6 @@ export function QRCode({
   const size = sizeProp - Number.parseInt(padding, 10) * 2;
 
   const showLogo = logoSize > 0 && logoUrl;
-
-  const errorCorrectionMap = {
-    L: 'low',
-    M: 'medium',
-    Q: 'quartile',
-    H: 'high',
-  } as const;
 
   return (
     <Box
@@ -56,7 +47,6 @@ export function QRCode({
       >
         <Cuer.Root
           value={uri}
-          errorCorrection={errorCorrectionMap[ecl]}
           size={size}
         >
           <Cuer.Cells />
