@@ -12,7 +12,7 @@ import { abi } from '../../contract-abi';
 import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
 
 const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  address: '0xc1C1Ad6Fa1D08CbdC171FcccF79FA948A6E4393B',
   abi,
 } as const;
 
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(BigInt(0));
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
 
   const {
     data: hash,
@@ -88,6 +88,7 @@ const Home: NextPage = () => {
                   mint?.({
                     ...contractConfig,
                     functionName: 'mint',
+                    args: [address as `0x${string}`],
                   })
                 }
               >
@@ -129,14 +130,14 @@ const Home: NextPage = () => {
                 </p>
                 <p style={{ marginBottom: 6 }}>
                   View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
+                  <a href={`https://sepolia.etherscan.io/tx/${hash}`}>
                     Etherscan
                   </a>
                 </p>
                 <p>
                   View on{' '}
                   <a
-                    href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
+                    href={`https://testnets.opensea.io/assets/sepolia/${txData?.to}/${totalMinted}`}
                   >
                     Opensea
                   </a>
