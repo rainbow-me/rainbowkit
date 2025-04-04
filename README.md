@@ -37,6 +37,7 @@ You can use the CodeSandbox links below to try out RainbowKit:
 - with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 - with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 - with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
 
 ## Examples
 
@@ -51,6 +52,7 @@ The following examples are provided in the [examples](./examples/) folder of thi
 - `with-next-siwe-iron-session`
 - `with-remix`
 - `with-vite`
+- `with-react-router`
 
 ### Running examples
 
