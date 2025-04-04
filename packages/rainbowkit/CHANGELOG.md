@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.5
+
+### Patch Changes
+
+- c5a9cc1: Fixed SVG encoding in wallet connector icons for Cool Mode
+- 03ae0d0: Added xPortal Wallet support with `xPortalWallet` wallet connector
+
 ## 2.2.4
 
 ### Patch Changes
