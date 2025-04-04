@@ -1,0 +1,18 @@
+{
+  "$schema": "https://codesandbox.io/schemas/tasks.json",
+  "setupTasks": ["yarn add @rainbow-me/rainbowkit@latest", "yarn build"],
+  "tasks": {
+    "install-dependencies": {
+      "name": "Install Dependencies",
+      "command": "yarn add @rainbow-me/rainbowkit@latest"
+    },
+    "start-app": {
+      "name": "Run Dev Server",
+      "command": "yarn dev",
+      "runAtStart": true,
+      "preview": {
+        "port": 5173
+      }
+    }
+  }
+}

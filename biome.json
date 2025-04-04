@@ -8,7 +8,8 @@
       "tsconfig.json",
       "tsconfig.*.json",
       "./packages/create-rainbowkit/generated-test-app/",
-      "build/"
+      "build/",
+      ".react-router"
     ]
   },
   "formatter": {
