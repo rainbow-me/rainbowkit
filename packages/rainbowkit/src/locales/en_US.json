@@ -1451,6 +1451,23 @@
           "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
       }
+    },
+
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Put xPortal on your home screen for faster access to your wallet.",
+          "title": "Open the xPortal app"
+        },
+        "step2": {
+          "description": "Create a wallet or import an existing one.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
+        }
+      }
     }
   }
 }

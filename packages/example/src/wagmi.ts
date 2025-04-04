@@ -59,6 +59,7 @@ import {
   walletConnectWallet,
   wigwamWallet,
   xdefiWallet,
+  xPortalWallet,
   zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -241,6 +242,7 @@ export const config = getDefaultConfig({
         valoraWallet,
         wigwamWallet,
         xdefiWallet,
+        xPortalWallet,
         zealWallet,
         zerionWallet,
       ],

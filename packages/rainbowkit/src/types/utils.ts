@@ -46,6 +46,7 @@ export type WalletProviderFlags =
   | 'isOpera'
   | 'isPhantom'
   | 'isPortal'
+  | 'isxPortal'
   | 'isRabby'
   | 'isRainbow'
   | 'isStatus'
