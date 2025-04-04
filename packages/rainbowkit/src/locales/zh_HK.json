@@ -1343,6 +1343,52 @@
           "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "打開 Gate 應用程式",
+          "description": "我們建議將 Gate 放置在你的主畫面，以便更快地訪問。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "安裝 Gate 擴充套件",
+          "description": "我們建議將 Gate 釘選到你的工作列，以便更方便地訪問你的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "請確保用安全的方法備份你的錢包。絕不與任何人分享你的秘密恢復詞。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "設置你的錢包後，點擊下方按鈕刷新瀏覽器並載入擴展。"
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "將 xPortal 放置在你的主畫面，以便更快地訪問你的錢包。",
+          "title": "打開 xPortal 應用程式"
+        },
+        "step2": {
+          "description": "創建新的錢包或導入現有的錢包。",
+          "title": "創建或導入錢包"
+        },
+        "step3": {
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。",
+          "title": "點擊掃瞄 QR 按鈕"
+        }
+      }
     }
   }
 }

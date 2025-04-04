@@ -1343,6 +1343,52 @@
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka app Gate",
+          "description": "Kami mencadangkan meletakkan Gate di skrin utama anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pasang sambungan Gate",
+          "description": "Kami mencadangkan menyematkan Gate ke taskbar anda untuk akses lebih mudah kepada dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Pastikan anda membuat salinan sandaran dompet anda menggunakan kaedah yang selamat. Jangan sekali-kali berkongsi frasa pemulihan rahsia anda dengan sesiapa."
+        },
+        "step3": {
+          "title": "Segarkan pelayar anda",
+          "description": "Setelah anda menyediakan dompet anda, klik di bawah untuk menyegarkan pelayar dan memuatkan lanjutan."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Letakkan xPortal pada skrin utama anda untuk akses lebih cepat ke dompet anda.",
+          "title": "Buka app xPortal"
+        },
+        "step2": {
+          "description": "Cipta dompet atau import yang sedia ada.",
+          "title": "Cipta atau Import Dompet"
+        },
+        "step3": {
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
+          "title": "Ketuk butang Imbas QR"
+        }
+      }
     }
   }
 }
