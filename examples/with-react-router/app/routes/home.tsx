@@ -1,5 +1,6 @@
-import type { Route } from './+types/home';
 import { Welcome } from '../welcome/welcome';
+import { Providers } from '~/providers';
+import '@rainbow-me/rainbowkit/styles.css';
 
 export function meta() {
   return [
@@ -9,5 +10,9 @@ export function meta() {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <Providers>
+      <Welcome />
+    </Providers>
+  );
 }
