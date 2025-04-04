@@ -28,7 +28,7 @@
     "@types/react-dom": "^19.0.3",
     "tailwindcss": "^4.0.0",
     "typescript": "5.5.4",
-    "vite": "^5.4.11",
+    "vite": "^5.4.16",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vite-tsconfig-paths": "^5.1.4"
   }
