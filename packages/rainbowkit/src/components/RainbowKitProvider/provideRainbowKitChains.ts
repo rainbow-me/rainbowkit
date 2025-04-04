@@ -308,7 +308,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   unichain: { chainId: 130, ...unichainIcon },
   unichainSepolia: { chainId: 1301, ...unichainIcon },
-  xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
+  xdc: { chainId: 50, name: 'XDC', ...xdcIcon },
   xdcTestnet: { chainId: 51, ...xdcIcon },
   zetachain: { chainId: 7000, name: 'ZetaChain', ...zetachainIcon },
   zetachainAthensTestnet: {
