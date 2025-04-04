@@ -1343,22 +1343,6 @@
           "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
         }
       }
-    },
-    "xportal": {
-      "qr_code": {
-        "step1": {
-          "description": "将xPortal添加到主屏幕，以便更快地访问您的钱包。",
-          "title": "打开xPortal应用"
-        },
-        "step2": {
-          "description": "创建钱包或导入现有钱包。",
-          "title": "创建或导入钱包"
-        },
-        "step3": {
-          "description": "扫描后，将出现连接提示，让您连接钱包。",
-          "title": "点击扫描二维码按钮"
-        }
-      }
     }
   }
 }

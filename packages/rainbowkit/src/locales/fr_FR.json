@@ -711,7 +711,7 @@
       },
       "extension": {
         "step1": {
-          "title": "Installez l'extension de MetaMask",
+          "title": "Installez l’extension de MetaMask",
           "description": "Nous recommandons d'épingler MetaMask à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
@@ -935,7 +935,7 @@
           "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l’extension.",
           "title": "Rafraîchissez votre navigateur"
         }
       }
@@ -1341,22 +1341,6 @@
         "step3": {
           "title": "Appuyez sur le bouton de scan",
           "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
-        }
-      }
-    },
-    "xportal": {
-      "qr_code": {
-        "step1": {
-          "description": "Ajoutez xPortal à votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
-          "title": "Ouvrez l'application xPortal"
-        },
-        "step2": {
-          "description": "Créez un portefeuille ou importez-en un existant.",
-          "title": "Créer ou Importer un Portefeuille"
-        },
-        "step3": {
-          "description": "Après avoir scanné, une demande de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
-          "title": "Appuyez sur le bouton Scanner QR"
         }
       }
     }

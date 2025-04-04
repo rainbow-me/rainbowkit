@@ -1343,22 +1343,6 @@
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
         }
       }
-    },
-    "xportal": {
-      "qr_code": {
-        "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için xPortal'ı ana ekranınıza ekleyin.",
-          "title": "xPortal uygulamasını açın"
-        },
-        "step2": {
-          "description": "Cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
-        },
-        "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı isteği görünecektir.",
-          "title": "QR Tarama düğmesine dokunun"
-        }
-      }
     }
   }
 }

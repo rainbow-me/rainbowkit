@@ -40,40 +40,40 @@ export const xPortalWallet = ({
     },
     qrCode: shouldUseWalletConnect
       ? {
-        getUri,
-        instructions: {
-          learnMoreUrl:
-            'https://help.xportal.com/en/articles/7038000-register-create-account',
-          steps: [
-            {
-              description:
-                'wallet_connectors.xportal.qr_code.step1.description',
-              step: 'install',
-              title: 'wallet_connectors.xportal.qr_code.step1.title',
-            },
-            {
-              description:
-                'wallet_connectors.xportal.qr_code.step2.description',
-              step: 'create',
-              title: 'wallet_connectors.xportal.qr_code.step2.title',
-            },
-            {
-              description:
-                'wallet_connectors.xportal.qr_code.step3.description',
-              step: 'scan',
-              title: 'wallet_connectors.xportal.qr_code.step3.title',
-            },
-          ],
-        },
-      }
+          getUri,
+          instructions: {
+            learnMoreUrl:
+              'https://help.xportal.com/en/articles/7038000-register-create-account',
+            steps: [
+              {
+                description:
+                  'wallet_connectors.xportal.qr_code.step1.description',
+                step: 'install',
+                title: 'wallet_connectors.xportal.qr_code.step1.title',
+              },
+              {
+                description:
+                  'wallet_connectors.xportal.qr_code.step2.description',
+                step: 'create',
+                title: 'wallet_connectors.xportal.qr_code.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.xportal.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.xportal.qr_code.step3.title',
+              },
+            ],
+          },
+        }
       : undefined,
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
-        projectId,
-        walletConnectParameters,
-      })
+          projectId,
+          walletConnectParameters,
+        })
       : getInjectedConnector({
-        flag: 'isxPortal',
-      }),
+          flag: 'isxPortal',
+        }),
   };
 };

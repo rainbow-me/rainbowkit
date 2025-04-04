@@ -1343,22 +1343,6 @@
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
         }
       }
-    },
-    "xportal": {
-      "qr_code": {
-        "step1": {
-          "description": "Agrega xPortal a tu pantalla de inicio para un acceso más rápido a tu billetera.",
-          "title": "Abre la aplicación xPortal"
-        },
-        "step2": {
-          "description": "Crea una billetera o importa una existente.",
-          "title": "Crear o Importar una Billetera"
-        },
-        "step3": {
-          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
-          "title": "Toca el botón Escanear QR"
-        }
-      }
     }
   }
 }
