@@ -1343,6 +1343,52 @@
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng Gate",
+          "description": "Chúng tôi khuyến nghị đặt Gate lên màn hình chính để truy cập nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Cài đặt tiện ích mở rộng Gate",
+          "description": "Chúng tôi khuyến nghị ghim Gate vào thanh tác vụ để truy cập dễ dàng vào ví của bạn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Hãy chắc chắn sao lưu ví của bạn bằng phương pháp an toàn. Không bao giờ chia sẻ cụm từ khôi phục bí mật của bạn với bất kỳ ai."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Một khi bạn thiết lập xong ví của mình, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Đặt xPortal lên màn hình chính để truy cập ví nhanh hơn.",
+          "title": "Mở ứng dụng xPortal"
+        },
+        "step2": {
+          "description": "Tạo ví hoặc nhập ví hiện có.",
+          "title": "Tạo hoặc Nhập ví"
+        },
+        "step3": {
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
+          "title": "Nhấn nút Quét QR"
+        }
+      }
     }
   }
 }

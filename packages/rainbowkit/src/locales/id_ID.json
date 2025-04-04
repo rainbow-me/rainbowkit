@@ -1343,6 +1343,52 @@
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
+    },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Gate",
+          "description": "Kami merekomendasikan untuk meletakkan Gate di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Gate",
+          "description": "Kami menyarankan untuk mem-pin Gate ke taskbar Anda untuk akses dompet yang lebih mudah."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
+    "xportal": {
+      "qr_code": {
+        "step1": {
+          "description": "Letakkan xPortal di layar utama Anda untuk akses lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi xPortal"
+        },
+        "step2": {
+          "description": "Buat dompet baru atau impor yang sudah ada.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol Scan QR"
+        }
+      }
     }
   }
 }
