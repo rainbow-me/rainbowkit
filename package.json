@@ -63,7 +63,7 @@
     "jsdom": "^25.0.0",
     "next": "^15.2.4",
     "next-auth": "4.24.11",
-    "postcss": "^8.4.45",
+    "postcss": "^8.4.46",
     "postcss-prefix-selector": "^1.16.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

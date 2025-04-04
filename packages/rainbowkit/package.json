@@ -60,7 +60,7 @@
     "autoprefixer": "^10.4.16",
     "jsdom": "^25.0.0",
     "nock": "^13.4.0",
-    "postcss": "^8.4.45",
+    "postcss": "^8.4.46",
     "react": "^19.0.0",
     "vitest": "2.1.9",
     "dotenv": "^16.4.5"
