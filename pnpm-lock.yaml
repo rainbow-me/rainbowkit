@@ -432,11 +432,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cuer:
-        specifier: ^0.0.2
+        specifier: 0.0.2
         version: 0.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.5.4)
-      qrcode:
-        specifier: 1.5.4
-        version: 1.5.4
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
@@ -465,9 +462,6 @@ importers:
       '@testing-library/user-event':
         specifier: ^14.5.2
         version: 14.5.2(@testing-library/dom@10.4.0)
-      '@types/qrcode':
-        specifier: ^1.5.5
-        version: 1.5.5
       '@types/ua-parser-js':
         specifier: ^0.7.39
         version: 0.7.39
@@ -4409,9 +4403,6 @@ packages:
 
   '@types/q@1.5.8':
     resolution: {integrity: sha512-hroOstUScF6zhIi+5+x0dzqrHA1EJi+Irri6b1fxolMTqqHIV/Cg77EtnQcZqZCu8hR3mX2BzIxN4/GzI68Kfw==}
-
-  '@types/qrcode@1.5.5':
-    resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
 
   '@types/qs@6.9.15':
     resolution: {integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==}
@@ -10067,11 +10058,6 @@ packages:
 
   qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-
-  qrcode@1.5.4:
-    resolution: {integrity: sha512-1ca71Zgiu6ORjHqFBDpnSMTR2ReToX4l1Au1VFLyVeBTFavzQnv5JxMFr3ukHVKpSrSA2MCk0lNJSykjUfz7Zg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
@@ -16505,10 +16491,6 @@ snapshots:
       '@types/node': 18.19.47
 
   '@types/q@1.5.8': {}
-
-  '@types/qrcode@1.5.5':
-    dependencies:
-      '@types/node': 20.16.5
 
   '@types/qs@6.9.15': {}
 
@@ -23948,12 +23930,6 @@ snapshots:
     dependencies:
       dijkstrajs: 1.0.3
       encode-utf8: 1.0.3
-      pngjs: 5.0.0
-      yargs: 15.4.1
-
-  qrcode@1.5.4:
-    dependencies:
-      dijkstrajs: 1.0.3
       pngjs: 5.0.0
       yargs: 15.4.1
 
