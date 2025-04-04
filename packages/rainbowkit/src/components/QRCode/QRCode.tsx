@@ -45,10 +45,7 @@ export function QRCode({
         }}
         userSelect="none"
       >
-        <Cuer.Root
-          value={uri}
-          size={size}
-        >
+        <Cuer.Root value={uri} size={size}>
           <Cuer.Cells />
           <Cuer.Finder />
           {showLogo && (
