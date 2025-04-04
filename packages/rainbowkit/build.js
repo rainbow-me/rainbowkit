@@ -32,10 +32,25 @@ const baseBuildConfig = (onEnd) => {
     platform: 'browser',
     loader: {
       '.png': 'dataurl',
-      '.svg': 'dataurl',
       '.json': 'text',
     },
     plugins: [
+      {
+        name: 'svg-url-encoding-plugin',
+        setup(build) {
+          build.onLoad({ filter: /\.svg$/ }, async (args) => {
+            const fs = await import('node:fs/promises');
+
+            const svg = await fs.readFile(args.path, 'utf8');
+            const dataUrl = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+
+            return {
+              contents: `export default ${JSON.stringify(dataUrl)};`,
+              loader: 'js',
+            };
+          });
+        },
+      },
       vanillaExtractPlugin({
         identifiers: isCssMinified ? 'short' : 'debug',
         processCss: async (css) => {
