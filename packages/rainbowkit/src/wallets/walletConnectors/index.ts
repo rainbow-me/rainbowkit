@@ -27,6 +27,7 @@ import { injectedWallet } from './injectedWallet/injectedWallet';
 import { iopayWallet } from './iopayWallet/iopayWallet';
 import { kaiaWallet } from './kaiaWallet/kaiaWallet';
 import { kaikasWallet } from './kaikasWallet/kaikasWallet';
+import { konkretWallet } from './konkretWallet/konkretWallet';
 import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -94,6 +95,7 @@ export {
   iopayWallet,
   kaiaWallet,
   kaikasWallet,
+  konkretWallet,
   krakenWallet,
   kresusWallet,
   ledgerWallet,

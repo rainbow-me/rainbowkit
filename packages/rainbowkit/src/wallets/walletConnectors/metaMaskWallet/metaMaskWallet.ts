@@ -9,7 +9,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type MetaMaskWalletOptions = DefaultWalletOptions;
 
-function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
+export function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
   if (!ethereum?.isMetaMask) return false;
