@@ -12,7 +12,7 @@ import { rainbowKitNftAbi } from '../../contract/abi/';
 import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
 
 const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  address: '0x566cbBf5D5c7c1C14f91fBD05910A539515603f2',
   abi: rainbowKitNftAbi,
 } as const;
 
