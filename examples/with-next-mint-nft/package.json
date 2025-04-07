@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "contract:test": "cd contract && forge test",
+    "contract:build": "cd contract && forge build",
+    "contract:deploy": "cd contract && forge create",
+    "contract:generate-abi": "cd contract && wagmi generate"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
@@ -20,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^20.14.8",
     "@types/react": "^19.0.6",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "@wagmi/cli": "^2.2.1"
   }
 }

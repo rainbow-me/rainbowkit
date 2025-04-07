@@ -25,7 +25,7 @@ export default {
     exclude: [
       '**/node_modules/**',
       '**/dist/**',
-      '**/examples/with-next-mint-nft/contract/lib/**',
+      '**/examples/with-next-mint-nft/contract/**',
     ],
   },
 };
