@@ -22,5 +22,10 @@ export default {
     globals: true,
     setupFiles: ['./packages/rainbowkit/test/setup.ts'],
     watch: false,
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/examples/with-next-mint-nft/contract/**',
+    ],
   },
 };
