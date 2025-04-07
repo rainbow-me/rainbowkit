@@ -1,0 +1,21 @@
+{
+  "name": "demomint",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "forge test",
+    "build": "forge build",
+    "deploy": "forge create",
+    "generate-abi": "wagmi generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wagmi/cli": "^2.2.1"
+  }
+}
