@@ -69,10 +69,10 @@
     "react-dom": "^19.0.0",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
-    "viem": "2.23.3",
+    "viem": "2.23.12",
     "vite": "^5.4.16",
     "vitest": "2.1.9",
-    "wagmi": "^2.14.11"
+    "wagmi": "^2.14.16"
   },
   "resolutions": {
     "@types/react": "^19.0.6",
@@ -81,7 +81,7 @@
     "react-dom": "^19.0.0",
     "elliptic": "6.6.1"
   },
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.4.1",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "@biomejs/biome",
