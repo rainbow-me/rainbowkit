@@ -102,13 +102,13 @@ npm i @tanstack/react-query
 
 **1. 改進的EIP-6963錢包行為**
 
-支持新EIP-6963連接標準的錢包（包括Rainbow、MetaMask等）現在在連接錢包體驗中將自動出現在`已安裝`部分。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。
+支持新EIP-6963連接標準的錢包（包括Rainbow、MetaMask等）現在在連接錢包體驗中將自動出現在`已安裝`部分。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。
 
-開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。
+開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。
 
 **2. 使用getDefaultConfig進行Wagmi配置**
 
-此新API簡化了配置體驗，並取代了直接使用Wagmi的`createConfig`的需要。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。
+此新API簡化了配置體驗，並取代了直接使用Wagmi的`createConfig`的需要。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。
 
 默認錢包列表將自動包括在內，不再需要使用`getDefaultWallets`和`connectorsForWallets`。
 
@@ -197,9 +197,9 @@ const config = getDefaultConfig({
 
 **5. 自定義錢包**
 
-RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和[示例連接器](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)以升級 dApp 中的任何自定義錢包連接器。
+RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和[示例連接器](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)以升級 dApp 中的任何自定義錢包連接器。
 
-錢包連接器現在也支持帶有`rdns`屬性的EIP-6963標準。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。
+錢包連接器現在也支持帶有`rdns`屬性的EIP-6963標準。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。
 
 ### 1.x.x 重大變更
 
@@ -217,7 +217,7 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 
 \*\*2. 安裝 `viem` 相關依賴
 
-wagmi v1 需要 `viem` 相關依賴。 使用以下命令安裝它：
+wagmi v1 需要 `viem` 相關依賴。 使用以下命令安裝它： 使用以下命令安裝它：
 
 ```bash
 npm i viem
@@ -241,11 +241,11 @@ npm i viem
 
 已將 wagmi 的相關依賴更新為 `0.12.x`。
 
-RainbowKit 已經採用了 `wagmi` 中的 `WalletConnectLegacyConnector` 連接器以繼續支持 WalletConnect v1。 WalletConnect v2 和 `WalletConnectConnector` 的支持將會作為補丁釋放，且不會有重大變更。
+RainbowKit 已經採用了 `wagmi` 中的 `WalletConnectLegacyConnector` 連接器以繼續支持 WalletConnect v1。 WalletConnect v2 和 `WalletConnectConnector` 的支持將會作為補丁釋放，且不會有重大變更。 WalletConnect v2 和 `WalletConnectConnector` 的支持將會作為補丁釋放，且不會有重大變更。
 
 錢包將在未來的版本中自動過渡。
 
-每個 dApp 現在都必須提供一個 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` 以啟用 WalletConnect v2。 必須在 2023 年 6 月 28 日 WalletConnect v1 橋服務器關閉之前完成此操作。 如果未指定 `projectId`，RainbowKit 將默認選擇 v1。
+每個 dApp 現在都必須提供一個 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` 以啟用 WalletConnect v2。 必須在 2023 年 6 月 28 日 WalletConnect v1 橋服務器關閉之前完成此操作。 如果未指定 `projectId`，RainbowKit 將默認選擇 v1。 必須在 2023 年 6 月 28 日 WalletConnect v1 橋服務器關閉之前完成此操作。 如果未指定 `projectId`，RainbowKit 將默認選擇 v1。
 
 請按照以下步驟進行遷移。
 
@@ -257,7 +257,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2. 提供一個 WalletConnect Cloud projectId
 
-每個依賴於WalletConnect的dApp現在都需要從[WalletConnect Cloud](https://cloud.walletconnect.com/)獲取一個`projectId`。 這是完全免費的，只需幾分鐘。
+每個依賴於WalletConnect的dApp現在都需要從[WalletConnect Cloud](https://cloud.walletconnect.com/)獲取一個`projectId`。 這是完全免費的，只需幾分鐘。 這是完全免費的，只需幾分鐘。
 
 將 `projectId` 提供給 `getDefaultWallets` 和單獨的 RainbowKit 錢包連接器，如下：
 
@@ -420,7 +420,7 @@ npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 
 從 `Wallet` 類型的 `createConnector` 中移除了 `chainId` 參數。
 
-**請注意，所有內建錢包都在使用新 API。** 大多數消費者不會受到影響。 **此更改僅影響已創建/消耗[自定義錢包](/docs/custom-wallets)的消費者。**
+**請注意，所有內建錢包都在使用新 API。** 大多數消費者不會受到影響。 **此更改僅影響已創建/消耗[自定義錢包](/docs/custom-wallets)的消費者。** 大多數消費者不會受到影響。 **此更改僅影響已創建/消耗[自定義錢包](/docs/custom-wallets)的消費者。**
 
 如果您之前從 `createConnector` 中的 `chainId` 派生出 RPC URL，現在可以刪除該邏輯，因為在使用 `configureChains` 時，wagmi 會內部處理 RPC URL。
 
@@ -501,7 +501,7 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 
 #### 3. 遷移提供者
 
-RainbowKit 不再導出 `apiProvider` API。 用你希望的提供者從 wagmi 替換它。
+RainbowKit 不再導出 `apiProvider` API。 用你希望的提供者從 wagmi 替換它。 用你希望的提供者從 wagmi 替換它。
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
