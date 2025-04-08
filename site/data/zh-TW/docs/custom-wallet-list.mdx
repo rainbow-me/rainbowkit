@@ -7,7 +7,7 @@ description: 自定義錢包列表
 
 ## 自定義錢包列表
 
-您可以從 `'@rainbow-me/rainbowkit/wallets'` 導入個別的錢包，並配合 `connectorsForWallets` 函數來建立自己的錢包列表及其必要的連接器。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。
+您可以從 `'@rainbow-me/rainbowkit/wallets'` 導入個別的錢包，並配合 `connectorsForWallets` 函數來建立自己的錢包列表及其必要的連接器。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。
 
 例如，您可以選擇只顯示 Rainbow 以及通用的備用錢包。
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 注入錢包
 
-這是為在 `window.ethereum` 存在但未被列表中的其他錢包提供的情況設計的備用錢包選項。 當備用並不必要或者不存在注入錢包時，此錢包將自動隱藏自己。
+這是為在 `window.ethereum` 存在但未被列表中的其他錢包提供的情況設計的備用錢包選項。 當備用並不必要或者不存在注入錢包時，此錢包將自動隱藏自己。 當備用並不必要或者不存在注入錢包時，此錢包將自動隱藏自己。
 
 **建議始終將此錢包列入名單，以確保支持所有注入的錢包。**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 安全錢包
 
-對於支持 Safe Apps 的 dApp，用戶可以輕鬆連接其 Safe vault 或多重簽名，包含 `safeWallet` 選項以實現自動連接。 安全選項只會在 Safe Wallet 瀏覽器環境中出現。
+對於支持 Safe Apps 的 dApp，用戶可以輕鬆連接其 Safe vault 或多重簽名，包含 `safeWallet` 選項以實現自動連接。 安全選項只會在 Safe Wallet 瀏覽器環境中出現。 安全選項只會在 Safe Wallet 瀏覽器環境中出現。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -108,6 +108,12 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 背包
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### BeraSig
@@ -158,13 +164,13 @@ import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave 錢包
+#### Bybit 錢包
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit 錢包
+#### Brave 錢包
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -174,7 +180,7 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 此錢包連接器支持 Coinbase Wallet 應用程序和擴展，以及 Web 上的 Coinbase Smart Wallet。
 
-`Preference` 參數可用於控制 Smart Wallet 是否為用戶啟用和可用。 基於偏好的行為在[此處](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)有記錄。
+`Preference` 參數可用於控制 Smart Wallet 是否為用戶啟用和可用。 `Preference` 參數可用於控制 Smart Wallet 是否為用戶啟用和可用。 基於偏好的行為在[此處](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)有記錄。
 
 Smart Wallet 將在六月初預設啟用 `all`，無需進一步升級。
 
@@ -229,13 +235,13 @@ import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier 錢包
+#### Gate 錢包
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate 錢包
+#### Frontier 錢包
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -343,13 +349,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper 錢包
+#### Ronin 錢包
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin 錢包
+#### Ramper 錢包
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -407,6 +413,12 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
@@ -478,7 +490,7 @@ const connectors = connectorsForWallets(
 
 #### 多個組別
 
-您可以使用`groupName`鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
+您可以使用`groupName`鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
 
 推薦Rainbow和MetaMask，但也提供Coinbase及通用的後備錢包。
 
