@@ -113,6 +113,12 @@ import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 #### बेरा सिग
 
 ```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### सर्वश्रेष्ठ वॉलेट
+
+```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
@@ -172,7 +178,7 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-यह वॉलेट कनेक्टर Coinbase वॉलेट ऐप और एक्सटेंशन दोनों का समर्थन करता है, साथ ही वेब पर Coinbase Smart Wallet का भी समर्थन करता है।
+Smart Wallet प्रारंभिक जून में बिना किसी आगे अपग्रेड के `all` के साथ डिफ़ॉल्ट रूप से सक्षम हो जाएगा।
 
 उपयोगकर्ताओं के लिए Smart Wallet सक्षम और उपलब्ध है या नहीं यह नियंत्रित करने के लिए एक `preference` तर्क उपलब्ध है। प्रेफरेन्स आधारित व्यवहार यहाँ प्रलेखित है [यहाँ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)।
 
@@ -409,6 +415,12 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### विगवाम
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
@@ -447,7 +459,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-रेनबो, मेटामास्क और कोइनबेस को सामान्य फ़ॉलबैक वॉलेट्स के साथ दिखाएं।
+आप `groupName` कुंजी का उपयोग करके विभिन्न वॉलेट समूहों को नाम दे सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं को यह सूचित करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स।
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
