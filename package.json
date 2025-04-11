@@ -63,16 +63,16 @@
     "jsdom": "^25.0.0",
     "next": "^15.2.4",
     "next-auth": "4.24.11",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.46",
     "postcss-prefix-selector": "^1.16.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
-    "viem": "2.23.12",
+    "viem": "2.23.3",
     "vite": "^5.4.16",
     "vitest": "2.1.9",
-    "wagmi": "^2.14.16"
+    "wagmi": "^2.14.11"
   },
   "resolutions": {
     "@types/react": "^19.0.6",
@@ -81,7 +81,7 @@
     "react-dom": "^19.0.0",
     "elliptic": "6.6.1"
   },
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.4.1",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "@biomejs/biome",
