@@ -3,7 +3,7 @@ name: CI
 on: [pull_request, push]
 
 env:
-  pnpm: 10.7.1
+  pnpm: 10.8.0
   RAINBOW_PROVIDER_API_KEY: ${{ secrets.RAINBOW_PROVIDER_API_KEY }}
   WALLETCONNECT_PROJECT_ID: ${{ secrets.WALLETCONNECT_PROJECT_ID }}
 
