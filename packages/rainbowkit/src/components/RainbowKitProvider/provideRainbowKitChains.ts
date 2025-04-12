@@ -261,7 +261,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   },
   blast: { chainId: 81457, name: 'Blast', ...blastIcon },
   blastSepolia: { chainId: 168_587_773, ...blastIcon },
-  bsc: { chainId: 56, name: 'BSC', ...bscIcon },
+  bsc: { chainId: 56, name: 'BNB', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
   celo: { chainId: 42220, name: 'Celo', ...celoIcon },
   celoAlfajores: { chainId: 44787, name: 'Celo Alfajores', ...celoIcon },
