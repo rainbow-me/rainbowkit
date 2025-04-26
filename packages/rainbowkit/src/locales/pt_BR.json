@@ -1389,6 +1389,22 @@
           "title": "Toque no botão Scan QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo ZilPay",
+          "description": "Adicione ZilPay à sua tela inicial para acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escaneamento",
+          "description": "Após escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
     }
   }
 }

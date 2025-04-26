@@ -1389,6 +1389,22 @@
           "title": "Nhấn nút Quét QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng ZilPay",
+          "description": "Thêm ZilPay vào màn hình chính để truy cập ví nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập Ví",
+          "description": "Tạo ví mới hoặc nhập ví đã có."
+        },
+        "step3": {
+          "title": "Nhấn vào nút quét",
+          "description": "Sau khi quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      }
     }
   }
 }

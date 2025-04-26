@@ -1389,6 +1389,22 @@
           "title": "Ketuk butang Imbas QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih pantas ke dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketik butang imbas",
+          "description": "Selepas anda mengimbas, gesaan sambungan akan muncul untuk anda menyambungkan dompet anda."
+        }
+      }
     }
   }
 }

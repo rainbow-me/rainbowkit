@@ -1389,6 +1389,22 @@
           "title": "Tekan tombol Scan QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambahkan ZilPay ke layar utama Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor dompet yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk tombol pindai",
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul agar Anda dapat menghubungkan dompet Anda."
+        }
+      }
     }
   }
 }

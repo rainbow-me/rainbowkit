@@ -1389,6 +1389,22 @@
           "title": "Tippen Sie auf die Schaltfläche QR-Scan"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffnen Sie die ZilPay-App",
+          "description": "Fügen Sie ZilPay zu Ihrem Startbildschirm hinzu, um schneller auf Ihr Wallet zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
+      }
     }
   }
 }

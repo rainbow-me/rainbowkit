@@ -1389,6 +1389,22 @@
           "title": "Toque el botón Escanear QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Abrir la aplicación ZilPay",
+          "description": "Agrega ZilPay a tu pantalla de inicio para acceder más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+        }
+      }
     }
   }
 }

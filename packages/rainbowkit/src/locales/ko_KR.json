@@ -1389,6 +1389,22 @@
           "title": "QR 코드 스캔 버튼을 누르기"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "ZilPay 앱 열기",
+          "description": "지갑에 더 빠르게 접근하려면 홈 화면에 ZilPay를 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새 지갑을 생성하거나 기존 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼 탭하기",
+          "description": "스캔 후 지갑을 연결하라는 연결 프롬프트가 나타납니다."
+        }
+      }
     }
   }
 }

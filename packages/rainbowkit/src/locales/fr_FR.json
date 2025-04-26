@@ -1389,6 +1389,22 @@
           "title": "Appuyez sur le bouton Scan QR"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application ZilPay",
+          "description": "Ajoutez ZilPay à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      }
     }
   }
 }

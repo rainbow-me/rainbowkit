@@ -1389,6 +1389,22 @@
           "title": "點擊掃瞄 QR 按鈕"
         }
       }
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "開啟 ZilPay 應用程式",
+          "description": "將 ZilPay 新增至主畫面，以便更快存取您的錢包。"
+        },
+        "step2": {
+          "title": "建立或匯入錢包",
+          "description": "建立新錢包或匯入現有錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連線提示，讓您連接錢包。"
+        }
+      }
     }
   }
 }
