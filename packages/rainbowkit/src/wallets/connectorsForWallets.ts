@@ -160,6 +160,7 @@ export const connectorsForWallets = (
           }),
         ),
       );
+      continue;
     }
 
     const connector = createConnector(walletMetaData());
