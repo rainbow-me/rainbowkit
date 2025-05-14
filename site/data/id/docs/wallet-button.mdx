@@ -1,13 +1,13 @@
 ---
-title: TombolDompet
-description: Menggunakan dan menyesuaikan TombolDompet
+title: WalletButton
+description: Menggunakan dan menyesuaikan WalletButton
 ---
 
-# TombolDompet
+# WalletButton
 
-> Catatan: `TombolDompet` saat ini bergantung pada standar dompet EIP-1193, tetapi akan mendukung EIP-6963 di masa mendatang.
+> Catatan: `WalletButton` saat ini bergantung pada standar dompet EIP-1193, tetapi akan mendukung EIP-6963 dalam waktu dekat.
 
-Komponen `TombolDompet` baru membantu dApps dengan implementasi daftar dompet kustom untuk mengadopsi RainbowKit dan semua manfaat tanpa perawatan.
+Komponen `WalletButton` yang baru membantu dApps dengan implementasi daftar dompet kustom untuk mengadopsi RainbowKit dan semua manfaatnya yang bebas perawatan.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Seperti `ConnectButton`, komponen `TombolDompet.Custom` tersedia untuk implementasi dan tampilan kustom.
+Seperti `ConnectButton`, komponen `WalletButton.Custom` tersedia untuk implementasi dan gaya kustom.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ Seperti `ConnectButton`, komponen `TombolDompet.Custom` tersedia untuk implement
 </WalletButton.Custom>
 ```
 
-Sebagian besar dApps paling baik dilayani oleh [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Rujuk dokumen [di sini](https://www.rainbowkit.com/docs/wallet-button) untuk informasi lebih lanjut tentang adopsi `TombolDompet` dan kasus penggunaan.
+Sebagian besar dApps paling baik menggunakan [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Rujuk dokumen [di sini](https://www.rainbowkit.com/docs/wallet-button) untuk informasi lebih lanjut tentang adopsi dan kasus penggunaan `WalletButton`.
 
 #### Demo
 
