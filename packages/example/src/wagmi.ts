@@ -62,6 +62,7 @@ import {
   xPortalWallet,
   zealWallet,
   zerionWallet,
+  zilPayWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { publicActions } from 'viem';
 import {
@@ -245,6 +246,7 @@ export const config = getDefaultConfig({
         xPortalWallet,
         zealWallet,
         zerionWallet,
+        zilPayWallet,
       ],
     },
   ],
