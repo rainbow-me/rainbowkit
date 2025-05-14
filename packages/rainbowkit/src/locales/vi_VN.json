@@ -1389,6 +1389,22 @@
           "title": "Nhấn nút Quét QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Bạn có thể dễ dàng sao lưu ví của mình bằng tính năng sao lưu trên đám mây.",
+          "title": "Tạo hoặc Nhập ví"
+        },
+        "step3": {
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
+          "title": "Nhấn nút quét"
+        }
+      }
     }
   }
 }
