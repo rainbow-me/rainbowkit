@@ -1389,6 +1389,22 @@
           "title": "點擊掃描 QR 按鈕"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "您可以使用雲備份功能輕鬆備份您的錢包。",
+          "title": "創建或導入錢包"
+        },
+        "step3": {
+          "description": "掃描後，將出現連接提示以連接您的錢包。",
+          "title": "點擊掃描按鈕"
+        }
+      }
     }
   }
 }
