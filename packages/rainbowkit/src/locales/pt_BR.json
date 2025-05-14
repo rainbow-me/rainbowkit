@@ -1389,6 +1389,22 @@
           "title": "Toque no botão Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
+        }
+      }
     }
   }
 }
