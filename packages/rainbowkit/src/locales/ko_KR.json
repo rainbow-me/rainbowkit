@@ -1389,6 +1389,22 @@
           "title": "QR 코드 스캔 버튼을 누르기"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "클라우드 백업 기능을 사용하여 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "title": "스캔 버튼을 누릅니다"
+        }
+      }
     }
   }
 }
