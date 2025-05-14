@@ -1,13 +1,13 @@
 ---
-title: Botão da Carteira
-description: Usando e personalizando o Botão da Carteira
+title: WalletButton
+description: Usando e personalizando o WalletButton
 ---
 
-# Botão da Carteira
+# WalletButton
 
-> Note: The `WalletButton` currently relies on the EIP-1193 wallet standard, but will support EIP-6963 in the near future.
+> Nota: O `WalletButton` atualmente depende do padrão de carteira EIP-1193, mas dará suporte ao EIP-6963 em um futuro próximo.
 
-O novo componente `WalletButton` ajuda as dApps com implementações personalizadas de lista de carteiras a adotar o RainbowKit e todos os seus benefícios livres de manutenção.
+O novo componente `WalletButton` ajuda os dApps com implementações personalizadas de lista de carteiras a adotar o RainbowKit e todos os seus benefícios sem manutenção.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Assim como o `ConnectButton`, o componente `WalletButton.Custom` está disponível para implementações personalizadas e estilização.
+Assim como o `ConnectButton`, o componente `WalletButton.Custom` está disponível para implementações e estilizações personalizadas.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ Assim como o `ConnectButton`, o componente `WalletButton.Custom` está disponív
 </WalletButton.Custom>
 ```
 
-A maioria das dApps são melhor atendidas pelo [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Consulte a documentação [here](https://www.rainbowkit.com/docs/wallet-button) para obter mais informações sobre a adoção e casos de uso do `WalletButton`.
+A maioria dos dApps são melhor atendidos pelo [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Consulte a documentação [aqui](https://www.rainbowkit.com/docs/wallet-button) para mais informações sobre a adoção e casos de uso do `WalletButton`.
 
 #### Demo
 
