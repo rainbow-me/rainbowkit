@@ -1389,6 +1389,22 @@
           "title": "Appuyez sur le bouton Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant la fonction de sauvegarde cloud.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      }
     }
   }
 }
