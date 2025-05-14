@@ -1,13 +1,13 @@
 ---
-title: КнопкаПортмонетка
-description: Использование и настройка КнопкиПортмонетка
+title: WalletButton
+description: Использование и настройка WalletButton
 ---
 
-# КнопкаПортмонетка
+# WalletButton
 
-> Примечание: В настоящее время `КнопкаПортмонетка` опирается на стандарт кошелька EIP-1193, но в ближайшем будущем будет поддерживать EIP-6963.
+> Примечание: В настоящее время `WalletButton` опирается на стандарт кошелька [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193), но в ближайшем будущем будет поддерживать [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963).
 
-Новый компонент `КнопкаПортмонетка` помогает dApps с кастомными списками кошельков использовать RainbowKit и все его преимущества, не требующие обслуживания.
+Новый компонент `WalletButton` помогает dApps с кастомными списками кошельков использовать RainbowKit и все его преимущества, не требующие обслуживания.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Как и `ConnectButton`, компонент `КнопкаПортмонетка.Custom` доступен для кастомных реализаций и стилизации.
+Как и `ConnectButton`, компонент `WalletButton.Custom` доступен для кастомных реализаций и стилизации.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-Большинство dApps лучше всего используют [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Обратитесь к документации [здесь](https://www.rainbowkit.com/docs/wallet-button) для получения дополнительной информации о внедрении и использовании `КнопкаПортмонетка`.
+Большинство dApps лучше всего используют [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Обратитесь к документации [здесь](https://www.rainbowkit.com/docs/wallet-button) для получения дополнительной информации о внедрении и использовании `WalletButton`.
 
 #### Демо
 
