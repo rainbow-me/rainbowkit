@@ -16,7 +16,8 @@ export const computeWalletConnectMetaData = ({
   return {
     name: appName,
     description: appDescription ?? appName,
-    url: appUrl ?? (typeof window !== 'undefined' ? window.location.href : ''),
+    url:
+      appUrl ?? (typeof window !== 'undefined' ? window.location.origin : ''),
     icons: [...(appIcon ? [appIcon] : [])],
   };
 };
