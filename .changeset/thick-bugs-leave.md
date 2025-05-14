@@ -14,6 +14,7 @@
 "with-vite": patch
 "example": patch
 "site": patch
+"@rainbow-me/create-rainbowkit": patch
 ---
 
 Upgrade wagmi to 2.15.2 and viem to 2.29.2
