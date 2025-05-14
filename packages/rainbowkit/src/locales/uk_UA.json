@@ -1389,6 +1389,22 @@
           "title": "Натисніть кнопку 'Сканувати QR-код'"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Ви можете легко створити резервну копію гаманця за допомогою функції хмарного резервного копіювання.",
+          "title": "Створити або Імпортувати Гаманець"
+        },
+        "step3": {
+          "description": "Після сканування з'явиться запит на під'єднання для підключення вашого гаманця.",
+          "title": "Натисніть кнопку сканування"
+        }
+      }
     }
   }
 }
