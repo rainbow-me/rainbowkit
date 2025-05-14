@@ -5,9 +5,9 @@ description: Використання та налаштування WalletButton
 
 # WalletButton
 
-> Примітка: `WalletButton` наразі спирається на стандарт гаманця EIP-1193, але в найближчому майбутньому буде підтримувати EIP-6963.
+> Примітка: `WalletButton` наразі залежить від стандарту гаманців EIP-1193, але незабаром буде підтримувати EIP-6963.
 
-Новий компонент `WalletButton` допомагає dApps з кастомними реалізаціями списку гаманців прийняти RainbowKit і всі його переваги без необхідності обслуговування.
+Новий компонент `WalletButton` допомагає dApp з імплементацією списку спеціальних гаманців адаптувати RainbowKit і всі його переваги без обслуговування.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Як і `ConnectButton`, компонент `WalletButton.Custom` доступний для користувацьких реалізацій та стилізації.
+Як `ConnectButton`, компонент `WalletButton.Custom` доступний для спеціальних імплементацій та стилізації.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-Більшість dApps найкраще працюють за допомогою [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Дивіться документацію [тут](https://www.rainbowkit.com/docs/wallet-button) для отримання додаткової інформації про впровадження та випадки використання `WalletButton`.
+Більшість dApps найкраще обслуговуються за допомогою [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Зверніться до документації [тут](https://www.rainbowkit.com/docs/wallet-button) для отримання додаткової інформації щодо застосування `WalletButton` та випадків використання.
 
 #### Демо
 
