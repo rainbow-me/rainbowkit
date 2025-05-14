@@ -1389,6 +1389,22 @@
           "title": "Ketuk butang Imbas QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Anda boleh membuat sandaran dompet anda dengan mudah menggunakan ciri sandaran awan.",
+          "title": "Cipta atau Import Dompet"
+        },
+        "step3": {
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
+          "title": "Ketuk butang Imbas"
+        }
+      }
     }
   }
 }
