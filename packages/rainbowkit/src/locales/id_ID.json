@@ -1389,6 +1389,22 @@
           "title": "Tekan tombol Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
+          "title": "Open the MEW Wallet app"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan awan.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol scan"
+        }
+      }
     }
   }
 }
