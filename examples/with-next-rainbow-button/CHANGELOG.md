@@ -4,8 +4,7 @@
 
 ### Patch Changes
 
-- 5e16367: Upgrade wagmi to 2.15.2 and viem to 2.29.2
-- 5e78c74: Upgraded `wagmi` to `^2.14.16` and `viem` to `2.23.12`
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
   - @rainbow-me/rainbow-button@0.2.22
 
 ## 0.0.30
