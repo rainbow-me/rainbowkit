@@ -1393,8 +1393,8 @@
     "mew": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
-          "title": "Open the MEW Wallet app"
+          "description": "Kami sarankan untuk menempatkan MEW Wallet di layar utama Anda untuk akses yang lebih cepat.",
+          "title": "Buka aplikasi MEW Wallet"
         },
         "step2": {
           "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan awan.",
@@ -1404,6 +1404,22 @@
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
           "title": "Tekan tombol scan"
         }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Open the ZilPay app",
+        "description": "Add ZilPay to your home screen for faster access to your wallet."
+      },
+      "step2": {
+        "title": "Buat atau Impor Dompet",
+        "description": "Buat dompet baru atau impor yang sudah ada."
+      },
+      "step3": {
+        "title": "Tekan tombol scan",
+        "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
       }
     }
   }
