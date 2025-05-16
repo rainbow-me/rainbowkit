@@ -1469,6 +1469,7 @@
         }
       }
     },
+
     "mew": {
       "qr_code": {
         "step1": {
@@ -1483,6 +1484,23 @@
           "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
           "title": "Tap the scan button"
         }
+      }
+    }
+  },
+
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Open the ZilPay app",
+        "description": "Add ZilPay to your home screen for faster access to your wallet."
+      },
+      "step2": {
+        "title": "Create or Import a Wallet",
+        "description": "Create a new wallet or import an existing one."
+      },
+      "step3": {
+        "title": "Tap the scan button",
+        "description": "After you scan, a connection prompt will appear for you to connect your wallet."
       }
     }
   }
