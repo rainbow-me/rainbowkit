@@ -1,5 +1,19 @@
 # example
 
+## 0.0.112
+
+### Patch Changes
+
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
+- Updated dependencies [3d73508]
+- Updated dependencies [c5a9cc1]
+- Updated dependencies [8515fd3]
+- Updated dependencies [5b54649]
+- Updated dependencies [03ae0d0]
+  - @rainbow-me/rainbowkit@2.2.5
+  - @rainbow-me/rainbow-button@0.2.22
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.111
 
 ### Patch Changes

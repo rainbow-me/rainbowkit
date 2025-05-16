@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.11
+
+### Patch Changes
+
+- 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
+
 ## 0.3.10
 
 ### Patch Changes

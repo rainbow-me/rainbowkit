@@ -1,5 +1,15 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.5
+
+### Patch Changes
+
+- 3d73508: Added ZilPay Wallet support with `zilPayWallet` wallet connector
+- c5a9cc1: Fixed SVG encoding in wallet connector icons for Cool Mode
+- 8515fd3: Resolved a warning for mismatched dApp url metadata on recent versions of WalletConnect
+- 5b54649: MEW Wallet now supports WalletConnect on mobile
+- 03ae0d0: Added xPortal Wallet support with `xPortalWallet` wallet connector
+
 ## 2.2.4
 
 ### Patch Changes
