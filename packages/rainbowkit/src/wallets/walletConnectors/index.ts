@@ -63,6 +63,7 @@ import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { xPortalWallet } from './xPortalWallet/xPortalWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
+import { zilPayWallet } from './ZilPayWallet/zilPayWallet';
 
 export {
   argentWallet,
@@ -130,4 +131,5 @@ export {
   xPortalWallet,
   zealWallet,
   zerionWallet,
+  zilPayWallet,
 };
