@@ -42,7 +42,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@changesets/cli": "2.27.8",
+    "@changesets/cli": "2.29.4",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@tanstack/react-query": "^5.55.3",
