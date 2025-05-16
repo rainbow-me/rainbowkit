@@ -100,13 +100,13 @@ npm i @tanstack/react-query
 
 **1. 改進的EIP-6963錢包行為**
 
-支持新EIP-6963連接標準的錢包（包括Rainbow、MetaMask等）現在在連接錢包體驗中將自動出現在`已安裝`部分。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。
+支持新EIP-6963連接標準的錢包（包括Rainbow、MetaMask等）現在在連接錢包體驗中將自動出現在`已安裝`部分。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。
 
-開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 建議您繼續包括 `injectedWallet` 和 `walletConnectWallet` 在您的列表中，以支援所有平臺。
+開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 建議您繼續包括 `injectedWallet` 和 `walletConnectWallet` 在您的列表中，以支援所有平臺。
 
 **2. 使用getDefaultConfig進行Wagmi配置**
 
-此新API簡化了配置體驗，並取代了直接使用Wagmi的`createConfig`的需要。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。
+此新API簡化了配置體驗，並取代了直接使用Wagmi的`createConfig`的需要。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。 鏈配置變得更加簡單，包括推斷出公共提供商對`傳輸`的支持。
 
 默認錢包列表將自動包括在內，不再需要使用`getDefaultWallets`和`connectorsForWallets`。
 
@@ -195,8 +195,8 @@ const config = getDefaultConfig({
 
 **5. 自定義錢包**
 
-RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 請參考[更新的文檔](https://www.rainbowkit.com/docs/custom-wallets)和[示例連接器](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您dApp中的任何自定義錢包連接器。
+RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 RainbowKit錢包連接器已經進行了大量更改以支持Wagmi v2。 請參考[更新的文檔](https://www.rainbowkit.com/docs/custom-wallets)和[示例連接器](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您dApp中的任何自定義錢包連接器。
 
-錢包連接器現在也支持帶有`rdns`屬性的EIP-6963標準。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。
+錢包連接器現在也支持帶有`rdns`屬性的EIP-6963標準。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。 請確保這已填寫，以防止在您的錢包列表中存在重複的EIP-6963支持錢包引用。
 
 > 請通過GitHub在[此處](https://github.com/rainbow-me/rainbowkit/issues/new/choose)反饋RainbowKit v2的任何問題或意見。

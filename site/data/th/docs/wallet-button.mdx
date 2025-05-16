@@ -1,13 +1,13 @@
 ---
-title: ปุ่มกระเป๋าเงิน
-description: การใช้และปรับแต่งปุ่มกระเป๋าเงิน
+title: WalletButton
+description: การใช้และปรับแต่งปุ่มกระเป๋าเงิน (WalletButton)
 ---
 
-# ปุ่มกระเป๋าเงิน
+# WalletButton
 
-> หมายเหตุ: `ปุ่มกระเป๋าเงิน` ปัจจุบันอาศัยมาตรฐานกระเป๋าเงิน EIP-1193 แต่จะรองรับ EIP-6963 ในอนาคตอันใกล้
+> หมายเหตุ: ปัจจุบัน `WalletButton` อิงตามมาตรฐานกระเป๋าเงิน EIP-1193 แต่อยู่ในขั้นตอนการสนับสนุน EIP-6963 ในอนาคตอันใกล้
 
-คอมโพแนนต์ใหม่ `ปุ่มกระเป๋าเงิน` ช่วยให้ dApps ใช้การนำเสนอรายการกระเป๋าเงินแบบกำหนดเองเพื่อยอมรับ RainbowKit และประโยชน์ที่ปราศจากการบำรุงรักษาทั้งหมด
+คอมโพเนนต์ `WalletButton` ใหม่ช่วยให้ dApps ที่มีการใช้งานรายการกระเป๋าเงินแบบกำหนดเองสามารถนำ RainbowKit มาใช้และได้รับประโยชน์ที่ไม่ต้องบำรุงรักษา
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-เหมือนกับ `ConnectButton`, คอมโพแนนต์ `WalletButton.Custom` พร้อมสำหรับการดำเนินการและการออกแบบแบบกำหนดเอง
+เช่นเดียวกับ `ConnectButton`, คอมโพเนนต์ `WalletButton.Custom` สามารถใช้สำหรับการปรับแต่งและการออกแบบตามเองได้
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-ส่วนใหญ่ของ dApp จะได้รับประโยชน์มากที่สุดจาก [ConnectButton](https://www.rainbowkit.com/docs/connect-button) อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ
+dApps ส่วนใหญ่ให้บริการดีที่สุดด้วย [ConnectButton](https://www.rainbowkit.com/docs/connect-button) ดูเอกสาร [ที่นี่](https://www.rainbowkit.com/docs/wallet-button) สำหรับข้อมูลเพิ่มเติมเกี่ยวกับการนำไปใช้และกรณีการใช้ `WalletButton`
 
 #### สาธิต
 

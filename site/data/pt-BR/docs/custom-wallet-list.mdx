@@ -58,7 +58,7 @@ const App = () => (
 );
 ```
 
-### Carteiras Integradas
+### SafePal Wallet
 
 As seguintes carteiras são fornecidas através do objeto `wallet`.
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Para dApps que suportam Safe Apps e permitem que os usuários se conectem facilmente com seu cofre Safe ou multi-sig, inclua a opção `safeWallet` para conexões automáticas. A opção Safe só aparecerá no ambiente do navegador Safe Wallet.
+Para dApps que suportam Safe Apps para permitir que os usuários se conectem facilmente com seu cofre Safe ou multi-sig, inclua a opção `safeWallet` para conexões automáticas. A opção Safe só aparecerá no ambiente do navegador Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Melhor Carteira
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Este conector de carteira suporta tanto o aplicativo quanto a extensão Coinbase Wallet, bem como Coinbase Smart Wallet na Web.
+Este conector de carteira suporta tanto o aplicativo e extensão da Coinbase Wallet, quanto a Coinbase Smart Wallet na Web.
 
-Um argumento `preference` está disponível para controlar se o Smart Wallet está habilitado e disponível para os usuários. O comportamento baseado em preferências é documentado [aqui](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Um argumento de `preferência` está disponível para controlar se a Smart Wallet está ativada e disponível para os usuários. O comportamento baseado em preferência está documentado [aqui](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-O Smart Wallet será habilitado por padrão com `all` no início de junho, sem uma atualização adicional.
+A Smart Wallet será ativada por padrão com `all` no início de junho, sem necessidade de atualização adicional.
 
-Os desenvolvedores podem testar o Smart Wallet com as cadeias `sepolia` e `baseSepolia` hoje, configurando `smartWalletOnly` e incluindo `coinbaseWallet` em sua lista de carteiras da seguinte forma:
+Os desenvolvedores podem testar a Smart Wallet com as cadeias `sepolia` e `baseSepolia` hoje, configurando `smartWalletOnly` e incluindo `coinbaseWallet` em sua lista de carteiras assim:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,10 +415,22 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam
@@ -427,7 +445,7 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Aqui estão alguns exemplos de exibição de diferentes carteiras, em diferentes ordens.
 
-Mostrar Rainbow, MetaMask e Coinbase juntamente com carteiras genéricas de fallback.
+Mostre MetaMask junto com carteiras genéricas de fallback.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -447,7 +465,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostre MetaMask junto com carteiras genéricas de fallback.
+Mostrar Rainbow, MetaMask e Coinbase juntamente com carteiras genéricas de fallback.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

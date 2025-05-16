@@ -1389,6 +1389,38 @@
           "title": "Toque no botão Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar a Carteira MEW na tela inicial para acesso mais rápido.",
+          "title": "Abra o aplicativo da Carteira MEW"
+        },
+        "step2": {
+          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Abra o aplicativo ZilPay",
+        "description": "Adicione o ZilPay à sua tela inicial para um acesso mais rápido à sua carteira."
+      },
+      "step2": {
+        "title": "Criar ou Importar uma Carteira",
+        "description": "Crie uma nova carteira ou importe uma existente."
+      },
+      "step3": {
+        "title": "Toque no botão de escanear",
+        "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+      }
     }
   }
 }

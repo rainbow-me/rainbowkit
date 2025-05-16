@@ -102,13 +102,13 @@ npm i @tanstack/react-query
 
 **1. 改進對 EIP-6963 錢包的行為**
 
-支援新 EIP-6963 連線標準的錢包（包括 <b>Rainbow</b>、<b>MetaMask</b> 等）現在將會自動顯示在連接錢包體驗的 `已安裝` 部分中。 這確保用戶能夠始終找到他們喜愛的錢包並連接到 dApps，沒有衝突或後備按鈕。
+支援新 EIP-6963 連線標準的錢包（包括 <b>Rainbow</b>、<b>MetaMask</b> 等）現在將會自動顯示在連接錢包體驗的 `已安裝` 部分中。 這確保用戶能夠始終找到他們喜愛的錢包並連接到 dApps，沒有衝突或後備按鈕。 這確保用戶能夠始終找到他們喜愛的錢包並連接到 dApps，沒有衝突或後備按鈕。
 
-開發者仍擁有完全控制自定義錢包清單的權限，以強調優先的錢包給終端用戶。 鼓勵您繼續在清單中包括 `injectedWallet` 和 `walletConnectWallet` 來支援所有平臺。
+開發者仍擁有完全控制自定義錢包清單的權限，以強調優先的錢包給終端用戶。 鼓勵您繼續在清單中包括 `injectedWallet` 和 `walletConnectWallet` 來支援所有平臺。 鼓勵您繼續在清單中包括 `injectedWallet` 和 `walletConnectWallet` 來支援所有平臺。
 
 **2. 使用 getDefaultConfig 配置 Wagmi**
 
-此新 API 簡化了配置體驗，取代了直接使用 Wagmi 的 `createConfig` 的需求。 鏈配置簡化，包括對 `transports` 推斷的公共提供者。
+此新 API 簡化了配置體驗，取代了直接使用 Wagmi 的 `createConfig` 的需求。 鏈配置簡化，包括對 `transports` 推斷的公共提供者。 鏈配置簡化，包括對 `transports` 推斷的公共提供者。
 
 預設錢包清單將自動包括，不需要再使用 `getDefaultWallets` 和 `connectorsForWallets`。
 
@@ -197,9 +197,9 @@ const config = getDefaultConfig({
 
 **5. 自定義錢包**
 
-RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和[範例連接器](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)以升級您 dApp 中的任何自定義錢包連接器。
+RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和[範例連接器](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)以升級您 dApp 中的任何自定義錢包連接器。
 
-錢包連接器現在也支援 EIP-6963 標準，並帶有 `rdns` 屬性。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。
+錢包連接器現在也支援 EIP-6963 標準，並帶有 `rdns` 屬性。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。
 
 ### 1.x.x 重大變動
 
@@ -217,7 +217,7 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 
 **2. 安裝 `viem` 同步依賴**
 
-wagmi v1 需要 `viem` 同步依賴。 使用以下命令安裝它：
+wagmi v1 需要 `viem` 同步依賴。 使用以下命令安裝它： 使用以下命令安裝它：
 
 ```bash
 npm i viem
@@ -225,7 +225,7 @@ npm i viem
 
 **3. 確保綁定器和 polyfill 的相容性**
 
-在以前依賴 [ethers](https://docs.ethers.org/v5/) 的 wagmi 版本中，WalletConnect 所需的 `fs`、`net` 和 `tls` 模組是自動 polyfilled。 在 RainbowKit v1 + wagmi v1 中，這種情況已不再發生，這些版本建立在 [viem](https://viem.sh/) 之上。
+在以前依賴 [ethers](https://docs.ethers.org/v5/) 的 wagmi 版本中，WalletConnect 所需的 `fs`、`net` 和 `tls` 模組是自動 polyfilled。 在 RainbowKit v1 + wagmi v1 中，這種情況已不再發生，這些版本建立在 [viem](https://viem.sh/) 之上。 在 RainbowKit v1 + wagmi v1 中，這種情況已不再發生，這些版本建立在 [viem](https://viem.sh/) 之上。
 
 參考我們的[Next.js Webpack 配置](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)和[Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts)範例，為您的項目提供配置指引。
 
@@ -241,7 +241,7 @@ npm i viem
 
 wagmi 同步依賴已更新至 `0.12.x`。
 
-RainbowKit 已採用了 `wagmi` 中的 `WalletConnectLegacyConnector` 連接器，繼續支持 WalletConnect v1。 支持 WalletConnect v2 和 `WalletConnectConnector` 將很快作為補丁版本提供，無需重大變動。
+RainbowKit 已採用了 `wagmi` 中的 `WalletConnectLegacyConnector` 連接器，繼續支持 WalletConnect v1。 支持 WalletConnect v2 和 `WalletConnectConnector` 將很快作為補丁版本提供，無需重大變動。 支持 WalletConnect v2 和 `WalletConnectConnector` 將很快作為補丁版本提供，無需重大變動。
 
 錢包將在未來版本中自動轉移。
 
@@ -257,7 +257,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2. 提供 WalletConnect Cloud `projectId`
 
-現在所有依賴WalletConnect的dApp都需要從[WalletConnect 自雲端](https://cloud.walletconnect.com/)獲取 `projectId`。 這是完全免費的，只需幾分鐘。
+現在所有依賴WalletConnect的dApp都需要從[WalletConnect 自雲端](https://cloud.walletconnect.com/)獲取 `projectId`。 這是完全免費的，只需幾分鐘。 這是完全免費的，只需幾分鐘。
 
 將 `projectId` 提供給 `getDefaultWallets` 和個別 RainbowKit 錢包連接器，例如以下：
 
@@ -357,7 +357,7 @@ npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 
 ### 0.7.x 重大變動
 
-如果您正在創建自定義的錢包列表，您現在必須單獨導入每個錢包以減少綁定大小。 請注意，由於錢包不再通過 `wallet` 對象命名空間，所有錢包現在都有一個 `Wallet` 後綴。
+如果您正在創建自定義的錢包列表，您現在必須單獨導入每個錢包以減少綁定大小。 請注意，由於錢包不再通過 `wallet` 對象命名空間，所有錢包現在都有一個 `Wallet` 後綴。 請注意，由於錢包不再通過 `wallet` 對象命名空間，所有錢包現在都有一個 `Wallet` 後綴。
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -420,7 +420,7 @@ npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 
 已從 `Wallet` 類型的 `createConnector` 中移除了 `chainId` 參數。
 
-**請注意，所有內建錢包都在使用新的 API。 大多數用戶不受影響。 此更改只影響已經創建或使用了[自定義錢包](/docs/custom-wallets)的用戶。**
+**請注意，所有內建錢包都在使用新的 API。 大多數用戶不受影響。 此更改只影響已經創建或使用了[自定義錢包](/docs/custom-wallets)的用戶。** 大多數用戶不受影響。 此更改只影響已經創建或使用了[自定義錢包](/docs/custom-wallets)的用戶。\*\*
 
 如果你之前在 `createConnector` 中從 `chainId` 派生出 RPC URL，你可以現在移除該邏輯，因為 `wagmi` 現在在使用 `configureChains` 時內部處理 RPC URL。
 
@@ -501,7 +501,7 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 
 #### 3. 遷移提供商
 
-RainbowKit 不再導出 `apiProvider` API。 用你想要的 wagmi 提供商替換它。
+RainbowKit 不再導出 `apiProvider` API。 用你想要的 wagmi 提供商替換它。 用你想要的 wagmi 提供商替換它。
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';

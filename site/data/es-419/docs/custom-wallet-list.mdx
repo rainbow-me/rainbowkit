@@ -86,9 +86,9 @@ Esta es una opción de cartera de respaldo diseñada para escenarios donde `wind
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Cartera Safe
+##### Safe Wallet
 
-Para dApps que soportan Safe Apps para permitir a los usuarios conectarse fácilmente con su bóveda Safe o multi-firma, incluya la opción `safeWallet` para conexiones automáticas. La opción Safe solo aparecerá en el entorno del navegador Safe Wallet.
+Para dApps que soportan Safe Apps y permiten a los usuarios conectarse fácilmente con su bóveda Safe o multi-firma, incluye la opción `safeWallet` para conexiones automáticas. La opción de Safe solo aparecerá en el entorno del navegador Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,7 +98,7 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Las siguientes billeteras se proporcionan a través del objeto `wallet` (en orden alfabético).
 
-#### Cartera 1inch
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Mejor Billetera
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Este conector de cartera soporta tanto la aplicación y la extensión de Coinbase Wallet, como también Coinbase Smart Wallet en la Web.
+Este conector de billetera es compatible tanto con la aplicación y la extensión de Coinbase Wallet, como con el Smart Wallet de Coinbase en la Web.
 
-Un argumento de `preferencia` está disponible para controlar si Smart Wallet está habilitado y disponible para los usuarios. El comportamiento basado en preferencias está documentado [aquí](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Está disponible un argumento de `preference` para controlar si el Smart Wallet está habilitado y disponible para los usuarios. El comportamiento basado en preferencias está documentado [aquí](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet estará habilitado por defecto con `all` a principios de junio, sin necesidad de una actualización adicional.
+El Smart Wallet estará habilitado por defecto con `all` a principios de junio, sin una actualización adicional.
 
-Los desarrolladores pueden probar Smart Wallet con las cadenas `sepolia` y `baseSepolia` hoy configurando `smartWalletOnly` e incluyendo `coinbaseWallet` en su lista de carteras de la siguiente manera:
+Los desarrolladores pueden probar el Smart Wallet con las cadenas `sepolia` y `baseSepolia` hoy configurando `smartWalletOnly` e incluyendo `coinbaseWallet` en su lista de carteras así:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,10 +415,22 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam

@@ -7,7 +7,7 @@ description: Tùy chỉnh danh sách ví
 
 ## Tùy chỉnh danh sách ví
 
-Bạn có thể nhập khẩu các ví cá nhân từ `'@rainbow-me/rainbowkit/wallets'` cùng với hàm `connectorsForWallets` để xây dựng danh sách ví của riêng bạn với các kết nối cần thiết của chúng. Bằng cách này, bạn có toàn quyền kiểm soát về các ví nào được hiển thị, và theo thứ tự nào.
+Bạn có thể nhập các ví riêng lẻ từ `'@rainbow-me/rainbowkit/wallets'` cùng với hàm `connectorsForWallets` để tạo danh sách ví của riêng bạn với các đầu nối cần thiết của chúng. Bằng cách này, bạn có toàn quyền kiểm soát để hiển thị ví nào và theo thứ tự nào.
 
 Ví dụ, bạn có thể chỉ chọn hiển thị Rainbow cùng với các ví dự phòng chung.
 
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Sau đó, bạn có thể chuyển các kết nối của mình cho hàm `createConfig` của Wagmi.
+Sau đó, bạn có thể truyền các đầu nối của mình vào tính năng `createConfig` của Wagmi.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -60,45 +60,45 @@ const App = () => (
 
 ### Ví tích hợp sẵn
 
-Các ví sau đây được cung cấp thông qua đối tượng `wallet`.
+Các ví sau đây được cung cấp qua đối tượng `wallet`.
 
-#### Ví Chung
+#### Ví chung
 
-Các ví sau đây được phân phạm vi cho các phương pháp kết nối chung hơn là các ứng dụng cụ thể. Do đó, nên bao gồm luôn các ví này.
+Các ví sau đây hiện hữu qua các phương thức kết nối chung thay vì các ứng dụng cụ thể. Kết quả là, nên luôn bao gồm các ví này.
 
 ##### WalletConnect
 
-Đây là một tùy chọn ví dự phòng được thiết kế cho các ví dựa trên WalletConnect mà chưa được cung cấp bởi một ví khác trong danh sách.
+Đây là một tùy chọn ví dự phòng được thiết kế sẵn cho các ví dựa trên WalletConnect mà chưa được cung cấp bởi ví khác trong danh sách.
 
-**Khuyến nghị rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví dựa trên WalletConnect đều được hỗ trợ.**
+**Nó được khuyên dùng rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví dựa trên WalletConnect đều được hỗ trợ.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Ví Được Tiêm
+##### Ví Injected
 
-Đây là một tùy chọn ví dự phòng được thiết kế cho các kịch bản mà `window.ethereum` tồn tại nhưng chưa được cung cấp bởi một ví khác trong danh sách. Ví này sẽ tự động ẩn khỏi danh sách khi không cần thiết sử dụng dự phòng hoặc không có ví được tiêm sẵn có.
+Đây là một tùy chọn ví dự phòng được thiết kế cho những trường hợp mà `window.ethereum` tồn tại nhưng không được cung cấp bởi ví khác trong danh sách. Ví này sẽ tự động ẩn mình khỏi danh sách khi không cần thiết hoặc nếu không có ví injected có sẵn.
 
-**Khuyến nghị rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví được tiêm đều được hỗ trợ.**
+**Nó được khuyên dùng rằng bạn luôn bao gồm ví này trong danh sách để đảm bảo tất cả các ví injected đều được hỗ trợ.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Ví An toàn
+##### Safe Wallet
 
-Đối với các dApps hỗ trợ các Ứng dụng An toàn để cho phép người dùng dễ dàng kết nối với kho an toàn hoặc multi-sig của mình, bao gồm tùy chọn `safeWallet` để kết nối tự động. Tùy chọn An toàn sẽ chỉ xuất hiện trong môi trường trình duyệt của Ví An toàn.
+Đối với dApps hỗ trợ Safe Apps cho phép người dùng dễ dàng kết nối với kho an toàn hoặc ví nhiều chữ ký của họ, bao gồm tùy chọn `safeWallet` cho các kết nối tự động. Tùy chọn Safe sẽ chỉ xuất hiện trong môi trường trình duyệt Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Ví Cụ thể
+### Các ví cụ thể
 
-Các ví sau đây được cung cấp qua đối tượng `wallet` (theo thứ tự chữ cái).
+Các ví sau đây được cung cấp qua đối tượng `wallet` (theo thứ tự bảng chữ cái).
 
-#### Ví 1inch
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ví Tốt Nhất
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Trình kết nối ví này hỗ trợ cả ứng dụng và phần mở rộng Wallet Coinbase, cũng như Coinbase Smart Wallet trên Web.
+Kết nối ví này hỗ trợ cả ứng dụng và tiện ích mở rộng Coinbase Wallet, cũng như Coinbase Smart Wallet trên Web.
 
-Một đối số `preference` có sẵn để kiểm soát xem Smart Wallet có được kích hoạt và có sẵn cho người dùng hay không. Hành vi dựa trên sở thích được tài liệu hóa [tại đây](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Một đối số `preference` được cung cấp để kiểm soát xem Smart Wallet có được kích hoạt và khả dụng cho người dùng hay không. Hành vi dựa trên sở thích được ghi lại [tại đây](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet sẽ được kích hoạt mặc định với `all` vào đầu tháng Sáu mà không cần nâng cấp thêm.
+Smart Wallet sẽ được kích hoạt mặc định với `all` vào đầu tháng Sáu, mà không cần nâng cấp thêm.
 
-Các nhà phát triển có thể thử nghiệm Smart Wallet với các chuỗi `sepolia` và `baseSepolia` ngay hôm nay bằng cách cài đặt `smartWalletOnly` và bao gồm `coinbaseWallet` trong danh sách ví của họ như sau:
+Các nhà phát triển có thể thử nghiệm Smart Wallet với các chuỗi `sepolia` và `baseSepolia` ngay hôm nay bằng cách đặt `smartWalletOnly` và bao gồm `coinbaseWallet` trong danh sách ví của họ như sau:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,10 +415,22 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam
@@ -423,11 +441,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### Ví dụ
 
-#### Sắp xếp
+#### Đặt hàng
 
-Đây là một vài ví dụ về cách hiển thị các ví khác nhau, theo các thứ tự khác nhau.
+Dưới đây là vài ví dụ về cách hiển thị các ví khác nhau, theo thứ tự khác nhau.
 
-Hiển thị Rainbow, MetaMask và Coinbase cùng với các ví dự phòng chung.
+Hiển thị MetaMask cùng với các ví dự phòng chung.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -474,13 +492,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Lưu ý: Thứ tự của mảng `wallets` xác định thứ tự mà các ví sẽ được hiển thị trong giao diện người dùng.
+> Nhắc nhở: Thứ tự của mảng `wallets` xác định thứ tự mà ví sẽ được hiển thị trong UI.
 
 #### Nhiều nhóm
 
-Bạn có thể sử dụng khóa `groupName` để đặt tên cho các nhóm ví khác nhau. Điều này hữu ích nếu bạn muốn thông báo cho người dùng của mình biết những ví nào bạn đề xuất, cũng như các ví khác có thể sử dụng.
+Bạn có thể sử dụng khóa `groupName` để đặt tên cho các nhóm ví khác nhau. Điều này hữu ích nếu bạn muốn giao tiếp với người dùng ví mà bạn khuyến nghị, cũng như các ví khả thể khác.
 
-Đề xuất Rainbow và MetaMask, nhưng cũng cung cấp Coinbase cùng với các ví dự phòng chung.
+Khuyến nghị Rainbow và MetaMask, nhưng cũng cung cấp Coinbase cùng với các ví dự phòng chung.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

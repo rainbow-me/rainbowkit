@@ -1,13 +1,13 @@
 ---
-title: Nút Ví
-description: Sử dụng và tùy chỉnh Nút Ví
+title: WalletButton
+description: Sử dụng và tùy chỉnh WalletButton
 ---
 
-# Nút Ví
+# WalletButton
 
-> Lưu ý: Hiện tại `Nút Ví` dựa trên tiêu chuẩn ví EIP-1193, nhưng sẽ hỗ trợ EIP-6963 trong tương lai gần.
+> Lưu ý: `WalletButton` hiện dựa vào tiêu chuẩn ví EIP-1193, nhưng sẽ hỗ trợ EIP-6963 trong tương lai gần.
 
-Thành phần mới `Nút Ví` giúp các dApp với các triển khai danh sách ví tùy chỉnh áp dụng RainbowKit và tất cả các lợi ích không phải bảo trì của nó.
+Thành phần mới `WalletButton` giúp các ứng dụng dApp có triển khai danh sách ví tùy chỉnh áp dụng RainbowKit và tận hưởng tất cả lợi ích không phải bảo trì.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Giống như `Nút Kết Nối`, thành phần `Nút Ví.Tùy Chỉnh` có sẵn cho các triển khai và kiểu dáng tùy chỉnh.
+Giống như `ConnectButton`, thành phần `WalletButton.Custom` có sẵn cho các triển khai và tạo kiểu tùy chỉnh.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ Giống như `Nút Kết Nối`, thành phần `Nút Ví.Tùy Chỉnh` có sẵn
 </WalletButton.Custom>
 ```
 
-Hầu hết các dApp đều phục vụ tốt nhất bằng [Nút Kết Nối](https://www.rainbowkit.com/docs/connect-button). Tham khảo tài liệu [tại đây](https://www.rainbowkit.com/docs/wallet-button) để biết thêm thông tin về việc áp dụng và sử dụng `Nút Ví`.
+Hầu hết các ứng dụng dApp đều phục vụ tốt nhất bằng [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Tham khảo tài liệu [tại đây](https://www.rainbowkit.com/docs/wallet-button) để biết thêm thông tin về cách áp dụng và các trường hợp sử dụng `WalletButton`.
 
 #### Demo
 

@@ -1389,6 +1389,38 @@
           "title": "QR tarayıcı düğmesine dokunun"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Daha hızlı erişim için MEW Cüzdanı ana ekranınıza koymanızı öneririz.",
+          "title": "MEW Cüzdan uygulamasını açın"
+        },
+        "step2": {
+          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarayıcı düğmesine dokunun"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "ZilPay uygulamasını açın",
+        "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
+      },
+      "step2": {
+        "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+        "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+      },
+      "step3": {
+        "title": "Tarayıcı düğmesine dokunun",
+        "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+      }
     }
   }
 }

@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-然后，您可以将您的连接器传递给`wagmi`的`createConfig`。
+然后，您可以将您的连接器传递给`wagmi`的 `createConfig`。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 注入式钱包
 
-这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 当不需要后备选项或没有可用的注入钱包时，这个钱包会自动从列表中隐藏。
+这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
 
 **建议您始终在列表中包含此钱包，以确保支持所有注入的钱包。**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
+对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括 `safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -96,7 +96,7 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### 特定钱包
 
-The following wallets are provided via the `wallet` object (in alphabetical order).
+以下钱包是通过`wallet`对象提供的（按字母顺序排列）。
 
 #### 1inch Wallet
 
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 贝拉签名
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 最佳钱包
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-此钱包连接器支持Coinbase Wallet应用程序和扩展，以及Coinbase Smart Wallet在网络上的使用。
+此钱包连接器支持 Coinbase Wallet 应用和扩展程序，也支持在 Web 上的 Coinbase Smart Wallet。
 
 提供了一个`preference`参数，用于控制是否为用户启用和提供智能钱包。 基于偏好的行为记录于[此处](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)。
 
-智能钱包将在六月初默认启用`all`，无需进一步升级。
+智能钱包将在不进行进一步升级的情况下，于六月初默认启用`all`。
 
-开发者可以通过设置`smartWalletOnly`并在其钱包列表中包含`coinbaseWallet`来测试`sepolia`和`baseSepolia`链上的智能钱包，如下所示：
+开发人员可以通过设置`smartWalletOnly`并包括`coinbaseWallet`在他们的钱包列表中来在今天通过`sepolia`和`baseSepolia`链测试智能钱包：
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -349,7 +355,7 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin 钱包
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,13 +415,25 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 棚屋
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Wigwam
 
 ```tsx
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';

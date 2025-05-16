@@ -7,7 +7,7 @@ description: ウォレットリストのカスタマイズ
 
 ## ウォレットリストのカスタマイズ
 
-'@rainbow-me/rainbowkit/wallets'から個々のウォレットをインポートし、その必要なコネクターを持つウォレットのリストを作成するために`connectorsForWallets`関数を使うことができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。
+'@rainbow-me/rainbowkit/wallets'から個々のウォレットをインポートし、その必要なコネクターを持つウォレットのリストを作成するために`connectorsForWallets`関数を使うことができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。
 
 例えば、Rainbowと一般的なフォールバックウォレットのみを表示するように選択できます。
 
@@ -64,7 +64,7 @@ const App = () => (
 
 #### 一般的なウォレット
 
-以下のウォレットは特定のアプリではなく、一般的な接続方法に基づいています。 そのため、これらのウォレットは常に含めることをお勧めします。
+以下のウォレットは、特定のアプリではなく、一般的な接続方法に限定されています。 その結果、これらのウォレットは常に含めることをお勧めします。
 
 ##### WalletConnect
 
@@ -76,19 +76,19 @@ const App = () => (
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### インジェクトウォレット
+##### 注入されたウォレット
 
-これは`window.ethereum`が存在するが、リスト内の他のウォレットによって提供されていないシナリオのために設計されたフォールバックウォレットオプションです。 このウォレットは、フォールバックが不要である場合や注入されたウォレットが利用できない場合に自動的にリストから隠れるようになっています。 このウォレットは、フォールバックが不要である場合や注入されたウォレットが利用できない場合に自動的にリストから隠れるようになっています。
+これは`window.ethereum`が存在するが、リスト内の他のウォレットによって提供されていないシナリオのために設計されたフォールバックウォレットオプションです。 このウォレットは、フォールバックが不要である場合や注入されたウォレットが利用できない場合に自動的にリストから隠れるようになっています。
 
-**全てのインジェクトウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
+**すべての注入されたウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### セーフウォレット
+##### Safe Wallet
 
-Safe AppsをサポートするdAppsのために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
+Safe AppsをサポートするdAppsのために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -96,7 +96,7 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### 特定のウォレット
 
-次のウォレットは <b>(</b>`wallet` オブジェクトを通じて提供されます（アルファベット順）。
+次のウォレットは `wallet` オブジェクトを通じて提供されます（アルファベット順）
 
 #### 1inch Wallet
 
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ベストウォレット
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-このウォレットコネクタは、Coinbase Walletアプリと拡張機能、およびウェブ上でのCoinbase Smart Walletの両方をサポートします。
+このウォレットコネクタは、Coinbase Walletアプリと拡張機能、さらにWeb上のCoinbase Smart Walletの両方をサポートしています。
 
 Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
 
-Smart Walletは、追加のアップグレードなしに、6月初旬からデフォルトで`all`と共に有効になります。
+6月上旬に更新なしで`all`でデフォルトでSmart Walletが有効になります。
 
-開発者は今日、`sepolia`および`baseSepolia`チェーンで`smartWalletOnly`を設定し、次のように`coinbaseWallet`をウォレットリストに含めることでSmart Walletをテストできます:
+開発者は、`sepolia`と`baseSepolia`チェーンでSmart Walletをテストし、`smartWalletOnly`を設定して`coinbaseWallet`をウォレットリストに含めることができます：
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -397,7 +403,7 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ヴァローラ
+#### Valora
 
 ```tsx
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,13 +415,25 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ウィグワム
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Wigwam
 
 ```tsx
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -474,11 +492,11 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> リマインダー：`wallets` 配列の順序は、UIでウォレットが表示される順序を定義します。
+> リマインダー：`wallets`配列の順序は、UIでウォレットが表示される順序を定義します。
 
 #### 複数のグループ
 
-`groupName`キーを使用して、異なるウォレットグループに名前をつけることができます。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。
+`groupName`キーを使用して、異なるウォレットグループに名前をつけることができます。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。
 
 RainbowとMetaMaskを推奨しますが、Coinbaseと一般的なフォールバックウォレットも提供します。
 

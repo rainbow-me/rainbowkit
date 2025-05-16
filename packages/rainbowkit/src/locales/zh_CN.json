@@ -1389,6 +1389,38 @@
           "title": "点击扫描二维码按钮"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议将 MEW 钱包添加到您的主屏幕，以便更快地访问。",
+          "title": "打开 MEW 钱包应用"
+        },
+        "step2": {
+          "description": "您可以轻松地使用云备份功能备份您的钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击扫描按钮"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "打开ZilPay应用",
+        "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
+      },
+      "step2": {
+        "title": "创建或导入钱包",
+        "description": "创建新钱包或导入现有钱包。"
+      },
+      "step3": {
+        "title": "点击扫描按钮",
+        "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+      }
     }
   }
 }

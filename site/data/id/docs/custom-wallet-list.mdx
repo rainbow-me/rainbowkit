@@ -7,7 +7,7 @@ description: Mengkustomisasi daftar dompet
 
 ## Mengkustomisasi daftar dompet
 
-Anda dapat mengimpor dompet individual dari `'@rainbow-me/rainbowkit/wallets'` beserta fungsi `connectorsForWallets` untuk membuat daftar dompet Anda sendiri dengan konektor yang diperlukan. Dengan cara ini, Anda memiliki kontrol penuh atas dompet mana yang ingin ditampilkan dan dalam urutan apa.
+Anda dapat mengimpor dompet individu dari `'@rainbow-me/rainbowkit/wallets'` bersama dengan fungsi `connectorsForWallets` untuk membangun daftar dompet Anda sendiri dengan konektor yang diperlukan. Dengan cara ini, Anda memiliki kendali penuh atas dompet mana yang akan ditampilkan, dan dalam urutan apa.
 
 Misalnya, Anda bisa memilih untuk hanya menunjukkan Rainbow bersama dengan dompet pengganti generik.
 
@@ -64,7 +64,7 @@ Dompet berikut disediakan melalui objek `wallet`.
 
 #### Dompet Generik
 
-Dompet berikut berfokus pada metode koneksi generik daripada aplikasi khusus. Sebagai hasilnya, disarankan agar dompet-dompet ini selalu disertakan.
+Dompet berikut berada dalam cakupan metode koneksi generik daripada aplikasi khusus. Akibatnya, disarankan bahwa dompet ini selalu disertakan.
 
 ##### WalletConnect
 
@@ -76,11 +76,11 @@ Ini adalah opsi dompet cadangan yang dirancang untuk dompet berbasis WalletConne
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Injected Wallet
+##### Dompet Tersuntik
 
-Ini adalah opsi dompet cadangan yang dirancang untuk skenario di mana `window.ethereum` ada tetapi belum disediakan oleh dompet lain dalam daftar. Dompet ini akan otomatis menyembunyikan dirinya dari daftar ketika cadangan tidak diperlukan atau jika tidak ada dompet yang diinjeksikan tersedia.
+Ini adalah opsi dompet cadangan yang dirancang untuk skenario di mana `window.ethereum` ada tetapi belum disediakan oleh dompet lain dalam daftar. Dompet ini akan otomatis menyembunyikan dirinya dari daftar ketika cadangannya tidak diperlukan atau jika tidak ada dompet yang disuntikkan.
 
-**Direkomendasikan untuk selalu menambahkan dompet ini dalam daftar untuk memastikan semua dompet yang diinjeksikan didukung.**
+**Direkomendasikan untuk selalu menambahkan dompet ini dalam daftar untuk memastikan semua dompet yang disuntikkan didukung.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Untuk dApps yang mendukung Safe Apps untuk memungkinkan pengguna dengan mudah terhubung dengan vault Safe atau multi-sig mereka, sertakan opsi `safeWallet` untuk koneksi otomatis. Opsi Safe hanya akan muncul di lingkungan browser Safe Wallet.
+Untuk dApps yang mendukung Aplikasi Aman untuk memungkinkan pengguna terhubung dengan brankas Aman atau multi-sig mereka, sertakan opsi `safeWallet` untuk koneksi otomatis. Opsi Aman hanya akan muncul di lingkungan peramban Dompet Aman.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -108,6 +108,12 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### BeraSig
@@ -174,9 +180,9 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Konektor dompet ini mendukung aplikasi dan ekstensi Coinbase Wallet, serta Coinbase Smart Wallet di Web.
 
-Argumen `preference` tersedia untuk mengontrol apakah Smart Wallet diaktifkan dan tersedia untuk pengguna. Perilaku berbasis preferensi didokumentasikan [di sini](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Argumen `preference` tersedia untuk mengendalikan apakah Smart Wallet diaktifkan dan tersedia untuk pengguna. Perilaku berbasis preferensi didokumentasikan [di sini](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet akan diaktifkan secara default dengan `all` pada awal Juni, tanpa peningkatan lebih lanjut.
+Smart Wallet akan diaktifkan secara default dengan `all` di awal Juni, tanpa peningkatan lebih lanjut.
 
 Pengembang dapat menguji Smart Wallet dengan rantai `sepolia` dan `baseSepolia` hari ini dengan mengatur `smartWalletOnly` dan menyertakan `coinbaseWallet` dalam daftar dompet mereka seperti ini:
 
@@ -409,10 +415,22 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam
@@ -478,7 +496,7 @@ const connectors = connectorsForWallets(
 
 #### Grup berganda
 
-Anda dapat menggunakan kunci `groupName` untuk menamai grup dompet yang berbeda. Ini berguna jika Anda ingin mengomunikasikan kepada pengguna Anda dompet mana yang Anda rekomendasikan, serta kemungkinan dompet lainnya.
+Anda dapat menggunakan kunci `groupName` untuk menamai grup dompet yang berbeda. Ini berguna jika Anda ingin berkomunikasi kepada pengguna Anda dompet mana yang Anda rekomendasikan, serta dompet lain yang mungkin ada.
 
 Rekomendasikan Rainbow dan MetaMask, tetapi juga tawarkan Coinbase bersama dengan dompet cadangan generik.
 

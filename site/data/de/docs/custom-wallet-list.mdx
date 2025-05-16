@@ -7,9 +7,9 @@ description: Anpassen der Wallet-Liste
 
 ## Anpassen der Wallet-Liste
 
-Sie können einzelne Wallets aus `'@rainbow-me/rainbowkit/wallets'` zusammen mit der Funktion `connectorsForWallets` importieren, um Ihre eigene Liste von Wallets mit den notwendigen Verbindern zu erstellen. Auf diese Weise haben Sie die volle Kontrolle darüber, welche Wallets angezeigt werden und in welcher Reihenfolge.
+Sie können einzelne Wallets aus `'@rainbow-me/rainbowkit/wallets'` zusammen mit der Funktion `connectorsForWallets` importieren, um Ihre eigene Liste von Wallets mit den notwendigen Konnektoren zu erstellen. Auf diese Weise haben Sie die volle Kontrolle darüber, welche Wallets angezeigt werden und in welcher Reihenfolge.
 
-Zum Beispiel können Sie sich entscheiden, nur Rainbow zusammen mit generischen Fallback-Wallets anzuzeigen.
+Sie können zum Beispiel wählen, nur Rainbow zusammen mit generischen Fallback-Wallets anzuzeigen.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Sie können dann Ihre Verbinder an Wagmis `createConfig` übergeben.
+Sie können dann Ihre Konnektoren an die `createConfig` von Wagmi übergeben.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -60,35 +60,35 @@ const App = () => (
 
 ### Eingebaute Wallets
 
-Die folgenden Wallets werden über das `wallet`-Objekt bereitgestellt.
+Die folgenden Wallets werden über das `wallet` Objekt bereitgestellt.
 
 #### Generische Wallets
 
-Die folgenden Wallets beziehen sich auf generische Verbindungsmethoden anstelle spezifischer Apps. Daher wird empfohlen, dass diese Wallets immer eingeschlossen werden.
+Die folgenden Wallets beziehen sich auf generische Verbindungsmethoden anstelle von spezifischen Apps. Daher wird empfohlen, diese Wallets immer einzubeziehen.
 
 ##### WalletConnect
 
-Dies ist eine Fallback-Wallet-Option, die für WalletConnect-basierte Wallets ausgelegt ist, die nicht von einer anderen Wallet in der Liste bereitgestellt wurden.
+Dies ist eine Fallback-Wallet-Option für Wallets auf WalletConnect-Basis, die nicht von einem anderen Wallet in der Liste bereitgestellt wurden.
 
-**Es wird empfohlen, diese Wallet immer in der Liste zu halten, um sicherzustellen, dass alle WalletConnect-basierten Wallets unterstützt werden.**
+**Es wird empfohlen, diese Wallet immer in die Liste aufzunehmen, um sicherzustellen, dass alle Wallets auf WalletConnect-Basis unterstützt werden.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Eingespritzte Wallet
+##### Wallet für Einträge
 
-Dies ist eine Fallback-Wallet-Option für Szenarien, in denen `window.ethereum` existiert, aber nicht von einer anderen Wallet in der Liste bereitgestellt wurde. Diese Wallet wird sich automatisch aus der Liste verbergen, wenn das Fallback nicht notwendig ist oder keine eingespritzte Wallet verfügbar ist.
+Dies ist eine Fallback-Wallet-Option für Szenarien, in denen `window.ethereum` existiert, aber nicht von einem anderen Wallet in der Liste bereitgestellt wurde. Diese Wallet wird sich automatisch aus der Liste verbergen, wenn das Fallback nicht notwendig ist oder kein eingefügtes Wallet verfügbar ist.
 
-**Es wird empfohlen, diese Wallet immer in die Liste aufzunehmen, um sicherzustellen, dass alle eingespritzten Wallets unterstützt werden.**
+**Es wird empfohlen, diese Wallet immer in die Liste aufzunehmen, um sicherzustellen, dass alle eingefügten Wallets unterstützt werden.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Sichere Wallet
+##### Safe Wallet
 
-Für dApps, die Safe Apps unterstützen, um es Benutzern zu erleichtern, sich mit ihrem Safe-Tresor oder Multi-Sig zu verbinden, fügen Sie die Option `safeWallet` für automatische Verbindungen hinzu. Die Safe-Option erscheint nur in der Browserumgebung der Safe-Wallet.
+Für dApps, die Safe Apps unterstützen, um es Nutzern zu ermöglichen, sich einfach mit ihrem Safe-Tresor oder Multi-Sig zu verbinden, schließen Sie die `safeWallet`-Option für automatische Verbindungen ein. Die Safe-Option wird nur in der Safe Wallet-Browserumgebung angezeigt.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -96,7 +96,7 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### Spezifische Wallets
 
-Die folgenden Wallets werden über das `wallet`-Objekt bereitgestellt (in alphabetischer Reihenfolge).
+Die folgenden Wallets werden über das `wallet` Objekt bereitgestellt (in alphabetischer Reihenfolge).
 
 #### 1inch Wallet
 
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bestes Wallet
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Dieser Wallet-Connector unterstützt sowohl die Coinbase Wallet-App als auch die Erweiterung sowie Coinbase Smart Wallet im Web.
+Dieser Wallet-Connector unterstützt sowohl die Coinbase Wallet-App als auch die Erweiterung, sowie die Coinbase Smart Wallet im Web.
 
-Ein Argument `preference` ist verfügbar, um zu steuern, ob Smart Wallet für Benutzer aktiviert und verfügbar ist. Das verhaltensbasierte Verhalten der Präferenz ist [hier](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) dokumentiert.
+Ein `preference`-Argument ist verfügbar, um zu steuern, ob die Smart Wallet aktiviert und für die Nutzer verfügbar ist. Das Verhalten basierend auf den Präferenzen wird [hier](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) dokumentiert.
 
-Smart Wallet wird ab Anfang Juni standardmäßig mit `all` aktiviert, ohne ein weiteres Upgrade.
+Die Smart Wallet wird standardmäßig mit `all` im frühen Juni aktiviert, ohne ein weiteres Upgrade.
 
-Entwickler können Smart Wallet bereits heute mit `sepolia` und `baseSepolia`-Chains testen, indem sie `smartWalletOnly` setzen und `coinbaseWallet` in ihre Wallet-Liste wie folgt aufnehmen:
+Entwickler können die Smart Wallet heute mit den Ketten `sepolia` und `baseSepolia` testen, indem sie `smartWalletOnly` einstellen und `coinbaseWallet` in ihre Wallet-Liste so einfügen:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -199,7 +205,7 @@ import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
-#### Kern
+#### Core
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -337,7 +343,7 @@ import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Regenbogen
+#### Rainbow
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,10 +415,22 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam
@@ -423,11 +441,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### Beispiele
 
-#### Sortierung
+#### Reihenfolge
 
-Hier sind ein paar Beispiele, wie verschiedene Wallets in unterschiedlicher Reihenfolge angezeigt werden können.
+Hier sind einige Beispiele dafür, wie unterschiedliche Wallets in unterschiedlicher Reihenfolge angezeigt werden können.
 
-Zeige MetaMask zusammen mit generischen Fallback-Wallets.
+Zeigen Sie MetaMask zusammen mit generischen Fallback-Wallets an.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -447,7 +465,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Zeige Rainbow, MetaMask und Coinbase zusammen mit generischen Fallback-Wallets.
+Zeigen Sie Rainbow, MetaMask und Coinbase zusammen mit generischen Fallback-Wallets an.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -474,13 +492,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Erinnerung: Die Reihenfolge des `wallets`-Arrays definiert die Reihenfolge, in der die Wallets im UI angezeigt werden.
+> Erinnerung: Die Reihenfolge des `wallets`-Arrays bestimmt die Reihenfolge, in der Wallets in der Benutzeroberfläche angezeigt werden.
 
 #### Mehrere Gruppen
 
-Sie können den Schlüssel `groupName` verwenden, um verschiedenen Wallet-Gruppen Namen zu geben. Dies ist nützlich, wenn Sie Ihren Benutzern mitteilen möchten, welche Wallets Sie empfehlen und welche anderen Wallets möglich sind.
+Sie können den `groupName` Schlüssel verwenden, um verschiedene Wallet-Gruppen zu benennen. Dies ist nützlich, wenn Sie Ihren Nutzern mitteilen möchten, welche Wallets Sie empfehlen sowie andere mögliche Wallets.
 
-Empfehlen Sie Rainbow und MetaMask, bieten Sie aber auch Coinbase zusammen mit generischen Fallback-Wallets an.
+Empfehlen Sie Rainbow und MetaMask, aber bieten Sie auch Coinbase zusammen mit generischen Fallback-Wallets an.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

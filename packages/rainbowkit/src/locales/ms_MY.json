@@ -1389,6 +1389,38 @@
           "title": "Ketuk butang Imbas QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami mencadangkan meletakkan MEW Wallet di skrin utama anda untuk akses lebih cepat.",
+          "title": "Buka aplikasi MEW Wallet"
+        },
+        "step2": {
+          "description": "Anda boleh membuat sandaran dompet anda dengan mudah menggunakan ciri sandaran awan.",
+          "title": "Cipta atau Import Dompet"
+        },
+        "step3": {
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
+          "title": "Ketuk butang Imbas"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Buka aplikasi ZilPay",
+        "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
+      },
+      "step2": {
+        "title": "Cipta atau Import Dompet",
+        "description": "Cipta dompet baharu atau import dompet sedia ada."
+      },
+      "step3": {
+        "title": "Ketuk butang Imbas",
+        "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+      }
     }
   }
 }

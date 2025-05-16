@@ -7,7 +7,7 @@ description: Налаштування списку гаманців
 
 ## Налаштування списку гаманців
 
-Ви можете імпортувати окремі гаманці з `'@rainbow-me/rainbowkit/wallets'` разом з функцією `connectorsForWallets`, щоб створити власний список гаманців з необхідними коннекторами. Таким чином, ви маєте повний контроль над тим, які гаманці відображати і в якому порядку.
+Ви можете імпортувати окремі гаманці з `'@rainbow-me/rainbowkit/wallets'`, разом з функцією `connectorsForWallets`, щоб створити власний список гаманців з їх потрібними з'єднувачами. Таким чином ви маєте повний контроль над тим, які гаманці відображати і в якому порядку.
 
 Наприклад, ви можете вирішити показувати лише Rainbow разом з універсальними запасними гаманцями.
 
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Ви можете передати свої коннектори до `createConfig` Wagmi.
+Потім ви можете передати свої з'єднувачі до `createConfig` від Wagmi.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -64,7 +64,7 @@ const App = () => (
 
 #### Загальні Гаманці
 
-Нижче наведені гаманці призначені для загальних методів підключення, а не для конкретних додатків. Як результат, рекомендується завжди включати ці гаманці.
+Ці гаманці засновані на загальних методах підключення, а не на конкретних додатках. Отже, рекомендується завжди включати ці гаманці.
 
 ##### WalletConnect
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Вбудований Гаманець
 
-Це варіант резервного гаманця, розроблений для сценаріїв, коли `window.ethereum` існує, але не був наданий іншим гаманцем у списку. Цей гаманець автоматично приховує себе зі списку, коли резерв не потрібен або якщо немає доступного вбудованого гаманця.
+Це варіант резервного гаманця, розроблений для сценаріїв, коли `window.ethereum` існує, але не був наданий іншим гаманцем у списку. Цей гаманець автоматично приховає себе зі списку, коли резервний варіант не є необхідним або якщо вбудований гаманець недоступний.
 
 **Рекомендується завжди включати цей гаманець до списку, щоб забезпечити підтримку всіх вбудованих гаманців.**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Для dApps, які підтримують Safe Apps для надання можливості користувачам легко підключатися до свого сейфу або мульти-підпису, включіть опцію `safeWallet` для автоматичних підключень. Опція Safe буде з'являтися тільки в браузерному середовищі Safe Wallet.
+Для dApps, які підтримують Safe Apps, щоб дозволити користувачам легко підключатися до їхнього Safe сховища або мульти-підпису, включіть опцію `safeWallet` для автоматичних підключень. Опція Safe відображається тільки в середовищі браузера Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Найкращий гаманець
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Цей коннектор гаманця підтримує як додаток, так і розширення Coinbase Wallet, а також Coinbase Smart Wallet у веб-версії.
+Цей з'єднувач гаманців підтримує як додаток, так і розширення Coinbase Wallet, а також Coinbase Smart Wallet у веб.
 
-Доступний аргумент `preference`, який дозволяє контролювати, чи активовано Smart Wallet і чи є він доступним для користувачів. Поведінка, що базується на перевагах, задокументована [тут](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Доступний аргумент `preference` для контролю, чи буде увімкнено Смарт Гаманець для користувачів. Поведения на основі переваг описано [тут](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet буде активовано за замовчуванням з `all` на початку червня без подальшого оновлення.
+Смарт Гаманець буде увімкнено за замовчуванням з `all` на початку червня, без додаткового оновлення.
 
-Розробники можуть тестувати Smart Wallet з ланцюгами `sepolia` та `baseSepolia` сьогодні, встановивши `smartWalletOnly` і включивши `coinbaseWallet` у свій список гаманців наступним чином:
+Розробники можуть тестувати Смарт Гаманець з цепями `sepolia` та `baseSepolia` вже сьогодні, встановивши `smartWalletOnly` та включивши `coinbaseWallet` у свій список гаманців ось так:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -397,7 +403,7 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Валора
+#### Valora
 
 ```tsx
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,13 +415,25 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Вігвам
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Wigwam
 
 ```tsx
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -478,7 +496,7 @@ const connectors = connectorsForWallets(
 
 #### Декілька груп
 
-Ви можете використовувати ключ `groupName` для найменування різних груп гаманців. Це корисно, якщо ви хочете повідомити своїм користувачам, які гаманці ви рекомендуєте, а також інші можливі гаманці.
+Ви можете використовувати ключ `groupName`, щоб називати різні групи гаманців. Це корисно, якщо ви хочете заявити своїм користувачам, які гаманці ви рекомендуєте, а також інші можливі гаманці.
 
 Рекомендуємо Rainbow та MetaMask, але також пропонуємо Coinbase разом із загальнодоступними гаманцями.
 

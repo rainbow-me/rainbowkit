@@ -7,7 +7,7 @@ description: 使用和自訂主題
 
 ## 使用和自訂主題
 
-您可以調整 RainbowKit 的 UI 以符合您的品牌。 您可以從一些預定義的重點顏色和邊框半徑配置中選擇。
+您可以調整 RainbowKit 的 UI 以符合您的品牌。 您可以從一些預定義的重點顏色和邊框半徑配置中選擇。 您可以從一些預定義的重點顏色和邊框半徑配置中選擇。
 
 有3個內建的主題函數：
 
@@ -15,7 +15,7 @@ description: 使用和自訂主題
 - `darkTheme`
 - `midnightTheme`
 
-主題函數返回一個主題對象。 您可以將該對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+主題函數返回一個主題對象。 主題函數返回一個主題對象。 您可以將該對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-每個主題也提供了幾種強調顏色預設（`blue`、`green`、`orange`、`pink`、`purple`、`red`）可以擴展到選項對象中。 例如，使用 `pink` 強調色預設：
+每個主題也提供了幾種強調顏色預設（`blue`、`green`、`orange`、`pink`、`purple`、`red`）可以擴展到選項對象中。 例如，使用 `pink` 強調色預設： 例如，使用 `pink` 強調色預設：
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -140,11 +140,11 @@ const App = () => {
 
 ### 範例
 
-#### 使用`darkTheme`主題。
+#### 主題
 
 使用`midnightTheme`主題。
 
-強調色
+使用`darkTheme`主題。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-以下是一些不同的方式來使用`accentColor`配置。
+使用`midnightTheme`主題。
 
 ```tsx
 import {
@@ -171,11 +171,11 @@ export const App = () => (
 );
 ```
 
-#### 將強調色設置為自定義的紫色值。
+#### 強調色
 
-將強調色設置為內建的`green`預設值。
+以下是一些不同的方式來使用`accentColor`配置。
 
-邊框半徑
+將強調色設置為自定義的紫色值。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-以下是一些不同的方式來使用`borderRadius`配置。
+將強調色設置為內建的`green`預設值。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +216,9 @@ const App = () => {
 
 #### 將邊框半徑設置為`medium`。
 
-將邊框半徑設置為`none`。
+以下是一些不同的方式來使用`borderRadius`配置。
 
-提醒：可用的邊框半徑值有：`large`（預設）、`medium`、`small` 和 `none`。
+將邊框半徑設置為`medium`。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -258,11 +258,11 @@ const App = () => {
 
 > 提醒：可用的邊框半徑值為：`large`（預設）、`medium`、`small`和`none`。
 
-#### 但這樣你可以使用`fontStack`配置。
+#### 字體堆疊
 
 預設情況下，`fontStack` 設置為 `rounded`。 但是這是您可以使用 `fontStack` 配置的方法。
 
-默認情況下，`overlayBlur`設置為`none`。
+但這樣你可以使用`fontStack`配置。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -283,9 +283,9 @@ const App = () => {
 
 #### 但這樣你可以使用`overlayBlur`配置。
 
-預設情況下，`overlayBlur` 設置為 `none`。 但是這是您可以使用 `overlayBlur` 配置的方法。
+預設情況下，`overlayBlur` 設置為 `none`。 但這樣你可以使用`overlayBlur`配置。
 
-這裡有一些不同的方式來一起使用不同的主題，連同`accentColor`、`borderRadius`和`fontStack`屬性。
+將強調色設定為內建的`pink`預設值。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -306,12 +306,12 @@ const App = () => {
 
 #### 使用`lightTheme`主題
 
-將強調色設定為自定義的紫色值
+這裡有一些不同的方式來一起使用不同的主題，連同`accentColor`、`borderRadius`和`fontStack`屬性。
 
+- 使用`lightTheme`主題
+- 將強調色設定為自定義的紫色值
 - 將邊框半徑設定為`medium`
-- 將字體堆疊設定為`system`
-- 使用`midnightTheme`主題
-- 將強調色設定為內建的`pink`預設值。
+- 預設情況下，`fontStack` 設置為 `rounded`。 但是這是您可以使用 `fontStack` 配置的方法。
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- 將邊框半徑設定為`small`
-- 暗模式支持
-- 如果您的應用程序使用標準的 `prefers-color-scheme: dark` 媒體查詢在淺色和深色模式之間切換，您可以選擇提供一個包含`lightMode`和`darkMode`值的動態主題對象。
+- 使用`midnightTheme`主題
 - 將強調色設定為內建的`pink`預設值。
+- 將邊框半徑設定為`small`
+- 將字體堆疊設定為`system`
 
 ```tsx
 import {

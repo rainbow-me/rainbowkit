@@ -1389,6 +1389,38 @@
           "title": "Tekan tombol Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami sarankan untuk menempatkan MEW Wallet di layar utama Anda untuk akses yang lebih cepat.",
+          "title": "Buka aplikasi MEW Wallet"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan awan.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol scan"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Buka aplikasi ZilPay",
+        "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+      },
+      "step2": {
+        "title": "Buat atau Impor Dompet",
+        "description": "Buat dompet baru atau impor yang sudah ada."
+      },
+      "step3": {
+        "title": "Tekan tombol scan",
+        "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+      }
     }
   }
 }

@@ -76,11 +76,11 @@ const App = () => (
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Injected Wallet
+##### Инъекционный кошелек
 
-Это резервный вариант кошелька, предназначенный для сценариев, когда `window.ethereum` существует, но не был предоставлен другим кошельком из списка. Этот кошелек автоматически скрывается из списка, когда резервное использование не требуется или если отсутствует внедренный кошелек.
+Это резервный вариант кошелька, предназначенный для случаев, когда `window.ethereum` существует, но не был предоставлен другим кошельком из списка. Этот кошелек автоматически скрывается из списка, когда резервный вариант не требуется или если доступен инъекционный кошелек.
 
-**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех внедренных кошельков.**
+**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех инъекционных кошельков.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Для dApps, которые поддерживают Safe Apps, чтобы позволить пользователям легко подключаться к своему сейфу или мультиподписи, включите опцию `safeWallet` для автоматических подключений. Опция Safe будет отображаться только в среде браузера Safe Wallet.
+Для децентрализованных приложений, которые поддерживают Safe Apps, чтобы позволить пользователям легко подключаться к своему сейф-кошельку или multi-sig, включите опцию `safeWallet` для автоматического подключения. Опция Safe будет отображаться только в браузерной среде Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,13 +110,19 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Лучший кошелек
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Этот коннектор кошелька поддерживает как приложение Coinbase Wallet, так и расширение, а также Coinbase Smart Wallet в вебе.
+Этот коннектор для кошелька поддерживает как Coinbase Wallet app так и расширение, а также Coinbase Smart Wallet в сети.
 
-Доступен аргумент `preference` для управления тем, включен ли Smart Wallet и доступен ли для пользователей. Поведение на основе предпочтений задокументировано [здесь](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Доступен аргумент `preference` для управления тем, включен ли Smart Wallet и доступен ли он для пользователей. Поведение на основе предпочтений документировано [здесь](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet будет включен по умолчанию с `all` в начале июня, без дальнейшего обновления.
+Smart Wallet будет включен по умолчанию с опцией `all` в начале июня без необходимости обновления.
 
-Разработчики могут протестировать Smart Wallet с цепочками `sepolia` и `baseSepolia` уже сегодня, установив `smartWalletOnly` и включив `coinbaseWallet` в свой список кошельков следующим образом:
+Разработчики могут проверить Smart Wallet с цепями `sepolia` и `baseSepolia` сегодня, установив `smartWalletOnly` и включив `coinbaseWallet` в свой список кошельков, как показано ниже:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -397,7 +403,7 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Валора
+#### Valora
 
 ```tsx
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -409,13 +415,25 @@ import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Вигвам
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Wigwam
 
 ```tsx
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';

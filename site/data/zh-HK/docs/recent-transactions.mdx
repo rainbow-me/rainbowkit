@@ -7,9 +7,9 @@ description: 顯示您最近的交易
 
 ## 顯示您最近的交易
 
-您可以選擇在RainbowKit的帳戶模態窗口中顯示最近的交易。 請注意，所有交易都保存在本地存儲中，必須手動向RainbowKit註冊才能顯示。
+您可以選擇在RainbowKit的帳戶模態窗口中顯示最近的交易。 請注意，所有交易都保存在本地存儲中，必須手動向RainbowKit註冊才能顯示。 請注意，所有交易都保存在本地存儲中，必須手動向RainbowKit註冊才能顯示。
 
-如果有待處理的交易，默認的`ConnectButton`實現還會在用戶的頭像周圍顯示加載指示器。 自定義的`ConnectButton`實現可以通過傳遞給您的渲染函數的`account.hasPendingTransactions`屬性重新創建此行為。
+如果有待處理的交易，默認的`ConnectButton`實現還會在用戶的頭像周圍顯示加載指示器。 如果有待處理的交易，默認的`ConnectButton`實現還會在用戶的頭像周圍顯示加載指示器。 自定義的`ConnectButton`實現可以通過傳遞給您的渲染函數的`account.hasPendingTransactions`屬性重新創建此行為。
 
 要使用此功能，首先在`RainbowKitProvider`上啟用`showRecentTransactions`選項。
 

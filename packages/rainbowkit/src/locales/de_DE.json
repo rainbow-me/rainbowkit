@@ -1389,6 +1389,38 @@
           "title": "Tippen Sie auf die Schaltfläche QR-Scan"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Wir empfehlen, MEW Wallet auf Ihrem Startbildschirm abzulegen, um schneller darauf zugreifen zu können.",
+          "title": "Öffnen Sie die MEW Wallet-App"
+        },
+        "step2": {
+          "description": "Sie können Ihr Wallet problemlos mit der Cloud-Backup-Funktion sichern.",
+          "title": "Erstellen oder importieren Sie ein Wallet"
+        },
+        "step3": {
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden.",
+          "title": "Tippen Sie auf die Scan-Schaltfläche"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Öffne die ZilPay-App",
+        "description": "Füge ZilPay zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen."
+      },
+      "step2": {
+        "title": "Erstellen oder importieren Sie ein Wallet",
+        "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+      },
+      "step3": {
+        "title": "Tippen Sie auf die Scan-Schaltfläche",
+        "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+      }
     }
   }
 }

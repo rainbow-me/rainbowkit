@@ -7,9 +7,9 @@ description: 自定義錢包列表
 
 ## 自定義錢包列表
 
-您可以從 `'@rainbow-me/rainbowkit/wallets'` 導入個別的錢包，並配合 `connectorsForWallets` 函數來建立自己的錢包列表及其必要的連接器。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。
+您可以從 `'@rainbow-me/rainbowkit/wallets'` 並且使用 `connectorsForWallets` 函數來匯入單個錢包，並建置您自己的錢包列表及必要的連接器。 這樣您可以完全控制顯示哪些錢包以及其顯示順序。
 
-例如，您可以選擇只顯示 Rainbow 以及通用的備用錢包。
+例如，您可以選擇只顯示 Rainbow 和通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-然後，您可以將連接器傳輸給 Wagmi 的 `createConfig`。
+然後，您可以將連接器傳遞給 Wagmi 的 `createConfig`。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -60,35 +60,35 @@ const App = () => (
 
 ### 內建錢包
 
-以下錢包通過 `wallet` 對象提供。
+以下錢包可通過 `wallet` 物件提供。
 
 #### 通用錢包
 
-以下錢包基於通用連接方法而不是特定應用程序。 因此，建議始終包括這些錢包。
+以下錢包適用於通用連接方法而非特定應用。 因此，建議務必包含這些錢包。
 
 ##### WalletConnect
 
-這是為基於 WalletConnect 的錢包設計的備用錢包選項，該錢包未被列表中的其他錢包提供。
+這是一個回退錢包選項，專為尚未被列表中其他錢包提供的 WalletConnect 錢包設計。
 
-**建議始終將此錢包列入名單，以確保支持所有基於 WalletConnect 的錢包。**
+**建議您始終將此錢包包含在列表中，以確保所有基於 WalletConnect 的錢包都受到支援。**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### 注入錢包
+##### 嵌入式錢包
 
-這是為在 `window.ethereum` 存在但未被列表中的其他錢包提供的情況設計的備用錢包選項。 當備用並不必要或者不存在注入錢包時，此錢包將自動隱藏自己。
+這是一個回退錢包選項，專為存在 `window.ethereum` 但尚未被列表中其他錢包提供的情況而設計。 當不需要回退或無法使用嵌入式錢包時，該錢包將自動從列表中隱藏。
 
-**建議始終將此錢包列入名單，以確保支持所有注入的錢包。**
+**建議您始終將此錢包包含在列表中，以確保所有嵌入式錢包都受到支援。**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### 安全錢包
+##### Safe Wallet
 
-對於支持 Safe Apps 的 dApp，用戶可以輕鬆連接其 Safe vault 或多重簽名，包含 `safeWallet` 選項以實現自動連接。 安全選項只會在 Safe Wallet 瀏覽器環境中出現。
+對於支援 Safe Apps 的 dApp，以便讓用戶輕鬆連接其 Safe vault 或多簽帳戶，請包含 `safeWallet` 選項以自動連接。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -96,9 +96,9 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### 特定錢包
 
-以下錢包通過 `wallet` 對象提供（按字母順序排列）。
+以下錢包按照字母順序由 `wallet` 物件提供。
 
-#### 1inch 錢包
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -110,19 +110,25 @@ import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 最佳錢包
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 錢包
+#### Binance Web3 Wallet
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -134,7 +140,7 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bifrost 錢包
+#### Bifrost Wallet
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -152,19 +158,19 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom 錢包
+#### Bloom Wallet
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave 錢包
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit 錢包
+#### Bybit Wallet
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-此錢包連接器支持 Coinbase Wallet 應用程序和擴展，以及 Web 上的 Coinbase Smart Wallet。
+此錢包連接器支援 Coinbase Wallet 應用程式和擴充功能，以及 Web 上的 Coinbase Smart Wallet。
 
-`Preference` 參數可用於控制 Smart Wallet 是否為用戶啟用和可用。 基於偏好的行為在[此處](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)有記錄。
+可以使用 `preference` 參數控制是否為用戶啟用和提供 Smart Wallet。 `Preference` 參數可用於控制 Smart Wallet 是否為用戶啟用和可用。 基於偏好的行為在[此處](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)有記錄。
 
-Smart Wallet 將在六月初預設啟用 `all`，無需進一步升級。
+在六月初 Smart Wallet 將在 `all` 設定下預設啟用，無需進一步升級。
 
-開發者今天可以通過設置 `smartWalletOnly` 並將 `coinbaseWallet` 包括在他們的錢包列表中，以 `sepolia` 和 `baseSepolia` 鏈測試 Smart Wallet：
+開發者今天可以通過 `sepolia` 和 `baseSepolia`鏈測試 Smart Wallet，設定 `smartWalletOnly` 並在其錢包列表中包含 `coinbaseWallet`，如下所示：
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -187,13 +193,13 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-#### Coin98 錢包
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Compass 錢包
+#### Compass Wallet
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -205,13 +211,13 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dawn 錢包
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Enkrypt 錢包
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -223,19 +229,19 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame 錢包
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier 錢包
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate 錢包
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -247,13 +253,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay 錢包
+#### ioPay Wallet
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kaia 錢包
+#### Kaia Wallet
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -265,13 +271,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken 錢包
+#### Kraken Wallet
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus 錢包
+#### Kresus Wallet
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -283,13 +289,13 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden 錢包
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW 錢包
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -301,7 +307,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX 錢包
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -331,7 +337,7 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby 錢包
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -343,13 +349,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper 錢包
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin 錢包
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -385,13 +391,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust 錢包
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap 錢包
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -403,16 +409,28 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI 錢包
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam
@@ -423,11 +441,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### 範例
 
-#### 訂購
+#### 排序
 
-以下是一些顯示不同錢包、不同順序的例子。
+以下是不同錢包的顯示範例，順序各不相同。
 
-顯示MetaMask及通用的後備錢包。
+顯示 MetaMask 和通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -447,7 +465,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-顯示Rainbow、MetaMask和Coinbase以及通用的後備錢包。
+顯示 Rainbow、MetaMask 和 Coinbase 同通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -474,13 +492,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> 提醒：`wallets`數組的順序定義了在UI中顯示錢包的順序。
+> 提醒：`wallets` 陣列的順序定義了錢包在 UI 中顯示的順序。
 
-#### 多個組別
+#### 多個群組
 
-您可以使用`groupName`鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
+您可以使用 `groupName` 鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
 
-推薦Rainbow和MetaMask，但也提供Coinbase及通用的後備錢包。
+推薦 Rainbow 和 MetaMask，但同時提供 Coinbase 和通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

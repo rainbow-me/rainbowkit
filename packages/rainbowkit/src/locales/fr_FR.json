@@ -1389,6 +1389,38 @@
           "title": "Appuyez sur le bouton Scan QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Nous vous recommandons de mettre MEW Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application MEW Wallet"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant la fonction de sauvegarde cloud.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Ouvrez l'application ZilPay",
+        "description": "Ajoutez ZilPay à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+      },
+      "step2": {
+        "title": "Créer ou Importer un Portefeuille",
+        "description": "Créez un nouveau portefeuille ou importez-en un existant."
+      },
+      "step3": {
+        "title": "Appuyez sur le bouton de scan",
+        "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+      }
     }
   }
 }

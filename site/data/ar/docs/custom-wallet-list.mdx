@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-يمكنك بعد ذلك تمرير الموصلات إلى `createConfig` من Wagmi.
+يمكنك بعد ذلك تمرير الموصلات الخاصة بك إلى `createConfig` التابع لواغمي.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -64,7 +64,7 @@ const App = () => (
 
 #### محافظ عامة
 
-المحافظ التالية تتميز بتوجهات الاتصال العامة بدلاً من التطبيقات المحددة. نتيجة لذلك، يوصى دائمًا بتضمين هذه المحافظ.
+المحافظ التالية تتميز بتوجهات الاتصال العامة بدلاً من التطبيقات المحددة. كذلك، يُوصى دائمًا بتضمين هذه المحافظ.
 
 ##### WalletConnect
 
@@ -76,19 +76,19 @@ const App = () => (
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### المحفظة المُدخلة
+##### المحفظة المدخلية
 
-هذه هي خيار المحفظة الاحتياطي المصمم للمواقف التي توجد فيها `window.ethereum` ولكن لم يتم تقديمها بواسطة محفظة أخرى في القائمة. ستختفي هذه المحفظة تلقائيًا من القائمة عندما لا يكون الاحتياط ضروريًا أو إذا لم تكن هناك محفظة مُدخلة متاحة.
+هذه هي خيار المحفظة الاحتياطي المصمم للسيناريوهات التي يوجد فيها `window.ethereum` ولكن لم يتم توفيرها بواسطة محفظة أخرى في القائمة. ستختفي هذه المحفظة تلقائيًا من القائمة عندما لا يكون هناك حاجة إلى الاحتياط أو إذا لم تكن هناك محفظة مدخلية متاحة.
 
-**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ المُدخلة.**
+**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ المدخلية.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### محفظة الأمان
+##### Safe Wallet
 
-للتطبيقات اللامركزية التي تدعم تطبيقات الأمان لتمكين المستخدمين من الاتصال بسهولة بحفنة الأمان الخاصة بهم أو التوقيع المتعدد، قم بتضمين خيار `safeWallet` لتوصيلات تلقائية. سيظهر خيار محفظة الأمان فقط في بيئة مستعرض محفظة الأمان.
+للتطبيقات اللامركزية (dApps) التي تدعم التطبيقات الآمنة للسماح للمستخدمين بالاتصال بسهولة بمخزنهم الآمن أو التوقيع المتعدد، قم بتضمين خيار `safeWallet` للاتصالات التلقائية. سيظهر خيار Safe فقط في بيئة متصفح المحفظة الآمنة.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,31 +98,37 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 المحافظ التالية متوفرة عبر الكائن `wallet` (ترتيب أبجدي).
 
-#### محفظة 1inch
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### أرجنت
+#### Argent
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### برسيج
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### أفضل محفظة
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Binance Web3
+#### Binance Web3 Wallet
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -134,7 +140,7 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Bifrost
+#### Bifrost Wallet
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -152,19 +158,19 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Bloom
+#### Bloom Wallet
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Brave
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Bybit
+#### Bybit Wallet
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-يدعم موصل المحفظة هذا كل من تطبيق ومحفظة Coinbase Wallet وكذلك Coinbase Smart Wallet على الويب.
+يدعم هذا الموصل لمحفظات التطبيقات والامتدادات الخاصة بعملة Coinbase بالإضافة إلى محفظة Coinbase الذكية على الويب.
 
-يتوفر جدال `preference` للتحكم في ما إذا كان Smart Wallet مفعلًا ومتاحًا للمستخدمين. تم توثيق السلوك المعتمد على التفضيل [هنا](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+يتوفر برهان `preference` للتحكم فيما إذا كانت محفظة Smart Wallet مفعّلة ومتاحة للمستخدمين. تم توثيق السلوك القائم على البرهان [هنا](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-سيتم تمكين Smart Wallet بشكل افتراضي مع `all` في أوائل يونيو، دون ترقية إضافية.
+سيتم تفعيل المحفظة الذكية بشكل افتراضي مع `all` في أوائل يونيو دون ترقية إضافية.
 
-يمكن للمطورين اختبار Smart Wallet باستخدام سلاسل `sepolia` و `baseSepolia` اليوم عبر تعيين `smartWalletOnly` وتضمين `coinbaseWallet` في قائمة المحافظ الخاصة بهم كالتالي:
+يمكن للمطورين اختبار المحفظة الذكية مع سلاسل `sepolia` و`baseSepolia` اليوم عن طريق ضبط `smartWalletOnly` وتضمين `coinbaseWallet` في قائمة المحافظ كالتالي:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -187,13 +193,13 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-#### محفظة Coin98
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Compass
+#### Compass Wallet
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -205,13 +211,13 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Dawn
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Enkrypt
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -223,19 +229,19 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Frame
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Frontier
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Gate
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -247,13 +253,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة ioPay
+#### ioPay Wallet
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kaia
+#### Kaia Wallet
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -265,13 +271,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kraken
+#### Kraken Wallet
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Kresus
+#### Kresus Wallet
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -283,13 +289,13 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Magic Eden
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة MEW
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -301,7 +307,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة OKX
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -331,7 +337,7 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Rabby
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -343,13 +349,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Ramper
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Ronin
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -391,22 +397,28 @@ import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة Uniswap
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### فالورا
+#### Valora
 
 ```tsx
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### محفظة XDEFI
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
@@ -415,7 +427,13 @@ import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### وجوام
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Wigwam
 
 ```tsx
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';

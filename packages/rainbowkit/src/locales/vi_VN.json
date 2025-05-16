@@ -1389,6 +1389,38 @@
           "title": "Nhấn nút Quét QR"
         }
       }
+    },
+    "mew": {
+      "qr_code": {
+        "step1": {
+          "description": "Chúng tôi khuyến nghị đặt MEW Wallet lên màn hình chính để truy cập nhanh hơn.",
+          "title": "Mở ứng dụng MEW Wallet"
+        },
+        "step2": {
+          "description": "Bạn có thể dễ dàng sao lưu ví của mình bằng tính năng sao lưu trên đám mây.",
+          "title": "Tạo hoặc Nhập ví"
+        },
+        "step3": {
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
+          "title": "Nhấn nút quét"
+        }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Mở ứng dụng ZilPay",
+        "description": "Thêm ZilPay vào màn hình chính để truy cập ví nhanh hơn."
+      },
+      "step2": {
+        "title": "Tạo hoặc Nhập ví",
+        "description": "Tạo ví mới hoặc nhập ví hiện có."
+      },
+      "step3": {
+        "title": "Nhấn nút quét",
+        "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+      }
     }
   }
 }

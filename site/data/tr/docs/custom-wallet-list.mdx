@@ -7,7 +7,7 @@ description: Cüzdan listesini özelleştirme
 
 ## Cüzdan listesini özelleştirme
 
-'@rainbow-me/rainbowkit/wallets' dan tek tek cüzdanları `connectorsForWallets` fonksiyonu ile birlikte alabilir ve kendi cüzdan listenizi gerekli bağlantılarıyla birlikte oluşturabilirsiniz. Bu şekilde hangi cüzdanların gösterileceği ve hangi sırada gösterileceği konusunda tam kontrolünüz olur.
+`'@rainbow-me/rainbowkit/wallets'` dan tek tek cüzdanları `connectorsForWallets` fonksiyonu ile birlikte alabilir ve kendi cüzdan listenizi gerekli bağlantılarıyla birlikte oluşturabilirsiniz. Bu şekilde hangi cüzdanların gösterileceği ve hangi sırada gösterileceği konusunda tam kontrolünüz olur.
 
 Örneğin, sadece Rainbow ve genel yedek cüzdanları göstermeyi seçebilirsiniz.
 
@@ -76,19 +76,19 @@ Bu, listeye başka bir cüzdan tarafından sağlanmamış olan CüzdanBağlantı
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Injected Wallet
+##### Enjekte Edilen Cüzdan
 
 `window.ethereum` var olduğu ancak listenizde başka bir cüzdan tarafından sağlanmadığı senaryolar için tasarlanmış bir yedek cüzdan seçeneğidir. Bu cüzdan, yedek olarak gerekli olmadığında veya kullanılabilir bir enjekte edilmiş cüzdan olmadığında otomatik olarak kendini listeden gizleyecektir.
 
-Safe Wallet
+**Tüm enjekte edilen cüzdanların desteklendiğini garantilemek için bu cüzdanı her zaman listenize dahil etmeniz önerilir.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Cüzdan
+##### Safe Wallet
 
-Safe seçeneği sadece Safe Wallet tarayıcı ortamında görünecektir. Safe seçeneği yalnızca Safe Cüzdan tarayıcı ortamında görünecektir.
+Kullanıcıların Safe kasaları veya multi-sig (çoklu imza) ortamlarıyla kolayca bağlantı kurmalarına olanak tanıyan dApp'ler için `safeWallet` seçeneğini otomatik bağlantılar için dahil edin. Safe seçeneği yalnızca Safe Cüzdan tarayıcı ortamında görünecektir.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,16 +98,22 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Aşağıdaki cüzdanlar `wallet` nesnesi aracılığıyla sağlanır (alfabetik sıraya göre).
 
-#### Argent
+#### 1inch Wallet
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### Argent
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Backpack
+
+```tsx
+import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### BeraSig
@@ -116,55 +122,55 @@ import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### En İyi Cüzdan
+#### Best Wallet
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bitget
+#### Binance Web3 Wallet
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bifrost Wallet
+#### Bitget
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bitski
+#### Bifrost Wallet
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bitverse
+#### Bitski
 
 ```tsx
 import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom Wallet
+#### Bitverse
 
 ```tsx
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave Wallet
+#### Bloom Wallet
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit Wallet
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
+#### Bybit Wallet
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -172,13 +178,13 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Bu cüzdan konnektörü hem Coinbase Wallet uygulamasını hem de eklentisini ayrıca Web üzerinde Coinbase Smart Wallet'ı destekler.
+Bu cüzdan konnektörü hem Coinbase Cüzdan uygulamasını ve uzantısını, hem de Web'de Coinbase Akıllı Cüzdan'ı destekler.
 
-Smart Wallet, Haziran başında herhangi bir ek yükseltme olmadan varsayılan olarak `hepsi` ile etkinleştirilecektir. Tercihe dayalı davranış [burada](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) belgelenmiştir.
+Akıllı Cüzdan'ın etkin olup kullanıcılar için kullanılabilirliğini kontrol etmek amacıyla bir `preference` argümanı mevcuttur. Tercih tabanlı davranış [burada](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) belgelenmiştir.
 
-Smart Wallet, erken Haziran'da herhangi bir ek yükseltme yapmadan `all` ile varsayılan olarak etkinleştirilecektir.
+Akıllı Cüzdan, Haziran başında `all` ile varsayılan olarak etkinleştirilecek, başka bir yükseltme gerektirmeyecek.
 
-Geliştiriciler, `smartWalletOnly` ayarını yaparak ve `coinbaseWallet`'i cüzdan listesine dahil ederek bugün `sepolia` ve `baseSepolia` zincirlerinde Smart Wallet'ı test edebilirler:
+Geliştiriciler, bugünden itibaren `sepolia` ve `baseSepolia` zincirleri ile Akıllı Cüzdan'ı `smartWalletOnly` ayarlayarak ve `coinbaseWallet`'i cüzdan listelerine ekleyerek test edebilir:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -187,55 +193,55 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-#### Core
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Safe Cüzdan
+#### Compass Wallet
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
-#### Enkrypt Wallet
+#### Core
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### FoxWallet
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame Wallet
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Wallet
+#### FoxWallet
 
 ```tsx
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Wallet
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Cüzdan
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Cüzdan
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -247,31 +253,31 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay Cüzdan
+#### ioPay Wallet
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Cüzdan
+#### Kaia Wallet
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus Wallet
+#### Kaikas
 
 ```tsx
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ledger Live
+#### Kraken Wallet
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### Kresus Wallet
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -283,37 +289,37 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MetaMask
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX Wallet
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Omni
+#### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OneKey
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Phantom
+#### Omni
 
 ```tsx
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby Wallet
+#### OneKey
 
 ```tsx
 import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -325,73 +331,73 @@ import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rainbow
+#### Phantom
 
 ```tsx
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### Rainbow
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Safeheron
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Taho
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Talisman
+#### Safeheron
 
 ```tsx
 import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Tokenary
+#### Taho
 
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### TokenPocket
+#### Talisman
 
 ```tsx
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Tokenary
 
 ```tsx
 import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### TokenPocket
 
 ```tsx
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Cüzdan
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Cüzdanı
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -403,16 +409,28 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Cüzdanı
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### xPortal
+
+```tsx
+import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### ZilPay
+
+```tsx
+import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Wigwam

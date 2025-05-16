@@ -10,7 +10,7 @@ image: guide-rainbow-button.png
 
 **1. 安裝 `@rainbow-me/rainbow-button` 及其對等依賴**
 
-該套件兼容Next.js, React和Vite。 確保您遵循對等依賴警告。
+該套件兼容Next.js, React和Vite。 確保您遵循對等依賴警告。 確保您遵循對等依賴警告。
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
@@ -18,7 +18,7 @@ npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 
 **2. 使用Wagmi配置並安裝RainbowButton**
 
-將 `rainbowConnector` 的實例與`projectId`和`appName`一起傳遞給Wagmi的`createConfig`，並將您的應用包裹在`RainbowButtonProvider`中。 然後插入 `RainbowButton` 元件。
+將 `rainbowConnector` 的實例與`projectId`和`appName`一起傳遞給Wagmi的`createConfig`，並將您的應用包裹在`RainbowButtonProvider`中。 然後插入 `RainbowButton` 元件。 然後插入 `RainbowButton` 元件。
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -85,4 +85,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 現在您的用戶可以享受無需維護或麻煩的無縫連接體驗。
 
-如果您想採用對其他錢包的支持，[RainbowKit](https://www.rainbowkit.com/docs/installation)中還提供了一個 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 元件。
+如果你想採用支持額外錢包，[RainbowKit](https://www.rainbowkit.com/docs/installation) 中也提供 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 組件。
