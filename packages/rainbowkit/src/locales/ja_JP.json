@@ -1393,8 +1393,8 @@
     "mew": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
-          "title": "Open the MEW Wallet app"
+          "description": "より迅速なアクセスのために、ホーム画面にMEW Walletを置くことをお勧めします。",
+          "title": "MEW Walletアプリを開く"
         },
         "step2": {
           "description": "クラウドバックアップ機能を使用して、簡単にウォレットをバックアップできます。",
@@ -1404,6 +1404,22 @@
           "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
           "title": "「スキャン」ボタンをタップします"
         }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Open the ZilPay app",
+        "description": "Add ZilPay to your home screen for faster access to your wallet."
+      },
+      "step2": {
+        "title": "ウォレットを作成またはインポート",
+        "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+      },
+      "step3": {
+        "title": "「スキャン」ボタンをタップします",
+        "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
       }
     }
   }
