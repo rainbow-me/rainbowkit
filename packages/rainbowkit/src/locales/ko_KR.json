@@ -1410,8 +1410,8 @@
   "zilpay": {
     "qr_code": {
       "step1": {
-        "title": "Open the ZilPay app",
-        "description": "Add ZilPay to your home screen for faster access to your wallet."
+        "title": "ZilPay 앱을 엽니다",
+        "description": "더 빠른 액세스를 위해 ZilPay를 홈 스크린에 추가하세요."
       },
       "step2": {
         "title": "지갑 생성 또는 가져오기",
