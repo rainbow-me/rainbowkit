@@ -1393,8 +1393,8 @@
     "mew": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
-          "title": "Open the MEW Wallet app"
+          "description": "نوصي بوضع محفظة MEW على الشاشة الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق محفظة MEW"
         },
         "step2": {
           "description": "يمكنك بسهولة النسخ الاحتياطي لمحفظتك باستخدام ميزة النسخ الاحتياطي السحابي.",
@@ -1404,6 +1404,22 @@
           "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل المحفظة الخاصة بك.",
           "title": "اضغط على زر المسح"
         }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Open the ZilPay app",
+        "description": "Add ZilPay to your home screen for faster access to your wallet."
+      },
+      "step2": {
+        "title": "إنشاء أو استيراد محفظة",
+        "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة بالفعل."
+      },
+      "step3": {
+        "title": "اضغط على زر المسح",
+        "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل المحفظة الخاصة بك."
       }
     }
   }
