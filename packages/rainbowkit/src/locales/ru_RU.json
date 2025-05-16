@@ -1393,8 +1393,8 @@
     "mew": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting MEW Wallet on your home screen for quicker access.",
-          "title": "Open the MEW Wallet app"
+          "description": "Мы рекомендуем поместить MEW Wallet на ваш экран домой для более быстрого доступа.",
+          "title": "Откройте приложение MEW Wallet"
         },
         "step2": {
           "description": "Вы легко можете сделать резервную копию вашего кошелька, используя функцию облачного резервного копирования.",
@@ -1404,6 +1404,22 @@
           "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
           "title": "Нажмите кнопку сканирования"
         }
+      }
+    }
+  },
+  "zilpay": {
+    "qr_code": {
+      "step1": {
+        "title": "Open the ZilPay app",
+        "description": "Add ZilPay to your home screen for faster access to your wallet."
+      },
+      "step2": {
+        "title": "Создать или Импортировать кошелек",
+        "description": "Создайте новый кошелек или импортируйте существующий."
+      },
+      "step3": {
+        "title": "Нажмите кнопку сканирования",
+        "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
       }
     }
   }
