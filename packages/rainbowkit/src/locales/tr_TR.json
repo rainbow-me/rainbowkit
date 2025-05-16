@@ -1410,8 +1410,8 @@
   "zilpay": {
     "qr_code": {
       "step1": {
-        "title": "Open the ZilPay app",
-        "description": "Add ZilPay to your home screen for faster access to your wallet."
+        "title": "ZilPay uygulamasını açın",
+        "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
       },
       "step2": {
         "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
