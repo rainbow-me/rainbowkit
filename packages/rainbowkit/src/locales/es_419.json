@@ -1410,8 +1410,8 @@
   "zilpay": {
     "qr_code": {
       "step1": {
-        "title": "Open the ZilPay app",
-        "description": "Add ZilPay to your home screen for faster access to your wallet."
+        "title": "Abre la aplicación ZilPay",
+        "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
       },
       "step2": {
         "title": "Crear o Importar una Billetera",
