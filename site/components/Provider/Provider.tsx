@@ -5,6 +5,7 @@ import {
   ledgerWallet,
   omniWallet,
   trustWallet,
+  rabbyWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
@@ -63,6 +64,7 @@ const config = getDefaultConfig({
         omniWallet,
         imTokenWallet,
         ledgerWallet,
+        rabbyWallet,
       ],
     },
   ],
