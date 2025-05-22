@@ -60,7 +60,7 @@ describe('connectorsForWallets', () => {
       });
 
       const connectors = connectorsForWallets(
-        [{ groupName: 'groupName: "Test Group 1"', wallets: [customWallet] }],
+        [{ groupName: 'Test Group 1', wallets: [customWallet] }],
         {
           projectId: exampleProjectId,
           appName: 'rainbowkit.com',
