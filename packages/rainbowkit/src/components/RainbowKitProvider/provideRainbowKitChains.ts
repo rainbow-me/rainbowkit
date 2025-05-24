@@ -64,6 +64,7 @@ type ChainName =
   | 'scroll'
   | 'scrollSepolia'
   | 'sepolia'
+  | 'superposition'
   | 'unichain'
   | 'unichainSepolia'
   | 'xdc'
@@ -211,6 +212,11 @@ const sankoIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/sanko.png')).default,
 };
 
+const superpositionIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/superposition.svg')).default,
+};
+
 const scrollIcon: IconMetadata = {
   iconBackground: '#FFEEDA',
   iconUrl: async () => (await import('./chainIcons/scroll.svg')).default,
@@ -306,6 +312,11 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   scroll: { chainId: 534352, ...scrollIcon },
   scrollSepolia: { chainId: 534351, ...scrollIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  superposition: {
+    chainId: 55244,
+    name: 'Superposition',
+    ...superpositionIcon,
+  },
   unichain: { chainId: 130, ...unichainIcon },
   unichainSepolia: { chainId: 1301, ...unichainIcon },
   xdc: { chainId: 50, name: 'XDC', ...xdcIcon },
