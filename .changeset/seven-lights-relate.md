@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": major
 ---
 
-Add Superposition chain
+Added support for Superposition chain
