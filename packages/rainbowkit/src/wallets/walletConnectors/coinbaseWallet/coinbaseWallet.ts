@@ -11,10 +11,8 @@ export interface CoinbaseWalletOptions {
   appIcon?: string;
 }
 
-interface CoinbaseWallet {
-  (params: CoinbaseWalletOptions): Wallet;
-  preference?: CoinbaseWalletParameters<'4'>['preference'];
-}
+type CoinbaseWallet = ((params: CoinbaseWalletOptions) => Wallet) &
+  CoinbaseWalletParameters<'4'>;
 
 export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
   const getUri = (uri: string) => uri;
@@ -102,7 +100,7 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
-        preference: coinbaseWallet.preference,
+        ...coinbaseWallet,
       });
 
       return createConnector((config) => ({

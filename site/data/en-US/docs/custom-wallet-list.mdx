@@ -180,17 +180,26 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
 
-A `preference` argument is available to control whether Smart Wallet is enabled and available for users. Preference based behavior is documented [here](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
-
-Smart Wallet will be enabled by default with `all` in early June, without a further upgrade.
-
-Developers can test Smart Wallet with `sepolia` and `baseSepolia` chains today by setting `smartWalletOnly` and including `coinbaseWallet` in their wallet list like so:
+Configuration options for this connector can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Enable Coinbase Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Configure paymasters
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable sub accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
