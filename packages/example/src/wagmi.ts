@@ -131,6 +131,8 @@ const avalanche = {
 // Testing `preference` type
 coinbaseWallet.preference = 'all';
 
+// TODO: Add subAccounts, paymasterUrls
+
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
