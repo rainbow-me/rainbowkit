@@ -1,5 +1,17 @@
 # example
 
+## 0.0.113
+
+### Patch Changes
+
+- 77de527: Upgraded `wagmi` to `^2.15.5`.
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+- Updated dependencies [624a38a]
+- Updated dependencies [f6ad6aa]
+  - @rainbow-me/rainbowkit@2.2.6
+  - @rainbow-me/rainbow-button@0.2.23
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.112
 
 ### Patch Changes

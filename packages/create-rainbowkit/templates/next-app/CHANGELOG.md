@@ -1,5 +1,14 @@
 # rainbowkit-next-app
 
+## 0.0.105
+
+### Patch Changes
+
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+- Updated dependencies [624a38a]
+- Updated dependencies [f6ad6aa]
+  - @rainbow-me/rainbowkit@2.2.6
+
 ## 0.0.104
 
 ### Patch Changes
