@@ -53,7 +53,6 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/qrcode": "^1.5.5",
     "@types/ua-parser-js": "^0.7.39",
     "@vanilla-extract/css-utils": "0.1.4",
     "@vanilla-extract/private": "1.0.6",
@@ -70,7 +69,7 @@
     "@vanilla-extract/dynamic": "2.1.2",
     "@vanilla-extract/sprinkles": "1.6.3",
     "clsx": "2.1.1",
-    "qrcode": "1.5.4",
+    "cuer": "^0.0.2",
     "react-remove-scroll": "2.6.2",
     "ua-parser-js": "^1.0.37"
   },
