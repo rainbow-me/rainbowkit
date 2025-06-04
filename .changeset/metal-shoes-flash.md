@@ -16,4 +16,4 @@
 "with-vite": patch
 ---
 
-Upgraded `wagmi` to `^2.15.4`.
+Upgraded `wagmi` to `^2.15.5`.
