@@ -14,7 +14,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "viem": "2.29.2",
-    "wagmi": "^2.15.2"
+    "wagmi": "^2.15.4"
   },
   "scripts": {
     "dev": "next dev",
