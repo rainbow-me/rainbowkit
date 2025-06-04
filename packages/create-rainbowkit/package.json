@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/create-rainbowkit",
   "description": "Scaffold a new RainbowKit project",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "files": [
     "dist",
     "templates"

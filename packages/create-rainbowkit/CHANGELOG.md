@@ -1,5 +1,12 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.12
+
+### Patch Changes
+
+- 77de527: Update templates to use wagmi 2.15.5
+- e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
+
 ## 0.3.11
 
 ### Patch Changes
