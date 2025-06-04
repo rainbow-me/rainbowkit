@@ -27,6 +27,9 @@ jobs:
           
           # Save the allowlisted users in a file
           echo "$ORG_MEMBERS" > allowlisted_users.txt
+          
+          # Add allowlisted apps/users from vars to the allowlist
+          echo "${{ vars.COMMENT_WATCHDOG_ALLOWLIST }}" | tr ',' '\n' >> allowlisted_users.txt
 
       - name: Check comment for spam
         env:
