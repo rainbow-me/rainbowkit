@@ -49,8 +49,8 @@
     "wagmi": "^2.9.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/qrcode": "^1.5.5",
@@ -58,12 +58,12 @@
     "@vanilla-extract/css-utils": "0.1.4",
     "@vanilla-extract/private": "1.0.6",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^16.4.5",
     "jsdom": "^25.0.0",
     "nock": "^13.4.0",
     "postcss": "^8.4.47",
-    "react": "^19.0.0",
-    "vitest": "2.1.9",
-    "dotenv": "^16.4.5"
+    "react": "^19.1.0",
+    "vitest": "2.1.9"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.15.5",

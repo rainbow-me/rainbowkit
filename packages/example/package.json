@@ -5,14 +5,14 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@rainbow-me/rainbow-button": "workspace:*",
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
-    "@rainbow-me/rainbow-button": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
-    "next": "^15.2.4",
+    "next": "^15.3.3",
     "next-auth": "4.24.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "viem": "2.29.2",
     "wagmi": "^2.15.4"
   },
