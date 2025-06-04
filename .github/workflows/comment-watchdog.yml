@@ -17,60 +17,52 @@ jobs:
           # Create an empty file to log deleted comments
           touch deleted_comments_log.txt
 
-      - name: Get list of organization members and allow-listed bots
+      - name: Get list of organization members
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Comma-separated list of GitHub Apps / bot accounts to allow
-          ALLOWLISTED_BOTS: ${{ vars.ALLOWLISTED_BOTS }} # e.g. "changeset-bot,dependabot[bot]"
+          ALLOWLISTED_BOTS: "changeset-bot"          # ← added
         run: |
-          # Fetch org members
+          # Fetch the list of users in the organization
           ORG_MEMBERS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/orgs/${{ github.repository_owner }}/members" | jq -r '.[].login')
-
-          # Save to allowlist file
-          echo "$ORG_MEMBERS" > allowlisted_users.txt
+          "https://api.github.com/orgs/${{ github.repository_owner }}/members" | jq -r '.[].login')
           
-          # Append any extra bot accounts
-          if [ -n "$ALLOWLISTED_BOTS" ]; then
-            echo "$ALLOWLISTED_BOTS" | tr ',' '\n' >> allowlisted_users.txt
-          fi
+          # Save the allowlisted users in a file
+          echo "$ORG_MEMBERS" > allowlisted_users.txt
+
+          # Append any extra bot/app accounts
+          if [ -n "$ALLOWLISTED_BOTS" ]; then        # ← added
+            echo "$ALLOWLISTED_BOTS" | tr ', ' '\n' >> allowlisted_users.txt   # ← added
+          fi                                         # ← added
 
       - name: Check comment for spam
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SPAM_KEYWORDS: ${{ vars.COMMENT_WATCHDOG_KEYWORDS }}
-          ALLOWLISTED_BOTS: ${{ vars.ALLOWLISTED_BOTS }}
         run: |
           COMMENT_ID=$(jq -r '.comment.id' < "$GITHUB_EVENT_PATH")
           COMMENT_BODY=$(jq -r '.comment.body' < "$GITHUB_EVENT_PATH")
           COMMENT_USER=$(jq -r '.comment.user.login' < "$GITHUB_EVENT_PATH")
+          
+          # Check if the comment user is allowlisted
+          if grep -q "$COMMENT_USER" allowlisted_users.txt; then
+            echo "Comment by $COMMENT_USER is from an allowlisted user. No action taken."
+            exit 0
+          fi
 
-          # If user is explicitly allow-listed (bots) skip
-          if [ -n "$ALLOWLISTED_BOTS" ] && echo "$ALLOWLISTED_BOTS" | tr ',' '\n' | grep -qx "$COMMENT_USER"; then
-            echo "Comment by allow-listed bot $COMMENT_USER. No action taken."
-            exit 0
-          fi
-          
-          # If user is an org member skip
-          if grep -qx "$COMMENT_USER" allowlisted_users.txt; then
-            echo "Comment by org member $COMMENT_USER. No action taken."
-            exit 0
-          fi
-          
-          # Check for spam keywords
+          # Check if the comment contains any spam patterns
           if echo "$COMMENT_BODY" | grep -iE "$SPAM_KEYWORDS"; then
             echo "Spam comment detected: $COMMENT_BODY"
-
-            # Try all three comment-delete endpoints (issues, PRs, discussions)
-            for ENDPOINT in issues comments pulls comments discussions comments; do
-              curl -X DELETE \
-                -H "Authorization: token $GITHUB_TOKEN" \
-                -H "Accept: application/vnd.github.v3+json" \
-                "https://api.github.com/repos/${{ github.repository }}/$ENDPOINT/$COMMENT_ID" \
-                && break
-            done
-
+            
+            # Delete the comment using the GitHub API
+            curl -X DELETE \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" || \
+              "https://api.github.com/repos/${{ github.repository }}/pulls/comments/$COMMENT_ID" || \
+              "https://api.github.com/repos/${{ github.repository }}/discussions/comments/$COMMENT_ID"
+              
             echo "Spam comment deleted"
+            # Log the deleted comment
             echo "Deleted comment from user $COMMENT_USER: $COMMENT_BODY" >> deleted_comments_log.txt
           else
             echo "No spam detected"
