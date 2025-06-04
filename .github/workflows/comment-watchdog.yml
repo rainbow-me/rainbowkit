@@ -39,6 +39,9 @@ jobs:
           COMMENT_ID=$(jq -r '.comment.id' < "$GITHUB_EVENT_PATH")
           COMMENT_BODY=$(jq -r '.comment.body' < "$GITHUB_EVENT_PATH")
           COMMENT_USER=$(jq -r '.comment.user.login' < "$GITHUB_EVENT_PATH")
+
+          # Log the comment author
+          echo "Comment authored by $COMMENT_USER"
           
           # Check if the comment user is allowlisted
           if grep -q "$COMMENT_USER" allowlisted_users.txt; then
