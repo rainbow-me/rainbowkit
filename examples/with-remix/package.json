@@ -13,16 +13,16 @@
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "viem": "2.29.2",
     "wagmi": "^2.15.4",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",
-    "@types/react": "^19.0.6",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
     "typescript": "5.5.4"
   },
   "engines": {

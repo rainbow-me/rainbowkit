@@ -10,15 +10,15 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
-    "next": "^15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "viem": "2.29.2",
     "wagmi": "^2.15.4"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",
-    "@types/react": "^19.0.6",
+    "@types/react": "^19.1.6",
     "eslint-config-next": "^15.1.7",
     "typescript": "5.5.4"
   }
