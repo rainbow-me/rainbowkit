@@ -11,8 +11,15 @@ export interface CoinbaseWalletOptions {
   appIcon?: string;
 }
 
-type CoinbaseWallet = ((params: CoinbaseWalletOptions) => Wallet) &
-  CoinbaseWalletParameters<'4'>;
+// supports preference, paymasterUrls, subAccounts
+type AcceptedCoinbaseWalletParameters = Omit<
+  CoinbaseWalletParameters<'4'>,
+  'headlessMode' | 'version' | 'appName' | 'appLogoUrl'
+>;
+
+interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
+  (params: CoinbaseWalletOptions): Wallet;
+}
 
 export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
   const getUri = (uri: string) => uri;
@@ -97,10 +104,15 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
           },
         }),
     createConnector: (walletDetails: WalletDetailsParams) => {
+      // Extract all AcceptedCoinbaseWalletParameters from coinbaseWallet
+      // This approach avoids type errors for properties not yet in upstream connector
+      const { ...optionalConfig }: AcceptedCoinbaseWalletParameters =
+        coinbaseWallet as any;
+
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
-        ...coinbaseWallet,
+        ...optionalConfig,
       });
 
       return createConnector((config) => ({
