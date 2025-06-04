@@ -38,7 +38,7 @@
     "unified": "11.0.5",
     "unist-util-visit": "5.0.0",
     "viem": "2.29.2",
-    "wagmi": "^2.15.4"
+    "wagmi": "^2.15.5"
   },
   "devDependencies": {
     "contentlayer": "npm:contentlayer2@0.5.3",
