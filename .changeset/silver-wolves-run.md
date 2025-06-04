@@ -1,5 +1,6 @@
 ---
 "@rainbow-me/create-rainbowkit": patch
+"@rainbow-me/rainbowkit": patch
 "example": patch
 "rainbowkit-next-app": patch
 "site": patch
