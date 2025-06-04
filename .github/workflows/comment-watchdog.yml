@@ -44,7 +44,7 @@ jobs:
           echo "Comment authored by $COMMENT_USER"
           
           # Check if the comment user is allowlisted
-          if grep -q "$COMMENT_USER" allowlisted_users.txt; then
+          if grep -qF "$COMMENT_USER" allowlisted_users.txt; then
             echo "Comment by $COMMENT_USER is from an allowlisted user. No action taken."
             exit 0
           fi
