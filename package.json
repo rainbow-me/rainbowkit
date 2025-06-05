@@ -98,5 +98,8 @@
     "onlyBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
