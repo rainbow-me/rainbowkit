@@ -121,7 +121,11 @@ export function WalletButton({
       return;
     }
 
-    connect?.();
+    try {
+      await connect?.();
+    } catch {
+      // Ignore connection errors so they don't surface as uncaught
+    }
   }, [connect, getMobileUri, showWalletConnectModal, onClose, name, id]);
 
   useEffect(() => {
