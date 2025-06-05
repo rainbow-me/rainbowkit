@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.7
+
+### Patch Changes
+
+- a147620: Fixed error handling when connect requests are rejected on mobile.
+
 ## 2.2.6
 
 ### Patch Changes
