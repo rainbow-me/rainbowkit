@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box, type BoxProps } from '../Box/Box';
@@ -37,6 +37,7 @@ export function ActionButton({
   disabled = false,
   href,
   label,
+  icon,
   onClick,
   rel = 'noreferrer noopener',
   size = 'medium',
@@ -53,6 +54,7 @@ export function ActionButton({
   type?: 'primary' | 'secondary';
   disabled?: boolean;
   testId?: string;
+  icon?: JSX.Element;
 }) {
   const isPrimary = type === 'primary';
   const isNotLarge = size !== 'large';
@@ -98,19 +100,22 @@ export function ActionButton({
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
-      <Text
-        color={
-          !disabled
-            ? isPrimary
-              ? 'accentColorForeground'
-              : 'accentColor'
-            : 'modalTextSecondary'
-        }
-        size={fontSize}
-        weight="bold"
-      >
-        {label}
-      </Text>
+      <Box alignItems="center" display="flex" justifyContent="center" gap="2">
+        {icon ? <Box display="flex">{icon}</Box> : null}
+        <Text
+          color={
+            !disabled
+              ? isPrimary
+                ? 'accentColorForeground'
+                : 'accentColor'
+              : 'modalTextSecondary'
+          }
+          size={fontSize}
+          weight="bold"
+        >
+          {label}
+        </Text>
+      </Box>
     </Box>
   );
 }

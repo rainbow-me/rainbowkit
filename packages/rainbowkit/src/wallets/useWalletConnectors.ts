@@ -1,6 +1,5 @@
 import { type Config, type Connector, useConnect } from 'wagmi';
 import type { ConnectMutateAsync } from 'wagmi/query';
-import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import { indexBy } from '../utils/indexBy';
 import {
   useInitialChainId,
@@ -24,7 +23,6 @@ import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
   connect: () => ReturnType<ConnectMutateAsync<Config, unknown>>;
-  showWalletConnectModal?: () => void;
   recent: boolean;
   mobileDownloadUrl?: string;
   extensionDownloadUrl?: string;
@@ -42,8 +40,6 @@ export function useWalletConnectors(
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
-
-  const { setIsWalletConnectModalOpen } = useWalletConnectOpenState();
 
   const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
     ...connector,
@@ -72,28 +68,6 @@ export function useWalletConnectors(
     }
 
     return result;
-  }
-
-  async function connectToWalletConnectModal(
-    walletConnectModalConnector: Connector,
-  ) {
-    try {
-      setIsWalletConnectModalOpen(true);
-      await connectWallet(walletConnectModalConnector);
-      setIsWalletConnectModalOpen(false);
-    } catch (err) {
-      const isUserRejection =
-        // @ts-expect-error - Web3Modal v1 error name
-        err.name === 'UserRejectedRequestError' ||
-        // @ts-expect-error - Web3Modal v2 error message on desktop
-        err.message === 'Connection request reset. Please try again.';
-
-      setIsWalletConnectModalOpen(false);
-
-      if (!isUserRejection) {
-        throw err;
-      }
-    }
   }
 
   const getWalletConnectUri = async (
@@ -209,9 +183,6 @@ export function useWalletConnectors(
         ? () => getWalletConnectUri(wallet, wallet.mobile?.getUri!)
         : undefined,
       recent,
-      showWalletConnectModal: wallet.walletConnectModalConnector
-        ? () => connectToWalletConnectModal(wallet.walletConnectModalConnector!)
-        : undefined,
     });
   }
   return walletConnectors;

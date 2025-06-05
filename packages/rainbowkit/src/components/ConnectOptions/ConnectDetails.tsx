@@ -1,4 +1,4 @@
-import React, { type ReactNode, useContext, useEffect } from 'react';
+import React, { type JSX, type ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
@@ -18,6 +18,7 @@ import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
 import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
 import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
+import { CopyIcon } from '../Icons/Copy';
 import { QRCode } from '../QRCode/QRCode';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -192,7 +193,6 @@ export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
   connectionError,
-  onClose,
   qrCodeUri,
   reconnect,
   wallet,
@@ -203,7 +203,6 @@ export function ConnectDetail({
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
-  onClose: () => void;
 }) {
   const {
     downloadUrls,
@@ -212,7 +211,6 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
-    showWalletConnectModal,
     getDesktopUri,
   } = wallet;
   const isDesktopDeepLinkAvailable = !!getDesktopUri;
@@ -231,21 +229,24 @@ export function ConnectDetail({
     window.open(uri, safari ? '_blank' : '_self');
   };
 
+  const isWalletConnect = wallet.id === 'walletConnect';
+
   const secondaryAction: {
     description: string;
     label: string;
     onClick?: () => void;
     href?: string;
-  } | null = showWalletConnectModal
+    icon?: JSX.Element;
+  } | null = isWalletConnect
     ? {
         description: !compactModeEnabled
           ? i18n.t('connect.walletconnect.description.full')
           : i18n.t('connect.walletconnect.description.compact'),
-        label: i18n.t('connect.walletconnect.open.label'),
+        label: i18n.t('connect.walletconnect.copy.label'),
         onClick: () => {
-          onClose();
-          showWalletConnectModal();
+          if (qrCodeUri) navigator.clipboard.writeText(qrCodeUri);
         },
+        icon: <CopyIcon />,
       }
     : hasQrCode
       ? {
@@ -406,6 +407,7 @@ export function ConnectDetail({
               {secondaryAction.description}
             </Text>
             <ActionButton
+              icon={secondaryAction.icon}
               label={secondaryAction.label}
               onClick={secondaryAction.onClick}
               type="secondary"
