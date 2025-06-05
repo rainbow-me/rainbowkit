@@ -2,5 +2,5 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Removed WalletConnect modal functionality in favor of copying the WalletConnect URI directly from the QR code using a new "Copy URI" button.
+The desktop WalletConnect flow now offers a "Copy URI" button instead of opening the WalletConnect modal. Mobile wallets continue to open the WalletConnect modal as before.
 
