@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box, type BoxProps } from '../Box/Box';
@@ -37,7 +37,6 @@ export function ActionButton({
   disabled = false,
   href,
   label,
-  icon,
   onClick,
   rel = 'noreferrer noopener',
   size = 'medium',
@@ -54,7 +53,6 @@ export function ActionButton({
   type?: 'primary' | 'secondary';
   disabled?: boolean;
   testId?: string;
-  icon?: JSX.Element;
 }) {
   const isPrimary = type === 'primary';
   const isNotLarge = size !== 'large';
@@ -68,11 +66,6 @@ export function ActionButton({
     : 'actionButtonSecondaryBackground';
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   const hasBorder = !mobile || !isNotLarge;
-  const textColor = !disabled
-    ? isPrimary
-      ? 'accentColorForeground'
-      : 'accentColor'
-    : 'modalTextSecondary';
   return (
     <Box
       {...(href
@@ -105,16 +98,19 @@ export function ActionButton({
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
-      <Box alignItems="center" display="flex" justifyContent="center" gap="2">
-        {icon ? (
-          <Box color={textColor} display="flex">
-            {icon}
-          </Box>
-        ) : null}
-        <Text color={textColor} size={fontSize} weight="bold">
-          {label}
-        </Text>
-      </Box>
+      <Text
+        color={
+          !disabled
+            ? isPrimary
+              ? 'accentColorForeground'
+              : 'accentColor'
+            : 'modalTextSecondary'
+        }
+        size={fontSize}
+        weight="bold"
+      >
+        {label}
+      </Text>
     </Box>
   );
 }

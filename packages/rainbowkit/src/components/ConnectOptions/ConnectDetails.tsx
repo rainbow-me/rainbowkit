@@ -18,7 +18,6 @@ import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
 import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
 import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
-import { CopyIcon } from '../Icons/Copy';
 import { QRCode } from '../QRCode/QRCode';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -234,7 +233,6 @@ export function ConnectDetail({
     label: string;
     onClick?: () => void;
     href?: string;
-    icon?: JSX.Element;
   } | null =
     wallet.id === 'walletConnect'
       ? {
@@ -242,10 +240,7 @@ export function ConnectDetail({
             ? i18n.t('connect.walletconnect.description.full')
             : i18n.t('connect.walletconnect.description.compact'),
           label: i18n.t('connect.walletconnect.copy.label'),
-          onClick: () => {
-            if (qrCodeUri) navigator?.clipboard?.writeText(qrCodeUri);
           },
-          icon: <CopyIcon />,
         }
       : hasQrCode
         ? {
@@ -405,12 +400,17 @@ export function ConnectDetail({
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
             </Text>
-            <ActionButton
-              icon={secondaryAction.icon}
-              label={secondaryAction.label}
-              onClick={secondaryAction.onClick}
-              type="secondary"
-            />
+            {copiedUri ? (
+              <Box color="modalTextSecondary" display="flex">
+                <CopiedIcon />
+              </Box>
+            ) : (
+              <ActionButton
+                label={secondaryAction.label}
+                onClick={secondaryAction.onClick}
+                type="secondary"
+              />
+            )}
           </>
         )}
       </Box>
