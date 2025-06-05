@@ -68,6 +68,11 @@ export function ActionButton({
     : 'actionButtonSecondaryBackground';
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   const hasBorder = !mobile || !isNotLarge;
+  const textColor = !disabled
+    ? isPrimary
+      ? 'accentColorForeground'
+      : 'accentColor'
+    : 'modalTextSecondary';
   return (
     <Box
       {...(href
@@ -101,18 +106,12 @@ export function ActionButton({
       {...(height ? { height } : {})}
     >
       <Box alignItems="center" display="flex" justifyContent="center" gap="2">
-        {icon ? <Box display="flex">{icon}</Box> : null}
-        <Text
-          color={
-            !disabled
-              ? isPrimary
-                ? 'accentColorForeground'
-                : 'accentColor'
-              : 'modalTextSecondary'
-          }
-          size={fontSize}
-          weight="bold"
-        >
+        {icon ? (
+          <Box color={textColor} display="flex">
+            {icon}
+          </Box>
+        ) : null}
+        <Text color={textColor} size={fontSize} weight="bold">
           {label}
         </Text>
       </Box>
