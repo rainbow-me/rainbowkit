@@ -109,6 +109,7 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   groupName: string;
   isWalletConnectModalConnector?: boolean;
   isRainbowKitConnector: boolean;
+  walletConnectModalConnector?: Connector;
   // Used specifically in `connectorsForWallets` logic
   // to make sure we can also get WalletConnect modal in rainbowkit
   showQrModal?: true;
