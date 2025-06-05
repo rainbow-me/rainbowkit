@@ -79,11 +79,11 @@
     },
     "walletconnect": {
       "description": {
-        "full": "Need to connect to wallet without a scanner?",
-        "compact": "Need to connect without a scanner?"
+        "full": "Need a wallet pairing code to connect?",
+        "compact": "Need a pairing code?"
       },
       "copy": {
-        "label": "COPY URI"
+        "label": "Copy"
       }
     }
   },
