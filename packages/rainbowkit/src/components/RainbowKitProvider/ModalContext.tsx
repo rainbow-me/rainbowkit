@@ -31,16 +31,12 @@ interface ModalContextValue {
   openAccountModal?: () => void;
   openChainModal?: () => void;
   openConnectModal?: () => void;
-  isWalletConnectModalOpen: boolean;
-  setIsWalletConnectModalOpen: (isWalletConnectModalOpen: boolean) => void;
 }
 
 const ModalContext = createContext<ModalContextValue>({
   accountModalOpen: false,
   chainModalOpen: false,
   connectModalOpen: false,
-  isWalletConnectModalOpen: false,
-  setIsWalletConnectModalOpen: () => {},
 });
 
 interface ModalProviderProps {
@@ -65,9 +61,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
     isModalOpen: chainModalOpen,
     openModal: openChainModal,
   } = useModalStateValue();
-
-  const [isWalletConnectModalOpen, setIsWalletConnectModalOpen] =
-    useState(false);
 
   const connectionStatus = useConnectionStatus();
 
@@ -112,7 +105,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,
-          isWalletConnectModalOpen,
           openAccountModal:
             isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
@@ -124,7 +116,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
             connectionStatus === 'unauthenticated'
               ? openConnectModal
               : undefined,
-          setIsWalletConnectModalOpen,
         }),
         [
           connectionStatus,
@@ -135,7 +126,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openChainModal,
           openConnectModal,
           isCurrentChainSupported,
-          isWalletConnectModalOpen,
         ],
       )}
     >
@@ -168,19 +158,11 @@ export function useChainModal() {
   return { chainModalOpen, openChainModal };
 }
 
-export function useWalletConnectOpenState() {
-  const { isWalletConnectModalOpen, setIsWalletConnectModalOpen } =
-    useContext(ModalContext);
-
-  return { isWalletConnectModalOpen, setIsWalletConnectModalOpen };
-}
-
 export function useConnectModal() {
   const { connectModalOpen, openConnectModal } = useContext(ModalContext);
-  const { isWalletConnectModalOpen } = useWalletConnectOpenState();
 
   return {
-    connectModalOpen: connectModalOpen || isWalletConnectModalOpen,
+    connectModalOpen,
     openConnectModal,
   };
 }
