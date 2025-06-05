@@ -83,8 +83,7 @@
         "compact": "Need a pairing code?"
       },
       "copy": {
-        "label": "Copy",
-        "copied": "Copied!"
+        "label": "Copy"
       }
     }
   },
