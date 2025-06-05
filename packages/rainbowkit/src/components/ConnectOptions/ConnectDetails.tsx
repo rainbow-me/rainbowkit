@@ -1,4 +1,4 @@
-import React, { type ReactNode, useContext, useEffect } from 'react';
+import React, { type JSX, type ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
@@ -192,7 +192,6 @@ export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
   connectionError,
-  onClose,
   qrCodeUri,
   reconnect,
   wallet,
@@ -203,7 +202,6 @@ export function ConnectDetail({
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
-  onClose: () => void;
 }) {
   const {
     downloadUrls,
@@ -212,7 +210,6 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
-    showWalletConnectModal,
     getDesktopUri,
   } = wallet;
   const isDesktopDeepLinkAvailable = !!getDesktopUri;
@@ -236,31 +233,29 @@ export function ConnectDetail({
     label: string;
     onClick?: () => void;
     href?: string;
-  } | null = showWalletConnectModal
-    ? {
-        description: !compactModeEnabled
-          ? i18n.t('connect.walletconnect.description.full')
-          : i18n.t('connect.walletconnect.description.compact'),
-        label: i18n.t('connect.walletconnect.open.label'),
-        onClick: () => {
-          onClose();
-          showWalletConnectModal();
-        },
-      }
-    : hasQrCode
+  } | null =
+    wallet.id === 'walletConnect'
       ? {
-          description: i18n.t('connect.secondary_action.get.description', {
-            wallet: name,
-          }),
-          label: i18n.t('connect.secondary_action.get.label'),
-          onClick: () =>
-            changeWalletStep(
-              hasQrCodeAndExtension || hasQrCodeAndDesktop
-                ? WalletStep.DownloadOptions
-                : WalletStep.Download,
-            ),
+          description: !compactModeEnabled
+            ? i18n.t('connect.walletconnect.description.full')
+            : i18n.t('connect.walletconnect.description.compact'),
+          label: i18n.t('connect.walletconnect.copy.label'),
+          },
         }
-      : null;
+      : hasQrCode
+        ? {
+            description: i18n.t('connect.secondary_action.get.description', {
+              wallet: name,
+            }),
+            label: i18n.t('connect.secondary_action.get.label'),
+            onClick: () =>
+              changeWalletStep(
+                hasQrCodeAndExtension || hasQrCodeAndDesktop
+                  ? WalletStep.DownloadOptions
+                  : WalletStep.Download,
+              ),
+          }
+        : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
@@ -405,11 +400,17 @@ export function ConnectDetail({
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
             </Text>
-            <ActionButton
-              label={secondaryAction.label}
-              onClick={secondaryAction.onClick}
-              type="secondary"
-            />
+            {copiedUri ? (
+              <Box color="modalTextSecondary" display="flex">
+                <CopiedIcon />
+              </Box>
+            ) : (
+              <ActionButton
+                label={secondaryAction.label}
+                onClick={secondaryAction.onClick}
+                type="secondary"
+              />
+            )}
           </>
         )}
       </Box>
