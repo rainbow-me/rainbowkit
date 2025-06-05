@@ -31,7 +31,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
           <CloseButton onClose={onClose} />
         </Box>
         <Box width="60">
-          <WalletButton wallet={connector!} connecting />
+          <WalletButton onClose={onClose} wallet={connector!} connecting />
         </Box>
         <Box marginTop="20">
           <Text

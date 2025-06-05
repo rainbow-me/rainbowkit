@@ -57,10 +57,12 @@ const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
 };
 
 export function WalletButton({
+  onClose,
   wallet,
   connecting,
 }: {
   wallet: WalletConnector;
+  onClose: () => void;
   connecting?: boolean;
 }) {
   const {
@@ -72,6 +74,7 @@ export function WalletButton({
     getMobileUri,
     ready,
     shortName,
+    showWalletConnectModal,
   } = wallet;
 
   const coolModeRef = useCoolMode(iconUrl);
@@ -111,12 +114,19 @@ export function WalletButton({
 
     if (id !== 'walletConnect') onMobileUri();
 
+    // If the id is "walletConnect" then "showWalletConnectModal" will always be true
+    if (showWalletConnectModal) {
+      showWalletConnectModal();
+      onClose?.();
+      return;
+    }
+
     try {
       await connect?.();
     } catch {
       // Ignore connection errors so they don't surface as uncaught
     }
-  }, [connect, getMobileUri, name, id]);
+  }, [connect, getMobileUri, showWalletConnectModal, onClose, name, id]);
 
   useEffect(() => {
     // When using `reactStrictMode: true` in development mode the useEffect hook
@@ -237,7 +247,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   return (
                     <Box key={wallet.id} paddingX="20">
                       <Box width="60">
-                        <WalletButton wallet={wallet} />
+                        <WalletButton onClose={onClose} wallet={wallet} />
                       </Box>
                     </Box>
                   );
