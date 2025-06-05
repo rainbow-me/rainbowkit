@@ -111,3 +111,5 @@ dist
 # Others
 .DS_Store
 node-compile-cache/
+packages/rainbowkit/assets/wallets/icons/*
+!packages/rainbowkit/assets/wallets/icons/.gitkeep

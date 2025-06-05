@@ -18,6 +18,7 @@
     "format:check": "biome check .",
     "format:fix": "biome format . --write",
     "link:cli": "cd packages/create-rainbowkit && pnpm link --global",
+    "fetch:wallets": "node ./scripts/walletRegistry.js",
     "test": "pnpm test:unit",
     "test:unit": "vitest",
     "test:update": "vitest --update",
