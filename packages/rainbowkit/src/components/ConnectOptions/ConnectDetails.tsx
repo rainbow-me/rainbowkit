@@ -229,39 +229,38 @@ export function ConnectDetail({
     window.open(uri, safari ? '_blank' : '_self');
   };
 
-  const isWalletConnect = wallet.id === 'walletConnect';
-
   const secondaryAction: {
     description: string;
     label: string;
     onClick?: () => void;
     href?: string;
     icon?: JSX.Element;
-  } | null = isWalletConnect
-    ? {
-        description: !compactModeEnabled
-          ? i18n.t('connect.walletconnect.description.full')
-          : i18n.t('connect.walletconnect.description.compact'),
-        label: i18n.t('connect.walletconnect.copy.label'),
-        onClick: () => {
-          if (qrCodeUri) navigator.clipboard.writeText(qrCodeUri);
-        },
-        icon: <CopyIcon />,
-      }
-    : hasQrCode
+  } | null =
+    wallet.id === 'walletConnect'
       ? {
-          description: i18n.t('connect.secondary_action.get.description', {
-            wallet: name,
-          }),
-          label: i18n.t('connect.secondary_action.get.label'),
-          onClick: () =>
-            changeWalletStep(
-              hasQrCodeAndExtension || hasQrCodeAndDesktop
-                ? WalletStep.DownloadOptions
-                : WalletStep.Download,
-            ),
+          description: !compactModeEnabled
+            ? i18n.t('connect.walletconnect.description.full')
+            : i18n.t('connect.walletconnect.description.compact'),
+          label: i18n.t('connect.walletconnect.copy.label'),
+          onClick: () => {
+            if (qrCodeUri) navigator?.clipboard?.writeText(qrCodeUri);
+          },
+          icon: <CopyIcon />,
         }
-      : null;
+      : hasQrCode
+        ? {
+            description: i18n.t('connect.secondary_action.get.description', {
+              wallet: name,
+            }),
+            label: i18n.t('connect.secondary_action.get.label'),
+            onClick: () =>
+              changeWalletStep(
+                hasQrCodeAndExtension || hasQrCodeAndDesktop
+                  ? WalletStep.DownloadOptions
+                  : WalletStep.Download,
+              ),
+          }
+        : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
