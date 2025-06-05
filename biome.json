@@ -10,7 +10,8 @@
       "./packages/create-rainbowkit/generated-test-app/",
       "build/",
       ".react-router",
-      "examples/with-next-mint-nft/contract/"
+      "examples/with-next-mint-nft/contract/",
+      "packages/rainbowkit/assets/wallets/registry.json"
     ]
   },
   "formatter": {
