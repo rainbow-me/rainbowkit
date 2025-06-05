@@ -23,6 +23,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
