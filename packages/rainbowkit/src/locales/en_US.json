@@ -79,11 +79,11 @@
     },
     "walletconnect": {
       "description": {
-        "full": "Need the official WalletConnect modal?",
-        "compact": "Need the WalletConnect modal?"
+        "full": "Need to connect to wallet without a scanner?",
+        "compact": "Need to connect without a scanner?"
       },
-      "open": {
-        "label": "OPEN"
+      "copy": {
+        "label": "COPY URI"
       }
     }
   },
