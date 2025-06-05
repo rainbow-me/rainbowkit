@@ -19,7 +19,7 @@
     "src/css/reset.css.ts"
   ],
   "engines": {
-    "node": ">=12.4"
+    "node": ">=20"
   },
   "scripts": {
     "build": "node build.js",
