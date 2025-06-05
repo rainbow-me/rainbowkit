@@ -19,6 +19,7 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
+  // biome-ignore lint/correctness/noUnusedVariables: API compatibility
   logoMargin = 10,
   // biome-ignore lint/correctness/noUnusedVariables: API compatibility
   logoSize = 50,
@@ -33,30 +34,20 @@ export function QRCode({
 
   const arena = resolvedLogoUrl ? (
     <Cuer.Arena>
-      <Box
-        alignItems="center"
-        display="flex"
-        height="full"
-        justifyContent="center"
-        style={{ padding: logoMargin, width: '100%' }}
-        width="full"
-      >
-        <Box
-          as="img"
-          height="full"
-          src={resolvedLogoUrl}
-          style={{
-            background: logoBackground,
-            borderColor: 'rgba(0, 0, 0, 0.06)',
-            borderRadius: 13,
-            borderStyle: 'solid',
-            borderWidth: 1,
-            objectFit: 'cover',
-            width: '100%',
-          }}
-          width="full"
-        />
-      </Box>
+      <img
+        alt=""
+        src={resolvedLogoUrl}
+        style={{
+          background: logoBackground,
+          borderColor: 'rgba(0, 0, 0, 0.06)',
+          borderRadius: 13,
+          borderStyle: 'solid',
+          borderWidth: 1,
+          height: '100%',
+          objectFit: 'cover',
+          width: '100%',
+        }}
+      />
     </Cuer.Arena>
   ) : null;
 
