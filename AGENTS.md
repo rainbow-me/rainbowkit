@@ -1,7 +1,5 @@
 # Contributor Guide
 
-Welcome to the codebase! Follow these tips to set up your environment, run tests, and craft your pull requests.
-
 ## Dev Environment Tips
 - Run `pnpm install` from the repository root to install all dependencies and generate type definitions.
 - Before committing, execute `pnpm format:fix` to automatically correct formatting issues.
