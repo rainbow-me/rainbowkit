@@ -1,4 +1,10 @@
-import React, { type JSX, type ReactNode, useContext, useEffect } from 'react';
+import React, {
+  type JSX,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
@@ -19,6 +25,7 @@ import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
 import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { CopyIcon } from '../Icons/Copy';
+import { CopiedIcon } from '../Icons/Copied';
 import { QRCode } from '../QRCode/QRCode';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -218,6 +225,15 @@ export function ConnectDetail({
 
   const { i18n } = useContext(I18nContext);
 
+  const [copiedUri, setCopiedUri] = useState(false);
+
+  useEffect(() => {
+    if (copiedUri) {
+      const timer = setTimeout(() => setCopiedUri(false), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [copiedUri]);
+
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCodeAndDesktop =
@@ -241,11 +257,16 @@ export function ConnectDetail({
           description: !compactModeEnabled
             ? i18n.t('connect.walletconnect.description.full')
             : i18n.t('connect.walletconnect.description.compact'),
-          label: i18n.t('connect.walletconnect.copy.label'),
+          label: copiedUri
+            ? i18n.t('connect.walletconnect.copy.copied')
+            : i18n.t('connect.walletconnect.copy.label'),
           onClick: () => {
-            if (qrCodeUri) navigator?.clipboard?.writeText(qrCodeUri);
+            if (qrCodeUri) {
+              navigator?.clipboard?.writeText(qrCodeUri);
+              setCopiedUri(true);
+            }
           },
-          icon: <CopyIcon />,
+          icon: copiedUri ? <CopiedIcon /> : <CopyIcon />,
         }
       : hasQrCode
         ? {
