@@ -4,21 +4,21 @@
 
 # RainbowKit
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@rainbow-me/rainbowkit">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=21262d&colorB=21262d">
-      <img src="https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=f6f8fa&colorB=f6f8fa" alt="Version">
-    </picture>
-  </a>
-  <a href="https://github.com/rainbow-me/rainbowkit/blob/main/LICENSE">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/npm/l/@rainbow-me/rainbowkit?colorA=21262d&colorB=21262d">
-      <img src="https://img.shields.io/npm/l/@rainbow-me/rainbowkit?colorA=f6f8fa&colorB=f6f8fa" alt="MIT License">
-    </picture>
-  </a>
-  [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rainbow-me/rainbowkit)
-</p>
+<a href="https://www.npmjs.com/package/@rainbow-me/rainbowkit">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=21262d&colorB=21262d">
+    <img src="https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=f6f8fa&colorB=f6f8fa" alt="Version">
+  </picture>
+</a>
+<a href="https://github.com/rainbow-me/rainbowkit/blob/main/LICENSE">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/npm/l/@rainbow-me/rainbowkit?colorA=21262d&colorB=21262d">
+    <img src="https://img.shields.io/npm/l/@rainbow-me/rainbowkit?colorA=f6f8fa&colorB=f6f8fa" alt="MIT License">
+  </picture>
+</a>
+<a href="https://deepwiki.com/rainbow-me/rainbowkit">
+  <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
+</a>
 
 **The best way to connect a wallet 🌈**
 
