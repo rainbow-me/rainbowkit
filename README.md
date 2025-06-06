@@ -3,7 +3,6 @@
 </a>
 
 # RainbowKit
-
 <a href="https://www.npmjs.com/package/@rainbow-me/rainbowkit">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=21262d&colorB=21262d">
