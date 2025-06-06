@@ -2,6 +2,8 @@
   <img alt="rainbowkit" src="https://user-images.githubusercontent.com/372831/168174718-685980e0-391e-4621-94a1-29bf83979fa5.png" />
 </a>
 
+# RainbowKit
+
 <p align="center">
   <a href="https://www.npmjs.com/package/@rainbow-me/rainbowkit">
     <picture>
@@ -15,11 +17,8 @@
       <img src="https://img.shields.io/npm/l/@rainbow-me/rainbowkit?colorA=f6f8fa&colorB=f6f8fa" alt="MIT License">
     </picture>
   </a>
+  [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rainbow-me/rainbowkit)
 </p>
-
-[<img src="https://deepwiki.com/badge.svg" height="28" alt="Ask DeepWiki">](https://deepwiki.com/rainbow-me/rainbowkit)
-
-# RainbowKit
 
 **The best way to connect a wallet 🌈**
 
