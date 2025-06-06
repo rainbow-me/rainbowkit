@@ -3,6 +3,9 @@
 </a>
 
 # RainbowKit
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rainbow-me/rainbowkit)
+
+---
 
 **The best way to connect a wallet 🌈**
 
