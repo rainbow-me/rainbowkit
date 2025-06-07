@@ -40,6 +40,7 @@ type ChainName =
   | 'kaia'
   | 'kairos'
   | 'kovan'
+  | 'luxeports'
   | 'linea'
   | 'lineaGoerli'
   | 'lineaSepolia'
@@ -161,7 +162,10 @@ const hardhatIcon: IconMetadata = {
   iconBackground: '#f9f7ec',
   iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
 };
-
+const luxeportsIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/lxp.png')).default,
+};
 const hyperevmIcon: IconMetadata = {
   iconBackground: '#000000',
   iconUrl: async () => (await import('./chainIcons/hyperevm.svg')).default,
@@ -283,6 +287,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   hyperevm: { chainId: 999, ...hyperevmIcon },
+  luxeports: { chainId: 1122, ...luxeportsIcon },
   ink: { chainId: 57073, ...inkIcon },
   inkSepolia: { chainId: 763373, ...inkIcon },
   kaia: { chainId: 8_217, name: 'Kaia', ...kaiaIcon },
