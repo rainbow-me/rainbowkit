@@ -15,3 +15,5 @@
 ## PR Instructions
 - Follow the commit style defined in `commitlint.config.js`. Prefix commits and PR titles with a type such as `fix`, `feat`, or `chore`, for example: `fix: resolve login bug`.
 - Always run `pnpm changeset` to create a changeset for every affected package. Patch versions are typically preferred unless the change warrants a minor or major bump.
+- Never modify any CHANGELOG.md files. These are managed automatically.
+- Patch bump `@rainbow-me/create-rainbowkit` whenever template dependencies change.
