@@ -32,25 +32,6 @@ export function QRCode({
 
   const resolvedLogoUrl = useAsyncImage(logoUrl);
 
-  const arena = resolvedLogoUrl ? (
-    <Cuer.Arena>
-      <img
-        alt=""
-        src={resolvedLogoUrl}
-        style={{
-          background: logoBackground,
-          borderColor: 'rgba(0, 0, 0, 0.06)',
-          borderRadius: 13,
-          borderStyle: 'solid',
-          borderWidth: 1,
-          height: '100%',
-          objectFit: 'cover',
-          width: '100%',
-        }}
-      />
-    </Cuer.Arena>
-  ) : null;
-
   return (
     <Box
       borderColor="generalBorder"
@@ -69,10 +50,27 @@ export function QRCode({
         }}
         userSelect="none"
       >
-        <Cuer.Root color="black" errorCorrection={ecc} size={size} value={uri}>
-          <Cuer.Finder />
-          <Cuer.Cells />
-          {arena}
+        <Cuer.Root errorCorrection={ecc} size={size} value={uri}>
+          <Cuer.Cells radius={1} />
+          <Cuer.Finder radius={0.25} />
+          {resolvedLogoUrl && (
+            <Cuer.Arena>
+              <img
+                alt="Wallet Logo"
+                src={resolvedLogoUrl}
+                style={{
+                  background: logoBackground,
+                  borderColor: 'rgba(0, 0, 0, 0.06)',
+                  borderStyle: 'solid',
+                  borderWidth: '0.01px',
+                  borderRadius: '19%',
+                  height: '86%',
+                  objectFit: 'cover',
+                  width: '86%',
+                }}
+              />
+            </Cuer.Arena>
+          )}
         </Cuer.Root>
       </Box>
     </Box>
