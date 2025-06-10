@@ -10,7 +10,6 @@ interface Props {
   ecc?: ErrorCorrectionLevel;
   logoBackground?: string;
   logoUrl?: string | (() => Promise<string>);
-  logoMargin?: number;
   logoSize?: number;
   size?: number;
   uri: string;
@@ -19,8 +18,6 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
-  // biome-ignore lint/correctness/noUnusedVariables: API compatibility
-  logoMargin = 10,
   // biome-ignore lint/correctness/noUnusedVariables: API compatibility
   logoSize = 50,
   logoUrl,
@@ -59,14 +56,11 @@ export function QRCode({
                 alt="Wallet Logo"
                 src={resolvedLogoUrl}
                 style={{
-                  background: logoBackground,
-                  borderColor: 'rgba(0, 0, 0, 0.06)',
-                  borderStyle: 'solid',
-                  borderWidth: '0.01px',
-                  borderRadius: '19%',
-                  height: '86%',
                   objectFit: 'cover',
-                  width: '86%',
+                  height: '88%',
+                  width: '88%',
+                  borderRadius: '22.5%',
+                  backgroundColor: logoBackground,
                 }}
               />
             </Cuer.Arena>
