@@ -436,7 +436,7 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cuer:
-        specifier: ^0.0.2
+        specifier: 0.0.2
         version: 0.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4)
       react-dom:
         specifier: ^19.1.0
