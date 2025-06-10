@@ -421,17 +421,47 @@ export function ConnectDetail({
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
             </Text>
-            {copiedUri ? (
-              <Box color="modalTextSecondary" display="flex">
-                <CopiedIcon />
-              </Box>
-            ) : (
-              <ActionButton
-                label={secondaryAction.label}
-                onClick={secondaryAction.onClick}
-                type="secondary"
-              />
-            )}
+            <Box
+              alignItems="center"
+              as="button"
+              background="actionButtonSecondaryBackground"
+              borderColor="actionButtonBorder"
+              borderRadius="actionButton"
+              borderStyle="solid"
+              borderWidth="1"
+              className={touchableStyles({
+                active: 'shrinkSm',
+                hover: 'grow',
+              })}
+              display="flex"
+              height="28"
+              justifyContent="center"
+              onClick={secondaryAction.onClick}
+              paddingX="12"
+              paddingY="4"
+              style={{
+                willChange: 'transform',
+                cursor: copiedUri ? 'default' : 'pointer',
+              }}
+              transition="default"
+              type="button"
+            >
+              {copiedUri ? (
+                <Box
+                  color="modalTextSecondary"
+                  width="38"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <CopiedIcon />
+                </Box>
+              ) : (
+                <Text color="accentColor" size="14" weight="bold">
+                  {secondaryAction.label}
+                </Text>
+              )}
+            </Box>
           </>
         )}
       </Box>
