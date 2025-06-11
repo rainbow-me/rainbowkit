@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Box, type BoxProps } from 'components/Box/Box';
-import type { LinkProps as NextLinkProps } from 'next/link';
-import React from 'react';
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
+import React, { type JSX } from 'react';
 import * as styles from './Link.css';
 
 type Props = {
@@ -42,7 +42,7 @@ export const Link = React.forwardRef(
   ) => {
     return (
       <Box
-        as="a"
+        as={NextLink}
         className={clsx(
           styles.variants({
             variant,
