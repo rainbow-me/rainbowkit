@@ -82,7 +82,7 @@ export default function Home() {
             <InstallScript />
           </Box>
           <Box marginBottom={{ xs: '0', md: '11' }}>
-            <NextLink href="/docs" legacyBehavior passHref>
+            <NextLink href="/docs" passHref>
               <Button as="a" size="xl" variant="purpleGradient">
                 {t('cta')}
               </Button>
@@ -174,7 +174,7 @@ export default function Home() {
               marginTop={{ xs: '5', md: '11' }}
               textAlign={{ xs: 'left', md: 'center' }}
             >
-              <NextLink href="/docs" legacyBehavior passHref>
+              <NextLink href="/docs" passHref>
                 <Button
                   as="a"
                   size="xl"

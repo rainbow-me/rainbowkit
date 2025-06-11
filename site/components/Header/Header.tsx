@@ -31,7 +31,7 @@ export function Header({
   return (
     <Box className={sticky ? header : undefined} {...props}>
       <Box className={row}>
-        <NextLink href="/" legacyBehavior>
+        <NextLink href="/">
           <Box
             alt="Rainbow logo"
             as="img"
