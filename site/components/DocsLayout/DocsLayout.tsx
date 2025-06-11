@@ -142,22 +142,24 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
               >
                 {previous && (
                   <Text weight="semibold">
-                    <NextLink href={`/docs/${previous.slug}`} passHref>
-                      <Link className={paginationItem}>
-                        <PreviousIcon />
-                        {previous.title}
-                      </Link>
+                    <NextLink
+                      className={paginationItem}
+                      href={`/docs/${previous.slug}`}
+                    >
+                      <PreviousIcon />
+                      {previous.title}
                     </NextLink>
                   </Text>
                 )}
                 <span aria-hidden />
                 {next && (
                   <Text weight="semibold">
-                    <NextLink href={`/docs/${next.slug}`} passHref>
-                      <Link className={paginationItem}>
-                        {next.title}
-                        <NextIcon />
-                      </Link>
+                    <NextLink
+                      className={paginationItem}
+                      href={`/docs/${next.slug}`}
+                    >
+                      {next.title}
+                      <NextIcon />
                     </NextLink>
                   </Text>
                 )}

@@ -82,8 +82,8 @@ export default function Home() {
             <InstallScript />
           </Box>
           <Box marginBottom={{ xs: '0', md: '11' }}>
-            <NextLink href="/docs" passHref>
-              <Button as="a" size="xl" variant="purpleGradient">
+            <NextLink href="/docs">
+              <Button size="xl" variant="purpleGradient">
                 {t('cta')}
               </Button>
             </NextLink>
@@ -174,9 +174,8 @@ export default function Home() {
               marginTop={{ xs: '5', md: '11' }}
               textAlign={{ xs: 'left', md: 'center' }}
             >
-              <NextLink href="/docs" passHref>
+              <NextLink href="/docs">
                 <Button
-                  as="a"
                   size="xl"
                   style={{ alignSelf: 'flex-start' }}
                   variant="purpleGradient"
