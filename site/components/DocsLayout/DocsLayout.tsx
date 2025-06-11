@@ -17,7 +17,6 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { vars } from 'css/vars.css';
 import { allDocsRoutes, docsRoutes } from 'lib/docsRoutes';
 import { useCoolMode } from 'lib/useCoolMode';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { type Ref, useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
@@ -142,25 +141,25 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
               >
                 {previous && (
                   <Text weight="semibold">
-                    <NextLink
+                    <Link
                       className={paginationItem}
                       href={`/docs/${previous.slug}`}
                     >
                       <PreviousIcon />
                       {previous.title}
-                    </NextLink>
+                    </Link>
                   </Text>
                 )}
                 <span aria-hidden />
                 {next && (
                   <Text weight="semibold">
-                    <NextLink
+                    <Link
                       className={paginationItem}
                       href={`/docs/${next.slug}`}
                     >
                       {next.title}
                       <NextIcon />
-                    </NextLink>
+                    </Link>
                   </Text>
                 )}
               </Box>

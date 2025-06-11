@@ -3,7 +3,7 @@ import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';
 import { Text } from 'components/Text/Text';
 import { useTranslations } from 'next-intl';
-import NextLink from 'next/link';
+import { Link as DocsLink } from 'components/Link/Link';
 import { useRouter } from 'next/router';
 import type React from 'react';
 import { link } from './Sidebar.css';
@@ -106,11 +106,11 @@ function Link({ children, slug }: { children: React.ReactNode; slug: string }) {
   const router = useRouter();
 
   return (
-    <NextLink
+    <DocsLink
       className={link({ active: router.query.slug === slug })}
       href={`/docs/${slug}`}
     >
       {children}
-    </NextLink>
+    </DocsLink>
   );
 }

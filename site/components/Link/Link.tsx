@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Box, type BoxProps } from 'components/Box/Box';
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
 import React, { type JSX } from 'react';
 import * as styles from './Link.css';
 
@@ -15,8 +16,9 @@ type Props = {
   marginX?: BoxProps['marginX'];
   display?: BoxProps['display'];
   style?: React.CSSProperties;
-} & Pick<JSX.IntrinsicElements['a'], 'href' | 'className'> &
-  styles.Variants;
+} & Omit<BoxProps, 'as'> &
+  Omit<NextLinkProps, 'className' | 'legacyBehavior' | 'children'> &
+  styles.Variants & { className?: string };
 
 export const Link = React.forwardRef(
   (
@@ -40,7 +42,7 @@ export const Link = React.forwardRef(
   ) => {
     return (
       <Box
-        as="a"
+        as={NextLink}
         className={clsx(
           styles.variants({
             variant,

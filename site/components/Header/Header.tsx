@@ -9,7 +9,7 @@ import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
 import { vars } from 'css/vars.css';
-import NextLink from 'next/link';
+import { Link } from 'components/Link/Link';
 import { useRouter } from 'next/router';
 import type React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
@@ -31,7 +31,7 @@ export function Header({
   return (
     <Box className={sticky ? header : undefined} {...props}>
       <Box className={row}>
-        <NextLink href="/">
+        <Link href="/">
           <Box
             alt="Rainbow logo"
             as="img"
@@ -46,7 +46,7 @@ export function Header({
             transitionProperty="transform"
             transitionTimingFunction="ease"
           />
-        </NextLink>
+        </Link>
 
         <Box
           alignItems={{ xs: 'flex-start', sm: 'center' }}

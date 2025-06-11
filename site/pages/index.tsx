@@ -16,7 +16,6 @@ import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
-import NextLink from 'next/link';
 import React, { type Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -82,11 +81,11 @@ export default function Home() {
             <InstallScript />
           </Box>
           <Box marginBottom={{ xs: '0', md: '11' }}>
-            <NextLink href="/docs">
+            <Link href="/docs">
               <Button size="xl" variant="purpleGradient">
                 {t('cta')}
               </Button>
-            </NextLink>
+            </Link>
           </Box>
         </Box>
       </Wrapper>
@@ -174,7 +173,7 @@ export default function Home() {
               marginTop={{ xs: '5', md: '11' }}
               textAlign={{ xs: 'left', md: 'center' }}
             >
-              <NextLink href="/docs">
+              <Link href="/docs">
                 <Button
                   size="xl"
                   style={{ alignSelf: 'flex-start' }}
@@ -182,7 +181,7 @@ export default function Home() {
                 >
                   {t('cta')}
                 </Button>
-              </NextLink>
+              </Link>
             </Box>
           </Box>
         </Wrapper>
