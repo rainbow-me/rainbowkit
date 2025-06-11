@@ -52,8 +52,8 @@
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.14.8",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "@vanilla-extract/esbuild-plugin": "^2.3.17",
     "@vanilla-extract/vite-plugin": "^4.0.15",
     "autoprefixer": "^10.4.16",
@@ -76,8 +76,8 @@
     "wagmi": "^2.15.6"
   },
   "resolutions": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "elliptic": "6.6.1"
