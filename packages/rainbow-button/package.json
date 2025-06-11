@@ -24,7 +24,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "engines": {
-    "node": ">=20"
+    "node": ">=12.4"
   },
   "scripts": {
     "build": "node build.js",
