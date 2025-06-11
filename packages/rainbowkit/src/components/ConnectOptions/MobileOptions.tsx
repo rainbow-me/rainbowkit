@@ -209,9 +209,9 @@ enum MobileWalletStep {
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWalletConnectors().filter(
-    (wallet) => wallet.isRainbowKitConnector,
-  );
+  const wallets = useWalletConnectors()
+    .slice()
+    .sort((a, b) => a.groupIndex - b.groupIndex);
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
