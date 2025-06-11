@@ -3,6 +3,7 @@
 Thanks for your interest in contributing to RainbowKit! Please take a moment to review this document **before submitting a pull request.**
 
 If you want to contribute but aren't sure where to start, you can create a [new discussion](https://github.com/rainbow-me/rainbowkit/discussions).
+For answers to more questions, [Ask DeepWiki](https://deepwiki.com/rainbow-me/rainbowkit).
 
 ## Pull requests
 
