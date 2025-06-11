@@ -17,3 +17,4 @@
 - Always run `pnpm changeset` to create a changeset for every affected package. Patch versions are typically preferred unless the change warrants a minor or major bump.
 - Never modify any CHANGELOG.md files. These are managed automatically.
 - Patch bump `@rainbow-me/create-rainbowkit` whenever template dependencies change.
+- Only modify `en-US.json` locale files; never adjust other locale JSON files.
