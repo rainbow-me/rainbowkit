@@ -10,10 +10,13 @@ import { type Doc, allDocs } from '.contentlayer/generated';
 
 const RAINBOWKIT_VERSION = pckg.version as string;
 
-const DOCSEARCH_VERSION =
-  process.env.NODE_ENV === 'production'
-    ? `${RAINBOWKIT_VERSION},latest`
-    : RAINBOWKIT_VERSION;
+const isProd =
+  process.env.NODE_ENV === 'production' &&
+  process.env.VERCEL_ENV === 'production';
+
+const DOCSEARCH_VERSION = isProd
+  ? `${RAINBOWKIT_VERSION},latest`
+  : RAINBOWKIT_VERSION;
 
 type DocPageProps = { doc: Doc; sectionName: string };
 
