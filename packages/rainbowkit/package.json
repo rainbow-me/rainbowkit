@@ -56,11 +56,11 @@
     "@types/ua-parser-js": "^0.7.39",
     "@vanilla-extract/css-utils": "0.1.5",
     "@vanilla-extract/private": "1.0.8",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.5",
     "jsdom": "^25.0.0",
     "nock": "^13.4.0",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.5",
     "react": "^19.1.0",
     "vitest": "2.1.9"
   },
