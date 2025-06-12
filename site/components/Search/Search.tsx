@@ -72,6 +72,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
             }}
             onClose={onClose}
             placeholder="Search documentation"
+            searchParameters={{ facetFilters: [`lang:${router.locale}`] }}
             transformItems={(items) => {
               return items.map((item, index) => {
                 const a = document.createElement('a');
