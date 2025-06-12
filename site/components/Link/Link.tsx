@@ -41,6 +41,7 @@ export const Link = React.forwardRef(
     return (
       <Box
         as="a"
+        reset="a"
         className={clsx(
           styles.variants({
             variant,
