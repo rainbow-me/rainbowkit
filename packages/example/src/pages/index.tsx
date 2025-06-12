@@ -10,7 +10,12 @@ import {
 import type { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import React, { type ComponentProps, useEffect, useState } from 'react';
+import React, {
+  type ComponentProps,
+  useEffect,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { type Address, parseEther } from 'viem';
 import {
   useAccount,
@@ -20,6 +25,9 @@ import {
 } from 'wagmi';
 import type { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
+import { createStore } from 'mipd';
+
+const eip6963Store = createStore();
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
@@ -477,6 +485,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             </table>
           </div>
           {connected ? <ManageTransactions /> : null}
+          <ConnectorLogger />
         </>
       )}
     </div>
@@ -545,6 +554,43 @@ function ManageTransactions() {
         </button>
       </div>
     </form>
+  );
+}
+
+function ConnectorLogger() {
+  const providers = useSyncExternalStore(
+    eip6963Store.subscribe,
+    eip6963Store.getProviders,
+  );
+
+  const ethereumInfo =
+    typeof window === 'undefined'
+      ? { defined: false, isMetaMask: false, isRainbow: false }
+      : {
+          defined: !!window.ethereum,
+          isMetaMask: (window as any).ethereum?.isMetaMask === true,
+          isRainbow: (window as any).ethereum?.isRainbow === true,
+        };
+
+  useEffect(() => {
+    console.log('window.ethereum:', ethereumInfo);
+  }, [ethereumInfo]);
+
+  useEffect(() => {
+    console.log('EIP-6963 providers:', providers);
+  }, [providers]);
+
+  return (
+    <div style={{ fontFamily: 'monospace', marginTop: 16 }}>
+      <h3>Provider State</h3>
+      <pre>
+        {JSON.stringify(
+          { ethereum: ethereumInfo, connectors: providers },
+          null,
+          2,
+        )}
+      </pre>
+    </div>
   );
 }
 
