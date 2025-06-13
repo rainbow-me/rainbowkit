@@ -23,6 +23,7 @@ interface GetOrCreateWalletConnectInstanceParams {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
   rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
+  rkDetailsIsWalletConnectModalConnector?: RainbowKitDetails['isWalletConnectModalConnector'];
 }
 
 const walletConnectInstances = new Map<
@@ -35,6 +36,7 @@ const getOrCreateWalletConnectInstance = ({
   projectId,
   walletConnectParameters,
   rkDetailsShowQrModal,
+  rkDetailsIsWalletConnectModalConnector,
 }: GetOrCreateWalletConnectInstanceParams): ReturnType<
   typeof walletConnect
 > => {
@@ -47,6 +49,16 @@ const getOrCreateWalletConnectInstance = ({
   // `rkDetailsShowQrModal` should always be `true`
   if (rkDetailsShowQrModal) {
     config = { ...config, showQrModal: true };
+  }
+
+  // Assign unique storage prefix depending on connector type
+  if (!('customStoragePrefix' in config)) {
+    config = {
+      ...config,
+      customStoragePrefix: rkDetailsIsWalletConnectModalConnector
+        ? 'clientOne'
+        : 'clientTwo',
+    };
   }
 
   const serializedConfig = JSON.stringify(config);
@@ -79,6 +91,8 @@ function createWalletConnectConnector({
       // Used in `connectorsForWallets` to add another
       // walletConnect wallet into rainbowkit with modal popup option
       rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
+      rkDetailsIsWalletConnectModalConnector:
+        walletDetails.rkDetails.isWalletConnectModalConnector,
     })(config),
     ...walletDetails,
   }));
