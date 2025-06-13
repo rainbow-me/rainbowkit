@@ -41,7 +41,7 @@ export function ProfileDetails({
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
     if (address) {
-      navigator.clipboard.writeText(address);
+      navigator?.clipboard?.writeText(address);
       setCopiedAddress(true);
     }
   }, [address]);
