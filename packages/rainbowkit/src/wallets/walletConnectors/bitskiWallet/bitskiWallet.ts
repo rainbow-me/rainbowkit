@@ -7,7 +7,6 @@ import {
 export const bitskiWallet = (): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
-  rdns: 'com.brave.wallet',
   installed: hasInjectedProvider({ flag: 'isBitski' }),
   iconUrl: async () => (await import('./bitskiWallet.svg')).default,
   iconBackground: '#fff',
