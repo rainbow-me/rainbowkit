@@ -10,24 +10,17 @@ import {
 import type { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import React, {
-  type ComponentProps,
-  useEffect,
-  useState,
-  useSyncExternalStore,
-} from 'react';
+import React, { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
   useAccount,
+  useConnectors,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
 import type { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
-import { createStore } from 'mipd';
-
-const eip6963Store = createStore();
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
@@ -558,9 +551,11 @@ function ManageTransactions() {
 }
 
 function ConnectorLogger() {
-  const providers = useSyncExternalStore(
-    eip6963Store.subscribe,
-    eip6963Store.getProviders,
+  const connectors = useConnectors();
+  // Filter for EIP-6963 connectors (they will have rdns property)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const eip6963Connectors = connectors.filter(
+    (connector) => (connector as any).rdns,
   );
 
   const ethereumInfo =
@@ -577,15 +572,15 @@ function ConnectorLogger() {
   }, [ethereumInfo]);
 
   useEffect(() => {
-    console.log('EIP-6963 providers:', providers);
-  }, [providers]);
+    console.log('EIP-6963 connectors:', eip6963Connectors);
+  }, [eip6963Connectors]);
 
   return (
     <div style={{ fontFamily: 'monospace', marginTop: 16 }}>
       <h3>Provider State</h3>
       <pre>
         {JSON.stringify(
-          { ethereum: ethereumInfo, connectors: providers },
+          { ethereum: ethereumInfo, connectors: eip6963Connectors },
           null,
           2,
         )}

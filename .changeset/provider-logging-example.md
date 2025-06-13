@@ -2,4 +2,4 @@
 "example": patch
 ---
 
-Add provider logging using mipd and display window.ethereum state.
+Add provider logging showing window.ethereum state and EIP-6963 connectors.
