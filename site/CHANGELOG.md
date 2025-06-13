@@ -1,5 +1,18 @@
 # site
 
+## 0.0.114
+
+### Patch Changes
+
+- 85712bc: Add language facet filter to DocSearch.
+- a8edb09: Add docsearch meta tags with npm tag logic based on major version.
+- c60deea: Upgrade contentlayer2 and next-contentlayer2 to version 0.5.8.
+- Updated dependencies [a147620]
+- Updated dependencies [10090d2]
+- Updated dependencies [50c7f13]
+- Updated dependencies [15ddd4a]
+  - @rainbow-me/rainbowkit@2.2.7
+
 ## 0.0.113
 
 ### Patch Changes

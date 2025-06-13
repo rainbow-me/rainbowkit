@@ -1,5 +1,12 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.13
+
+### Patch Changes
+
+- 4ace91f: Update template dependencies to use wagmi ^2.15.6.
+- c60deea: Upgrade @types/react to 19.1.8 and @types/react-dom to 19.1.6 in template.
+
 ## 0.3.12
 
 ### Patch Changes
