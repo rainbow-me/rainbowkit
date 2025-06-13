@@ -19,6 +19,7 @@ export const berasigWallet = ({
   return {
     id: 'berasig',
     name: 'BeraSig',
+    rdns: 'app.berasig',
     iconUrl: async () => (await import('./berasigWallet.svg')).default,
     iconBackground: '#ffffff',
     installed: isBerasigWalletInjected,

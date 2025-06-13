@@ -8,6 +8,7 @@ export const wigwamWallet = (): Wallet => {
   return {
     id: 'wigwam',
     name: 'Wigwam',
+    rdns: 'com.wigwam.wallet',
     iconBackground: '#80EF6E',
     iconUrl: async () => (await import('./wigwamWallet.svg')).default,
     downloadUrls: {

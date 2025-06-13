@@ -26,6 +26,7 @@ export const bifrostWallet = ({
   return {
     id: 'bifrostWallet',
     name: 'Bifrost Wallet',
+    rdns: 'com.bifrostwallet',
     iconUrl: async () => (await import('./bifrostWallet.svg')).default,
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isBifrostInjected : undefined,
