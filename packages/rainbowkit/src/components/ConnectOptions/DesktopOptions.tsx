@@ -83,9 +83,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   // connectors if user interacts with `WalletButton` component.
   const mergeEIP6963WithRkConnectors = !connector;
 
-  const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
-    .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
-    .sort((a, b) => a.groupIndex - b.groupIndex);
+  const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors).filter(
+    (wallet) => wallet.ready || !!wallet.extensionDownloadUrl,
+  );
   const unfilteredWallets = useWalletConnectors();
 
   const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
