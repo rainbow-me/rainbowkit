@@ -1,4 +1,4 @@
 ---
 "@rainbow-me/rainbowkit": patch
 ---
-Add rdns metadata from the wallet registry to BeraSig, Bifrost, Bitski, and Wigwam connectors.
+Added missing `rdns` metadata for wallet connectors that now support EIP-6963.
