@@ -96,7 +96,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'Popular',
     'More',
     'Others',
-    'Installed',
   ];
 
   // If a user hasn't installed the extension we will get the
@@ -419,11 +418,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     {groupName ? (
                       <Box marginBottom="8" marginTop="16" marginX="6">
                         <Text
-                          color={
-                            groupName === 'Installed'
-                              ? 'accentColor'
-                              : 'modalTextSecondary'
-                          }
+                          color={'modalTextSecondary'}
                           size="14"
                           weight="bold"
                         >
@@ -446,7 +441,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             name={wallet.name}
                             onClick={() => selectWallet(wallet)}
                             ready={wallet.ready}
-                            recent={wallet.recent}
+                            installed={wallet.installed}
+                            recent={!wallet.installed && wallet.recent}
                             testId={`wallet-option-${wallet.id}`}
                             isRainbowKitConnector={wallet.isRainbowKitConnector}
                           />

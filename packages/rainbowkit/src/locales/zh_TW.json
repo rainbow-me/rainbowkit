@@ -53,6 +53,7 @@
       "label": "了解更多"
     },
     "recent": "最近",
+    "installed": "已安裝",
     "status": {
       "opening": "正在開啟%{wallet}...",
       "connecting": "連接中",

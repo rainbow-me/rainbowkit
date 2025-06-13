@@ -53,6 +53,7 @@
       "label": "Дізнатися більше"
     },
     "recent": "Недавні",
+    "installed": "Встановлено",
     "status": {
       "opening": "Відкриття %{wallet}...",
       "connecting": "Підключення",

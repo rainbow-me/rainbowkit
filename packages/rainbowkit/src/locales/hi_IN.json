@@ -53,6 +53,7 @@
       "label": "और जानें।"
     },
     "recent": "हाल ही में",
+    "installed": "स्थापित",
     "status": {
       "opening": "%{wallet}खोल रहा है...",
       "connecting": "जोड़ रहा है",

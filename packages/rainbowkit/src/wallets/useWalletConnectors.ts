@@ -184,7 +184,8 @@ export function useWalletConnectors(
         iconUrl: wallet.icon!,
         ready: true,
         connect: () => connectWallet(wallet),
-        groupName: 'Installed',
+        groupName: wallet.groupName,
+        installed: true,
         recent,
       });
 
@@ -228,9 +229,12 @@ export function useWalletConnectors(
     : walletConnectors;
 
   return deduped.slice().sort((a, b) => {
-    if ((a.installed ?? false) === (b.installed ?? false)) {
-      return a.groupIndex - b.groupIndex;
+    if ((a.installed ?? false) !== (b.installed ?? false)) {
+      return a.installed ? -1 : 1;
     }
-    return a.installed ? -1 : 1;
+    if (a.recent !== b.recent) {
+      return a.recent ? -1 : 1;
+    }
+    return a.groupIndex - b.groupIndex;
   });
 }

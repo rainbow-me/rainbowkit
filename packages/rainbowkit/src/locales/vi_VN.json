@@ -53,6 +53,7 @@
       "label": "Tìm hiểu thêm"
     },
     "recent": "Gần đây",
+    "installed": "Đã cài đặt",
     "status": {
       "opening": "Đang mở %{wallet}...",
       "connecting": "Đang kết nối",

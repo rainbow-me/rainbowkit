@@ -53,6 +53,7 @@
       "label": "Daha fazla bilgi edinin"
     },
     "recent": "Son",
+    "installed": "Yüklendi",
     "status": {
       "opening": "%{wallet}açılıyor...",
       "connecting": "Bağlanıyor",

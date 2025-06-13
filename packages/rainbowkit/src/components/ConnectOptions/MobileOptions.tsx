@@ -190,11 +190,15 @@ export function WalletButton({
               </Box>
             </Text>
 
-            {wallet.recent && (
+            {wallet.installed ? (
+              <Text color="accentColor" size="12" weight="medium">
+                {i18n.t('connect.installed')}
+              </Text>
+            ) : wallet.recent ? (
               <Text color="accentColor" size="12" weight="medium">
                 {i18n.t('connect.recent')}
               </Text>
-            )}
+            ) : null}
           </Box>
         ) : null}
       </Box>

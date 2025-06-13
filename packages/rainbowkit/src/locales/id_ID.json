@@ -53,6 +53,7 @@
       "label": "Pelajari lebih lanjut"
     },
     "recent": "Terkini",
+    "installed": "Terinstal",
     "status": {
       "opening": "Membuka %{wallet}...",
       "connecting": "Menghubungkan",

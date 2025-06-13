@@ -53,6 +53,7 @@
       "label": "더 알아보기"
     },
     "recent": "최근",
+    "installed": "설치됨",
     "status": {
       "opening": "%{wallet}열기 ...",
       "connecting": "연결 중",

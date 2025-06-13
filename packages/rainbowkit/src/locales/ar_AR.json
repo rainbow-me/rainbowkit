@@ -53,6 +53,7 @@
       "label": "أعرف أكثر"
     },
     "recent": "الأخير",
+    "installed": "مُثبّت",
     "status": {
       "opening": "جار فتح %{wallet}...",
       "connecting": "جارٍ الاتصال",
