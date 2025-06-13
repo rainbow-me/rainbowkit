@@ -558,6 +558,14 @@ function ConnectorLogger() {
     (connector) => (connector as any).rdns,
   );
 
+  const connectorsInfo = eip6963Connectors.map((connector) => ({
+    id: connector.id,
+    name: connector.name,
+    ready: connector.ready,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rdns: (connector as any).rdns,
+  }));
+
   const ethereumInfo =
     typeof window === 'undefined'
       ? { defined: false, isMetaMask: false, isRainbow: false }
@@ -572,15 +580,15 @@ function ConnectorLogger() {
   }, [ethereumInfo]);
 
   useEffect(() => {
-    console.log('EIP-6963 connectors:', eip6963Connectors);
-  }, [eip6963Connectors]);
+    console.log('EIP-6963 connectors:', connectorsInfo);
+  }, [connectorsInfo]);
 
   return (
     <div style={{ fontFamily: 'monospace', marginTop: 16 }}>
       <h3>Provider State</h3>
       <pre>
         {JSON.stringify(
-          { ethereum: ethereumInfo, connectors: eip6963Connectors },
+          { ethereum: ethereumInfo, connectors: connectorsInfo },
           null,
           2,
         )}
