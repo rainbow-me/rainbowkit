@@ -22,6 +22,7 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
+import { uniqueBy } from '../../utils/uniqueBy';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -209,9 +210,17 @@ enum MobileWalletStep {
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWalletConnectors()
+  const wallets = uniqueBy(
+    useWalletConnectors(true).map((w) => ({ ...w, rdns: w.rdns ?? w.id })),
+    'rdns',
+  )
     .slice()
-    .sort((a, b) => a.groupIndex - b.groupIndex);
+    .sort((a, b) => {
+      if (a.installed === b.installed) {
+        return a.groupIndex - b.groupIndex;
+      }
+      return a.installed ? -1 : 1;
+    });
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
