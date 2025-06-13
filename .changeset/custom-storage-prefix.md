@@ -1,4 +1,5 @@
 ---
 "@rainbow-me/rainbowkit": patch
 ---
-Add separate customStoragePrefix for WalletConnect modal and wallet connectors.
+
+Mitigated `WalletConnect Core is already initialized` warnings that began appearing with recent distributions of Wagmi and WalletConnect.
