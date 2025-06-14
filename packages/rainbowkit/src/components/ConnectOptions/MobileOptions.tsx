@@ -190,11 +190,15 @@ export function WalletButton({
               </Box>
             </Text>
 
-            {wallet.recent && (
+            {wallet.installed ? (
+              <Text color="accentColor" size="12" weight="medium">
+                {i18n.t('connect.installed')}
+              </Text>
+            ) : wallet.recent ? (
               <Text color="accentColor" size="12" weight="medium">
                 {i18n.t('connect.recent')}
               </Text>
-            )}
+            ) : null}
           </Box>
         ) : null}
       </Box>
@@ -209,9 +213,7 @@ enum MobileWalletStep {
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWalletConnectors().filter(
-    (wallet) => wallet.isRainbowKitConnector,
-  );
+  const wallets = useWalletConnectors(true);
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;

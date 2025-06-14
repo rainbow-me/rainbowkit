@@ -184,7 +184,8 @@ export function useWalletConnectors(
         iconUrl: wallet.icon!,
         ready: true,
         connect: () => connectWallet(wallet),
-        groupName: 'Installed',
+        groupName: wallet.groupName,
+        installed: true,
         recent,
       });
 
@@ -214,5 +215,26 @@ export function useWalletConnectors(
         : undefined,
     });
   }
-  return walletConnectors;
+
+  const deduped = mergeEIP6963WithRkConnectors
+    ? (() => {
+        const seen = new Set<string>();
+        return walletConnectors.filter((wallet) => {
+          const key = wallet.rdns ?? wallet.id;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      })()
+    : walletConnectors;
+
+  return deduped.slice().sort((a, b) => {
+    if ((a.installed ?? false) !== (b.installed ?? false)) {
+      return a.installed ? -1 : 1;
+    }
+    if (a.recent !== b.recent) {
+      return a.recent ? -1 : 1;
+    }
+    return a.groupIndex - b.groupIndex;
+  });
 }

@@ -13,6 +13,7 @@ type Props = {
   currentlySelected?: boolean;
   ready?: boolean;
   recent?: boolean;
+  installed?: boolean;
   name: string;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
@@ -29,6 +30,7 @@ export const ModalSelection = ({
   onClick,
   ready,
   recent,
+  installed,
   testId,
   isRainbowKitConnector,
   ...urlProps
@@ -104,12 +106,23 @@ export const ModalSelection = ({
             />
             <Box>
               <Box
-                style={{ marginTop: recent ? -2 : undefined }}
+                style={{ marginTop: recent || installed ? -2 : undefined }}
                 maxWidth="200"
               >
                 {name}
               </Box>
-              {recent && (
+              {installed ? (
+                <Text
+                  color={
+                    currentlySelected ? 'accentColorForeground' : 'accentColor'
+                  }
+                  size="12"
+                  style={{ lineHeight: 1, marginTop: -1 }}
+                  weight="medium"
+                >
+                  {i18n.t('connect.installed')}
+                </Text>
+              ) : recent ? (
                 <Text
                   color={
                     currentlySelected ? 'accentColorForeground' : 'accentColor'
@@ -120,7 +133,7 @@ export const ModalSelection = ({
                 >
                   {i18n.t('connect.recent')}
                 </Text>
-              )}
+              ) : null}
             </Box>
           </Box>
         </Box>
