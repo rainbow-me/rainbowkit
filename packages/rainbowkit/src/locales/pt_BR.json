@@ -53,7 +53,6 @@
       "label": "Saiba mais"
     },
     "recent": "Recente",
-    "installed": "Instalado",
     "status": {
       "opening": "Abrindo %{wallet}...",
       "connecting": "Conectando",

@@ -53,7 +53,6 @@
       "label": "詳しくはこちら"
     },
     "recent": "最近利用しました",
-    "installed": "インストール済み",
     "status": {
       "opening": "%{wallet}を開いています...",
       "connecting": "接続中",
