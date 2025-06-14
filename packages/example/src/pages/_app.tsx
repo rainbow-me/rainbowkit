@@ -22,7 +22,7 @@ import {
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, useDisconnect } from 'wagmi';
+import { WagmiProvider, useConnectors, useDisconnect } from 'wagmi';
 
 import type { AppContextProps } from '../lib/AppContextProps';
 import { config } from '../wagmi';
@@ -501,11 +501,63 @@ function RainbowKitApp({
                   </div>
                 </div>
               </div>
+              <ConnectorLogger />
             </>
           )}
         </div>
       </RainbowKitProvider>
     </RainbowKitSiweNextAuthProvider>
+  );
+}
+
+function ConnectorLogger() {
+  const connectors = useConnectors();
+  // Filter for EIP-6963 connectors (they will have rdns property)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const eip6963Connectors = connectors.filter(
+    (connector) => (connector as any).rdns,
+  );
+
+  const connectorsInfo = eip6963Connectors.map((connector) => ({
+    id: connector.id,
+    name: connector.name,
+    ready: connector.ready,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rdns: (connector as any).rdns,
+  }));
+
+  const ethereumInfo =
+    typeof window === 'undefined'
+      ? { defined: false, isMetaMask: false, isRainbow: false }
+      : {
+          defined: !!window.ethereum,
+          isMetaMask: (window as any).ethereum?.isMetaMask === true,
+          isRainbow: (window as any).ethereum?.isRainbow === true,
+        };
+
+  useEffect(() => {
+    console.log('window.ethereum:', ethereumInfo);
+  }, [ethereumInfo]);
+
+  useEffect(() => {
+    console.log('Wagmi connectors:', connectors);
+  }, [connectors]);
+
+  useEffect(() => {
+    console.log('EIP-6963 connectors:', connectorsInfo);
+  }, [connectorsInfo]);
+
+  return (
+    <div style={{ fontFamily: 'monospace', marginTop: 16 }}>
+      <h3>Provider State</h3>
+      <pre>
+        {JSON.stringify(
+          { ethereum: ethereumInfo, connectors: connectorsInfo },
+          null,
+          2,
+        )}
+      </pre>
+    </div>
   );
 }
 
