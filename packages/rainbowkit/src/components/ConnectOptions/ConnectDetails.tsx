@@ -1,4 +1,10 @@
-import React, { type ReactNode, useContext, useEffect } from 'react';
+import React, {
+  type JSX,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
@@ -18,6 +24,7 @@ import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
 import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
 import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
+import { CopiedIcon } from '../Icons/Copied';
 import { QRCode } from '../QRCode/QRCode';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -192,7 +199,6 @@ export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
   connectionError,
-  onClose,
   qrCodeUri,
   reconnect,
   wallet,
@@ -203,7 +209,6 @@ export function ConnectDetail({
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
-  onClose: () => void;
 }) {
   const {
     downloadUrls,
@@ -212,13 +217,21 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
-    showWalletConnectModal,
     getDesktopUri,
   } = wallet;
   const isDesktopDeepLinkAvailable = !!getDesktopUri;
   const safari = isSafari();
 
   const { i18n } = useContext(I18nContext);
+
+  const [copiedUri, setCopiedUri] = useState(false);
+
+  useEffect(() => {
+    if (copiedUri) {
+      const timer = setTimeout(() => setCopiedUri(false), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [copiedUri]);
 
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
@@ -236,31 +249,34 @@ export function ConnectDetail({
     label: string;
     onClick?: () => void;
     href?: string;
-  } | null = showWalletConnectModal
-    ? {
-        description: !compactModeEnabled
-          ? i18n.t('connect.walletconnect.description.full')
-          : i18n.t('connect.walletconnect.description.compact'),
-        label: i18n.t('connect.walletconnect.open.label'),
-        onClick: () => {
-          onClose();
-          showWalletConnectModal();
-        },
-      }
-    : hasQrCode
+  } | null =
+    wallet.id === 'walletConnect'
       ? {
-          description: i18n.t('connect.secondary_action.get.description', {
-            wallet: name,
-          }),
-          label: i18n.t('connect.secondary_action.get.label'),
-          onClick: () =>
-            changeWalletStep(
-              hasQrCodeAndExtension || hasQrCodeAndDesktop
-                ? WalletStep.DownloadOptions
-                : WalletStep.Download,
-            ),
+          description: !compactModeEnabled
+            ? i18n.t('connect.walletconnect.description.full')
+            : i18n.t('connect.walletconnect.description.compact'),
+          label: i18n.t('connect.walletconnect.copy.label'),
+          onClick: () => {
+            if (qrCodeUri) {
+              navigator?.clipboard?.writeText(qrCodeUri);
+              setCopiedUri(true);
+            }
+          },
         }
-      : null;
+      : hasQrCode
+        ? {
+            description: i18n.t('connect.secondary_action.get.description', {
+              wallet: name,
+            }),
+            label: i18n.t('connect.secondary_action.get.label'),
+            onClick: () =>
+              changeWalletStep(
+                hasQrCodeAndExtension || hasQrCodeAndDesktop
+                  ? WalletStep.DownloadOptions
+                  : WalletStep.Download,
+              ),
+          }
+        : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
@@ -405,11 +421,47 @@ export function ConnectDetail({
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
             </Text>
-            <ActionButton
-              label={secondaryAction.label}
+            <Box
+              alignItems="center"
+              as="button"
+              background="actionButtonSecondaryBackground"
+              borderColor="actionButtonBorder"
+              borderRadius="actionButton"
+              borderStyle="solid"
+              borderWidth="1"
+              className={touchableStyles({
+                active: 'shrinkSm',
+                hover: 'grow',
+              })}
+              display="flex"
+              height="28"
+              justifyContent="center"
               onClick={secondaryAction.onClick}
-              type="secondary"
-            />
+              paddingX="12"
+              paddingY="4"
+              style={{
+                willChange: 'transform',
+                cursor: copiedUri ? 'default' : 'pointer',
+              }}
+              transition="default"
+              type="button"
+            >
+              {copiedUri ? (
+                <Box
+                  color="modalTextSecondary"
+                  width="38"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <CopiedIcon />
+                </Box>
+              ) : (
+                <Text color="accentColor" size="14" weight="bold">
+                  {secondaryAction.label}
+                </Text>
+              )}
+            </Box>
           </>
         )}
       </Box>
