@@ -1,17 +1,17 @@
 import type { Transport } from 'viem';
 import { http, type CreateConfigParameters } from 'wagmi';
 import { createConfig } from 'wagmi';
-import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import type { WalletList } from '../wallets/Wallet';
-import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
-import { connectorsForWallets } from '../wallets/connectorsForWallets';
+import type { RainbowKitChain } from './components/RainbowKitProvider/RainbowKitChainContext';
+import type { WalletList } from './wallets/Wallet';
+import { computeWalletConnectMetaData } from './wallets/computeWalletConnectMetaData';
+import { connectorsForWallets } from './connectorsForWallets';
 import {
   coinbaseWallet,
   metaMaskWallet,
   rainbowWallet,
   safeWallet,
   walletConnectWallet,
-} from '../wallets/walletConnectors';
+} from './wallets/walletConnectors';
 
 export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
 

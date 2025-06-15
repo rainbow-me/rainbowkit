@@ -1,14 +1,14 @@
 import type { CreateConnectorFn } from 'wagmi';
-import { isHexString } from '../utils/colors';
-import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { uniqueBy } from '../utils/uniqueBy';
+import { isHexString } from './utils/colors';
+import { omitUndefinedValues } from './utils/omitUndefinedValues';
+import { uniqueBy } from './utils/uniqueBy';
 import type {
   RainbowKitWalletConnectParameters,
   Wallet,
   WalletDetailsParams,
   WalletList,
-} from './Wallet';
-import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+} from './wallets/Wallet';
+import { computeWalletConnectMetaData } from './wallets/computeWalletConnectMetaData';
 
 interface WalletListItem extends Wallet {
   index: number;

@@ -17,7 +17,7 @@ import { mock } from 'wagmi/connectors';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import type { WalletList } from '../src/wallets/Wallet';
-import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
+import { connectorsForWallets } from '../src/connectorsForWallets';
 import { mockedAccounts } from './mockWallet';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [

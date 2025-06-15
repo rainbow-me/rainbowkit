@@ -1,9 +1,9 @@
 export { ConnectButton } from './components/ConnectButton/ConnectButton';
 export { WalletButton } from './components/WalletButton/WalletButton';
 export { RainbowKitProvider } from './components/RainbowKitProvider/RainbowKitProvider';
-export { getDefaultConfig } from './config/getDefaultConfig';
-export { getDefaultWallets } from './wallets/getDefaultWallets';
-export { connectorsForWallets } from './wallets/connectorsForWallets';
+export { getDefaultConfig } from './getDefaultConfig';
+export { getDefaultWallets } from './getDefaultWallets';
+export { connectorsForWallets } from './connectorsForWallets';
 export {
   useAccountModal,
   useChainModal,
