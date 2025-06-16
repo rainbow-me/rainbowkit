@@ -37,7 +37,7 @@ async function main() {
   const iconsDir = `${dir}/icons`;
   await fs.mkdir(iconsDir, { recursive: true });
   const outputPath = `${dir}/registry.json`;
-  await fs.writeFile(outputPath, `${JSON.stringify(wallets)}\n`);
+  await fs.writeFile(outputPath, `${JSON.stringify(wallets, null, 2)}\n`);
   console.log(`Wrote ${wallets.length} wallets to ${outputPath}`);
 
   for (const wallet of wallets) {
