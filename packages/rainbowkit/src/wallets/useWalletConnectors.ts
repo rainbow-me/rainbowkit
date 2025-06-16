@@ -1,5 +1,6 @@
 import { type Config, type Connector, useConnect } from 'wagmi';
 import type { ConnectMutateAsync } from 'wagmi/query';
+import { useWalletConnect } from '../hooks/useWalletConnect';
 import { indexBy } from '../utils/indexBy';
 import {
   useInitialChainId,
@@ -39,6 +40,20 @@ export function useWalletConnectors(
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
+  const { uri: walletConnectUri } = useWalletConnect();
+
+  async function getWalletConnectUri(
+    connector: Connector,
+    uriConverter: (uri: string) => string,
+  ): Promise<string> {
+    if (connector.id === 'coinbase') {
+      const provider = await connector.getProvider();
+      // @ts-expect-error
+      return provider.qrUrl;
+    }
+
+    return walletConnectUri ? uriConverter(walletConnectUri) : '';
+  }
 
   const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
     ...connector,
@@ -68,26 +83,6 @@ export function useWalletConnectors(
 
     return result;
   }
-
-  const getWalletConnectUri = async (
-    connector: Connector,
-    uriConverter: (uri: string) => string,
-  ): Promise<string> => {
-    const provider = await connector.getProvider();
-
-    if (connector.id === 'coinbase') {
-      // @ts-expect-error
-      return provider.qrUrl;
-    }
-
-    return new Promise<string>((resolve) =>
-      // Wagmi v2 doesn't have a return type for provider yet
-      // @ts-expect-error
-      provider.once('display_uri', (uri) => {
-        resolve(uriConverter(uri));
-      }),
-    );
-  };
 
   const eip6963Connectors = defaultConnectors
     .filter(isEIP6963Connector)
@@ -167,7 +162,7 @@ export function useWalletConnectors(
         ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)
         : undefined,
       getMobileUri: wallet.mobile?.getUri
-        ? () => getWalletConnectUri(wallet, wallet.mobile?.getUri!)
+        ? () => getWalletConnectUri(wallet, wallet.mobile!.getUri!)
         : undefined,
       recent,
     });
