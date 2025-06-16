@@ -17,6 +17,7 @@ import {
   isRainbowKitConnector,
   isRecentWallet,
 } from './groupedWallets';
+import { hasInjectedProvider } from './getInjectedConnector';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
@@ -154,7 +155,10 @@ export function useWalletConnectors(
 
     walletConnectors.push({
       ...wallet,
-      ready: wallet.installed ?? true,
+      ready: hasInjectedProvider({
+        flag: wallet.flag,
+        namespace: wallet.namespace,
+      }),
       connect: () => connectWallet(wallet),
       desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),

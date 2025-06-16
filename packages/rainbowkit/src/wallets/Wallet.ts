@@ -1,5 +1,6 @@
 import type { Connector, CreateConnectorFn } from 'wagmi';
 import type { WalletConnectParameters } from 'wagmi/connectors';
+import type { WalletProviderFlags } from '../types/utils';
 import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 
 export type InstructionStepName =
@@ -55,7 +56,10 @@ export type Wallet = {
   iconUrl: string | (() => Promise<string>);
   iconAccent?: string;
   iconBackground: string;
+  /** @deprecated */
   installed?: boolean;
+  flag?: WalletProviderFlags;
+  namespace?: string;
   downloadUrls?: {
     android?: string;
     ios?: string;
@@ -73,7 +77,7 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
-  createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
+  createConnector?: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
 export interface DefaultWalletOptions {
