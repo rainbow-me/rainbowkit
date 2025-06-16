@@ -3,7 +3,6 @@ import type { CreateConnectorFn } from 'wagmi';
 import { type WalletConnectParameters, walletConnect } from 'wagmi/connectors';
 import type {
   CreateConnector,
-  RainbowKitDetails,
   RainbowKitWalletConnectParameters,
   WalletDetailsParams,
 } from './Wallet';
