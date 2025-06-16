@@ -4,10 +4,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ArgentWalletOptions = DefaultWalletOptions;
 
-export const argentWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ArgentWalletOptions): Wallet => ({
+export const argentWallet = (): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argentWallet.svg')).default,
@@ -49,8 +46,5 @@ export const argentWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

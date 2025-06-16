@@ -11,10 +11,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type SubWalletOptions = DefaultWalletOptions;
 
-export const subWallet = ({
-  projectId,
-  walletConnectParameters,
-}: SubWalletOptions): Wallet => {
+export const subWallet = (): Wallet => {
   const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
   const shouldUseWalletConnect = !isSubWalletInjected;
 
@@ -110,10 +107,7 @@ export const subWallet = ({
     qrCode: qrConnector,
     extension: extensionConnector,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'SubWallet' }),
   };
 };

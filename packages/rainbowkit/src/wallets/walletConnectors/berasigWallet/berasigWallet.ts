@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BerasigWalletOptions = DefaultWalletOptions;
 
-export const berasigWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BerasigWalletOptions): Wallet => {
+export const berasigWallet = (): Wallet => {
   const isBerasigWalletInjected = hasInjectedProvider({
     namespace: 'berasig.ethereum',
   });
@@ -57,10 +54,7 @@ export const berasigWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'berasig.ethereum',
         }),

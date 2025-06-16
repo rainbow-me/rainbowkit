@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type OKXWalletOptions = DefaultWalletOptions;
 
-export const okxWallet = ({
-  projectId,
-  walletConnectParameters,
-}: OKXWalletOptions): Wallet => {
+export const okxWallet = (): Wallet => {
   const isOKXInjected = hasInjectedProvider({ namespace: 'okxwallet' });
   const shouldUseWalletConnect = !isOKXInjected;
 
@@ -92,10 +89,7 @@ export const okxWallet = ({
     },
 
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'okxwallet' }),
   };
 };

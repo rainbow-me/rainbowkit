@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type TokenPocketWalletOptions = DefaultWalletOptions;
 
-export const tokenPocketWallet = ({
-  projectId,
-  walletConnectParameters,
-}: TokenPocketWalletOptions): Wallet => {
+export const tokenPocketWallet = (): Wallet => {
   const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
   const shouldUseWalletConnect = !isTokenPocketInjected;
 
@@ -94,10 +91,7 @@ export const tokenPocketWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ flag: 'isTokenPocket' }),
   };
 };

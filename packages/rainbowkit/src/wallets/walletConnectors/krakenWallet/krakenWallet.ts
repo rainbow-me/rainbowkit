@@ -4,10 +4,7 @@ import type { DefaultWalletOptions } from './../../Wallet';
 
 export type KrakenWalletOptions = DefaultWalletOptions;
 
-export const krakenWallet = ({
-  projectId,
-  walletConnectParameters,
-}: KrakenWalletOptions): Wallet => ({
+export const krakenWallet = (): Wallet => ({
   id: 'kraken',
   name: 'Kraken Wallet',
   iconUrl: async () => (await import('./krakenWallet.svg')).default,
@@ -47,8 +44,5 @@ export const krakenWallet = ({
     },
   },
 
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

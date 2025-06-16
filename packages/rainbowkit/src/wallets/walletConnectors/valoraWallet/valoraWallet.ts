@@ -4,10 +4,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ValoraWalletOptions = DefaultWalletOptions;
 
-export const valoraWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ValoraWalletOptions): Wallet => ({
+export const valoraWallet = (): Wallet => ({
   id: 'valora',
   name: 'Valora',
   iconUrl: async () => (await import('./valoraWallet.svg')).default,
@@ -45,8 +42,5 @@ export const valoraWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

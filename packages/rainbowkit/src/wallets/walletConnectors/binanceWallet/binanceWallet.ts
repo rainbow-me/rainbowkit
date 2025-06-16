@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BinanceWalletOptions = DefaultWalletOptions;
 
-export const binanceWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BinanceWalletOptions): Wallet => {
+export const binanceWallet = (): Wallet => {
   const isBinanceInjected = hasInjectedProvider({
     flag: 'isBinance',
   });
@@ -70,10 +67,7 @@ export const binanceWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           flag: 'isBinance',
         }),

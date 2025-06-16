@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type Coin98WalletOptions = DefaultWalletOptions;
 
-export const coin98Wallet = ({
-  projectId,
-  walletConnectParameters,
-}: Coin98WalletOptions): Wallet => {
+export const coin98Wallet = (): Wallet => {
   const isCoin98WalletInjected = hasInjectedProvider({
     namespace: 'coin98.provider',
     flag: 'isCoin98',
@@ -89,10 +86,7 @@ export const coin98Wallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'coin98Wallet',
           flag: 'isCoin98',

@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type CoreWalletOptions = DefaultWalletOptions;
 
-export const coreWallet = ({
-  projectId,
-  walletConnectParameters,
-}: CoreWalletOptions): Wallet => {
+export const coreWallet = (): Wallet => {
   const isCoreInjected = hasInjectedProvider({
     namespace: 'avalanche',
     flag: 'isAvalanche',
@@ -84,10 +81,7 @@ export const coreWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'avalanche',
           flag: 'isAvalanche',

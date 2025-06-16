@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type KaiaWalletOptions = DefaultWalletOptions;
 
-export const kaiaWallet = ({
-  projectId,
-  walletConnectParameters,
-}: KaiaWalletOptions): Wallet => {
+export const kaiaWallet = (): Wallet => {
   const isKaiaWalletInjected = hasInjectedProvider({
     namespace: 'klaytn',
   });
@@ -85,10 +82,7 @@ export const kaiaWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'klaytn',
         }),

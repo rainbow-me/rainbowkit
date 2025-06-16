@@ -3,10 +3,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ImTokenWalletOptions = DefaultWalletOptions;
 
-export const imTokenWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ImTokenWalletOptions): Wallet => ({
+export const imTokenWallet = (): Wallet => ({
   id: 'imToken',
   name: 'imToken',
   iconUrl: async () => (await import('./imTokenWallet.svg')).default,
@@ -49,8 +46,5 @@ export const imTokenWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

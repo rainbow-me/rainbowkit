@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type FoxWalletOptions = DefaultWalletOptions;
 
-export const foxWallet = ({
-  projectId,
-  walletConnectParameters,
-}: FoxWalletOptions): Wallet => {
+export const foxWallet = (): Wallet => {
   const isFoxInjected = hasInjectedProvider({
     namespace: 'foxwallet.ethereum',
   });
@@ -61,10 +58,7 @@ export const foxWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'foxwallet.ethereum' }),
   };
 };

@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BitgetWalletOptions = DefaultWalletOptions;
 
-export const bitgetWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BitgetWalletOptions): Wallet => {
+export const bitgetWallet = (): Wallet => {
   const isBitKeepInjected = hasInjectedProvider({
     namespace: 'bitkeep.ethereum',
     flag: 'isBitKeep',
@@ -98,10 +95,7 @@ export const bitgetWallet = ({
       : undefined,
 
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'bitkeep.ethereum',
           flag: 'isBitKeep',

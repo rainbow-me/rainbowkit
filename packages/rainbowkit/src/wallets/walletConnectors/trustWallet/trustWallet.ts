@@ -12,10 +12,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type TrustWalletOptions = DefaultWalletOptions;
 
-export const trustWallet = ({
-  projectId,
-  walletConnectParameters,
-}: TrustWalletOptions): Wallet => {
+export const trustWallet = (): Wallet => {
   const isTrustWalletInjected = isMobile()
     ? hasInjectedProvider({ flag: 'isTrust' })
     : hasInjectedProvider({ flag: 'isTrustWallet' });
@@ -109,10 +106,7 @@ export const trustWallet = ({
     qrCode: qrConnector,
     extension: extensionConnector,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : isMobile()
         ? getInjectedConnector({ flag: 'isTrust' })
         : getInjectedConnector({ flag: 'isTrustWallet' }),

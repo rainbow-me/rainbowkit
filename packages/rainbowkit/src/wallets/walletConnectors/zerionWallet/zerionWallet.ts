@@ -9,10 +9,7 @@ import type { DefaultWalletOptions } from './../../Wallet';
 
 export type ZerionWalletOptions = DefaultWalletOptions;
 
-export const zerionWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZerionWalletOptions): Wallet => {
+export const zerionWallet = (): Wallet => {
   const isZerionInjected = hasInjectedProvider({
     namespace: 'zerionWallet',
     flag: 'isZerion',
@@ -96,10 +93,7 @@ export const zerionWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'zerionWallet',
           flag: 'isZerion',

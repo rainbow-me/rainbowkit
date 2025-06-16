@@ -3,10 +3,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type KresusWalletOptions = DefaultWalletOptions;
 
-export const kresusWallet = ({
-  projectId,
-  walletConnectParameters,
-}: KresusWalletOptions): Wallet => ({
+export const kresusWallet = (): Wallet => ({
   id: 'kresus-wallet',
   name: 'Kresus Wallet',
   iconUrl: async () => (await import('./kresusWallet.svg')).default,
@@ -44,8 +41,5 @@ export const kresusWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

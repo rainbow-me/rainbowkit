@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BifrostWalletOptions = DefaultWalletOptions;
 
-export const bybitWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BifrostWalletOptions): Wallet => {
+export const bybitWallet = (): Wallet => {
   const isBybitInjected = hasInjectedProvider({
     namespace: 'bybitWallet',
   });
@@ -93,10 +90,7 @@ export const bybitWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'bybitWallet',
         }),

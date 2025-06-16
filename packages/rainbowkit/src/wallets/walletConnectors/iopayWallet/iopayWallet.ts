@@ -14,10 +14,7 @@ function isIoPayMobile(): boolean {
   );
 }
 
-export const iopayWallet = ({
-  projectId,
-  walletConnectParameters,
-}: IoPayWalletOptions): Wallet => ({
+export const iopayWallet = (): Wallet => ({
   id: 'iopay',
   name: 'ioPay Wallet',
   iconUrl: async () => (await import('./iopayWallet.svg')).default,
@@ -59,8 +56,5 @@ export const iopayWallet = ({
   },
   createConnector: isIoPayMobile()
     ? getInjectedConnector({})
-    : getWalletConnectConnector({
-        projectId,
-        walletConnectParameters,
-      }),
+    : getWalletConnectConnector(),
 });

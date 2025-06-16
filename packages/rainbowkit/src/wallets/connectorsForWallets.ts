@@ -21,10 +21,10 @@ export interface ConnectorsForWalletsParameters {
 export const connectorsForWallets = (
   walletList: WalletList,
   {
-    projectId,
+    //projectId,
     appName,
-    appDescription,
-    appUrl,
+    //appDescription,
+    //appUrl,
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
@@ -49,19 +49,8 @@ export const connectorsForWallets = (
       index++;
 
       const wallet = createWallet({
-        projectId,
         appName,
         appIcon,
-        walletConnectParameters: {
-          metadata: {
-            name: appName,
-            description: appDescription ?? appName,
-            url:
-              appUrl ??
-              (typeof window !== 'undefined' ? window.location.origin : ''),
-            icons: [...(appIcon ? [appIcon] : [])],
-          },
-        },
       });
 
       // guard against non-hex values for `iconAccent`

@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type RoninWalletOptions = DefaultWalletOptions;
 
-export const roninWallet = ({
-  projectId,
-  walletConnectParameters,
-}: RoninWalletOptions): Wallet => {
+export const roninWallet = (): Wallet => {
   const isRoninInjected = hasInjectedProvider({
     namespace: 'ronin.provider',
   });
@@ -94,10 +91,7 @@ export const roninWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'ronin.provider' }),
   };
 };

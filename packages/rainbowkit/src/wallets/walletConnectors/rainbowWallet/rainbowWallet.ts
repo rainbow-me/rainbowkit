@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type RainbowWalletOptions = DefaultWalletOptions;
 
-export const rainbowWallet = ({
-  projectId,
-  walletConnectParameters,
-}: RainbowWalletOptions): Wallet => {
+export const rainbowWallet = (): Wallet => {
   const isRainbowInjected = hasInjectedProvider({ flag: 'isRainbow' });
   const shouldUseWalletConnect = !isRainbowInjected;
 
@@ -73,10 +70,7 @@ export const rainbowWallet = ({
       : undefined,
 
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ flag: 'isRainbow' }),
   };
 };

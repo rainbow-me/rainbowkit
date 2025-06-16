@@ -9,10 +9,7 @@ import type { DefaultWalletOptions } from '../../Wallet';
 
 export type XPortalWalletOptions = DefaultWalletOptions;
 
-export const xPortalWallet = ({
-  projectId,
-  walletConnectParameters,
-}: XPortalWalletOptions): Wallet => {
+export const xPortalWallet = (): Wallet => {
   const isXPortalInjected = hasInjectedProvider({
     flag: 'isxPortal',
   });
@@ -69,10 +66,7 @@ export const xPortalWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           flag: 'isxPortal',
         }),

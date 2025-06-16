@@ -4,10 +4,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ParaSwapWalletOptions = DefaultWalletOptions;
 
-export const paraSwapWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ParaSwapWalletOptions): Wallet => ({
+export const paraSwapWallet = (): Wallet => ({
   id: 'paraswap',
   name: 'ParaSwap Wallet',
   iconUrl: async () => (await import('./paraSwapWallet.svg')).default,
@@ -45,8 +42,5 @@ export const paraSwapWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

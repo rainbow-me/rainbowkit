@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type CLVWalletOptions = DefaultWalletOptions;
 
-export const clvWallet = ({
-  projectId,
-  walletConnectParameters,
-}: CLVWalletOptions): Wallet => {
+export const clvWallet = (): Wallet => {
   const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
   const shouldUseWalletConnect = !isCLVInjected;
 
@@ -79,10 +76,7 @@ export const clvWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'clover' }),
   };
 };

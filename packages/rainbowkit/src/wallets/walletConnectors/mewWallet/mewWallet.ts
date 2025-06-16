@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type MEWWalletOptions = DefaultWalletOptions;
 
-export const mewWallet = ({
-  projectId,
-  walletConnectParameters,
-}: MEWWalletOptions): Wallet => {
+export const mewWallet = (): Wallet => {
   const isMEWInjected = hasInjectedProvider({ flag: 'isMEWwallet' });
   const shouldUseWalletConnect = !isMEWInjected;
 
@@ -60,10 +57,7 @@ export const mewWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ flag: 'isMEWwallet' }),
   };
 };

@@ -1,5 +1,4 @@
 import type { Connector, CreateConnectorFn } from 'wagmi';
-import type { WalletConnectParameters } from 'wagmi/connectors';
 import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 
 export type InstructionStepName =
@@ -76,10 +75,7 @@ export type Wallet = {
   createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
-export interface DefaultWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type DefaultWalletOptions = {};
 
 export type CreateWalletFn = (
   // These parameters will be used when creating a wallet. If injected
@@ -91,14 +87,6 @@ export type WalletList = {
   groupName: string;
   wallets: CreateWalletFn[];
 }[];
-
-// We don't want users to pass in `showQrModal` or `projectId`.
-// Those two values are handled by rainbowkit. The rest of WalletConnect
-// parameters can be passed with no issue
-export type RainbowKitWalletConnectParameters = Omit<
-  WalletConnectParameters,
-  'showQrModal' | 'projectId'
->;
 
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;

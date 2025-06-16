@@ -11,10 +11,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type SafepalWalletOptions = DefaultWalletOptions;
 
-export const safepalWallet = ({
-  projectId,
-  walletConnectParameters,
-}: SafepalWalletOptions): Wallet => {
+export const safepalWallet = (): Wallet => {
   const isSafePalWalletInjected = hasInjectedProvider({
     namespace: 'safepalProvider',
     flag: 'isSafePal',
@@ -108,10 +105,7 @@ export const safepalWallet = ({
     ...(qrConnector ? qrConnector : {}),
     extension: extensionConnector,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'safepalProvider',
           flag: 'isSafePal',

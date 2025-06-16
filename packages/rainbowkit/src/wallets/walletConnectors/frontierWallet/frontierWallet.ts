@@ -9,10 +9,7 @@ import type { DefaultWalletOptions } from './../../Wallet';
 
 export type FrontierWalletOptions = DefaultWalletOptions;
 
-export const frontierWallet = ({
-  projectId,
-  walletConnectParameters,
-}: FrontierWalletOptions): Wallet => {
+export const frontierWallet = (): Wallet => {
   const isFrontierInjected = hasInjectedProvider({
     namespace: 'frontier.ethereum',
     flag: 'isFrontier',
@@ -103,7 +100,7 @@ export const frontierWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({ projectId, walletConnectParameters })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           namespace: 'frontier.ethereum',
           flag: 'isFrontier',

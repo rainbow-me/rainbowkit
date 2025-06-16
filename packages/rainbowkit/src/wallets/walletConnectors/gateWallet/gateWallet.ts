@@ -8,10 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type GateWalletOptions = DefaultWalletOptions;
 
-export const gateWallet = ({
-  projectId,
-  walletConnectParameters,
-}: GateWalletOptions): Wallet => {
+export const gateWallet = (): Wallet => {
   const isGateInjected = hasInjectedProvider({ namespace: 'gatewallet' });
   const shouldUseWalletConnect = !isGateInjected;
 
@@ -90,10 +87,7 @@ export const gateWallet = ({
     },
 
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ namespace: 'gatewallet' }),
   };
 };

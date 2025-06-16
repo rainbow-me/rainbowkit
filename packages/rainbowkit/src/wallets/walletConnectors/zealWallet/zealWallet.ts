@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ZealWalletOptions = DefaultWalletOptions;
 
-export const zealWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZealWalletOptions): Wallet => {
+export const zealWallet = (): Wallet => {
   const isZealWalletInjected = hasInjectedProvider({ flag: 'isZeal' });
 
   const shouldUseWalletConnect = !isZealWalletInjected;
@@ -86,10 +83,7 @@ export const zealWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({ flag: 'isZeal' }),
   };
 };

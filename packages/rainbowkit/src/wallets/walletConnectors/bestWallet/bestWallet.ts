@@ -4,10 +4,7 @@ import type { DefaultWalletOptions } from './../../Wallet';
 
 export type BestWalletOptions = DefaultWalletOptions;
 
-export const bestWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BestWalletOptions): Wallet => ({
+export const bestWallet = (): Wallet => ({
   id: 'bestWallet',
   name: 'Best Wallet',
   iconUrl: async () => (await import('./bestWallet.svg')).default,
@@ -48,8 +45,5 @@ export const bestWallet = ({
     },
   },
 
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
+  createConnector: getWalletConnectConnector(),
 });

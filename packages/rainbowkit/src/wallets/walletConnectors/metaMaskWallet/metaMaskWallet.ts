@@ -57,10 +57,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   return true;
 }
 
-export const metaMaskWallet = ({
-  projectId,
-  walletConnectParameters,
-}: MetaMaskWalletOptions): Wallet => {
+export const metaMaskWallet = (): Wallet => {
   // Not using the explicit isMetaMask fn to check for MetaMask
   // so that users can continue to use the MetaMask button
   // to interact with wallets compatible with window.ethereum.
@@ -156,10 +153,7 @@ export const metaMaskWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           target:
             typeof window !== 'undefined'

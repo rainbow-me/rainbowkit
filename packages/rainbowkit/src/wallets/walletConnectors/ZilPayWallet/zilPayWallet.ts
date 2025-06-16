@@ -7,10 +7,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ZilPayWalletOptions = DefaultWalletOptions;
 
-export const zilPayWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZilPayWalletOptions): Wallet => {
+export const zilPayWallet = (): Wallet => {
   const isZilPayInjected = hasInjectedProvider({ flag: 'isZilPay' });
   const shouldUseWalletConnect = !isZilPayInjected;
 
@@ -62,10 +59,7 @@ export const zilPayWallet = ({
         }
       : undefined,
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           flag: 'isZilPay',
         }),

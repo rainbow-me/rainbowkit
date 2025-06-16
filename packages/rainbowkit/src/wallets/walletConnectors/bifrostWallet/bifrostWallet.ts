@@ -9,10 +9,7 @@ import type { DefaultWalletOptions } from './../../Wallet';
 
 export type BifrostWalletOptions = DefaultWalletOptions;
 
-export const bifrostWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BifrostWalletOptions): Wallet => {
+export const bifrostWallet = (): Wallet => {
   const isBifrostInjected = hasInjectedProvider({ flag: 'isBifrost' });
 
   const shouldUseWalletConnect = !isBifrostInjected;
@@ -70,10 +67,7 @@ export const bifrostWallet = ({
       : undefined,
 
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
+      ? getWalletConnectConnector()
       : getInjectedConnector({
           flag: 'isBifrost',
         }),
