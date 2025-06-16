@@ -15,7 +15,6 @@ function rainbowConnector({
   appDescription,
   appUrl,
   appIcon,
-  walletConnectParameters,
 }: RainbowConnectorOptions): CreateConnectorFn {
   const [connector] = connectorsForWallets(
     [{ groupName: 'Popular', wallets: [rainbowWallet] }],
@@ -25,7 +24,6 @@ function rainbowConnector({
       appDescription,
       appUrl,
       appIcon,
-      walletConnectParameters,
     },
   );
 

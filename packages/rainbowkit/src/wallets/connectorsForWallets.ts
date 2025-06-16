@@ -2,13 +2,7 @@ import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
-import type {
-  RainbowKitWalletConnectParameters,
-  Wallet,
-  WalletDetailsParams,
-  WalletList,
-} from './Wallet';
-import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+import type { Wallet, WalletList } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -22,14 +16,12 @@ export interface ConnectorsForWalletsParameters {
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const connectorsForWallets = (
   walletList: WalletList,
   {
     projectId,
-    walletConnectParameters,
     appName,
     appDescription,
     appUrl,
@@ -52,13 +44,6 @@ export const connectorsForWallets = (
   const visibleWallets: WalletListItem[] = [];
   const potentiallyHiddenWallets: WalletListItem[] = [];
 
-  const walletConnectMetaData = computeWalletConnectMetaData({
-    appName,
-    appDescription,
-    appUrl,
-    appIcon,
-  });
-
   for (const [groupIndex, { groupName, wallets }] of walletList.entries()) {
     for (const createWallet of wallets) {
       index++;
@@ -68,8 +53,14 @@ export const connectorsForWallets = (
         appName,
         appIcon,
         walletConnectParameters: {
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
+          metadata: {
+            name: appName,
+            description: appDescription ?? appName,
+            url:
+              appUrl ??
+              (typeof window !== 'undefined' ? window.location.origin : ''),
+            icons: [...(appIcon ? [appIcon] : [])],
+          },
         },
       });
 

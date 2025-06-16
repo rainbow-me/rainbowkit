@@ -3,7 +3,6 @@ import { http, type CreateConfigParameters } from 'wagmi';
 import { createConfig } from 'wagmi';
 import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import type { WalletList } from '../wallets/Wallet';
-import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import {
   coinbaseWallet,
@@ -66,13 +65,6 @@ export const getDefaultConfig = <
 }: GetDefaultConfigParameters<chains, transports>) => {
   const { transports, chains, ...restWagmiParameters } = wagmiParameters;
 
-  const metadata = computeWalletConnectMetaData({
-    appName,
-    appDescription,
-    appUrl,
-    appIcon,
-  });
-
   const connectors = connectorsForWallets(
     wallets || [
       {
@@ -92,7 +84,6 @@ export const getDefaultConfig = <
       appDescription,
       appUrl,
       appIcon,
-      walletConnectParameters: { metadata },
     },
   );
 
