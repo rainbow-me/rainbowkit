@@ -8,7 +8,6 @@ import {
   coinbaseWallet,
   metaMaskWallet,
   rainbowWallet,
-  safeWallet,
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
@@ -70,7 +69,6 @@ export const getDefaultConfig = <
       {
         groupName: 'Popular',
         wallets: [
-          safeWallet,
           rainbowWallet,
           coinbaseWallet,
           metaMaskWallet,
