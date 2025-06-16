@@ -16,8 +16,18 @@ function rainbowConnector({
   appUrl,
   appIcon,
 }: RainbowConnectorOptions): CreateConnectorFn {
+  const walletConnectParameters = {
+    metadata: {
+      name: appName,
+      description: appDescription ?? appName,
+      url:
+        appUrl ?? (typeof window !== 'undefined' ? window.location.origin : ''),
+      icons: [...(appIcon ? [appIcon] : [])],
+    },
+  };
+
   const [connector] = connectorsForWallets(
-    [{ groupName: 'Popular', wallets: [rainbowWallet] }],
+    [rainbowWallet({ projectId, walletConnectParameters })],
     {
       projectId,
       appName,

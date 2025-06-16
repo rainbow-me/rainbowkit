@@ -36,7 +36,20 @@ const transports = {
   [blast.id]: http(),
 };
 
-const { wallets } = getDefaultWallets();
+const walletConnectParameters = {
+  metadata: {
+    name: 'rainbowkit.com',
+    description: 'rainbowkit.com',
+    url: typeof window !== 'undefined' ? window.location.origin : '',
+    icons: [],
+  },
+};
+
+const { wallets } = getDefaultWallets({
+  projectId,
+  appName: 'rainbowkit.com',
+  appDescription: 'rainbowkit.com',
+});
 
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
@@ -55,16 +68,11 @@ const config = getDefaultConfig({
   transports,
   wallets: [
     ...wallets,
-    {
-      groupName: 'More',
-      wallets: [
-        argentWallet,
-        trustWallet,
-        omniWallet,
-        imTokenWallet,
-        ledgerWallet,
-      ],
-    },
+    argentWallet({ projectId, walletConnectParameters }),
+    trustWallet({ projectId, walletConnectParameters }),
+    omniWallet({ projectId, walletConnectParameters }),
+    imTokenWallet({ projectId, walletConnectParameters }),
+    ledgerWallet({ projectId, walletConnectParameters }),
   ],
   ssr: true,
 });
