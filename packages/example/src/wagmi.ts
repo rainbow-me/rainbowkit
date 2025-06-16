@@ -183,7 +183,6 @@ export const config = getDefaultConfig({
     {
       groupName: 'Popular',
       wallets: [
-        safeWallet,
         rainbowWallet,
         coinbaseWallet,
         metaMaskWallet,
@@ -235,6 +234,7 @@ export const config = getDefaultConfig({
         rabbyWallet,
         ramperWallet,
         roninWallet,
+        safeWallet,
         safeheronWallet,
         safepalWallet,
         subWallet,
