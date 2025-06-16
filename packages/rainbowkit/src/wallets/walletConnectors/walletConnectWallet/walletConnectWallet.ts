@@ -1,14 +1,12 @@
-import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface WalletConnectWalletOptions {
   projectId: string;
-  options?: RainbowKitWalletConnectParameters;
 }
 
 export const walletConnectWallet = ({
   projectId,
-  options,
 }: WalletConnectWalletOptions): Wallet => {
   const getUri = (uri: string) => uri;
 
@@ -21,7 +19,6 @@ export const walletConnectWallet = ({
     qrCode: { getUri },
     createConnector: getWalletConnectConnector({
       projectId,
-      walletConnectParameters: options,
     }),
   };
 };
