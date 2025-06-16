@@ -81,15 +81,14 @@ export interface DefaultWalletOptions {
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-export type CreateWalletFn = (
-  // These parameters will be used when creating a wallet. If injected
-  // wallet doesn't have parameters it will just ignore these passed in parameters
-  createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
-) => Wallet;
-
+/**
+ * @deprecated WalletList is deprecated. Pass an array of `Wallet` types instead.
+ */
 export type WalletList = {
   groupName: string;
-  wallets: CreateWalletFn[];
+  wallets: Array<
+    (createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions) => Wallet
+  >;
 }[];
 
 // We don't want users to pass in `showQrModal` or `projectId`.

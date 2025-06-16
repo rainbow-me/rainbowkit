@@ -2,15 +2,9 @@ import type { Transport } from 'viem';
 import { http, type CreateConfigParameters } from 'wagmi';
 import { createConfig } from 'wagmi';
 import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import type { WalletList } from '../wallets/Wallet';
+import type { Wallet } from '../wallets/Wallet';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
-import {
-  coinbaseWallet,
-  metaMaskWallet,
-  rainbowWallet,
-  safeWallet,
-  walletConnectWallet,
-} from '../wallets/walletConnectors';
+import { getDefaultWallets } from '../wallets/getDefaultWallets';
 
 export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
 
@@ -32,7 +26,7 @@ interface GetDefaultConfigParameters<
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  wallets?: WalletList;
+  wallets?: Wallet[];
   projectId: string;
 }
 
@@ -65,27 +59,21 @@ export const getDefaultConfig = <
 }: GetDefaultConfigParameters<chains, transports>) => {
   const { transports, chains, ...restWagmiParameters } = wagmiParameters;
 
-  const connectors = connectorsForWallets(
-    wallets || [
-      {
-        groupName: 'Popular',
-        wallets: [
-          safeWallet,
-          rainbowWallet,
-          coinbaseWallet,
-          metaMaskWallet,
-          walletConnectWallet,
-        ],
-      },
-    ],
-    {
-      projectId,
-      appName,
-      appDescription,
-      appUrl,
-      appIcon,
-    },
-  );
+  const defaultWallets = getDefaultWallets({
+    projectId,
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  }).wallets;
+
+  const connectors = connectorsForWallets(wallets || defaultWallets, {
+    projectId,
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  });
 
   return createConfig({
     connectors,

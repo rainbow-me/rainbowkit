@@ -1,5 +1,5 @@
 import type { CreateConnectorFn } from 'wagmi';
-import type { WalletList } from './Wallet';
+import type { Wallet } from './Wallet';
 import {
   type ConnectorsForWalletsParameters,
   connectorsForWallets,
@@ -12,28 +12,51 @@ import { walletConnectWallet } from './walletConnectors/walletConnectWallet/wall
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: CreateConnectorFn[];
-  wallets: WalletList;
+  wallets: Wallet[];
 };
 
-export function getDefaultWallets(): { wallets: WalletList };
+export function getDefaultWallets(): { wallets: Wallet[] };
 
 export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
-  const wallets: WalletList = [
-    {
-      groupName: 'Popular',
-      wallets: [
-        safeWallet,
-        rainbowWallet,
-        coinbaseWallet,
-        metaMaskWallet,
-        walletConnectWallet,
-      ],
+  const params = parameters ?? {
+    projectId: 'YOUR_PROJECT_ID',
+    appName: 'RainbowKit',
+    appDescription: undefined,
+    appUrl: typeof window !== 'undefined' ? window.location.origin : '',
+    appIcon: undefined,
+  };
+
+  const walletConnectParameters = {
+    metadata: {
+      name: params.appName,
+      description: params.appDescription ?? params.appName,
+      url:
+        params.appUrl ??
+        (typeof window !== 'undefined' ? window.location.origin : ''),
+      icons: [...(params.appIcon ? [params.appIcon] : [])],
     },
+  };
+
+  const wallets: Wallet[] = [
+    safeWallet(),
+    rainbowWallet({
+      projectId: params.projectId,
+      walletConnectParameters,
+    }),
+    coinbaseWallet({
+      appName: params.appName,
+      appIcon: params.appIcon,
+    }),
+    metaMaskWallet({
+      projectId: params.projectId,
+      walletConnectParameters,
+    }),
+    walletConnectWallet({ projectId: params.projectId }),
   ];
 
   if (parameters) {
     return {
-      connectors: connectorsForWallets(wallets, parameters),
+      connectors: connectorsForWallets(wallets, params),
       wallets,
     };
   }

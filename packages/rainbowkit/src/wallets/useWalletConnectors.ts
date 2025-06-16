@@ -145,7 +145,7 @@ export function useWalletConnectors(
         iconUrl: wallet.icon!,
         ready: true,
         connect: () => connectWallet(wallet),
-        groupName: 'Installed',
+        groupName: '',
         recent,
       });
 
