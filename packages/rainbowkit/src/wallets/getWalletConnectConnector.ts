@@ -3,7 +3,6 @@ import type { CreateConnectorFn } from 'wagmi';
 import { type WalletConnectParameters, walletConnect } from 'wagmi/connectors';
 import type {
   CreateConnector,
-  RainbowKitDetails,
   RainbowKitWalletConnectParameters,
   WalletDetailsParams,
 } from './Wallet';
@@ -22,8 +21,6 @@ interface CreateWalletConnectConnectorParams {
 interface GetOrCreateWalletConnectInstanceParams {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
-  rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
-  rkDetailsIsWalletConnectModalConnector?: RainbowKitDetails['isWalletConnectModalConnector'];
 }
 
 const walletConnectInstances = new Map<
@@ -35,31 +32,14 @@ const walletConnectInstances = new Map<
 const getOrCreateWalletConnectInstance = ({
   projectId,
   walletConnectParameters,
-  rkDetailsShowQrModal,
-  rkDetailsIsWalletConnectModalConnector,
 }: GetOrCreateWalletConnectInstanceParams): ReturnType<
   typeof walletConnect
 > => {
-  let config: WalletConnectParameters = {
+  const config: WalletConnectParameters = {
     ...(walletConnectParameters ? walletConnectParameters : {}),
     projectId,
     showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet
   };
-
-  // `rkDetailsShowQrModal` should always be `true`
-  if (rkDetailsShowQrModal) {
-    config = { ...config, showQrModal: true };
-  }
-
-  // Assign unique storage prefix depending on connector type
-  if (!('customStoragePrefix' in config)) {
-    config = {
-      ...config,
-      customStoragePrefix: rkDetailsIsWalletConnectModalConnector
-        ? 'clientOne'
-        : 'clientTwo',
-    };
-  }
 
   const serializedConfig = JSON.stringify(config);
 
@@ -88,11 +68,6 @@ function createWalletConnectConnector({
     ...getOrCreateWalletConnectInstance({
       projectId,
       walletConnectParameters,
-      // Used in `connectorsForWallets` to add another
-      // walletConnect wallet into rainbowkit with modal popup option
-      rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
-      rkDetailsIsWalletConnectModalConnector:
-        walletDetails.rkDetails.isWalletConnectModalConnector,
     })(config),
     ...walletDetails,
   }));

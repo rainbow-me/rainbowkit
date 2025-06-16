@@ -1,7 +1,6 @@
 import type { Connector, CreateConnectorFn } from 'wagmi';
 import type { WalletConnectParameters } from 'wagmi/connectors';
 import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
-import type { WalletConnectWalletOptions } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export type InstructionStepName =
   | 'install'
@@ -85,9 +84,7 @@ export interface DefaultWalletOptions {
 export type CreateWalletFn = (
   // These parameters will be used when creating a wallet. If injected
   // wallet doesn't have parameters it will just ignore these passed in parameters
-  createWalletParams: CoinbaseWalletOptions &
-    Omit<WalletConnectWalletOptions, 'projectId'> &
-    DefaultWalletOptions,
+  createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
 ) => Wallet;
 
 export type WalletList = {
@@ -107,12 +104,7 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;
   groupIndex: number;
   groupName: string;
-  isWalletConnectModalConnector?: boolean;
   isRainbowKitConnector: boolean;
-  walletConnectModalConnector?: Connector;
-  // Used specifically in `connectorsForWallets` logic
-  // to make sure we can also get WalletConnect modal in rainbowkit
-  showQrModal?: true;
 };
 
 export type WalletDetailsParams = { rkDetails: RainbowKitDetails };

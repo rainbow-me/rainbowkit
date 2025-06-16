@@ -2,13 +2,7 @@ import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
-import type {
-  RainbowKitWalletConnectParameters,
-  Wallet,
-  WalletDetailsParams,
-  WalletList,
-} from './Wallet';
-import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+import type { Wallet, WalletList } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -22,14 +16,12 @@ export interface ConnectorsForWalletsParameters {
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const connectorsForWallets = (
   walletList: WalletList,
   {
     projectId,
-    walletConnectParameters,
     appName,
     appDescription,
     appUrl,
@@ -52,13 +44,6 @@ export const connectorsForWallets = (
   const visibleWallets: WalletListItem[] = [];
   const potentiallyHiddenWallets: WalletListItem[] = [];
 
-  const walletConnectMetaData = computeWalletConnectMetaData({
-    appName,
-    appDescription,
-    appUrl,
-    appIcon,
-  });
-
   for (const [groupIndex, { groupName, wallets }] of walletList.entries()) {
     for (const createWallet of wallets) {
       index++;
@@ -67,16 +52,15 @@ export const connectorsForWallets = (
         projectId,
         appName,
         appIcon,
-        // `option` is being used only for `walletConnectWallet` wallet
-        options: {
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
-        },
-        // Every other wallet that supports walletConnect flow and is not
-        // `walletConnectWallet` wallet will have `walletConnectParameters` property
         walletConnectParameters: {
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
+          metadata: {
+            name: appName,
+            description: appDescription ?? appName,
+            url:
+              appUrl ??
+              (typeof window !== 'undefined' ? window.location.origin : ''),
+            icons: [...(appIcon ? [appIcon] : [])],
+          },
         },
       });
 
@@ -127,40 +111,16 @@ export const connectorsForWallets = (
       }
     }
 
-    const walletMetaData = (
-      // For now we should only use these as the additional parameters
-      additionalRkParams?: Pick<
-        WalletDetailsParams['rkDetails'],
-        'isWalletConnectModalConnector' | 'showQrModal'
-      >,
-    ) => {
+    const walletMetaData = () => {
       return {
         rkDetails: omitUndefinedValues({
           ...walletMeta,
           groupIndex,
           groupName,
           isRainbowKitConnector: true,
-          // These additional params will be used in rainbowkit react tree to
-          // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
-          // showQrModal: true. This way we can let the user choose if they want to
-          // connect via QR code or open the official walletConnect modal instead
-          ...(additionalRkParams ? additionalRkParams : {}),
         }),
       };
     };
-
-    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
-
-    if (isWalletConnectConnector) {
-      connectors.push(
-        createConnector(
-          walletMetaData({
-            isWalletConnectModalConnector: true,
-            showQrModal: true,
-          }),
-        ),
-      );
-    }
 
     const connector = createConnector(walletMetaData());
 
