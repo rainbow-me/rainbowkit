@@ -1,22 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type BifrostWalletOptions = DefaultWalletOptions;
-
-export const bybitWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BifrostWalletOptions): Wallet => {
-  const isBybitInjected = hasInjectedProvider({
-    namespace: 'bybitWallet',
-  });
-
-  const shouldUseWalletConnect = !isBybitInjected;
-
+export const bybitWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return `bybitapp://open/route?targetUrl=by://web3/walletconnect/wc?uri=${encodeURIComponent(
       uri,
@@ -28,7 +12,7 @@ export const bybitWallet = ({
     name: 'Bybit Wallet',
     rdns: 'com.bybit',
     iconUrl: async () => (await import('./bybitWallet.svg')).default,
-    installed: !shouldUseWalletConnect ? isBybitInjected : undefined,
+    namespace: 'bybitWallet',
     iconBackground: '#000000',
     downloadUrls: {
       chrome:
@@ -40,36 +24,31 @@ export const bybitWallet = ({
       qrCode: 'https://www.bybit.com/en/web3',
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? getUri : undefined,
+      getUri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://www.bybit.com/en/web3',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.bybit.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.bybit.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.bybit.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.bybit.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.bybit.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.bybit.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://www.bybit.com/en/web3',
+        steps: [
+          {
+            description: 'wallet_connectors.bybit.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.bybit.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.bybit.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.bybit.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.bybit.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.bybit.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://www.bybit.com/en/web3',
@@ -92,13 +71,5 @@ export const bybitWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'bybitWallet',
-        }),
   };
 };

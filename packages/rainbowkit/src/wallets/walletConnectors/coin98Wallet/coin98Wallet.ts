@@ -1,27 +1,12 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type Coin98WalletOptions = DefaultWalletOptions;
-
-export const coin98Wallet = ({
-  projectId,
-  walletConnectParameters,
-}: Coin98WalletOptions): Wallet => {
-  const isCoin98WalletInjected = hasInjectedProvider({
-    namespace: 'coin98.provider',
-    flag: 'isCoin98',
-  });
-
-  const shouldUseWalletConnect = !isCoin98WalletInjected;
+export const coin98Wallet = (): Wallet => {
   return {
     id: 'coin98',
     name: 'Coin98 Wallet',
     iconUrl: async () => (await import('./coin98Wallet.svg')).default,
-    installed: isCoin98WalletInjected,
+    namespace: 'coin98.provider',
+    flag: 'isCoin98',
     iconAccent: '#CDA349',
     iconBackground: '#fff',
     rdns: 'coin98.com',
@@ -36,36 +21,31 @@ export const coin98Wallet = ({
       browserExtension: 'https://coin98.com/wallet',
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? (uri: string) => uri : undefined,
+      getUri: (uri: string) => uri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://coin98.com/wallet',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.coin98.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.coin98.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.coin98.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.coin98.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.coin98.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.coin98.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://coin98.com/wallet',
+        steps: [
+          {
+            description: 'wallet_connectors.coin98.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.coin98.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.coin98.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.coin98.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.coin98.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.coin98.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://coin98.com/wallet',
@@ -88,14 +68,5 @@ export const coin98Wallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'coin98Wallet',
-          flag: 'isCoin98',
-        }),
   };
 };

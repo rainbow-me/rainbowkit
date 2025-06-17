@@ -1,13 +1,7 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type OktoWalletOptions = DefaultWalletOptions;
-
-export const oktoWallet = ({
-  projectId,
-  walletConnectParameters,
-}: OktoWalletOptions): Wallet => ({
+export const oktoWallet = (): Wallet => ({
   id: 'Okto',
   name: 'Okto',
   iconUrl: async () => (await import('./oktoWallet.svg')).default,
@@ -47,8 +41,4 @@ export const oktoWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

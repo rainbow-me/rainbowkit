@@ -1,20 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type ZealWalletOptions = DefaultWalletOptions;
-
-export const zealWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZealWalletOptions): Wallet => {
-  const isZealWalletInjected = hasInjectedProvider({ flag: 'isZeal' });
-
-  const shouldUseWalletConnect = !isZealWalletInjected;
-
+export const zealWallet = (): Wallet => {
   return {
     id: 'zeal',
     name: 'Zeal',
@@ -31,38 +17,35 @@ export const zealWallet = ({
       mobile: 'https://zeal.app',
       qrCode: 'https://zeal.app',
     },
+    flag: 'isZeal',
     mobile: {
-      getUri: shouldUseWalletConnect
-        ? (uri: string) => {
-            return `zeal://wc?uri=${encodeURIComponent(uri)}`;
-          }
-        : undefined,
+      getUri: (uri: string) => {
+        return `zeal://wc?uri=${encodeURIComponent(uri)}`;
+      },
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://zeal.app',
-            steps: [
-              {
-                description: 'wallet_connectors.zeal.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.zeal.qr_code.step1.title',
-              },
-              {
-                description: 'wallet_connectors.zeal.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.zeal.qr_code.step2.title',
-              },
-              {
-                description: 'wallet_connectors.zeal.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.zeal.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://zeal.app',
+        steps: [
+          {
+            description: 'wallet_connectors.zeal.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.zeal.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.zeal.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.zeal.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.zeal.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.zeal.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://zeal.app',
@@ -85,11 +68,5 @@ export const zealWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ flag: 'isZeal' }),
   };
 };

@@ -1,20 +1,7 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type GateWalletOptions = DefaultWalletOptions;
-
-export const gateWallet = ({
-  projectId,
-  walletConnectParameters,
-}: GateWalletOptions): Wallet => {
-  const isGateInjected = hasInjectedProvider({ namespace: 'gatewallet' });
-  const shouldUseWalletConnect = !isGateInjected;
-
+export const gateWallet = (): Wallet => {
   return {
     id: 'gate',
     name: 'Gate Wallet',
@@ -22,6 +9,7 @@ export const gateWallet = ({
     iconUrl: async () => (await import('./gateWallet.svg')).default,
     iconAccent: '#fff',
     iconBackground: '#fff',
+    namespace: 'gatewallet',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.gateio.gateio',
@@ -33,39 +21,35 @@ export const gateWallet = ({
       browserExtension: 'https://www.gate.io/web3',
     },
     mobile: {
-      getUri: shouldUseWalletConnect
-        ? (uri: string) => {
-            return isAndroid()
-              ? uri
-              : `gtweb3wallet://wc?uri=${encodeURIComponent(uri)}`;
-          }
-        : undefined,
+      getUri: (uri: string) => {
+        return isAndroid()
+          ? uri
+          : `gtweb3wallet://wc?uri=${encodeURIComponent(uri)}`;
+      },
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://www.gate.io/learn',
-            steps: [
-              {
-                description: 'wallet_connectors.gate.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.gate.qr_code.step1.title',
-              },
-              {
-                description: 'wallet_connectors.gate.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.gate.qr_code.step2.title',
-              },
-              {
-                description: 'wallet_connectors.gate.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.gate.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://www.gate.io/learn',
+        steps: [
+          {
+            description: 'wallet_connectors.gate.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.gate.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.gate.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.gate.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.gate.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.gate.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://www.gate.io/learn',
@@ -88,12 +72,5 @@ export const gateWallet = ({
         ],
       },
     },
-
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ namespace: 'gatewallet' }),
   };
 };

@@ -1,9 +1,7 @@
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 
-export type RainbowWalletOptions = DefaultWalletOptions;
-
-export const rainbowWallet = (_: RainbowWalletOptions): Wallet => {
+export const rainbowWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return isAndroid()
       ? uri

@@ -1,20 +1,7 @@
 import { isMobile } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type TokenPocketWalletOptions = DefaultWalletOptions;
-
-export const tokenPocketWallet = ({
-  projectId,
-  walletConnectParameters,
-}: TokenPocketWalletOptions): Wallet => {
-  const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
-  const shouldUseWalletConnect = !isTokenPocketInjected;
-
+export const tokenPocketWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return isMobile() ? `tpoutside://wc?uri=${encodeURIComponent(uri)}` : uri;
   };
@@ -25,7 +12,7 @@ export const tokenPocketWallet = ({
     rdns: 'pro.tokenpocket',
     iconUrl: async () => (await import('./tokenPocketWallet.svg')).default,
     iconBackground: '#2980FE',
-    installed: !shouldUseWalletConnect ? isTokenPocketInjected : undefined,
+    flag: 'isTokenPocket',
     downloadUrls: {
       chrome:
         'https://chrome.google.com/webstore/detail/tokenpocket/mfgccjchihfkkindfppnaooecgfneiii',
@@ -37,36 +24,34 @@ export const tokenPocketWallet = ({
       mobile: 'https://tokenpocket.pro/en/download/app',
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? getUri : undefined,
+      getUri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri,
-          instructions: {
-            learnMoreUrl: 'https://help.tokenpocket.pro/en/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.token_pocket.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.token_pocket.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.token_pocket.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.token_pocket.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.token_pocket.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.token_pocket.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri,
+      instructions: {
+        learnMoreUrl: 'https://help.tokenpocket.pro/en/',
+        steps: [
+          {
+            description:
+              'wallet_connectors.token_pocket.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.token_pocket.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description:
+              'wallet_connectors.token_pocket.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.token_pocket.qr_code.step2.title',
+          },
+          {
+            description:
+              'wallet_connectors.token_pocket.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.token_pocket.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl:
@@ -93,11 +78,5 @@ export const tokenPocketWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ flag: 'isTokenPocket' }),
   };
 };

@@ -1,10 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export const bloomWallet = ({
-  projectId,
-  walletConnectParameters,
-}: DefaultWalletOptions): Wallet => ({
+export const bloomWallet = (): Wallet => ({
   id: 'bloom',
   name: 'Bloom Wallet',
   iconBackground: '#000',
@@ -37,8 +33,4 @@ export const bloomWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

@@ -1,16 +1,10 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const compassWallet = (): Wallet => {
-  const isCompassInjected = hasInjectedProvider({ namespace: 'compassEvm' });
-
   return {
     id: 'compass',
     name: 'Compass Wallet',
-    installed: isCompassInjected,
+    namespace: 'compassEvm',
     rdns: 'io.leapwallet.CompassWallet',
     iconUrl: async () => (await import('./compassWallet.svg')).default,
     iconBackground: '#fff',
@@ -44,6 +38,5 @@ export const compassWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'compassEvm' }),
   };
 };

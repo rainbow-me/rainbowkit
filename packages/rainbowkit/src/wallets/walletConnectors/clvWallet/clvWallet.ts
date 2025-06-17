@@ -1,26 +1,13 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type CLVWalletOptions = DefaultWalletOptions;
-
-export const clvWallet = ({
-  projectId,
-  walletConnectParameters,
-}: CLVWalletOptions): Wallet => {
-  const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
-  const shouldUseWalletConnect = !isCLVInjected;
-
+export const clvWallet = (): Wallet => {
   return {
     id: 'clv',
     name: 'CLV',
     iconUrl: async () => (await import('./clvWallet.svg')).default,
     iconBackground: '#fff',
     iconAccent: '#BDFDE2',
-    installed: isCLVInjected,
+    namespace: 'clover',
     downloadUrls: {
       chrome:
         'https://chrome.google.com/webstore/detail/clv-wallet/nhnkbkgjikgcigadomkphalanndcapjk',
@@ -51,38 +38,30 @@ export const clvWallet = ({
       },
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? (uri: string) => uri : undefined,
+      getUri: (uri: string) => uri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://clv.org/',
-            steps: [
-              {
-                description: 'wallet_connectors.clv.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.clv.qr_code.step1.title',
-              },
-              {
-                description: 'wallet_connectors.clv.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.clv.qr_code.step2.title',
-              },
-              {
-                description: 'wallet_connectors.clv.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.clv.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://clv.org/',
+        steps: [
+          {
+            description: 'wallet_connectors.clv.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.clv.qr_code.step1.title',
           },
-        }
-      : undefined,
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ namespace: 'clover' }),
+          {
+            description: 'wallet_connectors.clv.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.clv.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.clv.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.clv.qr_code.step3.title',
+          },
+        ],
+      },
+    },
   };
 };

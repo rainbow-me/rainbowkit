@@ -1,13 +1,6 @@
 import type { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { DefaultWalletOptions } from './../../Wallet';
 
-export type UniswapWalletOptions = DefaultWalletOptions;
-
-export const uniswapWallet = ({
-  projectId,
-  walletConnectParameters,
-}: UniswapWalletOptions): Wallet => ({
+export const uniswapWallet = (): Wallet => ({
   id: 'uniswap',
   name: 'Uniswap Wallet',
   iconUrl: async () => (await import('./uniswapWallet.svg')).default,
@@ -46,9 +39,4 @@ export const uniswapWallet = ({
       ],
     },
   },
-
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

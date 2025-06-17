@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const oneKeyWallet = (): Wallet => {
   return {
@@ -12,7 +8,7 @@ export const oneKeyWallet = (): Wallet => {
     iconAccent: '#00B812',
     iconBackground: '#fff',
     iconUrl: async () => (await import('./oneKeyWallet.svg')).default,
-    installed: hasInjectedProvider({ namespace: '$onekey.ethereum' }),
+    namespace: '$onekey.ethereum',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=so.onekey.app.wallet',
@@ -50,9 +46,5 @@ export const oneKeyWallet = (): Wallet => {
         ],
       },
     },
-
-    createConnector: getInjectedConnector({
-      namespace: '$onekey.ethereum',
-    }),
   };
 };

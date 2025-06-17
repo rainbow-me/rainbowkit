@@ -1,12 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type BitverseWalletOptions = DefaultWalletOptions;
-
-export const bitverseWallet = ({
-  projectId,
-  walletConnectParameters,
-}: BitverseWalletOptions): Wallet => ({
+export const bitverseWallet = (): Wallet => ({
   id: 'bitverse',
   name: 'Bitverse Wallet',
   iconUrl: async () => (await import('./bitverseWallet.svg')).default,
@@ -44,8 +38,4 @@ export const bitverseWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

@@ -1,13 +1,7 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type OmniWalletOptions = DefaultWalletOptions;
-
-export const omniWallet = ({
-  projectId,
-  walletConnectParameters,
-}: OmniWalletOptions): Wallet => ({
+export const omniWallet = (): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -46,8 +40,4 @@ export const omniWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

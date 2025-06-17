@@ -1,13 +1,9 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const bitskiWallet = (): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
-  installed: hasInjectedProvider({ flag: 'isBitski' }),
+  flag: 'isBitski',
   iconUrl: async () => (await import('./bitskiWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -38,5 +34,4 @@ export const bitskiWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isBitski' }),
 });

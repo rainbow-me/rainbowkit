@@ -1,13 +1,7 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type LedgerWalletOptions = DefaultWalletOptions;
-
-export const ledgerWallet = ({
-  projectId,
-  walletConnectParameters,
-}: LedgerWalletOptions): Wallet => ({
+export const ledgerWallet = (): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   iconAccent: '#000',
@@ -82,8 +76,4 @@ export const ledgerWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });
