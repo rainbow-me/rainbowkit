@@ -155,10 +155,7 @@ export function useWalletConnectors(
 
     walletConnectors.push({
       ...wallet,
-      ready: hasInjectedProvider({
-        flag: wallet.flag,
-        namespace: wallet.namespace,
-      }),
+      ready: wallet.installed ?? true,
       connect: () => connectWallet(wallet),
       desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
