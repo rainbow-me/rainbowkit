@@ -27,4 +27,24 @@ describe('useWalletConnectors', () => {
     expect(connectors.length).toBeGreaterThan(0);
     expect(typeof connectors[0].connect).toBe('function');
   });
+
+  it('merges EIP6963 wallets when requested', () => {
+    const spy = vi.fn();
+
+    function TestComponent() {
+      const connectors = useWalletConnectors(true);
+      spy(connectors);
+      return null;
+    }
+
+    const wallets = [mockWallet('rainbow', 'Rainbow')];
+
+    renderWithProviders(<TestComponent />, {
+      chains: [mainnet],
+      mockWallets: [{ groupName: 'Popular', wallets }],
+    });
+
+    const connectors = spy.mock.calls[0][0];
+    expect(Array.isArray(connectors)).toBe(true);
+  });
 });

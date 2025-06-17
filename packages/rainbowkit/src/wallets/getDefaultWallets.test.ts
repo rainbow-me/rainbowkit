@@ -6,6 +6,13 @@ const params = {
   projectId: 'test-project-id',
 } as const;
 
+const optionalParams = {
+  ...params,
+  appDescription: 'desc',
+  appUrl: 'https://rk.com',
+  appIcon: '/logo.png',
+} as const;
+
 describe('getDefaultWallets', () => {
   it('returns only wallets when no parameters are provided', () => {
     const result = getDefaultWallets();
@@ -21,5 +28,11 @@ describe('getDefaultWallets', () => {
     expect(wallets[0]?.wallets.length).toBeGreaterThan(0);
     expect(Array.isArray(connectors)).toBe(true);
     expect(connectors.length).toBeGreaterThan(0);
+  });
+
+  it('accepts optional parameters without error', () => {
+    const { wallets, connectors } = getDefaultWallets(optionalParams);
+    expect(Array.isArray(wallets)).toBe(true);
+    expect(Array.isArray(connectors)).toBe(true);
   });
 });

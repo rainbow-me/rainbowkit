@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { getDefaultConfig } from './getDefaultConfig';
+import { mockWallet } from '../../test/mockWallet';
 
 describe('getDefaultConfig', () => {
   it('creates a Wagmi config with default wallets', () => {
@@ -13,5 +14,33 @@ describe('getDefaultConfig', () => {
     expect(config.chains[0].id).toBe(mainnet.id);
     expect(Array.isArray(config.connectors)).toBe(true);
     expect(config.connectors.length).toBeGreaterThan(0);
+  });
+
+  it('uses a custom wallet list when provided', () => {
+    const wallets = [
+      { groupName: 'Popular', wallets: [mockWallet('rainbow', 'Rainbow')] },
+    ];
+
+    const config = getDefaultConfig({
+      appName: 'rainbowkit.com',
+      projectId: 'test-project-id',
+      chains: [mainnet],
+      wallets,
+    });
+
+    expect(config.connectors.length).toBe(wallets[0].wallets.length);
+  });
+
+  it('accepts optional app metadata', () => {
+    const config = getDefaultConfig({
+      appName: 'rainbowkit.com',
+      projectId: 'test-project-id',
+      chains: [mainnet],
+      appDescription: 'desc',
+      appUrl: 'https://rk.com',
+      appIcon: '/logo.png',
+    });
+
+    expect(Array.isArray(config.connectors)).toBe(true);
   });
 });
