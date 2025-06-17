@@ -1,9 +1,5 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-export type IoPayWalletOptions = DefaultWalletOptions;
+import type { Wallet } from '../../Wallet';
 
 function isIoPayMobile(): boolean {
   return (
@@ -14,10 +10,7 @@ function isIoPayMobile(): boolean {
   );
 }
 
-export const iopayWallet = ({
-  projectId,
-  walletConnectParameters,
-}: IoPayWalletOptions): Wallet => ({
+export const iopayWallet = (): Wallet => ({
   id: 'iopay',
   name: 'ioPay Wallet',
   iconUrl: async () => (await import('./iopayWallet.svg')).default,
@@ -29,6 +22,7 @@ export const iopayWallet = ({
     qrCode: 'https://iopay.me/',
     browserExtension: 'https://iopay.me/',
   },
+  installed: isIoPayMobile(),
   mobile: {
     getUri: (uri: string) => {
       return isAndroid() ? uri : `iopay://wc?uri=${encodeURIComponent(uri)}`;
@@ -57,10 +51,4 @@ export const iopayWallet = ({
       ],
     },
   },
-  createConnector: isIoPayMobile()
-    ? getInjectedConnector({})
-    : getWalletConnectConnector({
-        projectId,
-        walletConnectParameters,
-      }),
 });

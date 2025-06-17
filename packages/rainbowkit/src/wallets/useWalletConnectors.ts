@@ -17,6 +17,7 @@ import {
   isRainbowKitConnector,
   isRecentWallet,
 } from './groupedWallets';
+import { hasInjectedProvider } from './getInjectedConnector';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {

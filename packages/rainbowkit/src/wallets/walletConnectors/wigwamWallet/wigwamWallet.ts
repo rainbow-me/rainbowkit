@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const wigwamWallet = (): Wallet => {
   return {
@@ -16,10 +12,8 @@ export const wigwamWallet = (): Wallet => {
         'https://chromewebstore.google.com/detail/wigwam-%E2%80%94-web3-wallet/lccbohhgfkdikahanoclbdmaolidjdfl',
       browserExtension: 'https://wigwam.app',
     },
-    installed: hasInjectedProvider({
-      namespace: 'wigwamEthereum',
-      flag: 'isWigwam',
-    }),
+    namespace: 'wigwamEthereum',
+    flag: 'isWigwam',
     extension: {
       instructions: {
         learnMoreUrl: 'https://wigwam.app/',
@@ -42,9 +36,5 @@ export const wigwamWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'wigwamEthereum',
-      flag: 'isWigwam',
-    }),
   };
 };

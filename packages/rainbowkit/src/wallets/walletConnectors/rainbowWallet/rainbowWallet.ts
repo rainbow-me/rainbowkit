@@ -1,20 +1,7 @@
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type RainbowWalletOptions = DefaultWalletOptions;
-
-export const rainbowWallet = ({
-  projectId,
-  walletConnectParameters,
-}: RainbowWalletOptions): Wallet => {
-  const isRainbowInjected = hasInjectedProvider({ flag: 'isRainbow' });
-  const shouldUseWalletConnect = !isRainbowInjected;
-
+export const rainbowWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return isAndroid()
       ? uri
@@ -31,7 +18,7 @@ export const rainbowWallet = ({
     rdns: 'me.rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
-    installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
+    flag: 'isRainbow',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit&utm_source=rainbowkit',
@@ -41,42 +28,30 @@ export const rainbowWallet = ({
         'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
       browserExtension: 'https://rainbow.me/extension?utm_source=rainbowkit',
     },
-    mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri,
-          instructions: {
-            learnMoreUrl:
-              'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.rainbow.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.rainbow.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.rainbow.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.rainbow.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.rainbow.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.rainbow.qr_code.step3.title',
-              },
-            ],
+    mobile: { getUri },
+    qrCode: {
+      getUri,
+      instructions: {
+        learnMoreUrl:
+          'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
+        steps: [
+          {
+            description: 'wallet_connectors.rainbow.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.rainbow.qr_code.step1.title',
           },
-        }
-      : undefined,
-
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ flag: 'isRainbow' }),
+          {
+            description: 'wallet_connectors.rainbow.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.rainbow.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.rainbow.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.rainbow.qr_code.step3.title',
+          },
+        ],
+      },
+    },
   };
 };

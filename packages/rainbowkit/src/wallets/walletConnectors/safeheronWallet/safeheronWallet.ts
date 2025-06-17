@@ -1,16 +1,10 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const safeheronWallet = (): Wallet => ({
   id: 'safeheron',
   name: 'Safeheron',
-  installed: hasInjectedProvider({
-    namespace: 'safeheron',
-    flag: 'isSafeheron',
-  }),
+  namespace: 'safeheron',
+  flag: 'isSafeheron',
   iconUrl: async () => (await import('./safeheronWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -43,8 +37,4 @@ export const safeheronWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({
-    namespace: 'safeheron',
-    flag: 'isSafeheron',
-  }),
 });

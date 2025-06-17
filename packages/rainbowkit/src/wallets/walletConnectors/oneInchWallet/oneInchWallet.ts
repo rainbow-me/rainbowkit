@@ -1,12 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type OneInchWalletOptions = DefaultWalletOptions;
-
-export const oneInchWallet = ({
-  projectId,
-  walletConnectParameters,
-}: OneInchWalletOptions): Wallet => ({
+export const oneInchWallet = (): Wallet => ({
   id: '1inch',
   name: '1inch Wallet',
   iconUrl: async () => (await import('./oneInchWallet.svg')).default,
@@ -43,8 +37,4 @@ export const oneInchWallet = ({
       ],
     },
   },
-  createConnector: getWalletConnectConnector({
-    projectId,
-    walletConnectParameters,
-  }),
 });

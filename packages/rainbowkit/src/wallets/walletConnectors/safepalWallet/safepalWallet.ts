@@ -1,65 +1,41 @@
-import type {
-  DefaultWalletOptions,
-  InstructionStepName,
-  Wallet,
-} from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { InstructionStepName, Wallet } from '../../Wallet';
 
-export type SafepalWalletOptions = DefaultWalletOptions;
-
-export const safepalWallet = ({
-  projectId,
-  walletConnectParameters,
-}: SafepalWalletOptions): Wallet => {
-  const isSafePalWalletInjected = hasInjectedProvider({
-    namespace: 'safepalProvider',
-    flag: 'isSafePal',
-  });
-  const shouldUseWalletConnect = !isSafePalWalletInjected;
-
+export const safepalWallet = (): Wallet => {
   const getUriMobile = (uri: string) => {
     return `safepalwallet://wc?uri=${encodeURIComponent(uri)}`;
   };
 
-  const getUriQR = async (uri: string) => {
+  const getUriQR = (uri: string) => {
     return uri;
   };
 
   const mobileConnector = {
-    getUri: shouldUseWalletConnect ? getUriMobile : undefined,
+    getUri: getUriMobile,
   };
 
-  let qrConnector = undefined;
-
-  if (shouldUseWalletConnect) {
-    qrConnector = {
-      getUri: getUriQR,
-      instructions: {
-        learnMoreUrl: 'https://safepal.com/',
-        steps: [
-          {
-            description: 'wallet_connectors.safepal.qr_code.step1.description',
-            step: 'install' as InstructionStepName,
-            title: 'wallet_connectors.safepal.qr_code.step1.title',
-          },
-          {
-            description: 'wallet_connectors.safepal.qr_code.step2.description',
-            step: 'create' as InstructionStepName,
-            title: 'wallet_connectors.safepal.qr_code.step2.title',
-          },
-          {
-            description: 'wallet_connectors.safepal.qr_code.step3.description',
-            step: 'scan' as InstructionStepName,
-            title: 'wallet_connectors.safepal.qr_code.step3.title',
-          },
-        ],
-      },
-    };
-  }
+  const qrConnector = {
+    getUri: getUriQR,
+    instructions: {
+      learnMoreUrl: 'https://safepal.com/',
+      steps: [
+        {
+          description: 'wallet_connectors.safepal.qr_code.step1.description',
+          step: 'install' as InstructionStepName,
+          title: 'wallet_connectors.safepal.qr_code.step1.title',
+        },
+        {
+          description: 'wallet_connectors.safepal.qr_code.step2.description',
+          step: 'create' as InstructionStepName,
+          title: 'wallet_connectors.safepal.qr_code.step2.title',
+        },
+        {
+          description: 'wallet_connectors.safepal.qr_code.step3.description',
+          step: 'scan' as InstructionStepName,
+          title: 'wallet_connectors.safepal.qr_code.step3.title',
+        },
+      ],
+    },
+  };
 
   const extensionConnector = {
     instructions: {
@@ -91,7 +67,8 @@ export const safepalWallet = ({
     // Note that we never resolve `installed` to `false` because the
     // SafePal Wallet provider falls back to other connection methods if
     // the injected connector isn't available
-    installed: isSafePalWalletInjected,
+    namespace: 'safepalProvider',
+    flag: 'isSafePal',
     iconAccent: '#3375BB',
     iconBackground: '#fff',
     downloadUrls: {
@@ -105,16 +82,7 @@ export const safepalWallet = ({
       browserExtension: 'https://www.safepal.com/download?product=2',
     },
     mobile: mobileConnector,
-    ...(qrConnector ? qrConnector : {}),
+    qrCode: qrConnector,
     extension: extensionConnector,
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'safepalProvider',
-          flag: 'isSafePal',
-        }),
   };
 };

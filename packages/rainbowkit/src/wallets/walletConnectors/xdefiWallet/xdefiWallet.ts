@@ -1,15 +1,11 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const xdefiWallet = (): Wallet => {
   return {
     id: 'xdefi',
     name: 'XDEFI Wallet',
     rdns: 'io.xdefi',
-    installed: hasInjectedProvider({ namespace: 'xfi.ethereum' }),
+    namespace: 'xfi.ethereum',
     iconUrl: async () => (await import('./xdefiWallet.svg')).default,
     iconBackground: '#fff',
     downloadUrls: {
@@ -39,6 +35,5 @@ export const xdefiWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
   };
 };

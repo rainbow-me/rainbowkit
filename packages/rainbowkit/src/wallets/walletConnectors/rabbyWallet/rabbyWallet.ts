@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const rabbyWallet = (): Wallet => ({
   id: 'rabby',
@@ -10,7 +6,7 @@ export const rabbyWallet = (): Wallet => ({
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
   rdns: 'io.rabby',
   iconBackground: '#8697FF',
-  installed: hasInjectedProvider({ flag: 'isRabby' }),
+  flag: 'isRabby',
   downloadUrls: {
     chrome:
       'https://chrome.google.com/webstore/detail/rabby-wallet/acmacodkjbdgmoleebolmdjonilkdbch',
@@ -38,5 +34,4 @@ export const rabbyWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isRabby' }),
 });

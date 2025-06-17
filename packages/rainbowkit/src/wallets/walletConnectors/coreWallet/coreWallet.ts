@@ -1,28 +1,14 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type CoreWalletOptions = DefaultWalletOptions;
-
-export const coreWallet = ({
-  projectId,
-  walletConnectParameters,
-}: CoreWalletOptions): Wallet => {
-  const isCoreInjected = hasInjectedProvider({
-    namespace: 'avalanche',
-    flag: 'isAvalanche',
-  });
-  const shouldUseWalletConnect = !isCoreInjected;
+export const coreWallet = (): Wallet => {
   return {
     id: 'core',
     name: 'Core',
     rdns: 'app.core.extension',
     iconUrl: async () => (await import('./coreWallet.svg')).default,
     iconBackground: '#1A1A1C',
-    installed: !shouldUseWalletConnect ? isCoreInjected : undefined,
+    namespace: 'avalanche',
+    flag: 'isAvalanche',
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=com.avaxwallet',
       ios: 'https://apps.apple.com/us/app/core-wallet/id6443685999',
@@ -33,34 +19,32 @@ export const coreWallet = ({
       browserExtension: 'https://extension.core.app/',
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? (uri: string) => uri : undefined,
+      getUri: (uri: string) => uri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl:
-              'https://support.avax.network/en/articles/6115608-core-mobile-how-to-add-the-core-mobile-to-my-phone',
-            steps: [
-              {
-                description: 'wallet_connectors.core.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.core.qr_code.step1.title',
-              },
-              {
-                description: 'wallet_connectors.core.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.core.qr_code.step2.title',
-              },
-              {
-                description: 'wallet_connectors.core.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.core.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl:
+          'https://support.avax.network/en/articles/6115608-core-mobile-how-to-add-the-core-mobile-to-my-phone',
+        steps: [
+          {
+            description: 'wallet_connectors.core.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.core.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.core.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.core.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.core.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.core.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://extension.core.app/',
@@ -83,14 +67,5 @@ export const coreWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'avalanche',
-          flag: 'isAvalanche',
-        }),
   };
 };

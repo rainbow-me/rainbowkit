@@ -1,23 +1,6 @@
-import type {
-  DefaultWalletOptions,
-  InstructionStepName,
-  Wallet,
-} from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { InstructionStepName, Wallet } from '../../Wallet';
 
-export type SubWalletOptions = DefaultWalletOptions;
-
-export const subWallet = ({
-  projectId,
-  walletConnectParameters,
-}: SubWalletOptions): Wallet => {
-  const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
-  const shouldUseWalletConnect = !isSubWalletInjected;
-
+export const subWallet = (): Wallet => {
   const getUriMobile = (uri: string) => {
     return `subwallet://wc?uri=${encodeURIComponent(uri)}`;
   };
@@ -27,39 +10,32 @@ export const subWallet = ({
   };
 
   const mobileConnector = {
-    getUri: shouldUseWalletConnect ? getUriMobile : undefined,
+    getUri: getUriMobile,
   };
 
-  let qrConnector = undefined;
-
-  if (shouldUseWalletConnect) {
-    qrConnector = {
-      getUri: getUriQR,
-      instructions: {
-        learnMoreUrl: 'https://www.subwallet.app/',
-        steps: [
-          {
-            description:
-              'wallet_connectors.subwallet.qr_code.step1.description',
-            step: 'install' as InstructionStepName,
-            title: 'wallet_connectors.subwallet.qr_code.step1.title',
-          },
-          {
-            description:
-              'wallet_connectors.subwallet.qr_code.step2.description',
-            step: 'create' as InstructionStepName,
-            title: 'wallet_connectors.subwallet.qr_code.step2.title',
-          },
-          {
-            description:
-              'wallet_connectors.subwallet.qr_code.step3.description',
-            step: 'scan' as InstructionStepName,
-            title: 'wallet_connectors.subwallet.qr_code.step3.title',
-          },
-        ],
-      },
-    };
-  }
+  const qrConnector = {
+    getUri: getUriQR,
+    instructions: {
+      learnMoreUrl: 'https://www.subwallet.app/',
+      steps: [
+        {
+          description: 'wallet_connectors.subwallet.qr_code.step1.description',
+          step: 'install' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.qr_code.step1.title',
+        },
+        {
+          description: 'wallet_connectors.subwallet.qr_code.step2.description',
+          step: 'create' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.qr_code.step2.title',
+        },
+        {
+          description: 'wallet_connectors.subwallet.qr_code.step3.description',
+          step: 'scan' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.qr_code.step3.title',
+        },
+      ],
+    },
+  };
 
   const extensionConnector = {
     instructions: {
@@ -93,7 +69,7 @@ export const subWallet = ({
     rdns: 'app.subwallet',
     iconUrl: async () => (await import('./subWallet.svg')).default,
     iconBackground: '#fff',
-    installed: isSubWalletInjected || undefined,
+    namespace: 'SubWallet',
     downloadUrls: {
       browserExtension: 'https://www.subwallet.app/download',
       chrome:
@@ -109,11 +85,5 @@ export const subWallet = ({
     mobile: mobileConnector,
     qrCode: qrConnector,
     extension: extensionConnector,
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({ namespace: 'SubWallet' }),
   };
 };

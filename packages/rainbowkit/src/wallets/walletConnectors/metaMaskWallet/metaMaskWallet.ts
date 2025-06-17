@@ -5,7 +5,6 @@ import type {
   Wallet,
   WalletDetailsParams,
 } from '../../Wallet';
-import { hasInjectedProvider } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import { isMobile } from '../../../utils/isMobile';
 import type { WindowProvider } from '../../../types/utils';
@@ -82,6 +81,7 @@ export const metaMaskWallet = ({
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',
+    flag: 'isMetaMask',
     installed: isMetaMaskInjected ? isMetaMaskInjected : undefined,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
