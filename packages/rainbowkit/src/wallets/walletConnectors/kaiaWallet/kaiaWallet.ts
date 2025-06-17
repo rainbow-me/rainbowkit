@@ -1,22 +1,6 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type KaiaWalletOptions = DefaultWalletOptions;
-
-export const kaiaWallet = ({
-  projectId,
-  walletConnectParameters,
-}: KaiaWalletOptions): Wallet => {
-  const isKaiaWalletInjected = hasInjectedProvider({
-    namespace: 'klaytn',
-  });
-
-  const shouldUseWalletConnect = !isKaiaWalletInjected;
-
+export const kaiaWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return `kaikas://walletconnect?uri=${encodeURIComponent(uri)}`;
   };
@@ -25,7 +9,7 @@ export const kaiaWallet = ({
     id: 'kaia',
     name: 'Kaia Wallet',
     iconUrl: async () => (await import('./kaiaWallet.svg')).default,
-    installed: isKaiaWalletInjected || undefined,
+    namespace: 'klaytn',
     iconBackground: '#fff',
     downloadUrls: {
       chrome:
@@ -36,32 +20,30 @@ export const kaiaWallet = ({
       android: 'https://play.google.com/store/apps/details?id=io.klutch.wallet',
       mobile: 'https://app.kaiawallet.io',
     },
-    mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://kaiawallet.io',
-            steps: [
-              {
-                description: 'wallet_connectors.kaia.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.kaia.qr_code.step1.title',
-              },
-              {
-                description: 'wallet_connectors.kaia.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.kaia.qr_code.step2.title',
-              },
-              {
-                description: 'wallet_connectors.kaia.qr_code.step3.description',
-                step: 'refresh',
-                title: 'wallet_connectors.kaia.qr_code.step3.title',
-              },
-            ],
+    mobile: { getUri },
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://kaiawallet.io',
+        steps: [
+          {
+            description: 'wallet_connectors.kaia.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.kaia.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.kaia.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.kaia.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.kaia.qr_code.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.kaia.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://kaiawallet.io',
@@ -84,13 +66,5 @@ export const kaiaWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'klaytn',
-        }),
   };
 };

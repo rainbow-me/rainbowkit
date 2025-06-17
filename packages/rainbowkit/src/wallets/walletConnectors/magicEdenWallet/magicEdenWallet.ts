@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const magicEdenWallet = (): Wallet => {
   return {
@@ -11,7 +7,7 @@ export const magicEdenWallet = (): Wallet => {
     rdns: 'io.magiceden.wallet',
     iconUrl: async () => (await import('./magicEden.svg')).default,
     iconBackground: '#36114D',
-    installed: hasInjectedProvider({ namespace: 'magicEden.ethereum' }),
+    namespace: 'magicEden.ethereum',
     downloadUrls: {
       chrome:
         'https://chromewebstore.google.com/detail/magic-eden-wallet/mkpegjkblkkefacfnmkajcjmabijhclg',
@@ -42,8 +38,5 @@ export const magicEdenWallet = (): Wallet => {
         learnMoreUrl: 'https://wallet.magiceden.io/support',
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'magicEden.ethereum',
-    }),
   };
 };

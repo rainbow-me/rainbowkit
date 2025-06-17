@@ -1,18 +1,9 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { Wallet } from '../../Wallet';
 
-export type ZilPayWalletOptions = DefaultWalletOptions;
-
-export const zilPayWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZilPayWalletOptions): Wallet => {
-  const isZilPayInjected = hasInjectedProvider({ flag: 'isZilPay' });
-  const shouldUseWalletConnect = !isZilPayInjected;
+export const zilPayWallet = (): Wallet => {
+  const getUri = (uri: string) => {
+    return `zilpay://wc?uri=${encodeURIComponent(uri)}`;
+  };
 
   return {
     id: 'zilpay',
@@ -26,48 +17,32 @@ export const zilPayWallet = ({
       mobile: 'https://zilpay.io/',
       qrCode: 'https://zilpay.io/',
     },
+    flag: 'isZilPay',
     mobile: {
-      getUri: shouldUseWalletConnect
-        ? (uri: string) => {
-            return `zilpay://wc?uri=${encodeURIComponent(uri)}`;
-          }
-        : undefined,
+      getUri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => uri,
-          instructions: {
-            learnMoreUrl: 'https://zilpay.io',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.zilpay.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.zilpay.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.zilpay.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.zilpay.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.zilpay.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.zilpay.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://zilpay.io',
+        steps: [
+          {
+            description: 'wallet_connectors.zilpay.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.zilpay.qr_code.step1.title',
           },
-        }
-      : undefined,
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          flag: 'isZilPay',
-        }),
+          {
+            description: 'wallet_connectors.zilpay.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.zilpay.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.zilpay.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.zilpay.qr_code.step3.title',
+          },
+        ],
+      },
+    },
   };
 };

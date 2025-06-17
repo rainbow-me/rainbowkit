@@ -1,28 +1,13 @@
 import { isAndroid } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { DefaultWalletOptions } from './../../Wallet';
 
-export type FrontierWalletOptions = DefaultWalletOptions;
-
-export const frontierWallet = ({
-  projectId,
-  walletConnectParameters,
-}: FrontierWalletOptions): Wallet => {
-  const isFrontierInjected = hasInjectedProvider({
-    namespace: 'frontier.ethereum',
-    flag: 'isFrontier',
-  });
-  const shouldUseWalletConnect = !isFrontierInjected;
+export const frontierWallet = (): Wallet => {
   return {
     id: 'frontier',
     name: 'Frontier Wallet',
     rdns: 'xyz.frontier.wallet',
-    installed: isFrontierInjected,
+    namespace: 'frontier.ethereum',
+    flag: 'isFrontier',
     iconUrl: async () => (await import('./frontierWallet.svg')).default,
     iconBackground: '#CC703C',
     downloadUrls: {
@@ -36,46 +21,39 @@ export const frontierWallet = ({
     },
 
     mobile: {
-      getUri: shouldUseWalletConnect
-        ? (uri: string) => {
-            return isAndroid()
-              ? `frontier://wc?uri=${encodeURIComponent(uri)}`
-              : uri;
-          }
-        : undefined,
+      getUri: (uri: string) => {
+        return isAndroid()
+          ? `frontier://wc?uri=${encodeURIComponent(uri)}`
+          : uri;
+      },
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri: (uri: string) => {
-            return isAndroid()
-              ? `frontier://wc?uri=${encodeURIComponent(uri)}`
-              : uri;
+    qrCode: {
+      getUri: (uri: string) => {
+        return isAndroid()
+          ? `frontier://wc?uri=${encodeURIComponent(uri)}`
+          : uri;
+      },
+      instructions: {
+        learnMoreUrl: 'https://help.frontier.xyz/en/',
+        steps: [
+          {
+            description: 'wallet_connectors.im_token.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.im_token.qr_code.step1.title',
           },
-          instructions: {
-            learnMoreUrl: 'https://help.frontier.xyz/en/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.im_token.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.im_token.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.im_token.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.im_token.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.im_token.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.im_token.qr_code.step3.title',
-              },
-            ],
+          {
+            description: 'wallet_connectors.im_token.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.im_token.qr_code.step2.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.im_token.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.im_token.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl:
@@ -102,11 +80,5 @@ export const frontierWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({ projectId, walletConnectParameters })
-      : getInjectedConnector({
-          namespace: 'frontier.ethereum',
-          flag: 'isFrontier',
-        }),
   };
 };

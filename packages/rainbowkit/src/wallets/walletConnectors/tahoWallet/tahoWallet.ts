@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const tahoWallet = (): Wallet => {
   return {
@@ -15,7 +11,8 @@ export const tahoWallet = (): Wallet => {
         'https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd',
       browserExtension: 'https://taho.xyz',
     },
-    installed: hasInjectedProvider({ namespace: 'tally', flag: 'isTally' }),
+    namespace: 'tally',
+    flag: 'isTally',
     extension: {
       instructions: {
         learnMoreUrl:
@@ -39,9 +36,5 @@ export const tahoWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'tally',
-      flag: 'isTally',
-    }),
   };
 };

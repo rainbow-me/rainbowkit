@@ -2,6 +2,11 @@ import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from './getInjectedConnector';
+import { getWalletConnectConnector } from './getWalletConnectConnector';
 import type { Wallet, WalletList } from './Wallet';
 
 interface WalletListItem extends Wallet {
@@ -122,7 +127,27 @@ export const connectorsForWallets = (
       };
     };
 
-    const connector = createConnector(walletMetaData());
+    let connector: CreateConnectorFn;
+    if (createConnector) {
+      connector = createConnector(walletMetaData());
+    } else {
+      const useInjected = hasInjectedProvider({
+        flag: walletMeta.flag,
+        namespace: walletMeta.namespace,
+      });
+
+      const fallback = useInjected
+        ? getInjectedConnector({
+            flag: walletMeta.flag,
+            namespace: walletMeta.namespace,
+          })
+        : getWalletConnectConnector({
+            projectId,
+            //walletConnectParameters,
+          });
+
+      connector = fallback(walletMetaData());
+    }
 
     connectors.push(connector);
   }

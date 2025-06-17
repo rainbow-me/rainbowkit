@@ -1,8 +1,4 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const nestWallet = (): Wallet => ({
   id: 'nest',
@@ -10,7 +6,7 @@ export const nestWallet = (): Wallet => ({
   rdns: 'xyz.nestwallet',
   iconUrl: async () => (await import('./nestWallet.svg')).default,
   iconBackground: '#fff0',
-  installed: hasInjectedProvider({ flag: 'isNestWallet' }),
+  flag: 'isNestWallet',
   downloadUrls: {
     browserExtension: 'https://nestwallet.xyz',
   },
@@ -39,5 +35,4 @@ export const nestWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isNestWallet' }),
 });

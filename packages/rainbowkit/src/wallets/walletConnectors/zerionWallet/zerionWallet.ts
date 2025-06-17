@@ -1,24 +1,7 @@
 import { isIOS } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { DefaultWalletOptions } from './../../Wallet';
 
-export type ZerionWalletOptions = DefaultWalletOptions;
-
-export const zerionWallet = ({
-  projectId,
-  walletConnectParameters,
-}: ZerionWalletOptions): Wallet => {
-  const isZerionInjected = hasInjectedProvider({
-    namespace: 'zerionWallet',
-    flag: 'isZerion',
-  });
-  const shouldUseWalletConnect = !isZerionInjected;
-
+export const zerionWallet = (): Wallet => {
   const getUri = (uri: string) => {
     return isIOS() ? `zerion://wc?uri=${encodeURIComponent(uri)}` : uri;
   };
@@ -30,7 +13,8 @@ export const zerionWallet = ({
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
     iconAccent: '#2962ef',
     iconBackground: '#2962ef',
-    installed: !shouldUseWalletConnect ? isZerionInjected : undefined,
+    namespace: 'zerionWallet',
+    flag: 'isZerion',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=io.zerion.android',
@@ -42,37 +26,32 @@ export const zerionWallet = ({
       browserExtension: 'https://zerion.io/extension',
     },
     mobile: {
-      getUri: shouldUseWalletConnect ? getUri : undefined,
+      getUri,
     },
-    qrCode: shouldUseWalletConnect
-      ? {
-          getUri,
-          instructions: {
-            learnMoreUrl:
-              'https://zerion.io/blog/announcing-the-zerion-smart-wallet/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.zerion.qr_code.step1.description',
-                step: 'install',
-                title: 'wallet_connectors.zerion.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.zerion.qr_code.step2.description',
-                step: 'create',
-                title: 'wallet_connectors.zerion.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.zerion.qr_code.step3.description',
-                step: 'scan',
-                title: 'wallet_connectors.zerion.qr_code.step3.title',
-              },
-            ],
+    qrCode: {
+      getUri,
+      instructions: {
+        learnMoreUrl:
+          'https://zerion.io/blog/announcing-the-zerion-smart-wallet/',
+        steps: [
+          {
+            description: 'wallet_connectors.zerion.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.zerion.qr_code.step1.title',
           },
-        }
-      : undefined,
+          {
+            description: 'wallet_connectors.zerion.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.zerion.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.zerion.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.zerion.qr_code.step3.title',
+          },
+        ],
+      },
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://help.zerion.io/en/',
@@ -95,14 +74,5 @@ export const zerionWallet = ({
         ],
       },
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          namespace: 'zerionWallet',
-          flag: 'isZerion',
-        }),
   };
 };

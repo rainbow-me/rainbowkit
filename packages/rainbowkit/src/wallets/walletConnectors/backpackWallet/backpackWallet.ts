@@ -1,7 +1,3 @@
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 import type { Wallet } from '../../Wallet';
 
 export const backpackWallet = (): Wallet => {
@@ -11,7 +7,7 @@ export const backpackWallet = (): Wallet => {
     rdns: 'app.backpack.mobile',
     iconUrl: async () => (await import('./backpackWallet.svg')).default,
     iconBackground: '#0C0D10',
-    installed: hasInjectedProvider({ namespace: 'backpack.ethereum' }),
+    namespace: 'backpack.ethereum',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=app.backpack.mobile',
@@ -47,6 +43,5 @@ export const backpackWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'backpack.ethereum' }),
   };
 };

@@ -1,15 +1,11 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const enkryptWallet = (): Wallet => {
   return {
     id: 'enkrypt',
     name: 'Enkrypt Wallet',
     rdns: 'com.enkrypt',
-    installed: hasInjectedProvider({ namespace: 'enkrypt.providers.ethereum' }),
+    namespace: 'enkrypt.providers.ethereum',
     iconUrl: async () => (await import('./enkryptWallet.svg')).default,
     iconBackground: '#FFFFFF',
     downloadUrls: {
@@ -47,8 +43,5 @@ export const enkryptWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'enkrypt.providers.ethereum',
-    }),
   };
 };

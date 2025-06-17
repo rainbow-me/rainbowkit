@@ -1,19 +1,11 @@
 import type { Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
 
 export const ramperWallet = (): Wallet => {
-  const isRamperWalletInjected = hasInjectedProvider({
-    namespace: 'ramper2.provider',
-  });
-
   return {
     id: 'ramper',
     name: 'Ramper Wallet',
     iconUrl: async () => (await import('./ramperWallet.svg')).default,
-    installed: isRamperWalletInjected,
+    namespace: 'ramper2.provider',
     iconAccent: '#CDA349',
     iconBackground: '#fff',
     downloadUrls: {
@@ -43,8 +35,5 @@ export const ramperWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({
-      namespace: 'ramper2.provider',
-    }),
   };
 };
