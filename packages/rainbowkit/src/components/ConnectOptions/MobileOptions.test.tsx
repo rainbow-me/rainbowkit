@@ -12,7 +12,7 @@ const connectMock = vi.fn(() => Promise.reject(new Error('rejected')));
 const failingWallet: WalletConnector = {
   id: 'mock',
   name: 'Mock',
-  iconUrl: '',
+  iconUrl: 'data:image/png;base64,iVBORw0KGgo=',
   iconBackground: '#fff',
   ready: true,
   connect: connectMock,

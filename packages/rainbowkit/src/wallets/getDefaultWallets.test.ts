@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, beforeAll, afterAll, vi } from 'vitest';
 import { getDefaultWallets } from './getDefaultWallets';
 
 const params = {
@@ -14,6 +14,11 @@ const optionalParams = {
 } as const;
 
 describe('getDefaultWallets', () => {
+  beforeAll(() => {
+    vi.spyOn(process.stdout, 'write').mockImplementation(
+      () => true as unknown as number,
+    );
+  });
   it('returns only wallets when no parameters are provided', () => {
     const result = getDefaultWallets();
     expect(Array.isArray(result.wallets)).toBe(true);
