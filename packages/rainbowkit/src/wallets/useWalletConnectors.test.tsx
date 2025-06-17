@@ -17,7 +17,7 @@ describe('useWalletConnectors', () => {
 
     const wallets = [mockWallet('rainbow', 'Rainbow')];
 
-    renderWithProviders(<TestComponent />, {
+    const { unmount } = renderWithProviders(<TestComponent />, {
       chains: [mainnet],
       mockWallets: [{ groupName: 'Popular', wallets }],
     });
@@ -26,6 +26,7 @@ describe('useWalletConnectors', () => {
     expect(Array.isArray(connectors)).toBe(true);
     expect(connectors.length).toBeGreaterThan(0);
     expect(typeof connectors[0].connect).toBe('function');
+    unmount();
   });
 
   it('merges EIP6963 wallets when requested', () => {
@@ -39,12 +40,13 @@ describe('useWalletConnectors', () => {
 
     const wallets = [mockWallet('rainbow', 'Rainbow')];
 
-    renderWithProviders(<TestComponent />, {
+    const { unmount } = renderWithProviders(<TestComponent />, {
       chains: [mainnet],
       mockWallets: [{ groupName: 'Popular', wallets }],
     });
 
     const connectors = spy.mock.calls[0][0];
     expect(Array.isArray(connectors)).toBe(true);
+    unmount();
   });
 });
