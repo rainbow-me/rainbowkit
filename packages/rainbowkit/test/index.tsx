@@ -16,7 +16,8 @@ import {
 import { mock } from 'wagmi/connectors';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import type { WalletList } from '../src/wallets/Wallet';
+import type { Wallet, DefaultWalletOptions } from '../src/wallets/Wallet';
+import type { CoinbaseWalletOptions } from '../src/wallets/walletConnectors/coinbaseWallet/coinbaseWallet';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
 import { mockedAccounts } from './mockWallet';
 
@@ -37,7 +38,9 @@ export function renderWithProviders(
   component: ReactElement,
   options?: {
     chains?: readonly [Chain, ...Chain[]];
-    mockWallets?: WalletList;
+    mockWallets?: ((
+      createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+    ) => Wallet)[];
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {

@@ -1,5 +1,6 @@
 import type { CreateConnectorFn } from 'wagmi';
-import type { WalletList } from './Wallet';
+import type { Wallet, DefaultWalletOptions } from './Wallet';
+import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import {
   type ConnectorsForWalletsParameters,
   connectorsForWallets,
@@ -11,22 +12,36 @@ import { walletConnectWallet } from './walletConnectors/walletConnectWallet/wall
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: CreateConnectorFn[];
-  wallets: WalletList;
+  wallets: ((
+    createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+  ) => Wallet)[];
 };
 
-export function getDefaultWallets(): { wallets: WalletList };
+export function getDefaultWallets(): {
+  wallets: ((
+    createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+  ) => Wallet)[];
+};
 
-export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
-  const wallets: WalletList = [
-    {
-      groupName: 'Popular',
-      wallets: [
-        rainbowWallet,
-        coinbaseWallet,
-        metaMaskWallet,
-        walletConnectWallet,
-      ],
-    },
+export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters):
+  | {
+      connectors: CreateConnectorFn[];
+      wallets: ((
+        createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+      ) => Wallet)[];
+    }
+  | {
+      wallets: ((
+        createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+      ) => Wallet)[];
+    } {
+  const wallets: ((
+    createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+  ) => Wallet)[] = [
+    rainbowWallet,
+    coinbaseWallet,
+    metaMaskWallet,
+    walletConnectWallet,
   ];
 
   if (parameters) {

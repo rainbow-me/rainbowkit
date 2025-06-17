@@ -7,13 +7,8 @@ import {
   hasInjectedProvider,
 } from './getInjectedConnector';
 import { getWalletConnectConnector } from './getWalletConnectConnector';
-import type { Wallet, WalletList } from './Wallet';
-
-interface WalletListItem extends Wallet {
-  index: number;
-  groupIndex: number;
-  groupName: string;
-}
+import type { Wallet, WalletList, DefaultWalletOptions } from './Wallet';
+import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 
 export interface ConnectorsForWalletsParameters {
   projectId: string;
@@ -24,7 +19,11 @@ export interface ConnectorsForWalletsParameters {
 }
 
 export const connectorsForWallets = (
-  walletList: WalletList,
+  wallets:
+    | WalletList
+    | ((
+        createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+      ) => Wallet)[],
   {
     projectId,
     appName,
@@ -33,68 +32,75 @@ export const connectorsForWallets = (
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
-  if (!walletList.length) {
-    throw new Error('No wallet list was provided');
-  }
+  const walletFactories = (
+    Array.isArray(wallets)
+      ? wallets
+      : (wallets as WalletList).flatMap((group) => group.wallets)
+  ) as ((
+    createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
+  ) => Wallet)[];
 
-  for (const { wallets, groupName } of walletList) {
-    if (!wallets.length) {
-      throw new Error(`No wallets provided for group: ${groupName}`);
-    }
+  if (!walletFactories.length) {
+    throw new Error('No wallets provided');
   }
 
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];
-  const visibleWallets: WalletListItem[] = [];
-  const potentiallyHiddenWallets: WalletListItem[] = [];
+  const visibleWallets: Array<
+    Wallet & { index: number; groupIndex: number; groupName: string }
+  > = [];
+  const potentiallyHiddenWallets: Array<
+    Wallet & { index: number; groupIndex: number; groupName: string }
+  > = [];
 
-  for (const [groupIndex, { groupName, wallets }] of walletList.entries()) {
-    for (const createWallet of wallets) {
-      index++;
+  const groupIndex = 0;
+  const groupName = '';
 
-      const wallet = createWallet({
-        projectId,
-        appName,
-        appIcon,
-        walletConnectParameters: {
-          metadata: {
-            name: appName,
-            description: appDescription ?? appName,
-            url:
-              appUrl ??
-              (typeof window !== 'undefined' ? window.location.origin : ''),
-            icons: [...(appIcon ? [appIcon] : [])],
-          },
+  for (const createWallet of walletFactories) {
+    index++;
+
+    const wallet = createWallet({
+      projectId,
+      appName,
+      appIcon,
+      walletConnectParameters: {
+        metadata: {
+          name: appName,
+          description: appDescription ?? appName,
+          url:
+            appUrl ??
+            (typeof window !== 'undefined' ? window.location.origin : ''),
+          icons: [...(appIcon ? [appIcon] : [])],
         },
-      });
+      },
+    });
 
-      // guard against non-hex values for `iconAccent`
-      if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
-        throw new Error(
-          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
-        );
-      }
+    // guard against non-hex values for `iconAccent`
+    if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
+      throw new Error(
+        `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
+      );
+    }
 
-      const walletListItem = {
-        ...wallet,
-        groupIndex: groupIndex + 1,
-        groupName,
-        index,
-      };
+    const walletListItem = {
+      ...wallet,
+      groupIndex: groupIndex + 1,
+      groupName,
+      index,
+    };
 
-      if (typeof wallet.hidden === 'function') {
-        potentiallyHiddenWallets.push(walletListItem);
-      } else {
-        visibleWallets.push(walletListItem);
-      }
+    if (typeof wallet.hidden === 'function') {
+      potentiallyHiddenWallets.push(walletListItem);
+    } else {
+      visibleWallets.push(walletListItem);
     }
   }
 
   // Filtering out duplicated wallets in case there is any.
   // We process the known visible wallets first so that the potentially
   // hidden wallets have access to the complete list of resolved wallets
-  const walletListItems: WalletListItem[] = uniqueBy(
+  const walletItems = uniqueBy(
     [...visibleWallets, ...potentiallyHiddenWallets],
     'id',
   );
@@ -105,7 +111,7 @@ export const connectorsForWallets = (
     groupName,
     hidden,
     ...walletMeta
-  } of walletListItems) {
+  } of walletItems) {
     if (typeof hidden === 'function') {
       // Run the function to check if the wallet needs to be hidden
       const isHidden = hidden();

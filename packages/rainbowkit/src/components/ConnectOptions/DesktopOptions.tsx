@@ -90,15 +90,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
 
-  const supportedI18nGroupNames = [
-    'Recommended',
-    'Other',
-    'Popular',
-    'More',
-    'Others',
-    'Installed',
-  ];
-
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
   useEffect(() => {
@@ -418,19 +409,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     {groupName ? (
                       <Box marginBottom="8" marginTop="16" marginX="6">
                         <Text
-                          color={
-                            groupName === 'Installed'
-                              ? 'accentColor'
-                              : 'modalTextSecondary'
-                          }
+                          color={'modalTextSecondary'}
                           size="14"
                           weight="bold"
                         >
-                          {supportedI18nGroupNames.includes(groupName)
-                            ? i18n.t(
-                                `connector_group.${groupName.toLowerCase()}`,
-                              )
-                            : groupName}
+                          {groupName}
                         </Text>
                       </Box>
                     ) : null}
