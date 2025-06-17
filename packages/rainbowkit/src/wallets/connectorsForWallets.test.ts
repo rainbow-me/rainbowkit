@@ -77,19 +77,16 @@ describe('connectorsForWallets', () => {
           [
             {
               groupName: 'Test Group 1',
-              wallets: [
-                // @ts-expect-error
-                walletConnectWallet({ projectId: undefined }),
-              ],
+              wallets: [walletConnectWallet],
             },
           ],
           {
-            projectId: exampleProjectId,
+            projectId: '',
             appName: 'rainbowkit.com',
           },
         );
       }).toThrow(
-        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId',
+        'No projectId found. Every dApp must now provide a WalletConnect projectId',
       );
     });
   });

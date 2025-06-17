@@ -85,7 +85,7 @@ export function getWalletConnectConnector({
 
   if (!projectId || projectId === '') {
     throw new Error(
-      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
+      'No projectId found. Every dApp must now provide a WalletConnect projectId',
     );
   }
 
