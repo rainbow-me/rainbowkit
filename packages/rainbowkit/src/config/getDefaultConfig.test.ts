@@ -6,7 +6,7 @@ import { mockWallet } from '../../test/mockWallet';
 describe('getDefaultConfig', () => {
   it('creates a Wagmi config with default wallets', () => {
     const config = getDefaultConfig({
-      appName: 'rainbowkit.com',
+      appName: 'RainbowKit',
       projectId: 'test-project-id',
       chains: [mainnet],
     });
@@ -22,7 +22,7 @@ describe('getDefaultConfig', () => {
     ];
 
     const config = getDefaultConfig({
-      appName: 'rainbowkit.com',
+      appName: 'RainbowKit',
       projectId: 'test-project-id',
       chains: [mainnet],
       wallets,
@@ -33,12 +33,12 @@ describe('getDefaultConfig', () => {
 
   it('accepts optional app metadata', () => {
     const config = getDefaultConfig({
-      appName: 'rainbowkit.com',
+      appName: 'RainbowKit',
       projectId: 'test-project-id',
       chains: [mainnet],
-      appDescription: 'desc',
-      appUrl: 'https://rk.com',
-      appIcon: '/logo.png',
+      appDescription: 'RainbowKit unit tests',
+      appUrl: 'https://rainbowkit.com',
+      appIcon: 'https://rainbowkit.com/rainbow.svg',
     });
 
     expect(Array.isArray(config.connectors)).toBe(true);
