@@ -51,15 +51,15 @@ type RainbowKitConnector = {
 export type Wallet = {
   id: string;
   name: string;
-  rdns?: string;
   shortName?: string;
   iconUrl: string | (() => Promise<string>);
   iconAccent?: string;
   iconBackground: string;
-  /** @deprecated */
+  /** @deprecated Use `flag` and `namespace` instead */
   installed?: boolean;
   flag?: WalletProviderFlags;
   namespace?: string;
+  rdns?: string;
   downloadUrls?: {
     android?: string;
     ios?: string;
@@ -77,6 +77,7 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
+  /** @deprecated Use Wagmi connector instead */
   createConnector?: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
