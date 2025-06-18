@@ -97,6 +97,7 @@
       "utf-8-validate"
     ],
     "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
       "esbuild"
     ]
   },
