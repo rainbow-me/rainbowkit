@@ -115,6 +115,8 @@ export const metaMaskWallet = ({
                 url: walletConnectParameters?.metadata?.url,
               },
               headless: true,
+              checkInstallationImmediately: false,
+              enableAnalytics: false,
             })(config);
 
             /**
