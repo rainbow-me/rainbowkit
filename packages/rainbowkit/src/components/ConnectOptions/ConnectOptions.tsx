@@ -9,10 +9,11 @@ import { MobileStatus } from './MobileStatus';
 export default function ConnectOptions({ onClose }: { onClose: () => void }) {
   const { connector } = useContext(WalletButtonContext);
 
+  // Don't show mobile status for injected wallets or in dapp browsers
+  // These wallet interactions should be instant not require loading indicator
   const showMobileStatus =
-    !!connector &&
-    (connector.id === 'injected' || isEIP6963Connector(connector)) &&
-    !connector.getMobileUri;
+    connector &&
+    !(connector.id === 'injected' || isEIP6963Connector(connector));
 
   return isMobile() ? (
     showMobileStatus ? (

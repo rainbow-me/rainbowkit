@@ -40,7 +40,7 @@ describe('<ConnectOptions /> mobile status', () => {
     restoreUA();
   });
 
-  it('shows MobileStatus for injected connector', () => {
+  it('shows MobileOptions for injected connector', () => {
     const wallets = [
       {
         groupName: 'Popular',
@@ -62,10 +62,13 @@ describe('<ConnectOptions /> mobile status', () => {
       { mockWallets: wallets, chains: [mainnet] },
     );
 
-    expect(screen.getByText('Continue in Browser Wallet')).toBeInTheDocument();
+    expect(screen.getByText('Get a Wallet')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Continue in Browser Wallet'),
+    ).not.toBeInTheDocument();
   });
 
-  it('shows MobileStatus for an EIP-6963 connector', () => {
+  it('shows MobileOptions for an EIP-6963 connector', () => {
     const connector = {
       ...baseConnector,
       id: 'eip',
@@ -84,10 +87,13 @@ describe('<ConnectOptions /> mobile status', () => {
       { chains: [mainnet] },
     );
 
-    expect(screen.getByText('Continue in EIP Wallet')).toBeInTheDocument();
+    expect(screen.getByText('Get a Wallet')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Continue in EIP Wallet'),
+    ).not.toBeInTheDocument();
   });
 
-  it('shows MobileOptions for WalletConnect connector', () => {
+  it('shows MobileStatus for WalletConnect connector', () => {
     const wallets = [
       {
         groupName: 'Popular',
@@ -109,13 +115,10 @@ describe('<ConnectOptions /> mobile status', () => {
       { mockWallets: wallets, chains: [mainnet] },
     );
 
-    expect(screen.getByText('Get a Wallet')).toBeInTheDocument();
-    expect(
-      screen.queryByText('Continue in WalletConnect'),
-    ).not.toBeInTheDocument();
+    expect(screen.getByText('Continue in WalletConnect')).toBeInTheDocument();
   });
 
-  it('shows MobileOptions for Coinbase connector', () => {
+  it('shows MobileStatus for Coinbase connector', () => {
     const wallets = [
       {
         groupName: 'Popular',
@@ -137,9 +140,6 @@ describe('<ConnectOptions /> mobile status', () => {
       { mockWallets: wallets, chains: [mainnet] },
     );
 
-    expect(screen.getByText('Get a Wallet')).toBeInTheDocument();
-    expect(
-      screen.queryByText('Continue in Coinbase Wallet'),
-    ).not.toBeInTheDocument();
+    expect(screen.getByText('Continue in Coinbase Wallet')).toBeInTheDocument();
   });
 });
