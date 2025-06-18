@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.8
+
+### Patch Changes
+
+- f542876: The `metaMaskWallet` wallet connector now utilizes the [MetaMask SDK](https://docs.metamask.io/sdk/) for more reliable, faster connections on mobile
+
 ## 2.2.7
 
 ### Patch Changes
