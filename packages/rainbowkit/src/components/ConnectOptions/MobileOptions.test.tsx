@@ -9,7 +9,7 @@ import { WalletButton } from './MobileOptions';
 
 const connectMock = vi.fn(() => Promise.reject(new Error('rejected')));
 
-const failingWallet: WalletConnector = {
+const failingWallet = {
   id: 'mock',
   name: 'Mock',
   iconUrl: 'data:image/png;base64,iVBORw0KGgo=',
@@ -17,7 +17,8 @@ const failingWallet: WalletConnector = {
   ready: true,
   connect: connectMock,
   recent: false,
-};
+  // Other WalletConnector fields are not required for this specific test.
+} as unknown as WalletConnector;
 
 describe('<WalletButton />', () => {
   it('catches rejected connect() calls', async () => {
