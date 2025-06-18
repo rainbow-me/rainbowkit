@@ -7,8 +7,9 @@
     "declaration": true,
     "declarationDir": "dist",
     "jsx": "react",
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.test.ts"],
+  "exclude": ["node_modules"],
   "include": ["src", "assets.d.ts"]
 }

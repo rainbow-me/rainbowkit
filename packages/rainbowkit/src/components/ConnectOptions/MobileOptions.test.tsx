@@ -24,12 +24,9 @@ describe('<WalletButton />', () => {
     const unhandled = vi.fn();
     window.addEventListener('unhandledrejection', unhandled);
 
-    renderWithProviders(
-      <WalletButton wallet={failingWallet} onClose={() => {}} />,
-      {
-        chains: [mainnet],
-      },
-    );
+    renderWithProviders(<WalletButton wallet={failingWallet} />, {
+      chains: [mainnet],
+    });
 
     const button = screen.getByTestId('rk-wallet-option-mock');
     await user.click(button);

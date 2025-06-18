@@ -1,28 +1,9 @@
 import React from 'react';
-import {
-  type SpyInstance,
-  afterAll,
-  beforeAll,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import { mockWallet } from '../../../test/mockWallet';
 import { WalletButton } from './WalletButton';
-
-let mockError: ReturnType<SpyInstance['mockImplementation']>;
-
-beforeAll(() => {
-  // Silence the error logs if the component throws an error
-  mockError = vi.spyOn(console, 'error').mockImplementation(() => {});
-});
-
-afterAll(() => {
-  mockError.mockRestore();
-});
 
 describe('<WalletButton />', () => {
   const getWalletButtonLabel = async (connectorId?: string) => {
