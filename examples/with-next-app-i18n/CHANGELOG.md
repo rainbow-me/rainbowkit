@@ -1,5 +1,12 @@
 # with-next-app-i18n
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [f542876]
+  - @rainbow-me/rainbowkit@2.2.8
+
 ## 0.1.5
 
 ### Patch Changes
