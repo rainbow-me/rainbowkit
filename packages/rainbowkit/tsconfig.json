@@ -10,6 +10,6 @@
     "outDir": "dist",
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["src", "assets.d.ts"]
 }
