@@ -22,15 +22,6 @@ export function WalletButtonDemo() {
         <Box>
           <RKWalletButton wallet="coinbase" />
         </Box>
-        <Box>
-          <RKWalletButton wallet="trust" />
-        </Box>
-        <Box>
-          <RKWalletButton wallet="argent" />
-        </Box>
-        <Box>
-          <RKWalletButton wallet="omni" />
-        </Box>
       </Box>
     </RainbowKitProvider>
   );

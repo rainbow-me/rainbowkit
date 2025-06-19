@@ -6,7 +6,8 @@ const Home: NextPage = () => {
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const { connectors, connect } = useConnect();
-  const [metaMaskConnector, coinbaseConnector] = connectors.slice(2);
+  const metaMaskConnector = connectors.find((c) => c.id === 'metaMask');
+  const coinbaseConnector = connectors.find((c) => c.id === 'coinbase');
 
   return (
     <div
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
 
         <span>RainbowKit WalletButton.Custom</span>
 
-        <WalletButton.Custom wallet="argent">
+        <WalletButton.Custom wallet="rainbow">
           {({ ready, connect, connector }) => {
             return (
               <button disabled={!ready} onClick={connect}>
@@ -44,19 +45,23 @@ const Home: NextPage = () => {
 
         <span>Wagmi Connectors</span>
 
-        <button
-          onClick={() => connect({ connector: metaMaskConnector })}
-          key={metaMaskConnector.id}
-        >
-          MetaMask SDK
-        </button>
+        {metaMaskConnector && (
+          <button
+            onClick={() => connect({ connector: metaMaskConnector })}
+            key={metaMaskConnector.id}
+          >
+            MetaMask SDK
+          </button>
+        )}
 
-        <button
-          onClick={() => connect({ connector: coinbaseConnector })}
-          key={coinbaseConnector.id}
-        >
-          Coinbase SDK
-        </button>
+        {coinbaseConnector && (
+          <button
+            onClick={() => connect({ connector: coinbaseConnector })}
+            key={coinbaseConnector.id}
+          >
+            Coinbase SDK
+          </button>
+        )}
 
         {isConnected && (
           <button onClick={() => disconnect()}>Disconnect</button>
