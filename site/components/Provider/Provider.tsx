@@ -1,11 +1,4 @@
 import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import {
-  argentWallet,
-  imTokenWallet,
-  ledgerWallet,
-  omniWallet,
-  trustWallet,
-} from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
 import { http, WagmiProvider } from 'wagmi';
@@ -53,19 +46,7 @@ const config = getDefaultConfig({
     blast,
   ],
   transports,
-  wallets: [
-    ...wallets,
-    {
-      groupName: 'More',
-      wallets: [
-        argentWallet,
-        trustWallet,
-        omniWallet,
-        imTokenWallet,
-        ledgerWallet,
-      ],
-    },
-  ],
+  wallets: [...wallets],
   ssr: true,
 });
 
