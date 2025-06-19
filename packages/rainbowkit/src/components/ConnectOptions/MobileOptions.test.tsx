@@ -9,27 +9,25 @@ import { WalletButton } from './MobileOptions';
 
 const connectMock = vi.fn(() => Promise.reject(new Error('rejected')));
 
-const failingWallet: WalletConnector = {
+const failingWallet = {
   id: 'mock',
   name: 'Mock',
-  iconUrl: '',
+  iconUrl: 'data:image/png;base64,iVBORw0KGgo=',
   iconBackground: '#fff',
   ready: true,
   connect: connectMock,
   recent: false,
-};
+  // Other WalletConnector fields are not required for this specific test.
+} as unknown as WalletConnector;
 
 describe('<WalletButton />', () => {
   it('catches rejected connect() calls', async () => {
     const unhandled = vi.fn();
     window.addEventListener('unhandledrejection', unhandled);
 
-    renderWithProviders(
-      <WalletButton wallet={failingWallet} onClose={() => {}} />,
-      {
-        chains: [mainnet],
-      },
-    );
+    renderWithProviders(<WalletButton wallet={failingWallet} />, {
+      chains: [mainnet],
+    });
 
     const button = screen.getByTestId('rk-wallet-option-mock');
     await user.click(button);

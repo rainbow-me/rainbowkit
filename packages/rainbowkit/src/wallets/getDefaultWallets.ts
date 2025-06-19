@@ -1,4 +1,3 @@
-import type { CreateConnectorFn } from 'wagmi';
 import type { WalletList } from './Wallet';
 import {
   type ConnectorsForWalletsParameters,
@@ -10,7 +9,7 @@ import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
-  connectors: CreateConnectorFn[];
+  connectors: ReturnType<typeof connectorsForWallets>;
   wallets: WalletList;
 };
 
