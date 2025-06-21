@@ -146,7 +146,6 @@ export function useWalletConnectors(
         iconUrl: wallet.icon!,
         ready: true,
         connect: () => connectWallet(wallet),
-        groupName: 'Installed',
         recent,
       });
 
@@ -159,7 +158,6 @@ export function useWalletConnectors(
       connect: () => connectWallet(wallet),
       desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
-      groupName: wallet.groupName,
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
       getQrCodeUri: wallet.qrCode?.getUri
         ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri!)

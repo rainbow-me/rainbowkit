@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
-import { groupBy } from '../../utils/groupBy';
 import {
   type WalletConnector,
   useWalletConnectors,
@@ -87,17 +86,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
   const unfilteredWallets = useWalletConnectors();
-
-  const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
-
-  const supportedI18nGroupNames = [
-    'Recommended',
-    'Other',
-    'Popular',
-    'More',
-    'Others',
-    'Installed',
-  ];
 
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
@@ -411,50 +399,22 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             )}
           </Box>
           <Box className={ScrollClassName} paddingBottom="18">
-            {Object.entries(groupedWallets).map(
-              ([groupName, wallets], index) =>
-                wallets.length > 0 && (
-                  <Fragment key={index}>
-                    {groupName ? (
-                      <Box marginBottom="8" marginTop="16" marginX="6">
-                        <Text
-                          color={
-                            groupName === 'Installed'
-                              ? 'accentColor'
-                              : 'modalTextSecondary'
-                          }
-                          size="14"
-                          weight="bold"
-                        >
-                          {supportedI18nGroupNames.includes(groupName)
-                            ? i18n.t(
-                                `connector_group.${groupName.toLowerCase()}`,
-                              )
-                            : groupName}
-                        </Text>
-                      </Box>
-                    ) : null}
-                    <Box display="flex" flexDirection="column" gap="4">
-                      {wallets.map((wallet) => {
-                        return (
-                          <ModalSelection
-                            currentlySelected={wallet.id === selectedOptionId}
-                            iconBackground={wallet.iconBackground}
-                            iconUrl={wallet.iconUrl}
-                            key={wallet.id}
-                            name={wallet.name}
-                            onClick={() => selectWallet(wallet)}
-                            ready={wallet.ready}
-                            recent={wallet.recent}
-                            testId={`wallet-option-${wallet.id}`}
-                            isRainbowKitConnector={wallet.isRainbowKitConnector}
-                          />
-                        );
-                      })}
-                    </Box>
-                  </Fragment>
-                ),
-            )}
+            <Box display="flex" flexDirection="column" gap="4">
+              {wallets.map((wallet) => (
+                <ModalSelection
+                  currentlySelected={wallet.id === selectedOptionId}
+                  iconBackground={wallet.iconBackground}
+                  iconUrl={wallet.iconUrl}
+                  key={wallet.id}
+                  name={wallet.name}
+                  onClick={() => selectWallet(wallet)}
+                  ready={wallet.ready}
+                  recent={wallet.recent}
+                  testId={`wallet-option-${wallet.id}`}
+                  isRainbowKitConnector={wallet.isRainbowKitConnector}
+                />
+              ))}
+            </Box>
           </Box>
           {compactModeEnabled && (
             <>

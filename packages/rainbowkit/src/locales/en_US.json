@@ -93,15 +93,6 @@
     "fallback_title": "Scan with your phone"
   },
 
-  "connector_group": {
-    "installed": "Installed",
-    "recommended": "Recommended",
-    "other": "Other",
-    "popular": "Popular",
-    "more": "More",
-    "others": "Others"
-  },
-
   "get": {
     "title": "Get a Wallet",
     "action": {
