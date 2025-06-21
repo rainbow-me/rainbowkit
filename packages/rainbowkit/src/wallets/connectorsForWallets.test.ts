@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest';
 import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { connectorsForWallets } from '..';
-import type { CreateWalletFn } from './Wallet';
 import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
@@ -19,7 +18,7 @@ const exampleProjectId = '21fef48091f12692cad574a6f7753643';
 describe('connectorsForWallets', () => {
   describe('injected fallback', () => {
     it('should return wallet connect and injected wallet connectors', () => {
-      const customWallet: CreateWalletFn = (params) => ({
+      const customWallet = (params: { projectId: string }) => ({
         createConnector: () => walletConnect({ projectId: params?.projectId! }),
         iconBackground: '#fff',
         iconUrl: '/test.png',
@@ -27,18 +26,10 @@ describe('connectorsForWallets', () => {
         name: 'Test WalletConnect Wallet',
       });
 
-      const connectors = connectorsForWallets(
-        [
-          {
-            groupName: 'Test Group 1',
-            wallets: [customWallet, injectedWallet],
-          },
-        ],
-        {
-          projectId: exampleProjectId,
-          appName: 'rainbowkit.com',
-        },
-      );
+      const connectors = connectorsForWallets([customWallet, injectedWallet], {
+        projectId: exampleProjectId,
+        appName: 'rainbowkit.com',
+      });
 
       expect(connectors.length).toBe(2);
 
@@ -49,7 +40,7 @@ describe('connectorsForWallets', () => {
     });
 
     it("should not return connector if 'hidden' returns true", () => {
-      const customWallet: CreateWalletFn = (params) => ({
+      const customWallet = (params: { projectId: string }) => ({
         createConnector: () => walletConnect({ projectId: params?.projectId! }),
         hidden: () => true,
         iconBackground: '#fff',
@@ -59,13 +50,10 @@ describe('connectorsForWallets', () => {
         name: 'Test Not Installed Wallet',
       });
 
-      const connectors = connectorsForWallets(
-        [{ groupName: 'Test Group 1', wallets: [customWallet] }],
-        {
-          projectId: exampleProjectId,
-          appName: 'rainbowkit.com',
-        },
-      );
+      const connectors = connectorsForWallets([customWallet], {
+        projectId: exampleProjectId,
+        appName: 'rainbowkit.com',
+      });
 
       expect(connectors.length).toBe(0);
     });
@@ -73,18 +61,10 @@ describe('connectorsForWallets', () => {
     it('should throw if projectId is invalid to wallet connect connector', () => {
       // You can also check the specific error message part, for example:
       expect(() => {
-        connectorsForWallets(
-          [
-            {
-              groupName: 'Test Group 1',
-              wallets: [walletConnectWallet],
-            },
-          ],
-          {
-            projectId: '',
-            appName: 'rainbowkit.com',
-          },
-        );
+        connectorsForWallets([walletConnectWallet], {
+          projectId: '',
+          appName: 'rainbowkit.com',
+        });
       }).toThrow(
         'No projectId found. Every dApp must now provide a WalletConnect projectId',
       );

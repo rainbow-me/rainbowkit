@@ -2,7 +2,7 @@ import type { Transport } from 'viem';
 import { http, type CreateConfigParameters } from 'wagmi';
 import { createConfig } from 'wagmi';
 import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import type { WalletList } from '../wallets/Wallet';
+import type { Wallet, WalletList } from '../wallets/Wallet';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import {
   coinbaseWallet,
@@ -31,7 +31,7 @@ interface GetDefaultConfigParameters<
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  wallets?: WalletList;
+  wallets?: Wallet[] | WalletList;
   projectId: string;
 }
 
@@ -66,15 +66,10 @@ export const getDefaultConfig = <
 
   const connectors = connectorsForWallets(
     wallets || [
-      {
-        groupName: 'Popular',
-        wallets: [
-          rainbowWallet,
-          coinbaseWallet,
-          metaMaskWallet,
-          walletConnectWallet,
-        ],
-      },
+      rainbowWallet,
+      coinbaseWallet,
+      metaMaskWallet,
+      walletConnectWallet,
     ],
     {
       projectId,

@@ -17,9 +17,7 @@ describe('getDefaultConfig', () => {
   });
 
   it('uses a custom wallet list when provided', () => {
-    const wallets = [
-      { groupName: 'Popular', wallets: [mockWallet('rainbow', 'Rainbow')] },
-    ];
+    const wallets = [mockWallet('rainbow', 'Rainbow')];
 
     const config = getDefaultConfig({
       appName: 'RainbowKit',
@@ -28,7 +26,7 @@ describe('getDefaultConfig', () => {
       wallets,
     });
 
-    expect(config.connectors.length).toBe(wallets[0].wallets.length);
+    expect(config.connectors.length).toBe(wallets.length);
   });
 
   it('accepts optional app metadata', () => {

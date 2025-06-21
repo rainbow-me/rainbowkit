@@ -19,7 +19,7 @@ describe('useWalletConnectors', () => {
 
     const { unmount } = renderWithProviders(<TestComponent />, {
       chains: [mainnet],
-      mockWallets: [{ groupName: 'Popular', wallets }],
+      mockWallets: wallets,
     });
 
     const connectors = spy.mock.calls[0][0];
@@ -42,7 +42,7 @@ describe('useWalletConnectors', () => {
 
     const { unmount } = renderWithProviders(<TestComponent />, {
       chains: [mainnet],
-      mockWallets: [{ groupName: 'Popular', wallets }],
+      mockWallets: wallets,
     });
 
     const connectors = spy.mock.calls[0][0];

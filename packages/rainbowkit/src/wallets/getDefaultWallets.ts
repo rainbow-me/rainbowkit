@@ -1,4 +1,4 @@
-import type { WalletList } from './Wallet';
+import type { Wallet, WalletList } from './Wallet';
 import {
   type ConnectorsForWalletsParameters,
   connectorsForWallets,
@@ -10,23 +10,22 @@ import { walletConnectWallet } from './walletConnectors/walletConnectWallet/wall
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: ReturnType<typeof connectorsForWallets>;
-  wallets: WalletList;
+  wallets: Wallet[];
 };
 
-export function getDefaultWallets(): { wallets: WalletList };
+export function getDefaultWallets(): { wallets: Wallet[] };
 
-export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
-  const wallets: WalletList = [
-    {
-      groupName: 'Popular',
-      wallets: [
-        rainbowWallet,
-        coinbaseWallet,
-        metaMaskWallet,
-        walletConnectWallet,
-      ],
-    },
-  ];
+export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters):
+  | { connectors: ReturnType<typeof connectorsForWallets>; wallets: Wallet[] }
+  | {
+      wallets: Wallet[];
+    } {
+  const wallets = [
+    rainbowWallet,
+    coinbaseWallet,
+    metaMaskWallet,
+    walletConnectWallet,
+  ] as unknown as Wallet[];
 
   if (parameters) {
     return {

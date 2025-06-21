@@ -16,7 +16,7 @@ describe('<WalletButton />', () => {
     const { findByTestId } = renderWithProviders(
       <WalletButton wallet={connectorId} />,
       {
-        mockWallets: [{ groupName: 'Popular', wallets }],
+        mockWallets: wallets,
         chains: [mainnet],
       },
     );

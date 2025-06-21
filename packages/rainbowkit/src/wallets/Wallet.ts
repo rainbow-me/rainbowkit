@@ -86,15 +86,13 @@ export interface DefaultWalletOptions {
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-export type CreateWalletFn = (
-  // These parameters will be used when creating a wallet. If injected
-  // wallet doesn't have parameters it will just ignore these passed in parameters
-  createWalletParams: CoinbaseWalletOptions & DefaultWalletOptions,
-) => Wallet;
-
+/**
+ * @deprecated Wallet lists with group names are no longer required. Pass an
+ * array of wallets directly instead.
+ */
 export type WalletList = {
   groupName: string;
-  wallets: CreateWalletFn[];
+  wallets: ((params: CoinbaseWalletOptions & DefaultWalletOptions) => Wallet)[];
 }[];
 
 // We don't want users to pass in `showQrModal` or `projectId`.
@@ -108,7 +106,8 @@ export type RainbowKitWalletConnectParameters = Omit<
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;
   groupIndex: number;
-  groupName: string;
+  /** @deprecated group names are no longer used */
+  groupName?: string;
   isRainbowKitConnector: boolean;
 };
 
