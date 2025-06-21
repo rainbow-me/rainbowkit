@@ -6,6 +6,7 @@ import {
   omniWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import type { Wallet } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
 import { http, WagmiProvider } from 'wagmi';
@@ -55,17 +56,12 @@ const config = getDefaultConfig({
   transports,
   wallets: [
     ...wallets,
-    {
-      groupName: 'More',
-      wallets: [
-        argentWallet,
-        trustWallet,
-        omniWallet,
-        imTokenWallet,
-        ledgerWallet,
-      ],
-    },
-  ],
+    argentWallet,
+    trustWallet,
+    omniWallet,
+    imTokenWallet,
+    ledgerWallet,
+  ] as unknown as Wallet[],
   ssr: true,
 });
 
