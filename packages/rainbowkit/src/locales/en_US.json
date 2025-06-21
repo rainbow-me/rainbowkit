@@ -226,41 +226,11 @@
   },
 
   "wallet_connectors": {
-    "coinbase": {
+    "default": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting Coinbase Wallet on your home screen for quicker access.",
-          "title": "Open the Coinbase Wallet app"
-        },
-        "step2": {
-          "description": "You can easily backup your wallet using the cloud backup feature.",
-          "title": "Create or Import a Wallet"
-        },
-        "step3": {
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
-          "title": "Tap the scan button"
-        }
-      },
-      "extension": {
-        "step1": {
-          "description": "We recommend pinning Coinbase Wallet to your taskbar for quicker access to your wallet.",
-          "title": "Install the Coinbase Wallet extension"
-        },
-        "step2": {
-          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
-          "title": "Create or Import a Wallet"
-        },
-        "step3": {
-          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension.",
-          "title": "Refresh your browser"
-        }
-      }
-    },
-    "metamask": {
-      "qr_code": {
-        "step1": {
-          "title": "Open the MetaMask app",
-          "description": "We recommend putting MetaMask on your home screen for quicker access."
+          "title": "Open the %{wallet} app",
+          "description": "We recommend putting %{wallet} on your home screen for quicker access."
         },
         "step2": {
           "title": "Create or Import a Wallet",
@@ -273,8 +243,8 @@
       },
       "extension": {
         "step1": {
-          "title": "Install the MetaMask extension",
-          "description": "We recommend pinning MetaMask to your taskbar for quicker access to your wallet."
+          "title": "Install the %{wallet} extension",
+          "description": "We recommend pinning %{wallet} to your taskbar for quicker access to your wallet."
         },
         "step2": {
           "title": "Create or Import a Wallet",
@@ -284,21 +254,19 @@
           "title": "Refresh your browser",
           "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
-      }
-    },
-    "rainbow": {
-      "qr_code": {
+      },
+      "desktop": {
         "step1": {
-          "title": "Open the Rainbow app",
-          "description": "We recommend putting Rainbow on your home screen for faster access to your wallet."
+          "title": "Open the %{wallet} app",
+          "description": "We recommend putting %{wallet} on your home screen for quicker access."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
-          "description": "You can easily backup your wallet using our backup feature on your phone."
+          "title": "Set up your %{wallet}",
+          "description": "Set up a new %{wallet} or connect to an existing one."
         },
         "step3": {
-          "title": "Tap the scan button",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "title": "Connect",
+          "description": "A connection prompt will appear for you to connect your wallet."
         }
       }
     },

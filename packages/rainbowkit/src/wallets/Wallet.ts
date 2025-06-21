@@ -18,7 +18,7 @@ type RainbowKitConnector = {
     getUri?: (uri: string) => string;
     instructions?: {
       learnMoreUrl: string;
-      steps: {
+      steps?: {
         step: InstructionStepName;
         title: string;
         description: string;
@@ -29,7 +29,7 @@ type RainbowKitConnector = {
     getUri: (uri: string) => string;
     instructions?: {
       learnMoreUrl: string;
-      steps: {
+      steps?: {
         step: InstructionStepName;
         title: string;
         description: string;
@@ -39,7 +39,7 @@ type RainbowKitConnector = {
   extension?: {
     instructions?: {
       learnMoreUrl: string;
-      steps: {
+      steps?: {
         step: InstructionStepName;
         title: string;
         description: string;

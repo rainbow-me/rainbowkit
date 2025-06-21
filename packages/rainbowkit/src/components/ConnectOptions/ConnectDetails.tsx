@@ -30,6 +30,69 @@ import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
+import type { Wallet } from '../../wallets/Wallet';
+
+type InstructionSteps = NonNullable<
+  NonNullable<NonNullable<Wallet['qrCode']>['instructions']>['steps']
+>;
+
+const DEFAULT_INSTRUCTION_STEPS: {
+  qrCode: InstructionSteps;
+  extension: InstructionSteps;
+  desktop: InstructionSteps;
+} = {
+  qrCode: [
+    {
+      step: 'install',
+      title: 'wallet_connectors.default.qr_code.step1.title',
+      description: 'wallet_connectors.default.qr_code.step1.description',
+    },
+    {
+      step: 'create',
+      title: 'wallet_connectors.default.qr_code.step2.title',
+      description: 'wallet_connectors.default.qr_code.step2.description',
+    },
+    {
+      step: 'scan',
+      title: 'wallet_connectors.default.qr_code.step3.title',
+      description: 'wallet_connectors.default.qr_code.step3.description',
+    },
+  ],
+  extension: [
+    {
+      step: 'install',
+      title: 'wallet_connectors.default.extension.step1.title',
+      description: 'wallet_connectors.default.extension.step1.description',
+    },
+    {
+      step: 'create',
+      title: 'wallet_connectors.default.extension.step2.title',
+      description: 'wallet_connectors.default.extension.step2.description',
+    },
+    {
+      step: 'refresh',
+      title: 'wallet_connectors.default.extension.step3.title',
+      description: 'wallet_connectors.default.extension.step3.description',
+    },
+  ],
+  desktop: [
+    {
+      step: 'install',
+      title: 'wallet_connectors.default.desktop.step1.title',
+      description: 'wallet_connectors.default.desktop.step1.description',
+    },
+    {
+      step: 'create',
+      title: 'wallet_connectors.default.desktop.step2.title',
+      description: 'wallet_connectors.default.desktop.step2.description',
+    },
+    {
+      step: 'connect',
+      title: 'wallet_connectors.default.desktop.step3.title',
+      description: 'wallet_connectors.default.desktop.step3.description',
+    },
+  ],
+};
 
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
@@ -725,7 +788,7 @@ export function DownloadOptionsDetail({
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
-                extension?.instructions
+                extension
                   ? WalletStep.InstructionsExtension
                   : WalletStep.Connect,
               )
@@ -748,9 +811,7 @@ export function DownloadOptionsDetail({
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
-                desktop?.instructions
-                  ? WalletStep.InstructionsDesktop
-                  : WalletStep.Connect,
+                desktop ? WalletStep.InstructionsDesktop : WalletStep.Connect,
               )
             }
             title={i18n.t('get_options.desktop.title', {
@@ -835,9 +896,7 @@ export function DownloadDetail({
           label={i18n.t('get_mobile.continue.label')}
           onClick={() =>
             changeWalletStep(
-              qrCode?.instructions
-                ? WalletStep.InstructionsMobile
-                : WalletStep.Connect,
+              qrCode ? WalletStep.InstructionsMobile : WalletStep.Connect,
             )
           }
         />
@@ -892,7 +951,9 @@ export function InstructionMobileDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.qrCode?.instructions?.steps.map((d, idx) => (
+        {(
+          wallet.qrCode?.instructions?.steps ?? DEFAULT_INSTRUCTION_STEPS.qrCode
+        ).map((d, idx) => (
           <Box
             alignItems="center"
             display="flex"
@@ -912,14 +973,10 @@ export function InstructionMobileDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.title, { wallet: wallet.name })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.description, { wallet: wallet.name })}
               </Text>
             </Box>
           </Box>
@@ -983,7 +1040,10 @@ export function InstructionExtensionDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.extension?.instructions?.steps.map((d, idx) => (
+        {(
+          wallet.extension?.instructions?.steps ??
+          DEFAULT_INSTRUCTION_STEPS.extension
+        ).map((d, idx) => (
           <Box
             alignItems="center"
             display="flex"
@@ -1003,14 +1063,10 @@ export function InstructionExtensionDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.title, { wallet: wallet.name })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.description, { wallet: wallet.name })}
               </Text>
             </Box>
           </Box>
@@ -1076,7 +1132,10 @@ export function InstructionDesktopDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.desktop?.instructions?.steps.map((d, idx) => (
+        {(
+          wallet.desktop?.instructions?.steps ??
+          DEFAULT_INSTRUCTION_STEPS.desktop
+        ).map((d, idx) => (
           <Box
             alignItems="center"
             display="flex"
@@ -1096,14 +1155,10 @@ export function InstructionDesktopDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.title, { wallet: wallet.name })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description, undefined, {
-                  rawKeyIfTranslationMissing: true,
-                })}
+                {i18n.t(d.description, { wallet: wallet.name })}
               </Text>
             </Box>
           </Box>
