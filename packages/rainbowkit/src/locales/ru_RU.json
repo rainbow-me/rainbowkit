@@ -76,8 +76,8 @@
     },
     "walletconnect": {
       "description": {
-        "full": "Нужен официальный модальный окно WalletConnect?",
-        "compact": "Нужен модальный окно WalletConnect?"
+        "full": "Нужно официальное модальное окно WalletConnect?",
+        "compact": "Нужно модальное окно WalletConnect?"
       },
       "open": {
         "label": "ОТКРЫТЬ"
