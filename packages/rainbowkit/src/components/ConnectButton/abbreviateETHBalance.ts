@@ -3,10 +3,20 @@
  */
 const units = ['k', 'm', 'b', 't'];
 
+// Cache for storing compiled regular expressions
+const precisionRegexCache = new Map<number, RegExp>();
+
 export function toPrecision(number: number, precision = 1) {
+  // Get or create regex for the current precision value
+  let regex = precisionRegexCache.get(precision);
+  if (!regex) {
+    regex = new RegExp(`(.+\\.\\d{${precision}})\\d+`);
+    precisionRegexCache.set(precision, regex);
+  }
+  
   return number
     .toString()
-    .replace(new RegExp(`(.+\\.\\d{${precision}})\\d+`), '$1')
+    .replace(regex, '$1')
     .replace(/(\.[1-9]*)0+$/, '$1')
     .replace(/\.$/, '');
 }
