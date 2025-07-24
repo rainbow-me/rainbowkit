@@ -6,12 +6,12 @@ import type { WalletList } from '../wallets/Wallet';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import {
-  coinbaseWallet,
   metaMaskWallet,
   rainbowWallet,
   safeWallet,
   walletConnectWallet,
 } from '../wallets/walletConnectors';
+import { baseAccount } from '../wallets/walletConnectors/baseAccount/baseAccount';
 
 export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
 
@@ -80,7 +80,7 @@ export const getDefaultConfig = <
         wallets: [
           safeWallet,
           rainbowWallet,
-          coinbaseWallet,
+          baseAccount,
           metaMaskWallet,
           walletConnectWallet,
         ],
