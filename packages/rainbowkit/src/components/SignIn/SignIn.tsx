@@ -72,7 +72,11 @@ export function SignIn({
         status: 'signing',
       }));
 
-      const message = authAdapter.createMessage({ address, chainId, nonce });
+      const message = await authAdapter.createMessage({
+        address,
+        chainId,
+        nonce,
+      });
       let signature: string;
 
       try {
