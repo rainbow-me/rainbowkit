@@ -418,7 +418,7 @@ If you use `wagmi` hooks in your application, you will need to check if your app
 
 Removed the `chainId` parameter from `createConnector` on the `Wallet` type.
 
-**Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](/docs/custom-wallets).**
+**Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](/site/data/en-US/docs/custom-wallets.mdx).**
 
 If you previously derived RPC URLs from the `chainId` on `createConnector`, you can now remove that logic as `wagmi` now handles RPC URLs internally when used with `configureChains`.
 
