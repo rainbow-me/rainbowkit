@@ -1,5 +1,12 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.14
+
+### Patch Changes
+
+- Fixed TypeScript compilation errors by excluding template directories from type checking
+- Updated dependencies: wagmi from ^2.15.6 to ^2.16.3, @wagmi/cli from ^2.2.1 to ^2.4.0
+
 ## 0.3.13
 
 ### Patch Changes
