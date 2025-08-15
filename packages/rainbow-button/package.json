@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/rainbow-button",
   "description": "Rainbow connector button",
-  "version": "0.2.25",
+  "version": "0.2.26",
   "files": [
     "dist",
     "styles.css"
@@ -43,7 +43,7 @@
     "react": ">=18",
     "react-dom": ">=18",
     "viem": "2.x",
-    "wagmi": "^2.9.0"
+    "wagmi": "^2.16.3"
   },
   "repository": {
     "type": "git",

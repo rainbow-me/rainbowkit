@@ -1,5 +1,15 @@
 # @rainbow-me/rainbowkit
 
+## 2.3.0
+
+### Minor Changes
+
+- Added Gemini Wallet support with `geminiWallet` wallet connector
+
+### Patch Changes
+
+- Updated dependencies: wagmi from ^2.15.6 to ^2.16.3, @wagmi/cli from ^2.2.1 to ^2.4.0
+
 ## 2.2.8
 
 ### Patch Changes
