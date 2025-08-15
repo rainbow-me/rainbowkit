@@ -261,6 +261,21 @@ import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Gemini Wallet
+
+This smart wallet connector enables seamless authentication through passkeys at keys.gemini.com - no downloads, extensions, or API keys required. It just works out of the box.
+
+The `appName` parameter is required for identifying your dApp, and `appIcon` is optional for branding your connection experience.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
+```
+
 #### imToken
 
 ```tsx

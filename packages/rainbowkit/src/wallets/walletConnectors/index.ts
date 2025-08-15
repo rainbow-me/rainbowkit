@@ -22,6 +22,7 @@ import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { gateWallet } from './gateWallet/gateWallet';
+import { geminiWallet } from './geminiWallet/geminiWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { iopayWallet } from './iopayWallet/iopayWallet';
@@ -92,6 +93,7 @@ export {
   frameWallet,
   frontierWallet,
   gateWallet,
+  geminiWallet,
   imTokenWallet,
   injectedWallet,
   iopayWallet,
