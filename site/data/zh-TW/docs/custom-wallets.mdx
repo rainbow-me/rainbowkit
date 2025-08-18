@@ -132,55 +132,6 @@ description: 創建一個自定義錢包
       description: 'Function for providing the connector instance',
     },
   ]}
-/> This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
-      description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
-      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
-  ]}
 />
 
 ### 下載網址屬性
