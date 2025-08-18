@@ -132,55 +132,6 @@ description: 创建自定义钱包
       description: '用于提供连接器实例的函数',
     },
   ]}
-/> 这是定义通用备用钱包的有用功能，例如，内置的 "Injected Wallet" 备用功能就利用了这一特性',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
-      description:
-        '用于提供不同连接方法的连接器实例和配置的函数，具体方法如下所述',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description:
-        '用于解析移动钱包连接URI的函数',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description: '用于解析桌面应用程序深层链接的函数',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        '包含用于解析QR码URI的函数的对象，以及可选的移动钱包设置说明',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        '包含可选浏览器扩展设置说明的对象',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
-      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: '用于提供连接器实例的函数',
-    },
-  ]}
 />
 
 ### 下载链接属性
