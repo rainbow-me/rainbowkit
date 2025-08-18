@@ -225,6 +225,8 @@ npm i viem
 
 \*\*3. 确保捆绑器和 polyfill 兼容性
 
+在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。
+
 参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 和 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 示例，以获得你的项目配置指导。
 
 Vite和Remix的附加框架指南可在此处获取 [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
