@@ -9,7 +9,7 @@ description: 創建一個自定義錢包
 
 > 注意：此 API 不穩定，可能在不久的將來會發生變化。 我們會隨著時間的推移加入更多內建錢包。 注意：此 API 不穩定，可能在不久的將來會發生變化。 我們會隨著時間的推移加入更多內建錢包。 如果您對任何特定的錢包有興趣，[請告訴我們](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 `Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性：
+`Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 `Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性： `Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性：
 
 ### 錢包屬性
 
@@ -84,6 +84,55 @@ description: 創建一個自定義錢包
       typeSimple: '(args) => boolean | undefined',
       description:
         '計算此錢包是否應從列表中隱藏的函數。 This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: '() => RainbowKitConnector',
+      typeSimple: 'RainbowKitConnector',
+      description:
+        'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'Function for resolving a mobile wallet connection URI',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Function for resolving a desktop app deep link',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing optional browser extension setup instructions',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Function for providing the connector instance',
+    },
+  ]}
+/> This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
