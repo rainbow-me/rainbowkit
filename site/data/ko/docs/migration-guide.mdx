@@ -225,8 +225,6 @@ npm i viem
 
 **3. 번들러와 폴리필 호환성 확보**
 
-이전 버전의 wagmi는 [ethers](https://docs.ethers.org/v5/)에 의존했고, WalletConnect에 의해 필요로 하는 `fs`, `net`, `tls` 모듈들이 자동으로 폴리필되었습니다. 이는 RainbowKit v1 + wagmi v1에서는 더 이상 적용되지 않으며, 이들은 [viem](https://viem.sh/)를 기반으로 구축되었습니다.
-
 프로젝트 설정 가이드를 위해 [Next.js 웹팩 설정](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 및 [Create React App 폴리필들](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플을 참조하세요.
 
 Vite 및 Remix에 대한 추가 프레임워크 가이드를 [여기](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup)에서 사용할 수 있습니다.
