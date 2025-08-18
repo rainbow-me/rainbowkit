@@ -225,17 +225,15 @@ npm i viem
 
 \*\*3. Đảm bảo tính tương thích của bundler và polyfill
 
-Trong các phiên bản trước của wagmi dựa vào [ethers](https://docs.ethers.org/v5/), các module `fs`, `net`, và `tls` yêu cầu bởi WalletConnect đã được tự động polyfill. Điều này không còn đúng với RainbowKit v1 + wagmi v1, được xây dựng trên [viem](https://viem.sh/).
+Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) sample for configuration guidance for your project.
 
 Tham khảo [Cấu Hình Webpack của Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) và các mẫu [polyfills của Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) cho hướng dẫn cấu hình cho dự án của bạn.
-
-Hướng dẫn khung bổ sung cho Vite và Remix có sẵn [tại đây](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
 \*\*4. Kiểm tra thay đổi phá vỡ trong `wagmi`
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần theo dõi hướng dẫn di chuyển `wagmi` lên v1.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần theo dõi hướng dẫn di chuyển `wagmi` lên v1.
 
 ### Thay Đổi Phá Vỡ 0.12.x
 
@@ -287,7 +285,7 @@ const connectors = connectorsForWallets([
 
 Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.11.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.11.x`.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -299,13 +297,13 @@ npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
 ### Thay Đổi Phá Vỡ 0.10.x
 
 Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.10.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.10.x`.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -317,13 +315,13 @@ npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
 ### Thay Đổi Phá Vỡ 0.9.x
 
 Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.9.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.9.x`.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -335,13 +333,13 @@ npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
 ### Thay Đổi Phá Vỡ 0.8.x
 
 Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.8.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.8.x`.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -353,7 +351,7 @@ npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
 ### Thay Đổi Phá Vỡ 0.7.x
 
@@ -400,7 +398,7 @@ const wallets = [
 
 RainbowKit đã cập nhật phụ thuộc đồng hành `wagmi` lên `0.5.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+RainbowKit đã cập nhật phụ thuộc đồng hành `wagmi` lên `0.5.x`.
 
 #### 1. Nâng cấp các phụ thuộc
 
@@ -414,7 +412,7 @@ npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 
 Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ ở đây](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
+Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
 
 ### 0.3.x Những thay đổi quan trọng
 
@@ -480,7 +478,7 @@ const connectors = connectorsForWallets([
 
 RainbowKit đã cập nhật phụ thuộc đối tác `wagmi` lên `^0.4`.
 
-Làm theo các bước dưới đây để di chuyển.
+RainbowKit đã cập nhật phụ thuộc đối tác `wagmi` lên `^0.4`.
 
 #### 1. Nâng cấp các phụ thuộc
 
