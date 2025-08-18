@@ -125,6 +125,51 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       description: 'Funktion zur Bereitstellung der Connector-Instanz'
     }
   ]}
+/> Dies ist nützlich für die Definition generischer Ersatz-Wallets, z. B. macht das integrierte "Injected Wallet"-Fallback von dieser Funktion Gebrauch',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: '() => RainbowKitConnector',
+      typeSimple: 'RainbowKitConnector',
+      description: 'Funktion zur Bereitstellung der Connector-Instanz und Konfiguration für verschiedene Verbindungsmethoden, wie unten beschrieben',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Funktion zur Lösung einer mobilen Wallet-Verbindungs-URI',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Funktion zur Lösung eines Desktop-App-Deep-Links',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description: 'Objekt, das eine Funktion zum Auflösen der QR-Code-URI enthält, sowie optionale Anweisungen zur Einrichtung der mobilen Wallet',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description: 'Objekt, das optionale Anweisungen zur Einrichtung von Browser-Erweiterungen enthält',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Funktion zur Bereitstellung der Connector-Instanz'
+    }
+  ]}
 />
 
 ### DownloadUrls-Eigenschaften
