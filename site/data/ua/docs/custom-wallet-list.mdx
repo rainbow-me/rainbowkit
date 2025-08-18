@@ -180,31 +180,17 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Цей з'єднувач гаманців підтримує як додаток, так і розширення Coinbase Wallet, а також Coinbase Smart Wallet у веб.
 
-A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
+Доступний аргумент `preference` для контролю, чи буде увімкнено Смарт Гаманець для користувачів. Поведения на основі переваг описано [тут](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
 Смарт Гаманець буде увімкнено за замовчуванням з `all` на початку червня, без додаткового оновлення.
+
+Розробники можуть тестувати Смарт Гаманець з цепями `sepolia` та `baseSepolia` вже сьогодні, встановивши `smartWalletOnly` та включивши `coinbaseWallet` у свій список гаманців ось так:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Limit your dApp to only Smart Wallet
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
 ```
 
 #### Coin98 Wallet
@@ -455,11 +441,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### Приклади
 
-#### Приклади
+#### Сортування
 
 Ось кілька прикладів відображення різних гаманців у різному порядку.
 
-Ось кілька прикладів відображення різних гаманців у різному порядку.
+Показати MetaMask разом із загальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
