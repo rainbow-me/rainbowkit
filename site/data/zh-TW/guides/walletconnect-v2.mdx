@@ -10,19 +10,19 @@ image: guide-walletconnect-v2.png
 
 WalletConnect v1協議將於2023年6月28日關閉，RainbowKit將為您簡化過渡。
 
-支持WalletConnect v2現在在RainbowKit中是標準配置，沒有破壞性的變更。 只需升級並參考下面的指導以獲取更多詳細信息。 只需升級並參考下面的指導以獲取更多詳細信息。
+支持WalletConnect v2現在在RainbowKit中是標準配置，沒有破壞性的變更。 只需升級並參考下面的指導以獲取更多詳細信息。 只需升級並參考下面的指導以獲取更多詳細信息。 只需升級並參考下面的指導以獲取更多詳細信息。
 
 #### 了解WalletConnect v2
 
-WalletConnect是允許用戶將其移動錢包連接到您的dApp的協議，它是RainbowKit的重要基礎。 最近發布的WalletConnect v2帶來了一些重要的升級，使錢包與dApp的體驗更好。 最近發布的WalletConnect v2帶來了一些重要的升級，使錢包與dApp的體驗更好。
+WalletConnect是允許用戶將其移動錢包連接到您的dApp的協議，它是RainbowKit的重要基礎。 最近發布的WalletConnect v2帶來了一些重要的升級，使錢包與dApp的體驗更好。 最近發布的WalletConnect v2帶來了一些重要的升級，使錢包與dApp的體驗更好。 最近發布的WalletConnect v2帶來了一些重要的升級，使錢包與dApp的體驗更好。
 
 在v2中，用戶現在可以同時連接到多個鏈，因此您可以忘記鏈切換握手。 它還擴大了對更多網絡的支持，並帶來了使使用Ethereum登錄更快的改進。
 
 #### 升級您的dApp
 
-如果您已經遵循RainbowKit `0.12.x` 和 `1.0.x`的遷移指南，那麼您已經接近完成了！ 只需升級到最新的修補版本並試一下。 只需升級到最新的修補版本並試一下。
+如果您已經遵循RainbowKit `0.12.x` 和 `1.0.x`的遷移指南，那麼您已經接近完成了！ 只需升級到最新的修補版本並試一下。 只需升級到最新的修補版本並試一下。 只需升級到最新的修補版本並試一下。
 
-RainbowKit從 `0.12.15` 和 `1.0.2` 開始默認啟用WalletConnect v2。 RainbowKit從 `0.12.15` 和 `1.0.2` 開始默認啟用WalletConnect v2。 我們將繼續為 `0.12.x` 提供支持，以防您的dApp尚未升級到 wagmi v1 和 RainbowKit v1。
+RainbowKit從 `0.12.15` 和 `1.0.2` 開始默認啟用WalletConnect v2。 RainbowKit從 `0.12.15` 和 `1.0.2` 開始默認啟用WalletConnect v2。 我們將繼續為 `0.12.x` 提供支持，以防您的dApp尚未升級到 wagmi v1 和 RainbowKit v1。 RainbowKit從 `0.12.15` 和 `1.0.2` 開始默認啟用WalletConnect v2。 我們將繼續為 `0.12.x` 提供支持，以防您的dApp尚未升級到 wagmi v1 和 RainbowKit v1。
 
 **1. 升級依賴項**
 
@@ -36,7 +36,7 @@ npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 
 **2. 提供一個projectId**
 
-每個依賴於WalletConnect的dApp現在都需要從[WalletConnect Cloud](https://cloud.walletconnect.com/)獲取一個`projectId`。 這是完全免費的，只需幾分鐘。 這是完全免費的，只需幾分鐘。
+每個依賴於WalletConnect的dApp現在都需要從[WalletConnect Cloud](https://cloud.walletconnect.com/)獲取一個`projectId`。 這是完全免費的，只需幾分鐘。 這是完全免費的，只需幾分鐘。 這是完全免費的，只需幾分鐘。
 
 將您的`projectId`提供給`getDefaultWallets`及個別RainbowKit錢包連接器，如下所示：
 
@@ -60,7 +60,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit是類型安全的，當缺少`projectId`時會發出警告。 參考我們的示例來查看v2的實際應用： 參考我們的示例來查看v2的實際應用：
+RainbowKit是類型安全的，當缺少`projectId`時會發出警告。 參考我們的示例來查看v2的實際應用： 參考我們的示例來查看v2的實際應用： 參考我們的示例來查看v2的實際應用：
 
 - [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
