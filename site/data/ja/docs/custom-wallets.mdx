@@ -132,55 +132,6 @@ description: カスタムウォレットを作成
       description: 'コネクタインスタンスを提供するための関数',
     }
   ]}
-/> これは一般的なフォールバックウォレットを定義するのに便利であり、例えば内蔵の"Injected Wallet" フォールバックはこの機能を利用します',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
-      description:
-        'さまざまな接続方法のためのコネクタインスタンスと設定を提供するための関数',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description:
-        'モバイルウォレット接続URIを解決するための関数',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description: 'デスクトップアプリのディープリンクを解決するための関数',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'QRコードURIを解決するための関数を含むオブジェクト、オプションのモバイルウォレット設定の手順付き',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'オプションのブラウザ拡張機能の設定手順を含むオブジェクト',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
-      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'コネクタインスタンスを提供するための関数',
-    }
-  ]}
 />
 
 ### DownloadUrls のプロパティ
