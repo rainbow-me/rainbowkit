@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Konektor dompet ini mendukung aplikasi dan ekstensi Coinbase Wallet, serta Coinbase Smart Wallet di Web.
 
-Argumen `preference` tersedia untuk mengendalikan apakah Smart Wallet diaktifkan dan tersedia untuk pengguna. Perilaku berbasis preferensi didokumentasikan [di sini](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
 Smart Wallet akan diaktifkan secara default dengan `all` di awal Juni, tanpa peningkatan lebih lanjut.
-
-Pengembang dapat menguji Smart Wallet dengan rantai `sepolia` dan `baseSepolia` hari ini dengan mengatur `smartWalletOnly` dan menyertakan `coinbaseWallet` dalam daftar dompet mereka seperti ini:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
@@ -441,11 +455,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### Contoh
 
-#### Pemesanan
+#### Contoh
 
 Berikut ini adalah beberapa contoh menampilkan dompet yang berbeda, dalam urutan yang berbeda.
 
-Menampilkan MetaMask bersama dengan dompet fallback generik.
+Berikut ini adalah beberapa contoh menampilkan dompet yang berbeda, dalam urutan yang berbeda.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
