@@ -180,31 +180,17 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 यह वॉलेट कनेक्टर दोनों कोबेन वॉलेट ऐप और एक्सटेंशन के साथ-साथ वेब पर कोबेन स्मार्ट वॉलेट का समर्थन करता है।
 
-A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
+एक `preference` तर्क उपलब्ध है जो यह नियंत्रित करता है कि स्मार्ट वॉलेट उपयोगकर्ताओं के लिए सक्षम और उपलब्ध है या नहीं। वरीयता आधारित व्यवहार [यहां](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) प्रलेखित है।
 
 स्मार्ट वॉलेट को जून के शुरू में `all` के साथ डिफ़ॉल्ट रूप से सक्षम किया जाएगा, बिना किसी अतिरिक्त अपग्रेड के।
+
+डेवलपर्स आज `sepolia` और `baseSepolia` चेन के साथ स्मार्ट वॉलेट का परीक्षण कर सकते हैं, `smartWalletOnly` सेट कर और `coinbaseWallet` को अपनी वॉलेट सूची में शामिल करके इस प्रकार:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Limit your dApp to only Smart Wallet
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
 ```
 
 #### Coin98 Wallet
@@ -455,11 +441,11 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### उदाहरण
 
-#### उदाहरण
+#### आर्डरिंग
 
 यहाँ कुछ उदाहरण हैं विभिन्न वॉलेट्स का प्रदर्शन करने के, अलग-अलग क्रम में।
 
-यहाँ कुछ उदाहरण हैं विभिन्न वॉलेट्स का प्रदर्शन करने के, अलग-अलग क्रम में।
+मेटामास्क के साथ सामान्य फॉलबैक वॉलेट्स दिखाएं।
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,7 +498,7 @@ const connectors = connectorsForWallets(
 
 आप `groupName` कुंजी का उपयोग करके विभिन्न वॉलेट समूहों को नाम दे सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं को यह सूचित करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स।
 
-आप `groupName` कुंजी का उपयोग करके विभिन्न वॉलेट समूहों को नाम दे सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं को यह सूचित करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स।
+रेनबो और मेटामास्क की सिफारिश करें, लेकिन सामान्य फ़ॉलबैक वॉलेट्स के साथ कोइनबेस की भी पेशकश करें।
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
