@@ -182,29 +182,15 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 يتوفر برهان `preference` للتحكم فيما إذا كانت محفظة Smart Wallet مفعّلة ومتاحة للمستخدمين. تم توثيق السلوك القائم على البرهان [هنا](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+سيتم تفعيل المحفظة الذكية بشكل افتراضي مع `all` في أوائل يونيو دون ترقية إضافية.
+
+يمكن للمطورين اختبار المحفظة الذكية مع سلاسل `sepolia` و`baseSepolia` اليوم عن طريق ضبط `smartWalletOnly` وتضمين `coinbaseWallet` في قائمة المحافظ كالتالي:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Limit your dApp to only Smart Wallet
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
 ```
 
 #### Coin98 Wallet
