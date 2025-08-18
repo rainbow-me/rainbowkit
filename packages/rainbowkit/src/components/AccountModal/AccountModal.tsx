@@ -8,9 +8,10 @@ import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 export interface AccountModalProps {
   open: boolean;
   onClose: () => void;
+  nonce?: string;
 }
 
-export function AccountModal({ onClose, open }: AccountModalProps) {
+export function AccountModal({ onClose, open, nonce }: AccountModalProps) {
   const { address } = useAccount();
   const { balance, ensAvatar, ensName } = useProfile({
     address,
@@ -27,7 +28,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
   return (
     <>
       {address && (
-        <Dialog onClose={onClose} open={open} titleId={titleId}>
+        <Dialog onClose={onClose} open={open} titleId={titleId} nonce={nonce}>
           <DialogContent bottomSheetOnMobile padding="0">
             <ProfileDetails
               address={address}

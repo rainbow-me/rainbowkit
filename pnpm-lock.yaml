@@ -441,6 +441,9 @@ importers:
       cuer:
         specifier: 0.0.2
         version: 0.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4)
+      get-nonce:
+        specifier: ^1.0.1
+        version: 1.0.1
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
