@@ -182,29 +182,15 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่ การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่  การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
 
-Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+Smart Wallet will be enabled by default with `all` in early June, without a further upgrade.
+
+Developers can test Smart Wallet with `sepolia` and `baseSepolia` chains today by setting `smartWalletOnly` and including `coinbaseWallet` in their wallet list like so:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Limit your dApp to only Smart Wallet
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
 ```
 
 #### Coin98 Wallet
@@ -512,7 +498,7 @@ const connectors = connectorsForWallets(
 
 คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 
-คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
