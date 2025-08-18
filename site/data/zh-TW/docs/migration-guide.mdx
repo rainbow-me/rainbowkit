@@ -104,7 +104,7 @@ npm i @tanstack/react-query
 
 支持新EIP-6963連接標準的錢包（包括Rainbow、MetaMask等）現在在連接錢包體驗中將自動出現在`已安裝`部分。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。 這確保用戶總是能找到他們喜歡的錢包並無衝突地連接到dApps。
 
-開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 建議您繼續包括 `injectedWallet` 和 `walletConnectWallet` 在您的列表中，以支援所有平臺。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。
+開發者繼續擁有完全控制自定義錢包列表的權限，以強調終端用戶的首選錢包。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。 我們鼓勵您繼續在列表中包括`injectedWallet`和`walletConnectWallet`以支持所有平台。
 
 **2. 使用getDefaultConfig進行Wagmi配置**
 
@@ -224,6 +224,8 @@ npm i viem
 ```
 
 \*\*3. 確保打包工具和 polyfill 的相容性
+
+在以前版本的 wagmi 中，依賴於 [ethers](https://docs.ethers.org/v5/)，WalletConnect 所需的 `fs`、`net` 和 `tls` 模組會自動填充。 在基於 [viem](https://viem.sh/) 構建的 RainbowKit v1 + wagmi v1 中，不再如此。
 
 參考我們的[Next.js 聯合編譯配置](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)和[Create React App polyfill](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 以獲取項目配置指導。
 
