@@ -9,9 +9,10 @@ import { SignIn } from '../SignIn/SignIn';
 export interface ConnectModalProps {
   open: boolean;
   onClose: () => void;
+  nonce?: string;
 }
 
-export function ConnectModal({ onClose, open }: ConnectModalProps) {
+export function ConnectModal({ onClose, open, nonce }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
 
@@ -35,7 +36,12 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
 
   if (connectionStatus === 'disconnected') {
     return (
-      <Dialog onClose={onConnectModalCancel} open={open} titleId={titleId}>
+      <Dialog
+        onClose={onConnectModalCancel}
+        open={open}
+        titleId={titleId}
+        nonce={nonce}
+      >
         <DialogContent bottomSheetOnMobile padding="0" wide>
           <ConnectOptions onClose={onConnectModalCancel} />
         </DialogContent>
@@ -45,7 +51,12 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
 
   if (connectionStatus === 'unauthenticated') {
     return (
-      <Dialog onClose={onAuthCancel} open={open} titleId={titleId}>
+      <Dialog
+        onClose={onAuthCancel}
+        open={open}
+        titleId={titleId}
+        nonce={nonce}
+      >
         <DialogContent bottomSheetOnMobile padding="0">
           <SignIn onClose={onAuthCancel} onCloseModal={onClose} />
         </DialogContent>

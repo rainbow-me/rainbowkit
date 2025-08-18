@@ -20,9 +20,10 @@ import {
 export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
+  nonce?: string;
 }
 
-export function ChainModal({ onClose, open }: ChainModalProps) {
+export function ChainModal({ onClose, open, nonce }: ChainModalProps) {
   const { chainId } = useAccount();
   const { chains } = useConfig();
   const [pendingChainId, setPendingChainId] = useState<number | null>(null);
@@ -57,7 +58,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
   }
 
   return (
-    <Dialog onClose={onClose} open={open} titleId={titleId}>
+    <Dialog onClose={onClose} open={open} titleId={titleId} nonce={nonce}>
       <DialogContent bottomSheetOnMobile paddingBottom="0">
         <Box display="flex" flexDirection="column" gap="14">
           <Box

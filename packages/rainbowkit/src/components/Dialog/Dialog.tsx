@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
+import { setNonce } from 'get-nonce';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
@@ -22,9 +23,16 @@ interface DialogProps {
   titleId: string;
   onMountAutoFocus?: (event: Event) => void;
   children: ReactNode;
+  nonce?: string;
 }
 
-export function Dialog({ children, onClose, open, titleId }: DialogProps) {
+export function Dialog({
+  children,
+  onClose,
+  open,
+  titleId,
+  nonce,
+}: DialogProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
       open && event.key === 'Escape' && onClose();
@@ -44,6 +52,10 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
   const themeRootProps = useThemeRootProps();
   const mobile = isMobile();
+
+  if (nonce) {
+    setNonce(nonce);
+  }
 
   return (
     <>

@@ -70,6 +70,7 @@
     "@vanilla-extract/sprinkles": "1.6.4",
     "clsx": "2.1.1",
     "cuer": "0.0.2",
+    "get-nonce": "^1.0.1",
     "react-remove-scroll": "2.6.2",
     "ua-parser-js": "^1.0.37"
   },

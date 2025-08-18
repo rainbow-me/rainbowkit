@@ -73,6 +73,7 @@ export interface RainbowKitProviderProps {
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
   locale?: Locale;
+  nonce?: string; // optional CSP nonce
 }
 
 const defaultTheme = lightTheme();
@@ -88,6 +89,7 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
+  nonce,
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
@@ -123,10 +125,11 @@ export function RainbowKitProvider({
                     <AppContext.Provider value={appContext}>
                       <ThemeIdContext.Provider value={id}>
                         <ShowBalanceProvider>
-                          <ModalProvider>
+                          <ModalProvider nonce={nonce}>
                             {theme ? (
                               <div {...createThemeRootProps(id)}>
                                 <style
+                                  nonce={nonce}
                                   // biome-ignore lint/security/noDangerouslySetInnerHtml: TODO
                                   dangerouslySetInnerHTML={{
                                     // Selectors are sanitized to only contain alphanumeric
