@@ -182,29 +182,15 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 `preference` 인수는 Smart Wallet의 활성화 및 사용 가능성을 제어할 수 있습니다. 환경설정 기반 동작은 [여기](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)에서 문서화되어 있습니다.
 
-Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+Smart Wallet은 6월 초에 `all`로 기본적으로 활성화되며 추가 업그레이드 없이 제공됩니다.
+
+개발자는 오늘 `sepolia` 및 `baseSepolia` 체인을 설정하고 `smartWalletOnly`을 설정하며 `coinbaseWallet`을 지갑 목록에 포함시켜 Smart Wallet 테스트를 수행할 수 있습니다.
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Limit your dApp to only Smart Wallet
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
 ```
 
 #### Coin98 Wallet
