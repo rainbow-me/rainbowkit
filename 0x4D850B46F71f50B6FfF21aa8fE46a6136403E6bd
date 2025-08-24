@@ -1,0 +1,28 @@
+en: Aurora (AUR)
+ChainId: 1 (Ethereum mainnet)
+Address: 0x4D850B46F71f50B6FfF21aa8fE46a6136403E6bd
+Decimals: 18
+Name: Aurora
+Website: https://auroracoin.unaux.com
+Explorer: https://etherscan.io/token/0x4D850B46F71f50B6FfF21aa8fE46a6136403E6bd
+Logo URI (current host): 
+https://brown-additional-walrus-851.mypinata.cloud/ipfs/bafybeici3dfrn5dscijhjnmgkqaomnw5qnilx2qyrn4ggbhmr52ydgltiu
+(Will resolve to Trust Wallet CDN once merged: 
+https://assets.trustwallet.com/blockchains/ethereum/assets/0x4D850B46F71f50B6FfF21aa8fE46a6136403E6bd/logo.png)
+
+Token object (per @uniswap/token-lists schema):
+{
+  "chainId": 1,
+  "address": "0x4D850B46F71f50B6FfF21aa8fE46a6136403E6bd",
+  "name": "Aurora",
+  "symbol": "AUR",
+  "decimals": 18,
+  "logoURI": "https://brown-additional-walrus-851.mypinata.cloud/ipfs/bafybeici3dfrn5dscijhjnmgkqaomnw5qnilx2qyrn4ggbhmr52ydgltiu"
+}
+
+Notes:
+• This is an ERC-20 token on Ethereum mainnet.
+• Decimals = 18 confirmed.
+• Website: https://auroracoin.unaux.com
+• Social: https://x.com/divinityxamelia
+• Please review for inclusion in Rainbow’s token list.
