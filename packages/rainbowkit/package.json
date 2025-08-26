@@ -62,7 +62,9 @@
     "nock": "^13.4.0",
     "postcss": "^8.5.5",
     "react": "^19.1.0",
-    "vitest": "2.1.9"
+    "vitest": "2.1.9",
+    "wagmi": "^2.16.6",
+    "viem": "2.35.1"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.17.3",

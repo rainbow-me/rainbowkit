@@ -1,6 +1,7 @@
 import { RainbowKitProvider, WalletButton } from '@rainbow-me/rainbowkit';
-import type { RainbowKitProviderProps } from '@rainbow-me/rainbowkit/dist/components/RainbowKitProvider/RainbowKitProvider';
-import React from 'react';
+import type React from 'react';
+
+type RainbowKitProviderProps = React.ComponentProps<typeof RainbowKitProvider>;
 
 export function RainbowButtonProvider({
   children,

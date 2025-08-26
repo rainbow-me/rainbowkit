@@ -214,7 +214,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
           </ConnectButton.Custom>
 
           <RainbowButton.Custom>
-            {({ ready, connect }) => {
+            {({ ready, connect }: { ready: boolean; connect: () => void }) => {
               return (
                 <button
                   type="button"
