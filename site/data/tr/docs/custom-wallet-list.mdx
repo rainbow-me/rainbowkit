@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Bu cüzdan konnektörü hem Coinbase Cüzdan uygulamasını ve uzantısını, hem de Web'de Coinbase Akıllı Cüzdan'ı destekler.
 
-Akıllı Cüzdan'ın etkin olup kullanıcılar için kullanılabilirliğini kontrol etmek amacıyla bir `preference` argümanı mevcuttur. Tercih tabanlı davranış [burada](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) belgelenmiştir.
+Akıllı Cüzdan'ın etkin olup kullanıcılar için kullanılabilirliğini kontrol etmek amacıyla bir `preference` argümanı mevcuttur. Tercih tabanlı davranış [burada](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional) belgelenmiştir.
 
-Akıllı Cüzdan, Haziran başında `all` ile varsayılan olarak etkinleştirilecek, başka bir yükseltme gerektirmeyecek.
-
-Geliştiriciler, bugünden itibaren `sepolia` ve `baseSepolia` zincirleri ile Akıllı Cüzdan'ı `smartWalletOnly` ayarlayarak ve `coinbaseWallet`'i cüzdan listelerine ekleyerek test edebilir:
+[Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) ve [Alt Hesaplar](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) kontrolü için ek yapılandırma seçenekleri Coinbase Cüzdan SDK belgelerinde [burada](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters) bulunabilir.
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
