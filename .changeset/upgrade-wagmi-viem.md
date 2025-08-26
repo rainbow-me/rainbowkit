@@ -15,4 +15,4 @@ with-react-router: patch
 with-remix: patch
 with-vite: patch
 ---
-Upgrade wagmi to 2.16.6 and viem to 2.35.1.
+Upgrade wagmi to 2.16.6 and viem to 2.31.7.

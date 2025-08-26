@@ -52,6 +52,6 @@
   },
   "devDependencies": {
     "wagmi": "^2.16.6",
-    "viem": "2.35.1"
+    "viem": "2.31.7"
   }
 }

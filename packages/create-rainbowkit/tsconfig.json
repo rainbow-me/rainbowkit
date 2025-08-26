@@ -1,9 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2019",
     "preserveSymlinks": false,
-    "moduleResolution": "bundler",
     "outDir": "dist"
   },
   "include": ["src", "templates"],

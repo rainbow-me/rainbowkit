@@ -1,12 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "bundler",
     "module": "esnext",
-    "target": "es2020",
+    "target": "es2019",
     "declaration": true,
     "declarationDir": "dist",
-    "jsx": "react-jsx",
+    "jsx": "react",
     "outDir": "dist"
   },
   "exclude": ["node_modules"],
