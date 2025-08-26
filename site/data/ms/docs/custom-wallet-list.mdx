@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Penyambung dompet ini menyokong kedua-dua aplikasi dan sambungan Coinbase Wallet, serta Coinbase Smart Wallet dalam Web.
 
-Argumen `preference` tersedia untuk mengawal sama ada Smart Wallet diaktifkan dan tersedia untuk pengguna. Perilaku berasaskan pilihan didokumentasikan [di sini](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Argumen `preference` tersedia untuk mengawal sama ada Smart Wallet diutamakan atau dinyahaktifkan untuk pengguna anda. Gelagat berdasarkan keutamaan didokumenkan [di sini](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Smart Wallet akan diaktifkan secara lalai dengan `all` pada awal bulan Jun, tanpa peningkatan lanjut.
-
-Pembangun boleh menguji Smart Wallet dengan rantai `sepolia` dan `baseSepolia` hari ini dengan menetapkan `smartWalletOnly` dan memasukkan `coinbaseWallet` dalam senarai dompet mereka seperti berikut:
+Pilihan konfigurasi tambahan untuk kawalan [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) dan [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) boleh didapati di dokumen SDK Coinbase Wallet [di sini](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
