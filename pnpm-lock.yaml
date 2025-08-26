@@ -439,8 +439,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       cuer:
-        specifier: 0.0.2
-        version: 0.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4)
+        specifier: 0.0.3
+        version: 0.0.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4)
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
@@ -5990,8 +5990,8 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  cuer@0.0.2:
-    resolution: {integrity: sha512-MG1BYnnSLqBnO0dOBS1Qm/TEc9DnFa9Sz2jMA24OF4hGzs8UuPjpKBMkRPF3lrpC+7b3EzULwooX9djcvsM8IA==}
+  cuer@0.0.3:
+    resolution: {integrity: sha512-f/UNxRMRCYtfLEGECAViByA3JNflZImOk11G9hwSd+44jvzrc99J35u5l+fbdQ2+ZG441GvOpaeGYBmWquZsbQ==}
     peerDependencies:
       react: ^19.1.0
       react-dom: ^19.1.0
@@ -19334,7 +19334,7 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  cuer@0.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4):
+  cuer@0.0.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4):
     dependencies:
       qr: 0.4.2
       react: 19.1.0
