@@ -49,9 +49,5 @@
     "type": "git",
     "url": "git+https://github.com/rainbow-me/rainbowkit.git",
     "directory": "packages/rainbow-button"
-  },
-  "devDependencies": {
-    "wagmi": "^2.16.6",
-    "viem": "2.31.7"
   }
 }
