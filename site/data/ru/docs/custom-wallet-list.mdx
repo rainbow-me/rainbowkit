@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Этот коннектор для кошелька поддерживает как Coinbase Wallet app так и расширение, а также Coinbase Smart Wallet в сети.
 
-Доступен аргумент `preference` для управления тем, включен ли Smart Wallet и доступен ли он для пользователей. Поведение на основе предпочтений документировано [здесь](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Доступен аргумент `preference` для управления тем, включен ли Smart Wallet и доступен ли он для пользователей. Поведение на основе предпочтений документировано [здесь](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Smart Wallet будет включен по умолчанию с опцией `all` в начале июня без необходимости обновления.
-
-Разработчики могут проверить Smart Wallet с цепями `sepolia` и `baseSepolia` сегодня, установив `smartWalletOnly` и включив `coinbaseWallet` в свой список кошельков, как показано ниже:
+Дополнительные параметры конфигурации для управления [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) и [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) можно найти в документации SDK для кошелька Coinbase, [здесь](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
