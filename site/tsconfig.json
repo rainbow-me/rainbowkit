@@ -6,7 +6,7 @@
         "./.contentlayer/generated"
       ]
     },
-    "target": "es2020",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,7 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

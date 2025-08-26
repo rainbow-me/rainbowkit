@@ -37,7 +37,7 @@
     "three": "^0.172.0",
     "unified": "11.0.5",
     "unist-util-visit": "5.0.0",
-    "viem": "2.35.1",
+    "viem": "2.31.7",
     "wagmi": "^2.16.6"
   },
   "devDependencies": {

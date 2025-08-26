@@ -70,7 +70,7 @@
     "react-dom": "^19.1.0",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
-    "viem": "2.35.1",
+    "viem": "2.31.7",
     "vite": "^6.3.5",
     "vitest": "2.1.9",
     "wagmi": "^2.16.6"
