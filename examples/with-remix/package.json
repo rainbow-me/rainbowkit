@@ -16,8 +16,8 @@
     "@tanstack/react-query": "^5.55.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "viem": "2.29.2",
-    "wagmi": "^2.15.6"
+    "viem": "2.31.7",
+    "wagmi": "^2.17.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.16.8",
