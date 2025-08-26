@@ -1,4 +1,5 @@
 ---
 "@rainbow-me/rainbowkit": patch
 ---
-chore: upgrade cuer to 0.0.3
+
+Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
