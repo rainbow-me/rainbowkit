@@ -273,7 +273,7 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Após você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
           "title": "Toque no botão de escanear"
         }
       }
@@ -289,8 +289,8 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escaneamento"
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       },
       "extension": {
@@ -299,7 +299,7 @@
           "title": "Instale a extensão da Carteira Bitget"
         },
         "step2": {
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
@@ -413,7 +413,7 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
           "title": "Toque no botão WalletConnect"
         }
       },
@@ -443,7 +443,7 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para que você conecte sua carteira.",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
           "title": "Toque no botão de escanear"
         }
       },
@@ -453,11 +453,11 @@
           "title": "Instale a extensão Coinbase Wallet"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
           "title": "Atualize seu navegador"
         }
       }
@@ -485,11 +485,11 @@
           "title": "Abra o aplicativo Core"
         },
         "step2": {
-          "description": "Você pode facilmente salvar sua carteira usando nosso recurso de backup no seu celular.",
+          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
           "title": "Toque no botão WalletConnect"
         }
       },
@@ -499,7 +499,7 @@
           "title": "Instale a extensão Core"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
@@ -519,8 +519,8 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escaneamento"
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       }
     },
@@ -535,8 +535,8 @@
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
-          "title": "Toque no botão de varredura"
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       },
       "extension": {
@@ -545,7 +545,7 @@
           "title": "Instale a extensão da Carteira Frontier"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
@@ -705,8 +705,8 @@
           "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Toque no botão escanear",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       },
       "extension": {
@@ -716,10 +716,10 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
+          "title": "Atualize seu navegador",
           "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
@@ -748,11 +748,11 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       },
       "extension": {
@@ -762,11 +762,11 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
@@ -813,8 +813,8 @@
           "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       },
       "extension": {
@@ -828,7 +828,7 @@
         },
         "step3": {
           "title": "Atualize seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
@@ -844,7 +844,7 @@
         },
         "step3": {
           "title": "Toque em WalletConnect nas Configurações",
-          "description": "Escolha Nova Conexão, depois escaneie o QR code e confirme o prompt para se conectar."
+          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
         }
       },
       "extension": {
@@ -853,7 +853,7 @@
           "description": "Clique no canto superior direito do seu navegador e marque Trust Wallet para fácil acesso."
         },
         "step2": {
-          "title": "Crie ou Importe uma carteira",
+          "title": "Criar ou Importar uma carteira",
           "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
@@ -873,7 +873,7 @@
           "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "Toque no ícone QR e escaneie",
+          "title": "Toque no ícone do QR e escaneie",
           "description": "Toque no ícone QR na sua tela inicial, escaneie o código e confirme o prompt para conectar."
         }
       }
@@ -886,11 +886,11 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de digitalizar, um prompt de conexão aparecerá para que você possa conectar sua carteira."
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       },
       "extension": {
@@ -900,7 +900,7 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
           "title": "Atualize seu navegador",
@@ -916,11 +916,11 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Você pode facilmente fazer backup da sua carteira usando nosso recurso de backup no seu telefone."
+          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone."
         },
         "step3": {
-          "title": "Toque no botão de digitalizar",
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira."
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       }
     },
@@ -931,12 +931,12 @@
           "title": "Instale a extensão da Carteira Enkrypt"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
           "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize o seu navegador"
+          "title": "Atualize seu navegador"
         }
       }
     },
@@ -947,7 +947,7 @@
           "title": "Instale o Frame e a extensão complementar"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
@@ -968,7 +968,7 @@
         },
         "step3": {
           "title": "Atualize seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
@@ -1012,7 +1012,7 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
           "title": "Atualize seu navegador",
@@ -1074,7 +1074,7 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
           "title": "Atualize seu navegador",
@@ -1090,7 +1090,7 @@
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
           "title": "Atualize seu navegador",
@@ -1125,7 +1125,7 @@
           "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
+          "title": "Atualize seu navegador",
           "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
