@@ -104,7 +104,7 @@ npm i @tanstack/react-query
 
 现在支持新的EIP-6963连接标准的钱包（包括<b>Rainbow、MetaMask</b>等）将自动显示在连接钱包体验的`Installed`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
 
-开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
+开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在您的列表中包含 `injectedWallet` 和 `walletConnectWallet` ，以支持所有平台。 建议您继续在您的列表中包含 `injectedWallet` 和 `walletConnectWallet` ，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
 
 **2. 使用 getDefaultConfig 进行 Wagmi 配置**
 
@@ -197,7 +197,7 @@ const config = getDefaultConfig({
 
 **5. 自定义钱包**
 
-RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便继续支持WalletConnect v1. 将很快提供对WalletConnect v2和`WalletConnectConnector`的支持，作为补丁版本发布，不会有破坏性的更改。
+RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便继续支持WalletConnect v1。 将很快提供对WalletConnect v2和`WalletConnectConnector`的支持，作为补丁版本发布，不会有破坏性的更改。
 
 钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。
 
@@ -225,9 +225,7 @@ npm i viem
 
 \*\*3. 确保捆绑器和 polyfill 兼容性
 
-在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。
-
-参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 和 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 示例，以获得你的项目配置指导。
+参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 示例，以获得你的项目配置指导。
 
 Vite和Remix的附加框架指南可在此处获取 [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
