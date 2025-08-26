@@ -225,8 +225,6 @@ npm i viem
 
 **3. Garanta a compatibilidade do empacotador e do polyfill**
 
-Nas versões anteriores de wagmi que dependiam de [ethers](https://docs.ethers.org/v5/), os módulos `fs`, `net` e `tls` necessários pelo WalletConnect eram automaticamente polyfilled. Isso não acontece mais com RainbowKit v1 + wagmi v1, que são construídos com base em [viem](https://viem.sh/).
-
 Consulte a nossa [Configuração de Webpack do Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) e amostras de [Polyfills do Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) para orientações de configuração para o seu projeto.
 
 Guias adicionais do framework para Vite e Remix estão disponíveis [aqui](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
