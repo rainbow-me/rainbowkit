@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 यह वॉलेट कनेक्टर दोनों कोबेन वॉलेट ऐप और एक्सटेंशन के साथ-साथ वेब पर कोबेन स्मार्ट वॉलेट का समर्थन करता है।
 
-एक `preference` तर्क उपलब्ध है जो यह नियंत्रित करता है कि स्मार्ट वॉलेट उपयोगकर्ताओं के लिए सक्षम और उपलब्ध है या नहीं। वरीयता आधारित व्यवहार [यहां](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) प्रलेखित है।
+`preference` तर्क उपलब्ध है, जो यह नियंत्रित करता है कि आपके उपयोगकर्ताओं के लिए स्मार्ट वॉलेट को प्राथमिकता दी जाए या अक्षम कर दिया जाए। यहाँ वरीयता आधारित व्यवहार को दस्तावेज़ित किया गया है [यहाँ](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-स्मार्ट वॉलेट को जून के शुरू में `all` के साथ डिफ़ॉल्ट रूप से सक्षम किया जाएगा, बिना किसी अतिरिक्त अपग्रेड के।
-
-डेवलपर्स आज `sepolia` और `baseSepolia` चेन के साथ स्मार्ट वॉलेट का परीक्षण कर सकते हैं, `smartWalletOnly` सेट कर और `coinbaseWallet` को अपनी वॉलेट सूची में शामिल करके इस प्रकार:
+[पेमास्टर्स](https://docs.base.org/identity/smart-wallet/guides/paymasters) और [सब अकाउंट्स](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) के नियंत्रण के लिए अतिरिक्त कॉन्फ़िगरेशन विकल्प Coinbase Wallet SDK के दस्तावेज़ों में उपलब्ध हैं [यहाँ](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
