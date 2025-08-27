@@ -12,7 +12,6 @@
 "with-next-siwe-next-auth": patch
 "with-next-wallet-button": patch
 "with-react-router": patch
-"with-remix": patch
 "with-vite": patch
 ---
 
