@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Este conector de billetera es compatible tanto con la aplicación y la extensión de Coinbase Wallet, como con el Smart Wallet de Coinbase en la Web.
 
-Está disponible un argumento de `preference` para controlar si el Smart Wallet está habilitado y disponible para los usuarios. El comportamiento basado en preferencias está documentado [aquí](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Está disponible un argumento de `preference` para controlar si el Smart Wallet está habilitado y disponible para los usuarios. El comportamiento basado en preferencias está documentado [aquí](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-El Smart Wallet estará habilitado por defecto con `all` a principios de junio, sin una actualización adicional.
-
-Los desarrolladores pueden probar el Smart Wallet con las cadenas `sepolia` y `baseSepolia` hoy configurando `smartWalletOnly` e incluyendo `coinbaseWallet` en su lista de carteras así:
+Opciones de configuración adicional para el control de [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) y [Sub Cuentas](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) se pueden encontrar en la documentación del SDK de Coinbase Wallet [aquí](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet

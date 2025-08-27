@@ -197,7 +197,7 @@ const config = getDefaultConfig({
 
 **5. कस्टम वॉलेट्स**
 
-RainbowKit वॉलेट कनेक्टर्स ने Wagmi v2 का समर्थन करने के लिए पर्याप्त परिवर्तन किए हैं। अपने dApp में किसी भी कस्टम वॉलेट कनेक्टर्स को अपग्रेड करने के लिए [अपडेटेड डॉक्स](https://www.rainbowkit.com/docs/custom-wallets) और [उदाहरण कनेक्टर](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) को देखें। अपने dApp में किसी भी कस्टम वॉलेट कनेक्टर्स को अपग्रेड करने के लिए [अपडेटेड डॉक्यूमेंट्स](https://www.rainbowkit.com/docs/custom-wallets) और [उदाहरण कनेक्टर](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) का सन्दर्भ लें।
+RainbowKit वॉलेट कनेक्टर्स ने Wagmi v2 का समर्थन करने के लिए पर्याप्त परिवर्तन किए हैं। अपने dApp में किसी भी कस्टम वॉलेट कनेक्टर्स को अपग्रेड करने के लिए [अपडेटेड डॉक्स](https://www.rainbowkit.com/docs/custom-wallets) और [उदाहरण कनेक्टर](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) को देखें। अपने dApp में किसी भी कस्टम वॉलेट कनेक्टर्स को अपग्रेड करने के लिए [अपडेटेड डॉक्यूमेंट्स](https://www.rainbowkit.com/docs/custom-wallets) और [उदाहरण कनेक्टर](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) का सन्दर्भ लें।
 
 वॉलेट कनेक्टर्स अब `rdns` प्रोप के साथ EIP-6963 मानक का समर्थन भी करते हैं। सुनिश्चित करें कि इसे भरा गया है ताकि आपके वॉलेट सूची में EIP-6963 का समर्थन करने वाले वॉलेटस के डुप्लिकेट संदर्भों को रोका जा सके।
 
@@ -225,9 +225,7 @@ npm i viem
 
 \*\*3. बंडलर और पॉलीफिल संगतता सुनिश्चित करें
 
-wagmi के पिछले संस्करणों में जो [ethers](https://docs.ethers.org/v5/) पर निर्भर थे, WalletConnect द्वारा आवश्यक `fs`, `net`, और `tls` मॉड्यूल स्वचालित रूप से पॉलीफिल्ड किए गए थे। यह मामला अब RainbowKit v1 + wagmi v1 के साथ नहीं है, जो [viem](https://viem.sh/) पर निर्मित हैं।
-
-अपने प्रोजेक्ट के लिए कॉन्फिगरेशन मार्गदर्शन के लिए हमारे [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) और [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) नमूनों का पुणः संदर्भ लें।
+अपने प्रोजेक्ट के लिए कॉन्फ़िगरेशन मार्गदर्शन के लिए हमारे [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) नमूने का संदर्भ लें।
 
 Vite और Remix के लिए अतिरिक्त ढांचा मार्गदर्शन उपलब्ध है [यहां](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup)।
 

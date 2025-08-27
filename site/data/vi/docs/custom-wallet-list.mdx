@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Kết nối ví này hỗ trợ cả ứng dụng và tiện ích mở rộng Coinbase Wallet, cũng như Coinbase Smart Wallet trên Web.
 
-Một đối số `preference` được cung cấp để kiểm soát xem Smart Wallet có được kích hoạt và khả dụng cho người dùng hay không. Hành vi dựa trên sở thích được ghi lại [tại đây](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Có một tham số `preference` để kiểm soát liệu Smart Wallet được ưu tiên hay bị vô hiệu hóa cho người dùng của bạn. Hành vi dựa trên sở thích được tài liệu [[ở đây]](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Smart Wallet sẽ được kích hoạt mặc định với `all` vào đầu tháng Sáu, mà không cần nâng cấp thêm.
-
-Các nhà phát triển có thể thử nghiệm Smart Wallet với các chuỗi `sepolia` và `baseSepolia` ngay hôm nay bằng cách đặt `smartWalletOnly` và bao gồm `coinbaseWallet` trong danh sách ví của họ như sau:
+Các tùy chọn cấu hình bổ sung để kiểm soát [[Paymasters]](https://docs.base.org/identity/smart-wallet/guides/paymasters) và [[Tài Khoản Phụ]](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) có thể được tìm thấy trong tài liệu Coinbase Wallet SDK [[ở đây]](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet

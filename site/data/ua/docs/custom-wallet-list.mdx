@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Цей з'єднувач гаманців підтримує як додаток, так і розширення Coinbase Wallet, а також Coinbase Smart Wallet у веб.
 
-Доступний аргумент `preference` для контролю, чи буде увімкнено Смарт Гаманець для користувачів. Поведения на основі переваг описано [тут](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+Доступний аргумент `preference`, що дозволяє керувати тим, чи буде Smart Wallet надано перевагу або відключено для ваших користувачів. Поведінка на основі переваг задокументована [тут](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
 Смарт Гаманець буде увімкнено за замовчуванням з `all` на початку червня, без додаткового оновлення.
-
-Розробники можуть тестувати Смарт Гаманець з цепями `sepolia` та `baseSepolia` вже сьогодні, встановивши `smartWalletOnly` та включивши `coinbaseWallet` у свій список гаманців ось так:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet

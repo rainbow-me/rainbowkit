@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 このウォレットコネクタは、Coinbase Walletアプリと拡張機能、さらにWeb上のCoinbase Smart Walletの両方をサポートしています。
 
-Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
+`preference`引数は、Smart Walletをユーザーにとって優先するか無効にするかを制御するために利用可能です。 プリファレンスに基づく動作は、[こちら](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)で文書化されています。
 
-6月上旬に更新なしで`all`でデフォルトでSmart Walletが有効になります。
-
-開発者は、`sepolia`と`baseSepolia`チェーンでSmart Walletをテストし、`smartWalletOnly`を設定して`coinbaseWallet`をウォレットリストに含めることができます：
+[Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters)および[サブアカウント](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)の制御に関する追加の設定オプションは、Coinbase Wallet SDKのドキュメントに[こちら](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)あります。
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet

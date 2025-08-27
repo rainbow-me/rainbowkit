@@ -9,8 +9,6 @@ description: การปรับแต่งรายการ wallet
 
 คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ  ตัวอย่างเช่น คุณสามารถเลือกแสดงเฉพาะ Rainbow พร้อมกับ wallet ที่เป็นทั่วไป
 
-คุณสามารถส่งตัวเชื่อมต่อของคุณไปยัง `createConfig` ของ Wagmi
-
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
@@ -32,7 +30,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Wallet ที่มีอยู่ภายใน
+คุณสามารถส่งตัวเชื่อมต่อของคุณไปยัง `createConfig` ของ Wagmi
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,27 +56,25 @@ const App = () => (
 );
 ```
 
-### Wallet ต่อไปนี้มีผ่านข้อมูล `wallet` object.
+### เชื่อมต่อกระเป๋าเงิน
 
-Wallet ทั่วไป
+Wallet ต่อไปนี้มีผ่านข้อมูล `wallet` object.
 
-#### Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
+#### Wallet ทั่วไป
 
-นี่เป็นตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับกระเป๋าเงินที่ใช้ WalletConnect ที่ยังไม่ได้รับจากกระเป๋าเงินอื่น ๆ ในรายการ **แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
+Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
 
 ##### WalletConnect
 
-นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
-
-**แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
+นี่เป็นตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับกระเป๋าเงินที่ใช้ WalletConnect ที่ยังไม่ได้รับจากกระเป๋าเงินอื่น ๆ ในรายการ **แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### เชื่อมต่อกระเป๋าเงิน
+##### Wallet ที่มีอยู่ภายใน
 
-นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
+นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
 
 **แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
 
@@ -180,17 +176,29 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่ การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
 
-มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่  การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
-
-Smart Wallet will be enabled by default with `all` in early June, without a further upgrade.
-
-Developers can test Smart Wallet with `sepolia` and `baseSepolia` chains today by setting `smartWalletOnly` and including `coinbaseWallet` in their wallet list like so:
+สามารถดูตัวเลือกการกำหนดค่าสำหรับการควบคุม [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) และ [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) เพิ่มเติมได้ที่เอกสาร SDK ของ Coinbase Wallet [ที่นี่](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
@@ -496,7 +504,7 @@ const connectors = connectorsForWallets(
 
 #### หลายกลุ่ม
 
-คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้
 
 แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 

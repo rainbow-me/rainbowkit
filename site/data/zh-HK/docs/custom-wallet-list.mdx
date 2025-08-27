@@ -180,17 +180,31 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 此錢包連接器支持 Coinbase Wallet 應用程序和擴展程序，以及網上的 Coinbase Smart Wallet。
 
-`preference` 參數可用於控制 Smart Wallet 是否啟用並可供用戶使用。基於偏好的行為記錄在 [這裡](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)。 Preference based behavior is documented [here](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+可用的 `preference` 參數可以控制是否優先或禁用 Smart Wallet 給用戶。 基於偏好的行為記錄在 [這裡](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
 
-Smart Wallet 將於六月初預設啟用 `all`，不需進一步升級。
-
-開發人員可以從今天開始在 `sepolia` 和 `baseSepolia` 鏈上測試 Smart Wallet，通過設置 `smartWalletOnly` 並如以下方式將 `coinbaseWallet` 包含在錢包列表中：
+有關 Paymasters 和 Sub Accounts 的額外配置選項可在這裡的 Coinbase Wallet SDK 文檔中找到 [這裡](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)。
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-// Enable Coinbase Smart Wallet for testing
+// Limit your dApp to only Smart Wallet
 coinbaseWallet.preference = 'smartWalletOnly';
+
+// Limit your dApp to the Coinbase Wallet app
+coinbaseWallet.preference = 'eoaOnly';
+
+// Configure the Paymaster for gas sponsorship
+coinbaseWallet.paymasterUrls: {
+  [base.id]: '...'
+}
+
+// Enable Sub Accounts
+coinbaseWallet.subAccounts: {
+  enableAutoSubAccounts: true,
+  defaultSpendLimits: {
+    ...
+  }
+}
 ```
 
 #### Coin98 Wallet
