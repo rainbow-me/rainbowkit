@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.9
+
+### Patch Changes
+
+- 1520f59: Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
+
 ## 2.2.8
 
 ### Patch Changes
