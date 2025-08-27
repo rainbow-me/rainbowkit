@@ -7,7 +7,7 @@ description: 定制钱包列表
 
 ## 定制钱包列表
 
-您可以从`'@rainbow-me/rainbowkit/wallets'`中导入各个钱包，同时使用`connectorsForWallets`函数来构建自己的钱包列表和所需连接器。 这样，您可以自由控制显示哪些钱包以及显示的顺序。 这样，您可以自由控制显示哪些钱包以及显示的顺序。
+您可以从`'@rainbow-me/rainbowkit/wallets'`中导入各个钱包，同时使用`connectorsForWallets`函数来构建自己的钱包列表和所需连接器。 这样，您可以自由控制显示哪些钱包以及显示的顺序。
 
 例如，您可以选择仅显示Rainbow和通用的Fallback钱包。
 
@@ -64,7 +64,7 @@ const App = () => (
 
 #### 通用钱包
 
-以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。 因此，建议总是包含这些钱包。
+以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。
 
 ##### WalletConnect
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 注入式钱包
 
-这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
+这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
 
 **建议您始终在列表中包含此钱包，以确保支持所有注入的钱包。**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括 `safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。 Safe选项仅在Safe Wallet浏览器环境中出现。
+对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括 `safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -510,7 +510,7 @@ const connectors = connectorsForWallets(
 
 #### 多个组
 
-你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
+你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
 
 推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
 

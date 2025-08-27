@@ -7,7 +7,7 @@ description: 自定義錢包列表
 
 ## 自定義錢包列表
 
-您可以從 `'@rainbow-me/rainbowkit/wallets'` 並且使用 `connectorsForWallets` 函數來匯入單個錢包，並建置您自己的錢包列表及必要的連接器。 這樣您可以完全控制顯示哪些錢包以及其顯示順序。 這樣您可以完全控制顯示哪些錢包以及其顯示順序。
+您可以從 `'@rainbow-me/rainbowkit/wallets'` 並且使用 `connectorsForWallets` 函數來匯入單個錢包，並建置您自己的錢包列表及必要的連接器。 這樣您可以完全控制顯示哪些錢包以及其顯示順序。
 
 例如，您可以選擇只顯示 Rainbow 和通用回退錢包。
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 嵌入式錢包
 
-這是一個回退錢包選項，專為存在 `window.ethereum` 但尚未被列表中其他錢包提供的情況而設計。 當不需要回退或無法使用嵌入式錢包時，該錢包將自動從列表中隱藏。 當不需要回退或無法使用嵌入式錢包時，該錢包將自動從列表中隱藏。
+這是一個回退錢包選項，專為存在 `window.ethereum` 但尚未被列表中其他錢包提供的情況而設計。 當不需要回退或無法使用嵌入式錢包時，該錢包將自動從列表中隱藏。
 
 **建議您始終將此錢包包含在列表中，以確保所有嵌入式錢包都受到支援。**
 
@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-對於支援 Safe Apps 的 dApp，以便讓用戶輕鬆連接其 Safe vault 或多簽帳戶，請包含 `safeWallet` 選項以自動連接。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。
+對於支援 Safe Apps 的 dApp，以便讓用戶輕鬆連接其 Safe vault 或多簽帳戶，請包含 `safeWallet` 選項以自動連接。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -510,7 +510,7 @@ const connectors = connectorsForWallets(
 
 #### 多個群組
 
-您可以使用 `groupName` 鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
+您可以使用 `groupName` 鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
 
 推薦 Rainbow 和 MetaMask，但同時提供 Coinbase 和通用回退錢包。
 
