@@ -26,6 +26,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isBifrost) return false;
   if (ethereum.isBitKeep) return false;
   if (ethereum.isBitski) return false;
+  if (ethereum.isBinance) return false;
   if (ethereum.isBlockWallet) return false;
   if (ethereum.isCoinbaseWallet) return false;
   if (ethereum.isDawn) return false;
@@ -44,7 +45,9 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
     return false;
   if (ethereum.isOpera) return false;
   if (ethereum.isPhantom) return false;
+  if (ethereum.isZilPay) return false;
   if (ethereum.isPortal) return false;
+  if (ethereum.isxPortal) return false;
   if (ethereum.isRabby) return false;
   if (ethereum.isRainbow) return false;
   if (ethereum.isStatus) return false;
@@ -55,6 +58,11 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isTrust || ethereum.isTrustWallet) return false;
   if (ethereum.isXDEFI) return false;
   if (ethereum.isZeal) return false;
+  if (ethereum.isCoin98) return false;
+  if (ethereum.isMEWwallet) return false;
+  if (ethereum.isSafeheron) return false;
+  if (ethereum.isSafePal) return false;
+  if (ethereum.isWigwam) return false;
   if (ethereum.isZerion) return false;
   if (ethereum.__seif) return false;
   return true;
