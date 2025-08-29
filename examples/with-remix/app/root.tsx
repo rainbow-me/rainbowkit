@@ -53,7 +53,7 @@ export const links: LinksFunction = () => [
 ];
 
 // Note: These environment variables are hard coded for demonstration purposes.
-// See: https://remix.run/docs/en/v1/guides/envvars#browser-environment-variables
+// See: https://remix.run/docs/en/guides/envvars#browser-environment-variables
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
@@ -72,7 +72,7 @@ export default function App() {
   // Remix modules cannot have side effects so the initialization of `wagmi`
   // client happens during render, but the result is cached via `useState`
   // and a lazy initialization function.
-  // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
+  // See: https://remix.run/docs/en/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [];
 
