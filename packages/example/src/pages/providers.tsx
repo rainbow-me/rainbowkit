@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { createStore, type EIP6963ProviderDetail } from 'mipd';
 
 function extractFlags(obj: Record<string, unknown>) {
@@ -11,7 +11,16 @@ function extractFlags(obj: Record<string, unknown>) {
   return flags;
 }
 
-export default function Debug() {
+const tableStyle: CSSProperties = {
+  borderCollapse: 'collapse',
+  textAlign: 'left',
+};
+const cellStyle: CSSProperties = {
+  border: '1px solid #ccc',
+  padding: '4px 8px',
+};
+
+export default function EthereumProviders() {
   const [ethereumFlags, setEthereumFlags] = useState<Record<
     string,
     boolean
@@ -38,7 +47,7 @@ export default function Debug() {
   useEffect(() => {
     const store = createStore();
     const unsubscribe = store.subscribe(
-      (providerDetails) => {
+      (providerDetails: readonly EIP6963ProviderDetail[]) => {
         setWallets(providerDetails);
       },
       { emitImmediately: true },
@@ -50,17 +59,17 @@ export default function Debug() {
   }, []);
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Debug</h1>
+    <div style={{ padding: 20, textAlign: 'left' }}>
+      <h1>Ethereum Providers</h1>
       <section>
-        <h2>window.ethereum</h2>
+        <h2>eip-1193</h2>
         {ethereumFlags ? (
-          <table>
+          <table style={tableStyle}>
             <tbody>
               {Object.entries(ethereumFlags).map(([key, value]) => (
                 <tr key={key}>
-                  <td>{key}</td>
-                  <td>{String(value)}</td>
+                  <td style={cellStyle}>{key}</td>
+                  <td style={cellStyle}>{String(value)}</td>
                 </tr>
               ))}
             </tbody>
@@ -70,13 +79,13 @@ export default function Debug() {
         )}
         {providerFlags.length > 0 && (
           <>
-            <h3>window.ethereum.providers</h3>
-            <table>
+            <h3>.providers extension</h3>
+            <table style={tableStyle}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Flag</th>
-                  <th>Value</th>
+                  <th style={cellStyle}>#</th>
+                  <th style={cellStyle}>flag</th>
+                  <th style={cellStyle}>value</th>
                 </tr>
               </thead>
               <tbody>
@@ -84,10 +93,15 @@ export default function Debug() {
                   Object.entries(flags).map(([key, value], i) => (
                     <tr key={`${idx}-${key}`}>
                       {i === 0 && (
-                        <td rowSpan={Object.keys(flags).length}>{idx}</td>
+                        <td
+                          style={cellStyle}
+                          rowSpan={Object.keys(flags).length}
+                        >
+                          {idx}
+                        </td>
                       )}
-                      <td>{key}</td>
-                      <td>{String(value)}</td>
+                      <td style={cellStyle}>{key}</td>
+                      <td style={cellStyle}>{String(value)}</td>
                     </tr>
                   )),
                 )}
@@ -97,20 +111,22 @@ export default function Debug() {
         )}
       </section>
       <section>
-        <h2>EIP-6963 Wallets</h2>
+        <h2>eip-6963</h2>
         {wallets.length > 0 ? (
-          <table>
+          <table style={tableStyle}>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Logo</th>
+                <th style={cellStyle}>id</th>
+                <th style={cellStyle}>name</th>
+                <th style={cellStyle}>logo</th>
               </tr>
             </thead>
             <tbody>
               {wallets.map(({ info }) => (
                 <tr key={info.uuid}>
-                  <td>{info.name}</td>
-                  <td>
+                  <td style={cellStyle}>{info.rdns}</td>
+                  <td style={cellStyle}>{info.name}</td>
+                  <td style={cellStyle}>
                     <img
                       alt={info.name}
                       src={info.icon}
