@@ -4,7 +4,7 @@ import { createStore, type EIP6963ProviderDetail } from 'mipd';
 function extractFlags(obj: Record<string, unknown>) {
   const flags: Record<string, boolean> = {};
   for (const [key, value] of Object.entries(obj)) {
-    if (key.startsWith('is') && typeof value === 'boolean') {
+    if (key.startsWith('is') && key !== 'isReady' && typeof value === 'boolean') {
       flags[key] = value;
     }
   }
@@ -79,7 +79,7 @@ export default function EthereumProviders() {
         )}
         {providerFlags.length > 0 && (
           <>
-            <h3>.providers extension</h3>
+            <h3>eip-1993 .providers</h3>
             <table style={tableStyle}>
               <thead>
                 <tr>
