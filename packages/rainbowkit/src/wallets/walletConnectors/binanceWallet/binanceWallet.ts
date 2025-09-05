@@ -1,6 +1,9 @@
 import { isAndroid } from '../../../utils/isMobile';
 import type { DefaultWalletOptions, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BinanceWalletOptions = DefaultWalletOptions;
@@ -9,7 +12,11 @@ export const binanceWallet = ({
   projectId,
   walletConnectParameters,
 }: BinanceWalletOptions): Wallet => {
-  const isBinanceInjected = (window as any)?.binancew3w?.isExtension === true;
+  const isBinanceInjected =
+    (window as any)?.binancew3w?.isExtension === true ||
+    hasInjectedProvider({
+      flag: 'isBinance',
+    });
   const shouldUseWalletConnect = !isBinanceInjected;
 
   return {
