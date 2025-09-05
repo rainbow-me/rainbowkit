@@ -1,5 +1,14 @@
+// This page captures window.ethereum exactly once, prior to React hydration.
+// Guarantees:
+// - Uses <Script strategy="beforeInteractive"/> so the snapshot runs before Next.js hydrates the page,
+//   ensuring all React components on this route read from a single cached value, not window directly.
+// - The snapshot assignment is idempotent (write-once). If the script runs again (e.g., dev HMR),
+//   it does not overwrite an existing snapshot.
+// - On the server, no window is available, so SSR renders a fallback. On the client, the snapshot
+//   exists before hydration; we hydrate state from it after mount to avoid hydration mismatch.
 import { useEffect, useState, type CSSProperties } from 'react';
 import { createStore, type EIP6963ProviderDetail } from 'mipd';
+import Script from 'next/script';
 
 function extractFlags(obj: Record<string, unknown>) {
   const flags: Record<string, boolean> = {};
@@ -24,7 +33,17 @@ const cellStyle: CSSProperties = {
   padding: '4px 8px',
 };
 
+// The snapshot shape cached on window.__ETHEREUM_SNAPSHOT__
+type EthereumSnapshot = {
+  ethereum: any | null;
+  ethereumRaw: any | null;
+  providers: any[];
+};
+
 export default function EthereumProviders() {
+  // Avoid hydration mismatches by keeping the SSR structure for the first client render.
+  // We still read window.ethereum before hydration via the inline <Script>, and then
+  // hydrate local state from that snapshot in an effect.
   const [ethereumFlags, setEthereumFlags] = useState<Record<
     string,
     boolean
@@ -35,17 +54,22 @@ export default function EthereumProviders() {
   const [wallets, setWallets] = useState<readonly EIP6963ProviderDetail[]>([]);
 
   useEffect(() => {
-    const eth = (window as any).ethereum as Record<string, unknown> | undefined;
-    if (!eth) return;
-
-    setEthereumFlags(extractFlags(eth));
-
-    const providers = Array.isArray((eth as any).providers)
-      ? (eth as any).providers
-      : [];
-    setProviderFlags(
-      providers.map((p: Record<string, unknown>) => extractFlags(p)),
-    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const snap = (
+      typeof window !== 'undefined'
+        ? (window as any).__ETHEREUM_SNAPSHOT__
+        : undefined
+    ) as EthereumSnapshot | undefined;
+    if (snap?.ethereumRaw) {
+      setEthereumFlags(
+        extractFlags(snap.ethereumRaw as unknown as Record<string, unknown>),
+      );
+    }
+    if (Array.isArray(snap?.providers)) {
+      setProviderFlags(
+        snap.providers.map((p: Record<string, unknown>) => extractFlags(p)),
+      );
+    }
   }, []);
 
   useEffect(() => {
@@ -63,7 +87,37 @@ export default function EthereumProviders() {
   }, []);
 
   return (
-    <div style={{ padding: 20, textAlign: 'left' }}>
+    <div style={{ padding: 20, textAlign: 'left' }} suppressHydrationWarning>
+      {/**
+       * Runs before React hydrates this route and before any app code executes.
+       * We snapshot window.ethereum once and store it on window.__ETHEREUM_SNAPSHOT__.
+       * The assignment is write-once to avoid multiple reads in dev/HMR.
+       *
+       * If you prefer to capture strictly on the first DOM load (potentially later),
+       * wrap the capture in a DOMContentLoaded listener instead of running immediately:
+       *
+       *   if (document.readyState === 'loading') {
+       *     window.addEventListener('DOMContentLoaded', capture, { once: true });
+       *   } else {
+       *     capture();
+       *   }
+       */}
+      <Script id="ethereum-snapshot" strategy="beforeInteractive">{`
+        (function () {
+          try {
+            if (typeof window !== 'undefined' && !window.__ETHEREUM_SNAPSHOT__) {
+              var eth = window.ethereum ? window.ethereum : null;
+              var providers = Array.isArray(eth && eth.providers) ? eth.providers.slice() : [];
+              // Prefer MetaMask when multiple injected providers exist
+              var chosen = (providers.find(function (p) { return p && p.isMetaMask; })) || providers[0] || eth;
+              window.__ETHEREUM_SNAPSHOT__ = { ethereum: chosen || null, ethereumRaw: eth || null, providers: providers };
+              console.log('snapshot set');
+            }
+          } catch (e) {
+            window.__ETHEREUM_SNAPSHOT__ = { ethereum: null, ethereumRaw: null, providers: [] };
+          }
+        })();
+      `}</Script>
       <h1>Ethereum Providers</h1>
       <section>
         <h2>eip-1193</h2>
