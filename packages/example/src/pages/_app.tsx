@@ -181,7 +181,7 @@ function RainbowKitApp({
         >
           <Component {...pageProps} {...appContextProps} />
 
-          {isMounted && (
+          {isMounted && router.pathname !== '/providers' && (
             <>
               <div
                 style={{
