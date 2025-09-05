@@ -135,37 +135,34 @@ export default function EthereumProviders() {
         ) : (
           <p>No window.ethereum detected</p>
         )}
-        {providerFlags.length > 0 && (
-          <>
-            <h2>eip-1193 providers[]</h2>
-            <table style={tableStyle}>
-              <thead>
-                <tr>
-                  <th style={cellStyle}>#</th>
-                  <th style={cellStyle}>flag</th>
-                  <th style={cellStyle}>value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {providerFlags.map((flags, idx) =>
-                  Object.entries(flags).map(([key, value], i) => (
-                    <tr key={`${idx}-${key}`}>
-                      {i === 0 && (
-                        <td
-                          style={cellStyle}
-                          rowSpan={Object.keys(flags).length}
-                        >
-                          {idx}
-                        </td>
-                      )}
-                      <td style={cellStyle}>{key}</td>
-                      <td style={cellStyle}>{String(value)}</td>
-                    </tr>
-                  )),
-                )}
-              </tbody>
-            </table>
-          </>
+        <h2>eip-1193 providers[]</h2>
+        {providerFlags.length > 0 ? (
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                <th style={cellStyle}>#</th>
+                <th style={cellStyle}>flag</th>
+                <th style={cellStyle}>value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {providerFlags.map((flags, idx) =>
+                Object.entries(flags).map(([key, value], i) => (
+                  <tr key={`${idx}-${key}`}>
+                    {i === 0 && (
+                      <td style={cellStyle} rowSpan={Object.keys(flags).length}>
+                        {idx}
+                      </td>
+                    )}
+                    <td style={cellStyle}>{key}</td>
+                    <td style={cellStyle}>{String(value)}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
+        ) : (
+          <p>No providers detected</p>
         )}
       </section>
       <section>
