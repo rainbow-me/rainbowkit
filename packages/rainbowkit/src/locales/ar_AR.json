@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "افتح تطبيق محفظة Nova",
+          "description": "أضف محفظة Nova إلى الشاشة الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
           "title": "إنشاء أو استيراد محفظة",
