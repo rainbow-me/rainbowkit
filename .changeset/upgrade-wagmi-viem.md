@@ -1,6 +1,7 @@
 ---
 "@rainbow-me/create-rainbowkit": patch
 "example": patch
+"site": patch
 "with-create-react-app": patch
 "with-next": patch
 "with-next-app": patch
@@ -16,4 +17,4 @@
 "with-vite": patch
 ---
 
-Upgrade wagmi to ^2.16.8 and viem to 2.31.7.
+Upgrade wagmi to ^2.17.0 and viem to 2.31.7.
