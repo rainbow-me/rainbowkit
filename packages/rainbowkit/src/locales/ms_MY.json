@@ -403,8 +403,8 @@
       },
       "extension": {
         "step1": {
-          "title": "Install the Binance Wallet extension",
-          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+          "title": "Pasang sambungan Binance Wallet",
+          "description": "Kami mengesyorkan menyematkan Binance Wallet pada taskbar anda untuk akses yang lebih cepat ke dompet anda."
         },
         "step2": {
           "title": "Cipta atau Import Dompet",
@@ -1423,8 +1423,8 @@
     "zilpay": {
       "qr_code": {
         "step1": {
-          "title": "Open the ZilPay app",
-          "description": "Add ZilPay to your home screen for faster access to your wallet."
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
         },
         "step2": {
           "title": "Cipta atau Import Dompet",
@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "Buka aplikasi Nova Wallet",
+          "description": "Tambah Nova Wallet ke skrin utama anda untuk akses lebih cepat ke dompet anda."
         },
         "step2": {
           "title": "Cipta atau Import Dompet",
