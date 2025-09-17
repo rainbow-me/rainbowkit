@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "Відкрийте додаток Nova Wallet",
+          "description": "Додайте Nova Wallet на домашній екран для швидшого доступу до вашого гаманця."
         },
         "step2": {
           "title": "Створити або Імпортувати Гаманець",
