@@ -4,3 +4,5 @@ packages:
   - 'packages/create-rainbowkit/**/*-app'
   - 'site'
   - 'examples/*'
+# Don't install packages < 1 day old
+minimumReleaseAge: 1440
