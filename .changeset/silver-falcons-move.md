@@ -1,6 +1,6 @@
 ---
-"@rainbow-me/rainbowkit": minor
-"example": minor
+"@rainbow-me/rainbowkit": patch
+"example": patch
 ---
 
-create Universal Profiles wallet connector
+Universal Profiles wallet connector
