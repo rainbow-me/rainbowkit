@@ -64,6 +64,7 @@ import {
   zealWallet,
   zerionWallet,
   zilPayWallet,
+  universalProfilesWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { publicActions } from 'viem';
 import {
@@ -88,6 +89,7 @@ import {
   inkSepolia,
   linea,
   lineaSepolia,
+  lukso,
   mainnet,
   optimism,
   optimismSepolia,
@@ -159,6 +161,7 @@ export const config = getDefaultConfig({
     gnosis,
     scroll,
     zksync,
+    lukso,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -246,6 +249,7 @@ export const config = getDefaultConfig({
         tokenaryWallet,
         trustWallet,
         uniswapWallet,
+        universalProfilesWallet,
         valoraWallet,
         wigwamWallet,
         xdefiWallet,
