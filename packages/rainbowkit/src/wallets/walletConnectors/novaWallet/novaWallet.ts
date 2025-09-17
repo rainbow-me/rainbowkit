@@ -2,10 +2,7 @@ import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
-import type {
-  DefaultWalletOptions,
-  Wallet,
-} from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type NovaWalletOptions = DefaultWalletOptions;
@@ -33,16 +30,18 @@ export const novaWallet = ({
     iconBackground: '#fff',
     installed: isNovaWalletInjected || undefined,
     downloadUrls: {
-        android: 'https://play.google.com/store/apps/details?id=io.novafoundation.nova.market',
-        ios: 'https://apps.apple.com/us/app/nova-polkadot-wallet/id1597119355',
-        mobile: 'https://nova-wallet.app.link',
-        qrCode: 'https://nova-wallet.app.link',
+      android:
+        'https://play.google.com/store/apps/details?id=io.novafoundation.nova.market',
+      ios: 'https://apps.apple.com/us/app/nova-polkadot-wallet/id1597119355',
+      mobile: 'https://nova-wallet.app.link',
+      qrCode: 'https://nova-wallet.app.link',
     },
     qrCode: shouldUseWalletConnect
       ? {
           getUri: (uri: string) => uri,
           instructions: {
-            learnMoreUrl: 'https://docs.novawallet.io/nova-wallet-wiki/dapps/using-walletconnect-for-dapps',
+            learnMoreUrl:
+              'https://docs.novawallet.io/nova-wallet-wiki/dapps/using-walletconnect-for-dapps',
             steps: [
               {
                 description: 'wallet_connectors.nova.qr_code.step1.description',
@@ -50,8 +49,7 @@ export const novaWallet = ({
                 title: 'wallet_connectors.nova.qr_code.step1.title',
               },
               {
-                description:
-                  'wallet_connectors.nova.qr_code.step2.description',
+                description: 'wallet_connectors.nova.qr_code.step2.description',
                 step: 'create',
                 title: 'wallet_connectors.nova.qr_code.step2.title',
               },
