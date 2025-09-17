@@ -400,6 +400,20 @@
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
           "title": "Ketuk butang WalletConnect"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Install the Binance Wallet extension",
+          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Pastikan anda membuat sandaran dompet anda menggunakan kaedah yang selamat. Jangan sekali-kali berkongsi frasa rahsia anda dengan sesiapa sahaja."
+        },
+        "step3": {
+          "title": "Segarkan pelayar anda",
+          "description": "Setelah anda menyediakan dompet anda, klik di bawah untuk menyegarkan pelayar dan memuatkan lanjutan."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Ketuk butang Imbas"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Buka aplikasi ZilPay",
-        "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
-      },
-      "step2": {
-        "title": "Cipta atau Import Dompet",
-        "description": "Cipta dompet baharu atau import dompet sedia ada."
-      },
-      "step3": {
-        "title": "Ketuk butang Imbas",
-        "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the ZilPay app",
+          "description": "Add ZilPay to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Nova Wallet app",
+          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
       }
     }
   }
