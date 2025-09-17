@@ -59,6 +59,7 @@ export type WalletProviderFlags =
   | 'isXDEFI'
   | 'isZerion'
   | 'isTalisman'
+  | 'isNovaWallet'
   | 'isZeal'
   | 'isCoin98'
   | 'isMEWwallet'

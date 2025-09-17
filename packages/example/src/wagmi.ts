@@ -34,6 +34,7 @@ import {
   metaMaskWallet,
   mewWallet,
   nestWallet,
+  novaWallet,
   oktoWallet,
   okxWallet,
   omniWallet,
@@ -188,6 +189,7 @@ export const config = getDefaultConfig({
         coinbaseWallet,
         metaMaskWallet,
         walletConnectWallet,
+        novaWallet,
       ],
     },
     {
