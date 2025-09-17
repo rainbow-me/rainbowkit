@@ -403,8 +403,8 @@
       },
       "extension": {
         "step1": {
-          "title": "Install the Binance Wallet extension",
-          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+          "title": "Instale la extensión Binance Wallet",
+          "description": "Recomendamos anclar Binance Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
@@ -1423,8 +1423,8 @@
     "zilpay": {
       "qr_code": {
         "step1": {
-          "title": "Open the ZilPay app",
-          "description": "Add ZilPay to your home screen for faster access to your wallet."
+          "title": "Abre la aplicación ZilPay",
+          "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "Abra la aplicación Nova Wallet",
+          "description": "Agrega Nova Wallet a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
