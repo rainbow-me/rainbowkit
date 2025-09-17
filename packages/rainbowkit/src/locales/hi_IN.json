@@ -403,8 +403,8 @@
       },
       "extension": {
         "step1": {
-          "title": "Install the Binance Wallet extension",
-          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+          "title": "Binance वॉलेट एक्सटेंशन इंस्टॉल करें",
+          "description": "अपने वॉलेट तक जल्दी पहुंच के लिए हम Binance Wallet को आपके टास्कबार पर पिन करने की सलाह देते हैं।"
         },
         "step2": {
           "title": "वॉलेट बनाएं या आयात करें",
@@ -1423,8 +1423,8 @@
     "zilpay": {
       "qr_code": {
         "step1": {
-          "title": "Open the ZilPay app",
-          "description": "Add ZilPay to your home screen for faster access to your wallet."
+          "title": "ZilPay ऐप को खोलें",
+          "description": "अपने वॉलेट तक अधिक जल्दी पहुंचने के लिए ZilPay को अपने होम स्क्रीन पर जोड़ें।"
         },
         "step2": {
           "title": "वॉलेट बनाएं या आयात करें",
@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "Nova Wallet ऐप खोलें",
+          "description": "अपने वॉलेट तक तेजी से पहुंचने के लिए अपने होम स्क्रीन पर Nova वॉलेट जोड़ें।"
         },
         "step2": {
           "title": "वॉलेट बनाएं या आयात करें",
