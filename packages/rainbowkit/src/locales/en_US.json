@@ -423,6 +423,20 @@
           "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
           "title": "Tap the WalletConnect button"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Install the Binance Wallet extension",
+          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
+        }
       }
     },
 

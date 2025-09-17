@@ -12,11 +12,10 @@ export const binanceWallet = ({
   projectId,
   walletConnectParameters,
 }: BinanceWalletOptions): Wallet => {
-  const isBinanceInjected =
-    (window as any)?.binancew3w?.isExtension === true ||
-    hasInjectedProvider({
-      flag: 'isBinance',
-    });
+  const isBinanceInjected = hasInjectedProvider({
+    namespace: 'binancew3w.isExtension',
+    flag: 'isBinance',
+  });
   const shouldUseWalletConnect = !isBinanceInjected;
 
   return {
