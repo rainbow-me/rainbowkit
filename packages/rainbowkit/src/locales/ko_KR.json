@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "Nova Wallet 앱을 열기",
+          "description": "월렛에 더 빠르게 액세스할 수 있도록 Nova Wallet을 홈 화면에 추가하세요."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",
