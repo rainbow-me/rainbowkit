@@ -403,8 +403,8 @@
       },
       "extension": {
         "step1": {
-          "title": "Install the Binance Wallet extension",
-          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+          "title": "安裝 Binance Wallet 擴充功能",
+          "description": "我們建議將 Binance Wallet 釘在工作列上，便可以更快存取你的電子錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",
@@ -1423,8 +1423,8 @@
     "zilpay": {
       "qr_code": {
         "step1": {
-          "title": "Open the ZilPay app",
-          "description": "Add ZilPay to your home screen for faster access to your wallet."
+          "title": "開啟 ZilPay 應用程式",
+          "description": "將 ZilPay 加到主畫面以便更快速存取您的錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",
@@ -1439,8 +1439,8 @@
     "nova": {
       "qr_code": {
         "step1": {
-          "title": "Open the Nova Wallet app",
-          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+          "title": "開啟 Nova Wallet 應用程式",
+          "description": "新增 Nova Wallet 至你的主畫面，便可以更快存取你的電子錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",
