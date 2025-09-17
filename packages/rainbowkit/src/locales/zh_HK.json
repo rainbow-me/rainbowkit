@@ -400,6 +400,20 @@
           "description": "掃描後，將會出現連接提示，讓你連接你的錢包。",
           "title": "點擊 WalletConnect 按鈕"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Install the Binance Wallet extension",
+          "description": "We recommend pinning Binance Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "請確保使用安全方法備份你的錢包，絕不要與任何人分享你的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "設置你的錢包後，點擊下方按鈕刷新瀏覽器並載入擴展。"
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "點擊掃描按鈕"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "開啟 ZilPay 應用程式",
-        "description": "將 ZilPay 加到主畫面以便更快速存取您的錢包。"
-      },
-      "step2": {
-        "title": "創建或導入錢包",
-        "description": "創建新的錢包或導入現有的錢包。"
-      },
-      "step3": {
-        "title": "點擊掃描按鈕",
-        "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the ZilPay app",
+          "description": "Add ZilPay to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Nova Wallet app",
+          "description": "Add Nova Wallet to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+        }
       }
     }
   }
