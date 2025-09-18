@@ -1,5 +1,4 @@
-import { type Config, type Connector, useConnect } from 'wagmi';
-import type { ConnectMutateAsync } from 'wagmi/query';
+import { type Connector, useConnect } from 'wagmi';
 import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import { indexBy } from '../utils/indexBy';
 import {
@@ -23,7 +22,7 @@ import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
-  connect: () => ReturnType<ConnectMutateAsync<Config, unknown>>;
+  connect: WalletInstance['connect'];
   showWalletConnectModal?: () => void;
   recent: boolean;
   mobileDownloadUrl?: string;
@@ -53,10 +52,15 @@ export function useWalletConnectors(
     ...(connector.rkDetails || {}),
   })) as WalletInstance[];
 
-  async function connectWallet(connector: Connector) {
+  async function connectWallet(
+    connector: Connector,
+    parameters?: Parameters<WalletInstance['connect']>[0],
+  ): ReturnType<WalletInstance['connect']> {
     const walletChainId = await connector.getChainId();
     const result = await connectAsync({
+      ...parameters,
       chainId:
+        parameters?.chainId ??
         // The goal here is to ensure users are always on a supported chain when connecting.
         // If an `initialChain` prop was provided to RainbowKitProvider, use that.
         intialChainId ??
@@ -71,7 +75,7 @@ export function useWalletConnectors(
       addRecentWalletId(connector.id);
     }
 
-    return result;
+    return result as Awaited<ReturnType<WalletInstance['connect']>>;
   }
 
   async function connectToWalletConnectModal(
@@ -183,7 +187,7 @@ export function useWalletConnectors(
         ...wallet,
         iconUrl: wallet.icon!,
         ready: true,
-        connect: () => connectWallet(wallet),
+        connect: connectWallet.bind(null, wallet) as WalletInstance['connect'],
         groupName: 'Installed',
         recent,
       });
@@ -194,7 +198,7 @@ export function useWalletConnectors(
     walletConnectors.push({
       ...wallet,
       ready: wallet.installed ?? true,
-      connect: () => connectWallet(wallet),
+      connect: connectWallet.bind(null, wallet) as WalletInstance['connect'],
       desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
       groupName: wallet.groupName,
