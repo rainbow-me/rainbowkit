@@ -56,6 +56,7 @@ import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { tokenaryWallet } from './tokenaryWallet/tokenaryWallet';
 import { trustWallet } from './trustWallet/trustWallet';
+import { universalProfilesWallet } from './universalProfilesWallet/universalProfilesWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
@@ -125,6 +126,7 @@ export {
   tokenaryWallet,
   tokenPocketWallet,
   trustWallet,
+  universalProfilesWallet,
   uniswapWallet,
   valoraWallet,
   walletConnectWallet,
