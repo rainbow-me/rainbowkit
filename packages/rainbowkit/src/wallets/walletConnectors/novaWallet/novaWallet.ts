@@ -13,7 +13,7 @@ export const novaWallet = ({
 }: NovaWalletOptions): Wallet => {
   const isNovaWalletInjected = hasInjectedProvider({
     namespace: 'ethereum',
-    flag: 'isNovaWallet'
+    flag: 'isNovaWallet',
   });
   const shouldUseWalletConnect = !isNovaWalletInjected;
 
@@ -73,7 +73,7 @@ export const novaWallet = ({
         })
       : getInjectedConnector({
           namespace: 'ethereum',
-          flag: 'isNovaWallet'
+          flag: 'isNovaWallet',
         }),
   };
 };
