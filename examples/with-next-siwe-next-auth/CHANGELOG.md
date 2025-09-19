@@ -1,5 +1,17 @@
 # with-next-siwe-next-auth
 
+## 0.0.89
+
+### Patch Changes
+
+- d92a6c7: Upgrade wagmi to ^2.17.1 and viem to 2.31.7.
+- Updated dependencies [d92a6c7]
+- Updated dependencies [0b9052c]
+- Updated dependencies [66bcc18]
+- Updated dependencies [1520f59]
+  - @rainbow-me/rainbowkit@2.2.9
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.88
 
 ### Patch Changes
