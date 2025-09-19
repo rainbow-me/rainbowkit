@@ -11,7 +11,10 @@ export const novaWallet = ({
   projectId,
   walletConnectParameters,
 }: NovaWalletOptions): Wallet => {
-  const isNovaWalletInjected = hasInjectedProvider({ namespace: 'novawallet' });
+  const isNovaWalletInjected = hasInjectedProvider({
+    namespace: 'ethereum',
+    flag: 'isNovaWallet',
+  });
   const shouldUseWalletConnect = !isNovaWalletInjected;
 
   const getUriMobile = (uri: string) => {
@@ -68,6 +71,9 @@ export const novaWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'novawallet' }),
+      : getInjectedConnector({
+          namespace: 'ethereum',
+          flag: 'isNovaWallet',
+        }),
   };
 };
