@@ -1,5 +1,20 @@
 # example
 
+## 0.0.116
+
+### Patch Changes
+
+- c9ee131: Add providers page for inspecting injected providers and EIP-6963 wallets.
+- 66bcc18: Universal Profiles wallet connector
+- d92a6c7: Upgrade wagmi to ^2.17.1 and viem to 2.31.7.
+- Updated dependencies [d92a6c7]
+- Updated dependencies [0b9052c]
+- Updated dependencies [66bcc18]
+- Updated dependencies [1520f59]
+  - @rainbow-me/rainbowkit@2.2.9
+  - @rainbow-me/rainbow-button@0.2.26
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.115
 
 ### Patch Changes

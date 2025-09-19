@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.9
+
+### Patch Changes
+
+- d92a6c7: Fixed type compatibility for `connect()` parameters in Wagmi `^2.17.0`
+- 0b9052c: Add binance wallet chrome extension download url
+- 66bcc18: Universal Profiles wallet connector
+- 1520f59: Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
+
 ## 2.2.8
 
 ### Patch Changes
