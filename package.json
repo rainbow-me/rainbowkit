@@ -97,9 +97,11 @@
       "utf-8-validate"
     ],
     "onlyBuiltDependencies": [
-      "esbuild",
-      "msw"
-    ]
+      "esbuild"
+    ],
+    "overrides": {
+      "@remix-run/dev>esbuild": "0.25.5"
+    }
   },
   "engines": {
     "node": ">=20"
