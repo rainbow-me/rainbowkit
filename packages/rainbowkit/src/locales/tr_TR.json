@@ -400,6 +400,20 @@
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
           "title": "CüzdanBağlantısı düğmesine dokunun"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Binance Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Binance Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Tarayıcı düğmesine dokunun"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "ZilPay uygulamasını açın",
-        "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
-      },
-      "step2": {
-        "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-        "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
-      },
-      "step3": {
-        "title": "Tarayıcı düğmesine dokunun",
-        "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "ZilPay uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcı düğmesine dokunun",
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Nova Cüzdan uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Nova Cüzdanı ana ekranınıza ekleyin."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcı düğmesine dokunun",
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+        }
       }
     }
   }

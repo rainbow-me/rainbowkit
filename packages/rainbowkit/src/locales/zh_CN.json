@@ -400,6 +400,20 @@
           "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
           "title": "点击WalletConnect按钮"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "安装Binance钱包扩展",
+          "description": "我们建议您将Binance钱包固定到任务栏，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "点击扫描按钮"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "打开ZilPay应用",
-        "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
-      },
-      "step2": {
-        "title": "创建或导入钱包",
-        "description": "创建新钱包或导入现有钱包。"
-      },
-      "step3": {
-        "title": "点击扫描按钮",
-        "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "打开ZilPay应用",
+          "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "打开Nova钱包应用",
+          "description": "将Nova钱包添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
       }
     }
   }

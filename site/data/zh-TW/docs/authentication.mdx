@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 伺服器端訪問會話
 
-您可以使用`next-auth/jwt`中導入的NextAuth函數`getToken`來訪問會話令牌。 如果用戶成功驗證，會話令牌的<b>`sub`</b>屬性（令牌的"主題"，即用戶）將是用戶的地址。
+您可以使用`next-auth/jwt`中導入的NextAuth函數`getToken`來訪問會話令牌。 如果用戶成功驗證，會話令牌的<b>`sub`</b>屬性（令牌的"主題"，即用戶）將是用戶的地址。 如果用戶成功驗證，會話令牌的<b>`sub`</b>屬性（令牌的"主題"，即用戶）將是用戶的地址。
 
 您也可以通過`getServerSideProps`從伺服器傳遞解析的會話對象，以便NextAuth不需要在客戶端再次解析它。
 

@@ -400,6 +400,20 @@
           "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
           "title": "Appuyez sur le bouton WalletConnect"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension Binance Wallet",
+          "description": "Nous recommandons d'épingler Binance Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Appuyez sur le bouton de scan"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Ouvrez l'application ZilPay",
-        "description": "Ajoutez ZilPay à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
-      },
-      "step2": {
-        "title": "Créer ou Importer un Portefeuille",
-        "description": "Créez un nouveau portefeuille ou importez-en un existant."
-      },
-      "step3": {
-        "title": "Appuyez sur le bouton de scan",
-        "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application ZilPay",
+          "description": "Ajoutez ZilPay à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application Nova Wallet",
+          "description": "Ajoutez Nova Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
       }
     }
   }
