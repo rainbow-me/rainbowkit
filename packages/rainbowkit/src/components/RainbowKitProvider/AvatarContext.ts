@@ -7,7 +7,9 @@ export type AvatarComponentProps = {
   ensImage?: string | null;
   size: number;
 };
-export type AvatarComponent = React.FunctionComponent<AvatarComponentProps>;
+export type AvatarComponent<
+  P extends AvatarComponentProps = AvatarComponentProps,
+> = React.FunctionComponent<P>;
 
 export const defaultAvatar = EmojiAvatar;
 
