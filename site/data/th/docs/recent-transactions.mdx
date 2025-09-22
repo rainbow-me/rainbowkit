@@ -1,17 +1,17 @@
 ---
 title: ธุรกรรมล่าสุด
-description: แสดงธุรกรรมล่าสุดของคุณ
+description: Show your recent transactions
 ---
 
 # ธุรกรรมล่าสุด
 
-## แสดงธุรกรรมล่าสุดของคุณ
+## Show your recent transactions
 
-คุณสามารถเลือกที่จะแสดงธุรกรรมล่าสุดในโมดอลบัญชีของ RainbowKit คุณสามารถเลือกที่จะแสดงธุรกรรมล่าสุดในโมดอลบัญชีของ RainbowKit โปรดทราบว่าธุรกรรมทั้งหมดจะถูกเก็บไว้ในหน่วยความจำท้องถิ่นและต้องลงทะเบียนด้วยตัวเองกับ RainbowKit เพื่อให้สามารถแสดงได้ คุณสามารถเลือกที่จะแสดงธุรกรรมล่าสุดในโมดอลบัญชีของ RainbowKit โปรดทราบว่าธุรกรรมทั้งหมดจะถูกเก็บไว้ในหน่วยความจำท้องถิ่นและต้องลงทะเบียนด้วยตัวเองกับ RainbowKit เพื่อให้สามารถแสดงได้ คุณสามารถเลือกที่จะแสดงธุรกรรมล่าสุดในโมดอลบัญชีของ RainbowKit โปรดทราบว่าธุรกรรมทั้งหมดจะถูกเก็บไว้ในหน่วยความจำท้องถิ่นและต้องลงทะเบียนด้วยตัวเองกับ RainbowKit เพื่อให้สามารถแสดงได้
+You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
 
-การดำเนินการตามค่าเริ่มต้นของ `ConnectButton` จะแสดงตัวบ่งชี้การโหลดรอบๆ อวาตาร์ของผู้ใช้ถ้ามีธุรกรรมที่ค้างอยู่ การดำเนินการตามค่าเริ่มต้นของ `ConnectButton` จะแสดงตัวบ่งชี้การโหลดรอบๆ อวาตาร์ของผู้ใช้ถ้ามีธุรกรรมที่ค้างอยู่ การดำเนินการตามค่าเริ่มต้นของ `ConnectButton` จะแสดงตัวบ่งชี้การโหลดรอบๆ อวาตาร์ของผู้ใช้ถ้ามีธุรกรรมที่ค้างอยู่ การดำเนินการแบบกำหนดเองของ `ConnectButton` สามารถสร้างพฤติกรรมนี้ขึ้นมาใหม่ได้ผ่านคุณสมบัติ `account.hasPendingTransactions` ที่ส่งผ่านฟังก์ชันเรนเดอร์ของคุณ การดำเนินการตามค่าเริ่มต้นของ `ConnectButton` จะแสดงตัวบ่งชี้การโหลดรอบๆ อวาตาร์ของผู้ใช้ถ้ามีธุรกรรมที่ค้างอยู่ การดำเนินการตามค่าเริ่มต้นของ `ConnectButton` จะแสดงตัวบ่งชี้การโหลดรอบๆ อวาตาร์ของผู้ใช้ถ้ามีธุรกรรมที่ค้างอยู่ การดำเนินการแบบกำหนดเองของ `ConnectButton` สามารถสร้างพฤติกรรมนี้ขึ้นมาใหม่ได้ผ่านคุณสมบัติ `account.hasPendingTransactions` ที่ส่งผ่านฟังก์ชันเรนเดอร์ของคุณ
+The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
 
-ในการใช้คุณลักษณะนี้ ให้เปิดใช้งานตัวเลือก `showRecentTransactions` บน `RainbowKitProvider` ก่อน
+To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-จากนั้นธูรกรรมสามารถลงทะเบียนกับ RainbowKit ได้โดยใช้ฮุค `useAddRecentTransaction`
+Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-เมื่อธุรกรรมได้รับการลงทะเบียนกับ RainbowKit แล้ว สถานะของมันจะได้รับการอัพเดตเมื่อเสร็จสิ้น
+Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
 
-โดยค่าเริ่มต้น ธุรกรรมจะถือว่าเสร็จสิ้นเมื่อบล็อกเดียวได้ถูกทำเหมืองเสร็จแล้วซ้อนทับบล็อกที่ธุรกรรมถูกทำเหมือง แต่สิ่งนี้สามารถกำหนดค่าได้โดยการระบุมูลค่า `confirmations` แบบกำหนดเอง
+By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
