@@ -7,7 +7,7 @@ description: Personnalisation des chaînes
 
 ## Personnalisation des chaînes
 
-RainbowKit est conçu pour s'intégrer avec [l'objet `chain` de wagmi](https://wagmi.sh/react/chains). Consultez la liste des chaînes prises en charge [ici](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit est conçu pour s'intégrer à l'[objet `chain` de wagmi](https://wagmi.sh/react/chains). Consultez la liste des chaînes supportées [ici](https://wagmi.sh/react/chains#supported-chains).
 
 ### Personnalisation de la chaîne initiale
 
@@ -19,15 +19,15 @@ La chaîne initiale peut être configurée en utilisant un ID de chaîne.
 <RainbowKitProvider initialChain={1}>
 ```
 
-Pour plus de commodité, vous pouvez également passer un objet de chaîne.
+Par commodité, vous pouvez également passer un objet de chaîne.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Métadonnées des chaînes personnalisées
+### Métadonnées de chaînes personnalisées
 
-Plusieurs icônes et fonds de chaîne sont fournis par défaut, mais vous pouvez personnaliser l'icône et le fond pour chaque chaîne en utilisant les propriétés `iconUrl` et `iconBackground`.
+Par défaut, plusieurs icônes et arrière-plans de chaînes sont fournis, mais vous pouvez personnaliser l'icône et l'arrière-plan pour chaque chaîne en utilisant les propriétés `iconUrl` et `iconBackground`.
 
 Exemple avec `getDefaultConfig`
 
