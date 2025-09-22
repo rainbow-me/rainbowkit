@@ -1,19 +1,19 @@
 ---
-title: Hooks Modals
-description: Ouvrez les modales de manière programmatique via Hooks
+title: Modal Hooks
+description: Programmatically open modals via Hooks
 ---
 
-# Hooks Modals
+# Modal Hooks
 
-## Ouvrez les modales de manière programmatique via Hooks
+## Programmatically open modals via Hooks
 
-Les Hooks suivants sont fournis pour permettre l'ouverture programmatique de modales n'importe où dans votre application.
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Chacun de ces Hooks renvoie un objet avec une fonction pour ouvrir sa modale respective. Notez que les fonctions retournées seront indéfinies si votre application n'est pas dans l'état requis pour que la modale s'ouvre.
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Chaque hook renvoie également un booléen pour le statut de la modale. Il est généralement recommandé de s'appuyer uniquement sur les hooks Wagmi (c'est-à-dire `useAccount`) pour réagir directement au statut de connexion du portefeuille d'un utilisateur, plutôt que de dépendre de l'état de la modale de connexion.
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit est conçu pour être non intrusif et réactif, donc les dApps doivent toujours fournir une interface pour les utilisateurs qu'ils aient connecté ou non leur portefeuille. Un utilisateur pourrait connecter ou déconnecter son portefeuille directement depuis MetaMask, donc la dApp doit être réactive à l'état de connexion sous-jacent directement.
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
-Les dApps qui s'appuient sur des mécanismes comme Sign-in with Ethereum pour la vérification des utilisateurs devraient plutôt s'appuyer sur la fonctionnalité [Authentication](/docs/authentication).
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
