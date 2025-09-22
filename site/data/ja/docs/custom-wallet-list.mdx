@@ -1,15 +1,15 @@
 ---
-title: カスタムウォレットリスト
-description: ウォレットリストのカスタマイズ
+title: Custom Wallet List
+description: Customizing the wallet list
 ---
 
-# カスタムウォレットリスト
+# Custom Wallet List
 
-## ウォレットリストのカスタマイズ
+## Customizing the wallet list
 
-'@rainbow-me/rainbowkit/wallets'から個々のウォレットをインポートし、その必要なコネクターを持つウォレットのリストを作成するために`connectorsForWallets`関数を使うことができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。
+You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
 
-例えば、Rainbowと一般的なフォールバックウォレットのみを表示するように選択できます。
+For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-次に、コネクタをWagmiの`createConfig`に渡すことができます。
+You can then pass your connectors to Wagmi's `createConfig`.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,29 +58,29 @@ const App = () => (
 );
 ```
 
-### 組み込みウォレット
+### Built-in wallets
 
-以下のウォレットは`wallet`オブジェクトを介して提供されます。
+The following wallets are provided via the `wallet` object.
 
-#### 一般的なウォレット
+#### Generic Wallets
 
-以下のウォレットは、特定のアプリではなく、一般的な接続方法に限定されています。 その結果、これらのウォレットは常に含めることをお勧めします。
+The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
 
 ##### WalletConnect
 
-これは、リストの他のウォレットで提供されていないWalletConnectベースのウォレット用に設計されたフォールバックウォレットオプションです。
+This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
 
-**全てのWalletConnectベースのウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
+**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### 注入されたウォレット
+##### Injected Wallet
 
-これは`window.ethereum`が存在するが、リスト内の他のウォレットによって提供されていないシナリオのために設計されたフォールバックウォレットオプションです。 このウォレットは、フォールバックが不要である場合や注入されたウォレットが利用できない場合に自動的にリストから隠れるようになっています。 このウォレットは、フォールバックが不要である場合や注入されたウォレットが利用できない場合に自動的にリストから隠れるようになっています。
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
 
-**すべての注入されたウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
+**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,15 +88,15 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Safe AppsをサポートするdAppsのために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
+For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### 特定のウォレット
+### Specific Wallets
 
-次のウォレットは `wallet` オブジェクトを通じて提供されます（アルファベット順）
+The following wallets are provided via the `wallet` object (in alphabetical order).
 
 #### 1inch Wallet
 
@@ -178,11 +178,11 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-このウォレットコネクタは、Coinbase Walletアプリと拡張機能、さらにWeb上のCoinbase Smart Walletの両方をサポートしています。
+This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
 
-`preference`引数は、Smart Walletをユーザーにとって優先するか無効にするかを制御するために利用可能です。 `preference`引数は、Smart Walletをユーザーにとって優先するか無効にするかを制御するために利用可能です。 プリファレンスに基づく動作は、[こちら](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)で文書化されています。
+A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-[Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters)および[サブアカウント](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)の制御に関する追加の設定オプションは、Coinbase Wallet SDKのドキュメントに[こちら](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)あります。
+Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -321,7 +321,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ノヴァウォレット
+#### Nova Wallet
 
 ```tsx
 import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -459,13 +459,13 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### 例
+### Examples
 
-#### 注文
+#### Ordering
 
-さまざまなウォレットをさまざまな順序で表示するいくつかの例をここに示します。
+Here are a few examples of displaying different wallets, in different order.
 
-Metamaskと一般的なfallbackウォレットを並べて表示します。
+Show MetaMask along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -485,7 +485,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Rainbow、MetaMask、Coinbaseおよび一般的なフォールバックウォレットを表示します。
+Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,13 +512,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> リマインダー：`wallets`配列の順序は、UIでウォレットが表示される順序を定義します。
+> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
 
-#### 複数のグループ
+#### Multiple groups
 
-`groupName`キーを使用して、異なるウォレットグループに名前をつけることができます。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。
+You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possible wallets.
 
-RainbowとMetaMaskを推奨しますが、Coinbaseと一般的なフォールバックウォレットも提供します。
+Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
