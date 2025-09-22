@@ -1,13 +1,13 @@
 ---
-title: कस्टम एप्लीकेशन जानकारी
-description: अपने एप्लीकेशन की जानकारी को कस्टमाइज़ करना
+title: Custom App Info
+description: Customizing your app's info
 ---
 
-# कस्टम एप्लीकेशन जानकारी
+# Custom App Info
 
-## अपने एप्लीकेशन की जानकारी को कस्टमाइज़ करना
+## Customizing your app’s info
 
-आप `RainbowKitProvider` के लिए `appInfo` प्रॉप में ऐप की जानकारी दर्ज कर सकते हैं। आप उन गुणों को संशोधित कर सकते हैं जो आपके एप का नाम (`appName`) और कनेक्शन मोडल में “Learn More” बटन का लिंक (`learnMoreUrl`) हटा देते हैं:
+You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### डिस्क्लेमर जोड़ें
+### Add a Disclaimer
 
-आप अपना डिस्क्लेमर प्रदान कर सकते हैं जो कनेक्शन मोडल के नीचे प्रदर्शित होगा। `appInfo` में `disclaimer` प्रॉप `DisclaimerComponent` को तर्कसहित लेती है `Text` और `Link` के साथ। आप इसे उपयोग कर अपना डिस्क्लेमर बना सकते हैं जो थिमिंग सिस्टम को उत्तराधिकारी बनाता है। हम TypeScript उपयोगकर्ताओं के लिए `DisclaimerComponent` प्रकार का निर्यात करते हैं:
+You can provide your own disclaimer to be displayed at the bottom of the connection modal. The `disclaimer` property in `appInfo` takes a `DisclaimerComponent` with arguments `Text` and `Link`. You can use it to build your own disclaimer that inherits the theming system. We export the `DisclaimerComponent` type for TypeScript users:
 
 ```tsx
 import {
