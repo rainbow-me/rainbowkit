@@ -1,19 +1,19 @@
 ---
-title: Authentification personnalisée
+title: Authentification Personnalisée
 description: Connectez-vous à votre propre back-end d'authentification
 ---
 
-# Authentification personnalisée
+# Authentification Personnalisée
 
 ## Connectez-vous à votre propre back-end d'authentification
 
-Alors que RainbowKit offre un [support de premier ordre pour Sign-In avec Ethereum et NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) vous pouvez également vous intégrer avec des back-ends personnalisés et des formats de message.
+Bien que RainbowKit fournisse [un support de premier ordre pour Sign-In with Ethereum et NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) vous pouvez également intégrer avec des back-ends et des formats de message personnalisés.
 
 ### Création d'un adaptateur personnalisé
 
-Créez d'abord un adaptateur d'authentification. Cela permet à RainbowKit de créer/préparer des messages et de communiquer avec votre back-end.
+Commencez par créer un adaptateur d'authentification. Cela permet à RainbowKit de créer/préparer des messages et de communiquer avec votre back-end.
 
-Par exemple, nous pourrions faire un adaptateur d'authentification qui nous permet d'utiliser [Sign-In avec Ethereum](https://login.xyz) contre certains points de terminaison d'API personnalisés, comme [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Par exemple, nous pourrions créer un adaptateur d'authentification qui nous permet d'utiliser [Sign-In with Ethereum](https://login.xyz) avec certains points d'API personnalisés, comme [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Fournir l'état d'authentification
+#### Fourniture de l'état d'authentification
 
-Supposons que votre application gère déjà le cycle de vie de l'authentification d'une certaine manière, vous pouvez transmettre le statut d'authentification actuel avec votre adaptateur personnalisé à `RainbowKitAuthenticationProvider`, enveloppant votre `RainbowKitProvider` existant.
+En supposant que votre application gère déjà le cycle de vie de l'authentification d'une manière ou d'une autre, vous pouvez transmettre le statut actuel de l'authentification avec votre adaptateur personnalisé à `RainbowKitAuthenticationProvider`, enveloppant votre `RainbowKitProvider` existant.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Si vous êtes arrivé jusque-là et avez créé un adaptateur pour une bibliothèque d'authentification open source existante, veuillez envisager de créer un package pour que d'autres puissent l'utiliser!
+Si vous êtes arrivé jusqu'ici et que vous avez créé un adaptateur pour une bibliothèque d'authentification open source existante, envisagez de créer un package pour que d'autres puissent l'utiliser !
