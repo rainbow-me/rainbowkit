@@ -1,21 +1,21 @@
 ---
-title: Tema
-description: Menggunakan dan menyesuaikan tema
+title: Theming
+description: Using and customizing the themes
 ---
 
-# Tema
+# Theming
 
-## Menggunakan dan menyesuaikan tema
+## Using and customizing the themes
 
-Anda boleh mengubah suai antara muka pengguna RainbowKit untuk disesuaikan dengan jenama anda. Anda boleh memilih dari beberapa warna aksen yang telah ditetapkan dan konfigurasi jejari sempadan.
+You can tweak the RainbowKit UI to match your branding. You can pick from a few pre-defined accent colors and border radius configurations.
 
-Terdapat 3 fungsi tema yang telah dibina dalam:
+There are 3 built-in theme functions:
 
-- `lightTheme` &nbsp; (lalai)
+- `lightTheme` &nbsp; (default)
 - `darkTheme`
 - `midnightTheme`
 
-Fonksi tema mengembalikan objek tema. Anda boleh menyerahkan objek kepada sifat `theme` dalam `RainbowKitProvider`.
+A theme function returns a theme object. You can pass the object to the `RainbowKitProvider`'s `theme` prop.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-Jika anda mahu, anda boleh memasukkan `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` dan `overlayBlur` untuk menyesuaikannya.
+If you want, you can pass in `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` and `overlayBlur` to customize them.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### Menyesuaikan tema yang telah dibina dalam
+### Customizing the built-in themes
 
-Fungsi tema yang telah dibina dalam juga menerima objek pilihan, membolehkan anda memilih daripada beberapa gaya visual yang berbeza.
+The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
 <PropsTable
   data={[
@@ -98,7 +98,7 @@ Fungsi tema yang telah dibina dalam juga menerima objek pilihan, membolehkan and
   ]}
 />
 
-Sebagai contoh, untuk menyesuaikan tema gelap dengan warna aksen ungu dan skala jejari sempadan `medium`:
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Setiap tema juga menyediakan beberapa praset warna aksen (`blue`, `green`, `orange`, `pink`, `purple`, `red`) yang boleh disebarkan ke dalam objek pilihan. Contohnya, untuk menggunakan prapenyet warna aksen `pink`:
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -138,13 +138,13 @@ const App = () => {
 };
 ```
 
-### Contoh-contoh
+### Examples
 
-#### Fungsi tema
+#### Theme function
 
-Berikut adalah beberapa cara berbeza yang boleh anda gunakan proprti `theme`.
+Here are a few different ways you can use the `theme` prop.
 
-Gunakan tema `darkTheme`.
+Use the `darkTheme` theme.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-Gunakan tema `midnightTheme`.
+Use the `midnightTheme` theme.
 
 ```tsx
 import {
@@ -171,11 +171,11 @@ export const App = () => (
 );
 ```
 
-#### Warna aksen
+#### Accent color
 
-Berikut adalah beberapa cara berbeza yang boleh anda gunakan tetapan `accentColor`.
+Here are a few different ways you can use the `accentColor` config.
 
-Tetapkan warna aksen kepada nilai ungu tersuai.
+Set the accent color to a custom purple value.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-Tetapkan warna aksen kepada praset `green` yang dibina dalam.
+Set the accent color to the built-in `green` preset.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -214,11 +214,11 @@ const App = () => {
 };
 ```
 
-#### Jejari sempadan
+#### Border radius
 
-Berikut adalah beberapa cara berbeza yang boleh anda gunakan tetapan `borderRadius`.
+Here are a few different ways you can use the `borderRadius` config.
 
-Tetapkan jejari sempadan kepada `medium`.
+Set the border radius to `medium`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-Tetapkan jejari sempadan kepada `none`.
+Set the border radius to `none`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> Peringatan: nilai jejari sempadan yang tersedia ialah: `large` (lalai), `medium`, `small` dan `none`.
+> Reminder: the available border radius valies are: `large` (default), `medium`, `small` and `none`.
 
-#### Timbunan tulisan
+#### Font stack
 
-Secara default, `fontStack` ditetapkan kepada `rounded`. Tetapi inilah cara anda boleh menggunakan konfigurasi `fontStack`.
+By default, the `fontStack` is set to `rounded`. But here's how you can use the `fontStack` config.
 
-Tetapkan timbunan tulisan kepada `system`.
+Set the font stack to `system`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### Mengaburkan tindihan
+#### Overlay blur
 
-Secara default, `overlayBlur` ditetapkan kepada `none`. Tetapi inilah cara anda boleh menggunakan konfigurasi `overlayBlur`.
+By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
 
-Tetapkan kabur tindihan kepada `small`.
+Set the overlay blur to `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### Campur dan padankan
+#### Mix and match
 
-Berikut adalah beberapa cara berbeza yang boleh anda gunakan tema berlainan, dengan props `accentColor`, `borderRadius` dan `fontStack` bersama-sama.
+Here are a few different ways you can use different themes, with `accentColor`, `borderRadius` and `fontStack` props together.
 
-- Gunakan tema `lightTheme`
-- Tetapkan warna tumpuan kepada nilai ungu tersuai
-- Tetapkan jejari sempadan kepada `medium`
-- Tetapkan timbunan tulisan kepada `system`
+- Use the `lightTheme` theme
+- Set the accent color to a custom purple value
+- Set the border radius to `medium`
+- Set the font stack to `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- Gunakan tema `midnightTheme`
-- Tetapkan warna tumpuan kepada pratetap `pink` terbina dalam.
-- Tetapkan jejari sempadan kepada `small`
-- Tetapkan timbunan tulisan kepada `system`
+- Use the `midnightTheme` theme
+- Set the accent color to the built-in `pink` preset.
+- Set the border radius to `small`
+- Set the font stack to `system`
 
 ```tsx
 import {
@@ -360,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### Sokongan mod gelap
+#### Dark mode support
 
-Jika aplikasi anda menggunakan penyoalan media standard `prefers-color-scheme: dark` untuk bertukar antara mod terang dan gelap, anda boleh memilih untuk menyediakan objek tema dinamik yang mengandungi nilai `lightMode` dan `darkMode`.
+If your app uses the standard `prefers-color-scheme: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
 ```tsx
 import {
