@@ -1,17 +1,17 @@
 ---
-title: Portefeuilles personnalisés
-description: Créer un portefeuille personnalisé
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Portefeuilles personnalisés
+# Custom Wallets
 
-## Créer un portefeuille personnalisé
+## Create a custom wallet
 
-> Note : Cette API est instable et susceptible de changer dans un futur proche. Nous ajouterons plus de portefeuilles intégrés avec le temps. [Faites-nous savoir](https://github.com/rainbow-me/rainbowkit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres portefeuilles personnalisés. Les propriétés suivantes peuvent être configurées sur la valeur de retour de votre fonction `Wallet` :
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Propriétés du portefeuille
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -134,7 +134,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
   ]}
 />
 
-### Propriétés de DownloadUrls
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -204,9 +204,9 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
   ]}
 />
 
-### Exemples
+### Examples
 
-Par exemple, pour créer un portefeuille personnalisé en utilisant WalletConnect :
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Vous pouvez ensuite ajouter votre portefeuille personnalisé dans la [liste de portefeuilles](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
