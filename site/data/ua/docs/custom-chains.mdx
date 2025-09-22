@@ -1,15 +1,15 @@
 ---
 title: Користувацькі Мережі
-description: Створення користувацького ланцюга
+description: Create a custom chain
 ---
 
 # Користувацькі Мережі
 
-## Створення користувацького ланцюга
+## Create a custom chain
 
-Ви можете використати тип `Chain`, щоб допомогти вам створити користувацький ланцюг. Потім передайте це до `getDefaultConfig` або [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) від Wagmi.
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
-Наприклад, ось як ви можете створити ланцюг Avalanche для [avax.network](https://avax.network).
+For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import {
