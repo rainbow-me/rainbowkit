@@ -1,15 +1,15 @@
 ---
-title: Lista Personalizada de Carteiras
-description: Personalizando a lista de carteiras
+title: Custom Wallet List
+description: Customizing the wallet list
 ---
 
-# Lista Personalizada de Carteiras
+# Custom Wallet List
 
-## Personalizando a lista de carteiras
+## Customizing the wallet list
 
-Você pode importar carteiras individuais de `'@rainbow-me/rainbowkit/wallets'` junto com a função `connectorsForWallets` para construir sua própria lista de carteiras com seus respectivos conectores necessários. Dessa forma, você tem controle total sobre quais carteiras exibir e em que ordem.
+You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
 
-Por exemplo, você pode optar por mostrar apenas a Rainbow junto com carteiras genéricas de fallback.
+For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Você pode então passar seus conectores para o `createConfig` do `wagmi`.
+You can then pass your connectors to Wagmi's `createConfig`.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,29 +58,29 @@ const App = () => (
 );
 ```
 
-### SafePal Wallet
+### Built-in wallets
 
-As seguintes carteiras são fornecidas através do objeto `wallet`.
+The following wallets are provided via the `wallet` object.
 
-#### Carteiras Genéricas
+#### Generic Wallets
 
-As seguintes carteiras são destinadas a métodos de conexão genéricos, em vez de aplicativos específicos. Como resultado, é recomendado que essas carteiras estejam sempre incluídas.
+The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
 
 ##### WalletConnect
 
-Esta é uma opção de carteira de fallback projetada para carteiras baseadas em WalletConnect que não foram fornecidas por outra carteira na lista.
+This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
 
-**É recomendado que você sempre inclua esta carteira na lista para garantir que todas as carteiras baseadas em WalletConnect sejam suportadas.**
+**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Carteira Injetada
+##### Injected Wallet
 
-Esta é uma opção de carteira de fallback projetada para cenários onde `window.ethereum` existe, mas não foi fornecida por outra carteira na lista. Esta carteira irá se ocultar automaticamente da lista quando o fallback não for necessário ou se não houver carteira injetada disponível.
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
 
-**É recomendado que você sempre inclua esta carteira na lista para garantir que todas as carteiras injetadas sejam suportadas.**
+**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,15 +88,15 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-Para dApps que suportam Safe Apps para permitir que os usuários se conectem facilmente com seu cofre Safe ou multi-sig, inclua a opção `safeWallet` para conexões automáticas. A opção Safe só aparecerá no ambiente do navegador Safe Wallet.
+For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Carteiras Especificas
+### Specific Wallets
 
-As seguintes carteiras são fornecidas através do objeto `wallet` (em ordem alfabética).
+The following wallets are provided via the `wallet` object (in alphabetical order).
 
 #### 1inch Wallet
 
@@ -178,11 +178,11 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-Este conector de carteira suporta tanto o aplicativo e extensão da Coinbase Wallet, quanto a Coinbase Smart Wallet na Web.
+This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
 
-Um argumento de `preferência` está disponível para controlar se a Smart Wallet está ativada e disponível para os usuários. O comportamento baseado em preferência está documentado [aqui](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
+A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Opções adicionais de configuração para controle de [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) e [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) podem ser encontradas na documentação do Coinbase Wallet SDK [aqui](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -321,7 +321,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Nova Carteira
+#### Nova Wallet
 
 ```tsx
 import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -459,13 +459,13 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Exemplos
+### Examples
 
-#### Ordenação
+#### Ordering
 
-Aqui estão alguns exemplos de exibição de diferentes carteiras, em diferentes ordens.
+Here are a few examples of displaying different wallets, in different order.
 
-Mostre MetaMask junto com carteiras genéricas de fallback.
+Show MetaMask along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -485,7 +485,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostrar Rainbow, MetaMask e Coinbase juntamente com carteiras genéricas de fallback.
+Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,13 +512,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Lembrete: A ordem do array `wallets` define a ordem em que as carteiras serão exibidas na interface do usuário.
+> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
 
-#### Múltiplos grupos
+#### Multiple groups
 
-Você pode usar a chave `groupName` para nomear diferentes grupos de carteira. Isso é útil se você deseja comunicar aos seus usuários quais carteiras você recomenda, bem como outras carteiras possíveis.
+You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possible wallets.
 
-Recomende Rainbow e MetaMask, mas também ofereça Coinbase juntamente com carteiras genéricas de fallback.
+Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
