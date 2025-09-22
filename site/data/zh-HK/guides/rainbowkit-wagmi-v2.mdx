@@ -1,32 +1,32 @@
 ---
-title: 升級您的 dApp 以支援 RainbowKit v2
-description: RainbowKit 和 Wagmi 已提升至 v2
+title: Upgrading your dApp for RainbowKit v2
+description: RainbowKit and Wagmi have been promoted to v2
 image: guide-rainbowkit-v2.png
 ---
 
-# 遷移至 RainbowKit 和 Wagmi v2
+# Migrating to RainbowKit and Wagmi v2
 
-[wagmi](https://wagmi.sh) 和 [viem](https://viem.sh) 的對等相依版本已達 `2.x.x`，並存在重大變更。
+The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
-請依照以下步驟進行遷移。
+Follow the steps below to migrate.
 
-**1. 將 RainbowKit、`wagmi` 和 `viem` 升級至最新版本**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. 安裝 `@tanstack/react-query` 對等相依**
+**2. Install `@tanstack/react-query` peer dependency**
 
-使用 Wagmi v2，[TanStack Query](https://tanstack.com/query/v5/docs/react/overview) 現在是必需的對等相依。
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
 
-使用以下命令安裝它：
+Install it with the following command:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. 升級您的 RainbowKit 和 Wagmi 設定**
+**3. Upgrade your RainbowKit and Wagmi configurations**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. 檢查 `wagmi` 和 `viem` 的重大變更**
+**4. Check for breaking changes in `wagmi` and `viem`**
 
-如果您在 dApp 中使用 `wagmi` 鉤子和 `viem` 動作，您需要遵循 v2 的遷移指南：
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
-- [Wagmi v2 遷移指南](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Viem v2 重大變更](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit 變更
+#### RainbowKit Changes
 
-**1. 改進對 EIP-6963 錢包的行為**
+**1. Improved behavior for EIP-6963 wallets**
 
-支援新 EIP-6963 連線標準的錢包（包括 <b>Rainbow</b>、<b>MetaMask</b> 等）現在將會自動顯示在連接錢包體驗的 `已安裝` 部分中。 這確保用戶能夠始終找到他們喜愛的錢包並連接到 dApps，沒有衝突或後備按鈕。 這確保用戶能夠始終找到他們喜愛的錢包並連接到 dApps，沒有衝突或後備按鈕。
+Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
 
-開發者仍擁有完全控制自定義錢包清單的權限，以強調優先的錢包給終端用戶。 建議您繼續在列表中包含 `injectedWallet` 和 `walletConnectWallet` 以支持所有平台。 建議您繼續在列表中包含 `injectedWallet` 和 `walletConnectWallet` 以支持所有平台。 建議您繼續在列表中包含 `injectedWallet` 和 `walletConnectWallet` 以支持所有平台。
+Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to support all platforms.
 
-**2. 使用 getDefaultConfig 配置 Wagmi**
+**2. Wagmi configuration with getDefaultConfig**
 
-此新 API 簡化了配置體驗，取代了直接使用 Wagmi 的 `createConfig` 的需求。 鏈配置簡化，包括對 `transports` 推斷的公共提供者。 鏈配置簡化，包括對 `transports` 推斷的公共提供者。
+This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
 
-預設錢包清單將自動包括，不需要再使用 `getDefaultWallets` 和 `connectorsForWallets`。
+The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
 
-您可以透過將導入的或自定義的錢包連接器傳遞給 `wallets` 來建立自定義錢包清單。 不再需要例化錢包連接器並傳遞 `projectId` 和 `chains`。
+You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-您不再需要將 `chains` 傳遞給 `<RainbowKitProvider>`。
+You no longer need to pass `chains` to `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. 自定義鏈**
+**4. Custom Chains**
 
-`Chain` 類型根據 Wagmi v2 進行了更改，並繼續支援 RainbowKit 的 `iconUrl` 和 `iconBackground` 中元數據。
+The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -159,7 +159,7 @@ const config = getDefaultConfig({
   } as const satisfies Chain
 ```
 
-使用 `getDefaultConfig` 的範例：
+Example with `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -174,7 +174,7 @@ const config = getDefaultConfig({
 });
 ```
 
-使用 `createConfig` 的範例：
+Example with `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ const config = getDefaultConfig({
   })
 ```
 
-**5. 自定義錢包**
+**5. Custom Wallets**
 
-RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和一個[範例連接器](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您在 dApp 中的任何自定義錢包連接器。 RainbowKit 錢包連接器已經過重大變更以支援 Wagmi v2。 參考[更新的文件](https://www.rainbowkit.com/docs/custom-wallets)和一個[範例連接器](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您在 dApp 中的任何自定義錢包連接器。
+RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
 
-錢包連接器現在也支援 EIP-6963 標準，並帶有 `rdns` 屬性。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。 請確保填充此屬性以防止錢包清單中出現對 EIP-6963 支援錢包的重複引用。
+Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
 
-> 請在 GitHub 上提交任何有關 RainbowKit v2 的問題或反饋[這裡](https://github.com/rainbow-me/rainbowkit/issues/new/choose)。
+> Please report any issues or feedback for RainbowKit v2 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
