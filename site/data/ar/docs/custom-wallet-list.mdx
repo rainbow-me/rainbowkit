@@ -1,15 +1,15 @@
 ---
-title: Custom Wallet List
-description: Customizing the wallet list
+title: قائمة المحافظ المخصصة
+description: تخصيص قائمة المحافظ
 ---
 
-# Custom Wallet List
+# قائمة المحافظ المخصصة
 
-## Customizing the wallet list
+## تخصيص قائمة المحافظ
 
-You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
+يمكنك استيراد المحافظ الفردية من `'@rainbow-me/rainbowkit/wallets'` بالإضافة إلى وظيفة `connectorsForWallets` لبناء قائمتك الخاصة من المحافظ مع موصلاتها الضرورية. لديك السيطرة الكاملة على أي المحافظ تظهر، وفي أي ترتيب.
 
-For example, you can choose to only show Rainbow along with generic fallback wallets.
+على سبيل المثال، يمكنك اختيار إظهار Rainbow والمحافظ الاحتياطية العامة فقط.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-You can then pass your connectors to Wagmi's `createConfig`.
+يمكنك بعد ذلك تمرير الموصلات الخاصة بك إلى `createConfig` التابع لواغمي.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,45 +58,45 @@ const App = () => (
 );
 ```
 
-### Built-in wallets
+### المحافظ المدمجة
 
-The following wallets are provided via the `wallet` object.
+تم تقديم المحافظ التالية عبر كائن `wallet`.
 
-#### Generic Wallets
+#### محافظ عامة
 
-The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
+تم تخصيص المحافظ التالية لطرق الاتصال العامة العامة بدلاً من التطبيقات المحددة. يوصى دائمًا بتضمين هذه المحافظ.
 
 ##### WalletConnect
 
-This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+هذه هي خيار المحفظة الاحتياطي المصمم للمحافظ القائمة على WalletConnect التي لم يتم تقديمها بواسطة محفظة أخرى في القائمة.
 
-**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
+**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ القائمة على WalletConnect.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Injected Wallet
+##### المحفظة المدخلية
 
-This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
+هذا هو خيار المحفظة الاحتياطي المصمم للسيناريوهات التي يوجد فيها `window.ethereum` لكن لم يتم تقديمها من قبل محفظة أخرى في القائمة. هذه المحفظة ستختفي من القائمة تلقائياً عندما لا يكون هناك حاجة للاحتياط أو إذا لم تكن هناك محفظة مدخلة متاحة.
 
-**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
+**يوصى دائمًا بتضمين هذه المحفظة في القائمة لضمان دعم جميع المحافظ المدخلية.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### محفظة آمنة
 
-For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
+للتطبيقات اللامركزية (dApps) التي تدعم التطبيقات الآمنة للسماح للمستخدمين بالاتصال بسهولة بمخزنهم الآمن أو التوقيع المتعدد، قم بتضمين خيار `safeWallet` للاتصالات التلقائية. سيظهر الخيار الآمن فقط في بيئة متصفح المحفظة الآمنة.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Specific Wallets
+### محافظ محددة
 
-The following wallets are provided via the `wallet` object (in alphabetical order).
+المحافظ التالية متوفرة عبر الكائن `wallet` (ترتيب أبجدي).
 
 #### 1inch Wallet
 
@@ -178,11 +178,11 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
+يدعم هذا الموصل لمحفظات التطبيقات والامتدادات الخاصة بعملة Coinbase بالإضافة إلى محفظة Coinbase الذكية على الويب.
 
-A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
+يتوفر وسيط تفضيل للسيطرة على تفعيل محفظة Smart Wallet أو تعطيلها للمستخدمين لديك. سلوك التفضيل موثق [هنا](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+يمكن العثور على خيارات تكوين إضافية للسيطرة على [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) و [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) في وثائق محفظة Coinbase SDK [هنا](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -363,7 +363,7 @@ import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rainbow
+#### رينبو
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -411,7 +411,7 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### محفظة الثقة
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -459,13 +459,13 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Examples
+### أمثلة
 
-#### Ordering
+#### الترتيب
 
-Here are a few examples of displaying different wallets, in different order.
+فيما يلي بعض الأمثلة على عرض محافظ مختلفة، بترتيبات مختلفة.
 
-Show MetaMask along with generic fallback wallets.
+عرض ميتا ماسك مع محافظ الوقوع العامة.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -485,7 +485,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
+عرض Rainbow و MetaMask و Coinbase بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,13 +512,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
+> تذكير: تحدد ترتيب مصفوفة `wallets` الترتيب الذي سيتم فيه عرض المحافظ في واجهة المستخدم.
 
-#### Multiple groups
+#### مجموعات متعددة
 
-You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possible wallets.
+يمكنك استخدام مفتاح `groupName` لتسمية مجموعات محافظ مختلفة. هذا مفيد إذا كنت ترغب في التواصل مع المستخدمين حول المحافظ التي توصي بها، بالإضافة إلى المحافظ الأخرى المحتملة.
 
-Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
+أوصي بRainbow و MetaMask، ولكن أقدم أيضاً Coinbase بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
