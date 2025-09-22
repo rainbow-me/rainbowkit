@@ -1,35 +1,35 @@
 ---
-title: Chuỗi
-description: Tùy chỉnh chuỗi
+title: Chains
+description: Customizing chains
 ---
 
-# Chuỗi
+# Chains
 
-## Tùy chỉnh chuỗi
+## Customizing chains
 
-RainbowKit được thiết kế để tích hợp với [đối tượng `chain` của wagmi](https://wagmi.sh/react/chains). Xem danh sách các chuỗi được hỗ trợ [tại đây](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Tùy chỉnh chuỗi ban đầu
+### Customizing the initial chain
 
-Theo mặc định, RainbowKit sẽ kết nối với chuỗi đầu tiên được cung cấp cho Wagmi. Hành vi này có thể được tùy chỉnh thông qua `initialChain` prop.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-Chuỗi ban đầu có thể được cấu hình bằng cách sử dụng chain ID.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Để thuận tiện, bạn cũng có thể truyền một đối tượng chuỗi.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Siêu dữ liệu chuỗi tùy chỉnh
+### Custom chain metadata
 
-Một số biểu tượng và hình nền chuỗi được cung cấp theo mặc định, nhưng bạn có thể tùy chỉnh biểu tượng và hình nền cho mỗi chuỗi bằng cách sử dụng các thuộc tính `iconUrl` và `iconBackground`.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Ví dụ với `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Ví dụ với `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
