@@ -1,15 +1,15 @@
 ---
 title: เชนที่กำหนดเอง
-description: สร้างลูกโซ่ที่กำหนดเอง
+description: Create a custom chain
 ---
 
 # เชนที่กำหนดเอง
 
-## สร้างลูกโซ่ที่กำหนดเอง
+## Create a custom chain
 
-คุณสามารถใช้ประเภท `Chain` เพื่อช่วยคุณสร้างลูกโซ่ที่กำหนดเอง คุณสามารถใช้ประเภท `Chain` เพื่อช่วยคุณสร้างลูกโซ่ที่กำหนดเอง คุณสามารถใช้ประเภท `Chain` เพื่อช่วยคุณสร้างลูกโซ่ที่กำหนดเอง จากนั้น, ส่งค่านั้นไปยัง `getDefaultConfig` หรือ [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) ของ Wagmi. คุณสามารถใช้ประเภท `Chain` เพื่อช่วยคุณสร้างลูกโซ่ที่กำหนดเอง คุณสามารถใช้ประเภท `Chain` เพื่อช่วยคุณสร้างลูกโซ่ที่กำหนดเอง จากนั้น, ส่งค่านั้นไปยัง `getDefaultConfig` หรือ [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) ของ Wagmi.
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
-เช่น นี่คือวิธีที่คุณสามารถสร้างลูกโซ่ Avalanche สำหรับ [avax.network](https://avax.network)
+For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import {
