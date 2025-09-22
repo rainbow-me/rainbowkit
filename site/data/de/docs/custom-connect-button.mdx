@@ -1,15 +1,15 @@
 ---
-title: Benutzerdefinierter ConnectButton
-description: Erstellen eines benutzerdefinierten ConnectButton
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# Benutzerdefinierter ConnectButton
+# Custom ConnectButton
 
-## Erstellen eines benutzerdefinierten ConnectButton
+## Creating a custom ConnectButton
 
-Sie können den Low-Level `ConnectButton.Custom` verwenden, um Ihren eigenen benutzerdefinierten Verbindungsbutton zu erstellen. Diese Komponente rendert eine Funktion, die alles enthält, was Sie zur Neuimplementierung der eingebauten Buttons benötigen.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Eine minimale Neuimplementierung der eingebauten Buttons würde so aussehen:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
+The following props are passed to your render function.
 
-### Kontoeigenschaften
+### Account properties
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       required: false,
       type: 'object | undefined',
       description:
-        'Objekt mit Details zum aktuellen Konto, wie unten beschrieben',
+        'Object containing details about the current account, described below',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string',
       description: (
         <>
-          Die vollständige Kontoadresse, z.B.
+          The full account address, e.g.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'Der Kontostand in Dezimalzahlen',
+      description: 'The account balance in decimals',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string | undefined	',
       description: (
         <>
-          Der Kontostand formatiert als String, z.B.{' '}
+          The account balance formatted as a string, e.g.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string | undefined	',
       description: (
         <>
-          Das Währungssymbol für den Kontostand, z.B. <code>ETH</code>
+          The currency symbol for the balance, e.g. <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string | undefined	',
       description: (
         <>
-          Der Kontostand formatiert auf 3 signifikante Stellen, plus das
-          Symbol, z.B. <code>1.23 ETH</code>
+          The balance formatted to 3 significant digits, plus the
+          symbol, e.g. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string',
       description: (
         <>
-          Der ENS-Name oder eine gekürzte Version der Adresse, z.B.{' '}
-          <code>"rainbowwallet.eth"</code> oder <code>"0x7a…384f"</code>
+          The ENS name, or a truncated version of the address, e.g.{' '}
+          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'Die URI des ENS-Avatars',
+      description: 'The ENS avatar URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string	| undefined',
       description: (
         <>
-          Der ENS-Name, z.B. <code>rainbowwallet.eth</code>
+          The ENS name, e.g. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       required: false,
       type: 'boolean',
       description:
-        'Boolean, das angibt, ob das Konto ausstehende Transaktionen für die aktuelle Kette hat',
+        'Boolean indicating whether the account has pending transactions for the current chain',
     },
   ]}
 />
 
-### Ketteneigenschaften
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       required: false,
       type: 'object | undefined',
       description:
-        'Objekt mit Details zur aktuellen Kette, wie unten beschrieben',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Ob die Kette ein angegebenes Symbol hat',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'Die URL des Kettensymbols (die möglicherweise auch undefiniert ist, während Base64-Daten-URLs heruntergeladen werden)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Der Hintergrund des Kettensymbols, der sichtbar ist, während Bilder geladen werden',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'number',
       description: (
         <>
-          Die Ketten-ID, z.B. <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       type: 'string | undefined',
       description: (
         <>
-          Der Kettenname, z.B. <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean, das angibt, ob die aktuelle Kette nicht unterstützt wird',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### Modalzustands-Eigenschaften
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Funktion zum Öffnen des Konto-Modals',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Funktion zum Öffnen des Ketten-Modals',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Funktion zum Öffnen des Verbindungs-Modals',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolescher Wert, der angibt, ob das Konto-Modal geöffnet ist',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolescher Wert, der angibt, ob das Ketten-Modal geöffnet ist',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolescher Wert, der angibt, ob das Verbindungs-Modal geöffnet ist',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### Allgemeine Zustands-Eigenschaften
+### General state properties
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ Die folgenden Eigenschaften werden an Ihre Render-Funktion übergeben.
       required: false,
       type: 'boolean',
       description:
-        'Boolescher Wert, der angibt, ob die Komponente geladen wurde',
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Der Authentifizierungsstatus oder undefiniert, wenn die Authentifizierung nicht konfiguriert ist',
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
