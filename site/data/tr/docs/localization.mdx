@@ -1,17 +1,17 @@
 ---
-title: Yerelleştirme
-description: Dahili çevirilerle dApp'inizin dilini özelleştirme
+title: Localization
+description: Customizing your dApp's language with built-in translations
 ---
 
-# Yerelleştirme
+# Localization
 
-## Dahili çevirilerle dApp'inizin dilini özelleştirme
+## Customizing your dApp's language with built-in translations
 
-Varsayılan olarak, RainbowKit, İngilizce dil kullanıcıları için `en-US` yerelini destekler.
+By default, RainbowKit supports the `en-US` locale for English language users.
 
-Mevcutsa, RainbowKit kullanıcının [tercih edilen dilini](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) algılar ve uygun çevirileri seçer. Geliştiriciler her zaman varsayılan dili geçersiz kılabilir.
+If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
 
-Kullanıcılarınız için bir dil belirtmek için, sadece `RainbowKitProvider`'ınızda bir prop olarak `locale="zh-CN"` ekleyin
+To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### Next.js ile Kullanım
+### Using with Next.js
 
-RainbowKit'in yerelleştirme desteği, [Alt-yol Yönlendirmesi](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing) ile daha iyi çalışır.
+RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Aşağıdaki örnekte olduğu gibi Next.js projenizi yapılandırın ve rotalarınıza isteğe bağlı bir `/locale/` alt yolu ekleyin, bu, arama motorlarının ve kullanıcıların çok dilli desteğinizi daha iyi keşfetmelerine yardımcı olacaktır.
+Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Aşağıdaki örnekte olduğu gibi Next.js projenizi yapılandırın ve rotalar�
 }
 ```
 
-Sonra, Sayfalar Yönlendiricisi tarafından sağlanan `locale`'yi `RainbowKitProvider`'a geçirin
+Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,19 +54,19 @@ export const App = () => {
 };
 ```
 
-Sayfalar Yönlendiricisi için bir örneği buradan [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next) referans alabilirsiniz.
+You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-Uygulama Yönlendiricisi henüz i18n'yi desteklemiyor. En iyi uygulama tekniklerini [`next-intl`](https://github.com/amannn/next-intl) ara yazılımı ile implemente etmek için ayrı örneğimize [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) bakınız.
+App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
 
-DApp'inizin içeriğini tam lokalizasyon desteği için çevirmek için aynı teknikleri kullanmanız önerilir. [`i18n-js`](https://github.com/fnando/i18n) ve [`next-intl`](https://github.com/amannn/next-intl) gibi lokalizasyon kütüphaneleri ve Crowdin gibi yönetim araçları bu süreci basitleştirecektir.
+It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
 
-### Desteklenen Diller
+### Supported Languages
 
-Aşağıdaki `locale` bölgeleri için tam destek sağlarız:
+We provide full support for the following `locale` regions:
 
 <Table
   header={[
-    'Dil', 'Bölge', 'Yerel Ayar', 'Kısa Biçim'
+    'Language', 'Region', 'Locale', 'Shortform'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
@@ -89,8 +89,9 @@ Aşağıdaki `locale` bölgeleri için tam destek sağlarız:
     ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
     ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
     ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de'],
+    ['Bahasa Melayu', 'Malaysia 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
-Eğer ek bir dil desteği görmek isterseniz, lütfen bir [GitHub Tartışması](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) açın ve biz bunu en kısa sürede desteklemek için çalışacağız.
+If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
