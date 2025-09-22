@@ -1,13 +1,13 @@
 ---
-title: อวาตาร์ที่กำหนดเอง
-description: การปรับแต่งอวาตาร์ผู้ใช้ในแอพของคุณ
+title: Custom Avatars
+description: Customizing your app's user avatar
 ---
 
-# อวาตาร์ที่กำหนดเอง
+# Custom Avatars
 
-## การปรับแต่งอวาตาร์ผู้ใช้ในแอพของคุณ
+## Customizing your app’s user avatar
 
-ตามค่าเริ่มต้น เราจะให้อวาตาร์สำหรับผู้ใช้ในกรณีที่ภาพ ENS ของพวกเขาไม่ถูกตั้งค่า แต่คุณสามารถปรับแต่งสิ่งนี้โดยการให้องค์ประกอบอวาตาร์ของคุณเอง คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript: ตามค่าเริ่มต้น เราจะให้อวาตาร์สำหรับผู้ใช้ในกรณีที่ภาพ ENS ของพวกเขาไม่ถูกตั้งค่า แต่คุณสามารถปรับแต่งสิ่งนี้โดยการให้องค์ประกอบอวาตาร์ของคุณเอง คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript: คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript: ตามค่าเริ่มต้น เราจะให้อวาตาร์สำหรับผู้ใช้ในกรณีที่ภาพ ENS ของพวกเขาไม่ถูกตั้งค่า แต่คุณสามารถปรับแต่งสิ่งนี้โดยการให้องค์ประกอบอวาตาร์ของคุณเอง คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript: คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript:
+By default we provide an avatar for users in case their ENS image is not set, but you can customize this by providing your own avatar component. You can import the `AvatarComponent` type if using TypeScript:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-`AvatarComponent` ที่ส่งผ่านไปยัง `avatar` prop มีประเภท prop ดังนี้: `<{ address: string; ensImage?: string | null; size: number;}>`
+The `AvatarComponent` passed to the `avatar` prop has prop types as follows: `<{ address: string; ensImage?: string | null; size: number;}>`
