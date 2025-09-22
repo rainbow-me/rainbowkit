@@ -1,19 +1,19 @@
 ---
-title: モーダルフック
-description: フック経由でプログラム的にモーダルを開く
+title: Modal Hooks
+description: Programmatically open modals via Hooks
 ---
 
-# モーダルフック
+# Modal Hooks
 
-## フック経由でプログラム的にモーダルを開く
+## Programmatically open modals via Hooks
 
-以下のフックは、アプリケーション内のどこでもプログラム的にモーダルを開くことを可能にするために提供されています。
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-これらの各フックは、それぞれのモーダルを開くための関数を持つオブジェクトを返します。 アプリケーションがモーダルを開くために必要な状態にない場合、返される関数は未定義になりますのでご注意ください。
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-各フックはまた、モーダルのステータスのための真偽値を返します。 各フックはまた、モーダルのステータスのための真偽値を返します。 通常は、Connect Modalの状態に頼るのではなく、ユーザーのウォレット接続状態に直接反応するために、純粋にWagmiフック (つまり `useAccount`) に頼ることをお勧めします。
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKitは中断せず、応答性がありますので、dAppsはウォレットが接続されているかどうかに関わらず、ユーザーインターフェイスを常にレンダリングする必要があります。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
-dAppsはユーザー認証のためにEthereumを使ったサインインのようなメカニズムに依存するのではなく、[認証](/docs/authentication)機能を使用するべきです。
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
