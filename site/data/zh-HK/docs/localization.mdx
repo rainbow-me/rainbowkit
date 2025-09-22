@@ -1,17 +1,17 @@
 ---
-title: 本地化
-description: 自定義你的 dApp 語言，使用內建翻譯功能
+title: Localization
+description: Customizing your dApp's language with built-in translations
 ---
 
-# 本地化
+# Localization
 
-## 自定義你的 dApp 語言，使用內建翻譯功能
+## Customizing your dApp's language with built-in translations
 
-預設情況下，RainbowKit 支援英語使用者的 `en-US` 語系。
+By default, RainbowKit supports the `en-US` locale for English language users.
 
-如果可用，RainbowKit 將自動偵測使用者的[偏好語言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)並選擇適當的翻譯。 開發者仍然可以隨時覆蓋預設語言。 開發者仍然可以隨時覆蓋預設語言。 開發者仍然可以隨時覆蓋預設語言。 開發者仍然可以隨時覆蓋預設語言。
+If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
 
-要為你的使用者指定語言，只需將 `locale="zh-CN"` 作為一個屬性添加到 `RainbowKitProvider` 中。
+To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### 與 Next.js 配合使用
+### Using with Next.js
 
-RainbowKit 的本地化支援與[子路徑路由](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)一起使用效果更佳。
+RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-根據以下示例配置你的 Next.js 專案，為你的路由添加一個可選的 `/locale/` 子路徑，這將幫助搜索引擎和使用者更好地發現你的多語言支援。
+Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ RainbowKit 的本地化支援與[子路徑路由](https://nextjs.org/docs/pages/
 }
 ```
 
-然後將 Pages Router 提供的 `locale` 傳遞給 `RainbowKitProvider`
+Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,19 +54,19 @@ export const App = () => {
 };
 ```
 
-你可以在[這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)參考 Pages Router 的示例。
+You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-App Router 尚不支援 i18n。 App Router 尚不支援 i18n。 參考我們的另一個示例[在這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)進行 [`next-intl`](https://github.com/amannn/next-intl) 中介軟件的最佳實踐實現。 App Router 尚不支援 i18n。 參考我們的另一個示例[在這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)進行 [`next-intl`](https://github.com/amannn/next-intl) 中介軟件的最佳實踐實現。 App Router 尚不支援 i18n。 參考我們的另一個示例[在這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)進行 [`next-intl`](https://github.com/amannn/next-intl) 中介軟件的最佳實踐實現。
+App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
 
-建議你使用相同的方法來翻譯你的 dApp 內容，以實現完整的本地化支援。 建議你使用相同的方法來翻譯你的 dApp 內容，以實現完整的本地化支援。 建議你使用相同的方法來翻譯你的 dApp 內容，以實現完整的本地化支援。 像 [`i18n-js`](https://github.com/fnando/i18n) 和 [`next-intl`](https://github.com/amannn/next-intl) 等本地化庫以及 Crowdin 等管理工具將簡化這個過程。
+It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
 
-### 支援的語言
+### Supported Languages
 
-我們全面支援以下 `locale` 區域：
+We provide full support for the following `locale` regions:
 
 <Table
   header={[
-    '語言', '地區', '語言環境', '縮寫'
+    'Language', 'Region', 'Locale', 'Shortform'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
@@ -89,8 +89,9 @@ App Router 尚不支援 i18n。 App Router 尚不支援 i18n。 參考我們的�
     ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
     ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
     ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de'],
+    ['Bahasa Melayu', 'Malaysia 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
-如果你希望新增對其他語言的支援，請開啟一個 [GitHub 討論](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas)，我們將儘快努力支援。
+If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
