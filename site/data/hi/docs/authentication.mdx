@@ -21,15 +21,15 @@ description: अपने उपयोगकर्ताओं का प्र�
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### प्रदाता सेटअप करें
+#### Set up the provider
 
-अपने `App` कौम्पोनॅन्ट में, `RainbowKitSiweNextAuthProvider` आयात करें।
+In your `App` component, import `RainbowKitSiweNextAuthProvider`.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-`RainbowKitProvider` को `RainbowKitSiweNextAuthProvider` के साथ रैप करें, सुनिश्चित करें कि यह NextAuth के `SessionProvider` के अंदर नेस्टेड है ताकि इसे सत्र तक पहुंच हो।
+Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-`RainbowKitSiweNextAuthProvider` के स्थान पर, अब आपके उपयोगकर्ता को अपने वॉलेट से जुड़ने के बाद एक संदेश हस्ताक्षरित करके प्रमाणित करने का अनुरोध किया जाएगा।
+With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
 
-#### SIWE संदेश विकल्पों को अनुकूलित करें
+#### Customize the SIWE message options
 
-आप [SIWE संदेश विकल्पों](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) को कस्टमाइज कर सकते हैं `getSiweMessageOptions` prop पर एक फ़ंक्शन पास करके `RainbowKitSiweNextAuthProvider`।
+You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
 
-यह फ़ंक्शन हर बार एक नया संदेश बनने पर कॉल किया जाएगा। इस फ़ंक्शन से लौटाए गए विकल्प डिफ़ॉल्ट के साथ मिल जाएंगे।
+This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### सत्र को सर्वर-साइड एक्सेस करें
+#### Access the session server-side
 
-आप NextAuth के `getToken` फ़ंक्शन के साथ सत्र टोकन एक्सेस कर सकते हैं जिसे `next-auth/jwt` से आयात किया गया है। यदि उपयोगकर्ता ने सफलतापूर्वक प्रमाणीकरण किया है, तो सत्र टोकन की `sub` संपत्ति (टोकन का "विषय", यानी उपयोगकर्ता) उपयोगकर्ता का पता होगी।
+You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
 
-आप `getServerSideProps` के माध्यम से सर्वर से सत्र ऑब्जेक्ट को भी पास कर सकते हैं, ताकि NextAuth को इसे ग्राहक पर फिर से हल नहीं करना पड़े।
+You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
 
-उदाहरण के लिए:
+For example:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-सत्र प्रबंधन के बारे में अधिक जानकारी के लिए, आप निम्नलिखित दस्तावेज़ीकरण का संदर्भ ले सकते हैं:
+For more information about managing the session, you can refer to the following documentation:
 
-- [Next.js प्रमाणीकरण गाइड](https://nextjs.org/docs/authentication)
-- [NextAuth दस्तावेज़ीकरण](https://next-auth.js.org)
+- [Next.js authentication guide](https://nextjs.org/docs/authentication)
+- [NextAuth documentation](https://next-auth.js.org)
