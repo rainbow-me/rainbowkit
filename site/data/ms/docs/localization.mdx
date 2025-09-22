@@ -1,17 +1,17 @@
 ---
-title: Pengelokalan
-description: Menyesuaikan bahasa dApp anda dengan terjemahan terbina dalam
+title: Localization
+description: Customizing your dApp's language with built-in translations
 ---
 
-# Pengelokalan
+# Localization
 
-## Menyesuaikan bahasa dApp anda dengan terjemahan terbina dalam
+## Customizing your dApp's language with built-in translations
 
-Secara lalai, RainbowKit menyokong lokal `en-US` untuk pengguna bahasa Inggeris.
+By default, RainbowKit supports the `en-US` locale for English language users.
 
-Jika tersedia, RainbowKit akan mengesan [bahasa pilihan](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) pengguna dan memilih terjemahan yang sesuai. Pembangun boleh sentiasa mengatasi bahasa lalai.
+If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
 
-Untuk menentukan bahasa untuk pengguna anda, hanya tambah `locale="zh-CN"` sebagai prop dalam `RainbowKitProvider` anda
+To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### Menggunakan dengan Next.js
+### Using with Next.js
 
-Sokongan pengelokalan RainbowKit berfungsi dengan lebih baik dengan [Penghalaan Sub-jalur](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Konfigurasikan projek Next.js anda seperti contoh di bawah untuk menambah sub-jalur `/locale/` pilihan kepada laluan anda, yang akan membantu enjin carian dan pengguna lebih baik menemui sokongan berbilang bahasa anda.
+Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Konfigurasikan projek Next.js anda seperti contoh di bawah untuk menambah sub-ja
 }
 ```
 
-Kemudian hantarkan `locale` yang disediakan oleh Penghala Halaman ke `RainbowKitProvider`
+Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,15 +54,15 @@ export const App = () => {
 };
 ```
 
-Anda boleh merujuk contoh untuk Penghala Halaman [di sini](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-Penghala Aplikasi masih belum menyokong i18n. Rujuk contoh terasing kami [di sini](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) untuk amalan terbaik pelaksanaan dengan perisian perantara [`next-intl`](https://github.com/amannn/next-intl).
+App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
 
-Adalah disarankan agar anda menggunakan teknik yang sama untuk menterjemahkan kandungan dApp anda bagi sokongan penglokalisasian penuh. Perpustakaan penglokalisasian seperti [`i18n-js`](https://github.com/fnando/i18n) dan [`next-intl`](https://github.com/amannn/next-intl) dan alat pengurusan seperti Crowdin akan memudahkan proses ini.
+It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
 
-### Bahasa yang Disokong
+### Supported Languages
 
-Kami menyediakan sokongan penuh untuk kawasan `locale` berikut:
+We provide full support for the following `locale` regions:
 
 <Table
   header={[
@@ -89,8 +89,9 @@ Kami menyediakan sokongan penuh untuk kawasan `locale` berikut:
     ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
     ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
     ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de'],
+    ['Bahasa Melayu', 'Malaysia 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
-Jika anda ingin melihat sokongan untuk bahasa tambahan, sila buka [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) dan kami akan berusaha untuk menyokongnya secepat mungkin.
+If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
