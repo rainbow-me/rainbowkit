@@ -1,21 +1,21 @@
 ---
-title: Тематизація
-description: Використання та налаштування тем
+title: Theming
+description: Using and customizing the themes
 ---
 
-# Тематизація
+# Theming
 
-## Використання та налаштування тем
+## Using and customizing the themes
 
-Ви можете налаштувати інтерфейс RainbowKit відповідно до вашого бренду. Ви можете обрати з кількох попередньо визначених акцентних кольорів і конфігурацій радіусу межі.
+You can tweak the RainbowKit UI to match your branding. You can pick from a few pre-defined accent colors and border radius configurations.
 
-Існує 3 вбудовані функції теми:
+There are 3 built-in theme functions:
 
-- `lightTheme`   (за замовчуванням)
+- `lightTheme` &nbsp; (default)
 - `darkTheme`
 - `midnightTheme`
 
-Функція теми повертає об'єкт теми. Ви можете передати об'єкт у властивість `theme` провайдера `RainbowKitProvider`.
+A theme function returns a theme object. You can pass the object to the `RainbowKitProvider`'s `theme` prop.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-Якщо хочете, ви можете передати `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` та `overlayBlur` для їх налаштування.
+If you want, you can pass in `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` and `overlayBlur` to customize them.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### Налаштування вбудованих тем
+### Customizing the built-in themes
 
-Вбудовані функції теми також приймають об'єкт опцій, що дозволяє вам вибрати з кількох різних візуальних стилів.
+The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
 <PropsTable
   data={[
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Зверніть увагу, що `rounded` намагається використовувати SF Pro Rounded, повертаючись до системних шрифтів, якщо він недоступний.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,12 +93,12 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'Розмиття модального фону.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />
 
-Наприклад, щоб налаштувати темну тему з акцентним фіолетовим кольором та радіусом границі `medium`:
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Кожна тема також надає кілька попередньо встановлених кольорів акценту (`blue`, `green`, `orange`, `pink`, `purple`, `red`), які можна використовувати у об'єкті параметрів. Наприклад, щоб використовувати встановлений акцентний колір `pink`:
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -138,13 +138,13 @@ const App = () => {
 };
 ```
 
-### Приклади
+### Examples
 
-#### Функція теми
+#### Theme function
 
-Ось кілька різних способів використання властивості `theme`.
+Here are a few different ways you can use the `theme` prop.
 
-Використовуйте тему `darkTheme`.
+Use the `darkTheme` theme.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-Використовуйте тему `midnightTheme`.
+Use the `midnightTheme` theme.
 
 ```tsx
 import {
@@ -171,11 +171,11 @@ export const App = () => (
 );
 ```
 
-#### Акцентний колір
+#### Accent color
 
-Ось кілька різних способів використання конфігурації `accentColor`.
+Here are a few different ways you can use the `accentColor` config.
 
-Встановіть акцентний колір на користувацьке фіолетове значення.
+Set the accent color to a custom purple value.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-Встановіть акцентний колір на вбудований пресет `green`.
+Set the accent color to the built-in `green` preset.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -214,11 +214,11 @@ const App = () => {
 };
 ```
 
-#### Радіус кордону
+#### Border radius
 
-Ось кілька різних способів використання конфігурації `borderRadius`.
+Here are a few different ways you can use the `borderRadius` config.
 
-Встановіть радіус кордону на `medium`.
+Set the border radius to `medium`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-Встановіть радіус кордону на `none`.
+Set the border radius to `none`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> Нагадування: доступні значення радіусу кордону: `large` (за замовчуванням), `medium`, `small` та `none`.
+> Reminder: the available border radius valies are: `large` (default), `medium`, `small` and `none`.
 
-#### Набір шрифтів
+#### Font stack
 
-За замовчуванням, `fontStack` встановлено в `rounded`. Але ось як ви можете використовувати конфігурацію `fontStack`.
+By default, the `fontStack` is set to `rounded`. But here's how you can use the `fontStack` config.
 
-Встановіть шрифтовий стек на `system`.
+Set the font stack to `system`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### Розмиття на оверлеї
+#### Overlay blur
 
-За замовчуванням, `overlayBlur` встановлено в `none`. Але ось як ви можете використовувати конфігурацію `overlayBlur`.
+By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
 
-Встановіть розмиття оверлею на `small`.
+Set the overlay blur to `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### Комбінуйте та підбирайте
+#### Mix and match
 
-Ось кілька різних способів, як ви можете використовувати різні теми з пропсами `accentColor`, `borderRadius` та `fontStack` разом.
+Here are a few different ways you can use different themes, with `accentColor`, `borderRadius` and `fontStack` props together.
 
-- Використовуйте тему `lightTheme`
-- Встановіть акцентний колір на користувацьке фіолетове значення
-- Встановіть радіус краю на `medium`
-- Встановіть шрифтовий стек на `system`
+- Use the `lightTheme` theme
+- Set the accent color to a custom purple value
+- Set the border radius to `medium`
+- Set the font stack to `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- Використовуйте тему `midnightTheme`
-- Встановіть акцентний колір на вбудований пресет `pink`.
-- Встановіть радіус границі на `small`
-- Встановіть шрифтовий стек на `system`
+- Use the `midnightTheme` theme
+- Set the accent color to the built-in `pink` preset.
+- Set the border radius to `small`
+- Set the font stack to `system`
 
 ```tsx
 import {
@@ -360,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### Підтримка темного режиму
+#### Dark mode support
 
-Якщо ваш додаток використовує стандартний медіа-запит `prefers-color-scheme: dark` для перемикання між світлим і темним режимами, ви можете додатково надати динамічний об'єкт теми, що містить значення `lightMode` та `darkMode`.
+If your app uses the standard `prefers-color-scheme: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
 ```tsx
 import {
