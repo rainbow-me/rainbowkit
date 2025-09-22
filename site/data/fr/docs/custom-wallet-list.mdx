@@ -1,15 +1,15 @@
 ---
-title: Custom Wallet List
-description: Customizing the wallet list
+title: Liste de Portefeuilles Personnalisée
+description: Personnalisation de la liste de portefeuilles
 ---
 
-# Custom Wallet List
+# Liste de Portefeuilles Personnalisée
 
-## Customizing the wallet list
+## Personnalisation de la liste de portefeuilles
 
-You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
+Vous pouvez importer des portefeuilles individuels depuis `'@rainbow-me/rainbowkit/wallets'` avec la fonction `connectorsForWallets` pour construire votre propre liste de portefeuilles avec leurs connecteurs nécessaires. De cette manière, vous avez un contrôle total sur les portefeuilles à afficher et dans quel ordre.
 
-For example, you can choose to only show Rainbow along with generic fallback wallets.
+Par exemple, vous pouvez choisir de n'afficher que Rainbow ainsi que des portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-You can then pass your connectors to Wagmi's `createConfig`.
+Vous pouvez ensuite passer vos connecteurs à la fonction `createConfig` de Wagmi.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,47 +58,47 @@ const App = () => (
 );
 ```
 
-### Built-in wallets
+### Portefeuilles intégrés
 
-The following wallets are provided via the `wallet` object.
+Les portefeuilles suivants sont fournis via l'objet `wallet`.
 
-#### Generic Wallets
+#### Portefeuilles Génériques
 
-The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
+Les portefeuilles suivants sont limités à des méthodes de connexion génériques plutôt qu'à des applications spécifiques. Il est donc recommandé d'inclure toujours ces portefeuilles.
 
 ##### WalletConnect
 
-This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+Ceci est une option de portefeuille de secours conçue pour les portefeuilles basés sur WalletConnect qui n'ont pas été fournis par un autre portefeuille de la liste.
 
-**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
+**Il est recommandé d'inclure toujours ce portefeuille dans la liste pour garantir le support de tous les portefeuilles basés sur WalletConnect.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Injected Wallet
+##### Portefeuille Injecté
 
-This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
+Ceci est une option de portefeuille de secours conçue pour les scénarios où `window.ethereum` existe mais n'a pas été fourni par un autre portefeuille de la liste. Ce portefeuille se cachera automatiquement de la liste lorsque le secours n'est pas nécessaire ou s'il n'y a aucun portefeuille injecté disponible.
 
-**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
+**Il est recommandé d'inclure toujours ce portefeuille dans la liste pour garantir le support de tous les portefeuilles injectés.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### Portefeuille Sûr
 
-For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
+Pour les dApps qui prennent en charge les Safe Apps permettant aux utilisateurs de se connecter facilement à leur coffre-fort Safe ou multi-sig, incluez l'option `safeWallet` pour des connexions automatiques. L'option Safe n'apparaîtra que dans l'environnement du navigateur Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Specific Wallets
+### Portefeuilles Spécifiques
 
-The following wallets are provided via the `wallet` object (in alphabetical order).
+Les portefeuilles suivants sont fournis via l'objet `wallet` (par ordre alphabétique).
 
-#### 1inch Wallet
+#### Portefeuille 1inch
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -122,13 +122,13 @@ import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Best Wallet
+#### Meilleur Portefeuille
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### Portefeuille Binance Web3
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -140,7 +140,7 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bifrost Wallet
+#### Portefeuille Bifrost
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -158,19 +158,19 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom Wallet
+#### Portefeuille Bloom
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave Wallet
+#### Portefeuille Brave
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit Wallet
+#### Portefeuille Bybit
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -178,11 +178,11 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
+Ce connecteur de portefeuille prend en charge à la fois l'application et l'extension Coinbase Wallet, ainsi que Coinbase Smart Wallet sur le Web.
 
-A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
+Un argument `préférence` est disponible pour contrôler si Smart Wallet est préféré ou désactivé pour vos utilisateurs. Le comportement basé sur les préférences est documenté [ici](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
+Des options de configuration supplémentaires pour le contrôle des [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) et des [Sous-comptes](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) sont disponibles dans les documents SDK de Coinbase Wallet [ici](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -207,13 +207,13 @@ coinbaseWallet.subAccounts: {
 }
 ```
 
-#### Coin98 Wallet
+#### Portefeuille Coin98
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Compass Wallet
+#### Portefeuille Compass
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -225,13 +225,13 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dawn Wallet
+#### Portefeuille Dawn
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Enkrypt Wallet
+#### Portefeuille Enkrypt
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -243,19 +243,19 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame Wallet
+#### Portefeuille Frame
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Wallet
+#### Portefeuille Frontier
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Wallet
+#### Portefeuille Gate
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -267,13 +267,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay Wallet
+#### Portefeuille ioPay
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kaia Wallet
+#### Portefeuille Kaia
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -285,13 +285,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken Wallet
+#### Portefeuille Kraken
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus Wallet
+#### Portefeuille Kresus
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -303,13 +303,13 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### Portefeuille Magic Eden
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW Wallet
+#### Portefeuille MEW
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -321,13 +321,13 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Nova Wallet
+#### Portefeuille Nova
 
 ```tsx
 import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX Wallet
+#### Portefeuille OKX
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -357,7 +357,7 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby Wallet
+#### Portefeuille Rabby
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -369,13 +369,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### Portefeuille Ramper
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### Portefeuille Ronin
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -411,13 +411,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Portefeuille Trust
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Portefeuille Uniswap
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -429,7 +429,7 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Portefeuille XDEFI
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -459,13 +459,13 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Examples
+### Exemples
 
-#### Ordering
+#### Ordonnance
 
-Here are a few examples of displaying different wallets, in different order.
+Voici quelques exemples d'affichage de différents portefeuilles, dans différents ordres.
 
-Show MetaMask along with generic fallback wallets.
+Afficher MetaMask ainsi que les portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -485,7 +485,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
+Afficher Rainbow, MetaMask et Coinbase avec des portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,13 +512,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
+> Rappel : L'ordre du tableau `wallets` définit l'ordre dans lequel les portefeuilles seront affichés dans l'interface utilisateur.
 
-#### Multiple groups
+#### Multiples groupes
 
-You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possible wallets.
+Vous pouvez utiliser la clé `groupName` pour nommer différents groupes de portefeuilles. C'est utile si vous souhaitez indiquer à vos utilisateurs quels portefeuilles vous recommandez, ainsi que d'autres portefeuilles possibles.
 
-Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
+Recommandez Rainbow et MetaMask, mais proposez également Coinbase avec des portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
