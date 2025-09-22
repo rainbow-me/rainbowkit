@@ -1,15 +1,15 @@
 ---
-title: Пользовательская кнопка ConnectButton
-description: Создание пользовательской кнопки ConnectButton
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# Пользовательская кнопка ConnectButton
+# Custom ConnectButton
 
-## Создание пользовательской кнопки ConnectButton
+## Creating a custom ConnectButton
 
-Вы можете использовать низкоуровневую кнопку `ConnectButton.Custom` для создания своей собственной кнопки подключения. Этот компонент отображает функцию, которая включает все, что вам нужно для повторной реализации встроенных кнопок.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Минимальная повторная реализация встроенных кнопок может выглядеть следующим образом:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Следующие свойства передаются в вашу функцию отрисовки.
+The following props are passed to your render function.
 
-### Свойства аккаунта
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ export const YourApp = () => {
   ]}
 />
 
-### Свойства цепочки
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Объект, содержащий информацию о текущей цепочке, описанный ниже',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Определяет, есть ли у цепочки заданная иконка',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'URL цепочной иконки (который также может быть не определён при загрузке данных Base64-URL)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Фон цепочной иконки, который будет виден во время загрузки изображений',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          ID цепочки, например <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          Имя цепочки, например <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Булево значение, указывающее, поддерживается ли текущая цепочка',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### Свойства состояния модального окна
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,42 +279,44 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Функция для открытия модального окна аккаунта',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Функция для открытия модального окна цепочки',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Функция для открытия модального окна подключения',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Логическое значение, указывающее, открыто ли модальное окно аккаунта',
+      description:
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Логическое значение, указывающее, открыто ли модальное окно цепочки',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Логическое значение, указывающее, открыто ли модальное окно подключения',
+      description:
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### Общие свойства состояния
+### General state properties
 
 <PropsTable
   data={[
@@ -322,13 +324,15 @@ export const YourApp = () => {
       name: 'mounted',
       required: false,
       type: 'boolean',
-      description: 'Логическое значение, указывающее, загружен ли компонент',
+      description:
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
-      description: 'Статус аутентификации, или undefined, если аутентификация не настроена',
+      description:
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
