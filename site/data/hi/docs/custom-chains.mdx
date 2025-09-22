@@ -1,15 +1,15 @@
 ---
 title: कस्टम चेन्स
-description: एक custom chain बनाएं
+description: Create a custom chain
 ---
 
 # कस्टम चेन्स
 
-## एक custom chain बनाएं
+## Create a custom chain
 
-आप एक custom chain बनाने में सहायता के लिए `Chain` प्रकार का उपयोग कर सकते हैं। फिर, इसे `getDefaultConfig` या Wagmi के [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) को पास करें।
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
-उदाहरण के लिए, यहां आप [avax.network](https://avax.network) के लिए एक Avalanche chain कैसे बना सकते हैं।
+For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import {
