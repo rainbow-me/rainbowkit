@@ -1,17 +1,17 @@
 ---
-title: Dompet Tersuai
-description: Buat dompet tersuai
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Dompet Tersuai
+# Custom Wallets
 
-## Buat dompet tersuai
+## Create a custom wallet
 
-> Nota: API ini tidak stabil dan mungkin akan berubah dalam masa terdekat. Kami akan menambah lebih banyak dompet terbina dalam dari semasa ke semasa. [Beritahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika terdapat mana-mana dompet tertentu yang anda minati.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-Jenis fungsi `Wallet` disediakan untuk membantu anda mendefinisikan dompet khusus anda sendiri. Properti berikut boleh dikonfigurasi pada nilai balikan dari fungsi `Wallet` anda:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Sifat Dompet
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -134,7 +134,7 @@ Jenis fungsi `Wallet` disediakan untuk membantu anda mendefinisikan dompet khusu
   ]}
 />
 
-### Sifat DownloadUrls
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -204,9 +204,9 @@ Jenis fungsi `Wallet` disediakan untuk membantu anda mendefinisikan dompet khusu
   ]}
 />
 
-### Contoh-contoh
+### Examples
 
-Sebagai contoh, untuk membuat dompet tersuai menggunakan WalletConnect:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Anda boleh menambah dompet tersuai anda dalam [senarai dompet](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
