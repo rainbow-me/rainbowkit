@@ -1,19 +1,19 @@
 ---
-title: السنانير النموذجية
-description: افتح النماذج برمجيًا عبر السنانير
+title: Modal Hooks
+description: Programmatically open modals via Hooks
 ---
 
-# السنانير النموذجية
+# Modal Hooks
 
-## افتح النماذج برمجيًا عبر السنانير
+## Programmatically open modals via Hooks
 
-يتم توفير السنانير التالية للسماح بالفتح البرمجي للنماذج في أي مكان في تطبيقك.
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-كل واحد من هذه السنانير يرجع كائن بوظيفة لفتح النموذج الخاص به. لاحظ أن الوظائف التي تُرجع ستكون غير معرفة إذا لم يكن تطبيقك في الحالة المطلوبة لفتح النموذج.
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-كل سنارة أيضًا تُرجع قيمة منطقية لحالة النموذج. عادة ما يُوصى بأن تعتمد فقط على سنانير Wagmi (كـ `useAccount`) للتفاعل مع حالة اتصال محفظة المستخدم بشكل مباشر، بدلًا من الاعتماد على حالة نموذج الاتصال.
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-يتم تصميم RainbowKit ليكون غير مقتحم ومتجاوب، لذا يجب على التطبيقات اللامركزية دائمًا عرض واجهة للمستخدمين سواء قاموا بتوصيل محافظهم أم لا. يمكن للمستخدم توصيل أو فصل محافظته مباشرة من MetaMask، لذا يجب أن يكون dApp متجاوب مع حالة الاتصال الأساسية مباشرة.
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
-يجب على التطبيقات اللامركزية التي تعتمد على آليات مثل تسجيل الدخول باستخدام Ethereum للتحقق من المستخدم أن تعتمد بدلًا من ذلك على [التوثيق](/docs/authentication).
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
