@@ -1,17 +1,17 @@
 ---
-title: محافظ مخصصة
-description: إنشاء محفظة مخصصة
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# محافظ مخصصة
+# Custom Wallets
 
-## إنشاء محفظة مخصصة
+## Create a custom wallet
 
-> ملاحظة: هذا الواجهة البرمجية للتطبيقات غير مستقرة ومرجح أن تتغير في المستقبل القريب. سنقوم بإضافة المزيد من المحافظ المدمجة مع مرور الوقت. [أعلمنا](https://github.com/rainbow-me/rainbowkit/issues) إذا كانت هناك أي محافظ معينة تهمك.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-يتم توفير نوع الوظيفة `Wallet` لمساعدتك في تعريف محافظك المخصصة. يمكن تكوين الخصائص التالية على قيمة الإرجاع لوظيفة `Wallet` الخاصة بك:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### خصائص المحفظة
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -134,7 +134,7 @@ description: إنشاء محفظة مخصصة
   ]}
 />
 
-### خصائص روابط التحميل
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -204,9 +204,9 @@ description: إنشاء محفظة مخصصة
   ]}
 />
 
-### أمثلة
+### Examples
 
-مثلا، لإنشاء محفظة مخصصة باستخدام WalletConnect:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-يمكنك بعد ذلك إضافة محفظتك المخصصة في [قائمة المحفظة](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
