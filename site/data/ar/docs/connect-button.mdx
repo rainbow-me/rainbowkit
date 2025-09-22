@@ -1,13 +1,13 @@
 ---
-title: زر الاتصال
-description: استخدام وتخصيص زر الاتصال
+title: ConnectButton
+description: Using and customising the ConnectButton
 ---
 
-# زر الاتصال
+# ConnectButton
 
-## استخدام وتخصيص زر الاتصال
+## Using and customising the ConnectButton
 
-هذا هو المكون الرئيسي. إنه مسؤول عن عرض زر الاتصال/قطع الاتصال، بالإضافة إلى واجهة تبديل السلاسل.
+This is the main component. It is responsible for rendering the connect/disconnect button, as well as chain-swapping UI.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> ملاحظة: تأكد من أن تطبيقك ملفوف في الموفرات اللازمة. [اقرأ المزيد](/docs/installation#wrap-providers).
+> Note: Make sure your app is wrapped in the necessary providers. [Read more](/docs/installation#wrap-providers).
 
-### الخصائص
+### Props
 
-المكون `ConnectButton` يكشف عدة خصائص لتخصيص مظهره، بما في ذلك تبديل رؤية العناصر المختلفة.
+The `ConnectButton` component exposes several props to customize its appearance, including toggling the visibility of different elements.
 
 <PropsTable
   data={[
@@ -62,71 +62,71 @@ export const YourApp = () => {
   ]}
 />
 
-> ملاحظة: نقطة التوقف المدمجة في `largeScreen` هي `768px`.
+> Note: the built-in `largeScreen` breakpoint is `768px`.
 
-### أمثلة
+### Examples
 
-#### التسمية
+#### Label
 
-استخدم خاصة `label` لتعيين نص مخصص لـ `ConnectButton`.
+Use the `label` prop to set a custom `ConnectButton` text.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
 ```
 
-#### حالة الحساب
+#### Account status
 
-إليك بعض الطرق المختلفة التي يمكنك استخدام خاصية `accountStatus`.
+Here are a few different ways you can use the `accountStatus` prop.
 
-إظهار صورة الحساب فقط.
+Only show the account's avatar.
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-إظهار عنوان الحساب فقط.
+Only show the account's address.
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### حالة السلسلة
+#### Chain status
 
-إليك بعض الطرق المختلفة التي يمكنك استخدام خاصية `chainStatus`.
+Here are a few different ways you can use the `chainStatus` prop.
 
-إظهار أيقونة السلسلة الحالية فقط.
+Only show the current chain's icon.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-إظهار اسم السلسلة الحالية فقط.
+Only show the current chain's name.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-إخفاء واجهة المستخدم الخاصة بالسلسلة بالكامل.
+Hide the chain UI entirely.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### عرض الرصيد
+#### Show balance
 
-استخدم خاصية `showBalance` لإخفاء/عرض الرصيد.
+Use the `showBalance` prop to hide/show the balance.
 
-إخفاء الرصيد.
+Hide the balance.
 
 ```tsx
 <ConnectButton showBalance={__false__} />
 ```
 
-#### تجاوب
+#### Responsive
 
-يمكن تعريف هذه الخصائص أيضًا بتنسيق مرن.
+These props can also be defined in a responsive format.
 
-على الشاشات الصغيرة، إظهار أيقونة الحساب فقط. لكن على الشاشات الكبيرة، إظهار الأيقونة والعنوان.
+On small screens, only show account icon. But on large screens, show icon and address.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-على الشاشات الصغيرة، إخفاء الرصيد. لكن على الشاشات الكبيرة، إظهاره.
+On small screens, hide balance. But on large screens, show it.
 
 ```tsx
 <ConnectButton
