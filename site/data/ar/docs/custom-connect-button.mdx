@@ -1,15 +1,15 @@
 ---
-title: زر الاتصال المخصص
-description: إنشاء زر اتصال مخصص
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# زر الاتصال المخصص
+# Custom ConnectButton
 
-## إنشاء زر اتصال مخصص
+## Creating a custom ConnectButton
 
-يمكنك استخدام `ConnectButton.Custom` منخفض المستوى لإنشاء زر الاتصال المخصص الخاص بك. هذا المكون يجسد وظيفة، والتي تتضمن كل ما تحتاجه لإعادة تنفيذ الأزرار المدمجة.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-قد تبدو إعادة تنفيذ بسيطة للأزرار المدمجة مثل هذا:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-الخصائص التالية تُمرر إلى دالة العرض الخاصة بك.
+The following props are passed to your render function.
 
-### خصائص الحساب
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ export const YourApp = () => {
   ]}
 />
 
-### خصائص السلسلة
+### Chain properties
 
 <PropsTable
   data={[
@@ -271,7 +271,7 @@ export const YourApp = () => {
   ]}
 />
 
-### خصائص حالة النموذج
+### Modal state properties
 
 <PropsTable
   data={[
@@ -316,7 +316,7 @@ export const YourApp = () => {
   ]}
 />
 
-### خصائص الحالة العامة
+### General state properties
 
 <PropsTable
   data={[
