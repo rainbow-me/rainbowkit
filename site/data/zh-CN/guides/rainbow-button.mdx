@@ -1,24 +1,24 @@
 ---
-title: 在您的 dApp 中使用 Rainbow Button
-description: 一种适用于 Wagmi 的即插即用库，用于支持您的 dApp 中 Rainbow 钱包
+title: Adopting the Rainbow Button in your dApp
+description: A plug-and-play library for Wagmi to support Rainbow wallets in your dApp
 image: guide-rainbow-button.png
 ---
 
-# 在您的 dApp 中使用 Rainbow Button
+# Adopting the Rainbow Button in your dApp
 
-`RainbowButton` 组件是在使用 `wagmi` 的 dApp 中为 Rainbow 钱包添加支持的最简单方法，相较于 [RainbowKit](https://www.rainbowkit.com/docs/installation)，它提供了更加自定义的连接器体验。
+The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. 安装 `@rainbow-me/rainbow-button` 及其他依赖**
+**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
 
-此包兼容 Next.js、React 和 Vite。 确保遵循对等依赖的警告。 确保遵循对等依赖的警告。 确保遵循对等依赖的警告。
+The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. 配置 Wagmi 并安装 RainbowButton**
+**2. Configure with Wagmi and install the RainbowButton**
 
-将 `rainbowConnector` 的一个实例传递给 Wagmi 的 `createConfig`，并传入 `projectId` 和 `appName`，然后将您的应用包装在 `RainbowButtonProvider` 中。 然后加入 `RainbowButton` 组件。 然后加入 `RainbowButton` 组件。 然后加入 `RainbowButton` 组件。
+Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-您还可以使用 `RainbowButton.Custom` 组件进行自定义实现和样式设置。
+You can also use the `RainbowButton.Custom` component for custom implementations and styling.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. 就是这样了!**
+**3. And that's it!**
 
-现在您的用户无需进行任何维护或烦恼，就可以享受到与 Rainbow 的无缝连接体验。
+Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
 
-另外，如果您想支持更多的钱包，也可以在 [RainbowKit](https://www.rainbowkit.com/docs/installation) 中使用 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 组件。
+A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
