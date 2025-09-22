@@ -1,19 +1,19 @@
 ---
-title: Xác thực Tùy chỉnh
-description: Kết nối với hệ thống xác thực của bạn
+title: Custom Authentication
+description: Connect to your own authentication back-end
 ---
 
-# Xác thực Tùy chỉnh
+# Custom Authentication
 
-## Kết nối với hệ thống xác thực của bạn
+## Connect to your own authentication back-end
 
-Trong khi RainbowKit cung cấp [hỗ trợ hạng nhất cho Đăng nhập bằng Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các hệ thống back-end tùy chỉnh và định dạng tin nhắn riêng.
+While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
 
-### Tạo bộ điều hợp tùy chỉnh
+### Creating a custom adapter
 
-Đầu tiên, tạo bộ điều hợp xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị các tin nhắn và giao tiếp với hệ thống của bạn.
+First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
 
-Ví dụ, chúng ta có thể tạo một bộ điều hợp xác thực cho phép sử dụng [Đăng nhập bằng Ethereum](https://login.xyz) với một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Cung cấp trạng thái xác thực
+#### Providing the authentication state
 
-Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ điều hợp tùy chỉnh của bạn vào `RainbowKitAuthenticationProvider`, bao bọc `RainbowKitProvider` hiện có của bạn.
+Assuming your application is already managing the authentication lifecycle in some way, you can pass the current authentication status along with your custom adapter to `RainbowKitAuthenticationProvider`, wrapping your existing `RainbowKitProvider`.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Nếu bạn đã tạo được bộ điều hợp cho một thư viện xác thực mã nguồn mở hiện có, xin vui lòng tạo một gói cho người khác sử dụng!
+If you've got this far and created an adapter for an existing open source authentication library, please consider creating a package for others to use!
