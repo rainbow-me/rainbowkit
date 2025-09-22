@@ -1,35 +1,35 @@
 ---
-title: Rantai
-description: Menyesuaikan rantai
+title: Chains
+description: Customizing chains
 ---
 
-# Rantai
+# Chains
 
-## Menyesuaikan rantai
+## Customizing chains
 
-RainbowKit direka untuk berintegrasi dengan objek `chain` wagmi [wagmi’s `chain` object](https://wagmi.sh/react/chains). Lihat senarai rantai yang disokong [di sini](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Menyesuaikan rantai awal
+### Customizing the initial chain
 
-Secara lalai, RainbowKit akan bersambung ke rantai pertama yang dibekalkan kepada Wagmi. Tingkah laku ini boleh disesuaikan melalui prop `initialChain`.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-Rantai awal boleh dikonfigurasi menggunakan ID rantai.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Sebagai kemudahan, anda juga boleh mempass objek rantai.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Metadata rantai khusus
+### Custom chain metadata
 
-Beberapa ikon dan latar belakang rantai disediakan secara lalai, tetapi anda boleh menyesuaikan ikon dan latar belakang untuk setiap rantai menggunakan sifat `iconUrl` dan `iconBackground`.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Contoh dengan `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Contoh dengan `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
