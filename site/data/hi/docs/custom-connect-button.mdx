@@ -1,15 +1,15 @@
 ---
-title: अनुकूलित ConnectButton
-description: एक अनुकूलित ConnectButton बनाना
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# अनुकूलित ConnectButton
+# Custom ConnectButton
 
-## एक अनुकूलित ConnectButton बनाना
+## Creating a custom ConnectButton
 
-आप अपने स्वयं के कस्टम कनेक्शन बटन बनाने के लिए निम्न-स्तरीय `ConnectButton.Custom` का उपयोग कर सकते हैं। यह घटक एक फ़ंक्शन रेंडर करता है, जिसमें बिल्ट-इन बटनों को फिर से लागू करने के लिए आपको आवश्यक सब कुछ शामिल है।
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-बिल्ट-इन बटनों का एक न्यूनतम पुनर्क्रिया कुछ इस तरह से हो सकती है:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-निम्नलिखित props आपके रेंडर कार्य को पास किए जाते हैं।
+The following props are passed to your render function.
 
-### खाता गुण
+### Account properties
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'वर्तमान खाता के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
+        'Object containing details about the current account, described below',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          पूरा खाता पता, उदाहरण के लिए
+          The full account address, e.g.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'अंक में खाता शेष',
+      description: 'The account balance in decimals',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          एक स्ट्रिंग के रूप में स्वरूपित खाता शेष, उदाहरण के लिए{' '}
+          The account balance formatted as a string, e.g.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          शेष के लिए मुद्रा चिह्न, उदाहरण के लिए <code>ETH</code>
+          The currency symbol for the balance, e.g. <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          शेष को 3 महत्वपूर्ण अंक में स्वरूपित किया गया है, प्लस
-          चिह्न, उदाहरण के लिए <code>1.23 ETH</code>
+          The balance formatted to 3 significant digits, plus the
+          symbol, e.g. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          ENS नाम, या पते का संक्षिप्त संस्करण, उदाहरण के लिए{' '}
-          <code>"rainbowwallet.eth"</code> या <code>"0x7a…384f"</code>
+          The ENS name, or a truncated version of the address, e.g.{' '}
+          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ export const YourApp = () => {
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'ENS अवतार URI',
+      description: 'The ENS avatar URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          ENS नाम, उदाहरण के लिए <code>rainbowwallet.eth</code>
+          The ENS name, e.g. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'बूलियन जो यह संकेत करता है कि खाते की मौजूदा चेन के लिए लंबित लेनदेन हैं या नहीं',
+        'Boolean indicating whether the account has pending transactions for the current chain',
     },
   ]}
 />
 
-### चेन गुण
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'वर्तमान चेन के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'चेन का एक चिह्न है या नहीं',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'चेन चिह्न का URL (जो Base64 डेटा URL डाउनलोड करते समय भी अपरिभाषित हो सकता है)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'चेन आइकन की पृष्ठभूमि जो छवियां लोड होने पर दिखाई देगी',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          चेन ID, उदाहरण के लिए <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          चेन का नाम, उदाहरण के लिए <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'बूलियन जो यह दर्शाता है कि वर्तमान चेन असमर्थित है या नहीं',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### मोडल स्टेट गुण
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'खाता मोडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'चेन मोडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'कनेक्ट मोडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि खाता मोडल खुला है या नहीं',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'बूलियन यह दर्शाने वाला कि चेन मोडल खुला है या नहीं',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि कनेक्ट मोडल खुला है या नहीं',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### सामान्य स्थिति गुण
+### General state properties
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि घटक माउंट हो गया है या नहीं',
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'प्रमाणीकरण स्थिति, या गैर-परिभाषित अगर प्रमाणीकरण कॉन्फ़िगर नहीं किया गया है',
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
