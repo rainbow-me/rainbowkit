@@ -1,15 +1,15 @@
 ---
-title: Користувацька кнопка підключення
-description: Створення користувацької кнопки підключення
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# Користувацька кнопка підключення
+# Custom ConnectButton
 
-## Створення користувацької кнопки підключення
+## Creating a custom ConnectButton
 
 You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Мінімальна повторна реалізація вбудованих кнопок може виглядати приблизно так:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Наступні властивості передаються вашій функції відтворення.
+The following props are passed to your render function.
 
-### Властивості облікового запису
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ export const YourApp = () => {
   ]}
 />
 
-### Властивості ланцюга
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Обʼєкт, що містить деталі про поточний ланцюг, описаний нижче',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Чи має ланцюг заданий значок',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'URL значка ланцюга (який також може бути невизначеним під час завантаження URL-адрес даних Base64)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Фон значка ланцюга, який буде видно під час завантаження зображень',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          Ідентифікатор ланцюга, напр. <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          Назва ланцюга, напр. <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Булеве значення, яке вказує, чи підтримується поточний ланцюг',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### Властивості стану модального вікна
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Функція для відкриття модального вікна аккаунта',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Функція для відкриття модального вікна ланцюга',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Функція для відкриття модального вікна підключення',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи відкрите модальне вікно аккаунта',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Булеве значення, яке вказує, чи відкрите модальне вікно ланцюга',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи відкрите модальне вікно підключення',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### Загальні властивості стану
+### General state properties
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи було компонент змонтовано',
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Статус аутентифікації, або undefined, якщо аутентифікація не налаштована',
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
