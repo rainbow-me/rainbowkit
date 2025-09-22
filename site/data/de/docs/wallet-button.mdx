@@ -1,13 +1,13 @@
 ---
 title: WalletButton
-description: Verwendung und Anpassung des WalletButton
+description: Using and customizing the WalletButton
 ---
 
 # WalletButton
 
-> Hinweis: Der `WalletButton` basiert aktuell auf dem EIP-1193-Walletstandard, wird jedoch in naher Zukunft EIP-6963 unterstützen.
+> Note: The `WalletButton` currently relies on the EIP-1193 wallet standard, but will support EIP-6963 in the near future.
 
-Die neue `WalletButton`-Komponente hilft dApps mit benutzerdefinierten Wallet-Listenimplementierungen, RainbowKit und seine wartungsfreien Vorteile zu übernehmen.
+The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Wie der `ConnectButton` steht auch die `WalletButton.Custom`-Komponente für benutzerdefinierte Implementierungen und Stiloptionen zur Verfügung.
+Like the `ConnectButton`, the `WalletButton.Custom` component is available for custom implementations and styling.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ Wie der `ConnectButton` steht auch die `WalletButton.Custom`-Komponente für ben
 </WalletButton.Custom>
 ```
 
-Die meisten dApps profitieren am meisten vom [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Weitere Informationen zur Adoption und zu Anwendungsfällen des `WalletButton` finden Sie in den [Dokumentationen](https://www.rainbowkit.com/docs/wallet-button).
+Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
 
 #### Demo
 
-Drücken Sie die untenstehenden Tasten, um zu sehen, wie dieser Einstiegspunkt von RainbowKit aussieht.
+Press the buttons below to see what this RainbowKit entry point looks like.
 
 <WalletButtonDemo />
