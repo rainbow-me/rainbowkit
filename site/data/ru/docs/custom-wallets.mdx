@@ -1,17 +1,17 @@
 ---
-title: Пользовательские кошельки
-description: Создать пользовательский кошелек
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Пользовательские кошельки
+# Custom Wallets
 
-## Создать пользовательский кошелек
+## Create a custom wallet
 
-> Примечание: АПИ находится в стадии разработки и может измениться в ближайшем будущем. Со временем мы добавим больше встроенных кошельков. [Сообщите нам](https://github.com/rainbow-me/rainbowkit/issues) если есть конкретные кошельки, которые вас интересуют.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-Тип функции `Wallet` предоставляется для помощи в определении ваших собственных пользовательских кошельков. Следующие свойства могут быть настроены в возвращаемом значении вашей функции `Wallet`:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Свойства Кошелька
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -19,45 +19,45 @@ description: Создать пользовательский кошелек
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Уникальный идентификатор для каждого кошелька',
+      description: 'Unique ID per wallet',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Имя кошелька, которое может быть прочитано человеком',
+      description: 'Human-readable wallet name',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS для кошелька, поддерживающего EIP6963',
+      description: 'RDNS for wallet which supports EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Необязательное короткое имя для мобильного использования',
+      description: 'Optional short name for mobile use',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL для значка кошелька или promise, который возвращает URL данных в формате Base64',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Цвет акцента, используемый в процессе загрузки для кошельков с расширением браузера и мобильным приложением',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Цвет фона во время загрузки значка кошелька',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: Создать пользовательский кошелек
       type: 'boolean | undefined',
       description: (
         <>
-          Известно ли, что кошелек установлен, или{' '}
-          <code>undefined</code>, если это неопределенно
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: Создать пользовательский кошелек
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Объект, содержащий URL-адреса для скачивания.',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: Создать пользовательский кошелек
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Функция для расчета, нужно ли скрыть этот кошелек из списка. Это полезно для определения общих резервных кошельков, например, встроенная функция резервного копирования "Injected Wallet" использует эту возможность',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: Создать пользовательский кошелек
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Функция для предоставления экземпляра коннектора и настройки различных методов подключения, описанных ниже',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: Создать пользовательский кошелек
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Функция для определения URI подключения мобильного кошелька',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Функция для определения глубокой ссылки настольного приложения',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: Создать пользовательский кошелек
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Объект, содержащий функцию для определения URI QR-кода, а также необязательные инструкции по настройке мобильного кошелька',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ description: Создать пользовательский кошелек
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Объект, содержащий необязательные инструкции по настройке расширений браузера',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Функция для предоставления экземпляра коннектора',
-    }
+      description: 'Function for providing the connector instance',
+    },
   ]}
 />
 
-### Свойства DownloadUrls
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -142,71 +142,71 @@ description: Создать пользовательский кошелек
       name: 'android',
       required: false,
       type: 'string',
-      description: 'URL Google Play',
+      description: 'Google Play URL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'URL Apple App Store',
+      description: 'Apple App Store URL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Целевая страница для мобильных пользователей, когда `android` или `ios` недоступны',
+        'Landing page for mobile users when `android` or `ios` are unavailable',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Целевая страница для пользователей, которые сканируют QR-код для загрузки мобильной версии',
+        'Landing page for users that scan the mobile download QR Code',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'URL Chrome Web Store',
+      description: 'Chrome Web Store URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'URL дополнений для Microsoft Edge',
+      description: 'Microsoft Edge Add-ons URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'URL дополнений для браузера Firefox',
+      description: 'Firefox Browser Add-ons URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'URL дополнений для Opera',
+      description: 'Opera add-ons URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'URL Mac App Store',
+      description: 'Mac App Store URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Целевая страница для пользователей настольных расширений, когда URL-адреса, совместимые с браузером, недоступны',
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
   ]}
 />
 
-### Примеры
+### Examples
 
-Например, для создания пользовательского кошелька с использованием WalletConnect:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Затем вы можете добавить свой пользовательский кошелек в [список кошельков](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
