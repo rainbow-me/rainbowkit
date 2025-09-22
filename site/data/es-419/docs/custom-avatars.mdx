@@ -1,13 +1,13 @@
 ---
-title: Avatares personalizados
-description: Personalizando el avatar de usuario de su aplicación
+title: Custom Avatars
+description: Customizing your app's user avatar
 ---
 
-# Avatares personalizados
+# Custom Avatars
 
-## Personalizando el avatar de usuario de su aplicación
+## Customizing your app’s user avatar
 
-Por defecto proporcionamos un avatar para los usuarios en caso de que su imagen ENS no esté configurada, pero puede personalizar esto proporcionando su propio componente de avatar. Puede importar el tipo `AvatarComponent` si utiliza TypeScript:
+By default we provide an avatar for users in case their ENS image is not set, but you can customize this by providing your own avatar component. You can import the `AvatarComponent` type if using TypeScript:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-El `AvatarComponent` pasado a la propiedad `avatar` tiene los tipos de propiedades como sigue: `<{ address: string; ensImage?: string | null; size: number;}>`
+The `AvatarComponent` passed to the `avatar` prop has prop types as follows: `<{ address: string; ensImage?: string | null; size: number;}>`
