@@ -1,13 +1,13 @@
 ---
 title: ConnectButton
-description: ConnectButton का उपयोग करना और अनुकूलित करना
+description: Using and customising the ConnectButton
 ---
 
 # ConnectButton
 
-## ConnectButton का उपयोग करना और अनुकूलित करना
+## Using and customising the ConnectButton
 
-यह मुख्य घटक है। यह connect/disconnect बटन को रेंडर करने के लिए ज़िम्मेदार है, साथ ही साथ chain-swapping UI का भी।
+This is the main component. It is responsible for rendering the connect/disconnect button, as well as chain-swapping UI.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,29 +17,29 @@ export const YourApp = () => {
 };
 ```
 
-> नोट: सुनिश्चित करें कि आपका ऐप आवश्यक प्रदाताओं में लिपटा हुआ है। [अधिक पढ़ें](/docs/installation#wrap-providers).
+> Note: Make sure your app is wrapped in the necessary providers. [Read more](/docs/installation#wrap-providers).
 
-### प्रॉप्स
+### Props
 
-`ConnectButton` घटक कई प्रॉप्स को उजागर करता है जिससे उसकी उपस्थिति को अनुकूलित किया जा सकता है, जिसमें विभिन्न तत्वों की दृश्यता को टॉगल करना शामिल है।
+The `ConnectButton` component exposes several props to customize its appearance, including toggling the visibility of different elements.
 
 <PropsTable
   data={[
     {
       name: 'label',
       required: false,
-      default: 'कनेक्ट वॉलेट',
+      default: 'Connect Wallet',
       type: 'string',
-      description: 'कनेक्ट बटन पर प्रदर्शित टेक्स्ट लेबल',
+      description: 'The text label displayed on the Connect button',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'पूर्ण',
+      default: 'full',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'क्या सक्रिय खाता का अवतार और/या पता प्रदर्शित होता है',
+        "Whether the active account's avatar and/or address is displayed",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ export const YourApp = () => {
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        'क्या वर्तमान चेन का आइकॉन और/या नाम प्रदर्शित होता है या पूरी तरह छिपा होता है',
+        "Whether the current chain's icon and/or name is displayed, or hidden entirely",
     },
     {
       name: 'showBalance',
@@ -57,76 +57,76 @@ export const YourApp = () => {
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        'क्या खाता नाम के बगल में बैलेंस दिखाई देता है',
+        'Whether the balance is visible next to the account name',
     },
   ]}
 />
 
-> नोट: अंतर्निहित `largeScreen` ब्रेकपॉइंट `768px` है।
+> Note: the built-in `largeScreen` breakpoint is `768px`.
 
-### उदाहरण
+### Examples
 
-#### लेबल
+#### Label
 
-कस्टम `ConnectButton` टेक्स्ट सेट करने के लिए `label` प्रॉप का उपयोग करें।
+Use the `label` prop to set a custom `ConnectButton` text.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
 ```
 
-#### खाता स्थिति
+#### Account status
 
-यहाँ `accountStatus` प्रॉप का उपयोग करने के कुछ अलग-अलग तरीके हैं।
+Here are a few different ways you can use the `accountStatus` prop.
 
-केवल खाते का अवतार दिखाएँ।
+Only show the account's avatar.
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-केवल खाते का पता दिखाएँ।
+Only show the account's address.
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### चैन स्थिति
+#### Chain status
 
-यहाँ `chainStatus` प्रॉप का उपयोग करने के कुछ अलग-अलग तरीके हैं।
+Here are a few different ways you can use the `chainStatus` prop.
 
-केवल वर्तमान चैन का आइकॉन दिखाएँ।
+Only show the current chain's icon.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-केवल वर्तमान चैन का नाम दिखाएँ।
+Only show the current chain's name.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-चैन UI को पूरी तरह से छिपाएँ।
+Hide the chain UI entirely.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### शेष राशि दिखाएँ
+#### Show balance
 
-शेष राशि को छिपाने/दिखाने के लिए `showBalance` प्रॉप का उपयोग करें।
+Use the `showBalance` prop to hide/show the balance.
 
-शेष राशि को छिपाएँ।
+Hide the balance.
 
 ```tsx
 <ConnectButton showBalance={__false__} />
 ```
 
-#### रेस्पोंसिव
+#### Responsive
 
-इन प्रॉप्स को रेस्पोंसिव प्रारूप में भी परिभाषित किया जा सकता है।
+These props can also be defined in a responsive format.
 
-छोटी स्क्रीन पर, केवल खाता आइकन दिखाएँ। लेकिन बड़ी स्क्रीन पर, आइकन और पता दोनों दिखाएँ।
+On small screens, only show account icon. But on large screens, show icon and address.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-छोटी स्क्रीन पर, शेष राशि छिपाएँ। लेकिन बड़ी स्क्रीन पर, इसे दिखाएँ।
+On small screens, hide balance. But on large screens, show it.
 
 ```tsx
 <ConnectButton
