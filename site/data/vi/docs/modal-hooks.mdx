@@ -1,19 +1,19 @@
 ---
 title: Modal Hooks
-description: Mở các modal bằng lập trình thông qua Hooks
+description: Programmatically open modals via Hooks
 ---
 
 # Modal Hooks
 
-## Mở các modal bằng lập trình thông qua Hooks
+## Programmatically open modals via Hooks
 
-Các Hooks sau đây được cung cấp để cho phép mở modal bằng lập trình ở bất kỳ đâu trong ứng dụng của bạn.
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Mỗi Hook này trả về một đối tượng với một hàm để mở modal tương ứng của nó. Lưu ý rằng các hàm trả về sẽ là undefined nếu ứng dụng của bạn không ở trạng thái yêu cầu để mở modal.
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Mỗi hook cũng trả về một giá trị boolean cho trạng thái của modal. Thông thường, bạn nên dựa vào các hook của Wagmi (tức là `useAccount`) để phản ứng với trạng thái kết nối ví của người dùng trực tiếp, thay vì dựa vào trạng thái của Connect Modal.
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit được thiết kế để không gây gián đoạn và đáp ứng, vì vậy dApps nên luôn luôn hiển thị giao diện cho người dùng dù họ có kết nối ví hay không. Người dùng có thể kết nối hoặc ngắt kết nối ví của họ trực tiếp từ MetaMask, do đó dApp phải phản hồi trực tiếp với trạng thái kết nối cơ bản.
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
-Các dApp dựa vào cơ chế như Đăng nhập bằng Ethereum để xác minh người dùng nên dựa vào tính năng [Authentication](/docs/authentication).
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
