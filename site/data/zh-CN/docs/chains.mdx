@@ -1,35 +1,35 @@
 ---
-title: 链
-description: 自定义链
+title: Chains
+description: Customizing chains
 ---
 
-# 链
+# Chains
 
-## 自定义链
+## Customizing chains
 
-RainbowKit 旨在与 [wagmi 的 `chain` 对象](https://wagmi.sh/react/chains) 集成。 查看支持的链列表 [here](https://wagmi.sh/react/chains#supported-chains)。 查看支持的链列表 [here](https://wagmi.sh/react/chains#supported-chains)。 查看支持的链列表 [here](https://wagmi.sh/react/chains#supported-chains)。
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### 自定义初始链
+### Customizing the initial chain
 
-默认情况下，RainbowKit 将连接到提供给 Wagmi 的第一个链。 可以通过`initialChain`属性自定义此行为。 可以通过`initialChain`属性自定义此行为。 可以通过`initialChain`属性自定义此行为。
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-可以使用链ID配置初始链。
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-为方便起见，您也可以传递一个链对象。
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### 定制链图标
+### Custom chain metadata
 
-默认提供了几个链图标，但您可以使用iconUrl属性为每个链定制图标。
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-使用`getDefaultConfig`的例子：
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-使用`createConfig`的例子：
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
