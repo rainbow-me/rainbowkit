@@ -1,13 +1,13 @@
 ---
-title: ข้อมูลแอปที่กำหนดเอง
-description: การปรับแต่งข้อมูลของแอปของคุณ
+title: Custom App Info
+description: Customizing your app's info
 ---
 
-# ข้อมูลแอปที่กำหนดเอง
+# Custom App Info
 
-## การปรับแต่งข้อมูลของแอปของคุณ
+## Customizing your app’s info
 
-คุณสามารถส่งผ่านข้อมูลแอปของคุณในพร็อพ `appInfo` สำหรับ `RainbowKitProvider`. คุณสมบัติที่สามารถปรับแต่งได้คือชื่อของแอปของคุณ (`appName`) และลิงก์ที่ปุ่ม “Learn More” ในการเชื่อมต่อโมดอลจะนำไปสู่ (`learnMoreUrl`):
+You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### เพิ่มข้อจำกัดความรับผิดชอบ
+### Add a Disclaimer
 
-คุณสามารถให้ข้อจำกัดความรับผิดชอบของคุณเองเพื่อแสดงที่ด้านล่างของโมดอลการเชื่อมต่อ. พร็อพ `disclaimer` ใน `appInfo` ใช้ `DisclaimerComponent` พร้อมอาร์กิวเมนต์ `Text` และ `Link`. คุณสามารถใช้งานเพื่อสร้างข้อจำกัดความรับผิดชอบที่ใช้ระบบธีมมิ่ง. เรานำเข้าแบบ `DisclaimerComponent` สำหรับผู้ใช้ TypeScript:
+You can provide your own disclaimer to be displayed at the bottom of the connection modal. The `disclaimer` property in `appInfo` takes a `DisclaimerComponent` with arguments `Text` and `Link`. You can use it to build your own disclaimer that inherits the theming system. We export the `DisclaimerComponent` type for TypeScript users:
 
 ```tsx
 import {
