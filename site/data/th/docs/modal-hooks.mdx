@@ -1,19 +1,19 @@
 ---
-title: ตัวเชื่อมต่อ Modal
-description: เปิด modal ผ่าน Hooks แบบโปรแกรม
+title: Modal Hooks
+description: Programmatically open modals via Hooks
 ---
 
-# ตัวเชื่อมต่อ Modal
+# Modal Hooks
 
-## เปิด modal ผ่าน Hooks แบบโปรแกรม
+## Programmatically open modals via Hooks
 
-Hooks ต่อไปนี้ถูกจัดเตรียมเพื่อให้สามารถเปิด modals แบบโปรแกรมได้ทุกที่ในแอปพลิเคชันของคุณ
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-แต่ละ Hook เหล่านี้จะส่งคืนวัตถุที่มีฟังก์ชันสำหรับการเปิด modal ที่เกี่ยวข้อง แต่ละ Hook เหล่านี้จะส่งคืนวัตถุที่มีฟังก์ชันสำหรับการเปิด modal ที่เกี่ยวข้อง โปรดทราบว่าฟังก์ชันที่ส่งคืนจะเป็น undefined หากแอปพลิเคชันของคุณไม่ได้อยู่ในสถานะที่ต้องการสำหรับการเปิด modal แต่ละ Hook เหล่านี้จะส่งคืนวัตถุที่มีฟังก์ชันสำหรับการเปิด modal ที่เกี่ยวข้อง โปรดทราบว่าฟังก์ชันที่ส่งคืนจะเป็น undefined หากแอปพลิเคชันของคุณไม่ได้อยู่ในสถานะที่ต้องการสำหรับการเปิด modal แต่ละ Hook เหล่านี้จะส่งคืนวัตถุที่มีฟังก์ชันสำหรับการเปิด modal ที่เกี่ยวข้อง โปรดทราบว่าฟังก์ชันที่ส่งคืนจะเป็น undefined หากแอปพลิเคชันของคุณไม่ได้อยู่ในสถานะที่ต้องการสำหรับการเปิด modal
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-แต่ละ hook ยังส่งคืนค่า boolean สำหรับสถานะของ modal แต่ละ hook ยังส่งคืนค่า boolean สำหรับสถานะของ modal แต่ละ hook ยังส่งคืนค่า boolean สำหรับสถานะของ modal แต่ละ hook ยังส่งคืนค่า boolean สำหรับสถานะของ modal โดยปกติขอแนะนำให้คุณพึ่งพาเฉพาะ Wagmi hooks (ได้แก่ `useAccount`) เพื่อโต้ตอบกับสถานะการเชื่อมต่อกระเป๋าเงินของผู้ใช้โดยตรง แทนที่จะพึ่งพาสถานะของ Connect Modal
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit ถูกออกแบบมาเพื่อไม่สร้างการขัดขวางและสามารถตอบสนองได้ดี ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้ไม่ว่าพวกเขาจะเชื่อมต่อกระเป๋าเงินของตัวเองหรือไม่ RainbowKit ถูกออกแบบมาเพื่อไม่สร้างการขัดขวางและสามารถตอบสนองได้ดี ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้ไม่ว่าพวกเขาจะเชื่อมต่อกระเป๋าเงินของตัวเองหรือไม่ ผู้ใช้สามารถเชื่อมต่อหรือยกเลิกการเชื่อมต่อกระเป๋าเงินของตนโดยตรงจาก MetaMask ดังนั้น dApp ต้องสามารถตอบสนองกับสถานะการเชื่อมต่อที่ขั้นพื้นฐานโดยตรง RainbowKit ถูกออกแบบมาเพื่อไม่สร้างการขัดขวางและสามารถตอบสนองได้ดี ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้ไม่ว่าพวกเขาจะเชื่อมต่อกระเป๋าเงินของตัวเองหรือไม่ ผู้ใช้สามารถเชื่อมต่อหรือยกเลิกการเชื่อมต่อกระเป๋าเงินของตนโดยตรงจาก MetaMask ดังนั้น dApp ต้องสามารถตอบสนองกับสถานะการเชื่อมต่อที่ขั้นพื้นฐานโดยตรง RainbowKit ถูกออกแบบมาเพื่อไม่สร้างการขัดขวางและสามารถตอบสนองได้ดี ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้ไม่ว่าพวกเขาจะเชื่อมต่อกระเป๋าเงินของตัวเองหรือไม่ ผู้ใช้สามารถเชื่อมต่อหรือยกเลิกการเชื่อมต่อกระเป๋าเงินของตนโดยตรงจาก MetaMask ดังนั้น dApp ต้องสามารถตอบสนองกับสถานะการเชื่อมต่อที่ขั้นพื้นฐานโดยตรง
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
-dApps ที่พึ่งพากลไกเช่นการลงชื่อตาม Ethereum สำหรับการยืนยันผู้ใช้ ควรอิงตามฟีเจอร์ [Authentication](/docs/authentication) แทน
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
