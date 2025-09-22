@@ -1,35 +1,35 @@
 ---
-title: Ланцюги
-description: Налаштування ланцюгів
+title: Chains
+description: Customizing chains
 ---
 
-# Ланцюги
+# Chains
 
-## Налаштування ланцюгів
+## Customizing chains
 
-RainbowKit розроблений для інтеграції з об'єктом [wagmi `chain`](https://wagmi.sh/react/chains). Перегляньте список підтримуваних ланцюгів [тут](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Налаштування початкового ланцюга
+### Customizing the initial chain
 
-За замовчуванням RainbowKit буде підключатися до першого ланцюга, наданого Wagmi. Цю поведінку можна налаштувати за допомогою властивості `initialChain`.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-Початковий ланцюг можна налаштувати, використовуючи ідентифікатор ланцюга.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Для зручності, ви також можете передати об'єкт ланцюга.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Користувацькі метадані ланцюгів
+### Custom chain metadata
 
-Декілька значків і фонових зображень ланцюгів доступні за замовчуванням, але ви можете налаштувати значок і фон для кожного ланцюга за допомогою властивостей `iconUrl` та `iconBackground`.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Приклад з `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Приклад з `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
