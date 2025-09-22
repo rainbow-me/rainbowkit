@@ -1,15 +1,15 @@
 ---
-title: 自訂錢包列表
-description: 自訂錢包列表設置
+title: Custom Wallet List
+description: Customizing the wallet list
 ---
 
-# 自訂錢包列表
+# Custom Wallet List
 
-## 自訂錢包列表設置
+## Customizing the wallet list
 
-您可以從 `'@rainbow-me/rainbowkit/wallets'` 中導入單獨的錢包，並使用 `connectorsForWallets` 函數來建立自己的錢包列表及其必要的連接器。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。 這樣，您可以完全控制顯示哪些錢包，以及顯示的順序。
+You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
 
-例如，您可以選擇只顯示 Rainbow 以及通用的備用錢包。
+For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-然後，您可以將您的連接器傳遞給 Wagmi 的 `createConfig`。
+You can then pass your connectors to Wagmi's `createConfig`.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,29 +58,29 @@ const App = () => (
 );
 ```
 
-### 內置錢包
+### Built-in wallets
 
-以下錢包通過 `wallet` 對象提供。
+The following wallets are provided via the `wallet` object.
 
-#### 通用錢包
+#### Generic Wallets
 
-以下錢包是根據通用連接方法而非特定應用來設定的。 因此，建議始終包含這些錢包。
+The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
 
 ##### WalletConnect
 
-這是一個為未由列表中的其他錢包提供的基於 WalletConnect 的錢包而設計的備用選項。
+This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
 
-**建議始終在列表中包含此錢包，以確保所有基於 WalletConnect 的錢包都得到支持。**
+**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### 注入錢包
+##### Injected Wallet
 
-這是一個為存在 `window.ethereum` 但未由列表中的其他錢包提供的情況設計的備用錢包選項。 當備用不再需要或不存在注入錢包時，此錢包將自動從列表中隱藏。 當備用不再需要或不存在注入錢包時，此錢包將自動從列表中隱藏。
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
 
-**建議始終在列表中包含此錢包，以確保所有注入錢包都得到支持。**
+**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,15 +88,15 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-對於支持 Safe Apps 的 dApps，讓用戶輕鬆連接到他們的 Safe vault 或 multi-sig，請包含 `safeWallet` 選項以自動連接。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。 Safe 選項僅在 Safe Wallet 瀏覽器環境中顯示。
+For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### 特定錢包
+### Specific Wallets
 
-以下錢包通過 `wallet` 對象提供（按字母順序排列）。
+The following wallets are provided via the `wallet` object (in alphabetical order).
 
 #### 1inch Wallet
 
@@ -178,11 +178,11 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### Coinbase
 
-此錢包連接器支持 Coinbase Wallet 應用程序和擴展程序，以及網上的 Coinbase Smart Wallet。
+This wallet connector supports both the Coinbase Wallet app and extension, as well as Coinbase Smart Wallet on Web.
 
-可用的 `preference` 參數可以控制是否優先或禁用 Smart Wallet 給用戶。 可用的 `preference` 參數可以控制是否優先或禁用 Smart Wallet 給用戶。 基於偏好的行為記錄在 [這裡](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
+A `preference` argument is available to control whether Smart Wallet is preferred or disabled for your users. Preference based behavior is documented [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
 
-有關 Paymasters 和 Sub Accounts 的額外配置選項可在這裡的 Coinbase Wallet SDK 文檔中找到 [這裡](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)。
+Additional configuration options for control of [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) can be found in the Coinbase Wallet SDK docs [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -321,7 +321,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Nova 錢包
+#### Nova Wallet
 
 ```tsx
 import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -459,13 +459,13 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### 示例
+### Examples
 
-#### 排序
+#### Ordering
 
-以下是顯示不同錢包的幾個示例，按不同順序排列。
+Here are a few examples of displaying different wallets, in different order.
 
-顯示 MetaMask 以及通用備用錢包。
+Show MetaMask along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -485,7 +485,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-顯示 Rainbow，MetaMask 和 Coinbase 以及通用的備用錢包。
+Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -512,13 +512,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> 提醒：`wallets` 陣列的順序定義了錢包在用戶介面中顯示的順序。
+> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
 
-#### 多個群組
+#### Multiple groups
 
-您可以使用 `groupName` 鍵來命名不同的錢包組。 這對於您想告訴用戶您推薦哪些錢包，以及其他可能的錢包非常有用。 這對於您想告訴用戶您推薦哪些錢包，以及其他可能的錢包非常有用。
+You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possible wallets.
 
-推薦使用 Rainbow 和 MetaMask，但也提供 Coinbase 以及通用的備用錢包。
+Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
