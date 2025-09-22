@@ -400,6 +400,20 @@
           "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden.",
           "title": "Tippen Sie auf die WalletConnect-Schaltfläche"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Installieren Sie die Binance Wallet Erweiterung",
+          "description": "Wir empfehlen, die Binance Wallet an Ihre Taskleiste zu heften, um schneller darauf zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Stellen Sie sicher, dass Sie Ihr Wallet mit einer sicheren Methode sichern. Teilen Sie niemals Ihre geheime Phrase mit jemandem."
+        },
+        "step3": {
+          "title": "Aktualisieren Sie Ihren Browser",
+          "description": "Sobald Sie Ihr Wallet eingerichtet haben, klicken Sie unten, um den Browser zu aktualisieren und die Erweiterung zu laden."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Tippen Sie auf die Scan-Schaltfläche"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Öffne die ZilPay-App",
-        "description": "Füge ZilPay zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen."
-      },
-      "step2": {
-        "title": "Erstellen oder importieren Sie ein Wallet",
-        "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
-      },
-      "step3": {
-        "title": "Tippen Sie auf die Scan-Schaltfläche",
-        "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffne die ZilPay-App",
+          "description": "Füge ZilPay zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffnen Sie die Nova Wallet App",
+          "description": "Fügen Sie die Nova Wallet Ihrem Startbildschirm hinzu, um schneller auf Ihr Wallet zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
       }
     }
   }
