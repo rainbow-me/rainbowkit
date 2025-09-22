@@ -1,35 +1,35 @@
 ---
-title: เชื่อมโยง
-description: ปรับแต่งเชื่อมโยง
+title: Chains
+description: Customizing chains
 ---
 
-# เชื่อมโยง
+# Chains
 
-## ปรับแต่งเชื่อมโยง
+## Customizing chains
 
-RainbowKit ถูกออกแบบมาเพื่อรวมกับ [object `chain` ของ wagmi](https://wagmi.sh/react/chains). ตรวจสอบรายการของสร้อยที่รองรับ [ที่นี่](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### ปรับแต่งสร้อยเริ่มต้น
+### Customizing the initial chain
 
-โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain`
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-สายเริ่มต้นสามารถกำหนดค่าได้โดยใช้ ID ของสาย
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-เพื่อความสะดวก, คุณสามารถส่งผ่าน chain object
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### เมตาดาต้าโซ่ที่กำหนดเอง
+### Custom chain metadata
 
-ไอคอนและพื้นหลังจำนวนมากมีให้โดยค่าเริ่มต้น แต่คุณสามารถปรับแต่งไอคอนและพื้นหลังสำหรับแต่ละโซ่โดยใช้คุณสมบัติ `iconUrl` และ `iconBackground`
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-ตัวอย่างที่ใช้ `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-ตัวอย่างโดยใช้ `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
