@@ -1,15 +1,15 @@
 ---
-title: Nút Kết Nối Tùy Chỉnh
-description: Tạo một Nút Kết Nối Tùy Chỉnh
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# Nút Kết Nối Tùy Chỉnh
+# Custom ConnectButton
 
-## Tạo một Nút Kết Nối Tùy Chỉnh
+## Creating a custom ConnectButton
 
-Bạn có thể sử dụng `ConnectButton.Custom` cấp thấp để tạo nút kết nối tùy chỉnh của riêng bạn. Thành phần này kết xuất một hàm, bao gồm tất cả những gì bạn cần để tái triển khai các nút tích hợp sẵn.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Một tái triển khai tối thiểu của các nút tích hợp sẵn sẽ trông giống như sau:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Các thuộc tính sau đây được truyền vào hàm kết xuất của bạn.
+The following props are passed to your render function.
 
-### Thuộc tính tài khoản
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
   ]}
 />
 
-### Thuộc tính chuỗi
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'object | undefined',
       description:
-        'Đối tượng chứa chi tiết về chuỗi hiện tại, được mô tả dưới đây',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Chuỗi có biểu tượng nào được chỉ định hay không',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'URL biểu tượng của chuỗi (có thể chưa được xác định khi tải xuống URLs dữ liệu Base64)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Nền của biểu tượng chuỗi sẽ hiển thị trong khi tải hình ảnh',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'number',
       description: (
         <>
-          ID của chuỗi, ví dụ <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined',
       description: (
         <>
-          Tên của chuỗi, ví dụ <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean | undefined',
       description:
-        'Giá trị boolean cho biết chuỗi hiện tại có được hỗ trợ hay không',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### Thuộc tính trạng thái mô-đun
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại tài khoản',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại chuỗi',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại kết nối',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Giá trị boolean cho biết hộp thoại tài khoản có đang mở hay không',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Giá trị boolean cho biết hộp thoại chuỗi có đang mở hay không',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Giá trị boolean cho biết hộp thoại kết nối có đang mở hay không',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### Thuộc tính trạng thái chung
+### General state properties
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean',
       description:
-        'Boolean cho biết liệu thành phần đã được gắn chưa',
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Trạng thái xác thực hoặc chưa xác định nếu xác thực chưa được cấu hình',
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
