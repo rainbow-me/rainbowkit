@@ -1,13 +1,13 @@
 ---
 title: WalletButton
-description: Sử dụng và tùy chỉnh WalletButton
+description: Using and customizing the WalletButton
 ---
 
 # WalletButton
 
-> Lưu ý: `WalletButton` hiện dựa vào tiêu chuẩn ví EIP-1193, nhưng sẽ hỗ trợ EIP-6963 trong tương lai gần.
+> Note: The `WalletButton` currently relies on the EIP-1193 wallet standard, but will support EIP-6963 in the near future.
 
-Thành phần mới `WalletButton` giúp các ứng dụng dApp có triển khai danh sách ví tùy chỉnh áp dụng RainbowKit và tận hưởng tất cả lợi ích không phải bảo trì.
+The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Giống như `ConnectButton`, thành phần `WalletButton.Custom` có sẵn cho các triển khai và tạo kiểu tùy chỉnh.
+Like the `ConnectButton`, the `WalletButton.Custom` component is available for custom implementations and styling.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ Giống như `ConnectButton`, thành phần `WalletButton.Custom` có sẵn cho 
 </WalletButton.Custom>
 ```
 
-Hầu hết các ứng dụng dApp đều phục vụ tốt nhất bằng [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Tham khảo tài liệu [tại đây](https://www.rainbowkit.com/docs/wallet-button) để biết thêm thông tin về cách áp dụng và các trường hợp sử dụng `WalletButton`.
+Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
 
 #### Demo
 
-Nhấn các nút bên dưới để xem điểm nhập RainbowKit này trông như thế nào.
+Press the buttons below to see what this RainbowKit entry point looks like.
 
 <WalletButtonDemo />
