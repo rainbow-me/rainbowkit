@@ -400,6 +400,20 @@
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
           "title": "Ketuk tombol WalletConnect"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pasang ekstensi Binance Wallet",
+          "description": "Kami merekomendasikan untuk memasang Binance Wallet di taskbar Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Tekan tombol scan"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Buka aplikasi ZilPay",
-        "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
-      },
-      "step2": {
-        "title": "Buat atau Impor Dompet",
-        "description": "Buat dompet baru atau impor yang sudah ada."
-      },
-      "step3": {
-        "title": "Tekan tombol scan",
-        "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Nova Wallet",
+          "description": "Tambahkan Nova Wallet ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
       }
     }
   }
