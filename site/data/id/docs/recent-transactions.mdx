@@ -1,17 +1,17 @@
 ---
 title: Transaksi Terbaru
-description: Tampilkan transaksi terakhir Anda
+description: Show your recent transactions
 ---
 
 # Transaksi Terbaru
 
-## Tampilkan transaksi terakhir Anda
+## Show your recent transactions
 
-Anda dapat memilih untuk menampilkan transaksi terbaru di dalam modal akun RainbowKit. Perlu diingat bahwa semua transaksi disimpan di penyimpanan lokal dan harus didaftarkan secara manual dengan RainbowKit agar dapat ditampilkan.
+You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
 
-Implementasi `TombolHubung` bawaan juga akan menampilkan indikator pemuatan di sekitar avatar pengguna jika ada transaksi yang tertunda. Implementasi `TombolHubung` kustom dapat mengulang perilaku ini melalui properti `account.hasPendingTransactions` yang dilewatkan ke fungsi render Anda.
+The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
 
-Untuk menggunakan fitur ini, aktifkan opsi `showRecentTransactions` di `RainbowKitProvider` terlebih dahulu.
+To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transaksi kemudian dapat didaftarkan dengan RainbowKit menggunakan hook `useAddRecentTransaction`.
+Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Setelah transaksi didaftarkan dengan RainbowKit, statusnya akan diperbarui setelah selesai.
+Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
 
-Secara default, transaksi akan dianggap selesai setelah satu blok telah ditambang di atas blok di mana transaksi tersebut ditambang, tetapi ini dapat dikonfigurasi dengan menentukan nilai `confirmations` kustom.
+By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
