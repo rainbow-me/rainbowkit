@@ -1,17 +1,15 @@
 ---
-title: Custom Theme
-description: Creating a custom theme
+title: الثيم المخصص
+description: إنشاء ثيم مخصص
 ---
 
-# Custom Theme
+# الثيم المخصص
 
-## Creating a custom theme
+## إنشاء ثيم مخصص
 
-> Note: This API is unstable and likely to change
-> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
-> now.
+> ملاحظة: هذه الواجهة البرمجية غير مستقرة ومن المحتمل أن تتغير في المستقبل القريب. نوصي بالالتزام بـ[الثيمات المدمجة](/docs/theming) في الوقت الحالي.
 
-While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+بينما توفر الثيمات المدمجة مستوى معينًا من التخصيص، يتم توفير نوع `Theme` لمساعدتك في تعريف الثيمات المخصصة الخاصة بك مع الوصول لمتغيرات الثيم الأساسية.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Extending a built-in theme
+### توسيع الثيم المدمج
 
-You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+يمكنك توسيع الثيم المدمج بدون الحاجة إلى إعادة تعريف الثيم بالكامل. هذا مفيد عندما ترغب فقط في تجاوز بعض رموز الثيم المحددة.
 
-To do that, install `lodash.merge` (or equivalent):
+للقيام بذلك، قم بتثبيت `lodash.merge` (أو ما يعادله):
 
 ```bash
 npm install lodash.merge
 ```
 
-Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+قم باستيراده، بالإضافة إلى الثيم الذي تريد توسيعه (مثل: `darkTheme`) ونوع `Theme` الخاص بـTypeScript:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+بعد ذلك، قم بدمج الثيم المدمج مع الرموز التي ترغب في تجاوزها. في هذا المثال، قمت بتجاوز رمز `accentColor` ليتناسب مع لون العلامة التجارية الخاصة بي.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+أخيراً، يمكنك الآن تمرير الثيم المخصص إلى prop الثيم الخاص بـ`RainbowKitProvider`.
 
 ```tsx
 const App = () => {
@@ -122,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Creating custom theme selectors
+### إنشاء محددات الثيم المخصصة
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+إذا كان التطبيق الخاص بك يتم تقديمه من الخادم أو إحصائيًا ويسمح للمستخدمين بالتبديل يدويًا بين الثيمات، يمكن ربط نظام الثيمات الخاص بـRainbowKit بمحددات CSS مخصصة مع الوظائف التالية التي يمكن استخدامها مع أي نظام CSS-in-JS:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+تقوم هذه الوظائف بإرجاع CSS يحدد جميع متغيرات الثيم المطلوبة. نظرًا لأن كلاً من السلاسل النصية والكائنات مدعومة، يمكن دمجها مع أي نظام CSS-in-JS.
 
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+كمثال بسيط، يمكنك عرض عنصر `style` الخاص بك بمحددات مخصصة لكل ثيم. بما أننا نتحكم في عرض CSS الخاص بالثيم، فإننا نمرر `null` إلى prop الثيم بحيث لا يقوم `RainbowKitProvider` بعرض أي أنماط نيابة عنا. لاحظ أيضًا استخدام خيار "يمتد" في دالة cssStringFromTheme التي تحذف أي متغيرات ثيم تتطابق مع الثيم الأساسي.
 
 ```tsx
 import {
