@@ -1,35 +1,35 @@
 ---
-title: Rantai
-description: Mengkustomisasi rantai
+title: Chains
+description: Customizing chains
 ---
 
-# Rantai
+# Chains
 
-## Mengkustomisasi rantai
+## Customizing chains
 
-RainbowKit dirancang untuk berintegrasi dengan [objek `chain` dari wagmi](https://wagmi.sh/react/chains). Lihat daftar rantai yang didukung [di sini](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Mengkustomisasi rantai awal
+### Customizing the initial chain
 
-Secara default, RainbowKit akan terhubung ke rantai pertama yang disediakan ke Wagmi. Perilaku ini dapat dikustomisasi melalui prop `initialChain`.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-Rantai awal dapat dikonfigurasi menggunakan ID rantai.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Untuk kenyamanan, Anda juga dapat melewati sebuah objek rantai.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Metadata rantai kustom
+### Custom chain metadata
 
-Beberapa ikon dan latar belakang rantai disediakan secara default, tetapi Anda dapat mengkustomisasi ikon dan latar belakang untuk setiap rantai menggunakan properti `iconUrl` dan `iconBackground`.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Contoh dengan `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Contoh dengan `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
