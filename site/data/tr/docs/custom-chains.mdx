@@ -1,15 +1,15 @@
 ---
 title: Özel Zincirler
-description: Bir özel zincir oluşturun
+description: Create a custom chain
 ---
 
 # Özel Zincirler
 
-## Bir özel zincir oluşturun
+## Create a custom chain
 
-Özel bir zincir oluşturmanıza yardımcı olmak için `Chain` tipini kullanabilirsiniz. Daha sonra, bunu `getDefaultConfig` veya Wagmi'nin [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) fonksiyonuna geçirin.
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
-Örneğin, işte [avax.network](https://avax.network) için bir Avalanche zinciri nasıl oluşturabilirsiniz.
+For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import {
