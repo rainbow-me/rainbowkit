@@ -1,15 +1,15 @@
 ---
-title: カスタムConnectButton
-description: カスタムConnectButtonの作成
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# カスタムConnectButton
+# Custom ConnectButton
 
-## カスタムConnectButtonの作成
+## Creating a custom ConnectButton
 
-あなたは低レベルの`ConnectButton.Custom`を使用して、独自のカスタム接続ボタンを作成することができます。 このコンポーネントは、組み込みボタンを再実装するために必要なすべてを含む関数をレンダリングします。 このコンポーネントは、組み込みボタンを再実装するために必要なすべてを含む関数をレンダリングします。 このコンポーネントは、組み込みボタンを再実装するために必要なすべてを含む関数をレンダリングします。 このコンポーネントは、組み込みボタンを再実装するために必要なすべてを含む関数をレンダリングします。
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-組み込みボタンの最小の再実装は次のようになるでしょう：
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-以下のpropsがあなたのレンダー関数に渡されます。
+The following props are passed to your render function.
 
-### アカウント属性
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ export const YourApp = () => {
   ]}
 />
 
-### チェーン属性
+### Chain properties
 
 <PropsTable
   data={[
@@ -271,7 +271,7 @@ export const YourApp = () => {
   ]}
 />
 
-### モーダル状態のプロパティ
+### Modal state properties
 
 <PropsTable
   data={[
@@ -316,7 +316,7 @@ export const YourApp = () => {
   ]}
 />
 
-### 一般的な状態プロパティ
+### General state properties
 
 <PropsTable
   data={[
