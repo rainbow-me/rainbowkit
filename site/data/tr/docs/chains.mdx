@@ -1,35 +1,35 @@
 ---
-title: Zincirler
-description: Zincirleri özelleştirme
+title: Chains
+description: Customizing chains
 ---
 
-# Zincirler
+# Chains
 
-## Zincirleri özelleştirme
+## Customizing chains
 
-RainbowKit, [wagmi’nin `chain` nesnesi](https://wagmi.sh/react/chains) ile entegre olacak şekilde tasarlanmıştır. Desteklenen zincirlerin listesine göz atın [here](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Başlangıç zincirini özelleştirme
+### Customizing the initial chain
 
-Varsayılan olarak, RainbowKit, Wagmi'ye sağlanan ilk zincire bağlanacaktır. Bu davranış, `initialChain` prop aracılığıyla özelleştirilebilir.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-İlk zincir, bir zincir ID'si kullanılarak yapılandırılabilir.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Bir kolaylık olarak, ayrıca bir zincir nesnesi geçirebilirsiniz.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Özel zincir meta verisi
+### Custom chain metadata
 
-Birçok zincir simgesi ve arka plan varsayılan olarak sağlanır, ancak her zincir için simge ve arka planı `iconUrl` ve `iconBackground` özelliklerini kullanarak özelleştirebilirsiniz.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-`getDefaultConfig` ile örnek
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig` ile örnek
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
