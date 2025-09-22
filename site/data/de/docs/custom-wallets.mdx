@@ -1,17 +1,17 @@
 ---
-title: Benutzerdefinierte Wallets
-description: Erstellen Sie ein benutzerdefiniertes Wallet
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Benutzerdefinierte Wallets
+# Custom Wallets
 
-## Erstellen Sie ein benutzerdefiniertes Wallet
+## Create a custom wallet
 
-> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Wir werden im Laufe der Zeit weitere integrierte Wallets hinzufügen. [Lassen Sie es uns wissen](https://github.com/rainbow-me/rainbowkit/issues), wenn es bestimmte Wallets gibt, die Sie interessieren.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Wallets zu definieren. Die folgenden Eigenschaften können auf dem Rückgabewert Ihrer `Wallet`-Funktion konfiguriert werden:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Wallet-Eigenschaften
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -19,43 +19,45 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Eindeutige ID pro Wallet',
+      description: 'Unique ID per wallet',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Lesbarer Wallet-Name',
+      description: 'Human-readable wallet name',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS für Wallet, das EIP6963 unterstützt',
+      description: 'RDNS for wallet which supports EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optionaler Kurzname für die mobile Nutzung',
+      description: 'Optional short name for mobile use',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
-      description: 'URL für das Wallet-Icon oder ein Versprechen, das eine Base64-Daten-URL auflöst',
+      description:
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
-      description: 'Akzentfarbe, die beim Herunterladen von Wallets mit sowohl einer Browsererweiterung als auch einer mobilen App verwendet wird',
+      description:
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Hintergrundfarbe, während das Wallet-Icon geladen wird',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -63,8 +65,8 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       type: 'boolean | undefined',
       description: (
         <>
-          Ob das Wallet bekannt ist, installiert zu sein, oder{' '}
-          <code>undefined</code> falls unbestimmt
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -73,61 +75,66 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Objekt, das Download-URLs enthält.',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
       required: false,
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
-      description: 'Funktion zur Berechnung, ob dieses Wallet in der Liste verborgen werden soll. Dies ist nützlich für die Definition generischer Ersatz-Wallets, z. B. macht das integrierte "Injected Wallet"-Fallback von dieser Funktion Gebrauch',
+      description:
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
       required: true,
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
-      description: 'Funktion zur Bereitstellung der Connector-Instanz und Konfiguration für verschiedene Verbindungsmethoden, wie unten beschrieben',
+      description:
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Funktion zur Lösung einer mobilen Wallet-Verbindungs-URI',
+      description:
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Funktion zur Lösung eines Desktop-App-Deep-Links',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
-      description: 'Objekt, das eine Funktion zum Auflösen der QR-Code-URI enthält, sowie optionale Anweisungen zur Einrichtung der mobilen Wallet',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
-      description: 'Objekt, das optionale Anweisungen zur Einrichtung von Browser-Erweiterungen enthält',
+      description:
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Funktion zur Bereitstellung der Connector-Instanz'
-    }
+      description: 'Function for providing the connector instance',
+    },
   ]}
 />
 
-### DownloadUrls-Eigenschaften
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -148,14 +155,14 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: 'string',
       description:
-        'Zielseite für mobile Benutzer, wenn `android` oder `ios` nicht verfügbar sind',
+        'Landing page for mobile users when `android` or `ios` are unavailable',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Zielseite für Benutzer, die den mobilen Download-QR-Code scannen',
+        'Landing page for users that scan the mobile download QR Code',
     },
     {
       name: 'chrome',
@@ -179,7 +186,7 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera Add-ons URL',
+      description: 'Opera add-ons URL',
     },
     {
       name: 'safari',
@@ -192,14 +199,14 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: 'string',
       description:
-        'Zielseite für Desktop-Erweiterungsbenutzer, wenn browserkompatible URLs nicht verfügbar sind',
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
   ]}
 />
 
-### Beispiele
+### Examples
 
-Zum Beispiel, um ein benutzerdefiniertes Wallet mit WalletConnect zu erstellen:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -271,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Sie können dann Ihr benutzerdefiniertes Wallet in die [Wallet-Liste](/docs/custom-wallet-list) aufnehmen.
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
