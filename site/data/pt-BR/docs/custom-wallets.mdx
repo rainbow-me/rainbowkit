@@ -1,17 +1,17 @@
 ---
-title: Carteiras Personalizadas
-description: Criar uma carteira personalizada
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Carteiras Personalizadas
+# Custom Wallets
 
-## Criar uma carteira personalizada
+## Create a custom wallet
 
-> Nota: Esta API é instável e provavelmente mudará em um futuro próximo. Estaremos adicionando mais carteiras integradas ao longo do tempo. [Informe-nos](https://github.com/rainbow-me/rainbowkit/issues) se houver carteiras específicas que interessem a você.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias carteiras personalizadas. As seguintes propriedades podem ser configuradas no valor de retorno da sua função `Wallet`:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Propriedades da Carteira
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -83,7 +83,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. Isso é útil para definir carteiras de fallback genéricas, por exemplo, o fallback embutido "Injected Wallet" faz uso deste recurso',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Função para fornecer a instância do conector e a configuração para diferentes métodos de conexão, descritos abaixo',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Função para resolver um URI de conexão da carteira móvel',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Função para resolver um link profundo de aplicativo desktop',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Objeto contendo uma função para resolver o URI do código QR, além de instruções opcionais de configuração de carteira móvel',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Objeto contendo instruções opcionais de configuração da extensão do navegador',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Função para fornecer a instância do conector',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />
 
-### Propriedades DownloadUrls
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -142,71 +142,71 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       name: 'android',
       required: false,
       type: 'string',
-      description: 'URL do Google Play',
+      description: 'Google Play URL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'URL da Apple App Store',
+      description: 'Apple App Store URL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuários mobile quando `android` ou `ios` não estão disponíveis',
+        'Landing page for mobile users when `android` or `ios` are unavailable',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuários que escaneiam o QR Code de download mobile',
+        'Landing page for users that scan the mobile download QR Code',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'URL da Chrome Web Store',
+      description: 'Chrome Web Store URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'URL de complementos do Microsoft Edge',
+      description: 'Microsoft Edge Add-ons URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'URL de complementos do navegador Firefox',
+      description: 'Firefox Browser Add-ons URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'URL de complementos do Opera',
+      description: 'Opera add-ons URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'URL da Mac App Store',
+      description: 'Mac App Store URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuários de extensões de desktop quando URLs compatíveis com o navegador não estão disponíveis',
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
   ]}
 />
 
-### Exemplos
+### Examples
 
-Por exemplo, para criar uma carteira personalizada usando WalletConnect:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Você pode então adicionar sua carteira personalizada na [lista de carteiras](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
