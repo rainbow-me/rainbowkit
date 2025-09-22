@@ -1,17 +1,17 @@
 ---
-title: Carteras Personalizadas
-description: Crear una billetera personalizada
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Carteras Personalizadas
+# Custom Wallets
 
-## Crear una billetera personalizada
+## Create a custom wallet
 
-> Nota: Esta API es inestable y es probable que cambie en un futuro cercano. Agregaremos más billeteras incorporadas con el tiempo. [Háganos saber](https://github.com/rainbow-me/rainbowkit/issues) si hay alguna billetera particular que le interese.
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias billeteras personalizadas. Las siguientes propiedades se pueden configurar en el valor de retorno de su función `Wallet`:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Propiedades de la Billetera
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -134,7 +134,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
   ]}
 />
 
-### Propiedades de DownloadUrls
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -142,71 +142,71 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       name: 'android',
       required: false,
       type: 'string',
-      description: 'URL de Google Play',
+      description: 'Google Play URL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'URL de Apple App Store',
+      description: 'Apple App Store URL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuarios móviles cuando `android` o `ios` no están disponibles',
+        'Landing page for mobile users when `android` or `ios` are unavailable',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuarios que escanean el Código QR de descarga móvil',
+        'Landing page for users that scan the mobile download QR Code',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'URL de Chrome Web Store',
+      description: 'Chrome Web Store URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'URL de complementos de Microsoft Edge',
+      description: 'Microsoft Edge Add-ons URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'URL de complementos de Firefox',
+      description: 'Firefox Browser Add-ons URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'URL de complementos de Opera',
+      description: 'Opera add-ons URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'URL de Mac App Store',
+      description: 'Mac App Store URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuarios de extensiones de escritorio cuando las URLs compatibles con el navegador no están disponibles',
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
   ]}
 />
 
-### Ejemplos
+### Examples
 
-Por ejemplo, para crear una billetera personalizada utilizando WalletConnect:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Luego puedes agregar tu billetera personalizada en la [lista de billeteras](/docs/custom-wallet-list).
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
