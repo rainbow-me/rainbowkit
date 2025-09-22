@@ -1,34 +1,34 @@
 ---
-title: マイグレーションガイド
+title: Migration Guide
 ---
 
-# マイグレーションガイド
+# Migration Guide
 
-## RainbowKitのマイグレーション
+## Migrating RainbowKit
 
-### 2.x.x 破壊的な変更
+### 2.x.x Breaking changes
 
-[wagmi](https://wagmi.sh) と [viem](https://viem.sh) のピア依存関係が `2.x.x` に達し、互換性のない変更が行われました。
+The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-**1. RainbowKit、`wagmi`、および`viem`を最新バージョンにアップグレードしてください**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
 npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 ```
 
-**2. `@tanstack/react-query`のピア依存をインストール**
+**2. Install `@tanstack/react-query` peer dependency**
 
-Wagmi v2では、[TanStack Query](https://tanstack.com/query/v5/docs/react/overview)が必須のピア依存関係になりました。
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
 
-以下のコマンドでインストールします:
+Install it with the following command:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. RainbowKit と Wagmi の設定をアップグレードしてください**
+**3. Upgrade your RainbowKit and Wagmi configurations**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -91,28 +91,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**3. `wagmi`と`viem`の破壊的変更を確認してください**
+**4. Check for breaking changes in `wagmi` and `viem`**
 
-dAppで`wagmi`フックと`viem`アクションを使用している場合、v2の移行ガイドに従う必要があります：
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
-- [Wagmi v2移行ガイド](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Viem v2破壊的変更](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit の変更点
+#### RainbowKit Changes
 
-**1. EIP-6963 ウォレットの動作改善**
+**1. Improved behavior for EIP-6963 wallets**
 
-新しい EIP-6963 接続標準をサポートするウォレット（<b>Rainbow</b>、<b>MetaMask</b> などを含む）は、ウォレットを接続する体験の間に `Installed` セクションに自動的に表示されるようになりました。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。
+Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
 
-開発者は引き続きカスタムウォレットリストを完全に制御でき、エンドユーザーにとって優先されるウォレットを強調表示できます。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。
+Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
 
-**2. getDefaultConfig を使用した Wagmi 設定**
+**2. Wagmi configuration with getDefaultConfig**
 
-この新しいAPIは設定体験を簡素化し、Wagmiの`createConfig`を直接使用する必要を置き換えます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。
+This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
 
-デフォルトのウォレットリストが自動的に含まれるようになり、`getDefaultWallets`や`connectorsForWallets`を使用する必要がなくなります。
+The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
 
-インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。 インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。
+You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-もはや`chains`を`<RainbowKitProvider>`に渡す必要はありません。
+You no longer need to pass `chains` to `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**3. カスタムチェーン**
+**4. Custom Chains**
 
-Wagmi v2に従って`Chain`タイプが変更され、RainbowKitの`iconUrl`と`iconBackground`メタデータをサポートし続けています。
+The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ Wagmi v2に従って`Chain`タイプが変更され、RainbowKitの`iconUrl`と`
   } as const satisfies Chain
 ```
 
-`getDefaultConfig`を使用した例:
+Example with `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig`を使用した例:
+Example with `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,69 +195,69 @@ const config = getDefaultConfig({
   })
 ```
 
-**4. カスタムウォレット**
+**5. Custom Wallets**
 
-RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)および[サンプルコネクタ](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)および[サンプルコネクタ](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)および[サンプルコネクタ](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。
+RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
 
-ウォレットコネクタは、`rdns`プロパティを使用してEIP-6963標準もサポートするようになりました。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。
+Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
 
-### 1.x.x 破壊的な変更
+### 1.x.x Breaking changes
 
-#### wagmi v1に更新
+#### Updated to wagmi v1
 
-[wagmi](https://wagmi.sh) のピア依存関係が `1.x.x`に更新されました。
+The [wagmi](https://wagmi.sh) peer dependency has been updated to `1.x.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-**1. RainbowKitと`wagmi`を最新バージョンにアップグレードします**
+**1. Upgrade RainbowKit and `wagmi` to their latest version**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-**2. viemのピア依存関係をインストールしてください**
+**2. Install `viem` peer dependency**
 
-wagmi v1は`viem`ピア依存関係を必要とします。 以下のコマンドでインストールします: 以下のコマンドでインストールします: 以下のコマンドでインストールします: 以下のコマンドでインストールします:
+wagmi v1 requires the `viem` peer dependency. Install it with the following command:
 
 ```bash
 npm i viem
 ```
 
-**3. バンドラとポリフィルの互換性を確保する**
+**3. Ensure bundler and polyfill compatibility**
 
-プロジェクトの設定指南として[Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)のサンプルを参照してください。
+Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) sample for configuration guidance for your project.
 
-ViteとRemixの追加フレームワークガイドは、 [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup)で利用できます。
+Additional framework guides for Vite and Remix are available [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-**3. `wagmi`の破壊的な変更を確認する**
+**4. Check for breaking changes in `wagmi`**
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、`wagmi`のv1への移行ガイドに従う必要があります。
+If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v1.
 
-[ここで移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide).
 
-### 0.12.x破壊的な変更
+### 0.12.x Breaking changes
 
-wagmiのピア依存関係が`0.12.x`に更新されました。
+The wagmi peer dependency has been updated to `0.12.x`.
 
-RainbowKitは、継続的なWalletConnect v1のサポートのために、`wagmi`内の`WalletConnectLegacyConnector`コネクタを採用しました。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。 WalletConnect v2と`WalletConnectConnector`のサポートは間もなくパッチリリースとして利用可能になります。既存のコードを変更することなく導入できます。
+RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
 
-将来のリリースでは、ウォレットは自動的に移行されます。
+Wallets will be transitioned automatically in future releases.
 
-すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 RainbowKitは、`projectId`が指定されていない場合、すべてのウォレットに対して静かにv1を優先します。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 すべてのdAppは現在、WalletConnect v2を有効にするために[WalletConnect Cloud](https://cloud.walletconnect.com/)の`projectId`を提供する必要があります。 これは、WalletConnect v1のブリッジサーバーが2023年6月28日にシャットダウンされる前に完了させる必要があります。 RainbowKitは、`projectId`が指定されていない場合、すべてのウォレットに対して静かにv1を優先します。
+Every dApp must now provide a [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` to enable WalletConnect v2. This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023. RainbowKit will quietly prefer v1 for all wallets if `projectId` is unspecified.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. RainbowKitと`wagmi`を最新バージョンにアップグレードします
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2. WalletConnect CloudのprojectIdを提供します
+#### 2. Supply a WalletConnect Cloud projectId
 
-WalletConnectに依存するすべてのdAppは現在、[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。
+Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
-`getDefaultWallets`と個々のRainbowKitウォレットコネクタに`projectId`を提供します。次のように:
+Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -281,81 +281,81 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.11.xの破壊的な変更
+### 0.11.x Breaking changes
 
-wagmiのピア依存関係が`0.11.x`に更新されました。
+The wagmi peer dependency has been updated to `0.11.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. RainbowKitと`wagmi`を最新バージョンにアップグレードします
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. `wagmi`の破壊的な変更を確認する
+#### 2. Check for breaking changes in `wagmi`
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、あなたのアプリケーションが`wagmi`の破壊的な変更の影響を受けているかどうかを確認する必要があります。
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[ここで移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide#011x-breaking-changes)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### 0.10.x破壊的な変更
+### 0.10.x Breaking changes
 
-wagmiのピア依存関係が`0.10.x`に更新されました。
+The wagmi peer dependency has been updated to `0.10.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. RainbowKitと`wagmi`を最新バージョンにアップグレードします
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. `wagmi`の破壊的な変更を確認する
+#### 2. Check for breaking changes in `wagmi`
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、あなたのアプリケーションが`wagmi`の破壊的な変更の影響を受けているかどうかを確認する必要があります。
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[ここで移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide#010x-breaking-changes)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
-### 0.9.x破壊的な変更
+### 0.9.x Breaking changes
 
-wagmiのピア依存関係が`0.9.x`に更新されました。
+The wagmi peer dependency has been updated to `0.9.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. RainbowKitと`wagmi`を最新バージョンにアップグレードします
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. `wagmi`の破壊的な変更を確認する
+#### 2. Check for breaking changes in `wagmi`
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、あなたのアプリケーションが`wagmi`の破壊的な変更の影響を受けているかどうかを確認する必要があります。
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[ここで移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide#09x-breaking-changes)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### 0.8.x破壊的な変更
+### 0.8.x Breaking changes
 
-wagmiのピア依存関係が`0.8.x`に更新されました。
+The wagmi peer dependency has been updated to `0.8.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. RainbowKitと`wagmi`を最新バージョンにアップグレードします
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. `wagmi`の破壊的な変更を確認する
+#### 2. Check for breaking changes in `wagmi`
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、あなたのアプリケーションが`wagmi`の破壊的な変更の影響を受けているかどうかを確認する必要があります。
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[こちらで移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide#08x-breaking-changes)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### 0.7.x破壊的な変更
+### 0.7.x Breaking changes
 
-カスタムウォレットリストを作成している場合、バンドルサイズを削減するために、各ウォレットを個別にインポートする必要があります。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。 ウォレットがもはや `wallet` オブジェクトを通じて名前空間化されないため、すべてのウォレットには `Wallet` という接尾辞が付きます。
+If you're creating a custom wallet list, you must now import each wallet individually in order to reduce bundle size. Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -382,7 +382,7 @@ const wallets = [
 ];
 ```
 
-また、Steakwalletの下位互換性レイヤーが削除されたことに注意してください。 代わりにOmniを使用すべきです。 代わりにOmniを使用すべきです。
+Also note that the Steakwallet backwards compatibility layer has been removed. Omni should be used instead.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -394,33 +394,33 @@ const wallets = [
 ];
 ```
 
-### 0.4.x破壊的な変更
+### 0.4.x Breaking changes
 
-RainbowKitは`wagmi`のピア依存関係を`0.5.x`に更新しました。
+RainbowKit has updated the `wagmi` peer dependency to `0.5.x`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. 依存関係のアップグレード
+#### 1. Upgrade dependencies
 
-RainbowKitとwagmiを最新バージョンにアップグレードします
+Upgrade RainbowKit and wagmi to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. `wagmi`の破壊的な変更を確認する
+#### 2. Check for breaking changes in `wagmi`
 
-あなたのアプリケーションで`wagmi`のフックを使用している場合、あなたのアプリケーションが`wagmi`の破壊的な変更の影響を受けているかどうかを確認する必要があります。
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[ここで彼らの移行ガイドを見ることができます](https://wagmi.sh/react/migration-guide#05x-breaking-changes)。
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.xの破壊的な変更
+### 0.3.x Breaking changes
 
-`Wallet` タイプの `createConnector` から `chainId` パラメータを削除しました。
+Removed the `chainId` parameter from `createConnector` on the `Wallet` type.
 
-**すべての組み込みウォレットが新しいAPIを使用していることに注意してください。 ほとんどの消費者には影響がありません。 この変更は、[カスタムウォレット](/docs/custom-wallets)を作成/消費した消費者にのみ影響します。** ほとんどの消費者には影響がありません。 この変更は、[カスタムウォレット](/docs/custom-wallets)を作成/消費した消費者にのみ影響します。 \*\*
+**Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](/docs/custom-wallets).**
 
-`createConnector`の`chainId`から以前にRPCのURLを導出していた場合、`wagmi`が`configureChains`と一緒に使用されるときに内部的にRPCのURLを処理するようになったので、そのロジックを削除できます。
+If you previously derived RPC URLs from the `chainId` on `createConnector`, you can now remove that logic as `wagmi` now handles RPC URLs internally when used with `configureChains`.
 
 ```diff
 import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
@@ -474,40 +474,40 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x ブレーキングチェンジ
+### 0.2.x Breaking changes
 
-RainbowKitは`wagmi`のピア依存性を`^0.4`に更新しました。
+RainbowKit has updated the `wagmi` peer dependency to `^0.4`.
 
-以下の手順に従って移行してください。
+Follow the steps below to migrate.
 
-#### 1. 依存関係のアップグレード
+#### 1. Upgrade dependencies
 
-RainbowKitとwagmiを最新バージョンにアップグレードします
+Upgrade RainbowKit and wagmi to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2. configureChainsのインポートを置き換える
+#### 2. Replace configureChains import
 
-RainbowKitの代わりにwagmiから`configureChains`をインポートします：
+Import `configureChains` from wagmi instead of RainbowKit:
 
 ```diff
 - import { configureChains } from '@rainbow-me/rainbowkit';
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3. プロバイダーを移行する
+#### 3. Migrate providers
 
-RainbowKitはもはや`apiProvider` APIをエクスポートしない。 これをwagmiから任意のプロバイダーに置き換えてください。 これをwagmiから任意のプロバイダーに置き換えてください。 これをwagmiから任意のプロバイダーに置き換えてください。 これをwagmiから任意のプロバイダーに置き換えてください。
+RainbowKit no longer exports an `apiProvider` API. Replace it with your desired provider from wagmi.
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
 ```
 
-#### アルケミー
+#### Alchemy
 
-`wagmi/providers/alchemy`から`alchemyProvider`をインポートします。
+Import `alchemyProvider` from `wagmi/providers/alchemy`.
 
 ```diff
 + import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -521,7 +521,7 @@ const { chains, provider } = configureChains(
 
 #### Infura
 
-`wagmi/providers/infura`から`infuraProvider`をインポートします。
+Import `infuraProvider` from `wagmi/providers/infura`.
 
 ```diff
 +import { infuraProvider } from 'wagmi/providers/infura';
@@ -535,7 +535,7 @@ const { chains, provider } = configureChains(
 
 #### JSON RPC
 
-`wagmi/providers/jsonRpc`から`jsonRpcProvider`をインポートします。
+Import `jsonRpcProvider` from `wagmi/providers/jsonRpc`.
 
 ```diff
 + import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
@@ -555,9 +555,9 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 公開プロバイダ
+#### Public provider
 
-`wagmi/providers/public`から`publicProvider`をインポートします。
+Import `publicProvider` from `wagmi/providers/public`.
 
 ```diff
 + import { publicProvider } from 'wagmi/providers/public';
@@ -569,9 +569,9 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4. wagmiのプロバイダの名前を変更する
+#### 4. Rename wagmi's provider
 
-`WagmiProvider`を`WagmiConfig`にリネームします。
+Rename `WagmiProvider` to `WagmiConfig`.
 
 ```diff
 import {
@@ -587,4 +587,4 @@ const App = () => {
 };
 ```
 
-そして終わりです！ 🌈
+And you're done! 🌈
