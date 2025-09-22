@@ -1,32 +1,32 @@
 ---
-title: RainbowKit v2로 dApp 업그레이드하기
-description: RainbowKit과 Wagmi가 v2로 승격되었습니다
+title: Upgrading your dApp for RainbowKit v2
+description: RainbowKit and Wagmi have been promoted to v2
 image: guide-rainbowkit-v2.png
 ---
 
-# RainbowKit과 Wagmi v2로 마이그레이션하기
+# Migrating to RainbowKit and Wagmi v2
 
-[wagmi](https://wagmi.sh) 및 [viem](https://viem.sh) 피어 의존성이 `2.x.x`로 도달하여 주요 변경 사항이 발생했습니다.
+The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
-아래의 단계를 따라 마이그레이션하세요.
+Follow the steps below to migrate.
 
-**1. RainbowKit, `wagmi`, 및 `viem`을 최신 버전으로 업그레이드하세요**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. `@tanstack/react-query` 피어 의존성 설치하기**
+**2. Install `@tanstack/react-query` peer dependency**
 
-Wagmi v2에서는 [TanStack Query](https://tanstack.com/query/v5/docs/react/overview)가 필수 피어 의존성으로 필요합니다.
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
 
-다음 명령어로 설치하세요:
+Install it with the following command:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. RainbowKit 및 Wagmi 구성 업그레이드**
+**3. Upgrade your RainbowKit and Wagmi configurations**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. `wagmi` 및 `viem`의 주요 변경 사항을 확인하세요**
+**4. Check for breaking changes in `wagmi` and `viem`**
 
-당신의 dApp에서 `wagmi` 훅과 `viem` 액션을 사용한다면, v2로의 마이그레이션 가이드를 따라야 합니다:
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
-- [Wagmi v2 마이그레이션 가이드](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Viem v2 주요 변경 사항](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit 변경 사항
+#### RainbowKit Changes
 
-**1. EIP-6963 지갑에 대한 개선된 동작**
+**1. Improved behavior for EIP-6963 wallets**
 
-새로운 EIP-6963 연결 표준을 지원하는 지갑 (레인보우, 메타마스크 등 포함) 은 이제 연결 지갑 경험 중에 '설치됨' 섹션에 자동으로 표시됩니다. 이렇게 하면 사용자가 항상 자신의 선호하는 지갑을 찾아 dApps에 문제없이 연결할 수 있습니다.
+Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
 
-개발자는 최종 사용자에게 선호하는 지갑을 강조하기 위해 사용자 지정 지갑 목록을 완전히 제어할 수 있습니다. 모든 플랫폼을 지원하기 위해 `injectedWallet` 및 `walletConnectWallet`을 목록에 계속 포함하는 것이 권장됩니다.
+Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to support all platforms.
 
-**2. getDefaultConfig를 사용한 Wagmi 구성**
+**2. Wagmi configuration with getDefaultConfig**
 
-이 새로운 API는 설정 경험을 단순화하고 Wagmi의 `createConfig`를 직접 사용할 필요를 대체합니다. 체인 설정이 단순화되며, `transports`에 대한 공개 제공자를 추론하는 것을 포함합니다.
+This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
 
-기본 지갑 목록이 자동으로 포함되며, `getDefaultWallets` 및 `connectorsForWallets` 사용의 필요성을 폐지합니다.
+The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
 
-`wallets`에 가져온 또는 사용자 지정 지갑 커넥터를 전달하여 사용자 지정 지갑 목록을 만들 수 있습니다. 지갑 커넥터를 인스턴스화하고 `projectId` 및 `chains`를 전달할 필요가 더 이상 없습니다.
+You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-`<RainbowKitProvider>`에 `chains`를 전달할 필요가 더 이상 없습니다.
+You no longer need to pass `chains` to `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. 사용자 정의 체인**
+**4. Custom Chains**
 
-Wagmi v2에 맞게 `Chain` 유형이 변경되었으며 RainbowKit의 `iconUrl` 및 `iconBackground` 메타데이터를 계속 지원합니다.
+The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -159,7 +159,7 @@ Wagmi v2에 맞게 `Chain` 유형이 변경되었으며 RainbowKit의 `iconUrl` 
   } as const satisfies Chain
 ```
 
-`getDefaultConfig`를 사용한 예시:
+Example with `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -174,7 +174,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig` 사용 예시:
+Example with `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ const config = getDefaultConfig({
   })
 ```
 
-**5. 사용자 정의 지갑**
+**5. Custom Wallets**
 
-RainbowKit 지갑 커넥터는 Wagmi v2를 지원하기 위해 상당한 변경을 거쳤습니다. [업데이트된 문서](https://www.rainbowkit.com/docs/custom-wallets)와 [예제 커넥터](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)를 참조하여 dApp의 사용자 정의 지갑 커넥터를 업그레이드하세요.
+RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
 
-지갑 커넥터는 이제 `rdns` prop을 사용하여 EIP-6963 표준도 지원합니다. 지갑 목록에서 EIP-6963을 지원하는 지갑에 대한 중복 참조를 방지하기 위해 이를 채워 넣는 것이 중요합니다.
+Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
 
-> RainbowKit v2에 대한 문제점이나 피드백은 GitHub [여기](https://github.com/rainbow-me/rainbowkit/issues/new/choose)에 보고해 주세요.
+> Please report any issues or feedback for RainbowKit v2 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
