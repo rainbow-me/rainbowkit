@@ -1,15 +1,15 @@
 ---
-title: ConnectButton personalizado
-description: Creando un ConnectButton personalizado
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# ConnectButton personalizado
+# Custom ConnectButton
 
-## Creando un ConnectButton personalizado
+## Creating a custom ConnectButton
 
-Puede usar el `ConnectButton.Custom` de bajo nivel para crear su propio botón de conexión personalizado. Este componente renderiza una función, que incluye todo lo que necesita para volver a implementar los botones integrados.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Una re-implemetación mínima de los botones integrados se vería algo así:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Las siguientes propiedades son pasadas a su función de renderizado.
+The following props are passed to your render function.
 
-### Propiedades de la cuenta
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
   ]}
 />
 
-### Propiedades de la cadena
+### Chain properties
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'object | undefined',
       description:
-        'Objeto que contiene detalles sobre la cadena actual, descrito a continuación',
+        'Object containing details about the current chain, described below',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Si la cadena tiene un icono especificado',
+      description: 'Whether the chain as an icon specified',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'La URL del icono de la cadena (que también puede ser indefinida mientras se descargan URLs de datos Base64)',
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'El fondo del icono de la cadena que será visible mientras las imágenes se están cargando',
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'number',
       description: (
         <>
-          El ID de la cadena, por ejemplo <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined',
       description: (
         <>
-          El nombre de la cadena, por ejemplo <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Booleano que indica si la cadena actual no está soportada',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
 
-### Propiedades del estado modal
+### Modal state properties
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de cuenta',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de cadena',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de conexión',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el modal de cuenta está abierto',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Booleano que indica si el modal de cadena está abierto',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el modal de conexión está abierto',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
 
-### Propiedades generales del estado
+### General state properties
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el componente ha sido montado',
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'El estado de la autenticación, o indefinido si la autenticación no ha sido configurada',
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />
