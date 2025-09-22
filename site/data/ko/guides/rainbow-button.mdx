@@ -1,24 +1,24 @@
 ---
-title: 당신의 dApp에 Rainbow Button을 적용하는 방법
-description: Wagmi를 지원하기 위한 플러그 앤 플레이 라이브러리로서 Rainbow 지갑을 당신의 dApp에 추가하는 가장 간단한 방법입니다.
+title: Adopting the Rainbow Button in your dApp
+description: A plug-and-play library for Wagmi to support Rainbow wallets in your dApp
 image: guide-rainbow-button.png
 ---
 
-# 당신의 dApp에 Rainbow Button을 적용하는 방법
+# Adopting the Rainbow Button in your dApp
 
-`RainbowButton` 컴포넌트는 `wagmi`를 사용하며 좀 더 사용자 정의된 연결기 경험을 선호하는 dApp에 Rainbow Wallet 지원을 추가하는 가장 간단한 방법입니다. 자세한 사항은 [RainbowKit](https://www.rainbowkit.com/docs/installation)를 참조하십시오.
+The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. `@rainbow-me/rainbow-button`과 필수 항목에 대한 의존성을 설치하십시오**
+**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
 
-이 패키지는 Next.js, React, Vite와 호환됩니다. 의존성 경고에 따라야 합니다.
+The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Wagmi와 함께 구성하고 `RainbowButton`을 설치하십시오**
+**2. Configure with Wagmi and install the RainbowButton**
 
-`rainbowConnector` 인스턴스를 Wagmi의 `createConfig`에 `projectId` 및 `appName`과 함께 전달하고, 앱을 `RainbowButtonProvider`로 감싸세요. 그런 다음 `RainbowButton` 컴포넌트를 삽입하세요.
+Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-사용자 정의 구현과 스타일링을 위해 `RainbowButton.Custom` 컴포넌트도 사용할 수 있습니다.
+You can also use the `RainbowButton.Custom` component for custom implementations and styling.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. 그게 다입니다!**
+**3. And that's it!**
 
-이제 사용자들은 유지보수나 헤드헌팅 없이 Rainbow에 대한 원활한 연결 경험을 즐길 수 있습니다.
+Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
 
-추가 월렛을 지원하기 위해 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 컴포넌트도 [RainbowKit](https://www.rainbowkit.com/docs/installation)에서 사용할 수 있습니다.
+A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
