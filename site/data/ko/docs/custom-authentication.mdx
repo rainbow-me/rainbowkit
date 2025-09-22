@@ -1,19 +1,19 @@
 ---
-title: 사용자 정의 인증
-description: 자신의 인증 백엔드에 연결
+title: Custom Authentication
+description: Connect to your own authentication back-end
 ---
 
-# 사용자 정의 인증
+# Custom Authentication
 
-## 자신의 인증 백엔드에 연결
+## Connect to your own authentication back-end
 
-RainbowKit은 Ethereum 및 NextAuth로의 로그인에 대한 [first-class 지원을 제공하는](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) 반면, 사용자 정의 백엔드 및 메시지 형식과도 통합할 수 있습니다.
+While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
 
-### 사용자 정의 어댑터 생성
+### Creating a custom adapter
 
-먼저 인증 어댑터를 생성합니다. 이를 통해 RainbowKit은 메시지를 생성/준비하고 백엔드와 통신할 수 있습니다.
+First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
 
-예를 들어, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)과 같은 사용자 지정 API 엔드포인트에 대해 [Sign-In with Ethereum](https://login.xyz)을 사용할 수 있는 인증 어댑터를 만들 수 있습니다.
+As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### 인증 상태 제공
+#### Providing the authentication state
 
-애플리케이션이 이미 어떤 방식으로든 인증 수명 주기를 관리하고 있다면, 사용자 정의 어댑터와 함께 현재 인증 상태를 'RainbowKitAuthenticationProvider'에 전달하여 기존의 'RainbowKitProvider'를 래핑할 수 있습니다.
+Assuming your application is already managing the authentication lifecycle in some way, you can pass the current authentication status along with your custom adapter to `RainbowKitAuthenticationProvider`, wrapping your existing `RainbowKitProvider`.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-이만큼 왔고 기존 오픈 소스 인증 라이브러리에 대한 어댑터를 생성한 경우, 다른 사람들이 사용할 수 있도록 패키지를 생성하는 것을 고려해 주세요!
+If you've got this far and created an adapter for an existing open source authentication library, please consider creating a package for others to use!
