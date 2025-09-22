@@ -1,19 +1,19 @@
 ---
-title: 自定义认证
-description: 连接到您自己的认证后端
+title: Custom Authentication
+description: Connect to your own authentication back-end
 ---
 
-# 自定义认证
+# Custom Authentication
 
-## 连接到您自己的认证后端
+## Connect to your own authentication back-end
 
-尽管RainbowKit提供了[对以太坊和NextAuth登录的一流支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)你也可以与自定义后端和信息格式集成。
+While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
 
-### 创建自定义适配器
+### Creating a custom adapter
 
-首先创建一个认证适配器。 首先创建一个认证适配器。 这允许RainbowKit创建/准备消息并与您的后端通信。
+First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
 
-举个例子，我们可以制作一个让我们使用[以太坊登录](https://login.xyz)对一些自定义API端点（例如[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)）的认证适配器。
+As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### 提供认证状态
+#### Providing the authentication state
 
-假设您的应用程序已以某种方式管理了认证生命周期，您可以将当前的认证状态与您的自定义适配器一起传递给`RainbowKitAuthenticationProvider`，包装您现有的`RainbowKitProvider`。
+Assuming your application is already managing the authentication lifecycle in some way, you can pass the current authentication status along with your custom adapter to `RainbowKitAuthenticationProvider`, wrapping your existing `RainbowKitProvider`.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-如果你已经走到这一步并为现有的开源认证库创建了一个适配器，请考虑创建一个供他人使用的软件包！
+If you've got this far and created an adapter for an existing open source authentication library, please consider creating a package for others to use!
