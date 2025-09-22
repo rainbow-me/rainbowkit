@@ -1,15 +1,15 @@
 ---
-title: Özel ConnectButton
-description: Özel bir ConnectButton oluşturma
+title: Custom ConnectButton
+description: Creating a custom ConnectButton
 ---
 
-# Özel ConnectButton
+# Custom ConnectButton
 
-## Özel bir ConnectButton oluşturma
+## Creating a custom ConnectButton
 
-Kendi özel bağlantı düğmenizi oluşturmak için düşük seviye `ConnectButton.Custom` kullanabilirsiniz. Bu bileşen, yerleşik düğmeleri yeniden uygulamanız gereken her şeyi içeren bir fonksiyon oluşturur.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
-Yerleşik düğmelerin minimal yeniden uygulanması şöyle görünebilir:
+A minimal re-implementation of the built-in buttons would look something like this:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Aşağıdaki özellikler render fonksiyonunuza geçirilir.
+The following props are passed to your render function.
 
-### Hesap özellikleri
+### Account properties
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
   ]}
 />
 
-### Zincir özellikleri
+### Chain properties
 
 <PropsTable
   data={[
@@ -271,7 +271,7 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
   ]}
 />
 
-### Modal durum özellikleri
+### Modal state properties
 
 <PropsTable
   data={[
@@ -316,7 +316,7 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
   ]}
 />
 
-### Genel durum özellikleri
+### General state properties
 
 <PropsTable
   data={[
