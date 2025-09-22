@@ -1,34 +1,34 @@
 ---
-title: Panduan Migrasi
+title: Migration Guide
 ---
 
-# Panduan Migrasi
+# Migration Guide
 
-## Migrasi RainbowKit
+## Migrating RainbowKit
 
-### 2.x.x Perubahan besar
+### 2.x.x Breaking changes
 
-Kebergantungan sama [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah mencapai `2.x.x` dengan perubahan mendasar.
+The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-**1. Naik taraf RainbowKit, `wagmi`, dan `viem` kepada versi terkini mereka**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
 npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 ```
 
-**2. Pasang kebergantungan sama `@tanstack/react-query`**
+**2. Install `@tanstack/react-query` peer dependency**
 
-Dengan Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) kini diperlukan sebagai kebergantungan sama.
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
 
-Pasangnya dengan arahan berikut:
+Install it with the following command:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Naik taraf konfigurasi RainbowKit dan Wagmi anda**
+**3. Upgrade your RainbowKit and Wagmi configurations**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -91,28 +91,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Periksa perubahan mendasar dalam `wagmi` dan `viem`**
+**4. Check for breaking changes in `wagmi` and `viem`**
 
-Jika anda menggunakan cangkuk `wagmi` dan tindakan `viem` dalam dApp anda, anda perlu mengikuti panduan penghijrahan untuk v2:
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
-- [Panduan Penghijrahan Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Perubahan Mendasar Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### Perubahan RainbowKit
+#### RainbowKit Changes
 
-**1. Tingkah laku yang diperbaiki untuk dompet EIP-6963**
+**1. Improved behavior for EIP-6963 wallets**
 
-Dompet yang menyokong standard sambungan EIP-6963 baharu (termasuk Rainbow, MetaMask, dan lebih banyak lagi) kini akan secara automatik muncul dalam bahagian `Dipasang` semasa pengalaman Connect Wallet. Ini memastikan bahawa pengguna sentiasa dapat mencari dompet kegemaran mereka dan menyambung kepada dApps tanpa konflik atau butang fallback.
+Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
 
-Pembangun terus mempunyai kawalan penuh ke atas Senarai Dompet Kustom untuk menekankan dompet pilihan untuk pengguna akhir. Dianjurkan untuk terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam daftar anda untuk mendukung semua platform.
+Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
 
-**2. Konfigurasi Wagmi dengan getDefaultConfig**
+**2. Wagmi configuration with getDefaultConfig**
 
-API baharu ini mempermudahkan pengalaman konfigurasi dan menggantikan keperluan untuk menggunakan `createConfig` dari Wagmi secara langsung. Konfigurasi rantaian dipermudahkan, termasuk penyedia awam yang disimpulkan untuk `transports`.
+This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
 
-Senarai dompet lalai akan dimasukkan secara automatik, memansuhkan keperluan untuk menggunakan `getDefaultWallets` dan `connectorsForWallets`.
+The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
 
-Anda boleh mencipta Senarai Dompet Kustom dengan menghantar penyambung Dompet yang diimport atau Kustom kepada `wallets`. Memperkenalkan penyambung dompet dan menghantar `projectId` dan `chains` tidak lagi diperlukan.
+You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-Anda tidak lagi perlu menghantar `chains` kepada `<RainbowKitProvider>`.
+You no longer need to pass `chains` to `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Rantaian Kustom**
+**4. Custom Chains**
 
-Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` dari RainbowKit.
+The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadat
   } as const satisfies Chain
 ```
 
-Contoh dengan `getDefaultConfig`:
+Example with `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Contoh dengan `createConfig`:
+Example with `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,69 +195,69 @@ Contoh dengan `createConfig`:
   })
 ```
 
-**5. Dompet Tersuai**
+**5. Custom Wallets**
 
-Penyambung dompet RainbowKit telah mengalami perubahan ketara untuk menyokong Wagmi v2. Rujuk [dokumen yang diperbarui](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh konektor](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk meningkatkan setiap Konektor Dompet Kustom dalam dApp anda.
+RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
 
-Penyambung dompet kini juga menyokong standard EIP-6963 dengan prop `rdns`. Pastikan ini diisi untuk mengelakkan rujukan berulang kepada dompet yang menyokong EIP-6963 dalam senarai dompet anda.
+Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
 
-### 1.x.x Perubahan besar
+### 1.x.x Breaking changes
 
-#### Diperbarui ke wagmi v1
+#### Updated to wagmi v1
 
-Ketergantungan sebaya [wagmi](https://wagmi.sh) telah diperbarui ke `1.x.x`.
+The [wagmi](https://wagmi.sh) peer dependency has been updated to `1.x.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-**1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka**
+**1. Upgrade RainbowKit and `wagmi` to their latest version**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-**2. Instal ketergantungan sebaya `viem`**
+**2. Install `viem` peer dependency**
 
-wagmi v1 memerlukan ketergantungan sebaya `viem`. Pasangnya dengan arahan berikut:
+wagmi v1 requires the `viem` peer dependency. Install it with the following command:
 
 ```bash
 npm i viem
 ```
 
-**3. Pastikan kompatibilitas pembungkus dan polyfill**
+**3. Ensure bundler and polyfill compatibility**
 
-Rujuk kepada [Konfigurasi Webpack Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) kami sebagai panduan konfigurasi untuk projek anda.
+Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) sample for configuration guidance for your project.
 
-Panduan rangka kerja tambahan untuk Vite dan Remix tersedia [di sini](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
+Additional framework guides for Vite and Remix are available [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-**4. Periksa perubahan yang memecah dalam `wagmi`**
+**4. Check for breaking changes in `wagmi`**
 
-Jika anda menggunakan hook `wagmi` dalam aplikasi anda, anda perlu mengikuti panduan migrasi `wagmi` ke v1.
+If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v1.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide).
 
-### Perubahan besar 0.12.x
+### 0.12.x Breaking changes
 
-Kebergantungan sejawat wagmi telah dikemas kini ke `0.12.x`.
+The wagmi peer dependency has been updated to `0.12.x`.
 
-RainbowKit telah menerima pakai penyambung `WalletConnectLegacyConnector` dalam `wagmi` untuk sokongan WalletConnect v1 yang berterusan. Sokongan untuk WalletConnect v2 dan `WalletConnectConnector` akan tersedia tidak lama lagi sebagai patch release, tanpa perubahan yang memecahkan.
+RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
 
-Dompet akan dialihkan secara automatik dalam keluaran masa depan.
+Wallets will be transitioned automatically in future releases.
 
-Setiap dApp kini mesti menyediakan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/) untuk membolehkan WalletConnect v2. Ini mesti diselesaikan sebelum pelayan jambatan WalletConnect v1 dimatikan pada 28 Jun 2023. RainbowKit akan diam-diam memilih v1 untuk semua dompet jika `projectId` tidak ditentukan.
+Every dApp must now provide a [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` to enable WalletConnect v2. This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023. RainbowKit will quietly prefer v1 for all wallets if `projectId` is unspecified.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2. Berikan projectId WalletConnect Cloud
+#### 2. Supply a WalletConnect Cloud projectId
 
-Setiap dApp yang bergantung pada WalletConnect kini perlu mendapatkan `projectId` daripada [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini adalah percuma sepenuhnya dan hanya memerlukan beberapa minit.
+Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
-Sediakan `projectId` kepada `getDefaultWallets` dan penyambung dompet RainbowKit individu seperti berikut:
+Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -281,81 +281,81 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.11.x Perubahan yang memecahkan
+### 0.11.x Breaking changes
 
-Kebergantungan wagmi peer telah dikemaskini kepada `0.11.x`.
+The wagmi peer dependency has been updated to `0.11.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. Semak untuk perubahan yang memecahkan dalam `wagmi`
+#### 2. Check for breaking changes in `wagmi`
 
-Jika anda menggunakan hooks `wagmi` dalam aplikasi anda, anda perlu menyemak jika aplikasi anda telah terjejas oleh perubahan yang memecahkan dalam `wagmi`.
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### 0.10.x Perubahan yang memecahkan
+### 0.10.x Breaking changes
 
-Kebergantungan wagmi peer telah dikemaskini kepada `0.10.x`.
+The wagmi peer dependency has been updated to `0.10.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. Semak untuk perubahan yang memecahkan dalam `wagmi`
+#### 2. Check for breaking changes in `wagmi`
 
-Jika anda menggunakan hooks `wagmi` dalam aplikasi anda, anda perlu menyemak jika aplikasi anda telah terjejas oleh perubahan yang memecahkan dalam `wagmi`.
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
-### 0.9.x Perubahan yang memecahkan
+### 0.9.x Breaking changes
 
-Kebergantungan wagmi peer telah dikemaskini kepada `0.9.x`.
+The wagmi peer dependency has been updated to `0.9.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. Semak untuk perubahan yang memecahkan dalam `wagmi`
+#### 2. Check for breaking changes in `wagmi`
 
-Jika anda menggunakan hooks `wagmi` dalam aplikasi anda, anda perlu menyemak jika aplikasi anda telah terjejas oleh perubahan yang memecahkan dalam `wagmi`.
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### 0.8.x Perubahan yang memecahkan
+### 0.8.x Breaking changes
 
-Kebergantungan wagmi peer telah dikemaskini kepada `0.8.x`.
+The wagmi peer dependency has been updated to `0.8.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Tingkatkan RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Semak untuk perubahan yang memecahkan dalam `wagmi`
+#### 2. Check for breaking changes in `wagmi`
 
-Jika anda menggunakan hooks `wagmi` dalam aplikasi anda, anda perlu menyemak jika aplikasi anda telah terjejas oleh perubahan yang memecahkan dalam `wagmi`.
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### Perubahan besar 0.7.x
+### 0.7.x Breaking changes
 
-Jika anda membuat senarai dompet tersuai, anda sekarang mesti mengimport setiap dompet secara individu untuk mengurangkan saiz bundle. Perhatikan bahawa kerana dompet tidak lagi menggunakan penamaan melalui objek `wallet`, semua dompet kini mempunyai akhiran `Wallet`.
+If you're creating a custom wallet list, you must now import each wallet individually in order to reduce bundle size. Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -382,7 +382,7 @@ const wallets = [
 ];
 ```
 
-Juga perhatikan bahawa lapisan keserasian ke belakang Steakwallet telah dibuang. Omni sepatutnya digunakan sebagai gantinya.
+Also note that the Steakwallet backwards compatibility layer has been removed. Omni should be used instead.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -394,33 +394,33 @@ const wallets = [
 ];
 ```
 
-### Perubahan besar 0.4.x
+### 0.4.x Breaking changes
 
-RainbowKit telah mengemas kini kebergantungan rakan `wagmi` ke `0.5.x`.
+RainbowKit has updated the `wagmi` peer dependency to `0.5.x`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Naik taraf kebergantungan
+#### 1. Upgrade dependencies
 
-Naik taraf RainbowKit dan wagmi ke versi terkini
+Upgrade RainbowKit and wagmi to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Semak untuk perubahan yang memecahkan dalam `wagmi`
+#### 2. Check for breaking changes in `wagmi`
 
-Jika anda menggunakan hooks `wagmi` dalam aplikasi anda, anda perlu menyemak jika aplikasi anda telah terjejas oleh perubahan yang memecahkan dalam `wagmi`.
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
 
-[Anda boleh melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
+[You can see their migration guide here](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### Perubahan besar 0.3.x
+### 0.3.x Breaking changes
 
-Dikeluarkan parameter `chainId` dari `createConnector` pada jenis `Wallet`.
+Removed the `chainId` parameter from `createConnector` on the `Wallet` type.
 
-**Perhatikan bahawa semua dompet yang dibina dalam menggunakan API baru. Kebanyakan pengguna tidak akan terjejas. Perubahan ini hanya memberi kesan kepada pengguna yang telah membuat/menggunakan [dompet tersuai](/docs/custom-wallets).**
+**Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](/docs/custom-wallets).**
 
-Jika anda sebelum ini mendapatkan URL RPC daripada `chainId` pada `createConnector`, anda sekarang boleh menghapuskan logik itu kerana `wagmi` kini mengendalikan URL RPC secara dalaman apabila digunakan dengan `configureChains`.
+If you previously derived RPC URLs from the `chainId` on `createConnector`, you can now remove that logic as `wagmi` now handles RPC URLs internally when used with `configureChains`.
 
 ```diff
 import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
@@ -474,32 +474,32 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### Perubahan penting 0.2.x
+### 0.2.x Breaking changes
 
-RainbowKit telah memperbarui kebergantungan sejawat `wagmi` ke `^0.4`.
+RainbowKit has updated the `wagmi` peer dependency to `^0.4`.
 
-Ikuti langkah di bawah untuk berhijrah.
+Follow the steps below to migrate.
 
-#### 1. Naik taraf kebergantungan
+#### 1. Upgrade dependencies
 
-Naik taraf RainbowKit dan wagmi ke versi terkini
+Upgrade RainbowKit and wagmi to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2. Gantikan import configureChains
+#### 2. Replace configureChains import
 
-Import `configureChains` dari wagmi dan bukan dari RainbowKit:
+Import `configureChains` from wagmi instead of RainbowKit:
 
 ```diff
 - import { configureChains } from '@rainbow-me/rainbowkit';
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3. Migrasi penyedia
+#### 3. Migrate providers
 
-RainbowKit tidak lagi mengeksport API `apiProvider`. Gantikan ia dengan penyedia yang anda idamkan dari wagmi.
+RainbowKit no longer exports an `apiProvider` API. Replace it with your desired provider from wagmi.
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
@@ -507,7 +507,7 @@ RainbowKit tidak lagi mengeksport API `apiProvider`. Gantikan ia dengan penyedia
 
 #### Alchemy
 
-Import `alchemyProvider` dari `wagmi/providers/alchemy`.
+Import `alchemyProvider` from `wagmi/providers/alchemy`.
 
 ```diff
 + import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -521,7 +521,7 @@ const { chains, provider } = configureChains(
 
 #### Infura
 
-Import `infuraProvider` dari `wagmi/providers/infura`.
+Import `infuraProvider` from `wagmi/providers/infura`.
 
 ```diff
 +import { infuraProvider } from 'wagmi/providers/infura';
@@ -535,7 +535,7 @@ const { chains, provider } = configureChains(
 
 #### JSON RPC
 
-Import `jsonRpcProvider` dari `wagmi/providers/jsonRpc`.
+Import `jsonRpcProvider` from `wagmi/providers/jsonRpc`.
 
 ```diff
 + import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
@@ -555,9 +555,9 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### Penyedia awam
+#### Public provider
 
-Import `publicProvider` dari `wagmi/providers/public`.
+Import `publicProvider` from `wagmi/providers/public`.
 
 ```diff
 + import { publicProvider } from 'wagmi/providers/public';
@@ -569,9 +569,9 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4. Tukar nama penyedia wagmi
+#### 4. Rename wagmi's provider
 
-Tukar nama `WagmiProvider` ke `WagmiConfig`.
+Rename `WagmiProvider` to `WagmiConfig`.
 
 ```diff
 import {
@@ -587,4 +587,4 @@ const App = () => {
 };
 ```
 
-Dan anda sudah siap! 🌈
+And you're done! 🌈
