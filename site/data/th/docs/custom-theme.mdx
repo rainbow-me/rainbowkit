@@ -1,15 +1,17 @@
 ---
-title: ธีมที่กำหนดเอง
-description: การสร้างธีมที่กำหนดเอง
+title: Custom Theme
+description: Creating a custom theme
 ---
 
-# ธีมที่กำหนดเอง
+# Custom Theme
 
-## การสร้างธีมที่กำหนดเอง
+## Creating a custom theme
 
-> หมายเหตุ: API นี้ไม่เสถียรและมีความเป็นไปได้ที่จะเปลี่ยนแปลงในอนาคตใกล้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้ เราขอแนะนำให้ใช้งาน [ธีมในตัว](/docs/theming) สำหรับตอนนี้ค่ะ เราขอแนะนำให้ใช้งาน [ธีมในตัว](/docs/theming) สำหรับตอนนี้ค่ะ
+> Note: This API is unstable and likely to change
+> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
+> now.
 
-ในขณะที่ธีมที่สร้างไว้แล้วให้ระดับการปรับแต่งบางอย่าง แต่ชนิด `Theme` ให้ช่วยคุณกำหนดธีมที่กำหนดเองด้วยการเข้าถึงตัวแปรธีมพื้นฐานในระดับล่าง
+While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -77,17 +79,17 @@ const App = () => (
 )
 ```
 
-### ขยายธีมที่สร้างไว้แล้ว
+### Extending a built-in theme
 
-คุณสามารถขยายธีมที่สร้างไว้แล้วโดยไม่ต้องกำหนดนิยามธีมทั้งหมดซ้ำ นี่มีประโยชน์เมื่อคุณต้องการเปลี่ยนแปลงเฉพาะโทเค็นของธีมที่เฉพาะเจาะจง นี่มีประโยชน์เมื่อคุณต้องการเปลี่ยนแปลงเฉพาะโทเค็นของธีมที่เฉพาะเจาะจง นี่มีประโยชน์เมื่อคุณต้องการเปลี่ยนแปลงเฉพาะโทเค็นของธีมที่เฉพาะเจาะจง
+You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
 
-ในการทำเช่นนั้น ให้ติดตั้ง `lodash.merge` (หรือเทียบเท่า):
+To do that, install `lodash.merge` (or equivalent):
 
 ```bash
 npm install lodash.merge
 ```
 
-นำเข้า พร้อมกับธีมที่คุณต้องการขยาย (เช่น: `darkTheme`) และชนิด TypeScript `Theme`:
+Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -98,7 +100,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-จากนั้น รวมธีมที่สร้างไว้แล้วกับโทเค็นธีมที่คุณต้องการเปลี่ยนแปลง จากนั้น รวมธีมที่สร้างไว้แล้วกับโทเค็นธีมที่คุณต้องการเปลี่ยนแปลง ในตัวอย่างนี้ ฉันกำลังเปลี่ยนแปลงโทเค็น `accentColor` ให้ตรงกับสีของยี่ห้อของฉัน จากนั้น รวมธีมที่สร้างไว้แล้วกับโทเค็นธีมที่คุณต้องการเปลี่ยนแปลง ในตัวอย่างนี้ ฉันกำลังเปลี่ยนแปลงโทเค็น `accentColor` ให้ตรงกับสีของยี่ห้อของฉัน
+Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -108,7 +110,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-สุดท้ายนี้ คุณสามารถส่งธีมที่กำหนดเองของคุณไปยัง `RainbowKitProvider`'s `theme` prop ได้แล้ว
+Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
 
 ```tsx
 const App = () => {
@@ -120,16 +122,16 @@ const App = () => {
 };
 ```
 
-### การสร้างตัวเลือกธีมที่กำหนดเอง
+### Creating custom theme selectors
 
-ถ้าแอปของคุณถูกเรนเดอร์จากเซิร์ฟเวอร์/สแตติกและให้ผู้ใช้สลับธีมด้วยตนเอง ระบบธีมของ RainbowKit สามารถเชื่อมต่อกับตัวเลือก CSS ที่กำหนดเองด้วยฟังก์ชั่นดังต่อไปนี้ที่สามารถใช้ได้กับระบบ CSS-in-JS ใด ๆ:
+If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-ฟังก์ชันเหล่านี้ส่งคืน CSS ที่ตั้งค่าตัวแปรธีมทั้งหมดที่จำเป็น เนื่องจากทั้งสตริงและออบเจ็กต์ได้รับการสนับสนุน สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใด ๆ ฟังก์ชันเหล่านี้ส่งคืน CSS ที่ตั้งค่าตัวแปรธีมทั้งหมดที่จำเป็น เนื่องจากทั้งสตริงและออบเจ็กต์ได้รับการสนับสนุน สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใด ๆ เนื่องจากทั้งสตริงและออบเจ็กต์ได้รับการสนับสนุน สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใด ๆ ฟังก์ชันเหล่านี้ส่งคืน CSS ที่ตั้งค่าตัวแปรธีมทั้งหมดที่จำเป็น เนื่องจากทั้งสตริงและออบเจ็กต์ได้รับการสนับสนุน สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใด ๆ เนื่องจากทั้งสตริงและออบเจ็กต์ได้รับการสนับสนุน สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใด ๆ
+These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
 
-ตัวอย่างพื้นฐาน คุณสามารถเรนเดอร์ `style` ของคุณเองด้วยตัวเลือกที่กำหนดเองสำหรับแต่ละธีม ตัวอย่างพื้นฐาน คุณสามารถเรนเดอร์ `style` ของคุณเองด้วยตัวเลือกที่กำหนดเองสำหรับแต่ละธีม ตัวอย่างพื้นฐาน คุณสามารถเรนเดอร์ `style` ของคุณเองด้วยตัวเลือกที่กำหนดเองสำหรับแต่ละธีม ตัวอย่างพื้นฐาน คุณสามารถเรนเดอร์ `style` ของคุณเองด้วยตัวเลือกที่กำหนดเองสำหรับแต่ละธีม เนื่องจากเราควบคุมการแสดงผล CSS ของธีมเรา ทำให้เราส่งค่า `null` ไปยัง `theme` prop เพื่อให้ RainbowKitProvider ไม่ต้องจัดการสไตล์ให้เรา ยังควรทราบว่าการใช้ตัวเลือก extends บนฟังก์ชัน cssStringFromTheme ที่ข้ามตัวแปรธีมใด ๆ ที่เหมือนกับธีมฐาน ยังควรทราบว่าการใช้ตัวเลือก extends บนฟังก์ชัน cssStringFromTheme ที่ข้ามตัวแปรธีมใด ๆ ที่เหมือนกับธีมฐาน ยังควรทราบว่าการใช้ตัวเลือก extends บนฟังก์ชัน cssStringFromTheme ที่ข้ามตัวแปรธีมใด ๆ ที่เหมือนกับธีมฐาน ยังควรทราบว่าการใช้ตัวเลือก extends บนฟังก์ชัน cssStringFromTheme ที่ข้ามตัวแปรธีมใด ๆ ที่เหมือนกับธีมฐาน
+As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
 
 ```tsx
 import {
