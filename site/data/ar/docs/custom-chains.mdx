@@ -1,15 +1,15 @@
 ---
 title: شبكات مخصصة
-description: إنشاء سلسلة مخصصة
+description: Create a custom chain
 ---
 
 # شبكات مخصصة
 
-## إنشاء سلسلة مخصصة
+## Create a custom chain
 
-يمكنك استخدام نوع `Chain` لمساعدتك في إنشاء سلسلة مخصصة. ثم مرر هذا إلى `getDefaultConfig` أو [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) الخاص بـ Wagmi.
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
-على سبيل المثال، إليك كيف يمكنك إنشاء سلسلة Avalanche لـ [avax.network](https://avax.network).
+For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import {
