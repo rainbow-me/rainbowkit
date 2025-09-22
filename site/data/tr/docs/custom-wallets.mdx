@@ -1,17 +1,17 @@
 ---
-title: Özel Cüzdanlar
-description: Özel bir cüzdan oluştur
+title: Custom Wallets
+description: Create a custom wallet
 ---
 
-# Özel Cüzdanlar
+# Custom Wallets
 
-## Özel bir cüzdan oluştur
+## Create a custom wallet
 
-> Not: Bu API kararsızdır ve yakın gelecekte değişiklik göstermesi muhtemeldir. Zamanla daha fazla yerleşik cüzdan ekleyeceğiz. Herhangi bir cüzdanla ilgileniyorsanız [bize bildirin](https://github.com/rainbow-me/rainbowkit/issues).
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
 
-`Cüzdan` işlev türü, kendi özel cüzdanlarınızı tanımlamanıza yardımcı olmak için sağlanmıştır. Aşağıdaki özellikler, `Cüzdan` işlevinizin dönüş değeri üzerinde yapılandırılabilecektir:
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
 
-### Cüzdan Özellikleri
+### Wallet Properties
 
 <PropsTable
   data={[
@@ -134,7 +134,7 @@ description: Özel bir cüzdan oluştur
   ]}
 />
 
-### IndirmeUrlsi Özellikleri
+### DownloadUrls Properties
 
 <PropsTable
   data={[
@@ -204,9 +204,9 @@ description: Özel bir cüzdan oluştur
   ]}
 />
 
-### Örnekler
+### Examples
 
-Örneğin, WalletConnect kullanarak özel bir cüzdan oluşturmak için:
+For example, to create a custom wallet using WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Daha sonra özel cüzdanınızı [cüzdan listesine](/docs/custom-wallet-list) ekleyebilirsiniz.
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
