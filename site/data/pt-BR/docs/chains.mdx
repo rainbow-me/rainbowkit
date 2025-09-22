@@ -1,35 +1,35 @@
 ---
-title: Redes
-description: Ícones de cadeia personalizados
+title: Chains
+description: Customizing chains
 ---
 
-# Redes
+# Chains
 
-## Ícones de cadeia personalizados
+## Customizing chains
 
-RainbowKit é projetado para integrar com [objeto `chain` do wagmi](https://wagmi.sh/react/chains). Confira a lista de redes suportadas [aqui](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
 
-### Personalizando a rede inicial
+### Customizing the initial chain
 
-Por padrão, o RainbowKit se conectará à primeira rede em seu array `chains` para garantir que os usuários não sejam imediatamente apresentados ao estado "Rede errada". Esse comportamento pode ser personalizado através da propriedade `initialChain`.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
-A cadeia inicial pode ser configurada usando um ID de cadeia.
+The initial chain can be configured using a chain ID.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Para sua conveniência, você também pode passar um objeto de cadeia.
+As a convenience, you can also pass a chain object.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Personalizando redes
+### Custom chain metadata
 
-Vários ícones de cadeia são fornecidos por padrão, mas você pode personalizar o ícone para cada cadeia usando a propriedade `iconUrl`.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Exemplo com `getDefaultConfig`
+Example with `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Exemplo com `createConfig`
+Example with `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
