@@ -1,21 +1,21 @@
 ---
-title: テーマ設定
-description: テーマの使用とカスタマイズ
+title: Theming
+description: Using and customizing the themes
 ---
 
-# テーマ設定
+# Theming
 
-## テーマの使用とカスタマイズ
+## Using and customizing the themes
 
-あなたはRainbowKit UIを自分のブランドに合わせて調整することができます。 いくつかの事前に定義されたアクセントカラーやボーダーラディウスの設定から選ぶことができます。 より高度なユースケースでは、完全にカスタムテーマを提供し、自分のボタンをレンダリングし、特定の機能を省略することができます。 ダークモードを含みます。 いくつかの事前に定義されたアクセントカラーやボーダーラディウスの設定から選ぶことができます。
+You can tweak the RainbowKit UI to match your branding. You can pick from a few pre-defined accent colors and border radius configurations.
 
-3つの組み込みテーマ関数があります：
+There are 3 built-in theme functions:
 
-- `lightTheme`   (デフォルト)
+- `lightTheme` &nbsp; (default)
 - `darkTheme`
 - `midnightTheme`
 
-テーマ関数はテーマオブジェクトを返します。 このオブジェクトを `RainbowKitProvider`の`theme` プロパティに渡すことができます。 テーマ関数はテーマオブジェクトを返します。 このオブジェクトを `RainbowKitProvider`の`theme` プロパティに渡すことができます。 このオブジェクトを `RainbowKitProvider`の`theme` プロパティに渡すことができます。
+A theme function returns a theme object. You can pass the object to the `RainbowKitProvider`'s `theme` prop.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-必要であれば、`accentColor`、`accentColorForeground`、`borderRadius`、`fontStack`、および`overlayBlur`をカスタマイズするために渡すことができます。
+If you want, you can pass in `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` and `overlayBlur` to customize them.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### 組み込みテーマのカスタマイズ
+### Customizing the built-in themes
 
-組み込みのテーマ関数は、オプションオブジェクトも受け入れます。これにより、いくつかの異なる視覚スタイルから選択できます。
+The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
 <PropsTable
   data={[
@@ -98,7 +98,7 @@ export const App = () => (
   ]}
 />
 
-例えば、ダークテーマをパープルのアクセントカラーと`medium`のボーダーラディウススケールでカスタマイズする方法は次の通りです：
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-各テーマはさまざまなアクセントカラープリセット（`blue`、`green`、`orange`、`pink`、`purple`、`red`）を提供しており、これらをオプションオブジェクトにスプレッドすることができます。 例えば、ピンクのアクセントカラープリセットを使用する方法は次の通りです： 例えば、ピンクのアクセントカラープリセットを使用する方法は次の通りです： 例えば、ピンクのアクセントカラープリセットを使用する方法は次の通りです：
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -138,13 +138,13 @@ const App = () => {
 };
 ```
 
-### 例
+### Examples
 
-#### テーマ機能
+#### Theme function
 
-`theme`プロパティを使用するいくつかの異なる方法です。
+Here are a few different ways you can use the `theme` prop.
 
-`darkTheme`テーマを使用します。
+Use the `darkTheme` theme.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-`midnightTheme`テーマを使用します。
+Use the `midnightTheme` theme.
 
 ```tsx
 import {
@@ -171,11 +171,11 @@ export const App = () => (
 );
 ```
 
-#### アクセントカラー
+#### Accent color
 
-`accentColor`設定を使用するいくつかの異なる方法です。
+Here are a few different ways you can use the `accentColor` config.
 
-アクセントカラーをカスタムの紫色に設定します。
+Set the accent color to a custom purple value.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-アクセントカラーを内蔵の`green`プリセットに設定します。
+Set the accent color to the built-in `green` preset.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -214,11 +214,11 @@ const App = () => {
 };
 ```
 
-#### ボーダーラディウス
+#### Border radius
 
-`borderRadius`設定を使用するいくつかの異なる方法です。
+Here are a few different ways you can use the `borderRadius` config.
 
-ボーダーラディウスを`medium`に設定します。
+Set the border radius to `medium`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-ボーダーラディウスを`none`に設定します。
+Set the border radius to `none`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> リマインダー：利用可能なボーダーラディウスの値は、`large`（デフォルト）、`medium`、`small`、および`none`です。
+> Reminder: the available border radius valies are: `large` (default), `medium`, `small` and `none`.
 
-#### フォントスタック
+#### Font stack
 
-デフォルトでは、`fontStack`は`rounded`に設定されています。 しかし、ここでは`fontStack`設定の使い方を説明します。 しかし、ここでは`fontStack`設定の使い方を説明します。 しかし、ここでは`fontStack`設定の使い方を説明します。
+By default, the `fontStack` is set to `rounded`. But here's how you can use the `fontStack` config.
 
-フォントスタックを`system`に設定します。
+Set the font stack to `system`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### オーバーレイのブラー
+#### Overlay blur
 
-デフォルトでは、`overlayBlur`は`none`に設定されています。 しかし、ここでは`overlayBlur`設定の使い方を説明します。 しかし、ここでは`overlayBlur`設定の使い方を説明します。 しかし、ここでは`overlayBlur`設定の使い方を説明します。
+By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
 
-オーバレイのブラーを`small`に設定します。
+Set the overlay blur to `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### ミックスアンドマッチ
+#### Mix and match
 
-ここでは、異なるテーマを使用するためのいくつかの方法と、`accentColor`、`borderRadius`、`fontStack`プロパティを一緒に使用する方法を説明します。
+Here are a few different ways you can use different themes, with `accentColor`, `borderRadius` and `fontStack` props together.
 
-- `lightTheme` テーマを使用する
-- アクセントカラーをカスタムパープル値に設定する
-- 境界線の半径を `medium` に設定する
-- フォントスタックを `system` に設定する
+- Use the `lightTheme` theme
+- Set the accent color to a custom purple value
+- Set the border radius to `medium`
+- Set the font stack to `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- `midnightTheme` テーマを使用する
-- アクセントカラーをビルトインの `pink` プリセットに設定する。
-- 境界線の半径を `small` に設定する
-- フォントスタックを `system` に設定する
+- Use the `midnightTheme` theme
+- Set the accent color to the built-in `pink` preset.
+- Set the border radius to `small`
+- Set the font stack to `system`
 
 ```tsx
 import {
@@ -360,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### ダークモードのサポート
+#### Dark mode support
 
-あなたのアプリが標準的な `prefers-color-scheme: dark` メディアクエリを使用してライトモードとダークモードを切り替える場合、オプションで動的なテーマオブジェクトを提供して `lightMode` と `darkMode` の値を設定することができます。
+If your app uses the standard `prefers-color-scheme: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
 ```tsx
 import {
