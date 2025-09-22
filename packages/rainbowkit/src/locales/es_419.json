@@ -400,6 +400,20 @@
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
           "title": "Toque el botón WalletConnect"
         }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale la extensión Binance Wallet",
+          "description": "Recomendamos anclar Binance Wallet a su barra de tareas para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
       }
     },
     "coin98": {
@@ -1405,21 +1419,37 @@
           "title": "Toque el botón de escaneo"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Abre la aplicación ZilPay",
-        "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
-      },
-      "step2": {
-        "title": "Crear o Importar una Billetera",
-        "description": "Crea una nueva billetera o importa una existente."
-      },
-      "step3": {
-        "title": "Toque el botón de escaneo",
-        "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación ZilPay",
+          "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Nova Wallet",
+          "description": "Agrega Nova Wallet a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
       }
     }
   }
