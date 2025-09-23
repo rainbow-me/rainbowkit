@@ -1,17 +1,15 @@
 ---
-title: Custom Theme
-description: Creating a custom theme
+title: कस्टम थीम
+description: एक कस्टम थीम बनाना
 ---
 
-# Custom Theme
+# कस्टम थीम
 
-## Creating a custom theme
+## एक कस्टम थीम बनाना
 
-> Note: This API is unstable and likely to change
-> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
-> now.
+> ध्यान दें: यह API अस्थिर है और निकट भविष्य में बदल सकता है। हम अभी के लिए [बिल्ट-इन थीम्स](/docs/theming) के साथ रहना सुझाव देते हैं।
 
-While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+हालांकि बिल्ट-इन थीम्स कुछ स्तर की कस्टमाइजेशन की सुविधा प्रदान करती हैं, `Theme` प्रकार आपके अपने कस्टम थीम्स को परिभाषित करने में मदद करता है, जिससे आप परोक्ष थीम वेरिएबल्स तक निम्न-स्तरीय पहुँच प्राप्त कर सकते हैं।
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Extending a built-in theme
+### एक बिल्ट-इन थीम का विस्तार करना
 
-You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+आप बिल्ट-इन थीम का पूरा परिभाषण किए बिना इसे विस्तारित कर सकते हैं। यह तब उपयोगी होता है जब आप केवल विशेष थीम टोकन को ओवरराइड करना चाहते हैं।
 
-To do that, install `lodash.merge` (or equivalent):
+इसके लिए, `lodash.merge` (या इसके समकक्ष) इंस्टॉल करें:
 
 ```bash
 npm install lodash.merge
 ```
 
-Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+इसे इम्पोर्ट करें, साथ ही उस थीम को जिसे आप विस्तारित करना चाहते हैं (उदा: `darkTheme`) और TypeScript के `Theme` प्रकार को।
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+फिर, बिल्ट-इन थीम को उन थीम टोकन के साथ मर्ज करें जिन्हें आप ओवरराइड करना चाहते हैं। इस उदाहरण में, मैं अपने ब्रांड के एक्सेंट रंग से मिलाने के लिए `accentColor` टोकन को ओवरराइड कर रहा हूँ।
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+अंत में, आप अब अपने कस्टम थीम को `RainbowKitProvider` के `theme` प्रॉप के लिए भेज सकते हैं।
 
 ```tsx
 const App = () => {
@@ -122,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Creating custom theme selectors
+### कस्टम थीम चयनकर्ता बनाना
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+यदि आपका ऐप सर्वर/स्थैतिक रेंडर है और उपयोगकर्ताओं को विषयों के बीच मैन्युअली टॉगल करने की अनुमति देता है, तो RainbowKit की थीमिंग प्रणाली कस्टम CSS चयनकर्ताओं के लिए निम्नलिखित कार्यों के साथ जोड़ी जा सकती है, जिन्हें किसी भी CSS-in-JS प्रणाली के साथ उपयोग में लाया जा सकता है:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+ये फंक्शंस सभी आवश्यक थीम वेरिएबल्स को सेट करने वाला CSS लौटाते हैं। चूंकि दोनों स्ट्रिंग्स और ऑब्जेक्ट्स समर्थित हैं, इसे किसी भी CSS-in-JS प्रणाली के साथ एकीकृत किया जा सकता है।
 
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+एक बुनियादी उदाहरण के रूप में, आप प्रत्येक थीम के लिए कस्टम चयनकर्ताओं के साथ अपने `style` तत्व को रेंडर कर सकते हैं। चूंकि हम थीम के CSS को रेंडर करने का नियंत्रण ले रहे हैं, हम `theme` प्रॉप के लिए `null` पास कर रहे हैं ताकि RainbowKitProvider हमारे लिए कोई शैली नहीं बनाये। cssStringFromTheme फंक्शन पर विस्तार विकल्प का उपयोग करने का भी ध्यान दें जो बेस थीम के समान किसी भी थीम वेरिएबल्स को छोड़ देता है।
 
 ```tsx
 import {
