@@ -21,15 +21,15 @@ description: การตรวจสอบตัวตนของผู้ใ�
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### ตั้งค่า provider
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+ในส่วนของคอมโพเนนต์ `App` ของคุณ, ทำการ import `RainbowKitSiweNextAuthProvider`.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+หุ้มส่วนของ `RainbowKitProvider` ด้วย `RainbowKitSiweNextAuthProvider`, โดยที่ต้องการยังอยู่ภายใน `SessionProvider` ของ NextAuth เพื่อให้เข้าถึง session ได้.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+ด้วย `RainbowKitSiweNextAuthProvider` ที่ถูกตั้งไว้, ผู้ใช้ของคุณจะถูกพิจารณาเพื่อยืนยันตัวตนโดยการลงนามในข้อความหลังจากที่เชื่อมต่อกระเป๋าเงินของพวกเขา.
 
-#### Customize the SIWE message options
+#### ปรับแต่งตัวเลือกข้อความ SIWE
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+คุณสามารถปรับแต่ง[ตัวเลือกข้อความ SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) โดยการส่งฟังก์ชันไปยัง prop `getSiweMessageOptions` บน `RainbowKitSiweNextAuthProvider`.
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+ฟังก์ชันนี้จะถูกเรียกทุกครั้งที่มีการสร้างข้อความใหม่ ตัวเลือกที่กลับมาจากฟังก์ชันนี้จะถูกผสานกับค่าเริ่มต้น.
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### เข้าถึงเซสชันด้านเซิร์ฟเวอร์
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+คุณสามารถเข้าถึงเซสชันโทเค็นด้วยฟังก์ชัน `getToken` ของ NextAuth ที่นำเข้าจาก `next-auth/jwt`. หากผู้ใช้รับรองความถูกต้องสำเร็จ 'sub' ของโทเค็นเซสชัน (ซึ่งเป็น "subject" ของโทเค็น หรือผู้ใช้) จะเป็นที่อยู่ของผู้ใช้.
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+คุณยังสามารถส่งต่อวัตถุเซสชันที่ได้รับการแก้ไขจากเซิร์ฟเวอร์ผ่าน `getServerSideProps` ให้ NextAuth ไม่จำเป็นต้องแก้ไขอีกครั้งทางลูกค้า.
 
-For example:
+ตัวอย่างเช่น:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+สำหรับข้อมูลเพิ่มเติมเกี่ยวกับการจัดการเซสชัน คุณสามารถอ้างอิงเอกสารต่อไปนี้:
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [คู่มือการรับรองความถูกต้องของ Next.js](https://nextjs.org/docs/authentication)
+- [เอกสาร NextAuth](https://next-auth.js.org)
