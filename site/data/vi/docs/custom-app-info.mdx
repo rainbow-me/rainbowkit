@@ -1,13 +1,13 @@
 ---
-title: Custom App Info
-description: Customizing your app's info
+title: Thông tin Ứng dụng Tuỳ chỉnh
+description: Tuỳ chỉnh thông tin của ứng dụng
 ---
 
-# Custom App Info
+# Thông tin Ứng dụng Tuỳ chỉnh
 
-## Customizing your app’s info
+## Tuỳ chỉnh thông tin của ứng dụng
 
-You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
+Bạn có thể chuyển thông tin của ứng dụng mình vào thuộc tính `appInfo` cho `RainbowKitProvider`. Các thuộc tính bạn có thể thay đổi là tên của ứng dụng (`appName`) và liên kết nơi nút “Tìm Hiểu Thêm” trong hộp thoại kết nối chuyển hướng đến (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### Add a Disclaimer
+### Thêm thông báo từ chối
 
-You can provide your own disclaimer to be displayed at the bottom of the connection modal. The `disclaimer` property in `appInfo` takes a `DisclaimerComponent` with arguments `Text` and `Link`. You can use it to build your own disclaimer that inherits the theming system. We export the `DisclaimerComponent` type for TypeScript users:
+Bạn có thể cung cấp thông báo từ chối của riêng mình để hiển thị ở cuối hộp thoại kết nối. Thuộc tính `disclaimer` trong `appInfo` nhận một `DisclaimerComponent` với các tham số `Text` và `Link`. Bạn có thể sử dụng nó để xây dựng thông báo từ chối của riêng mình kế thừa hệ thống chủ đề. Chúng tôi xuất ra kiểu `DisclaimerComponent` cho người dùng TypeScript:
 
 ```tsx
 import {
