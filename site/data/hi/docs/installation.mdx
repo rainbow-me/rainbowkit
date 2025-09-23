@@ -1,15 +1,15 @@
 ---
-title: Installation
-description: Get up and running with RainbowKit
+title: स्थापना
+description: रेनबोकिट के साथ आरंभ करें
 ---
 
-# Installation
+# स्थापना
 
-## Get up and running with RainbowKit
+## रेनबोकिट के साथ आरंभ करें
 
-### Quick start
+### त्वरित आरंभ
 
-You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+आप निम्नलिखित कमांड्स में से किसी एक का उपयोग करके एक नया रेनबोकिट + [Wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) ऐप स्कैफोल्ड कर सकते हैं, अपने पैकेज प्रबंधक की पसंद का उपयोग करते हुए:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -19,23 +19,23 @@ pnpm create @rainbow-me/rainbowkit@latest
 yarn create @rainbow-me/rainbowkit
 ```
 
-This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+यह आपको परियोजना नाम के लिए प्रांप्ट करेगा, एक नई निर्देशिका जनरेट करेगा जिसमें बोयलरप्लेट परियोजना शामिल होगी, और सभी आवश्यक निर्भरताएं स्थापित करेगा।
 
-Alternatively, you can manually integrate RainbowKit into your existing project.
+वैकल्पिक रूप से, आप रेनबोकिट को अपने मौजूदा प्रोजेक्ट में मैन्युअल रूप से एकीकृत कर सकते हैं।
 
-### Manual setup
+### मैनुअल सेटअप
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+रेनबोकिट और इसकी सहायक निर्भरताओं को स्थापित करें, [Wagmi](https://wagmi.sh/), [Viem](https://viem.sh), और [@tanstack/react-query](https://tanstack.com/query/v5)।
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> Note: RainbowKit is a [React](https://reactjs.org/) library.
+> ध्यान दें: रेनबोकिट एक [React](https://reactjs.org/) लाइब्रेरी है।
 
-#### Import
+#### आयात
 
-Import RainbowKit, Wagmi and TanStack Query.
+रेनबोकिट, वाग्मी और टैनस्टैक क्वेरी को आयात करें।
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -58,11 +58,11 @@ import {
 } from "@tanstack/react-query";
 ```
 
-#### Configure
+#### विन्यास
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+अपनी इच्छित चेन को कॉन्फ़िगर करें और आवश्यक कनेक्टर्स जनरेट करें। आपको एक `wagmi` कॉन्फ़िग भी सेटअप करना होगा। यदि आपका dApp सर्वर साइड रेंडरिंग (SSR) का उपयोग करता है, तो सुनिश्चित करें कि `ssr` को `true` पर सेट किया गया है।
 
-> Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+> ध्यान दें: अब हर dApp जो WalletConnect पर निर्भर करता है, उसे [WalletConnect क्लाउड](https://cloud.walletconnect.com/) से एक `projectId` प्राप्त करना होगा। यह बिल्कुल मुफ्त है और इसमें कुछ ही मिनट लगते हैं।
 
 ```tsx line=4-99
 ...
@@ -76,9 +76,9 @@ const config = getDefaultConfig({
 });
 ```
 
-#### Wrap providers
+#### प्रोवाइडर लपेटें
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+अपने एप्लिकेशन को `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), और [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider) के साथ लपेटें।
 
 ```tsx
 const queryClient = new QueryClient();
@@ -96,9 +96,9 @@ const App = () => {
 };
 ```
 
-#### Add the connect button
+#### कनेक्ट बटन जोड़ें
 
-Then, in your app, import and render the `ConnectButton` component.
+फिर, अपने ऐप में, `ConnectButton` घटक को आयात करें और रेंडर करें।
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -108,15 +108,15 @@ export const YourApp = () => {
 };
 ```
 
-RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+रेनबोकिट अब आपके उपयोगकर्ता के वॉलेट चयन को संभाल लेगा, वॉलेट/लेन-देन की जानकारी प्रदर्शित करेगा और नेटवर्क/वॉलेट स्विचिंग को संभाल लेगा।
 
-#### Additional build tooling setup
+#### अतिरिक्त बिल्ड टूलिंग सेटअप
 
-Some build tools will require additional setup.
+कुछ बिल्ड उपकरणों के लिए अतिरिक्त सेटअप की आवश्यकता होगी।
 
-##### Remix
+##### रीमिक्स
 
-When using [Remix](https://remix.run), you must polyfill `buffer`, `events` and `http` modules. Reference the Remix configuration below, or [our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+[रीमिक्स](https://remix.run) का उपयोग करते वक्त, आपको `buffer`, `events` और `http` मॉड्यूल्स को पोलीफ़िल करना होगा। नीचे रीमिक्स कॉन्फ़िगरेशन का संदर्भ लें, या [हमारे नमूना रीमिक्स प्रोजेक्ट](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) को देखें।
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Preparing to deploy
+### परिनियोजन के लिए तैयारी
 
-By default, your dApp uses public RPC providers for each chain to fetch balances, resolve ENS names, and more. This can often cause reliability issues for your users as public nodes are rate-limited. You should instead purchase access to an RPC provider through services like [Alchemy](https://www.alchemy.com/) or [QuickNode](https://www.quicknode.com/), and define your own Transports in Wagmi. This can be achieved by adding the `transports` param in `getDefaultConfig` or via Wagmi's `createConfig` directly.
+डिफ़ॉल्ट रूप से, आपका dApp प्रत्येक चेन के लिए सार्वजनिक RPC प्रदाताओं का उपयोग बैलेंस, ENS नाम हल करने, और अधिक के लिए करता है। यह आपके उपयोगकर्ताओं के लिए विश्वसनीयता के मुद्दों का कारण बन सकता है क्योंकि सार्वजनिक नोड्स सीमित दर के तहत हैं। इसके बजाय, आपको [Alchemy](https://www.alchemy.com/) या [QuickNode](https://www.quicknode.com/) जैसे सेवाओं के ज़रिए RPC प्रदाता की पहुंच खरीदनी चाहिए, और अपने स्वयं के ट्रांसपोर्ट्स को वाग्मी में परिभाषित करना चाहिए। इसे `getDefaultConfig` में `transports` पैरामीटर जोड़कर या वाग्मी के `createConfig` के ज़रिए सीधे प्राप्त किया जा सकता है।
 
-A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
+एक ट्रांसपोर्ट वह नेटवर्किंग मध्य परत है जो JSON-RPC अनुरोधों को इथेरियम नोड प्रदाता (जैसे Alchemy, Infura, आदि) को भेजने का कार्य करती है।
 
-**Example with an `http` transport**
+**एक `http` ट्रांसपोर्ट के साथ उदाहरण**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,25 +152,25 @@ const config = getDefaultConfig({
 });
 ```
 
-For more details, view the [wagmi transport docs](https://wagmi.sh/core/api/transports#transports).
+अधिक जानकारी के लिए, [Wagmi ट्रांसपोर्ट डॉक्स](https://wagmi.sh/core/api/transports#transports) देखें।
 
-### Add your own functionality
+### अपनी खुद की कार्यक्षमता जोड़ें
 
-Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)
+अब आपके उपयोगकर्ता अपने वॉलेट को कनेक्ट कर सकते हैं, आप [वग्मी](https://wagmi.sh) का उपयोग करके अपने ऐप के शेष भाग को बनाना प्रारंभ कर सकते हैं।
 
-Send transactions, interact with contracts, resolve ENS details and much more with wagmi’s comprehensive suite of React Hooks.
+लेन-देन भेजें, अनुबंधों के साथ इंटरैक्ट करें, ENS विवरण हल करें और वग्मी के व्यापक React Hooks संग्रह के साथ और भी बहुत कुछ करें।
 
-For more detail, view the [wagmi documentation.](https://wagmi.sh)
+अधिक जानकारी के लिए, [वग्मी दस्तावेज़](https://wagmi.sh) देखें।
 
-### Further examples
+### आगे के उदाहरण
 
-To see some running examples of RainbowKit, or even use them to automatically scaffold a new project, check out the [official examples](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+परिणाम देखेने के लिए, या यहां तक कि उन्हें स्वचालित रूप से नया प्रोजेक्ट बनाने के लिए इस्तेमाल करें, [आधिकारिक उदाहरण](https://github.com/rainbow-me/rainbowkit/tree/main/examples) की जांच करें।
 
-To try RainbowKit directly in your browser, check out the CodeSandbox links below:
+रेनबोकिट को सीधे अपने ब्राउज़र में आजमाने के लिए, नीचे दिए गए कोड सैंडबॉक्स लिंक देखें:
 
-- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app) के साथ
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next) के साथ
+- [Next.js एप राउटर](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app) के साथ
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix) के साथ
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) के साथ
+- [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router) के साथ
