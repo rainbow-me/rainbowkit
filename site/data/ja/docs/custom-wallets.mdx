@@ -1,63 +1,63 @@
 ---
-title: Custom Wallets
-description: Create a custom wallet
+title: カスタムウォレット
+description: カスタムウォレットを作成する
 ---
 
-# Custom Wallets
+# カスタムウォレット
 
-## Create a custom wallet
+## カスタムウォレットを作成する
 
-> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
+> 注意: このAPIは不安定で、近い将来変更される可能性があります。時間とともに、より多くの組み込みウォレットを追加します。興味のある特定のウォレットがあれば、[こちらからお知らせください](https://github.com/rainbow-me/rainbowkit/issues)。
 
-The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
+`Wallet`関数タイプは、独自のカスタムウォレットを定義するのに役立つよう提供されています。次のプロパティが`Wallet`関数の戻り値で設定可能です:
 
-### Wallet Properties
+### ウォレットプロパティ
 
 <PropsTable
-  data={[
+  data=[
     {
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: '各ウォレットごとに一意のID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '人間に読みやすいウォレット名',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'EIP6963をサポートするウォレットのRDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'モバイル用のオプション短縮名',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'ウォレットアイコンのURL、またはBase64データURLへのPromise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'ウォレットがブラウザ拡張機能とモバイルアプリの両方を持つ場合のダウンロードフローに使用されるアクセントカラー',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'ウォレットアイコンがロードされる際の背景色',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          ウォレットがインストールされているか、判別不能な場合は<code>undefined</code>{' '}
+          か
         </>
       ),
     },
@@ -75,7 +75,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'ダウンロードURLを含むオブジェクト',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'このウォレットをリストから非表示にするかどうかを計算するための関数。ビルトインの「インジェクティッドウォレット」フォールバックがこの機能を利用しています',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '接続方法の異なるインスタンスと設定を提供するための関数',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'モバイルウォレット接続URIを解決するための関数',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'デスクトップアプリのディープリンクを解決するための関数',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'QRコードURIを解決するための関数、加えてオプションのモバイルウォレットセットアップ手順',
     },
     {
       name: 'extension',
@@ -122,91 +122,91 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'オプションのブラウザ拡張セットアップ手順を含むオブジェクト',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
-  ]}
+      description: 'コネクタインスタンスを提供するための関数',
+    }
+  ]
 />
 
-### DownloadUrls Properties
+### ダウンロードURL プロパティ
 
 <PropsTable
-  data={[
+  data=[
     {
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'Google PlayのURL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'Apple App StoreのURL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '`android`または`ios`が利用できない場合のモバイルユーザー用ランディングページ',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'モバイルダウンロードQRコードをスキャンしたユーザー用ランディングページ',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome Web StoreのURL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft EdgeアドオンのURL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'FirefoxブラウザアドオンのURL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'OperaアドオンのURL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac App StoreのURL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
-    },
-  ]}
+        'ブラウザ互換のURLが利用できない場合のデスクトップ拡張ユーザー用ランディングページ',
+    }
+  ]
 />
 
-### Examples
+### 例
 
-For example, to create a custom wallet using WalletConnect:
+例えば、WalletConnectを使用してカスタムウォレットを作成するには:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
+その後、[ウォレットリスト](/docs/custom-wallet-list)にカスタムウォレットを追加できます。
