@@ -1,13 +1,13 @@
 ---
-title: Custom Avatars
-description: Customizing your app's user avatar
+title: कस्टम अवतार
+description: अपने ऐप के उपयोगकर्ता अवतार को कस्टमाइज़ करना
 ---
 
-# Custom Avatars
+# कस्टम अवतार
 
-## Customizing your app’s user avatar
+## अपने ऐप के उपयोगकर्ता अवतार को कस्टमाइज़ करना
 
-By default we provide an avatar for users in case their ENS image is not set, but you can customize this by providing your own avatar component. You can import the `AvatarComponent` type if using TypeScript:
+डिफ़ॉल्ट रूप से, हम उपयोगकर्ताओं के लिए एक अवतार प्रदान करते हैं यदि उनका ENS छवि सेट नहीं है, लेकिन आप अपने स्वयं के अवतार घटक प्रदान करके इसे कस्टमाइज़ कर सकते हैं। यदि TypeScript का उपयोग कर रहे हैं तो आप `AvatarComponent` प्रकार आयात कर सकते हैं:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-The `AvatarComponent` passed to the `avatar` prop has prop types as follows: `<{ address: string; ensImage?: string | null; size: number;}>`
+`AvatarComponent` जो `avatar` प्रॉप को पास किया गया है, उसका प्रॉप प्रकार निम्नलिखित है: `<{ पता: स्ट्रिंग; ensImage?: स्ट्रिंग | null; आकार: संख्या;}>`
