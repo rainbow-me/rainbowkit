@@ -1,15 +1,15 @@
 ---
-title: Custom ConnectButton
-description: Creating a custom ConnectButton
+title: 커스텀 ConnectButton
+description: 커스텀 ConnectButton 만들기
 ---
 
-# Custom ConnectButton
+# 커스텀 ConnectButton
 
-## Creating a custom ConnectButton
+## 커스텀 ConnectButton 만들기
 
-You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
+사용자는 `ConnectButton.Custom`을 활용하여 자신의 커스텀 연결 버튼을 만들 수 있습니다. 이 컴포넌트는 기본 제공 버튼을 다시 구현하는 데 필요한 모든 내용을 포함한 함수를 렌더링합니다.
 
-A minimal re-implementation of the built-in buttons would look something like this:
+기본 제공 버튼의 최소한의 재구현은 다음과 같은 모습일 것입니다:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-The following props are passed to your render function.
+다음 속성들은 render 함수에 전달됩니다.
 
-### Account properties
+### 계정 속성
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        '현재 계정에 대한 세부 정보가 포함된 객체, 이하 설명',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          전체 계정 주소, 예:
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ The following props are passed to your render function.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: '소수로 표기된 계정 잔액',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          문자열로 형식화된 계정 잔액, 예: {' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          잔액의 화폐 기호, 예: <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          3자리의 유효 숫자로 형식화된 잔액과 기호, 예: <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +178,8 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ENS 이름 또는 주소의 축약형, 예: {' '}
+          <code>"rainbowwallet.eth"</code> 또는 <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +187,7 @@ The following props are passed to your render function.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'ENS 아바타 URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +195,7 @@ The following props are passed to your render function.
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ENS 이름, 예: <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +204,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        '현재 체인에 대한 미결 거래가 있는지 표시하는 불리언',
     },
   ]}
 />
 
-### Chain properties
+### 체인 속성
 
 <PropsTable
   data={[
@@ -219,27 +218,27 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        '현재 체인에 대한 세부 정보가 포함된 객체, 이하 설명',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: '체인에 지정된 아이콘이 있는지 여부',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        '체인 아이콘 URL (Base64 데이터 URL을 다운로드하는 동안 정의되지 않을 수 있음)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        '이미지가 로딩되는 동안 표시될 체인 아이콘 배경',
     },
     {
       name: 'chain.id',
@@ -247,7 +246,7 @@ The following props are passed to your render function.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          체인 ID, 예: <code>1</code>
         </>
       ),
     },
@@ -257,7 +256,7 @@ The following props are passed to your render function.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          체인 이름, 예: <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +265,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        '현재 체인이 지원되지 않음을 나타내는 불리언',
     },
   ]}
 />
 
-### Modal state properties
+### 모달 상태 속성
 
 <PropsTable
   data={[
@@ -279,44 +278,44 @@ The following props are passed to your render function.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: '계정 모달을 여는 함수',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: '체인 모달을 여는 함수',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: '연결 모달을 여는 함수',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        '계정 모달이 열려 있는지 나타내는 불리언',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: '체인 모달이 열려 있는지 나타내는 불리언',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        '연결 모달이 열려 있는지 나타내는 불리언',
     },
   ]}
 />
 
-### General state properties
+### 일반 상태 속성
 
 <PropsTable
   data={[
@@ -325,14 +324,14 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        '컴포넌트가 마운트 되었는지 여부를 나타내는 불리언',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        '인증 상태, 인증이 설정되지 않은 경우 undefined',
     },
   ]}
 />
