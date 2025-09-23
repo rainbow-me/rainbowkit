@@ -1,19 +1,19 @@
 ---
-title: Custom Authentication
-description: Connect to your own authentication back-end
+title: 自訂驗證
+description: 連接到您自己的驗證後端
 ---
 
-# Custom Authentication
+# 自訂驗證
 
-## Connect to your own authentication back-end
+## 連接到您自己的驗證後端
 
-While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
+雖然 RainbowKit 提供[與 Ethereum 和 NextAuth 的頭等支持](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)，您也可以與自訂的後端和消息格式集成。
 
-### Creating a custom adapter
+### 創建自訂適配器
 
-First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
+首先創建一個驗證適配器。這允許 RainbowKit 創建/準備消息並與您的後端進行通信。
 
-As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+例如，我們可以製作一個驗證適配器，讓我們可以使用 [Ethereum 登入](https://login.xyz) 針對一些自訂 API 端點，如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Providing the authentication state
+#### 提供驗證狀態
 
-Assuming your application is already managing the authentication lifecycle in some way, you can pass the current authentication status along with your custom adapter to `RainbowKitAuthenticationProvider`, wrapping your existing `RainbowKitProvider`.
+假設您的應用程式已經設法管理驗證生命週期，您可以將當前驗證狀態與自訂適配器一起傳遞給 `RainbowKitAuthenticationProvider`，包裝您現有的 `RainbowKitProvider`。
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-If you've got this far and created an adapter for an existing open source authentication library, please consider creating a package for others to use!
+如果您已經做到這麼多，並為現有的開源驗證庫創建了一個適配器，請考慮創建一個包供其他人使用！
