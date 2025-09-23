@@ -1,44 +1,44 @@
 ---
-title: Upgrading your dApp to WalletConnect v2
-description: RainbowKit has migrated to v2, and you can prepare your dApp in 5 minutes or less
+title: 将您的 dApp 升级到 WalletConnect v2
+description: RainbowKit 已迁移到 v2，您可以在 5 分钟内或更短时间内准备好您的 dApp
 image: guide-walletconnect-v2.png
 ---
 
-# Migrating to WalletConnect v2
+# 迁移到 WalletConnect v2
 
-## Prepare your dApp for the v2 upgrade in 5 minutes or less
+## 在 5 分钟内或更短时间内为 v2 升级准备您的 dApp
 
-The WalletConnect v1 protocol will be shut down on June 28, 2023, and RainbowKit has your back to make the transition super simple.
+WalletConnect v1 协议将于 2023 年 6 月 28 日关闭，RainbowKit 为您简化过渡提供支持。
 
-Support for WalletConnect v2 is now standard in RainbowKit, without breaking changes. Just upgrade and reference the guide below for additional details.
+RainbowKit 现在对 WalletConnect v2 的支持已成标准，且无破坏性更改。只需升级并参考下方指南以获取更多详细信息。
 
-#### Understanding WalletConnect v2
+#### 了解 WalletConnect v2
 
-WalletConnect is the protocol that allows users to connect their mobile wallets to your dApp, and it's an important foundation of RainbowKit. The recent release of WalletConnect v2 brings a number of important upgrades to make the wallet-dApp experience even better.
+WalletConnect 是允许用户将他们的移动钱包连接到您的 dApp 的协议，它是 RainbowKit 的重要基础。WalletConnect v2 的最新发布带来了一些重要升级，使钱包和 dApp 体验更好。
 
-With v2, your users can now simultaneously connect to multiple chains, so you can forget about the chain switching handshake. It also broadens support for more networks, and brings improvements that make Sign-in with Ethereum even faster.
+在 v2 中，您的用户现在可以同时连接到多个链，因此您无需再担心链的切换操作。同时，它还扩展了对更多网络的支持，并带来了一些改进，使使用 Ethereum 登录更加快捷。
 
-#### Upgrading your dApp
+#### 升级您的 dApp
 
-If you've already followed the migration guides for RainbowKit `0.12.x` and `1.0.x`, then you're almost there! Just upgrade to the latest patch release and give it a try.
+如果您已经遵循了 RainbowKit `0.12.x` 和 `1.0.x` 的迁移指南，那么您已经接近完成了！只需升级到最新的补丁版本并尝试一下。
 
-RainbowKit enabled WalletConnect v2 by default with `0.12.15` and `1.0.2`. We are continuing support for `0.12.x` in case your dApp has not yet upgraded to wagmi v1 and RainbowKit v1.
+RainbowKit 已在 `0.12.15` 和 `1.0.2` 中默认启用了 WalletConnect v2。我们将继续支持 `0.12.x`，以防您的 dApp 尚未升级到 Wagmi v1 和 RainbowKit v1。
 
-**1. Upgrading dependencies**
+**1. 升级依赖项**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 ```
 
-If you're using a version of RainbowKit before `0.12.x` or `1.0.x`, just follow the [Migration Guides](/docs/migration-guide) to get up-to-date.
+如果您使用的是 RainbowKit `0.12.x` 或 `1.0.x` 之前的版本，只需按[迁移指南](/docs/migration-guide)更新。
 
-It is recommended that `0.12.x` dApps begin to upgrade to wagmi v1, as stability improvements for WalletConnect v2 will only be included in future versions of wagmi.
+建议 `0.12.x` 的 dApp 开始升级到 Wagmi v1，因为 WalletConnect v2 的稳定性改进将仅包含在未来的 Wagmi 版本中。
 
-**2. Supplying a projectId**
+**2. 提供 projectId**
 
-Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+每个依赖于WalletConnect的dApp现在都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取一个`projectId`。这完全免费并只需几分钟即可完成。
 
-Supply your `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+将您的 `projectId` 提供给 `getDefaultWallets` 和以下各个 RainbowKit 钱包连接器：
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -60,7 +60,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit is type-safe and will warn you when a `projectId` is missing. Refer to our examples to see v2 in action:
+RainbowKit 是类型安全的，当 `projectId` 缺失时会发出警告。参考我们的示例以查看 v2 的实际应用：
 
 - [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
@@ -69,4 +69,4 @@ RainbowKit is type-safe and will warn you when a `projectId` is missing. Refer t
 - [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 - [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
 
-Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+参考[文档](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect)以获取更多支持的选项。
