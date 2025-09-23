@@ -1,15 +1,15 @@
 ---
-title: Installation
-description: Get up and running with RainbowKit
+title: Установка
+description: Швидко почніть з RainbowKit
 ---
 
-# Installation
+# Установка
 
-## Get up and running with RainbowKit
+## Швидко почніть з RainbowKit
 
-### Quick start
+### Швидкий старт
 
-You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+Використовуючи улюблений пакетний менеджер, ви можете розгорнути новий додаток RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) за допомогою однієї з наступних команд:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -19,23 +19,23 @@ pnpm create @rainbow-me/rainbowkit@latest
 yarn create @rainbow-me/rainbowkit
 ```
 
-This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+Це запрошує вас вказати ім'я проекту, створює новий каталог з шаблонним проектом і встановлює всі необхідні залежності.
 
-Alternatively, you can manually integrate RainbowKit into your existing project.
+Альтернативно, ви можете вручну інтегрувати RainbowKit у ваш існуючий проект.
 
-### Manual setup
+### Ручне налаштування
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+Встановіть RainbowKit та його залежності: [wagmi](https://wagmi.sh/), [viem](https://viem.sh) та [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> Note: RainbowKit is a [React](https://reactjs.org/) library.
+> Примітка: RainbowKit — це бібліотека [React](https://reactjs.org/).
 
-#### Import
+#### Імпорт
 
-Import RainbowKit, Wagmi and TanStack Query.
+Імпортуйте RainbowKit, Wagmi та TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -58,11 +58,11 @@ import {
 } from "@tanstack/react-query";
 ```
 
-#### Configure
+#### Налаштувати
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+Налаштуйте бажані ланцюги та створіть необхідні коннектори. Вам також потрібно налаштувати конфігурацію `wagmi`. Якщо ваша децентралізована програма використовує серверний рендеринг (SSR), переконайтеся що `ssr` встановлено в значення `true`.
 
-> Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+> Примітка: Всі децентралізовані додатки, що покладаються на WalletConnect, тепер повинні отримати `projectId` від [WalletConnect Cloud](https://cloud.walletconnect.com/). Це абсолютно безкоштовно і займає лише кілька хвилин.
 
 ```tsx line=4-99
 ...
@@ -76,9 +76,9 @@ const config = getDefaultConfig({
 });
 ```
 
-#### Wrap providers
+#### Обгортання провайдерів
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Обгорніть ваш додаток за допомогою `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) та [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
@@ -96,9 +96,9 @@ const App = () => {
 };
 ```
 
-#### Add the connect button
+#### Додати кнопку підключення
 
-Then, in your app, import and render the `ConnectButton` component.
+У вашій програмі імпортуйте та вмонтуйте компонент `ConnectButton`.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -108,15 +108,15 @@ export const YourApp = () => {
 };
 ```
 
-RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+RainbowKit тепер буде обробляти вибір гаманця користувачем, відображати інформацію про гаманець/транзакцію та управляти перемиканням мереж/гаманців.
 
-#### Additional build tooling setup
+#### Додаткове налаштування інструментів збірки
 
-Some build tools will require additional setup.
+Деякі інструменти збірки можуть вимагати додаткового налаштування.
 
 ##### Remix
 
-When using [Remix](https://remix.run), you must polyfill `buffer`, `events` and `http` modules. Reference the Remix configuration below, or [our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Використовуючи [Remix](https://remix.run), ви повинні заповнити `buffer`, `events` та `http` модулі. Дивіться конфігурацію Remix нижче або [наш зразковий проект Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Preparing to deploy
+### Підготовка до розгортання
 
-By default, your dApp uses public RPC providers for each chain to fetch balances, resolve ENS names, and more. This can often cause reliability issues for your users as public nodes are rate-limited. You should instead purchase access to an RPC provider through services like [Alchemy](https://www.alchemy.com/) or [QuickNode](https://www.quicknode.com/), and define your own Transports in Wagmi. This can be achieved by adding the `transports` param in `getDefaultConfig` or via Wagmi's `createConfig` directly.
+За замовчуванням ваша децентралізована програма використовує публічні RPC провайдери для кожного ланцюга, щоб отримати баланси, розрішити імена ENS тощо. Це часто може спричиняти проблеми з надійністю для ваших користувачів через те, що публічні вузли мають обмеження за швидкістю. Замість цього, вам слід придбати доступ до RPC провайдера через такі сервіси, як [Alchemy](https://www.alchemy.com/) або [QuickNode](https://www.quicknode.com/), та визначити власні Transports у Wagmi. Це можна виконати шляхом додавання параметра `transports` у `getDefaultConfig` або напряму через Wagmi `createConfig`.
 
-A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
+Транспорт — це мережевий проміжний шар, що обробляє відправлення JSON-RPC запитів до провайдера вузлів Ethereum (таких як Alchemy, Infura і т.д.).
 
-**Example with an `http` transport**
+**Приклад з транспортом `http`**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,25 +152,25 @@ const config = getDefaultConfig({
 });
 ```
 
-For more details, view the [wagmi transport docs](https://wagmi.sh/core/api/transports#transports).
+Для детальнішої інформації, перегляньте [документацію по транспорту wagmi](https://wagmi.sh/core/api/transports#transports).
 
-### Add your own functionality
+### Додайте власну функціональність
 
-Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)
+Тепер коли ваші користувачі можуть підключити свої гаманці, ви можете почати створювати решту вашого додатку за допомогою [wagmi.](https://wagmi.sh)
 
-Send transactions, interact with contracts, resolve ENS details and much more with wagmi’s comprehensive suite of React Hooks.
+Відправляйте транзакції, взаємодійте з контрактами, розрішуйте деталі ENS та багато іншого з великим набором React Hooks wagmi.
 
-For more detail, view the [wagmi documentation.](https://wagmi.sh)
+Для отримання детальної інформації, перегляньте [документацію wagmi.](https://wagmi.sh)
 
-### Further examples
+### Подальші приклади
 
-To see some running examples of RainbowKit, or even use them to automatically scaffold a new project, check out the [official examples](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+Щоб побачити кілька працюючих прикладів RainbowKit або навіть використати їх для автоматичного розгортання нового проекту, перегляньте [офіційні приклади](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
 
-To try RainbowKit directly in your browser, check out the CodeSandbox links below:
+Щоб спробувати RainbowKit безпосередньо у вашому браузері, перегляньте посилання на CodeSandbox нижче:
 
-- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- з [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- з [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- з [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- з [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- з [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- з [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
