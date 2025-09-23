@@ -21,15 +21,15 @@ description: 驗證你的用戶
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### 設置提供者
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+在您的 `App` 元件中，匯入 `RainbowKitSiweNextAuthProvider`。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+將 `RainbowKitProvider` 用 `RainbowKitSiweNextAuthProvider` 包裝，確保它嵌套在 NextAuth 的 `SessionProvider` 中，以便它可以訪問會話。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+有了 `RainbowKitSiweNextAuthProvider`，您的用戶將在連接錢包後被要求簽名來進行身份驗證。
 
-#### Customize the SIWE message options
+#### 自定義 SIWE 訊息選項
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+您可以透過將一個函數傳遞給 `RainbowKitSiweNextAuthProvider` 的 `getSiweMessageOptions` 道具來自定義 [SIWE 訊息選項](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+每當創建新訊息時都會調用此函數。從此函數返回的選項將與默認值合併。
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### 在服務器端訪問會話
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+您可以使用從 `next-auth/jwt` 匯入的 NextAuth 的 `getToken` 函數來訪問會話令牌。如果用戶已成功驗證，會話令牌的 `sub` 屬性（即令牌的 "主體"，即用戶）將是用戶的地址。
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+您還可以通過 `getServerSideProps` 從服務器傳遞已解決的會話對象，以便 NextAuth 不需要在客戶端再次解決它。
 
-For example:
+例如：
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+如需了解更多有關管理會話的信息可以參考以下文件：
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [Next.js 身份驗證指南](https://nextjs.org/docs/authentication)
+- [NextAuth 文檔](https://next-auth.js.org)
