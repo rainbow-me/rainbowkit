@@ -121,6 +121,9 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@react-native-async-storage/async-storage':
+        specifier: npm:empty-module@0.0.2
+        version: empty-module@0.0.2
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -240,6 +243,9 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      '@react-native-async-storage/async-storage':
+        specifier: npm:empty-module@0.0.2
+        version: empty-module@0.0.2
       '@remix-run/node':
         specifier: ^2.17.1
         version: 2.17.1(typescript@5.5.4)
@@ -6280,6 +6286,9 @@ packages:
   emojis-list@3.0.0:
     resolution: {integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==}
     engines: {node: '>= 4'}
+
+  empty-module@0.0.2:
+    resolution: {integrity: sha512-NFzPF5kG18UwYoRaXIylf8mpFEGOePZmKnbv3WUsEFxPe0w8NXPovJfm8t+tYoKwYmyRdQ2bZUizl/EiElJ7+g==}
 
   encode-utf8@1.0.3:
     resolution: {integrity: sha512-ucAnuBEhUK4boH2HjVYG5Q2mQyPorvv0u/ocS+zhdw0S8AlHYY+GOFhP1Gio5z4icpP2ivFSvhtFjQi8+T9ppw==}
@@ -19908,6 +19917,8 @@ snapshots:
   emoji-regex@9.2.2: {}
 
   emojis-list@3.0.0: {}
+
+  empty-module@0.0.2: {}
 
   encode-utf8@1.0.3: {}
 

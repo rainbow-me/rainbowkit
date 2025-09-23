@@ -10,6 +10,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.8",
     "@types/react": "^19.1.8",
+    "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
     "react-dom": "^19.1.0",
     "react-scripts": "5.0.1",
     "react": "^19.1.0",
@@ -37,5 +38,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@react-native-async-storage/async-storage"
+      ]
+    }
   }
 }
