@@ -1,13 +1,13 @@
 ---
-title: Custom Avatars
-description: Customizing your app's user avatar
+title: Avatar Tersendiri
+description: Menggubah avatar pengguna aplikasi anda
 ---
 
-# Custom Avatars
+# Avatar Tersendiri
 
-## Customizing your app’s user avatar
+## Menggubah avatar pengguna aplikasi anda
 
-By default we provide an avatar for users in case their ENS image is not set, but you can customize this by providing your own avatar component. You can import the `AvatarComponent` type if using TypeScript:
+Secara lalai, kami menyediakan avatar untuk pengguna sekiranya imej ENS mereka tidak disetkan, tetapi anda boleh menyesuaikan ini dengan menyediakan komponen avatar anda sendiri. Anda boleh mengimport jenis `AvatarComponent` jika menggunakan TypeScript:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-The `AvatarComponent` passed to the `avatar` prop has prop types as follows: `<{ address: string; ensImage?: string | null; size: number;}>`
+Komponen `AvatarComponent` yang diteruskan kepada prop `avatar` mempunyai jenis props seperti berikut: `<{ alamat: string; imejEns?: string | null; saiz: number;}>`
