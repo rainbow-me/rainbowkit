@@ -1,24 +1,24 @@
 ---
-title: Adopting the Rainbow Button in your dApp
-description: A plug-and-play library for Wagmi to support Rainbow wallets in your dApp
+title: dAppでのRainbowボタンの採用方法
+description: WagmiでRainbowウォレットをサポートするためのプラグアンドプレイライブラリ
 image: guide-rainbow-button.png
 ---
 
-# Adopting the Rainbow Button in your dApp
+# dAppでのRainbowボタンの採用方法
 
-The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
+`RainbowButton`コンポーネントは、`wagmi`を使用し、[RainbowKit](https://www.rainbowkit.com/docs/installation)よりもカスタムコネクタ体験を好むdAppに、Rainbowウォレットのサポートを追加する最も簡単な方法です。
 
-**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
+**1. `@rainbow-me/rainbow-button`とそのピア依存関係をインストールしてください。**
 
-The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
+このパッケージはNext.js、React、Viteと互換性があります。ピア依存関係の警告に注意してください。
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Configure with Wagmi and install the RainbowButton**
+**2. Wagmiと構成し、RainbowButtonをインストールしてください。**
 
-Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
+`rainbowConnector`のインスタンスをWagmiの`createConfig`に`projectId`と`appName`と共に渡し、アプリを`RainbowButtonProvider`でラップします。次に、`RainbowButton`コンポーネントをドロップインします。
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-You can also use the `RainbowButton.Custom` component for custom implementations and styling.
+カスタムな実装やスタイリングには、`RainbowButton.Custom`コンポーネントを使用することもできます。
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ You can also use the `RainbowButton.Custom` component for custom implementations
 </RainbowButton.Custom>
 ```
 
-**3. And that's it!**
+**3. 以上です！**
 
-Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
+これで、ユーザーはメンテナンスやトラブルを心配することなく、Rainbowのシームレスな接続体験を楽しむことができます。
 
-A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
+追加のウォレットサポートを採用したい場合は、[RainbowKit](https://www.rainbowkit.com/docs/installation)で[`WalletButton`](https://www.rainbowkit.com/docs/wallet-button)コンポーネントも利用できます。
