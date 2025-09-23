@@ -1,13 +1,13 @@
 ---
-title: Custom App Info
-description: Customizing your app's info
+title: Maklumat Aplikasi Tersuai
+description: Menyesuaikan maklumat aplikasi anda
 ---
 
-# Custom App Info
+# Maklumat Aplikasi Tersuai
 
-## Customizing your app’s info
+## Menyesuaikan maklumat aplikasi anda
 
-You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
+Anda boleh memasukkan maklumat aplikasi anda dalam prop `appInfo` untuk `RainbowKitProvider`. Ciri-ciri yang boleh anda ubah ialah nama aplikasi anda (`appName`) dan pautan di mana butang "Pelajari Lebih Lanjut" dalam mod sambungan mengarah (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### Add a Disclaimer
+### Tambah Penafian
 
-You can provide your own disclaimer to be displayed at the bottom of the connection modal. The `disclaimer` property in `appInfo` takes a `DisclaimerComponent` with arguments `Text` and `Link`. You can use it to build your own disclaimer that inherits the theming system. We export the `DisclaimerComponent` type for TypeScript users:
+Anda boleh menyediakan penafian anda sendiri untuk dipaparkan di bahagian bawah mod sambungan. Ciri `disclaimer` dalam `appInfo` mengambil `DisclaimerComponent` dengan argumen `Text` dan `Link`. Anda boleh menggunakannya untuk membina penafian anda sendiri yang mewarisi sistem tema. Kami mengekspor jenis `DisclaimerComponent` untuk pengguna TypeScript:
 
 ```tsx
 import {
