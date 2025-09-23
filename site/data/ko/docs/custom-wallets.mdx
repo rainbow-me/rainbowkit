@@ -1,17 +1,17 @@
 ---
-title: Custom Wallets
-description: Create a custom wallet
+title: 사용자 정의 지갑
+description: 사용자 정의 지갑 생성
 ---
 
-# Custom Wallets
+# 사용자 정의 지갑
 
-## Create a custom wallet
+## 사용자 정의 지갑 생성
 
-> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
+> 참고: 이 API는 안정적이지 않으며 가까운 미래에 변경될 가능성이 있습니다. 시간이 지남에 따라 더 많은 내장 지갑이 추가될 예정입니다. 관심 있는 지갑이 있다면 [알려주세요](https://github.com/rainbow-me/rainbowkit/issues).
 
-The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
+`Wallet` 함수 타입은 사용자 정의 지갑을 정의하는 데 도움을 줍니다. 다음 속성들을 `Wallet` 함수의 반환 값에 설정할 수 있습니다.
 
-### Wallet Properties
+### 지갑 속성
 
 <PropsTable
   data={[
@@ -19,45 +19,45 @@ The `Wallet` function type is provided to help you define your own custom wallet
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: '지갑 당 고유 ID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '사람이 읽을 수 있는 지갑 이름',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'EIP6963을 지원하는 지갑의 RDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: '모바일 사용을 위한 선택적 짧은 이름',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        '지갑 아이콘의 URL 또는 Base64 데이터 URL로 변환되는 프로미스',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        '브라우저 확장 및 모바일 앱이 있는 지갑의 다운로드 흐름에서 사용되는 강조 색상',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '지갑 아이콘 로드 시 배경 색상',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          지갑이 설치된 것으로 알려져 있는지 여부 또는 {' '}
+          <code>undefined</code>로 불확정인 경우
         </>
       ),
     },
@@ -75,7 +75,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '다운로드 URL을 포함하는 객체',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '지갑 목록에서 이 지갑을 숨기는지 여부를 계산하는 함수입니다. 예를 들어 내장 "Injected Wallet" 대체 기능이 이 특징을 사용합니다',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '아래에 설명된 다양한 연결 방법을 위한 커넥터 인스턴스를 제공하기 위한 함수',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        '모바일 지갑 연결 URI를 해결하기 위한 함수',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: '데스크톱 앱 딥 링크를 해결하기 위한 함수',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'QR 코드 URI를 해결하기 위한 함수와 선택적 모바일 지갑 설정 지침을 포함하는 객체',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ The `Wallet` function type is provided to help you define your own custom wallet
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        '선택적 브라우저 확장 설정 지침을 포함하는 객체',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: '커넥터 인스턴스를 제공하기 위한 함수',
     },
   ]}
 />
 
-### DownloadUrls Properties
+### DownloadUrls 속성
 
 <PropsTable
   data={[
@@ -155,58 +155,58 @@ The `Wallet` function type is provided to help you define your own custom wallet
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        '안드로이드 또는 iOS가 사용할 수 없는 경우 모바일 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        '모바일 다운로드 QR 코드를 스캔하는 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome 웹 스토어 URL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge 애드온 URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'Firefox 브라우저 애드온 URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera 애드온 URL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac 앱 스토어 URL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        '브라우저 호환 URL이 사용할 수 없는 경우 데스크톱 확장 사용자를 위한 랜딩 페이지',
     },
   ]}
 />
 
-### Examples
+### 예시들
 
-For example, to create a custom wallet using WalletConnect:
+예를 들어, WalletConnect를 사용해 사용자 정의 지갑을 생성하려면:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
+그런 다음 [지갑 목록](/docs/custom-wallet-list)에 사용자 정의 지갑을 추가할 수 있습니다.
