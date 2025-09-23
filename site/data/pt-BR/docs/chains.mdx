@@ -1,35 +1,35 @@
 ---
-title: Chains
-description: Customizing chains
+title: Cadeias
+description: Personalizando cadeias
 ---
 
-# Chains
+# Cadeias
 
-## Customizing chains
+## Personalizando cadeias
 
-RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
+O RainbowKit é projetado para integrar-se com o [objeto `chain` do wagmi](https://wagmi.sh/react/chains). Confira a lista de cadeias suportadas [aqui](https://wagmi.sh/react/chains#supported-chains).
 
-### Customizing the initial chain
+### Personalizando a cadeia inicial
 
-By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
+Por padrão, o RainbowKit conectará à primeira cadeia fornecida para o Wagmi. Este comportamento pode ser personalizado através da propriedade `initialChain`.
 
-The initial chain can be configured using a chain ID.
+A cadeia inicial pode ser configurada usando um ID de cadeia.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-As a convenience, you can also pass a chain object.
+Para maior comodidade, você também pode passar um objeto de cadeia.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Custom chain metadata
+### Metadados de cadeia personalizados
 
-Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
+Vários ícones e planos de fundo de cadeia são fornecidos por padrão, mas você pode personalizar o ícone e o plano de fundo para cada cadeia usando as propriedades `iconUrl` e `iconBackground`.
 
-Example with `getDefaultConfig`
+Exemplo com `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`
+Exemplo com `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
