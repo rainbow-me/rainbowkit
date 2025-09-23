@@ -21,15 +21,15 @@ description: Аутентифікація користувачів
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### Налаштуйте провайдера
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+У вашому компоненті `App`, імпортуйте `RainbowKitSiweNextAuthProvider`.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+Обгорніть `RainbowKitProvider` за допомогою `RainbowKitSiweNextAuthProvider`, переконавшись, що він знаходиться всередині `SessionProvider` від NextAuth, щоб мати доступ до сесії.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+З `RainbowKitSiweNextAuthProvider` на місці, тепер ваших користувачів буде запрошено аутентифікуватися, підписавши повідомлення після підключення їхнього гаманця.
 
-#### Customize the SIWE message options
+#### Налаштуйте опції повідомлення SIWE
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+Ви можете налаштувати [опції повідомлення SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters), передавши функцію до пропу `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+Ця функція буде викликатися кожного разу, коли створюється нове повідомлення. Опції, повернені з цієї функції, будуть об'єднані з параметрами за замовчуванням.
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### Доступ до сесії на серверній стороні
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+Ви можете отримати доступ до токена сесії за допомогою функції NextAuth `getToken`, імпортованої з `next-auth/jwt`. Якщо користувач успішно аутентифікований, властивість `sub` токена сесії ("суб'єкт" токена, тобто користувач) буде адресою користувача.
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+Ви також можете передати об'єкт сесії, який був розгорнутий на сервері, через `getServerSideProps`, щоб NextAuth не потребував його повторного розгортання на клієнті.
 
-For example:
+Наприклад:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+Для отримання додаткової інформації про управління сесією ви можете звернутися до наступної документації:
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [Посібник з аутентифікації Next.js](https://nextjs.org/docs/authentication)
+- [Документація NextAuth](https://next-auth.js.org)
