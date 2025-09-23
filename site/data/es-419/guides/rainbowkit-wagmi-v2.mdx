@@ -1,32 +1,32 @@
 ---
-title: Upgrading your dApp for RainbowKit v2
-description: RainbowKit and Wagmi have been promoted to v2
-image: guide-rainbowkit-v2.png
+title: Actualizando tu dApp a RainbowKit v2
+description: RainbowKit y Wagmi han sido promovidos a v2
+image: guia-boton-arcoiris.png
 ---
 
-# Migrating to RainbowKit and Wagmi v2
+# Migrando a RainbowKit y Wagmi v2
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+Las dependencias `wagmi` y `viem` ahora han alcanzado la versión `2.x.x` con cambios disruptivos.
 
-Follow the steps below to migrate.
+Sigue los pasos a continuación para migrar.
 
-**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+**1. Actualiza RainbowKit, `wagmi`, y `viem` a sus últimas versiones**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Install `@tanstack/react-query` peer dependency**
+**2. Instalar la dependencia `@tanstack/react-query`**
 
-With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+Con Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) es ahora una dependencia necesaria.
 
-Install it with the following command:
+Instálalo con el siguiente comando:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+**3. Actualiza tus configuraciones de RainbowKit y Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Check for breaking changes in `wagmi` and `viem`**
+**4. Verifica los cambios significativos en `wagmi` y `viem`**
 
-If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
+Si utilizas hooks de `wagmi` y acciones de `viem` en tu dApp, necesitarás seguir las guías de migración para v2:
 
-- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Guía de Migración a Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Cambios Disruptivos en Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### Cambios en RainbowKit
 
-**1. Improved behavior for EIP-6963 wallets**
+**1. Comportamiento mejorado para billeteras EIP-6963**
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+Las billeteras que soportan el nuevo estándar de conexión EIP-6963 (incluyendo Rainbow, MetaMask y más) ahora aparecerán automáticamente en una sección `Instalado` durante la experiencia de Conectar Billetera, asegurando que los usuarios siempre puedan encontrar sus billeteras favoritas y conectarse a las dApps sin conflictos o botones de respaldo.
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to support all platforms.
+Los desarrolladores continúan teniendo control total sobre la Lista Personalizada de Billeteras para enfatizar las billeteras preferidas por los usuarios finales. Se recomienda continuar incluyendo `injectedWallet` y `walletConnectWallet` en tu lista para soportar todas las plataformas.
 
-**2. Wagmi configuration with getDefaultConfig**
+**2. Configuración de Wagmi con getDefaultConfig**
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+Esta nueva API simplifica la experiencia de configuración y reemplaza la necesidad de usar `createConfig` de Wagmi directamente. La configuración de cadenas se simplifica, incluyendo proveedores públicos inferidos para `transports`.
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+La lista de billeteras predeterminada se incluirá automáticamente, relegando la necesidad de usar `getDefaultWallets` y `connectorsForWallets`.
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+Puedes crear una Lista de Billeteras Personalizadas pasando conectores de billetera importados o personalizados a `wallets`. Ya no es necesario instanciar conectores de billetera y pasar `projectId` y `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. Cadenas Personalizadas**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+El tipo `Chain` ha cambiado de acuerdo con Wagmi v2 y continúa soportando los metadatos `iconUrl` e `iconBackground` de RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -159,7 +159,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+Ejemplo con `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -174,7 +174,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+Ejemplo con `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ Example with `createConfig`:
   })
 ```
 
-**5. Custom Wallets**
+**5. Billeteras Personalizadas**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+Los conectores de billetera de RainbowKit han experimentado cambios sustanciales para soportar Wagmi v2. Consulta la [documentación actualizada](https://www.rainbowkit.com/docs/custom-wallets) y un [conector de ejemplo](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para actualizar cualquier Conector de Billetera Personalizado en tu dApp.
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+Los conectores de billetera ahora también soportan el estándar EIP-6963 con la propiedad `rdns`. Asegúrate de que esto esté poblado para prevenir referencias duplicadas a billeteras que soportan EIP-6963 en tu lista de billeteras.
 
-> Please report any issues or feedback for RainbowKit v2 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Por favor, reporta cualquier problema o comentario sobre RainbowKit v2 en GitHub [aquí](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
