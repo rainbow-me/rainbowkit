@@ -1,35 +1,35 @@
 ---
-title: Chains
-description: Customizing chains
+title: Zincirler
+description: Zincirleri Özelleştirme
 ---
 
-# Chains
+# Zincirler
 
-## Customizing chains
+## Zincirleri Özelleştirme
 
-RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit, [wagmi'nin `chain` nesnesi](https://wagmi.sh/react/chains) ile entegrasyon sağlamak üzere tasarlanmıştır. Desteklenen zincirlerin listesini [buradan](https://wagmi.sh/react/chains#supported-chains) inceleyebilirsiniz.
 
-### Customizing the initial chain
+### Başlangıç Zincirini Özelleştirme
 
-By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
+Varsayılan olarak, RainbowKit Wagmi'ye sağlanan ilk zincire bağlanacaktır. Bu davranış, `initialChain` özelliği ile özelleştirilebilir.
 
-The initial chain can be configured using a chain ID.
+Başlangıç zinciri, bir zincir ID'si kullanılarak yapılandırılabilir.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-As a convenience, you can also pass a chain object.
+Kolaylık sağlamak için ayrıca bir zincir nesnesi de geçebilirsiniz.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Custom chain metadata
+### Özel Zincir Meta Verileri
 
-Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
+Varsayılan olarak birkaç zincir simgesi ve arka plan sağlanır, ancak her bir zincirin simgesini ve arka planını `iconUrl` ve `iconBackground` özelliklerini kullanarak özelleştirebilirsiniz.
 
-Example with `getDefaultConfig`
+`getDefaultConfig` ile Örnek
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`
+`createConfig` ile Örnek
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
