@@ -1,13 +1,13 @@
 ---
-title: Custom Avatars
-description: Customizing your app's user avatar
+title: 自訂頭像
+description: 自訂應用程式的用戶頭像
 ---
 
-# Custom Avatars
+# 自訂頭像
 
-## Customizing your app’s user avatar
+## 自訂應用程式的用戶頭像
 
-By default we provide an avatar for users in case their ENS image is not set, but you can customize this by providing your own avatar component. You can import the `AvatarComponent` type if using TypeScript:
+默認情況下，如果用戶的ENS圖片未設置，我們會提供一個預設頭像，但您可以透過提供自己的頭像組件來進行自訂。使用TypeScript時，您可以匯入`AvatarComponent`型別：
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-The `AvatarComponent` passed to the `avatar` prop has prop types as follows: `<{ address: string; ensImage?: string | null; size: number;}>`
+傳遞到`avatar`屬性的`AvatarComponent`具有以下屬性型別：`<{ address: string; ensImage?: string | null; size: number;}>`
