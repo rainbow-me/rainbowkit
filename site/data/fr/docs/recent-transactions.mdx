@@ -1,17 +1,17 @@
 ---
 title: Transactions Récentes
-description: Show your recent transactions
+description: Afficher vos transactions récentes
 ---
 
 # Transactions Récentes
 
-## Show your recent transactions
+## Afficher vos transactions récentes
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+Vous pouvez choisir d'afficher les transactions récentes dans le modal de compte de RainbowKit. Notez que toutes les transactions sont conservées dans le stockage local et doivent être enregistrées manuellement avec RainbowKit pour être affichées.
 
-The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+La mise en œuvre par défaut de `ConnectButton` affichera également un indicateur de chargement autour de l'avatar de l'utilisateur s'il y a des transactions en attente. Des implémentations personnalisées de `ConnectButton` peuvent recréer ce comportement via la propriété `account.hasPendingTransactions` qui est transmise à votre fonction de rendu.
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+Pour utiliser cette fonction, activez d'abord l'option `showRecentTransactions` sur `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+Les transactions peuvent ensuite être enregistrées avec RainbowKit en utilisant le hook `useAddRecentTransaction`.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+Une fois qu'une transaction a été enregistrée avec RainbowKit, son statut sera mis à jour une fois terminée.
 
-By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+Par défaut, la transaction sera considérée comme terminée une fois qu'un seul bloc aura été miné sur le bloc dans lequel la transaction a été minée, mais cela peut être configuré en spécifiant une valeur personnalisée pour `confirmations`.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
