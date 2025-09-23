@@ -1,15 +1,15 @@
 ---
-title: Installation
-description: Get up and running with RainbowKit
+title: Pemasangan
+description: Mula menggunakan RainbowKit
 ---
 
-# Installation
+# Pemasangan
 
-## Get up and running with RainbowKit
+## Mula menggunakan RainbowKit
 
-### Quick start
+### Permulaan cepat
 
-You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+Anda boleh membina projek baru RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) dengan salah satu perintah berikut, menggunakan pengurus pakej pilihan anda:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -19,23 +19,23 @@ pnpm create @rainbow-me/rainbowkit@latest
 yarn create @rainbow-me/rainbowkit
 ```
 
-This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+Ini akan meminta anda untuk nama projek, menjana direktori baru yang mengandungi projek templat, dan memasang semua kebergantungan yang diperlukan.
 
-Alternatively, you can manually integrate RainbowKit into your existing project.
+Sebagai alternatif, anda boleh mengintegrasikan RainbowKit secara manual ke dalam projek sedia ada anda.
 
-### Manual setup
+### Tetapan manual
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+Pasang RainbowKit dan kebergantungan setara, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), dan [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> Note: RainbowKit is a [React](https://reactjs.org/) library.
+> Nota: RainbowKit adalah perpustakaan [React](https://reactjs.org/).
 
 #### Import
 
-Import RainbowKit, Wagmi and TanStack Query.
+Import RainbowKit, Wagmi dan TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -58,11 +58,11 @@ import {
 } from "@tanstack/react-query";
 ```
 
-#### Configure
+#### Konfigurasi
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+Konfigurasikan rantai yang anda inginkan dan jana penyambung yang diperlukan. Anda juga perlu menyiapkan konfigurasi `wagmi`. Jika dApp anda menggunakan rendering sisi pelayan (SSR), pastikan meletakkan `ssr` kepada `true`.
 
-> Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+> Nota: Setiap dApp yang bergantung pada WalletConnect kini perlu mendapatkan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini adalah percuma sepenuhnya dan hanya mengambil masa beberapa minit.
 
 ```tsx line=4-99
 ...
@@ -76,9 +76,9 @@ const config = getDefaultConfig({
 });
 ```
 
-#### Wrap providers
+#### Bungkus penyedia
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Bungkus aplikasi anda dengan `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), dan [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
@@ -96,9 +96,9 @@ const App = () => {
 };
 ```
 
-#### Add the connect button
+#### Tambahkan butang sambung
 
-Then, in your app, import and render the `ConnectButton` component.
+Kemudian, dalam aplikasi anda, import dan paparkan komponen `ConnectButton`.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -108,15 +108,15 @@ export const YourApp = () => {
 };
 ```
 
-RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+RainbowKit kini akan menguruskan pemilihan dompet pengguna anda, memaparkan maklumat dompet/transaksi dan menangani penukaran rangkaian/dompet.
 
-#### Additional build tooling setup
+#### Penetapan alat pembinaan tambahan
 
-Some build tools will require additional setup.
+Beberapa alat pembinaan memerlukan persediaan tambahan.
 
 ##### Remix
 
-When using [Remix](https://remix.run), you must polyfill `buffer`, `events` and `http` modules. Reference the Remix configuration below, or [our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Apabila menggunakan [Remix](https://remix.run), anda mesti mengisi modul `buffer`, `events`, dan `http`. Rujuk konfigurasi Remix di bawah, atau [projek contoh Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Preparing to deploy
+### Bersedia untuk penerapan
 
-By default, your dApp uses public RPC providers for each chain to fetch balances, resolve ENS names, and more. This can often cause reliability issues for your users as public nodes are rate-limited. You should instead purchase access to an RPC provider through services like [Alchemy](https://www.alchemy.com/) or [QuickNode](https://www.quicknode.com/), and define your own Transports in Wagmi. This can be achieved by adding the `transports` param in `getDefaultConfig` or via Wagmi's `createConfig` directly.
+Secara lalai, dApp anda menggunakan penyedia RPC awam untuk setiap rantai untuk mendapatkan baki, menyelesaikan nama ENS, dan banyak lagi. Ini boleh menyebabkan masalah kebolehpercayaan untuk pengguna anda kerana nod awam dikenakan had kadar. Sebaiknya anda membeli akses ke penyedia RPC melalui perkhidmatan seperti [Alchemy](https://www.alchemy.com/) atau [QuickNode](https://www.quicknode.com/), dan mentakrifkan Transports anda sendiri dalam Wagmi. Ini dapat dicapai dengan menambah parameter `transports` di `getDefaultConfig` atau melalui `createConfig` Wagmi secara langsung.
 
-A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
+Transport adalah lapisan tengah jaringan yang mengurus penghantaran permintaan JSON-RPC ke Penyedia Node Ethereum (seperti Alchemy, Infura, dll).
 
-**Example with an `http` transport**
+**Contoh dengan `http` transport**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,25 +152,25 @@ const config = getDefaultConfig({
 });
 ```
 
-For more details, view the [wagmi transport docs](https://wagmi.sh/core/api/transports#transports).
+Untuk keterangan lanjut, lihat [dokumen transport wagmi](https://wagmi.sh/core/api/transports#transports).
 
-### Add your own functionality
+### Tambahkan fungsi anda sendiri
 
-Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)
+Sekarang pengguna anda dapat menyambungkan dompet mereka, anda boleh mula membina selebihnya aplikasi anda menggunakan [wagmi.](https://wagmi.sh)
 
-Send transactions, interact with contracts, resolve ENS details and much more with wagmi’s comprehensive suite of React Hooks.
+Hantar transaksi, berinteraksi dengan kontrak, selesaikan perincian ENS dan banyak lagi dengan rangkaian lengkap wagmi’s React Hooks.
 
-For more detail, view the [wagmi documentation.](https://wagmi.sh)
+Untuk maklumat lebih lanjut, rujuk [dokumentasi wagmi.](https://wagmi.sh)
 
-### Further examples
+### Contoh lanjut
 
-To see some running examples of RainbowKit, or even use them to automatically scaffold a new project, check out the [official examples](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+Untuk melihat beberapa contoh berjalan RainbowKit, atau malah menggunakan mereka untuk secara automatik mencipta projek baru, lihat [contoh rasmi](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
 
-To try RainbowKit directly in your browser, check out the CodeSandbox links below:
+Untuk mencuba RainbowKit terus dalam penyemak imbas anda, lihat pautan CodeSandbox di bawah:
 
-- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- dengan [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- dengan [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- dengan [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- dengan [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- dengan [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- dengan [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
