@@ -1,19 +1,19 @@
 ---
-title: Modal Hooks
-description: Programmatically open modals via Hooks
+title: 모달 훅스
+description: 훅스를 통해 프로그래밍 방식으로 모달 열기
 ---
 
-# Modal Hooks
+# 모달 훅스
 
-## Programmatically open modals via Hooks
+## 훅스를 통해 프로그래밍 방식으로 모달 열기
 
-The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
+응용 프로그램에서 모달을 프로그래밍 방식으로 열 수 있도록 하기 위해 다음 훅스가 제공됩니다.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+각각의 훅스는 관련 모달을 열기 위한 함수를 포함하는 객체를 반환합니다. 응용 프로그램이 모달을 열기에 필요한 상태가 아닌 경우, 반환된 함수는 정의되지 않습니다.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
+각 훅은 모달의 상태에 대한 boolean도 반환합니다. 사용자의 지갑 연결 상태에 직접 반응하도록 Wagmi 훅스(예: `useAccount`)에만 의존하는 것이 일반적으로 권장되며, Connect Modal의 상태에 의존하지 않는 것이 좋습니다.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+RainbowKit은 비간섭적이며 반응성이 좋도록 설계되어 있으므로 사용자들이 지갑을 연결하지 않더라도 항상 사용자 인터페이스를 표시해야 합니다. 사용자는 MetaMask에서 직접 지갑을 연결하거나 연결 해제할 수 있으므로 dApp은 기본 연결 상태에 직접 반응해야 합니다.
 
-dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
+Ethereum과 같은 메커니즘으로 서명을 기반으로 사용자 검증을 의존하는 dApp은 대신 [Authentication](/docs/authentication) 기능을 사용해야 합니다.
