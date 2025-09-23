@@ -1,17 +1,17 @@
 ---
-title: Localization
-description: Customizing your dApp's language with built-in translations
+title: 현지화
+description: 내장 번역으로 dApp의 언어 사용자 정의
 ---
 
-# Localization
+# 현지화
 
-## Customizing your dApp's language with built-in translations
+## 내장 번역으로 dApp의 언어 사용자 정의
 
-By default, RainbowKit supports the `en-US` locale for English language users.
+기본적으로 RainbowKit은 영어 사용자를 위한 `en-US` 로케일을 지원합니다.
 
-If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
+가능한 경우, RainbowKit은 사용자의 [선호 언어](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)를 감지하여 적합한 번역을 선택합니다. 개발자는 기본 언어를 항상 재정의할 수 있습니다.
 
-To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
+사용자에게 언어를 지정하기 위해 `RainbowKitProvider`의 속성으로 `locale="zh-CN"`을 추가하세요.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### Using with Next.js
+### Next.js와 함께 사용하기
 
-RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+RainbowKit의 현지화 지원은 [서브 경로 라우팅](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)과 함께 사용되면 더욱 향상됩니다.
 
-Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
+사용자의 프로젝트를 아래 예시와 같이 구성하여, 검색 엔진과 사용자가 다국어 지원을 더 잘 발견할 수 있도록 /locale/ 서브 경로를 추가하세요.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Configure your Next.js project like the example below to add an optional `/local
 }
 ```
 
-Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
+그런 다음 Pages Router에서 제공하는 `locale`을 `RainbowKitProvider`에 전달하세요.
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,19 +54,19 @@ export const App = () => {
 };
 ```
 
-You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+Pages Router의 예시는 [여기](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)에서 참조하실 수 있습니다.
 
-App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
+앱 라우터는 아직 i18n을 지원하지 않습니다. [`next-intl`](https://github.com/amannn/next-intl) 미들웨어를 사용하는 구현 모범 사례는 [여기](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)를 참조하십시오.
 
-It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
+완전한 현지화 지원을 위해 dApp 콘텐츠를 번역할 때 같은 기법을 사용하는 것이 좋습니다. `i18n-js`와 같은 현지화 라이브러리와 Crowdin과 같은 관리 도구가 이 과정을 간소화 해줄 것입니다.
 
-### Supported Languages
+### 지원 언어
 
-We provide full support for the following `locale` regions:
+다음 `locale` 지역에 대한 완전한 지원을 제공합니다:
 
 <Table
   header={[
-    'Language', 'Region', 'Locale', 'Shortform'
+    '언어', '지역', '로케일', '약어'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
@@ -94,4 +94,4 @@ We provide full support for the following `locale` regions:
   ]}
 />
 
-If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
+추가 언어 지원을 원하시면 [GitHub 논의](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas)를 열어주세요. 가능하면 최대한 빨리 지원하도록 노력하겠습니다.
