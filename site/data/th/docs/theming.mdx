@@ -1,21 +1,21 @@
 ---
-title: Theming
-description: Using and customizing the themes
+title: การตกแต่งธีม
+description: การใช้และปรับแต่งธีม
 ---
 
-# Theming
+# การตกแต่งธีม
 
-## Using and customizing the themes
+## การใช้และปรับแต่งธีม
 
-You can tweak the RainbowKit UI to match your branding. You can pick from a few pre-defined accent colors and border radius configurations.
+คุณสามารถปรับแต่ง RainbowKit UI ให้ตรงกับแบรนด์ของคุณได้ คุณสามารถเลือกจากสีเน้นและขนาดรัศมีขอบที่กำหนดล่วงหน้าได้เล็กน้อย
 
-There are 3 built-in theme functions:
+มีฟังก์ชันธีมในตัว 3 รูปแบบ:
 
-- `lightTheme` &nbsp; (default)
+- `lightTheme` &nbsp; (ค่าเริ่มต้น)
 - `darkTheme`
 - `midnightTheme`
 
-A theme function returns a theme object. You can pass the object to the `RainbowKitProvider`'s `theme` prop.
+ฟังก์ชันธีมจะคืนค่าเป็นวัตถุธีม คุณสามารถส่งวัตถุนี้ไปยัง `RainbowKitProvider` ตำแหน่ง `theme` ได้
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-If you want, you can pass in `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` and `overlayBlur` to customize them.
+หากต้องการ คุณสามารถส่งค่า `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` และ `overlayBlur` เพื่อนำมาปรับแต่งได้
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### Customizing the built-in themes
+### การปรับแต่งธีมในตัว
 
-The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
+ฟังก์ชันธีมในตัวยังรับวัตถุออปชัน ซึ่งช่วยให้คุณสามารถเลือกจากสไตล์ภาพที่แตกต่างกันได้หลายรูปแบบ
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ The built-in theme functions also accept an options object, allowing you to sele
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'สีพื้นหลัง/ข้อความขององค์ประกอบที่โต้ตอบได้หลายอย่าง',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ The built-in theme functions also accept an options object, allowing you to sele
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'สีที่ใช้สำหรับองค์ประกอบเบื้องหน้าที่แสดงบนสีเน้น',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ The built-in theme functions also accept an options object, allowing you to sele
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'ขนาดของสเกลรัศมีขอบทั้งหมด',
     },
     {
       name: 'fontStack',
@@ -85,20 +85,19 @@ The built-in theme functions also accept an options object, allowing you to sele
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
-    },
+        "สแต็คฟอนต์ที่ใช้ทั่ว UI โปรดทราบว่า `rounded` พยายามใช้ SF Pro Rounded หากไม่มี จะเป็นฟอนต์ระบบแทน",n    },
     {
       name: 'overlayBlur',
       required: false,
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'ความเบลอของพื้นหลังกระบวนการ',
     },
   ]}
 />
 
-For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
+เช่น การปรับแต่งธีมเข้มด้วยสีเน้นสีม่วงและสเกลรัศมีขอบ `medium`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +118,7 @@ const App = () => {
 };
 ```
 
-Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
+ในแต่ละธีมยังมีการตั้งค่าสีกำหนดไว้ล่วงหน้า (`blue`, `green`, `orange`, `pink`, `purple`, `red`) ที่สามารถนำไปใส่ในวัตถุออปชันได้ เช่น การใช้การตั้งค่าสีเน้น `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -138,13 +137,13 @@ const App = () => {
 };
 ```
 
-### Examples
+### ตัวอย่าง
 
-#### Theme function
+#### ฟังก์ชันธีม
 
-Here are a few different ways you can use the `theme` prop.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ `theme` prop ได้
 
-Use the `darkTheme` theme.
+ใช้ธีม `darkTheme`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +155,7 @@ export const App = () => (
 );
 ```
 
-Use the `midnightTheme` theme.
+ใช้ธีม `midnightTheme`
 
 ```tsx
 import {
@@ -171,11 +170,11 @@ export const App = () => (
 );
 ```
 
-#### Accent color
+#### สีเน้น
 
-Here are a few different ways you can use the `accentColor` config.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้การตั้งค่า `accentColor` ได้
 
-Set the accent color to a custom purple value.
+ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +194,7 @@ const App = () => {
 };
 ```
 
-Set the accent color to the built-in `green` preset.
+ตั้งค่าสีเน้นเป็นการตั้งค่า `green` ที่กำหนดไว้ล่วงหน้า
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -214,11 +213,11 @@ const App = () => {
 };
 ```
 
-#### Border radius
+#### รัศมีขอบ
 
-Here are a few different ways you can use the `borderRadius` config.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้การตั้งค่า `borderRadius` ได้
 
-Set the border radius to `medium`.
+ตั้งค่ารัศมีขอบเป็น `medium`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +236,7 @@ const App = () => {
 };
 ```
 
-Set the border radius to `none`.
+ตั้งค่ารัศมีขอบเป็น `none`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +255,13 @@ const App = () => {
 };
 ```
 
-> Reminder: the available border radius valies are: `large` (default), `medium`, `small` and `none`.
+> เตือนความจํา: ค่ารัศมีขอบที่สามารถใช้งานได้คือ: `large` (ค่าเริ่มต้น), `medium`, `small` และ `none`
 
-#### Font stack
+#### สแต็กฟอนต์
 
-By default, the `fontStack` is set to `rounded`. But here's how you can use the `fontStack` config.
+โดยค่าเริ่มต้นนั้น `fontStack` จะตั้งค่าเป็น `rounded` นี่คือวิธีการใช้การตั้งค่า `fontStack`
 
-Set the font stack to `system`.
+ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +280,11 @@ const App = () => {
 };
 ```
 
-#### Overlay blur
+#### การเบลอเลเยอร์ใน
 
-By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
+โดยค่าเริ่มต้นนั้น `overlayBlur` จะตั้งค่าเป็น `none` นี่คือวิธีการใช้การตั้งค่า `overlayBlur`
 
-Set the overlay blur to `small`.
+ตั้งค่าเบลอเลเยอร์ในเป็น `small`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +303,14 @@ const App = () => {
 };
 ```
 
-#### Mix and match
+#### ผสมและจับคู่
 
-Here are a few different ways you can use different themes, with `accentColor`, `borderRadius` and `fontStack` props together.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ธีมที่แตกต่างกันได้ พร้อมกับคุณสมบัติ `accentColor`, `borderRadius` และ `fontStack`
 
-- Use the `lightTheme` theme
-- Set the accent color to a custom purple value
-- Set the border radius to `medium`
-- Set the font stack to `system`
+- ใช้ธีม `lightTheme`
+- ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง
+- ตั้งค่ารัศมีขอบเป็น `medium`
+- ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +332,10 @@ const App = () => {
 };
 ```
 
-- Use the `midnightTheme` theme
-- Set the accent color to the built-in `pink` preset.
-- Set the border radius to `small`
-- Set the font stack to `system`
+- ใช้ธีม `midnightTheme`
+- ตั้งค่าสีเน้นเป็นการตั้งค่า `pink` ที่กำหนดไว้ล่วงหน้า
+- ตั้งค่ารัศมีขอบเป็น `small`
+- ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import {
@@ -360,9 +359,9 @@ const App = () => {
 };
 ```
 
-#### Dark mode support
+#### รองรับโหมดมืด
 
-If your app uses the standard `prefers-color-scheme: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
+หากแอปของคุณใช้คิวรี่สื่อ `prefers-color-scheme: dark` มาตรฐานเพื่อสลับระหว่างโหมดสว่างและโหมดเข้ม คุณสามารถกำหนดวัตถุธีมไดนามิกที่มีค่า `lightMode` และ `darkMode` ได้ตามต้องการ
 
 ```tsx
 import {
