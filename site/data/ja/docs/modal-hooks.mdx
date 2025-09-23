@@ -1,19 +1,19 @@
 ---
-title: Modal Hooks
-description: Programmatically open modals via Hooks
+title: モーダルフック
+description: フックを使用してプログラムでモーダルを開く
 ---
 
-# Modal Hooks
+# モーダルフック
 
-## Programmatically open modals via Hooks
+## フックを使用してプログラムでモーダルを開く
 
-The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
+次のフックは、アプリケーション内でどこからでもモーダルをプログラム的に開くために提供されます。
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+これらのフックのそれぞれは、対応するモーダルを開くための関数を含むオブジェクトを返します。モーダルを開くための必要な状態にない場合、返された関数は未定義になります。
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
+各フックはまた、モーダルのステータスを示すブール値を返します。一般的に、ウォレット接続のステータスに応じてユーザーの反応を直接確認するために、Connect Modalの状態に頼るのではなく、Wagmiのフック（例：`useAccount`）のみに頼ることが推奨されます。
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+RainbowKitは非中断的かつレスポンシブに設計されているため、dAppはユーザーがウォレットを接続しているかどうかにかかわらず、常にインターフェースを表示すべきです。ユーザーはMetaMaskから直接ウォレットを接続または切断することができるため、dAppは基礎となる接続ステータスに直接応答する必要があります。
 
-dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
+ユーザー認証にEthereumでのサインインのようなメカニズムを使用しているdAppは、代わりに[Authentication](/docs/authentication)機能を利用する必要があります。
