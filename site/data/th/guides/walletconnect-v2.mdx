@@ -1,44 +1,44 @@
 ---
-title: Upgrading your dApp to WalletConnect v2
-description: RainbowKit has migrated to v2, and you can prepare your dApp in 5 minutes or less
+title: การอัปเกรดแอปของคุณไปยัง WalletConnect v2
+description: RainbowKit ได้ย้ายไปใช้งาน v2 แล้ว และคุณสามารถเตรียมแอปของคุณภายใน 5 นาทีหรือน้อยกว่า
 image: guide-walletconnect-v2.png
 ---
 
-# Migrating to WalletConnect v2
+# การย้ายไปสู่ WalletConnect v2
 
-## Prepare your dApp for the v2 upgrade in 5 minutes or less
+## เตรียมแอปของคุณสำหรับการอัปเกรดไปยัง v2 ภายใน 5 นาทีหรือน้อยกว่า
 
-The WalletConnect v1 protocol will be shut down on June 28, 2023, and RainbowKit has your back to make the transition super simple.
+โปรโตคอล WalletConnect v1 จะถูกยกเลิกการใช้งานในวันที่ 28 มิถุนายน 2023 และ RainbowKit จะช่วยให้คุณทำการเปลี่ยนผ่านแบบง่ายดาย
 
-Support for WalletConnect v2 is now standard in RainbowKit, without breaking changes. Just upgrade and reference the guide below for additional details.
+การรองรับ WalletConnect v2 ถูกทำเป็นมาตรฐานใน RainbowKit แล้ว ไม่มีการเปลี่ยนแปลงใดๆ เพียงแค่อัปเกรดและอ้างอิงคำแนะนำด้านล่างสำหรับรายละเอียดเพิ่มเติม
 
-#### Understanding WalletConnect v2
+#### ทำความเข้าใจกับ WalletConnect v2
 
-WalletConnect is the protocol that allows users to connect their mobile wallets to your dApp, and it's an important foundation of RainbowKit. The recent release of WalletConnect v2 brings a number of important upgrades to make the wallet-dApp experience even better.
+WalletConnect เป็นโปรโตคอลที่อนุญาตให้ผู้ใช้เชื่อมต่อกระเป๋าเงินมือถือของตนเข้ากับแอปของคุณ และเป็นฐานสำคัญของ RainbowKit การปล่อยตัวล่าสุดของ WalletConnect v2 นำเสนอการอัปเกรดสำคัญหลายอย่างเพื่อทำให้ประสบการณ์การใช้งานดีกว่าที่เคย
 
-With v2, your users can now simultaneously connect to multiple chains, so you can forget about the chain switching handshake. It also broadens support for more networks, and brings improvements that make Sign-in with Ethereum even faster.
+ด้วย v2, ผู้ใช้ของคุณสามารถเชื่อมต่อกับเชนหลาย ๆ เชนพร้อมกันได้ ทำให้คุณไม่ต้องกังวลกับการสลับเชน นอกจากนี้ยังสนับสนุนเครือข่ายมากขึ้นและปรับปรุงการลงชื่อเข้าใช้ด้วย Ethereum ให้เร็วขึ้น
 
-#### Upgrading your dApp
+#### การอัปเกรดแอปของคุณ
 
-If you've already followed the migration guides for RainbowKit `0.12.x` and `1.0.x`, then you're almost there! Just upgrade to the latest patch release and give it a try.
+หากคุณได้ติดตามคำแนะนำการย้ายสำหรับ RainbowKit `0.12.x` และ `1.0.x` แล้ว คุณก็กำลังเกือบสำเร็จ! เพียงอัปเกรดเป็นแพตช์ล่าสุดและลองใช้เลย
 
-RainbowKit enabled WalletConnect v2 by default with `0.12.15` and `1.0.2`. We are continuing support for `0.12.x` in case your dApp has not yet upgraded to wagmi v1 and RainbowKit v1.
+RainbowKit เปิดการใช้งาน WalletConnect v2 โดยค่าเริ่มต้นด้วย `0.12.15` และ `1.0.2` ยังมีการสนับสนุนต่อไปสำหรับ `0.12.x` ในกรณีที่แอปของคุณยังไม่ได้อัปเกรดสู่ wagmi v1 และ RainbowKit v1
 
-**1. Upgrading dependencies**
+**1. การอัปเกรดการพึ่งพา**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 ```
 
-If you're using a version of RainbowKit before `0.12.x` or `1.0.x`, just follow the [Migration Guides](/docs/migration-guide) to get up-to-date.
+หากคุณใช้เวอร์ชั่นของ RainbowKit ก่อน `0.12.x` หรือ `1.0.x` เพียงทำตาม [คู่มือการย้าย](/docs/migration-guide) เพื่อให้ทันสมัย
 
-It is recommended that `0.12.x` dApps begin to upgrade to wagmi v1, as stability improvements for WalletConnect v2 will only be included in future versions of wagmi.
+แนะนำให้แอป `0.12.x` เริ่มอัปเกรดไปสู่ wagmi v1 เพราะการปรับปรุงเสถียรภาพสำหรับ WalletConnect v2 จะรวมอยู่ในเวอร์ชั่นของ wagmi ในอนาคตเท่านั้น
 
-**2. Supplying a projectId**
+**2. การระบุ projectId**
 
-Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+ทุก ๆ dApp ที่พึ่งพา WalletConnect ตอนนี้จำเป็นต้องรับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/). นี่คือแบบฟรีและใช้เวลาไม่กี่นาทีเท่านั้น.
 
-Supply your `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+ส่ง `projectId` ของคุณไปยัง `getDefaultWallets` และตัวเชื่อมต่อกระเป๋าเงิน RainbowKit แบบต่าง ๆ ดังนี้:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -60,7 +60,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit is type-safe and will warn you when a `projectId` is missing. Refer to our examples to see v2 in action:
+RainbowKit ปลอดภัยในการพิมพ์และจะแจ้งเตือนคุณเมื่อไม่มี `projectId` อ้างอิงตัวอย่างของเราเพื่อดู v2 ในการใช้งานจริง:
 
 - [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
@@ -69,4 +69,4 @@ RainbowKit is type-safe and will warn you when a `projectId` is missing. Refer t
 - [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 - [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
 
-Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+อ้างอิง [เอกสาร](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) สำหรับตัวเลือกสนับสนุนเพิ่มเติม
