@@ -1,19 +1,19 @@
 ---
-title: Custom Authentication
-description: Connect to your own authentication back-end
+title: Користувальницька аутентифікація
+description: Підключіться до власного бекенду аутентифікації
 ---
 
-# Custom Authentication
+# Користувальницька аутентифікація
 
-## Connect to your own authentication back-end
+## Підключіться до власного бекенду аутентифікації
 
-While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
+Хоча RainbowKit забезпечує [підтримку Вхід з Ethereum і NextAuth на першокласному рівні,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) ви також можете інтегруватися з користувальницькими бекендами та форматами повідомлень.
 
-### Creating a custom adapter
+### Створення користувальницького адаптера
 
-First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
+Спочатку створіть адаптер аутентифікації. Це дозволяє RainbowKit створювати/готувати повідомлення та взаємодіяти з вашим бекендом.
 
-As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Як приклад, ми можемо створити адаптер аутентифікації, який дозволяє нам використовувати [Sign-In з Ethereum](https://login.xyz) за допомогою деяких налаштовуваних точок API, наприклад, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Providing the authentication state
+#### Надання стану аутентифікації
 
-Assuming your application is already managing the authentication lifecycle in some way, you can pass the current authentication status along with your custom adapter to `RainbowKitAuthenticationProvider`, wrapping your existing `RainbowKitProvider`.
+Припускаючи, що ваш додаток вже певним чином керує життєвим циклом аутентифікації, ви можете передати поточний статус аутентифікації разом із вашим користувальницьким адаптером до `RainbowKitAuthenticationProvider`, обгортаючи ваш існуючий `RainbowKitProvider`.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-If you've got this far and created an adapter for an existing open source authentication library, please consider creating a package for others to use!
+Якщо ви вже створили адаптер для існуючої бібліотеки аутентифікації з відкритим вихідним кодом, будь ласка, розгляньте можливість створення пакета, який можуть використовувати інші!
