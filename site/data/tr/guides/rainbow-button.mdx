@@ -1,24 +1,24 @@
 ---
-title: Adopting the Rainbow Button in your dApp
-description: A plug-and-play library for Wagmi to support Rainbow wallets in your dApp
+title: dApp'ınızda Rainbow Butonu'nu benimsemek
+description: Wagmi için dApp'inizde Rainbow cüzdanlarını desteklemek için tak ve çalıştır kütüphane
 image: guide-rainbow-button.png
 ---
 
-# Adopting the Rainbow Button in your dApp
+# dApp'ınızda Rainbow Butonu'nu benimsemek
 
-The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
+`RainbowButton` bileşeni, dApp'lerinize `wagmi` kullanan ve [RainbowKit](https://www.rainbowkit.com/docs/installation) üzerinde daha özel bir bağlayıcı deneyimini tercih eden kullanıcılar için Rainbow Cüzdan desteği eklemenin en basit yoludur.
 
-**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
+**1. `@rainbow-me/rainbow-button` ve eş bağımlılıklarını yükleyin**
 
-The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
+Paket, Next.js, React ve Vite ile uyumludur. Eş bağımlılık uyarılarına uyduğunuzdan emin olun.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Configure with Wagmi and install the RainbowButton**
+**2. Wagmi ile yapılandırın ve RainbowButton'u yükleyin**
 
-Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
+`rainbowConnector` örneğini, `projectId` ve `appName` ile Wagmi'nin `createConfig`ine aktarın ve uygulamanızı `RainbowButtonProvider` ile sarmalayın. Ardından `RainbowButton` bileşenini yerleştirin.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-You can also use the `RainbowButton.Custom` component for custom implementations and styling.
+Özel uygulamalar ve stil için `RainbowButton.Custom` bileşenini de kullanabilirsiniz.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ You can also use the `RainbowButton.Custom` component for custom implementations
 </RainbowButton.Custom>
 ```
 
-**3. And that's it!**
+**3. Ve bu kadar!**
 
-Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
+Artık kullanıcılarınız Rainbow için sorunsuz bir bağlantı deneyiminin keyfini çıkarabilir — bakım veya baş ağrısı olmadan.
 
-A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
+Ek cüzdanlar için destek benimsemek istiyorsanız, [RainbowKit](https://www.rainbowkit.com/docs/installation) içinde [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) bileşeni de mevcuttur.
