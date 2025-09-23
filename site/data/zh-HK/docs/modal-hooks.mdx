@@ -1,19 +1,19 @@
 ---
-title: Modal Hooks
-description: Programmatically open modals via Hooks
+title: 模式掛鈎
+description: 透過掛鈎以程式化開啟模式
 ---
 
-# Modal Hooks
+# 模式掛鈎
 
-## Programmatically open modals via Hooks
+## 透過掛鈎以程式化開啟模式
 
-The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
+提供以下掛鈎，以允許在應用程式的任何地方程式化地開啟模式。
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+這些掛鈎中的每一個都會返回一個包含開啟各自模式的函數的對象。請注意，如果您的應用程式未處於開啟模式所需的狀態，返回的函數將是未定義。
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
+每個掛鈎還會返回一個布林值以表示模式的狀態。通常建議您完全依賴 Wagmi 的掛鈎（例如 `useAccount`) 以直接對用戶的錢包連接狀態作出反應，而不是依賴於連接模式的狀態。
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+RainbowKit 被設計為非中斷和響應式，因此 dApps 無論用戶是否已連接其錢包，都應始終為用戶呈現介面。用戶可以從 MetaMask 直接連接或斷開其錢包，因此 dApp 必須直接對基礎連接狀態作出響應。
 
-dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
+依賴 Sign-in with Ethereum 做用戶驗證的 dApps 應改為依賴 [身份驗證](/docs/authentication) 功能。
