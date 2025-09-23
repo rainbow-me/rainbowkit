@@ -1,24 +1,24 @@
 ---
-title: Adopting the Rainbow Button in your dApp
-description: A plug-and-play library for Wagmi to support Rainbow wallets in your dApp
+title: Áp dụng Nút Cầu Vồng trong dApp của bạn
+description: Thư viện plug-and-play cho Wagmi để hỗ trợ ví Rainbow trong dApp của bạn
 image: guide-rainbow-button.png
 ---
 
-# Adopting the Rainbow Button in your dApp
+# Áp dụng Nút Cầu Vồng trong dApp của bạn
 
-The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
+Thành phần `RainbowButton` là cách đơn giản nhất để thêm hỗ trợ cho Rainbow Wallet vào dApps sử dụng `wagmi` và ưa thích trải nghiệm kết nối tùy chỉnh hơn so với [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
+**1. Cài đặt `@rainbow-me/rainbow-button` và các phụ thuộc đồng cấp của nó**
 
-The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
+Gói này tương thích với Next.js, React và Vite. Đảm bảo rằng bạn tuân thủ các cảnh báo phụ thuộc đồng cấp.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Configure with Wagmi and install the RainbowButton**
+**2. Cấu hình với Wagmi và cài đặt RainbowButton**
 
-Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
+Truyền một instance của `rainbowConnector` đến `createConfig` của Wagmi với `projectId` và `appName`, và bọc ứng dụng của bạn trong `RainbowButtonProvider`. Sau đó, thả thành phần `RainbowButton`.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-You can also use the `RainbowButton.Custom` component for custom implementations and styling.
+Bạn cũng có thể sử dụng thành phần `RainbowButton.Custom` cho các triển khai và tạo kiểu tùy chỉnh.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ You can also use the `RainbowButton.Custom` component for custom implementations
 </RainbowButton.Custom>
 ```
 
-**3. And that's it!**
+**3. Và thế là xong!**
 
-Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
+Bây giờ người dùng của bạn có thể tận hưởng trải nghiệm kết nối liền mạch cho Rainbow — mà không cần bảo trì hoặc gặp rắc rối gì.
 
-A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
+Một thành phần [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) cũng có sẵn trong [RainbowKit](https://www.rainbowkit.com/docs/installation) nếu bạn muốn hỗ trợ thêm cho các ví khác.
