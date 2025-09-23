@@ -1,19 +1,19 @@
 ---
 title: Modal Hooks
-description: Programmatically open modals via Hooks
+description: เปิดโมดอลด้วยวิธีทางโปรแกรมผ่าน Hooks
 ---
 
 # Modal Hooks
 
-## Programmatically open modals via Hooks
+## เปิดโมดอลด้วยวิธีทางโปรแกรมผ่าน Hooks
 
-The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
+Hooks ต่อไปนี้ถูกจัดเตรียมไว้เพื่อรองรับการเปิดโมดอลในแอปพลิเคชันของคุณด้วยวิธีทางโปรแกรมทุกที่.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+แต่ละ Hook เหล่านี้จะคืนค่าวัตถุที่มีฟังก์ชันสำหรับเปิดโมดอลที่เกี่ยวข้อง. โปรดทราบว่าฟังก์ชันที่ส่งคืนจะไม่ได้กำหนดไว้หากแอปพลิเคชันของคุณไม่ได้อยู่ในสถานะที่ต้องการสำหรับการเปิดโมดอล.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
+Hook แต่ละตัวจะคืนค่าบูลีนสำหรับสถานะของโมดอล. โดยปกติแล้วจะมีการแนะนำให้พึ่งพา Purely บน Wagmi hooks (เช่น `useAccount`) เพื่อตอบสนองต่อสถานะการเชื่อมต่อกระเป๋าเงินของผู้ใช้โดยตรง แทนที่จะพึ่งพาสถานะของ Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+RainbowKit ถูกออกแบบมาให้ไม่มีการรบกวนและตอบสนองต่อการเปลี่ยนแปลงได้ ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้เสมอ ไม่ว่าพวกเขาจะได้เชื่อมต่อกระเป๋าเงินหรือไม่. ผู้ใช้อาจเชื่อมต่อหรือยกเลิกการเชื่อมต่อกระเป๋าเงินของพวกเขาโดยตรงจาก MetaMask ทำให้ dApp ต้องตอบสนองต่อสถานะการเชื่อมต่อพื้นฐานโดยตรง.
 
-dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.
+dApps ที่พึ่งพากลไกอย่างเช่นการลงชื่อเข้าใช้งานด้วย Ethereum เพื่อการตรวจสอบผู้ใช้ควรพึ่งพาฟีเจอร์ [การรับรองตัวตน](/docs/authentication) แทน.
