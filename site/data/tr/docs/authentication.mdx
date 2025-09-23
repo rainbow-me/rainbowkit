@@ -21,15 +21,15 @@ description: Kullanıcılarınızın kimlik doğrulaması
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### Sağlayıcıyı kurun
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+`App` bileşeninizde, `RainbowKitSiweNextAuthProvider`'ı içe aktarın.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+`RainbowKitProvider`'ı `RainbowKitSiweNextAuthProvider` ile sarmalayın, böylece oturuma erişimi olduğundan emin olun.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+`RainbowKitSiweNextAuthProvider` yerinde olduğunda, kullanıcılarınız cüzdanlarını bağladıktan sonra bir mesaj imzalamak için kimlik doğrulama istemi alacaklardır.
 
-#### Customize the SIWE message options
+#### SIWE mesaj seçeneklerini özelleştirin
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+[SIWE mesaj seçeneklerini](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) `RainbowKitSiweNextAuthProvider` üzerindeki `getSiweMessageOptions` özelliğine bir fonksiyon geçirerek özelleştirebilirsiniz.
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+Bu fonksiyon her yeni mesaj oluşturulduğunda çağrılacaktır. Bu fonksiyondan dönen seçenekler varsayılanlarla birleştirilecektir.
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### Oturumu sunucu tarafında erişin
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+Kullanıcı başarılı bir şekilde kimlik doğrulaması yaptığında, oturum token'ının `sub` özelliği (token'ın "konusu", yani kullanıcı) kullanıcının adresi olacaktır.
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+Ayrıca çözümlenmiş oturum nesnesini sunucudan `getServerSideProps` vasıtasıyla iletip NextAuth'ın bunu istemci üzerinde tekrar çözümlemesi gerekmemesini sağlayabilirsiniz.
 
-For example:
+Örneğin:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+Oturumu yönetmek hakkında daha fazla bilgi için aşağıdaki belgelere başvurabilirsiniz:
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [Next.js kimlik doğrulama rehberi](https://nextjs.org/docs/authentication)
+- [NextAuth belgeleri](https://next-auth.js.org)
