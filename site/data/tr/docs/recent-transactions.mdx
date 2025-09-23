@@ -1,17 +1,17 @@
 ---
 title: Son İşlemler
-description: Show your recent transactions
+description: Son işlemlerinizi göster
 ---
 
 # Son İşlemler
 
-## Show your recent transactions
+## Son işlemlerinizi göster
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+RainbowKit'in hesap modali içinde son işlemleri görüntüleme opsiyonuna katılabilirsiniz. Tüm işlemlerin yerel depolamada tutulduğunu ve görüntülenmesi için RainbowKit ile manuel olarak kaydedilmesi gerektiğini unutmayın.
 
-The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+Varsayılan `ConnectButton` uygulaması, bekleyen işlemler varsa, kullanıcının avatarının etrafında bir yükleme göstergesi de gösterecektir. Özel `ConnectButton` uygulamaları, render fonksiyonunuza aktarılan `account.hasPendingTransactions` özelliği aracılığıyla bu davranışı yeniden oluşturabilir.
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+Bu özelliği kullanmak için, önce `RainbowKitProvider` üzerinde `showRecentTransactions` seçeneğini etkinleştirin.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+İşlemler daha sonra `useAddRecentTransaction` kancası kullanılarak RainbowKit ile kaydedilebilir.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+Bir işlem RainbowKit ile kaydedildikten sonra, tamamlandığında durumu güncellenecektir.
 
-By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+Varsayılan olarak, işlem, işlemin işlendiği bloğun üzerine bir tek blok madenciliği yapıldığında tamamlanmış kabul edilir, ancak bu, özel bir `confirmations` değeri belirleyerek yapılandırılabilir.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
