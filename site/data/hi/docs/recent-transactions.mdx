@@ -1,17 +1,17 @@
 ---
 title: हाल के लेन - देन
-description: Show your recent transactions
+description: अपने हाल के लेन-देन दिखाएं
 ---
 
 # हाल के लेन - देन
 
-## Show your recent transactions
+## अपने हाल के लेन-देन दिखाएं
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+आप RainbowKit के अकाउंट मोडल में हाल के लेन-देन को दिखाने के लिए सहमति दे सकते हैं। ध्यान दें कि सभी लेन-देन लोकल स्टोरेज में रखे जाते हैं और दिखाने के लिए उन्हें RainbowKit के साथ मैन्युअल रूप से रजिस्टर करना होगा।
 
-The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+डिफ़ॉल्ट `ConnectButton` इम्प्लीमेंटेशन उपयोगकर्ता के अवतार के इर्द-गिर्द एक लोडिंग इंडिकेटर भी दिखाएगा यदि कोई लेन-देन लंबित है। कस्टम `ConnectButton` इम्प्लीमेंटेशन्स `account.hasPendingTransactions` प्रॉपर्टी का उपयोग कर इस व्यवहार को दोबारा बना सकते हैं जो आपके रेंडर फंक्शन को पास किया जाता है।
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+इस फीचर का उपयोग करने के लिए, पहले `RainbowKitProvider` पर `showRecentTransactions` विकल्प सक्षम करें।
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+लेन-देन को फिर से `useAddRecentTransaction` हुक का उपयोग करके RainbowKit के साथ रजिस्टर किया जा सकता है।
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+एक बार लेन-देन को RainbowKit के साथ रजिस्टर कर लेने पर, उसका स्टेटस पूर्ण होने पर अपडेट हो जाएगा।
 
-By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+डिफ़ॉल्ट रूप से, लेन-देन को पूरा माना जाएगा जब ब्लॉक में जिसे लेन-देन माइन किया गया था, उसके ऊपर एक सिंगल ब्लॉक माइन कर लिया गया हो, लेकिन इसे कस्टम `confirmations` मूल्य निर्दिष्ट करके कॉन्फ़िगर किया जा सकता है।
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
