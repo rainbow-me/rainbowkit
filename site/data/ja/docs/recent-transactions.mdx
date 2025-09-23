@@ -1,17 +1,17 @@
 ---
 title: 最近のトランザクション
-description: Show your recent transactions
+description: 最近の取引を表示する
 ---
 
 # 最近のトランザクション
 
-## Show your recent transactions
+## 最近の取引を表示する
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+RainbowKitのアカウントモーダル内で最近の取引を表示することを選択できます。すべての取引はローカルストレージに保存され、表示するには手動でRainbowKitに登録する必要があります。
 
-The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りに読み込みインジケータを表示します。カスタム`ConnectButton`実装は、あなたのレンダリング関数に渡される`account.hasPendingTransactions`プロパティを介してこの動作を再現できます。
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+この機能を使用するには、まず`RainbowKitProvider`で`showRecentTransactions`オプションを有効にしてください。
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+取引は`useAddRecentTransaction`フックを使用してRainbowKitに登録できます。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+取引がRainbowKitに登録されると、そのステータスは完了時に更新されます。
 
-By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+デフォルトでは、取引はその取引がマインされたブロックに別のブロックが追加された時点で完了と見なされますが、この動作はカスタム `confirmations` 値を指定することで構成できます。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
