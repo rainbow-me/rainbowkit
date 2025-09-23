@@ -1,17 +1,17 @@
 ---
-title: Localization
-description: Customizing your dApp's language with built-in translations
+title: Локалізація
+description: Налаштування мови вашого dApp з вбудованими перекладами
 ---
 
-# Localization
+# Локалізація
 
-## Customizing your dApp's language with built-in translations
+## Налаштування мови вашого dApp з вбудованими перекладами
 
-By default, RainbowKit supports the `en-US` locale for English language users.
+За замовчуванням, RainbowKit підтримує `en-US` локаль для користувачів англійської мови.
 
-If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
+Якщо підтримується, RainbowKit виявить [переваги користувача](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) щодо мови та обере відповідні переклади. Розробники завжди можуть змінити мову за замовчуванням.
 
-To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
+Щоб вказати мову для ваших користувачів, просто додайте `locale="zh-CN"` як проп у ваш `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### Using with Next.js
+### Використання з Next.js
 
-RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+Підтримка локалізації в RainbowKit ще краще працює з [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
+Налаштуйте ваш проект Next.js так, як показано у прикладі нижче, щоб додати додатковий `/locale/` під-шлях до ваших маршрутів, що допоможе пошуковим системам і користувачам краще виявляти вашу багатомовну підтримку.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Configure your Next.js project like the example below to add an optional `/local
 }
 ```
 
-Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
+Потім передайте параметр `locale`, наданий роутером сторінок, в `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,19 +54,19 @@ export const App = () => {
 };
 ```
 
-You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+Ви можете переглянути приклад для роутера сторінок [тут](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
+App Router поки не підтримує i18n. Перегляньте наш окремий приклад [тут](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) для найкращих практик реалізації з [middleware](https://github.com/amannn/next-intl) `next-intl`.
 
-It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
+Рекомендується, щоб ви використовували ті самі методики для перекладу вмісту вашого dApp для підтримки повної локалізації. Бібліотеки локалізації, такі як [`i18n-js`](https://github.com/fnando/i18n) та [`next-intl`](https://github.com/amannn/next-intl), а також інструменти управління, такі як Crowdin, спростять цей процес.
 
-### Supported Languages
+### Підтримувані Мови
 
-We provide full support for the following `locale` regions:
+Ми надаємо повну підтримку для наступних регіонів `locale`:
 
 <Table
   header={[
-    'Language', 'Region', 'Locale', 'Shortform'
+    'Мова', 'Регіон', 'Локаль', 'Скорочення'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
@@ -94,4 +94,4 @@ We provide full support for the following `locale` regions:
   ]}
 />
 
-If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
+Якщо ви хочете побачити підтримку для додаткової мови, будь ласка, відкрийте [обговорення на GitHub](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas), і ми зробимо все можливе, щоб підтримати її якнайшвидше.
