@@ -1,17 +1,15 @@
 ---
-title: Custom Theme
-description: Creating a custom theme
+title: Пользовательская тема
+description: Создание пользовательской темы
 ---
 
-# Custom Theme
+# Пользовательская тема
 
-## Creating a custom theme
+## Создание пользовательской темы
 
-> Note: This API is unstable and likely to change
-> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
-> now.
+> Примечание: Этот API нестабилен и может измениться в ближайшем будущем. Мы рекомендуем пока использовать [встроенные темы](/docs/theming).
 
-While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+Хотя встроенные темы предоставляют некоторый уровень настройки, тип `Theme` позволяет вам определить собственные темы с более низким уровнем доступа к основным переменным темы.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Extending a built-in theme
+### Расширение встроенной темы
 
-You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+Вы можете расширить встроенную тему, не переопределяя всю тему. Это полезно, когда вы хотите изменить только определенные токены темы.
 
-To do that, install `lodash.merge` (or equivalent):
+Для этого установите `lodash.merge` (или аналогичный):
 
 ```bash
 npm install lodash.merge
 ```
 
-Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+Импортируйте его вместе с той темой, которую вы хотите расширить (например: `darkTheme`) и типом `Theme` для использования в TypeScript:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+Затем объедините встроенную тему с токенами темы, которые вы хотите изменить. В этом примере я переопределяю токен `accentColor`, чтобы соответствовать акцентному цвету моего бренда.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+Наконец, теперь вы можете передать вашу пользовательскую тему в свойство `theme` компонента `RainbowKitProvider`.
 
 ```tsx
 const App = () => {
@@ -122,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Creating custom theme selectors
+### Создание пользовательских селекторов тем
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+Если ваше приложение серверно/статически отрисовывается и позволяет пользователям вручную переключаться между темами, система тем RainbowKit может быть подключена к пользовательским селекторам CSS с помощью следующих функций, которые можно использовать с любой системой CSS-in-JS:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+Эти функции возвращают CSS, который устанавливает все необходимые переменные темы. Поскольку поддерживаются как строки, так и объекты, это может быть интегрировано с любой системой CSS-in-JS.
 
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+В качестве основного примера, вы можете рендерить свой собственный элемент `style` с пользовательскими селекторами для каждой темы. Поскольку мы берем на себя управление рендерингом CSS-темы, мы передаем `null` в свойство `theme`, чтобы RainbowKitProvider не рендерил для нас какие-либо стили. Обратите также внимание на использование опции extends в функции cssStringFromTheme, которая исключает любые переменные темы, совпадающие с базовой темой.
 
 ```tsx
 import {
