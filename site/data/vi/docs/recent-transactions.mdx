@@ -1,17 +1,17 @@
 ---
 title: Giao dịch gần đây
-description: Show your recent transactions
+description: Hiển thị giao dịch gần đây của bạn
 ---
 
 # Giao dịch gần đây
 
-## Show your recent transactions
+## Hiển thị giao dịch gần đây của bạn
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+Bạn có thể chọn hiển thị các giao dịch gần đây trong modal tài khoản của RainbowKit. Lưu ý rằng tất cả các giao dịch được lưu trữ cục bộ và phải được đăng ký thủ công với RainbowKit để được hiển thị.
 
-The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+Mặc định, hiện thực `ConnectButton` sẽ hiển thị chỉ báo đang tải quanh hình đại diện người dùng nếu có bất kỳ giao dịch nào đang chờ xử lý. Các hiện thực `ConnectButton` tùy chỉnh có thể tái tạo hành vi này thông qua thuộc tính `account.hasPendingTransactions` được truyền vào hàm render của bạn.
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+Để sử dụng tính năng này, trước tiên hãy bật tùy chọn `showRecentTransactions` trên `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+Các giao dịch sau đó có thể được đăng ký với RainbowKit bằng cách sử dụng hook `useAddRecentTransaction`.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+Khi một giao dịch đã được đăng ký với RainbowKit, trạng thái của nó sẽ được cập nhật sau khi hoàn tất.
 
-By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+Mặc định, giao dịch sẽ được coi là hoàn tất sau khi một block đã được đào trên block chứa giao dịch, nhưng điều này có thể được cấu hình bằng cách chỉ định giá trị `confirmations` tùy chỉnh.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
