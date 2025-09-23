@@ -21,15 +21,15 @@ Instale o pacote `@rainbow-me/rainbowkit-siwe-next-auth`.
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### Configure o provedor
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+No seu componente `App`, importe `RainbowKitSiweNextAuthProvider`.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+Envolva `RainbowKitProvider` com `RainbowKitSiweNextAuthProvider`, garantindo que ele esteja aninhado dentro do `SessionProvider` do NextAuth para que tenha acesso à sessão.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+Com o `RainbowKitSiweNextAuthProvider` em vigor, seus usuários serão agora solicitados a autenticar assinando uma mensagem assim que conectarem sua carteira.
 
-#### Customize the SIWE message options
+#### Personalize as opções da mensagem SIWE
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+Você pode personalizar as [opções de mensagem SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) passando uma função para a prop `getSiweMessageOptions` em `RainbowKitSiweNextAuthProvider`.
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+Esta função será chamada sempre que uma nova mensagem for criada. As opções retornadas por esta função serão mescladas com os padrões.
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### Acesse a sessão no lado do servidor
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+Você pode acessar o token da sessão com a função `getToken` do NextAuth importada de `next-auth/jwt`. Se o usuário foi autenticado com sucesso, a propriedade `sub` do token da sessão (o "sujeito" do token, ou seja, o usuário) será o endereço do usuário.
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+Você também pode passar o objeto de sessão resolvido do servidor via `getServerSideProps` para que o NextAuth não precise resolvê-lo novamente no cliente.
 
-For example:
+Por exemplo:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+Para mais informações sobre o gerenciamento da sessão, você pode se referir à seguinte documentação:
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [Guia de autenticação do Next.js](https://nextjs.org/docs/authentication)
+- [Documentação do NextAuth](https://next-auth.js.org)
