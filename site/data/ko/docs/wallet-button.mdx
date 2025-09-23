@@ -1,13 +1,13 @@
 ---
-title: WalletButton
-description: Using and customizing the WalletButton
+title: 지갑 버튼
+description: 지갑 버튼 사용 및 사용자 정의
 ---
 
-# WalletButton
+# 지갑 버튼
 
-> Note: The `WalletButton` currently relies on the EIP-1193 wallet standard, but will support EIP-6963 in the near future.
+> 참고: `WalletButton`은 현재 EIP-1193 지갑 표준에 의존하고 있지만, 가까운 미래에 EIP-6963을 지원할 것입니다.
 
-The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
+새로운 `WalletButton` 구성 요소는 맞춤형 지갑 목록 구현을 통해 dApp이 RainbowKit 및 그 유지 관리가 필요 없는 모든 이점을 채택할 수 있도록 도와줍니다.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-Like the `ConnectButton`, the `WalletButton.Custom` component is available for custom implementations and styling.
+`ConnectButton`처럼, `WalletButton.Custom` 구성 요소는 맞춤 구현 및 스타일링을 위해 제공됩니다.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ Like the `ConnectButton`, the `WalletButton.Custom` component is available for c
 </WalletButton.Custom>
 ```
 
-Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
+대부분의 dApp은 [ConnectButton](https://www.rainbowkit.com/docs/connect-button)에 의해 가장 잘 제공됩니다. `WalletButton` 채택 및 사용 사례에 대한 추가 정보는 [여기](https://www.rainbowkit.com/docs/wallet-button)를 참조하세요.
 
-#### Demo
+#### 데모
 
-Press the buttons below to see what this RainbowKit entry point looks like.
+아래 버튼을 눌러 이 RainbowKit 진입점이 어떻게 보이는지 확인하세요.
 
 <WalletButtonDemo />
