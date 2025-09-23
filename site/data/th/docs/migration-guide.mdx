@@ -1,34 +1,34 @@
 ---
-title: Migration Guide
+title: คู่มือการโยกย้าย
 ---
 
-# Migration Guide
+# คู่มือการโยกย้าย
 
-## Migrating RainbowKit
+## การโยกย้าย RainbowKit
 
-### 2.x.x Breaking changes
+### 2.x.x ความเปลี่ยนแปลงที่แตกหัก
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+ส่วนประกอบ `wagmi` และ `viem` เวอร์ชันเสถียรได้ถึง 2.x.x และมีการเปลี่ยนแปลงที่ไม่สามารถกลับได้ตามเดิม
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+**1. อัปเกรด RainbowKit, `wagmi` และ `viem` เป็นเวอร์ชั่นล่าสุด**
 
 ```bash
 npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 ```
 
-**2. Install `@tanstack/react-query` peer dependency**
+**2. ติดตั้ง `@tanstack/react-query` ซึ่งเป็น peer dependency**
 
-With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+กับ Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) กลายเป็น peer dependency ที่จำเป็น
 
-Install it with the following command:
+ติดตั้งด้วยคำสั่งตามนี้:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+**3. อัปเกรดการกำหนดค่าของคุณเกี่ยวกับ RainbowKit และ Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -91,28 +91,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Check for breaking changes in `wagmi` and `viem`**
+**4. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi` และ `viem`**
 
-If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
+ถ้าคุณใช้ hook ของ `wagmi` และ action ของ `viem` ใน dApp ของคุณ คุณต้องทำตามคู่มือการย้ายไปยัง v2:
 
-- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [คู่มือการย้าย Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [การเปลี่ยนแปลงที่ไม่เข้ากันของ Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### การเปลี่ยนแปลงของ RainbowKit
 
-**1. Improved behavior for EIP-6963 wallets**
+**1. การปรับปรุงพฤติกรรมสำหรับกระเป๋าคอนเนคชั่น EIP-6963**
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+กระเป๋าที่สนับสนุนมาตรฐานการเชื่อมต่อ EIP-6963 ใหม่ (รวมถึง Rainbow, MetaMask และอื่น ๆ) จะปรากฏอยู่ในส่วน `ติดตั้งแล้ว` อัตโนมัติในระหว่างการเชื่อมต่อกระเป๋าเงิน. สิ่งนี้จะทำให้แน่ใจว่าผู้ใช้สามารถหากระเป๋าที่ชื่นชอบและเชื่อมต่อกับ dApps ได้โดยไม่มีข้อขัดแย้งหรือปุ่มย้อนกลับ.
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+นักพัฒนายังคงมีการควบคุมเต็มที่บนรายการกระเป๋าที่กำหนดเองเพื่อเน้นกระเป๋าที่สนันสนุนสำหรับผู้ใช้งาน. ขอแนะนำให้คุณยังคงรวม `injectedWallet` และ `walletConnectWallet` ในรายชื่อเพื่อรองรับทุกแพลตฟอร์ม.
 
-**2. Wagmi configuration with getDefaultConfig**
+**2. การกำหนดค่า Wagmi ด้วย getDefaultConfig**
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+API ใหม่นี้ทำให้ประสบการณ์การกำหนดค่าง่ายขึ้นและแทนที่จำเป็นต้องใช้ `createConfig` ของ Wagmi โดยตรง. การกำหนดค่าโซ่ง่ายขึ้น, รวมถึงการอนุมาน Public Providers ใน `transports`.
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+รายชื่อกระเป๋าเงินเริ่มต้นจะถูกเพิ่มโดยอัตโนมัติ ทำให้ไม่จำเป็นต้องใช้ `getDefaultWallets` และ `connectorsForWallets`
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+คุณสามารถสร้างรายการกระเป๋าของคุณเองโดยการส่งเชื่อมต่อของกระเป๋าที่นำเข้าหรือกำหนดเองไปยัง `wallets`. ไม่จำเป็นต้องมีการสร้างอินสแตนซ์กระเป๋าหรือการส่ง `projectId` และ `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+คุณไม่จำเป็นต้องส่งผ่าน `chains` ให้กับ `<RainbowKitProvider>` อีกต่อไป
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. โซ่ที่กำหนดเอง**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+ประเภท `Chain` ได้รับการเปลี่ยนแปลงให้สอดคล้องกับ Wagmi v2 และยังคงรองรับข้อมูลเมตา `iconUrl` และ `iconBackground` ของ RainbowKit
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+ตัวอย่างกับ `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+ตัวอย่างกับ `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,69 +195,69 @@ Example with `createConfig`:
   })
 ```
 
-**5. Custom Wallets**
+**5. กระเป๋าที่กำหนดเอง**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+RainbowKit Wallet Connectors ได้เปลี่ยนแปลงเพื่อสนับสนุน Wagmi v2. อ้างอิง [เอกสารที่อัปเดต](https://www.rainbowkit.com/docs/custom-wallets) และ [ตัวเชื่อมต่อได้อย่างไร](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) เพื่ออัปเกรดตัวเชื่อมกระเป๋าเองของคุณใน dApp.
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+ตัวเชื่อมกระเป๋าตอนนี้สนับสนุนมาตรฐาน EIP-6963 โดย `rdns` prop. ตรวจสอบให้แน่ใจว่าได้ดำเนินการในรายการกระเป๋าของคุณเพื่อป้องกันการอ้างอิงซ้ำกันในกระเป๋าที่สนับสนุน EIP-6963.
 
-### 1.x.x Breaking changes
+### 1.x.x ความเปลี่ยนแปลงที่แตกหัก
 
-#### Updated to wagmi v1
+#### อัพเดตเป็น wagmi v1
 
-The [wagmi](https://wagmi.sh) peer dependency has been updated to `1.x.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `1.x.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-**1. Upgrade RainbowKit and `wagmi` to their latest version**
+**1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-**2. Install `viem` peer dependency**
+**2. ติดตั้ง `viem` ซึ่งเป็น peer dependency**
 
-wagmi v1 requires the `viem` peer dependency. Install it with the following command:
+wagmi v1 ต้องการ `viem` peer dependency. ติดตั้งด้วยคำสั่งต่อไปนี้:
 
 ```bash
 npm i viem
 ```
 
-**3. Ensure bundler and polyfill compatibility**
+**3. ตรวจสอบความเข้ากันได้ของ bundler และ polyfill**
 
-Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) sample for configuration guidance for your project.
+ใช้การกำหนดค่า [ตัวอย่าง Webpack ของ Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) สำหรับการให้คำแนะนำในการกำหนดค่า
 
-Additional framework guides for Vite and Remix are available [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
+คำแนะนำของเฟรมเวิร์กเพิ่มเติมสำหรับ Vite และ Remix พร้อมใช้งาน [ที่นี่](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-**4. Check for breaking changes in `wagmi`**
+**4. ตรวจสอบความเปลี่ยนแปลงที่แตกหักใน `wagmi`**
 
-If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v1.
+ถ้าคุณใช้ `wagmi` ในแอปพลิเคชันของคุณ, คุณจะต้องปฏิบัติตามคู่มือการโยกย้าย `wagmi` เป็น v1.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide).
 
-### 0.12.x Breaking changes
+### 0.12.x ความเปลี่ยนแปลงที่แตกหัก
 
-The wagmi peer dependency has been updated to `0.12.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `0.12.x`.
 
-RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
+RainbowKit ได้ใช้งานคอนเนคเตอร์ `WalletConnectLegacyConnector` ใน `wagmi` เพื่อการสนับสนุนอย่างต่อเนื่องสำหรับ WalletConnect v1. การสนับสนุนสำหรับ WalletConnect v2 และ `WalletConnectConnector` จะพร้อมให้บริการในรุ่นแพตช์ในอนาคต, โดยไม่มีการเปลี่ยนแปลงที่แตกหัก.
 
-Wallets will be transitioned automatically in future releases.
+กระเป๋าจะถูกเปลี่ยนแปลงอัตโนมัติในรุ่นในอนาคต.
 
-Every dApp must now provide a [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` to enable WalletConnect v2. This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023. RainbowKit will quietly prefer v1 for all wallets if `projectId` is unspecified.
+ทุกๆ dApp ต้องระบุ [โปรเจ็กต์ ID ของ WalletConnect Cloud](https://cloud.walletconnect.com/) เพื่อเปิดใช้งาน WalletConnect v2. ต้องทำให้เสร็จสิ้นก่อนที่เซิร์ฟเวอร์สะพาน WalletConnect v1 จะปิดตัวลงในวันที่ 28 มิถุนายน 2023. RainbowKit จะชอบ v1 สำหรับทุกกระเป๋าอย่างเงียบ ๆ หาก `projectId` ไม่ได้รับการระบุ.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade RainbowKit and `wagmi` to their latest version
+#### 1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2. Supply a WalletConnect Cloud projectId
+#### 2. จัดหาโปรเจ็กต์ ID ของ WalletConnect Cloud
 
-Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+ทุก ๆ dApp ที่พึ่งพา WalletConnect ตอนนี้จำเป็นต้องรับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/). นี่คือแบบฟรีและใช้เวลาไม่กี่นาทีเท่านั้น.
 
-Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+ระบุ `projectId` ให้กับ `getDefaultWallets` และ RainbowKit wallet connectors แบบรายบุคคลเช่นต่อไปนี้:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -281,81 +281,81 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.11.x Breaking changes
+### 0.11.x ความเปลี่ยนแปลงที่แตกหัก
 
-The wagmi peer dependency has been updated to `0.11.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `0.11.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade RainbowKit and `wagmi` to their latest version
+#### 1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. Check for breaking changes in `wagmi`
+#### 2. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi`
 
-If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+ถ้าคุณใช้ `wagmi` hooks ในแอปพลิเคชันของคุณ, คุณจะต้องตรวจสอบว่าแอปพลิเคชันของคุณได้รับผลกระทบจากการเปลี่ยนแปลงที่แตกหักใน `wagmi`.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### 0.10.x Breaking changes
+### 0.10.x ความเปลี่ยนแปลงที่แตกหัก
 
-The wagmi peer dependency has been updated to `0.10.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `0.10.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade RainbowKit and `wagmi` to their latest version
+#### 1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. Check for breaking changes in `wagmi`
+#### 2. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi`
 
-If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+ถ้าคุณใช้ `wagmi` hooks ในแอปพลิเคชันของคุณ, คุณจะต้องตรวจสอบว่าแอปพลิเคชันของคุณได้รับผลกระทบจากการเปลี่ยนแปลงที่แตกหักใน `wagmi`.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
-### 0.9.x Breaking changes
+### 0.9.x ความเปลี่ยนแปลงที่แตกหัก
 
-The wagmi peer dependency has been updated to `0.9.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `0.9.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade RainbowKit and `wagmi` to their latest version
+#### 1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. Check for breaking changes in `wagmi`
+#### 2. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi`
 
-If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+ถ้าคุณใช้ `wagmi` hooks ในแอปพลิเคชันของคุณ, คุณจะต้องตรวจสอบว่าแอปพลิเคชันของคุณได้รับผลกระทบจากการเปลี่ยนแปลงที่แตกหักใน `wagmi`.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### 0.8.x Breaking changes
+### 0.8.x ความเปลี่ยนแปลงที่แตกหัก
 
-The wagmi peer dependency has been updated to `0.8.x`.
+Wagmi peer dependency ได้อัปเดตเป็น `0.8.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade RainbowKit and `wagmi` to their latest version
+#### 1. อัปเกรด RainbowKit และ `wagmi` เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Check for breaking changes in `wagmi`
+#### 2. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi`
 
-If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+ถ้าคุณใช้ `wagmi` hooks ในแอปพลิเคชันของคุณ, คุณจะต้องตรวจสอบว่าแอปพลิเคชันของคุณได้รับผลกระทบจากการเปลี่ยนแปลงที่แตกหักใน `wagmi`.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### 0.7.x Breaking changes
+### 0.7.x ความเปลี่ยนแปลงที่แตกหัก
 
-If you're creating a custom wallet list, you must now import each wallet individually in order to reduce bundle size. Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
+ถ้าคุณสร้างรายการกระเป๋าของคุณเอง, คุณจะต้องนำเข้าแต่ละกระเป๋าแบบเดี่ยวเพื่อให้ขนาดบันเดิลลดลง. หมายเหตุว่ากระเป๋าไม่ถูกจัดในกลุ่มแบบ `wallet` อีกต่อไป, โดยกระเป๋าทุกใบมีทางลงท้ายเป็น `Wallet`.
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -382,7 +382,7 @@ const wallets = [
 ];
 ```
 
-Also note that the Steakwallet backwards compatibility layer has been removed. Omni should be used instead.
+โปรดทราบว่าเลเยอร์ความเข้ากันได้ย้อนหลังของ Steakwallet ถูกลบออกแล้ว. Omni ควรใช้แทน.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -394,33 +394,33 @@ const wallets = [
 ];
 ```
 
-### 0.4.x Breaking changes
+### 0.4.x ความเปลี่ยนแปลงที่แตกหัก
 
-RainbowKit has updated the `wagmi` peer dependency to `0.5.x`.
+RainbowKit ได้อัปเกรด Wagmi peer dependency เป็น `0.5.x`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade dependencies
+#### 1. อัปเกรด dependencies
 
-Upgrade RainbowKit and wagmi to their latest version
+อัปเกรด RainbowKit และ wagmi เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Check for breaking changes in `wagmi`
+#### 2. ตรวจสอบการเปลี่ยนแปลงที่แตกหักใน `wagmi`
 
-If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+ถ้าคุณใช้ `wagmi` hooks ในแอปพลิเคชันของคุณ, คุณจะต้องตรวจสอบว่าแอปพลิเคชันของคุณได้รับผลกระทบจากการเปลี่ยนแปลงที่แตกหักใน `wagmi`.
 
-[You can see their migration guide here](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
+[คุณสามารถดูคู่มือการย้ายที่นี่](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.x Breaking changes
+### 0.3.x ความเปลี่ยนแปลงที่แตกหัก
 
-Removed the `chainId` parameter from `createConnector` on the `Wallet` type.
+ได้ลบพารามิเตอร์ `chainId` ออกจาก `createConnector` บนประเภท `Wallet`.
 
-**Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](/docs/custom-wallets).**
+**โปรดทราบว่ากระเป๋าที่มีในตัวทั้งหมดใช้ API ใหม่. ผู้บริโภคส่วนใหญ่ไม่น่าจะได้รับผลกระทบ. การเปลี่ยนแปลงนี้ส่งผลกระทบเฉพาะผู้บริโภคที่ได้สร้าง/บริโภค [custom wallets](/docs/custom-wallets).**
 
-If you previously derived RPC URLs from the `chainId` on `createConnector`, you can now remove that logic as `wagmi` now handles RPC URLs internally when used with `configureChains`.
+ถ้าคุณเคยอนุพันธ์ URL RPC จาก `chainId` บน `สร้างคอนเนคเตอร์`, คุณสามารถถอนรหัสนั้นออกได้แล้วขณะนี้ wagmi จัดการ URL RPC ภายในเมื่อนำมาใช้กับ `configureChains`.
 
 ```diff
 import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
@@ -474,32 +474,32 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x Breaking changes
+### 0.2.x ความเปลี่ยนแปลงที่แตกหัก
 
-RainbowKit has updated the `wagmi` peer dependency to `^0.4`.
+RainbowKit อัปเกรด Wagmi peer dependency เป็น `^0.4`.
 
-Follow the steps below to migrate.
+ทำตามขั้นตอนด้านล่างเพื่อทำการย้าย
 
-#### 1. Upgrade dependencies
+#### 1. อัปเกรด dependencies
 
-Upgrade RainbowKit and wagmi to their latest version
+อัปเกรด RainbowKit และ wagmi เป็นเวอร์ชั่นล่าสุด
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2. Replace configureChains import
+#### 2. แทนที่การนำเข้า configureChains
 
-Import `configureChains` from wagmi instead of RainbowKit:
+นำเข้า `configureChains` จาก wagmi แทน RainbowKit:
 
 ```diff
 - import { configureChains } from '@rainbow-me/rainbowkit';
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3. Migrate providers
+#### 3. ย้าย providers
 
-RainbowKit no longer exports an `apiProvider` API. Replace it with your desired provider from wagmi.
+RainbowKit ไม่ได้สกัด `apiProvider` API อีกต่อไป. แทนที่ด้วย provider ที่คุณต้องการจาก wagmi.
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
@@ -507,7 +507,7 @@ RainbowKit no longer exports an `apiProvider` API. Replace it with your desired 
 
 #### Alchemy
 
-Import `alchemyProvider` from `wagmi/providers/alchemy`.
+นำเข้า `alchemyProvider` จาก `wagmi/providers/alchemy`.
 
 ```diff
 + import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -521,7 +521,7 @@ const { chains, provider } = configureChains(
 
 #### Infura
 
-Import `infuraProvider` from `wagmi/providers/infura`.
+นำเข้า `infuraProvider` จาก `wagmi/providers/infura`.
 
 ```diff
 +import { infuraProvider } from 'wagmi/providers/infura';
@@ -535,7 +535,7 @@ const { chains, provider } = configureChains(
 
 #### JSON RPC
 
-Import `jsonRpcProvider` from `wagmi/providers/jsonRpc`.
+นำเข้า `jsonRpcProvider` จาก `wagmi/providers/jsonRpc`.
 
 ```diff
 + import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
@@ -557,7 +557,7 @@ const { chains, provider } = configureChains(
 
 #### Public provider
 
-Import `publicProvider` from `wagmi/providers/public`.
+นำเข้า `publicProvider` จาก `wagmi/providers/public`.
 
 ```diff
 + import { publicProvider } from 'wagmi/providers/public';
@@ -569,9 +569,9 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4. Rename wagmi's provider
+#### 4. เปลี่ยนชื่อ provider ของ wagmi
 
-Rename `WagmiProvider` to `WagmiConfig`.
+เปลี่ยนชื่อ `WagmiProvider` เป็น `WagmiConfig`.
 
 ```diff
 import {
@@ -587,4 +587,4 @@ const App = () => {
 };
 ```
 
-And you're done! 🌈
+และเสร็จแล้ว! 🌈
