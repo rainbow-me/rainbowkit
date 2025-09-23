@@ -1,17 +1,16 @@
 ---
-title: Custom Theme
-description: Creating a custom theme
+title: 커스텀 테마
+description: 커스텀 테마 만들기
 ---
 
-# Custom Theme
+# 커스텀 테마
 
-## Creating a custom theme
+## 커스텀 테마 만들기
 
-> Note: This API is unstable and likely to change
-> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
-> now.
+> 참고: 이 API는 불안정하며 가까운 미래에 변경될 가능성이 있습니다.
+> 현재는 [구성된 테마들](/docs/theming)을 사용하는 것을 권장합니다.
 
-While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+기본 제공 테마는 어느 정도의 사용자 정의를 제공하지만, `Theme` 타입은 하위 수준에서 테마 변수를 정의하여 자신만의 커스텀 테마를 만들 수 있도록 돕습니다.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +78,17 @@ const App = () => (
 )
 ```
 
-### Extending a built-in theme
+### 기본 제공 테마 확장하기
 
-You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+기본 테마를 전체적으로 재정의하지 않고도 확장할 수 있습니다. 이는 특정 테마 토큰만 재정의하고 싶을 때 유용합니다.
 
-To do that, install `lodash.merge` (or equivalent):
+이를 위해 `lodash.merge`(또는 이와 유사한 패키지)를 설치하세요:
 
 ```bash
 npm install lodash.merge
 ```
 
-Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+확장하려는 테마(예: `darkTheme`) 및 TypeScript `Theme` 타입과 함께 가져오세요:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +99,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+그런 다음, 변경하고자 하는 테마 토큰과 함께 기본 제공 테마를 병합하세요. 이 예제에서는 `accentColor` 토큰을 브랜드의 강조 색상과 일치시키기 위해 오버라이드합니다.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +109,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+마지막으로, 커스텀 테마를 `RainbowKitProvider`의 `theme` prop에 전달할 수 있습니다.
 
 ```tsx
 const App = () => {
@@ -122,16 +121,16 @@ const App = () => {
 };
 ```
 
-### Creating custom theme selectors
+### 커스텀 테마 선택기 만들기
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+앱이 서버/정적으로 렌더링되고 사용자가 테마를 수동으로 전환할 수 있는 경우, RainbowKit의 테마 시스템은 다음 함수를 통해 커스텀 CSS 선택기에 연결할 수 있습니다. 이 함수는 어떤 CSS-in-JS 시스템에서도 사용할 수 있습니다:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+이 함수들은 모든 필요한 테마 변수를 설정하는 CSS를 반환합니다. 문자열과 객체가 모두 지원되므로, 어떤 CSS-in-JS 시스템과도 통합할 수 있습니다.
 
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+기본 예제로, 각 테마에 대한 커스텀 선택기를 사용하여 `style` 요소를 렌더링할 수 있습니다. 테마의 CSS 렌더링을 제어하고 있으므로, `theme` prop에 `null`을 전달하여 RainbowKitProvider가 스타일을 렌더링하지 않도록 합니다. 또한 cssStringFromTheme 함수의 확장 옵션을 사용하여 기본 테마와 동일한 테마 변수를 생략합니다.
 
 ```tsx
 import {
