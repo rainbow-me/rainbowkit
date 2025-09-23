@@ -1,15 +1,15 @@
 ---
-title: Custom ConnectButton
-description: Creating a custom ConnectButton
+title: ConnectButton Tùy chỉnh
+description: Tạo một ConnectButton tùy chỉnh
 ---
 
-# Custom ConnectButton
+# ConnectButton Tùy chỉnh
 
-## Creating a custom ConnectButton
+## Tạo một ConnectButton tùy chỉnh
 
-You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
+Bạn có thể sử dụng `ConnectButton.Custom` mức độ thấp để tạo nút kết nối tùy chỉnh của riêng bạn. Thành phần này sẽ hiển thị một hàm, bao gồm tất cả mọi thứ bạn cần để tái triển khai các nút tích hợp sẵn.
 
-A minimal re-implementation of the built-in buttons would look something like this:
+Một phiên bản tái triển khai tối nghĩa của các nút tích hợp sẽ trông giống như sau:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-The following props are passed to your render function.
+Các thuộc tính sau được chuyển vào hàm hiển thị của bạn.
 
-### Account properties
+### Thuộc tính tài khoản
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'Đối tượng chứa các chi tiết về tài khoản hiện tại, được mô tả bên dưới',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          Địa chỉ tài khoản đầy đủ, ví dụ như
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ The following props are passed to your render function.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'Số dư tài khoản bằng số thập phân',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          Số dư tài khoản được định dạng như một chuỗi, ví dụ như{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          Ký hiệu tiền tệ cho số dư, ví dụ như <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          Số dư được định dạng bằng 3 chữ số có ý nghĩa, cộng
+          ký hiệu, ví dụ như <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          Tên ENS, hoặc phiên bản rút gọn của địa chỉ, ví dụ như{' '}
+          <code>"rainbowwallet.eth"</code> hoặc <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ The following props are passed to your render function.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'URI của avatar ENS',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ The following props are passed to your render function.
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          Tên ENS, ví dụ như <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Boolean chỉ định tài khoản có giao dịch đang chờ xử lý cho chuỗi hiện tại hay không',
     },
   ]}
 />
 
-### Chain properties
+### Thuộc tính của chuỗi
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'Đối tượng chứa các chi tiết về chuỗi hiện tại, được mô tả bên dưới',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Chuỗi có biểu tượng được chỉ định hay không',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'URL biểu tượng chuỗi (có thể cũng không được xác định trong khi tải dữ liệu URLs Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'Nền biểu tượng chuỗi sẽ hiển thị trong khi hình ảnh đang tải',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ The following props are passed to your render function.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          ID chuỗi, ví dụ như <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ The following props are passed to your render function.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          Tên chuỗi, ví dụ như <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Boolean chỉ định chuỗi hiện tại có được hỗ trợ hay không',
     },
   ]}
 />
 
-### Modal state properties
+### Thuộc tính trạng thái của modal
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ The following props are passed to your render function.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Hàm mở modal tài khoản',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Hàm mở modal chuỗi',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Hàm mở modal kết nối',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Boolean chỉ định modal tài khoản có mở hay không',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Boolean chỉ định modal chuỗi có mở hay không',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Boolean chỉ định modal kết nối có mở hay không',
     },
   ]}
 />
 
-### General state properties
+### Thuộc tính trạng thái chung
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'Boolean chỉ định thành phần đã được gắn kết hay chưa',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'Trạng thái xác thực, hoặc không xác định nếu chưa được cấu hình.',
     },
   ]}
 />
