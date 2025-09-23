@@ -1,15 +1,15 @@
 ---
-title: Custom ConnectButton
-description: Creating a custom ConnectButton
+title: ปุ่มเชื่อมต่อแบบกำหนดเอง
+description: การสร้างปุ่มเชื่อมต่อแบบกำหนดเอง
 ---
 
-# Custom ConnectButton
+# ปุ่มเชื่อมต่อแบบกำหนดเอง
 
-## Creating a custom ConnectButton
+## การสร้างปุ่มเชื่อมต่อแบบกำหนดเอง
 
-You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
+คุณสามารถใช้ `ConnectButton.Custom` แบบระดับต่ำเพื่อสร้างปุ่มเชื่อมต่อส่วนตัวของคุณเอง ส่วนประกอบนี้จะแสดงฟังก์ชันซึ่งรวมทุกอย่างที่คุณต้องการในการสร้างปุ่มที่มีอยู่แล้วใหม่
 
-A minimal re-implementation of the built-in buttons would look something like this:
+การสร้างปุ่มในตัวแบบมิเนิมัลจะมีลักษณะดังนี้:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-The following props are passed to your render function.
+props ที่จะถูกส่งไปยังฟังก์ชันการแสดงผลของคุณมีดังต่อไปนี้
 
-### Account properties
+### คุณสมบัติของบัญชี
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'วัตถุที่ประกอบไปด้วยรายละเอียดเกี่ยวกับบัญชีปัจจุบัน, อธิบายด้านล่าง',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          ที่อยู่บัญชีเต็ม, เช่น
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ The following props are passed to your render function.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'ยอดเงินในบัญชีแบบเลขทศนิยม',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          ยอดเงินในบัญชีที่ถูกจัดรูปแบบเป็นสตริง, เช่น{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          สัญลักษณ์สกุลเงินสำหรับยอดเงินในบัญชี, เช่น <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          ยอดเงินที่จัดรูปแบบเพื่อแสดง 3 หลักสำคัญ, พร้อมทั้ง
+          สัญลักษณ์, เช่น <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ The following props are passed to your render function.
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ชื่อ ENS หรือเวอร์ชันที่ถูกตัดของที่อยู่, เช่น{' '}
+          <code>"rainbowwallet.eth"</code> หรือ <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ The following props are passed to your render function.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'URI ของอวาตาร์ ENS',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ The following props are passed to your render function.
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ชื่อ ENS, เช่น <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Boolean ที่บ่งบอกว่าบัญชีมีธุรกรรมที่ยังไม่เสร็จสิ้นสำหรับ chain ปัจจุบันหรือไม่',
     },
   ]}
 />
 
-### Chain properties
+### คุณสมบัติของ Chain
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ The following props are passed to your render function.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        'วัตถุที่ประกอบไปด้วยรายละเอียดเกี่ยวกับ chain ปัจจุบัน, อธิบายด้านล่าง',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'ในกรณีที่ chain มีสัญลักษณ์',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'URL ของสัญลักษณ์ chain (ซึ่งอาจจะไม่ถูกระบุในขณะที่กำลังดาวน์โหลด URL ข้อมูลแบบ Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'พื้นหลังสัญลักษณ์ chain ที่จะมองเห็นได้ในขณะที่กำลังโหลดภาพ',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ The following props are passed to your render function.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          หมายเลข chain ID, เช่น <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ The following props are passed to your render function.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          ชื่อ chain, เช่น <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Boolean ที่บ่งบอกว่า chain ปัจจุบันไม่สามารถรองรับได้หรือไม่',
     },
   ]}
 />
 
-### Modal state properties
+### คุณสมบัติของสถานะ Modal
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ The following props are passed to your render function.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'ฟังก์ชันเพื่อเปิด modal ของบัญชี',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'ฟังก์ชันเพื่อเปิด modal ของ chain',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'ฟังก์ชันเพื่อเปิด modal การเชื่อมต่อ',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Boolean ที่บ่งบอกว่า modal ของบัญชีเปิดอยู่หรือไม่',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Boolean ที่บ่งบอกว่า modal ของ chain เปิดอยู่หรือไม่',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Boolean ที่บ่งบอกว่า modal การเชื่อมต่อเปิดอยู่หรือไม่',
     },
   ]}
 />
 
-### General state properties
+### คุณสมบัติของสถานะทั่วไป
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'Boolean ที่บ่งบอกว่าส่วนประกอบได้ถูกติดตั้งหรือไม่',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'สถานะการตรวจสอบสิทธิ์ หรือ undefined หากการตรวจสอบสิทธิ์ยังไม่ได้ถูกกำหนด',
     },
   ]}
 />
