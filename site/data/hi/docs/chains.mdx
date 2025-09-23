@@ -1,35 +1,35 @@
 ---
-title: Chains
-description: Customizing chains
+title: चेन(सूंखलाएं)
+description: चेन को कस्टमाइज़ करना
 ---
 
-# Chains
+# चेन(सूंखलाएं)
 
-## Customizing chains
+## चेन को कस्टमाइज़ करना
 
-RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
+रेनबो किट को [वाग्मी के `चेन` ऑब्जेक्ट](https://wagmi.sh/react/chains) के साथ इंटीग्रेट करने के लिए डिज़ाइन किया गया है। समर्थित चेन की सूची [यहाँ](https://wagmi.sh/react/chains#supported-chains) देखें।
 
-### Customizing the initial chain
+### प्रारंभिक चेन को कस्टमाइज़ करना
 
-By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
+डिफ़ॉल्ट रूप से, रेनबो किट वाग्मी को प्रदान की गई पहली चेन से कनेक्ट होगी। इस व्यवहार को `initialChain` प्रोप के माध्यम से अनुकूलित किया जा सकता है।
 
-The initial chain can be configured using a chain ID.
+प्रारंभिक चेन को एक चेन आईडी का उपयोग करके कॉन्फ़िगर किया जा सकता है।
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-As a convenience, you can also pass a chain object.
+सुविधा के लिए, आप चेन ऑब्जेक्ट भी पास कर सकते हैं।
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Custom chain metadata
+### कस्टम चेन मेटाडेटा
 
-Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
+डिफ़ॉल्ट रूप से कई चेन आइकॉन और बैकग्राउंड प्रदान किए जाते हैं, लेकिन आप प्रत्येक चेन के लिए `iconUrl` और `iconBackground` प्रॉपर्टीज़ का उपयोग करके आइकॉन और बैकग्राउंड को कस्टमाइज़ कर सकते हैं।
 
-Example with `getDefaultConfig`
+`getDefaultConfig` के साथ उदाहरण
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`
+`createConfig` के साथ उदाहरण
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
