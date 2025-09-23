@@ -21,15 +21,15 @@ description: ユーザーの認証
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Set up the provider
+#### プロバイダの設定
 
-In your `App` component, import `RainbowKitSiweNextAuthProvider`.
+`App`コンポーネントで`RainbowKitSiweNextAuthProvider`をインポートします。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+`RainbowKitSiweNextAuthProvider`で`RainbowKitProvider`をラップし、それがNextAuthの`SessionProvider`内にネストされていることを確認します。これにより、セッションにアクセスできます。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+`RainbowKitSiweNextAuthProvider`が位置していると、ユーザーはウォレットを接続した後、メッセージに署名して認証するように求められます。
 
-#### Customize the SIWE message options
+#### SIWEメッセージオプションのカスタマイズ
 
-You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+[SIWEメッセージオプション](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
 
-This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
+この関数は新しいメッセージが作成されるたびに呼び出されます。この関数から返されるオプションはデフォルトとマージされます。
 
 ```tsx
 import {
@@ -92,13 +92,13 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### Access the session server-side
+#### セッションをサーバーサイドでアクセスします
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+NextAuthの`getToken`関数を`next-auth/jwt`からインポートすることで、セッショントークンにアクセスできます。ユーザーが正常に認証された場合、セッショントークンの`sub`プロパティ（トークンの「subject」、つまりユーザー）はユーザーのアドレスになります。
 
-You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+また、NextAuthがクライアント側で再度それを解決する必要がないように、解決済みのセッションオブジェクトを`getServerSideProps`経由で渡すこともできます。
 
-For example:
+例えば：
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-For more information about managing the session, you can refer to the following documentation:
+セッションの管理に関する詳細は、以下のドキュメンテーションを参照してください：
 
-- [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth documentation](https://next-auth.js.org)
+- [Next.js認証ガイド](https://nextjs.org/docs/authentication)
+- [NextAuthドキュメンテーション](https://next-auth.js.org)
