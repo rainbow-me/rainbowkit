@@ -1,17 +1,15 @@
 ---
-title: Custom Theme
-description: Creating a custom theme
+title: 自定义主题
+description: 创建自定义主题
 ---
 
-# Custom Theme
+# 自定义主题
 
-## Creating a custom theme
+## 创建自定义主题
 
-> Note: This API is unstable and likely to change
-> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
-> now.
+> 注意：此 API 不稳定，未来可能会发生变化。我们建议暂时使用[内置主题](/docs/theming)。
 
-While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+虽然内置主题提供了一定程度的自定义功能，但提供了`Theme`类型以帮助您定义自己的自定义主题，以较低级别的访问权限控制底层主题变量。
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Extending a built-in theme
+### 扩展内置主题
 
-You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+不用重新定义整个主题，您可以扩展一个内置主题。这在您只想覆盖特定主题令牌时非常有用。
 
-To do that, install `lodash.merge` (or equivalent):
+要做到这一点，安装`lodash.merge`（或等效项）：
 
 ```bash
 npm install lodash.merge
 ```
 
-Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+导入它，以及您想扩展的主题（例如：`darkTheme`）和 TypeScript `Theme` 类型：
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+然后，将内置主题与您想要覆盖的主题令牌合并。在此示例中，我将`accentColor`令牌覆盖为与我的品牌的强调色匹配。
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+最后，您现在可以将自定义主题传递给`RainbowKitProvider`的`theme`属性。
 
 ```tsx
 const App = () => {
@@ -122,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Creating custom theme selectors
+### 创建自定义主题选择器
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+如果您的应用是服务器/静态渲染的，并且允许用户手动切换主题，RainbowKit 的主题系统可以通过以下函数连接到自定义 CSS 选择器，这些函数可以与任何 CSS-in-JS 系统一起使用：
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+这些函数返回设置所有必需主题变量的 CSS。由于同时支持字符串和对象，这可以与任何 CSS-in-JS 系统集成。
 
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+作为一个基本示例，您可以为每个主题使用自定义选择器渲染您自己的`style`元素。由于我们控制渲染主题的 CSS，我们将`null`传递给`theme`属性，以便开启 RainbowKitProvider 不为我们渲染任何样式。还要注意在 cssStringFromTheme 函数上使用 extends 选项，以省略与基本主题相同的任何主题变量。
 
 ```tsx
 import {
