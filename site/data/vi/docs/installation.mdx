@@ -1,15 +1,15 @@
 ---
-title: Installation
-description: Get up and running with RainbowKit
+title: Cài đặt
+description: Bắt đầu và chạy với RainbowKit
 ---
 
-# Installation
+# Cài đặt
 
-## Get up and running with RainbowKit
+## Bắt đầu và chạy với RainbowKit
 
-### Quick start
+### Khởi đầu nhanh
 
-You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+Bạn có thể dàn dựng một ứng dụng mới với RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) bằng một trong các lệnh sau, sử dụng trình quản lý gói mà bạn ưa thích:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -19,23 +19,23 @@ pnpm create @rainbow-me/rainbowkit@latest
 yarn create @rainbow-me/rainbowkit
 ```
 
-This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+Điều này sẽ nhắc bạn nhập tên dự án, tạo một thư mục mới chứa một dự án mẫu và cài đặt tất cả các phụ thuộc cần thiết.
 
-Alternatively, you can manually integrate RainbowKit into your existing project.
+Ngoài ra, bạn có thể tích hợp thủ công RainbowKit vào dự án hiện có của bạn.
 
-### Manual setup
+### Thiết lập thủ công
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+Cài đặt RainbowKit và các phụ thuộc liên quan của nó, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), và [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> Note: RainbowKit is a [React](https://reactjs.org/) library.
+> Lưu ý: RainbowKit là một thư viện [React](https://reactjs.org/).
 
-#### Import
+#### Nhập khẩu
 
-Import RainbowKit, Wagmi and TanStack Query.
+Nhập khẩu RainbowKit, Wagmi và TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -58,11 +58,11 @@ import {
 } from "@tanstack/react-query";
 ```
 
-#### Configure
+#### Cấu hình
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+Cấu hình các chuỗi mong muốn và tạo các kết nối cần thiết. Bạn cũng sẽ cần thiết lập một cấu hình `wagmi`. Nếu dApp của bạn sử dụng kết xuất phía máy chủ (SSR), hãy đảm bảo đặt `ssr` thành `true`.
 
-> Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+> Lưu ý: Mỗi dApp dựa vào WalletConnect hiện nay cần phải có được `projectId` từ [WalletConnect Cloud](https://cloud.walletconnect.com/). Điều này hoàn toàn miễn phí và chỉ mất vài phút.
 
 ```tsx line=4-99
 ...
@@ -76,9 +76,9 @@ const config = getDefaultConfig({
 });
 ```
 
-#### Wrap providers
+#### Bọc nhà cung cấp
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Bọc ứng dụng của bạn với `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), và [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
@@ -96,9 +96,9 @@ const App = () => {
 };
 ```
 
-#### Add the connect button
+#### Thêm nút kết nối
 
-Then, in your app, import and render the `ConnectButton` component.
+Sau đó, trong ứng dụng của bạn, nhập và hiển thị thành phần `ConnectButton`.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -108,15 +108,15 @@ export const YourApp = () => {
 };
 ```
 
-RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+RainbowKit sẽ xử lý việc lựa chọn ví của người dùng, hiển thị thông tin ví/giao dịch và xử lý việc đổi mạng/chuyển ví.
 
-#### Additional build tooling setup
+#### Cài đặt công cụ xây dựng bổ sung
 
-Some build tools will require additional setup.
+Một số công cụ xây dựng sẽ yêu cầu cài đặt bổ sung.
 
 ##### Remix
 
-When using [Remix](https://remix.run), you must polyfill `buffer`, `events` and `http` modules. Reference the Remix configuration below, or [our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Khi sử dụng [Remix](https://remix.run), bạn phải tạo bộ đệm, sự kiện và các mô-đun http. Tham khảo cấu hình Remix dưới đây, hoặc [dự án mẫu Remix của chúng tôi](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Preparing to deploy
+### Chuẩn bị triển khai
 
-By default, your dApp uses public RPC providers for each chain to fetch balances, resolve ENS names, and more. This can often cause reliability issues for your users as public nodes are rate-limited. You should instead purchase access to an RPC provider through services like [Alchemy](https://www.alchemy.com/) or [QuickNode](https://www.quicknode.com/), and define your own Transports in Wagmi. This can be achieved by adding the `transports` param in `getDefaultConfig` or via Wagmi's `createConfig` directly.
+Theo mặc định, dApp của bạn sử dụng các nhà cung cấp RPC công khai cho mỗi chuỗi để lấy số dư, giải quyết tên ENS, và nhiều hơn nữa. Điều này thường có thể gây ra vấn đề về độ tin cậy cho người dùng của bạn do các nút công cộng bị giới hạn tốc độ. Thay vào đó, bạn nên mua quyền truy cập vào một nhà cung cấp RPC thông qua các dịch vụ như [Alchemy](https://www.alchemy.com/) hoặc [QuickNode](https://www.quicknode.com/), và định nghĩa các Kênh truyền riêng của bạn trong Wagmi. Điều này có thể đạt được bằng cách thêm tham số `transports` trong `getDefaultConfig` hoặc thông qua `createConfig` của Wagmi trực tiếp.
 
-A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
+Một Kênh truyền là lớp giữa mạng xử lý việc gửi các yêu cầu JSON-RPC tới Nhà cung cấp nút Ethereum (như Alchemy, Infura, v.v.).
 
-**Example with an `http` transport**
+**Ví dụ với kênh truyền `http`**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,25 +152,25 @@ const config = getDefaultConfig({
 });
 ```
 
-For more details, view the [wagmi transport docs](https://wagmi.sh/core/api/transports#transports).
+Để biết thêm chi tiết, hãy xem [tài liệu wagmi về kênh truyền](https://wagmi.sh/core/api/transports#transports).
 
-### Add your own functionality
+### Thêm chức năng của riêng bạn
 
-Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)
+Giờ đây khi người dùng của bạn có thể kết nối ví của họ, bạn có thể bắt đầu xây dựng phần còn lại của ứng dụng bằng [wagmi.](https://wagmi.sh)
 
-Send transactions, interact with contracts, resolve ENS details and much more with wagmi’s comprehensive suite of React Hooks.
+Gửi các giao dịch, tương tác với các hợp đồng, giải quyết chi tiết ENS và nhiều hơn nữa với bộ công cụ React hooks toàn diện của wagmi.
 
-For more detail, view the [wagmi documentation.](https://wagmi.sh)
+Để biết thêm chi tiết, hãy xem [tài liệu wagmi.](https://wagmi.sh)
 
-### Further examples
+### Các ví dụ bổ sung
 
-To see some running examples of RainbowKit, or even use them to automatically scaffold a new project, check out the [official examples](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+Để xem một số ví dụ hoạt động của RainbowKit, hoặc thậm chí sử dụng chúng để tự động tạo một dự án mới, hãy xem [các ví dụ chính thức](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
 
-To try RainbowKit directly in your browser, check out the CodeSandbox links below:
+Để thử RainbowKit trực tiếp trong trình duyệt của bạn, hãy xem các liên kết CodeSandbox dưới đây:
 
-- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- với [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- với [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- với [Bộ định tuyến ứng dụng Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- với [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- với [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- với [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
