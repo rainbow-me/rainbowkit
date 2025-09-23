@@ -11,7 +11,6 @@ overrides:
   react-dom: ^19.1.0
   elliptic: 6.6.1
   '@remix-run/dev>esbuild': 0.25.5
-  '@react-native-async-storage/async-storage': npm:empty-module@0.0.2
 
 pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
 

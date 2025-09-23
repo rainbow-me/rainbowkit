@@ -100,13 +100,7 @@
       "esbuild"
     ],
     "overrides": {
-      "@remix-run/dev>esbuild": "0.25.5",
-      "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2"
-    },
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@react-native-async-storage/async-storage"
-      ]
+      "@remix-run/dev>esbuild": "0.25.5"
     }
   },
   "engines": {
