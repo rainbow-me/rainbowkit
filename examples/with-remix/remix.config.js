@@ -15,4 +15,5 @@ export default {
   browserNodeBuiltinsPolyfill: {
     modules: { buffer: true, events: true, http: true },
   },
+  serverDependenciesToBundle: ['@base-org/account', /^@base-org\/account\/.*/],
 };

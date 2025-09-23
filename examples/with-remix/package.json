@@ -10,22 +10,33 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@remix-run/node": "^2.16.8",
-    "@remix-run/react": "^2.16.8",
-    "@remix-run/serve": "^2.16.8",
+    "@remix-run/node": "^2.17.1",
+    "@remix-run/react": "^2.17.1",
+    "@remix-run/serve": "^2.17.1",
     "@tanstack/react-query": "^5.55.3",
+    "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "viem": "2.31.7",
     "wagmi": "^2.17.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.16.8",
+    "@remix-run/dev": "^2.17.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "typescript": "5.5.4"
   },
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "overrides": {
+      "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@react-native-async-storage/async-storage"
+      ]
+    }
   }
 }
