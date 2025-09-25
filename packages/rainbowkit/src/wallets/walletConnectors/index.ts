@@ -41,6 +41,7 @@ import { omniWallet } from './omniWallet/omniWallet';
 import { oneInchWallet } from './oneInchWallet/oneInchWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { paraSwapWallet } from './paraSwapWallet/paraswapWallet';
+import { portoWallet } from './portoWallet/portoWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
@@ -112,6 +113,7 @@ export {
   oneKeyWallet,
   paraSwapWallet,
   phantomWallet,
+  portoWallet,
   rabbyWallet,
   rainbowWallet,
   ramperWallet,
