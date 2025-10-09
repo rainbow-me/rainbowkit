@@ -1,5 +1,5 @@
 ---
-"@rainbow-me/rainbowkit": major
+"@rainbow-me/rainbowkit": patch
 ---
 
 Improved detection for nova wallet provider
