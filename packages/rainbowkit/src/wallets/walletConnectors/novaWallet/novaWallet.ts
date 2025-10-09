@@ -4,17 +4,23 @@ import {
 } from '../../getInjectedConnector';
 import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { WindowProvider } from '../../../types/utils';
 
 export type NovaWalletOptions = DefaultWalletOptions;
+
+function isNovaWallet(ethereum?: WindowProvider['ethereum']): boolean {
+  if (ethereum?.isNovaWallet) return true;
+
+  return false;
+}
 
 export const novaWallet = ({
   projectId,
   walletConnectParameters,
 }: NovaWalletOptions): Wallet => {
-  const isNovaWalletInjected = hasInjectedProvider({
-    namespace: 'ethereum',
-    flag: 'isNovaWallet',
-  });
+  const isNovaWalletInjected =
+    typeof window !== 'undefined' ? isNovaWallet(window.ethereum) : false;
+
   const shouldUseWalletConnect = !isNovaWalletInjected;
 
   const getUriMobile = (uri: string) => {
@@ -73,7 +79,6 @@ export const novaWallet = ({
         })
       : getInjectedConnector({
           namespace: 'ethereum',
-          flag: 'isNovaWallet',
         }),
   };
 };
