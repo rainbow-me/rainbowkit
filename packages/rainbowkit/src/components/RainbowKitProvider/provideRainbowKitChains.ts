@@ -50,6 +50,7 @@ type ChainName =
   | 'mantaTestnet'
   | 'mantle'
   | 'mantleTestnet'
+  | 'monadTestnet'
   | 'optimism'
   | 'optimismGoerli'
   | 'optimismKovan'
@@ -192,6 +193,11 @@ const mantleIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/mantle.svg')).default,
 };
 
+const monadTestnetIcon: IconMetadata = {
+  iconBackground: 'transparent',
+  iconUrl: async () => (await import('./chainIcons/monad.svg')).default,
+};
+
 const optimismIcon: IconMetadata = {
   iconBackground: '#ff5a57',
   iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
@@ -298,6 +304,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   mantaTestnet: { chainId: 3_441_005, ...mantaIcon },
   mantle: { chainId: 5000, ...mantleIcon },
   mantleTestnet: { chainId: 5001, ...mantleIcon },
+  monadTestnet: { chainId: 10_143, name: 'Monad Testnet', ...monadTestnetIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
