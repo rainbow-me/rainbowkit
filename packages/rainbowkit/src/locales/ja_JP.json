@@ -1130,11 +1130,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI Wallet拡張機能をインストールする",
-          "description": "XDEFI Walletをタスクバーにピン留めすることで、ウォレットへのアクセスが速くなることをお勧めします。"
+          "title": "CTRL Wallet拡張機能をインストールする",
+          "description": "CTRL Walletをタスクバーにピン留めすることで、ウォレットへのアクセスが速くなることをお勧めします。"
         },
         "step2": {
           "title": "ウォレットの作成またはインポート",
