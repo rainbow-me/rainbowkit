@@ -17,4 +17,4 @@
 "with-vite": patch
 ---
 
-Upgrade wagmi to ^2.17.1 and viem to 2.31.7.
+Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
