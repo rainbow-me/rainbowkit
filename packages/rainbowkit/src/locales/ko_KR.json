@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "keys.gemini.com 열기",
+          "description": "앱 다운로드 없이 이동 중에 모바일 브라우저에서 keys.gemini.com 방문하기."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "즉시 지갑 생성",
+          "description": "디바이스의 내장 인증을 사용하여 초 단위로 스마트 월렛 설정."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "연결을 위한 QR 코드 스캔",
+          "description": "QR 코드를 스캔하여 즉시 지갑을 연결하세요 - 바로 작동합니다."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "keys.gemini.com으로 가기",
+          "description": "확장 프로그램이나 다운로드가 필요 없습니다 - 지갑이 브라우저에 안전하게 저장됩니다."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "원클릭 설정",
+          "description": "패스키 인증으로 스마트 월렛을 즉시 생성하세요 - 기존 월렛보다 더 쉽습니다."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "연결하고 시작하기",
+          "description": "연결을 승인하면 준비가 완료됩니다 - 기능에 충실한 월렛."
         }
       }
     },
