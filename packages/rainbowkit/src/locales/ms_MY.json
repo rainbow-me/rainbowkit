@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "Buka kunci.gemini.com",
+          "description": "Lawati kunci.gemini.com pada pelayar mudah alih anda - tiada muat turun aplikasi diperlukan."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "Cipta Dompet Anda Dengan Segera",
+          "description": "Sediakan dompet pintar anda dalam beberapa saat menggunakan pengesahan bawaan peranti anda."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "Imbas untuk Sambung",
+          "description": "Imbas kod QR untuk segera menyambungkan dompet anda - ia berfungsi begitu sahaja."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "Pergi ke kunci.gemini.com",
+          "description": "Tiada sambungan atau muat turun diperlukan - dompet anda selamat dalam pelayar."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "Penyediaan Satu-Klik",
+          "description": "Cipta dompet bijak anda dengan serta-merta dengan pengesahan kunci laluan - lebih mudah daripada mana-mana dompet lain."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Sambung dan Teruskan",
+          "description": "Luluskan sambungan dan anda sudah bersedia - dompet tanpa prasangka yang hanya berfungsi."
         }
       }
     },
