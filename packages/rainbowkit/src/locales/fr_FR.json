@@ -1410,11 +1410,11 @@
         },
         "step2": {
           "title": "Configuration en un clic",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "description": "Créez votre portefeuille intelligent instantanément avec une authentification par clé de passe - plus facile que n'importe quel portefeuille existant."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Connectez et Allez-y",
+          "description": "Approuvez la connexion et vous êtes prêt - le portefeuille sans prétention qui fonctionne tout simplement."
         }
       }
     },
