@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "keys.gemini.com खोलें",
+          "description": "अपने मोबाइल ब्राउज़र पर keys.gemini.com पर जाएँ - कोई ऐप डाउनलोड करने की आवश्यकता नहीं।"
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "अपने वॉलेट को तुरंत बनाएं",
+          "description": "अपने डिवाइस की इनबिल्ट प्रमाणीकरण का उपयोग करके सेकंडों में अपना स्मार्ट वॉलेट सेट करें।"
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "कनेक्ट करने के लिए स्कैन करें",
+          "description": "QR कोड को स्कैन करके तुरंत अपने वॉलेट को कनेक्ट करें - यह बस काम करता है।"
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "keys.gemini.com पर जाएँ",
+          "description": "कोई एक्सटेंशन या डाउनलोड की आवश्यकता नहीं है - आपका वॉलेट सुरक्षित रूप से ब्राउज़र में रहता है।"
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "वन-क्लिक सेटअप",
+          "description": "पासकी प्रमाणीकृत से तुरंत अपना स्मार्ट वॉलेट बनाएं - बाजार के किसी भी वॉलेट से आसान।"
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "कनेक्ट करें और चलें",
+          "description": "कनेक्शन को अनुमोदन करें और आप तैयार हैं - यह वॉलेट बिना किसी पूर्वाग्रह के बस काम करता है।"
         }
       }
     },
