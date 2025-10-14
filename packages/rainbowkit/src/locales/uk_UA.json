@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "Відкрити keys.gemini.com",
+          "description": "Відвідайте keys.gemini.com у своєму мобільному браузері - завантаження додатка не потрібне."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "Створіть свій гаманець одразу",
+          "description": "Налаштуйте свій смарт-гаманець за секунди за допомогою вбудованої автентифікації пристрою."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "Сканувати для підключення",
+          "description": "Скануйте QR-код, щоб миттєво підключити свій гаманець - це просто працює."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "Перейдіть на keys.gemini.com",
+          "description": "Розширення або завантаження не потрібні - ваш гаманець безпечно зберігається в браузері."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "Налаштування в одне натискання",
+          "description": "Створіть свій смарт-гаманець миттєво за допомогою аутентифікації за ключем доступу - легше, ніж будь-який інший гаманець."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Підключіть і вперед",
+          "description": "Затверджуйте підключення і ви готові - нейтральний гаманець, який просто працює."
         }
       }
     },
