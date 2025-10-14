@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "打开 keys.gemini.com",
+          "description": "在您的移动浏览器上访问 keys.gemini.com—无需下载应用程序。"
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "立即创建您的钱包",
+          "description": "使用设备内置身份验证，瞬间设置智能钱包。"
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "扫码连接",
+          "description": "扫描二维码，即可立即连接您的钱包，一切尽在掌握。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "进入 keys.gemini.com",
+          "description": "无需扩展或下载—您的钱包安全地存于浏览器中。"
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "一键设定",
+          "description": "通过密码认证即时创建您的智能钱包——比任何其他钱包都更简单。"
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "连接并前往",
+          "description": "批准连接就准备好了——这是一个没有意见的简单好用钱包。"
         }
       }
     },
