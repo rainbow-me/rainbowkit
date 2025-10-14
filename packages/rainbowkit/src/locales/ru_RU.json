@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "Откройте keys.gemini.com.",
+          "description": "Посетите keys.gemini.com в мобильном браузере — загрузка приложения не требуется."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "Создайте свой кошелек мгновенно.",
+          "description": "Настройте свой умный кошелек за считанные секунды, используя встроенную аутентификацию устройства."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "Сканируйте для подключения.",
+          "description": "Сканируйте QR-код, чтобы мгновенно подключить ваш кошелек — просто работает."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "Перейдите на keys.gemini.com",
+          "description": "Дополнения или загрузки не нужны — ваш кошелек надежно живет в браузере."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "Настройка в один клик.",
+          "description": "Создайте свой смарт-кошелек сразу же с аутентификацией по ключу доступа - проще, чем любой существующий кошелек."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Подключиться и пользоваться",
+          "description": "Подтвердите соединение и вы готовы - этот универсальный кошелек просто работает."
         }
       }
     },
