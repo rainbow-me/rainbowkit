@@ -1,12 +1,8 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import {
-  argentWallet,
-  baseAccount,
-  rainbowWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+import { argentWallet, rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, http } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
-import { metaMask } from 'wagmi/connectors';
+import { baseAccount, metaMask } from 'wagmi/connectors';
 
 const projectId = 'YOUR_PROJECT_ID';
 const appName = 'RainbowKit demo';
@@ -15,7 +11,7 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Popular',
-      wallets: [rainbowWallet, argentWallet, baseAccount],
+      wallets: [rainbowWallet, argentWallet],
     },
   ],
   {
@@ -29,6 +25,9 @@ export const config = createConfig({
     ...connectors,
     metaMask({
       dappMetadata: { name: appName },
+    }),
+    baseAccount({
+      appName,
     }),
   ],
   chains: [mainnet],
