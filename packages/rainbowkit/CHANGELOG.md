@@ -1,5 +1,22 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.9
+
+### Patch Changes
+
+- e52ca05: Add `baseAccount` wallet connector, replacing `coinbaseWallet` in the default wallet list
+- 1e67f0d: Improved detection for nova wallet provider
+- d92a6c7: Fixed type compatibility for `connect()` parameters in Wagmi `^2.17.0`
+- 0b9052c: Add binance wallet chrome extension download url
+- b34d6c1: Added `portoWallet`.
+- 66bcc18: Universal Profiles wallet connector
+- fe0496e: **Added Gemini Wallet support**
+
+  Added Gemini Wallet as a supported wallet connector with proper icon and configuration.
+
+- 5698ade: fix monad logo in rainbowkit package and include monad testnet in the example
+- 1520f59: Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
+
 ## 2.2.8
 
 ### Patch Changes

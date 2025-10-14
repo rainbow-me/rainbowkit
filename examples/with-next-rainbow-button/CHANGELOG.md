@@ -1,5 +1,13 @@
 # with-next-rainbow-button
 
+## 0.0.35
+
+### Patch Changes
+
+- d92a6c7: Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
+- Updated dependencies [87257e6]
+  - @rainbow-me/rainbow-button@0.2.26
+
 ## 0.0.34
 
 ### Patch Changes
