@@ -1,5 +1,6 @@
 import { argentWallet } from './argentWallet/argentWallet';
 import { backpackWallet } from './backpackWallet/backpackWallet';
+import { baseAccount } from './baseAccount/baseAccount';
 import { berasigWallet } from './berasigWallet/berasigWallet';
 import { bestWallet } from './bestWallet/bestWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
@@ -72,6 +73,7 @@ import { zilPayWallet } from './ZilPayWallet/zilPayWallet';
 export {
   argentWallet,
   backpackWallet,
+  baseAccount,
   berasigWallet,
   bestWallet,
   bifrostWallet,

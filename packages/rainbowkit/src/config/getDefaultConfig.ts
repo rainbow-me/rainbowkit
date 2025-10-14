@@ -6,7 +6,7 @@ import type { WalletList } from '../wallets/Wallet';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import {
-  coinbaseWallet,
+  baseAccount,
   metaMaskWallet,
   rainbowWallet,
   safeWallet,
@@ -80,7 +80,7 @@ export const getDefaultConfig = <
         wallets: [
           safeWallet,
           rainbowWallet,
-          coinbaseWallet,
+          baseAccount,
           metaMaskWallet,
           walletConnectWallet,
         ],
