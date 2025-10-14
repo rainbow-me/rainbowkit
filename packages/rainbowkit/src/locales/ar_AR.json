@@ -1410,11 +1410,11 @@
         },
         "step2": {
           "title": "إعداد بنقرة واحدة",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "description": "أنشئ محفظتك الذكية فورًا باستخدام مصادقة المفتاح - أسهل من أي محفظة أخرى."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "اتصل وانطلق",
+          "description": "قم بالموافقة على الاتصال وستكون جاهزًا - المحفظة الخالية من الآراء والتي تعمل بكل بساطة."
         }
       }
     },
