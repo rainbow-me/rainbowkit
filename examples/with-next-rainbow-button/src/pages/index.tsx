@@ -1,10 +1,14 @@
 import type { NextPage } from 'next';
 import { useAccount, useDisconnect } from 'wagmi';
-import { RainbowButton } from '@rainbow-me/rainbow-button';
+import {
+  RainbowButton,
+  useRainbowConnectModal,
+} from '@rainbow-me/rainbow-button';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
+  const { connect } = useRainbowConnectModal();
 
   return (
     <div
@@ -18,6 +22,7 @@ const Home: NextPage = () => {
       }}
     >
       <RainbowButton />
+      <button onClick={connect}>Custom Connect Button</button>
       {isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
     </div>
   );

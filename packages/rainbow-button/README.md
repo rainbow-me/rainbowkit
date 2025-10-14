@@ -25,7 +25,7 @@ Import Rainbow Button and wagmi.
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
 import {
-  RainbowConnector,
+  rainbowConnector,
   RainbowButtonProvider,
 } from '@rainbow-me/rainbow-button';
 ...
@@ -34,13 +34,13 @@ import { createConfig, WagmiConfig } from 'wagmi';
 
 ### Adopt the connector
 
-The `RainbowConnector` supports connecting with Rainbow just like Wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
+The `rainbowConnector` supports connecting with Rainbow just like Wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
 
-Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.reown.com/sign-in). This is absolutely free and only takes a few minutes.
+Create an instance of the `rainbowConnector` and provide it in your wagmi config `connectors` list. Supply your WalletConnect v2 `projectId` and your application name. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.reown.com/sign-in). This is absolutely free and only takes a few minutes.
 
 ```tsx
 const config = createConfig({
-  connectors: [new RainbowConnector({ chains, projectId })],
+  connectors: [rainbowConnector({ projectId, appName: 'Your App' })],
   publicClient
 });
 ```
@@ -72,6 +72,19 @@ import { RainbowButton } from '@rainbow-me/rainbow-button';
 
 export const YourApp = () => {
   return <RainbowButton/>;
+};
+```
+
+### Use the connect modal hook
+
+If you'd like to trigger the Rainbow connect modal from anywhere in your app, the `useRainbowConnectModal` hook provides a `connect` function that launches the same compact modal flow used by the `RainbowButton`.
+
+```tsx
+import { useRainbowConnectModal } from '@rainbow-me/rainbow-button';
+
+export const CustomConnect = () => {
+  const { connect } = useRainbowConnectModal();
+  return <button onClick={connect}>Connect Rainbow</button>;
 };
 ```
 
