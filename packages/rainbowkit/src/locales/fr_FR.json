@@ -1388,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez keys.gemini.com",
+          "description": "Visitez keys.gemini.com sur votre navigateur mobile - aucun téléchargement d'application requis."
+        },
+        "step2": {
+          "title": "Créez votre portefeuille instantanément",
+          "description": "Configurez votre portefeuille intelligent en quelques secondes grâce à l'authentification intégrée à votre appareil."
+        },
+        "step3": {
+          "title": "Scannez pour connecter",
+          "description": "Scannez le code QR pour connecter instantanément votre portefeuille - ça fonctionne tout simplement."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Accédez à keys.gemini.com",
+          "description": "Aucune extension ni téléchargement nécessaire - votre portefeuille vit en toute sécurité dans le navigateur."
+        },
+        "step2": {
+          "title": "Configuration en un clic",
+          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+        },
+        "step3": {
+          "title": "Connect and Go",
+          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
