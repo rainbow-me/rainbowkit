@@ -1388,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "افتح keys.gemini.com",
+          "description": "قم بزيارة keys.gemini.com على متصفح الهاتف المحمول - لا يلزم تنزيل تطبيق."
+        },
+        "step2": {
+          "title": "أنشئ محفظتك فوراً",
+          "description": "قم بإعداد محفظتك الذكية في ثوانٍ باستخدام التحقق المبني في جهازك."
+        },
+        "step3": {
+          "title": "امسح للاتصال",
+          "description": "امسح رمز الاستجابة السريعة للاتصال بمحضتك فوراً - يعمل بكل سلاسة."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "اذهب إلى keys.gemini.com",
+          "description": "لا حاجة لملحقات أو تنزيلات - محفظتك تبقى آمنة في المتصفح."
+        },
+        "step2": {
+          "title": "إعداد بنقرة واحدة",
+          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+        },
+        "step3": {
+          "title": "Connect and Go",
+          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
