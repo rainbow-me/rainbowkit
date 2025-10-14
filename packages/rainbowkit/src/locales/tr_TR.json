@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "keys.gemini.com adresini açın",
+          "description": "Mobil tarayıcınızdan keys.gemini.com adresini ziyaret edin - uygulama indirmenize gerek yok."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "Cüzdanınızı Hemen Oluşturun",
+          "description": "Akıllı cüzdanınızı cihazınızın yerleşik kimlik doğrulamasıyla saniyeler içinde kurun."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "Bağlanmak için Tarayın",
+          "description": "Cüzdanınızı anında bağlamak için QR kodunu tarayın - sadece çalışıyor."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "keys.gemini.com adresine gidin",
+          "description": "Genişletme veya indirme gerekmez - cüzdanınız tarayıcıda güvenle yer alır."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "Tek Tıkla Kurulum",
+          "description": "Akıllı cüzdanınızı anında oluşturun: geçiş anahtarı doğrulaması ile - piyasadaki diğer cüzdanlardan daha kolay."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Bağlan ve Git",
+          "description": "Bağlantıyı onaylayın ve hazırsınız - sadece çalışan yorumsuz cüzdan."
         }
       }
     },
