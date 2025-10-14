@@ -1391,30 +1391,30 @@
     "gemini": {
       "qr_code": {
         "step1": {
-          "title": "Open keys.gemini.com",
-          "description": "Visit keys.gemini.com on your mobile browser - no app download required."
+          "title": "Abre keys.gemini.com",
+          "description": "Visita keys.gemini.com en tu navegador móvil - no se requiere descargar una app."
         },
         "step2": {
-          "title": "Create Your Wallet Instantly",
-          "description": "Set up your smart wallet in seconds using your device's built-in authentication."
+          "title": "Crea Tu Billetera Al Instante",
+          "description": "Configura tu billetera inteligente en segundos usando la autenticación integrada de tu dispositivo."
         },
         "step3": {
-          "title": "Scan to Connect",
-          "description": "Scan the QR code to instantly connect your wallet - it just works."
+          "title": "Escanear para Conectar",
+          "description": "Escanea el código QR para conectar tu billetera al instante - simplemente funciona."
         }
       },
       "extension": {
         "step1": {
-          "title": "Go to keys.gemini.com",
-          "description": "No extensions or downloads needed - your wallet lives securely in the browser."
+          "title": "Ve a keys.gemini.com",
+          "description": "No se necesitan extensiones o descargas - tu billetera vive de forma segura en el navegador."
         },
         "step2": {
-          "title": "One-Click Setup",
-          "description": "Create your smart wallet instantly with passkey authentication - easier than any wallet out there."
+          "title": "Configuración con Un Solo Clic",
+          "description": "Crea tu billetera inteligente al instante con autenticación de clave de acceso - más fácil que cualquier otra billetera."
         },
         "step3": {
-          "title": "Connect and Go",
-          "description": "Approve the connection and you're ready - the unopinionated wallet that just works."
+          "title": "Conectar y listo",
+          "description": "Aprueba la conexión y listo - la billetera sin opiniones que simplemente funciona."
         }
       }
     },
