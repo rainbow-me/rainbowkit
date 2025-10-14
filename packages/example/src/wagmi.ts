@@ -188,7 +188,6 @@ export const config = getDefaultConfig({
         baseAccount,
         metaMaskWallet,
         walletConnectWallet,
-        novaWallet,
       ],
     },
     {
@@ -226,6 +225,7 @@ export const config = getDefaultConfig({
         magicEdenWallet,
         mewWallet,
         nestWallet,
+        novaWallet,
         oktoWallet,
         okxWallet,
         omniWallet,
