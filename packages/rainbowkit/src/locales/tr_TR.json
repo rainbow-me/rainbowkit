@@ -1144,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "CTRL Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için CTRL Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
         },
         "step3": {
           "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
         }
       }
     },
