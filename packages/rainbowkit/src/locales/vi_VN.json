@@ -217,16 +217,16 @@
     "ready": {
       "qr_code": {
         "step1": {
-          "description": "Add Ready to your home screen for faster access to your wallet.",
-          "title": "Open the Ready app"
+          "description": "Thêm Ready vào màn hình chính để truy cập ví nhanh hơn.",
+          "title": "Mở ứng dụng Ready"
         },
         "step2": {
-          "description": "Create a wallet and username, or import an existing wallet.",
-          "title": "Create or Import a Wallet"
+          "description": "Tạo ví và tên người dùng, hoặc nhập ví hiện có.",
+          "title": "Tạo hoặc Nhập ví"
         },
         "step3": {
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
-          "title": "Tap the Scan QR button"
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
+          "title": "Nhấn nút Quét QR"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Chúng tôi khuyên bạn nên ghim Binance Wallet vào thanh tác vụ để truy cập nhanh hơn vào ví của bạn."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Tạo hoặc Nhập ví",
           "description": "Hãy chắc chắn rằng bạn đã sao lưu ví của mình bằng phương pháp an toàn. Đừng bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Thêm ZilPay vào màn hình chính để truy cập ví nhanh hơn."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Tạo hoặc Nhập ví",
           "description": "Tạo ví mới hoặc nhập ví hiện có."
         },
         "step3": {
           "title": "Nhấn nút quét",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Thêm Nova Wallet vào màn hình chính để truy cập nhanh hơn vào ví của bạn."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Tạo hoặc Nhập ví",
           "description": "Tạo ví mới hoặc nhập ví hiện có."
         },
         "step3": {
           "title": "Nhấn nút quét",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
     }
