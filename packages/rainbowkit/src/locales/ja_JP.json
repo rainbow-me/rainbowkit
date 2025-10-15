@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "より速くウォレットにアクセスするために、Argentをホーム画面に置いてください。",
-          "title": "Argentアプリを開く"
+          "description": "Readyをホーム画面に追加して、ウォレットへのアクセスを早めます。",
+          "title": "Readyアプリを開く"
         },
         "step2": {
           "description": "ウォレットとユーザーネームを作成するか、既存のウォレットをインポートします。",
