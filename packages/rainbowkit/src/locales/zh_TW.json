@@ -217,16 +217,16 @@
     "ready": {
       "qr_code": {
         "step1": {
-          "description": "Add Ready to your home screen for faster access to your wallet.",
-          "title": "Open the Ready app"
+          "description": "將 Ready 添加到您的主畫面，更快速地存取您的錢包。",
+          "title": "打開 Ready 應用程序"
         },
         "step2": {
-          "description": "Create a wallet and username, or import an existing wallet.",
-          "title": "Create or Import a Wallet"
+          "description": "創建一個錢包和用戶名，或導入現有的錢包。",
+          "title": "創建或導入錢包"
         },
         "step3": {
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
-          "title": "Tap the Scan QR button"
+          "description": "掃描後，將出現連接提示以連接您的錢包。",
+          "title": "點擊掃描 QR 按鈕"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "我們建議將 Binance Wallet 錨定到任務欄以便更快速訪問錢包。"
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "創建或導入錢包",
           "description": "請確保使用安全的方法備份您的錢包。切勿與任何人共享您的秘密短語。"
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "將 ZilPay 添加到您的主畫面，更快速地存取您的錢包。"
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "創建或導入錢包",
           "description": "創建一個新的錢包或導入現有的錢包。"
         },
         "step3": {
           "title": "點擊掃描按鈕",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "掃描後，將出現連接提示以連接您的錢包。"
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "將 Nova Wallet 添加到主屏幕上，以便更快訪問您的錢包。"
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "創建或導入錢包",
           "description": "創建一個新的錢包或導入現有的錢包。"
         },
         "step3": {
           "title": "點擊掃描按鈕",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "掃描後，將出現連接提示以連接您的錢包。"
         }
       }
     }
