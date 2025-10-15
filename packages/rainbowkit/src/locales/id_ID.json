@@ -1144,15 +1144,15 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Dompet XDEFI",
-          "description": "Kami merekomendasikan menempelkan XDEFI Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "Instal ekstensi CTRL Wallet",
+          "description": "Kami merekomendasikan untuk menempelkan CTRL Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
         },
         "step3": {
           "title": "Segarkan browser Anda",
