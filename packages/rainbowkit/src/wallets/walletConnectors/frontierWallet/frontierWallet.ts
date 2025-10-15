@@ -22,7 +22,7 @@ export const frontierWallet = ({
     id: 'frontier',
     name: 'Frontier Wallet',
     rdns: 'xyz.frontier.wallet',
-    installed: isFrontierInjected,
+    installed: !shouldUseWalletConnect ? isFrontierInjected : undefined,
     iconUrl: async () => (await import('./frontierWallet.svg')).default,
     iconBackground: '#CC703C',
     downloadUrls: {

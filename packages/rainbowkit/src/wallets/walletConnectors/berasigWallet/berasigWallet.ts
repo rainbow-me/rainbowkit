@@ -22,7 +22,7 @@ export const berasigWallet = ({
     rdns: 'app.berasig',
     iconUrl: async () => (await import('./berasigWallet.svg')).default,
     iconBackground: '#ffffff',
-    installed: isBerasigWalletInjected,
+    installed: !shouldUseWalletConnect ? isBerasigWalletInjected : undefined,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.berasig.ios',
       ios: 'https://apps.apple.com/us/app/berasig-wallet-on-berachain/id6502052535',
