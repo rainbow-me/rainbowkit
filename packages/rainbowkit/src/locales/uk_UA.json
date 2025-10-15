@@ -214,19 +214,19 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Додайте Argent на домашній екран для швидшого доступу до вашого гаманця.",
-          "title": "Відкрийте додаток Argent"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
-          "description": "Створіть гаманець та ім'я користувача, або імпортуйте існуючий гаманець.",
-          "title": "Створити або Імпортувати Гаманець"
+          "description": "Create a wallet and username, or import an existing wallet.",
+          "title": "Create or Import a Wallet"
         },
         "step3": {
-          "description": "Після сканування з'явиться запит на під'єднання для підключення вашого гаманця.",
-          "title": "Натисніть кнопку 'Сканувати QR-код'"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Ми рекомендуємо закріпити Binance Wallet на панелі задач для швидшого доступу до вашого гаманця."
         },
         "step2": {
-          "title": "Створити або Імпортувати Гаманець",
+          "title": "Create or Import a Wallet",
           "description": "Не забудьте зробити резервну копію вашого гаманця за допомогою безпечного методу. Ніколи не діліться вашою секретною фразою з кимось."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Додайте ZilPay на головний екран для швидшого доступу до вашого гаманця."
         },
         "step2": {
-          "title": "Створити або Імпортувати Гаманець",
+          "title": "Create or Import a Wallet",
           "description": "Створіть новий гаманець або імпортуйте існуючий."
         },
         "step3": {
           "title": "Натисніть кнопку сканування",
-          "description": "Після сканування з'явиться запит на під'єднання для підключення вашого гаманця."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Додайте Nova Wallet на домашній екран для швидшого доступу до вашого гаманця."
         },
         "step2": {
-          "title": "Створити або Імпортувати Гаманець",
+          "title": "Create or Import a Wallet",
           "description": "Створіть новий гаманець або імпортуйте існуючий."
         },
         "step3": {
           "title": "Натисніть кнопку сканування",
-          "description": "Після сканування з'явиться запит на під'єднання для підключення вашого гаманця."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }
