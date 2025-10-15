@@ -21,10 +21,10 @@ export const coin98Wallet = ({
     id: 'coin98',
     name: 'Coin98 Wallet',
     iconUrl: async () => (await import('./coin98Wallet.svg')).default,
-    installed: isCoin98WalletInjected,
+    installed: !shouldUseWalletConnect ? isCoin98WalletInjected : undefined,
     iconAccent: '#CDA349',
     iconBackground: '#fff',
-    rdns: 'coin98.com',
+    rdns: 'com.coin98',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=coin98.crypto.finance.media',
