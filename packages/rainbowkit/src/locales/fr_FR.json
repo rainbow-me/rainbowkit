@@ -214,15 +214,15 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Mettez Argent sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
-          "title": "Ouvrez l'application Argent"
+          "description": "Ajoutez Ready à votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Ready"
         },
         "step2": {
           "description": "Créez un portefeuille et un nom d'utilisateur, ou importez un portefeuille existant.",
-          "title": "Créer ou Importer un Portefeuille"
+          "title": "Créez ou Importer un portefeuille"
         },
         "step3": {
           "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
@@ -407,7 +407,7 @@
           "description": "Nous recommandons d'épingler Binance Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Créer ou Importer un Portefeuille",
+          "title": "Créez ou Importer un portefeuille",
           "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
@@ -1457,7 +1457,7 @@
           "description": "Ajoutez ZilPay à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Créer ou Importer un Portefeuille",
+          "title": "Créez ou Importer un portefeuille",
           "description": "Créez un nouveau portefeuille ou importez-en un existant."
         },
         "step3": {
@@ -1473,7 +1473,7 @@
           "description": "Ajoutez Nova Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Créer ou Importer un Portefeuille",
+          "title": "Créez ou Importer un portefeuille",
           "description": "Créez un nouveau portefeuille ou importez-en un existant."
         },
         "step3": {
