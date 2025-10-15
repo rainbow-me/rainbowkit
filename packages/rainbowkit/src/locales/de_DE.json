@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Fügen Sie Argent zu Ihrem Startbildschirm hinzu, um schneller auf Ihr Wallet zuzugreifen.",
-          "title": "Öffnen Sie die Argent-App"
+          "description": "Füge Ready zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen.",
+          "title": "Öffnen Sie die Ready App"
         },
         "step2": {
           "description": "Erstellen Sie ein Wallet und einen Benutzernamen oder importieren Sie ein bestehendes Wallet.",
