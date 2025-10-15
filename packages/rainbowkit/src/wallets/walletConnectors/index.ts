@@ -140,9 +140,6 @@ export {
   valoraWallet,
   walletConnectWallet,
   wigwamWallet,
-  /**
-   * @deprecated Use `ctrlWallet` instead. This wallet connector will be removed in a future version.
-   */
   xdefiWallet,
   xPortalWallet,
   zealWallet,
