@@ -214,19 +214,19 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Letakkan Argent pada skrin utama anda untuk akses lebih pantas ke dompet anda.",
-          "title": "Buka aplikasi Argent"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
-          "description": "Cipta dompet dan nama pengguna, atau import dompet sedia ada.",
-          "title": "Cipta atau Import Dompet"
+          "description": "Create a wallet and username, or import an existing wallet.",
+          "title": "Create or Import a Wallet"
         },
         "step3": {
-          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
-          "title": "Ketuk butang Imbas QR"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Kami mengesyorkan menyematkan Binance Wallet pada taskbar anda untuk akses yang lebih cepat ke dompet anda."
         },
         "step2": {
-          "title": "Cipta atau Import Dompet",
+          "title": "Create or Import a Wallet",
           "description": "Pastikan anda membuat sandaran dompet anda menggunakan kaedah yang selamat. Jangan sekali-kali berkongsi frasa rahsia anda dengan sesiapa sahaja."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
         },
         "step2": {
-          "title": "Cipta atau Import Dompet",
+          "title": "Create or Import a Wallet",
           "description": "Cipta dompet baharu atau import dompet sedia ada."
         },
         "step3": {
           "title": "Ketuk butang Imbas",
-          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Tambah Nova Wallet ke skrin utama anda untuk akses lebih cepat ke dompet anda."
         },
         "step2": {
-          "title": "Cipta atau Import Dompet",
+          "title": "Create or Import a Wallet",
           "description": "Cipta dompet baharu atau import dompet sedia ada."
         },
         "step3": {
           "title": "Ketuk butang Imbas",
-          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }
