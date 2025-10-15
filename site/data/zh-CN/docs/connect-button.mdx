@@ -1,13 +1,13 @@
 ---
-title: ConnectButton
-description: 使用和自定义 ConnectButton
+title: 连接按钮
+description: 使用和定制连接按钮
 ---
 
-# ConnectButton
+# 连接按钮
 
-## 使用和自定义 ConnectButton
+## 使用和定制连接按钮
 
-这是主要的组件。 它负责渲染连接/断开按钮，以及链切换 UI。
+这是主要组件。负责呈现连接/断开按钮以及链切换UI。
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> 注意：确保您的应用程序被必要的提供器包裹。 [阅读更多](/docs/installation#wrap-providers)。
+> 注意：请确保您的应用程序包含在必要的提供程序中。[阅读更多](/docs/installation#wrap-providers)。
 
 ### 属性
 
-`ConnectButton` 组件公开了一些 props 来自定义其外观，包括切换不同元素的可见性。
+`ConnectButton`组件提供了几个属性，用于自定义其外观，包括切换不同元素的可见性。
 
 <PropsTable
   data={[
@@ -39,7 +39,7 @@ export const YourApp = () => {
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        '是否显示活动账户的头像和/或地址',
+        "是否显示活跃账户的头像和/或地址",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ export const YourApp = () => {
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        '是否显示或完全隐藏当前链的图标和/或名称',
+        "是否显示当前链的图标和/或名称，或完全隐藏",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ export const YourApp = () => {
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        '是否在账户名称旁显示余额',
+        '是否在账户名称旁边显示余额',
     },
   ]}
 />
 
-> 注意：内置的 `largeScreen` 断点是 `768px`。
+> 注意：内置的`largeScreen`断点为`768px`。
 
 ### 示例
 
 #### 标签
 
-使用 `label` prop 设置自定义的 `ConnectButton` 文本。
+使用`label`属性设置自定义的`ConnectButton`文本。
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,7 +76,7 @@ export const YourApp = () => {
 
 #### 账户状态
 
-你可以使用几种不同的方式使用 `accountStatus` prop。
+以下是使用`accountStatus`属性的几种不同方式。
 
 仅显示账户的头像。
 
@@ -92,7 +92,7 @@ export const YourApp = () => {
 
 #### 链状态
 
-你可以使用几种不同的方式使用 `chainStatus` prop。
+以下是使用`chainStatus`属性的几种不同方式。
 
 仅显示当前链的图标。
 
@@ -106,7 +106,7 @@ export const YourApp = () => {
 <ConnectButton chainStatus="__name__" />
 ```
 
-完全隐藏链的 UI。
+完全隐藏链UI。
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
@@ -114,7 +114,7 @@ export const YourApp = () => {
 
 #### 显示余额
 
-使用 `showBalance` prop 隐藏/显示余额。
+使用`showBalance`属性隐藏/显示余额。
 
 隐藏余额。
 
@@ -124,9 +124,9 @@ export const YourApp = () => {
 
 #### 响应式
 
-这些 prop 也可以定义为响应式格式。
+这些属性也可以以响应式格式定义。
 
-在小屏幕上，只显示账户图标。 但在大屏幕上，显示图标和地址。
+在小屏幕上，仅显示账户图标。但在大屏幕上，显示图标和地址。
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-在小屏幕上，隐藏余额。 但在大屏幕上，显示它。
+在小屏幕上隐藏余额，但在大屏幕上显示余额。
 
 ```tsx
 <ConnectButton

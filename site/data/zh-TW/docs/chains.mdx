@@ -1,33 +1,33 @@
 ---
-title: 鏈
-description: 自訂鏈
+title: 鏈條
+description: 自定義鏈條
 ---
 
-# 鏈
+# 鏈條
 
-## 自訂鏈
+## 自定義鏈條
 
-RainbowKit 設計為整合 [wagmi 的 `chain` 物件](https://wagmi.sh/react/chains)。 查看支援的鏈列表 [這裡](https://wagmi.sh/react/chains#supported-chains)。
+RainbowKit 被設計為與 [Wagmi 的 `chain` 物件](https://wagmi.sh/react/chains) 集成。查看支援的鏈條列表 [這裡](https://wagmi.sh/react/chains#supported-chains)。
 
-### 自訂初始鏈
+### 自定義初始鏈條
 
-預設情況下，RainbowKit 會連接到提供給 Wagmi 的第一條鏈。 此行為可通過 `initialChain` 屬性自訂。
+預設情況下，RainbowKit 將連接到提供給 Wagmi 的第一個鏈條。此行為可以通過 `initialChain` 屬性進行自定義。
 
-初始鏈可以使用鏈 ID 配置。
+可以使用鏈條 ID 配置初始鏈條。
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-為了方便起見，您也可以傳遞一個鏈物件。
+為了方便，您還可以傳遞鏈條對象。
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### 自訂鏈元數據
+### 自定義鏈條元數據
 
-預設情況下提供了幾個鏈的圖標和背景，但您可以使用 `iconUrl` 和 `iconBackground` 屬性自訂每條鏈的圖標和背景。
+默認情況下提供了多個鏈條圖標和背景，但您可以使用 `iconUrl` 和 `iconBackground` 屬性自定義每個鏈條的圖標和背景。
 
 使用 `getDefaultConfig` 的範例
 

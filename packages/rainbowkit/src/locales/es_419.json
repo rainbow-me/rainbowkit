@@ -214,15 +214,15 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Coloque Argent en su pantalla de inicio para un acceso más rápido a su billetera.",
-          "title": "Abra la aplicación Argent"
+          "description": "Agrega Ready a tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación Ready"
         },
         "step2": {
           "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
-          "title": "Crear o Importar una Billetera"
+          "title": "Crea o Importa una Billetera"
         },
         "step3": {
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
           "title": "Toque el botón WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale la extensión Binance Wallet",
+          "description": "Recomendamos anclar Binance Wallet a su barra de tareas para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crea o Importa una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -1130,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de la billetera XDEFI",
-          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
+          "title": "Instala la extensión CTRL Wallet",
+          "description": "Recomendamos anclar CTRL Wallet a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
+          "title": "Crea o Importa una Billetera",
           "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualice su navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Abre keys.gemini.com",
+          "description": "Visita keys.gemini.com en tu navegador móvil - no se requiere descargar una app."
+        },
+        "step2": {
+          "title": "Crea Tu Billetera Al Instante",
+          "description": "Configura tu billetera inteligente en segundos usando la autenticación integrada de tu dispositivo."
+        },
+        "step3": {
+          "title": "Escanear para Conectar",
+          "description": "Escanea el código QR para conectar tu billetera al instante - simplemente funciona."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Ve a keys.gemini.com",
+          "description": "No se necesitan extensiones o descargas - tu billetera vive de forma segura en el navegador."
+        },
+        "step2": {
+          "title": "Configuración con Un Solo Clic",
+          "description": "Crea tu billetera inteligente al instante con autenticación de clave de acceso - más fácil que cualquier otra billetera."
+        },
+        "step3": {
+          "title": "Conectar y listo",
+          "description": "Aprueba la conexión y listo - la billetera sin opiniones que simplemente funciona."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Toque el botón de escaneo"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Abre la aplicación ZilPay",
-        "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
-      },
-      "step2": {
-        "title": "Crear o Importar una Billetera",
-        "description": "Crea una nueva billetera o importa una existente."
-      },
-      "step3": {
-        "title": "Toque el botón de escaneo",
-        "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación ZilPay",
+          "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crea o Importa una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Nova Wallet",
+          "description": "Agrega Nova Wallet a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crea o Importa una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
       }
     }
   }

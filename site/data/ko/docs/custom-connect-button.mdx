@@ -1,15 +1,15 @@
 ---
-title: 맞춤형 ConnectButton
-description: 맞춤형 ConnectButton 생성하기
+title: 커스텀 ConnectButton
+description: 커스텀 ConnectButton 만들기
 ---
 
-# 맞춤형 ConnectButton
+# 커스텀 ConnectButton
 
-## 맞춤형 ConnectButton 생성하기
+## 커스텀 ConnectButton 만들기
 
-저수준의 `ConnectButton.Custom`을 사용하여 자신만의 맞춤 연결 버튼을 생성할 수 있습니다. 이 컴포넌트는 내장 버튼을 다시 구현할 필요가 있는 모든 것을 포함한 함수를 렌더링합니다.
+사용자는 `ConnectButton.Custom`을 활용하여 자신의 커스텀 연결 버튼을 만들 수 있습니다. 이 컴포넌트는 기본 제공 버튼을 다시 구현하는 데 필요한 모든 내용을 포함한 함수를 렌더링합니다.
 
-내장 버튼의 최소한의 재구현은 다음과 같을 것입니다:
+기본 제공 버튼의 최소한의 재구현은 다음과 같은 모습일 것입니다:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-다음 props는 렌더 함수에 전달됩니다.
+다음 속성들은 render 함수에 전달됩니다.
 
 ### 계정 속성
 
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '현재 계정에 대한 세부 정보를 포함하는 객체, 아래에 설명됨',
+        '현재 계정에 대한 세부 정보가 포함된 객체, 이하 설명',
     },
     {
       name: 'account.address',
@@ -138,16 +138,16 @@ export const YourApp = () => {
     {
       name: 'account.balanceDecimals',
       required: false,
-      type: 'string | undefined\t',
-      description: '소수점 형식의 계정 잔액',
+      type: 'string | undefined	',
+      description: '소수로 표기된 계정 잔액',
     },
     {
       name: 'account.balanceFormatted',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string | undefined	',
       description: (
         <>
-          문자열로 포맷된 계정 잔액, 예:{' '}
+          문자열로 형식화된 계정 잔액, 예: {' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -155,20 +155,20 @@ export const YourApp = () => {
     {
       name: 'account.balanceSymbol',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string | undefined	',
       description: (
         <>
-          잔액의 통화 기호, 예: <code>ETH</code>
+          잔액의 화폐 기호, 예: <code>ETH</code>
         </>
       ),
     },
     {
       name: 'account.displayBalance',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string | undefined	',
       description: (
         <>
-          3자리 유효 숫자로 포맷된 잔액과 기호, 예: <code>1.23 ETH</code>
+          3자리의 유효 숫자로 형식화된 잔액과 기호, 예: <code>1.23 ETH</code>
         </>
       ),
     },
@@ -178,7 +178,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          ENS 이름 또는 주소의 축약 버전, 예:{' '}
+          ENS 이름 또는 주소의 축약형, 예: {' '}
           <code>"rainbowwallet.eth"</code> 또는 <code>"0x7a…384f"</code>
         </>
       ),
@@ -186,13 +186,13 @@ export const YourApp = () => {
     {
       name: 'account.ensAvatar',
       required: false,
-      type: 'string\t| undefined',
-      description: 'ENS 아바타의 URI',
+      type: 'string	| undefined',
+      description: 'ENS 아바타 URI',
     },
     {
       name: 'account.ensName',
       required: false,
-      type: 'string\t| undefined',
+      type: 'string	| undefined',
       description: (
         <>
           ENS 이름, 예: <code>rainbowwallet.eth</code>
@@ -204,7 +204,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        '현재 체인의 보류 중인 거래가 있는지 나타내는 부울 값',
+        '현재 체인에 대한 미결 거래가 있는지 표시하는 불리언',
     },
   ]}
 />
@@ -218,27 +218,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '현재 체인에 대한 세부 정보가 포함된 객체, 아래에 설명됩니다',
+        '현재 체인에 대한 세부 정보가 포함된 객체, 이하 설명',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: '체인에 아이콘이 지정되어 있는지 여부',
+      description: '체인에 지정된 아이콘이 있는지 여부',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        '체인 아이콘의 URL (Base64 데이터 URL을 다운로드하는 동안 미정의일 수도 있음)',
+        '체인 아이콘 URL (Base64 데이터 URL을 다운로드하는 동안 정의되지 않을 수 있음)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        '이미지가 로드되는 동안 표시될 체인 아이콘 배경',
+        '이미지가 로딩되는 동안 표시될 체인 아이콘 배경',
     },
     {
       name: 'chain.id',
@@ -265,7 +265,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        '현재 체인이 지원되지 않는지 여부를 나타내는 불리언',
+        '현재 체인이 지원되지 않음을 나타내는 불리언',
     },
   ]}
 />
@@ -278,39 +278,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: '계정 모달을 열기 위한 함수',
+      description: '계정 모달을 여는 함수',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: '체인 모달을 열기 위한 함수',
+      description: '체인 모달을 여는 함수',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: '연결 모달을 열기 위한 함수',
+      description: '연결 모달을 여는 함수',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '계정 모달이 열려 있는지 여부를 나타내는 불리언',
+        '계정 모달이 열려 있는지 나타내는 불리언',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: '체인 모달이 열려 있는지 여부를 나타내는 불리언',
+      description: '체인 모달이 열려 있는지 나타내는 불리언',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '연결 모달이 열려 있는지 여부를 나타내는 불리언',
+        '연결 모달이 열려 있는지 나타내는 불리언',
     },
   ]}
 />
@@ -324,14 +324,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        '컴포넌트가 마운트되었는지를 나타내는 불리언 값입니다.',
+        '컴포넌트가 마운트 되었는지 여부를 나타내는 불리언',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        '인증 상태입니다. 인증이 구성되지 않은 경우에는 정의되지 않음입니다.',
+        '인증 상태, 인증이 설정되지 않은 경우 undefined',
     },
   ]}
 />

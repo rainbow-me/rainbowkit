@@ -1,21 +1,21 @@
 ---
-title: التخصيص
-description: استخدام وتخصيص السمات
+title: التنسيق
+description: استخدام وتخصيص الثيمات
 ---
 
-# التخصيص
+# التنسيق
 
-## استخدام وتخصيص السمات
+## استخدام وتخصيص الثيمات
 
-يمكنك تعديل واجهة المستخدم لـ RainbowKit لتتناسب مع العلامة التجارية الخاصة بك. يمكنك اختيار من بين بعض الألوان المحددة مسبقًا وتكوينات نصف القطر الحدودية.
+يمكنك تعديل واجهة RainbowKit لتتناسب مع علامتك التجارية. يمكنك اختيار ألوان تمييز وتهيئات نصف القطر للحواف محددة مسبقًا.
 
-هناك 3 وظائف مضمنة للسمة:
+توجد ثلاث وظائف ثيم مدمجة:
 
-- `lightTheme`   (افتراضي)
+- `lightTheme` &nbsp; (الافتراضي)
 - `darkTheme`
 - `midnightTheme`
 
-تُعيد وظيفة السمة كائن سمة. يمكنك تمرير الكائن إلى خاصية `theme` لـ `RainbowKitProvider`.
+وظيفة الثيم تعيد كائن الثيم. يمكنك تمرير الكائن إلى خاصية `theme` في `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-إذا أردت، يمكنك تمرير `accentColor`، `accentColorForeground`، `borderRadius`، `fontStack` و `overlayBlur` لتخصيصها.
+إذا أردت، يمكنك إدخال `accentColor`، `accentColorForeground`، `borderRadius`، `fontStack` و `overlayBlur` لتخصيصها.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### تخصيص السمات المدمجة
+### تخصيص الثيمات المدمجة
 
-تقبل وظائف السمة المدمجة أيضا كائن الخيارات، مما يتيح لك الاختيار من بين عدة أنماط بصرية مختلفة.
+الوظائف الثيمية المدمجة تقبل أيضًا كائن الخيارات، مما يسمح لك بالاختيار من بين عدة أنماط بصرية مختلفة.
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'لون الخلفية/النص للعناصر التفاعلية المختلفة.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'اللون المستخدم لعناصر المقدمة المعروضة فوق لون التمييز.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'حجم مقياس نصف القطر للحواف بالكامل.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "مكدس الخطوط المستخدم طوال الواجهة. لاحظ أن `rounded` يحاول استخدام SF Pro Rounded ويعود إلى الخطوط الافتراضية عند عدم توفره.",
     },
     {
       name: 'overlayBlur',
@@ -93,12 +93,12 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'تشويش خلفية النافذة المنبثقة.',
     },
   ]}
 />
 
-على سبيل المثال، لتخصيص السمة الداكنة بلون بنفسجي مميز ومقياس نصف القطر للحدود `medium`:
+على سبيل المثال، لتخصيص الثيم الداكن بلون تمييز بنفسجي ومقياس نصف قطر `medium`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-كل سمة توفر أيضًا العديد من إعدادات الألوان المميزة (`blue`, `green`, `orange`, `pink`, `purple`, `red`) التي يمكن نشرها في كائن الخيارات. على سبيل المثال، لاستخدام اللون الوردي كلون مميز:
+كل ثيم يوفر أيضًا عدة إعدادات مسبقة لألوان التمييز (`blue`, `green`, `orange`, `pink`, `purple`, `red`) التي يمكن دمجها في كائن الخيارات. على سبيل المثال، لاستخدام إعداد اللون التمييزي `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -140,11 +140,11 @@ const App = () => {
 
 ### أمثلة
 
-#### وظيفة السمة
+#### وظيفة الثيم
 
-إليك بعض الطرق المختلفة التي يمكنك استخدام خاصية `theme`.
+إليك بعض الطرق المختلفة لاستخدام خاصية `theme`.
 
-استخدم الثيم `darkTheme`.
+استخدام الثيم `darkTheme`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-استخدم الثيم `midnightTheme`.
+استخدام الثيم `midnightTheme`.
 
 ```tsx
 import {
@@ -173,9 +173,9 @@ export const App = () => (
 
 #### لون التمييز
 
-إليك بعض الطرق المختلفة التي يمكنك استخدام تهيئة `accentColor`.
+إليك بعض الطرق المختلفة لاستخدام إعداد `accentColor`.
 
-اضبط لون اللمسات على قيمة الأرجواني المخصصة.
+ضبط لون التمييز إلى قيمة بنفسجية مخصصة.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-اضبط لون اللمسات على القيمة المضبوطة مسبقًا `green`.
+ضبط لون التمييز إلى الإعداد المسبق `green` المدمج.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +216,9 @@ const App = () => {
 
 #### نصف قطر الحافة
 
-إليك بعض الطرق المختلفة التي يمكنك استخدام تهيئة `borderRadius`.
+إليك بعض الطرق المختلفة لاستخدام إعداد `borderRadius`.
 
-اضبط نصف قطر الحافة على `medium`.
+ضبط نصف قطر الحافة إلى `medium`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-اضبط نصف قطر الحافة على `none`.
+ضبط نصف قطر الحافة إلى `none`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> تذكير: القيم المتاحة لنصف قطر الحافة هي: `large` (الافتراضي), `medium`, `small` و `none`.
+> تذكير: القيم المتاحة لنصف قطر الحافة هي: `large` (افتراضيًا)، `medium`، `small` و `none`.
 
 #### مكدس الخطوط
 
-بشكل افتراضي، يتم تعيين `fontStack` على `rounded`. ولكن فيما يلي كيف يمكنك استخدام التكوين `fontStack`.
+افتراضيًا، يتم تعيين `fontStack` إلى `rounded`. ولكن إليك كيفية استخدام إعداد `fontStack`.
 
-قم بتعيين مكدس الخطوط إلى `system`.
+ضبط مكدس الخطوط إلى `system`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### غموض الكتلة
+#### تشويش الخلفية
 
-بشكل افتراضي، يتم تعيين `overlayBlur` على `none`. ولكن فيما يلي كيف يمكنك استخدام التكوين `overlayBlur`.
+افتراضيًا، يتم تعيين `overlayBlur` إلى `none`. ولكن إليك كيفية استخدام إعداد `overlayBlur`.
 
-قم بتعيين غموض الكتلة إلى `small`.
+ضبط تشويش الخلفية إلى `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### المزج والمطابقة
+#### مزج وتطابق
 
-فيما يلي بعض الطرق المختلفة التي يمكنك استخدامها لاستخدام موضوعات مختلفة، مع الخصائص `accentColor`، `borderRadius` و `fontStack` معًا.
+إليك بعض الطرق المختلفة لاستخدام الثيمات المختلفة، مع خواص `accentColor`, `borderRadius` و `fontStack` معًا.
 
-- استخدم السمة `lightTheme`
-- قم بتعيين لون التمييز على قيمة الأرجواني المخصصة
-- قم بتعيين نصف قطر الحدود إلى `medium`
-- قم بتعيين مكدس الخطوط إلى `system`
+- استخدام الثيم `lightTheme`
+- ضبط لون التمييز إلى قيمة بنفسجية مخصصة
+- ضبط نصف قطر الحافة إلى `medium`
+- ضبط مكدس الخطوط إلى `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- استخدم السمة `midnightTheme`
-- قم بتعيين لون التمييز إلى المسبق `pink` المضمن.
-- قم بتعيين نصف قطر الحدود إلى `small`
-- قم بتعيين مكدس الخطوط إلى `system`
+- استخدام الثيم `midnightTheme`
+- ضبط لون التمييز إلى الإعداد المسبق `pink` المدمج.
+- ضبط نصف قطر الحافة إلى `small`
+- ضبط مكدس الخطوط إلى `system`
 
 ```tsx
 import {
@@ -362,7 +362,7 @@ const App = () => {
 
 #### دعم الوضع الداكن
 
-إذا كان تطبيقك يستخدم استعلام الوسائط `prefers-color-scheme: dark` القياسي للتبديل بين الأوضاع الخفيفة والداكنة، يمكنك اختياريًا تقديم كائن سمة ديناميكي يحتوي على قيم `lightMode` و `darkMode`.
+إذا كانت تطبيقك يستخدم استعلام الوسائط القياسية `prefers-color-scheme: dark` للتبديل بين أوضاع الضوء والظلام، يمكنك تقديم كائن ثيم ديناميكي يحتوي على قيم `lightMode` و `darkMode` اختياريًا.
 
 ```tsx
 import {

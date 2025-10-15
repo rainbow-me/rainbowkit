@@ -1,17 +1,17 @@
 ---
-title: 체인
-description: 체인 커스터마이징
+title: 체인들
+description: 체인 사용자 정의
 ---
 
-# 체인
+# 체인들
 
-## 체인 커스터마이징
+## 체인 사용자 정의
 
-RainbowKit은 [wagmi의 `chain` 객체](https://wagmi.sh/react/chains)와 통합되도록 설계되었습니다. [here]의 지원되는 체인 목록을 확인하세요. (https://wagmi.sh/react/chains#supported-chains)
+RainbowKit는 [wagmi의 `체인` 객체](https://wagmi.sh/react/chains)와 통합하도록 설계되었습니다. 지원되는 체인 목록은 [여기](https://wagmi.sh/react/chains#supported-chains)에서 확인하세요.
 
-### 초기 체인 커스터마이징
+### 초기 체인 사용자 정의
 
-기본적으로, RainbowKit은 Wagmi에 제공된 첫 번째 체인에 연결됩니다. 이 동작은 `initialChain` 속성을 통해 사용자 정의할 수 있습니다.
+기본적으로 RainbowKit는 Wagmi에 제공된 첫 번째 체인에 연결합니다. 이 동작은 `initialChain` 속성을 통해 사용자 정의할 수 있습니다.
 
 초기 체인은 체인 ID를 사용하여 구성할 수 있습니다.
 
@@ -19,17 +19,17 @@ RainbowKit은 [wagmi의 `chain` 객체](https://wagmi.sh/react/chains)와 통합
 <RainbowKitProvider initialChain={1}>
 ```
 
-편의를 위해 체인 객체를 전달할 수도 있습니다.
+편의를 위해 체인 객체도 전달할 수 있습니다.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### 맞춤형 체인 메타데이터
+### 사용자 정의 체인 메타데이터
 
-기본적으로 여러 체인 아이콘과 배경이 제공되지만, 각 체인의 아이콘과 배경은 `iconUrl` 및 `iconBackground` 속성을 사용하여 사용자 정의할 수 있습니다.
+여러 체인 아이콘 및 배경이 기본적으로 제공되며, 각 체인의 아이콘 및 배경은 `iconUrl` 및 `iconBackground` 속성을 사용하여 사용자 정의할 수 있습니다.
 
-`getDefaultConfig`를 사용한 예시
+`getDefaultConfig` 예시
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig` 사용 예시
+`createConfig` 예시
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';

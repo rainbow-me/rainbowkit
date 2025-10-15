@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Letakkan Argent pada skrin utama anda untuk akses lebih pantas ke dompet anda.",
-          "title": "Buka aplikasi Argent"
+          "description": "Tambah Ready ke skrin utama anda untuk akses lebih cepat ke dompet anda.",
+          "title": "Buka aplikasi Ready"
         },
         "step2": {
           "description": "Cipta dompet dan nama pengguna, atau import dompet sedia ada.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda.",
           "title": "Ketuk butang WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pasang sambungan Binance Wallet",
+          "description": "Kami mengesyorkan menyematkan Binance Wallet pada taskbar anda untuk akses yang lebih cepat ke dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Pastikan anda membuat sandaran dompet anda menggunakan kaedah yang selamat. Jangan sekali-kali berkongsi frasa rahsia anda dengan sesiapa sahaja."
+        },
+        "step3": {
+          "title": "Segarkan pelayar anda",
+          "description": "Setelah anda menyediakan dompet anda, klik di bawah untuk menyegarkan pelayar dan memuatkan lanjutan."
         }
       }
     },
@@ -1130,11 +1144,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Pasang sambungan XDEFI Wallet",
-          "description": "Kami mengesyorkan anda pin XDEFI Wallet ke taskbar anda untuk akses lebih cepat ke dompet anda."
+          "title": "Pasang sambungan CTRL Wallet",
+          "description": "Kami mencadangkan untuk menyematkan CTRL Wallet pada bar tugas anda supaya lebih mudah untuk diakses."
         },
         "step2": {
           "title": "Cipta atau Import Dompet",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka kunci.gemini.com",
+          "description": "Lawati kunci.gemini.com pada pelayar mudah alih anda - tiada muat turun aplikasi diperlukan."
+        },
+        "step2": {
+          "title": "Cipta Dompet Anda Dengan Segera",
+          "description": "Sediakan dompet pintar anda dalam beberapa saat menggunakan pengesahan bawaan peranti anda."
+        },
+        "step3": {
+          "title": "Imbas untuk Sambung",
+          "description": "Imbas kod QR untuk segera menyambungkan dompet anda - ia berfungsi begitu sahaja."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pergi ke kunci.gemini.com",
+          "description": "Tiada sambungan atau muat turun diperlukan - dompet anda selamat dalam pelayar."
+        },
+        "step2": {
+          "title": "Penyediaan Satu-Klik",
+          "description": "Cipta dompet bijak anda dengan serta-merta dengan pengesahan kunci laluan - lebih mudah daripada mana-mana dompet lain."
+        },
+        "step3": {
+          "title": "Sambung dan Teruskan",
+          "description": "Luluskan sambungan dan anda sudah bersedia - dompet tanpa prasangka yang hanya berfungsi."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Ketuk butang Imbas"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Buka aplikasi ZilPay",
-        "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
-      },
-      "step2": {
-        "title": "Cipta atau Import Dompet",
-        "description": "Cipta dompet baharu atau import dompet sedia ada."
-      },
-      "step3": {
-        "title": "Ketuk butang Imbas",
-        "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambah ZilPay ke skrin utama anda untuk akses lebih cepat ke dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Nova Wallet",
+          "description": "Tambah Nova Wallet ke skrin utama anda untuk akses lebih cepat ke dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
       }
     }
   }

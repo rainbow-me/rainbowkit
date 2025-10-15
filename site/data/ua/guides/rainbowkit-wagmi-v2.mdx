@@ -1,32 +1,32 @@
 ---
 title: Оновлення вашого dApp для RainbowKit v2
-description: RainbowKit та Wagmi були оновлені до v2
+description: RainbowKit та Wagmi перейшли на v2
 image: guide-rainbowkit-v2.png
 ---
 
 # Міграція до RainbowKit та Wagmi v2
 
-Залежності [wagmi](https://wagmi.sh) та [viem](https://viem.sh) досягли версії `2.x.x` зі змінами, що призводять до невідповідності.
+Пірингові залежності [wagmi](https://wagmi.sh) і [viem](https://viem.sh) досягли версії `2.x.x` з критичними змінами.
 
-Дотримуйтесь наступних кроків для міграції.
+Дотримуйтесь наведених нижче кроків для міграції.
 
-**1. Оновіть RainbowKit, `wagmi` та `viem` до останньої версії**
+**1. Оновіть RainbowKit, `wagmi`, і `viem` до останніх версій**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Встановіть залежність однорангових пакетів `@tanstack/react-query`**
+**2. Встановіть `@tanstack/react-query` як додаткову залежність**
 
-З Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) тепер є обов'язковою залежністю однорангових пакетів.
+З Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) є обов'язковою піринговою залежністю.
 
-Встановіть її за допомогою наступної команди:
+Встановіть його з наступною командою:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Оновіть ваші конфігурації RainbowKit та Wagmi**
+**3. Оновіть конфігурації RainbowKit і Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Перевірте критичні зміни в `wagmi` та `viem`**
+**4. Перевірте зміни, що розривають сумісність у `wagmi` і `viem`**
 
-Якщо ви використовуєте хуки `wagmi` та дії `viem` у вашому dApp, вам потрібно буде слідувати посібникам міграції для v2:
+Якщо ви використовуєте хуки `wagmi` та дії `viem` у вашому dApp, вам потрібно виконати інструкції з міграції для v2:
 
-- [Посібник міграції Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Критичні зміни Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Інструкція з міграції для Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Критичні зміни у Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### Зміни в RainbowKit
+#### Зміни у RainbowKit
 
-**1. Покращене поводження для гаманців з підтримкою EIP-6963**
+**1. Покращене поводження для гаманців EIP-6963**
 
-Гаманці, що підтримують новий стандарт підключення EIP-6963 (включаючи Rainbow, MetaMask та інші), тепер будуть автоматично з'являтися у розділі `Installed` під час процесу підключення гаманця. Це забезпечує користувачам можливість завжди знаходити свої улюблені гаманці та підключатися до dApps без конфліктів або резервних кнопок.
+Гаманці, які підтримують новий стандарт підключення EIP-6963 (включаючи Rainbow, MetaMask та інші) тепер автоматично з'являтимуться у розділі `Встановлені` під час роботи в Connect Wallet. Це гарантує, що користувачі завжди зможуть знайти свої улюблені гаманці та підключити їх до dApp без конфліктів або кнопок резервного копіювання.
 
-Розробники продовжують мати повний контроль над Кастомним Списком Гаманців для надання переваги обраним гаманцям для кінцевих користувачів. Рекомендується продовжувати включати `injectedWallet` та `walletConnectWallet` у ваш список для підтримки всіх платформ.
+Розробники продовжують повністю контролювати список користувацьких гаманців, щоб підкреслити переважні гаманці для кінцевих користувачів. Рекомендується продовжувати включати `injectedWallet` та `walletConnectWallet` у вашому списку для підтримки всіх платформ.
 
-**2. Конфігурація Wagmi з getDefaultConfig**
+**2. Конфігурація Wagmi з використанням getDefaultConfig**
 
-Цей новий API спрощує процес налаштування та замінює необхідність у використанні `createConfig` Wagmi безпосередньо. Конфігурація мережі спрощена, включаючи непублічних провайдерів для `transports`.
+Цей новий API спрощує досвід конфігурації та замінює потребу використовувати Wagmi's `createConfig` безпосередньо. Конфігурація ланцюга спрощена, включаючи передбачувані публічні провайдери для `transports`.
 
-Стандартний список гаманців буде включений автоматично, що робить непотрібним використання `getDefaultWallets` та `connectorsForWallets`.
+Список гаманців за замовчуванням буде автоматично включено, що виключає потребу використовувати `getDefaultWallets` та `connectorsForWallets`.
 
-Ви можете створити Кастомний Список Гаманців, передаючи імпортовані або Кастомні гаманці-конектори в `wallets`. Ініціалізація гаманців-конекторів та передача `projectId` та `chains` більше не потрібні.
+Ви можете створити список кастомних гаманців, передаючи імпортовані або кастомні конектори гаманців до `wallets`. Не потрібно більше створювати екземпляри конекторів гаманців і передавати `projectId` та `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-Вам більше не потрібно передавати `chains` до `<RainbowKitProvider>`.
+Вам більше не потрібно передавати `chains` для `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Користувацькі Мережі**
+**Користувацькі Мережі**
 
-Тип `Chain` змінений у відповідності до Wagmi v2 та продовжує підтримувати метадані RainbowKit `iconUrl` та `iconBackground`.
+Тип `Chain` змінено відповідно до Wagmi v2 і продовжує підтримувати метадані RainbowKit `iconUrl` та `iconBackground`.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ const config = getDefaultConfig({
   })
 ```
 
-**5. Кастомні Гаманці**
+**Кастомні Гаманці**
 
-Конектори гаманців RainbowKit зазнали значних змін для підтримки Wagmi v2. Зверніться до [оновленої документації](https://www.rainbowkit.com/docs/custom-wallets) та [прикладу конектора](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для оновлення будь-яких Кастомних Гаманців-Конекторів у вашому dApp.
+Конектори гаманців RainbowKit зазнали суттєвих змін для підтримки Wagmi v2. Зверніться до [оновленої документації](https://www.rainbowkit.com/docs/custom-wallets) та [прикладу конектора](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для оновлення будь-яких користувацьких конекторів гаманців у вашому dApp.
 
-Конектори гаманців тепер також підтримують стандарт EIP-6963 з пропозицією `rdns`. Переконайтеся, що це заповнено, щоб уникнути дублювання посилань на гаманці, що підтримують EIP-6963, у вашому списку гаманців.
+Конектори гаманців тепер також підтримують стандарт EIP-6963 з `rdns` властивістю. Переконайтеся, що вона заповнена, щоб уникнути дубльованих посилань на гаманці, що підтримують EIP-6963 у вашому списку гаманців.
 
-> Будь ласка, повідомте про будь-які проблеми чи відгуки для RainbowKit v2 на GitHub [тут](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Будь ласка, повідомляйте про будь-які проблеми або зворотній зв'язок для RainbowKit v2 на GitHub [тут](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

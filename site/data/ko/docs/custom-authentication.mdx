@@ -7,13 +7,13 @@ description: 자신의 인증 백엔드에 연결
 
 ## 자신의 인증 백엔드에 연결
 
-RainbowKit은 Ethereum 및 NextAuth로의 로그인에 대한 [first-class 지원을 제공하는](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) 반면, 사용자 정의 백엔드 및 메시지 형식과도 통합할 수 있습니다.
+RainbowKit은 [Ethereum 및 NextAuth와의 첫 번째 클래스 지원을 제공](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)하지만, 맞춤형 백엔드 및 메시지 형식과 통합할 수도 있습니다.
 
-### 사용자 정의 어댑터 생성
+### 맞춤 어댑터 생성
 
-먼저 인증 어댑터를 생성합니다. 이를 통해 RainbowKit은 메시지를 생성/준비하고 백엔드와 통신할 수 있습니다.
+먼저 인증 어댑터를 만듭니다. 이것은 RainbowKit이 메시지를 생성/준비하고 백엔드와 통신할 수 있게 해줍니다.
 
-예를 들어, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)과 같은 사용자 지정 API 엔드포인트에 대해 [Sign-In with Ethereum](https://login.xyz)을 사용할 수 있는 인증 어댑터를 만들 수 있습니다.
+예를 들어, [Sign-In with Ethereum](https://login.xyz)을 커스텀 API 엔드포인트와 연동하는 인증 어댑터를 만들 수 있습니다. 예: [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### 인증 상태 제공
 
-애플리케이션이 이미 어떤 방식으로든 인증 수명 주기를 관리하고 있다면, 사용자 정의 어댑터와 함께 현재 인증 상태를 'RainbowKitAuthenticationProvider'에 전달하여 기존의 'RainbowKitProvider'를 래핑할 수 있습니다.
+귀하의 애플리케이션이 이미 인증 라이프사이클을 관리하고 있다고 가정할 때, 현재 인증 상태를 사용자의 맞춤 어댑터와 함께 `RainbowKitAuthenticationProvider`에 전달하여 기존의 `RainbowKitProvider`를 래핑할 수 있습니다.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-이만큼 왔고 기존 오픈 소스 인증 라이브러리에 대한 어댑터를 생성한 경우, 다른 사람들이 사용할 수 있도록 패키지를 생성하는 것을 고려해 주세요!
+여기까지 진행하시고 기존의 오픈 소스 인증 라이브러리를 위한 어댑터를 만드셨다면, 다른 사람들도 사용할 수 있도록 패키지를 만들어 보세요!

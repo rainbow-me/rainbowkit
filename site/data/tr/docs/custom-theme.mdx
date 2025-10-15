@@ -7,9 +7,9 @@ description: Özel bir tema oluşturma
 
 ## Özel bir tema oluşturma
 
-> Not: Bu API kararsızdır ve yakın gelecekte değişiklik göstermesi muhtemeldir. Şimdilik [yerleşik temalara](/docs/theming) bağlı kalmanızı öneririz.
+> Not: Bu API kararsızdır ve yakın gelecekte değişiklik gösterebilir. Şimdilik [yerleşik temalar](/docs/theming) ile kalmanızı öneriyoruz.
 
-Yerleşik temalar bir miktar özelleştirme sağlar, ancak `Theme` türü, temel tema değişkenlerine daha alt düzeyde erişimle kendi özel temalarınızı tanımlamanıza yardımcı olmak için sağlanmıştır.
+Yerleşik temalar bir miktar özelleştirme sağlasa da, `Theme` türü, temel tema değişkenlerine daha düşük seviyelerde erişimle kendi özel temalarınızı tanımlamanıza yardımcı olmak için sunulmaktadır.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -77,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Yerleşik bir temayı genişletme
+### Yerleşik temayı genişletme
 
-Tüm temayı yeniden tanımlamak zorunda kalmadan yerleşik bir temayı genişletebilirsiniz. Bu, yalnızca belirli tema jetonlarını geçersiz kılmak istediğinizde kullanışlıdır.
+Tüm temayı yeniden tanımlamaya gerek kalmadan yerleşik bir temayı genişletebilirsiniz. Yalnızca belirli tema belirteçlerini değiştirmek istediğinizde bu faydalıdır.
 
-Bunu yapmak için `lodash.merge` (veya eşdeğerini) yükleyin:
+Bunu yapmak için, `lodash.merge` (veya eşdeğerini) yükleyin:
 
 ```bash
 npm install lodash.merge
 ```
 
-Uzantılısı olarak, genişletmek istediğiniz temayı (örneğin: `darkTheme`) ve TypeScript `Theme` türünü yükleyin:
+Bunu, genişletmek istediğiniz temayla (örnek: `darkTheme`) ve TypeScript `Theme` türü ile birlikte içe aktarın:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -98,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Daha sonra, yerleşik temayı, geçersiz kılmak istediğiniz tema jetonları ile birleştirin. Bu örnekte, markamın vurgu rengine uydurmak için `accentColor` jetonunu geçersiz kılıyorum.
+Sonra, yerleşik temayı değiştirmek istediğiniz tema belirteçleriyle birleştirin. Bu örnekte, markamın vurgu rengini karşılamak için `accentColor` belirtecini değiştiriyorum.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -108,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Son olarak, özel temanızı `RainbowKitProvider`'ın `theme` özelliğine geçebilirsiniz.
+Sonunda, artık özel temanızı `RainbowKitProvider`'ın `theme` özelliğine geçirebilirsiniz.
 
 ```tsx
 const App = () => {
@@ -122,14 +122,14 @@ const App = () => {
 
 ### Özel tema seçicileri oluşturma
 
-Eğer uygulamanız sunucu/statik olarak render ediliyorsa ve kullanıcıların temalar arasında manuel olarak geçiş yapmasına izin veriyorsa, RainbowKit'in temalama sistemi, herhangi bir CSS-in-JS sistemiyle kullanılabilecek aşağıdaki işlevlerle özel CSS seçicilerine bağlanabilir:
+Uygulamanız sunucu/tan statik olarak oluşturulmuşsa ve kullanıcıların temalar arasında manuel olarak geçiş yapmasına izin veriyorsa, RainbowKit'in tema sistemi herhangi bir CSS-in-JS sistemiyle kullanılabilen aşağıdaki fonksiyonlarla özel CSS seçicilerine bağlanabilir:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-Bu işlevler, tüm gerekli tema değişkenlerini ayarlayan CSS'i döndürür. Hem dize hem de nesne desteklendiği için, bu herhangi bir CSS-in-JS sistemi ile entegre edilebilir.
+Bu fonksiyonlar gerekli tüm tema değişkenlerini ayarlayan CSS döndürür. Hem stringler hem de nesneler desteklendiğinden, bu herhangi bir CSS-in-JS sistemi ile entegre edilebilir.
 
-Temel bir örnek olarak, her tema için özel seçicilerle kendi `style` öğenizi render edebilirsiniz. Temanın CSS'sinin render edilmesini kontrol ettiğimiz için, RainbowKitProvider'ın bizim için herhangi bir stil render etmemesi amacıyla `theme` özelliğine `null` geçiyoruz. Ayrıca, base tema ile aynı olan herhangi bir tema değişkenini dışarıda bırakan cssStringFromTheme işlevinde extends seçeneğinin kullanımına dikkat edin.
+Temel bir örnek olarak, her tema için özel seçicilerle kendi `style` elemanınızı oluşturabilirsiniz. Tema'nın CSS'sini oluşturmayı kontrol ettiğimizden, RainbowKitProvider bizim için herhangi bir stil oluşturmasın diye `theme` özelliğine `null` geçiyoruz. Ayrıca, temel temayla aynı olan tema değişkenlerini hariç tutan cssStringFromTheme fonksiyonundaki extends seçeneğinin kullanımına dikkat edin.
 
 ```tsx
 import {

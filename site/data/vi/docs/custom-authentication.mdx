@@ -1,19 +1,19 @@
 ---
 title: Xác thực Tùy chỉnh
-description: Kết nối với hệ thống xác thực của bạn
+description: Kết nối với hệ thống lưng xác thực của riêng bạn
 ---
 
 # Xác thực Tùy chỉnh
 
-## Kết nối với hệ thống xác thực của bạn
+## Kết nối với hệ thống lưng xác thực của riêng bạn
 
-Trong khi RainbowKit cung cấp [hỗ trợ hạng nhất cho Đăng nhập bằng Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các hệ thống back-end tùy chỉnh và định dạng tin nhắn riêng.
+Trong khi RainbowKit cung cấp [hỗ trợ hàng đầu cho Đăng nhập với Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các back-end và định dạng tin nhắn tùy chỉnh.
 
-### Tạo bộ điều hợp tùy chỉnh
+### Tạo Bộ chuyển đổi tùy chỉnh
 
-Đầu tiên, tạo bộ điều hợp xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị các tin nhắn và giao tiếp với hệ thống của bạn.
+Đầu tiên tạo một bộ chuyển đổi xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị tin nhắn và giao tiếp với hệ thống lưng của bạn.
 
-Ví dụ, chúng ta có thể tạo một bộ điều hợp xác thực cho phép sử dụng [Đăng nhập bằng Ethereum](https://login.xyz) với một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Ví dụ, chúng ta có thể tạo một bộ chuyển đổi xác thực cho phép chúng ta sử dụng [Đăng nhập với Ethereum](https://login.xyz) trên một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Cung cấp trạng thái xác thực
 
-Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ điều hợp tùy chỉnh của bạn vào `RainbowKitAuthenticationProvider`, bao bọc `RainbowKitProvider` hiện có của bạn.
+Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ chuyển đổi tùy chỉnh của bạn vào `RainbowKitAuthenticationProvider`, bao bọc `RainbowKitProvider` hiện tại của bạn.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Nếu bạn đã tạo được bộ điều hợp cho một thư viện xác thực mã nguồn mở hiện có, xin vui lòng tạo một gói cho người khác sử dụng!
+Nếu bạn đã đi xa đến mức này và tạo bộ chuyển đổi cho thư viện xác thực mã nguồn mở hiện có, vui lòng cân nhắc tạo một gói cho những người khác sử dụng!

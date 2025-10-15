@@ -1,23 +1,23 @@
 ---
-title: WalletButton
-description: Использование и настройка WalletButton
+title: Кнопка кошелька
+description: Использование и настройка кнопки кошелька
 ---
 
-# WalletButton
+# Кнопка кошелька
 
-> Примечание: В настоящее время `WalletButton` опирается на стандарт кошелька [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193), но в ближайшем будущем будет поддерживать [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963).
+> Примечание: в настоящее время `WalletButton` основывается на стандарте кошелька EIP-1193, но в ближайшем будущем будет поддерживать EIP-6963.
 
-Новый компонент `WalletButton` помогает dApps с кастомными списками кошельков использовать RainbowKit и все его преимущества, не требующие обслуживания.
+Новый компонент `WalletButton` помогает dApp с пользовательскими реализациями списка кошельков адаптировать RainbowKit и все его преимущества без технической поддержки.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
 
 <WalletButton wallet="rainbow" />
 <WalletButton wallet="metamask" />
-<WalletButton wallet="coinbase" />
+<WalletButton wallet="baseAccount" />
 ```
 
-Как и `ConnectButton`, компонент `WalletButton.Custom` доступен для кастомных реализаций и стилизации.
+Как и `ConnectButton`, компонент `WalletButton.Custom` доступен для пользовательских реализаций и стилей.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,7 +35,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-Большинство dApps лучше всего используют [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Обратитесь к документации [здесь](https://www.rainbowkit.com/docs/wallet-button) для получения дополнительной информации о внедрении и использовании `WalletButton`.
+Большинство dApp лучше всего обслуживаются [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Ознакомьтесь с документацией [здесь](https://www.rainbowkit.com/docs/wallet-button) для получения дополнительной информации о внедрении и сценариях использования `WalletButton`.
 
 #### Демо
 

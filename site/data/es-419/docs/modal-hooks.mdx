@@ -1,19 +1,19 @@
 ---
-title: Ganchos de Modales
-description: Abre modales programáticamente a través de Ganchos
+title: Hooks de Modal
+description: Abre modales programáticamente mediante Hooks
 ---
 
-# Ganchos de Modales
+# Hooks de Modal
 
-## Abre modales programáticamente a través de Ganchos
+## Abre modales programáticamente mediante Hooks
 
-Los siguientes Ganchos se proporcionan para permitir la apertura programática de modales en cualquier lugar de tu aplicación.
+Los siguientes Hooks se proporcionan para permitir la apertura programática de modales en cualquier parte de su aplicación.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Cada uno de estos Ganchos devuelve un objeto con una función para abrir su modal respectivo. Ten en cuenta que las funciones devueltas estarán indefinidas si tu aplicación no se encuentra en el estado requerido para que el modal esté abierto.
+Cada uno de estos Hooks devuelve un objeto con una función para abrir su modal respectivo. Tenga en cuenta que las funciones devueltas serán indefinidas si su aplicación no está en el estado requerido para que el modal se abra.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Cada gancho también devuelve un booleano para el estado del modal. Normalmente se recomienda que confíes únicamente en los ganchos de Wagmi (es decir, `useAccount`) para reaccionar directamente al estado de conexión de la cartera del usuario, en lugar de depender del estado del Modal de Conexión.
+Cada hook también devuelve un booleano para el estado del modal. Generalmente se recomienda que confíe puramente en los hooks de Wagmi (es decir, `useAccount`) para reaccionar directamente al estado de conexión de la billetera de un usuario, en lugar de depender del estado del Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit está diseñado para ser no interrumpible y receptivo, por lo que las dApps siempre deben renderizar una interfaz para los usuarios, ya tengan o no conectada su cartera. Un usuario podría conectar o desconectar su cartera directamente desde MetaMask, por lo que la dApp debe ser receptiva al estado de conexión subyacente directamente.
+RainbowKit está diseñado para ser no intrusivo y receptivo, por lo que las dApps siempre deberían renderizar una interfaz para los usuarios, ya sea que hayan conectado su billetera o no. Un usuario podría conectar o desconectar su billetera directamente desde MetaMask, por lo que la dApp debe ser sensible al estado de conexión subyacente directamente.
 
-Las dApps que confían en mecanismos como Sign-in with Ethereum para la verificación de usuarios deberían depender en su lugar de la función [Authentication](/docs/authentication).
+Las dApps que dependen de mecanismos como Iniciar sesión con Ethereum para la verificación de usuarios deberían, en cambio, depender de la característica [Autenticación](/docs/authentication).

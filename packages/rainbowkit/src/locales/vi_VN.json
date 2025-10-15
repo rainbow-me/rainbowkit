@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Đặt Argent lên màn hình chính của bạn để truy cập nhanh hơn vào ví của bạn.",
-          "title": "Mở ứng dụng Argent"
+          "description": "Thêm Ready vào màn hình chính để truy cập ví nhanh hơn.",
+          "title": "Mở ứng dụng Ready"
         },
         "step2": {
           "description": "Tạo ví và tên người dùng, hoặc nhập ví hiện có.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình.",
           "title": "Nhấn nút WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Cài đặt tiện ích mở rộng Binance Wallet",
+          "description": "Chúng tôi khuyên bạn nên ghim Binance Wallet vào thanh tác vụ để truy cập nhanh hơn vào ví của bạn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Hãy chắc chắn rằng bạn đã sao lưu ví của mình bằng phương pháp an toàn. Đừng bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Một khi bạn thiết lập xong ví của mình, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
         }
       }
     },
@@ -1130,11 +1144,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Cài đặt tiện ích mở rộng XDEFI Wallet",
-          "description": "Chúng tôi khuyên bạn nên ghim XDEFI Wallet vào thanh tác vụ để truy cập ví nhanh hơn."
+          "title": "Cài đặt tiện ích mở rộng CTRL Wallet",
+          "description": "Chúng tôi khuyến nghị ghim CTRL Wallet vào thanh tác vụ để truy cập ví của bạn nhanh hơn."
         },
         "step2": {
           "title": "Tạo hoặc Nhập ví",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở keys.gemini.com",
+          "description": "Truy cập keys.gemini.com trên trình duyệt di động của bạn - không cần tải xuống ứng dụng."
+        },
+        "step2": {
+          "title": "Tạo Ví Ngay Lập Tức",
+          "description": "Thiết lập ví thông minh của bạn trong vài giây bằng cách sử dụng xác thực tích hợp của thiết bị."
+        },
+        "step3": {
+          "title": "Quét để Kết Nối",
+          "description": "Quét mã QR để kết nối ví của bạn ngay lập tức - nó sẽ hoạt động."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Đi đến keys.gemini.com",
+          "description": "Không cần tiện ích mở rộng hoặc tải xuống - ví của bạn sống an toàn trong trình duyệt."
+        },
+        "step2": {
+          "title": "Thiết Lập Chỉ Với Một Cú Nhấp Chuột",
+          "description": "Tạo ví thông minh của bạn ngay lập tức với xác thực khóa bảo mật - dễ dàng hơn bất kỳ ví nào khác."
+        },
+        "step3": {
+          "title": "Kết nối và đi",
+          "description": "Chấp thuận kết nối và bạn đã sẵn sàng - ví không thiên vị mà chỉ hoạt động."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Nhấn nút quét"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Mở ứng dụng ZilPay",
-        "description": "Thêm ZilPay vào màn hình chính để truy cập ví nhanh hơn."
-      },
-      "step2": {
-        "title": "Tạo hoặc Nhập ví",
-        "description": "Tạo ví mới hoặc nhập ví hiện có."
-      },
-      "step3": {
-        "title": "Nhấn nút quét",
-        "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng ZilPay",
+          "description": "Thêm ZilPay vào màn hình chính để truy cập ví nhanh hơn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng Nova Wallet",
+          "description": "Thêm Nova Wallet vào màn hình chính để truy cập nhanh hơn vào ví của bạn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
       }
     }
   }

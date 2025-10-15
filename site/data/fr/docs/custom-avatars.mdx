@@ -5,9 +5,9 @@ description: Personnalisation de l'avatar utilisateur de votre application
 
 # Avatars personnalisés
 
-## Personnalisation de l’avatar utilisateur de votre application
+## Personnalisation de l'avatar utilisateur de votre application
 
-Par défaut, nous fournissons un avatar pour les utilisateurs si leur image ENS n'est pas définie, mais vous pouvez personnaliser cela en fournissant votre propre composant avatar. Vous pouvez importer le type `AvatarComponent` si vous utilisez TypeScript :
+Par défaut, nous fournissons un avatar pour les utilisateurs au cas où leur image ENS n'est pas définie, mais vous pouvez personnaliser cela en fournissant votre propre composant avatar. Vous pouvez importer le type `AvatarComponent` si vous utilisez TypeScript :
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-Le `AvatarComponent` passé à la prop `avatar` a des types de prop comme suit : `<{ address: string; ensImage?: string | null; size: number;}>`
+Le `AvatarComponent` passé à la propriété `avatar` a les types suivants : `<{ address: string; ensImage?: string | null; size: number;}>`

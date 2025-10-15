@@ -1,19 +1,19 @@
 ---
 title: Otentikasi Kustom
-description: Hubungkan ke back-end otentikasi Anda sendiri
+description: Hubungkan ke backend otentikasi Anda sendiri
 ---
 
 # Otentikasi Kustom
 
-## Hubungkan ke back-end otentikasi Anda sendiri
+## Hubungkan ke backend otentikasi Anda sendiri
 
-Sementara RainbowKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) Anda juga dapat mengintegrasikan dengan back-end kustom dan format pesan.
+Sementara RainbowKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) Anda juga dapat mengintegrasikan dengan backend dan format pesan kustom.
 
 ### Membuat adaptor kustom
 
-Pertama, buat adaptor otentikasi. Ini memungkinkan RainbowKit untuk membuat/mempersiapkan pesan dan berkomunikasi dengan back-end Anda.
+Pertama buat adaptor otentikasi. Ini memungkinkan RainbowKit untuk membuat/mempersiapkan pesan dan berkomunikasi dengan backend Anda.
 
-Sebagai contoh, kita bisa membuat adaptor otentikasi yang memungkinkan kita menggunakan [Sign-In dengan Ethereum](https://login.xyz) melawan beberapa endpoint API kustom, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Sebagai contoh, kami dapat membuat adaptor otentikasi yang memungkinkan kami menggunakan [Sign-In dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API kustom, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Menyediakan status otentikasi
 
-Dengan asumsi aplikasi Anda sudah mengelola siklus hidup otentikasi dengan cara tertentu, Anda dapat meneruskan status otentikasi saat ini bersama dengan adaptor kustom Anda ke `RainbowKitAuthenticationProvider`, membungkus `RainbowKitProvider` Anda yang ada.
+Dengan asumsi aplikasi Anda sudah mengelola siklus hidup otentikasi dengan cara tertentu, Anda dapat mengoperkan status otentikasi saat ini bersamaan dengan adaptor kustom Anda ke `RainbowKitAuthenticationProvider`, mengemas `RainbowKitProvider` yang ada.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Jika Anda sudah sampai sejauh ini dan membuat adaptor untuk perpustakaan otentikasi sumber terbuka yang ada, pertimbangkanlah untuk membuat paket untuk digunakan orang lain!
+Jika Anda telah mencapai tahap ini dan membuat adaptor untuk perpustakaan otentikasi sumber terbuka yang ada, mohon pertimbangkan untuk membuat paket untuk digunakan orang lain!

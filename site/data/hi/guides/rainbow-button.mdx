@@ -1,16 +1,16 @@
 ---
-title: अपने dApp में Rainbow बटन को अद्यतन करना
-description: Wagmi का समर्थन करने के लिए Rainbow वॉलेट के लिए औपचारिक पुस्तकालय को अनुवाद करना और dApp के लिए समर्थन प्रदान करना
+title: अपने dApp में रेनबो बटन को अपनाना
+description: Wagmi के लिए एक प्लग-एंड-प्ले लाइब्रेरी ताकि आपके dApp में रेनबो वॉलेट्स का समर्थन किया जा सके
 image: guide-rainbow-button.png
 ---
 
-# अपने dApp में Rainbow बटन को अद्यतन करना
+# अपने dApp में रेनबो बटन को अपनाना
 
-`RainbowButton` कॉंपोनेंट, `wagmi` का उपयोग करने वाले dApps के लिए Rainbow Wallet के समर्थन के लिए एक सरलतम तरीका है जो [RainbowKit](https://www.rainbowkit.com/docs/installation) से अधिक, एक कस्टम कनेक्टर अनुभव का प्रोत्साहन करते हैं।
+`RainbowButton` घटक `wagmi` उपयोग करने वाले dApps के लिए रेनबो वॉलेट समर्थन जोड़ने का सबसे सरल तरीका है जो [RainbowKit](https://www.rainbowkit.com/docs/installation) के बजाय एक अधिक कस्टम कनेक्टर अनुभव पसंद करते हैं।
 
-**1. `@rainbow-me/rainbow-button` और इसके सहायक निर्भरताओं को स्थापित करें**
+**1. `@rainbow-me/rainbow-button` और इसके पीयर निर्भरताएँ स्थापित करें**
 
-यह पैकेज Next.js, React, और Vite के साथ संगत है। सुनिश्चित करें कि आप सहायक निर्भरता चेतावनियों का पालन करें।
+पैकेज Next.js, React, और Vite के साथ संगत है। सुनिश्चित करें कि आप पीयर निर्भरता चेतावनियों का पालन करते हैं।
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
@@ -18,7 +18,7 @@ npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 
 **2. Wagmi के साथ कॉन्फ़िगर करें और RainbowButton स्थापित करें**
 
-`rainbowConnector` के उदाहरण को Wagmi के `createConfig` में `projectId` और `appName` के साथ पास करें, और अपने ऐप को `RainbowButtonProvider` में रैप करें। फिर `RainbowButton` कॉंपोनेंट को ड्रॉप-इन करें।
+`rainbowConnector` का एक उदाहरण `projectId` और `appName` के साथ Wagmi के `createConfig` को पास करें, और अपने ऐप को `RainbowButtonProvider` में लपेटें। फिर `RainbowButton` घटक डालें।
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-तथा अनुकूलन और स्टाइलिंग के लिए उपयोग करने के लिए `RainbowButton.Custom` कॉंपोनेंट भी है।
+आप कस्टम कार्यान्वयन और स्टाइलिंग के लिए `RainbowButton.Custom` घटक का भी उपयोग कर सकते हैं।
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. और यह हो गया!**
+**3. और बस!**
 
-अब आपके उपयोगकर्ता Rainbow के लिए एक अविभाज्य कनेक्शन अनुभव का आनंद ले सकते हैं - कोई रखरखाव या परेशानी के बिना।
+अब आपके उपयोगकर्ता रेनबो के लिए एक सहज कनेक्शन अनुभव का आनंद ले सकते हैं - बिना किसी रखरखाव या सिरदर्द के।
 
-अगर आप चाहें तो, [RainbowKit](https://www.rainbowkit.com/docs/installation) में भी एक [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) कॉंपोनेंट उपलब्ध है जिसका समर्थन अपनाएं।
+यदि आप अतिरिक्त वॉलेट्स के लिए समर्थन अपनाना चाहते हैं, तो [RainbowKit](https://www.rainbowkit.com/docs/installation) में एक [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) घटक भी उपलब्ध है।

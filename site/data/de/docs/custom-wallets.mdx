@@ -7,9 +7,9 @@ description: Erstellen Sie ein benutzerdefiniertes Wallet
 
 ## Erstellen Sie ein benutzerdefiniertes Wallet
 
-> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Wir werden im Laufe der Zeit weitere integrierte Wallets hinzufügen. [Lassen Sie es uns wissen](https://github.com/rainbow-me/rainbowkit/issues), wenn es bestimmte Wallets gibt, die Sie interessieren.
+> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Wir werden im Laufe der Zeit mehr integrierte Wallets hinzufügen. [Lassen Sie uns wissen](https://github.com/rainbow-me/rainbowkit/issues), wenn Sie besondere Wallets von Interesse haben.
 
-Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Wallets zu definieren. Die folgenden Eigenschaften können auf dem Rückgabewert Ihrer `Wallet`-Funktion konfiguriert werden:
+Der `Wallet` Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Wallets zu definieren. Die folgenden Eigenschaften können im Rückgabewert Ihrer `Wallet`-Funktion konfiguriert werden:
 
 ### Wallet-Eigenschaften
 
@@ -25,7 +25,7 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Lesbarer Wallet-Name',
+      description: 'Für Menschen lesbarer Wallet-Name',
     },
     {
       name: 'rdns',
@@ -37,25 +37,27 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optionaler Kurzname für die mobile Nutzung',
+      description: 'Optionaler Kurzname für mobile Nutzung',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
-      description: 'URL für das Wallet-Icon oder ein Versprechen, das eine Base64-Daten-URL auflöst',
+      description:
+        'URL für Wallet-Symbol, oder ein Promise, das zu einem Base64-Daten-URL aufgelöst wird',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
-      description: 'Akzentfarbe, die beim Herunterladen von Wallets mit sowohl einer Browsererweiterung als auch einer mobilen App verwendet wird',
+      description:
+        'Akzentfarbe, die in Download-Flows für Wallets mit einer Browsererweiterung und einer mobilen App verwendet wird',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Hintergrundfarbe, während das Wallet-Icon geladen wird',
+      description: 'Hintergrundfarbe während das Wallet-Symbol geladen wird',
     },
     {
       name: 'installed',
@@ -63,8 +65,8 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       type: 'boolean | undefined',
       description: (
         <>
-          Ob das Wallet bekannt ist, installiert zu sein, oder{' '}
-          <code>undefined</code> falls unbestimmt
+          Ob das Wallet als installiert bekannt ist, oder{' '}
+          <code>undefined</code> wenn unbestimmt
         </>
       ),
     },
@@ -73,61 +75,66 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Objekt, das Download-URLs enthält.',
+      description: 'Objekt, das Download-URLs enthält',
     },
     {
       name: 'hidden',
       required: false,
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
-      description: 'Funktion zur Berechnung, ob dieses Wallet in der Liste verborgen werden soll. Dies ist nützlich für die Definition generischer Ersatz-Wallets, z. B. macht das integrierte "Injected Wallet"-Fallback von dieser Funktion Gebrauch',
+      description:
+        'Funktion zur Berechnung, ob dieses Wallet aus der Liste ausgeblendet werden soll. Dies ist nützlich, um generische Ersatz-Wallets zu definieren, z.B. das integrierte "Injected Wallet"-Backup nutzt diese Funktion',
     },
     {
       name: 'createConnector',
       required: true,
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
-      description: 'Funktion zur Bereitstellung der Connector-Instanz und Konfiguration für verschiedene Verbindungsmethoden, wie unten beschrieben',
+      description:
+        'Funktion zur Bereitstellung der Connector-Instanz und Konfiguration für verschiedene Verbindungsarten, unten beschrieben',
     },
     {
       name: 'mobile',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Funktion zur Lösung einer mobilen Wallet-Verbindungs-URI',
+      description:
+        'Funktion zum Auflösen eines mobilen Wallet-Verbindungs-URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Funktion zur Lösung eines Desktop-App-Deep-Links',
+      description: 'Funktion zum Auflösen eines Desktop-App Deep Links',
     },
     {
       name: 'qrCode',
       required: false,
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
-      description: 'Objekt, das eine Funktion zum Auflösen der QR-Code-URI enthält, sowie optionale Anweisungen zur Einrichtung der mobilen Wallet',
+      description:
+        'Objekt, das eine Funktion zum Auflösen der QR-Code-URI sowie optionale Anweisungen zur Einrichtung mobiler Wallets enthält',
     },
     {
       name: 'extension',
       required: false,
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
-      description: 'Objekt, das optionale Anweisungen zur Einrichtung von Browser-Erweiterungen enthält',
+      description:
+        'Objekt, das optionale Browsererweiterungs-Einrichtungsanweisungen enthält',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Funktion zur Bereitstellung der Connector-Instanz'
-    }
+      description: 'Funktion zur Bereitstellung der Connector-Instanz',
+    },
   ]}
 />
 
-### DownloadUrls-Eigenschaften
+### DownloadUrls Eigenschaften
 
 <PropsTable
   data={[
@@ -148,14 +155,14 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: 'string',
       description:
-        'Zielseite für mobile Benutzer, wenn `android` oder `ios` nicht verfügbar sind',
+        'Landeseite für mobile Benutzer, wenn `android` oder `ios` nicht verfügbar sind',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Zielseite für Benutzer, die den mobilen Download-QR-Code scannen',
+        'Landeseite für Benutzer, die den QR-Code für den mobilen Download scannen',
     },
     {
       name: 'chrome',
@@ -179,7 +186,7 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera Add-ons URL',
+      description: 'Opera-Erweiterungs-URL',
     },
     {
       name: 'safari',
@@ -192,7 +199,7 @@ Der `Wallet`-Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
       required: false,
       type: 'string',
       description:
-        'Zielseite für Desktop-Erweiterungsbenutzer, wenn browserkompatible URLs nicht verfügbar sind',
+        'Landeseite für Desktop-Erweiterungsnutzer, wenn browserkompatible URLs nicht verfügbar sind',
     },
   ]}
 />
@@ -271,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Sie können dann Ihr benutzerdefiniertes Wallet in die [Wallet-Liste](/docs/custom-wallet-list) aufnehmen.
+Sie können dann Ihr benutzerdefiniertes Wallet in der [Wallet-Liste](/docs/custom-wallet-list) hinzufügen.

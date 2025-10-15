@@ -1,17 +1,17 @@
 ---
-title: Redes
-description: Ícones de cadeia personalizados
+title: Cadeias
+description: Personalizando cadeias
 ---
 
-# Redes
+# Cadeias
 
-## Ícones de cadeia personalizados
+## Personalizando cadeias
 
-RainbowKit é projetado para integrar com [objeto `chain` do wagmi](https://wagmi.sh/react/chains). Confira a lista de redes suportadas [aqui](https://wagmi.sh/react/chains#supported-chains).
+O RainbowKit é projetado para integrar-se com o [objeto `chain` do wagmi](https://wagmi.sh/react/chains). Confira a lista de cadeias suportadas [aqui](https://wagmi.sh/react/chains#supported-chains).
 
-### Personalizando a rede inicial
+### Personalizando a cadeia inicial
 
-Por padrão, o RainbowKit se conectará à primeira rede em seu array `chains` para garantir que os usuários não sejam imediatamente apresentados ao estado "Rede errada". Esse comportamento pode ser personalizado através da propriedade `initialChain`.
+Por padrão, o RainbowKit conectará à primeira cadeia fornecida para o Wagmi. Este comportamento pode ser personalizado através da propriedade `initialChain`.
 
 A cadeia inicial pode ser configurada usando um ID de cadeia.
 
@@ -19,15 +19,15 @@ A cadeia inicial pode ser configurada usando um ID de cadeia.
 <RainbowKitProvider initialChain={1}>
 ```
 
-Para sua conveniência, você também pode passar um objeto de cadeia.
+Para maior comodidade, você também pode passar um objeto de cadeia.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Personalizando redes
+### Metadados de cadeia personalizados
 
-Vários ícones de cadeia são fornecidos por padrão, mas você pode personalizar o ícone para cada cadeia usando a propriedade `iconUrl`.
+Vários ícones e planos de fundo de cadeia são fornecidos por padrão, mas você pode personalizar o ícone e o plano de fundo para cada cadeia usando as propriedades `iconUrl` e `iconBackground`.
 
 Exemplo com `getDefaultConfig`
 

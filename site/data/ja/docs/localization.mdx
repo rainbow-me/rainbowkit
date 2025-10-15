@@ -1,17 +1,17 @@
 ---
 title: ローカリゼーション
-description: 組込み翻訳を使って自分のdAppの言語をカスタマイズする
+description: 組み込みの翻訳機能を使って、dAppの言語をカスタマイズする
 ---
 
 # ローカリゼーション
 
-## 組込み翻訳を使って自分のdAppの言語をカスタマイズする
+## 組み込みの翻訳機能を使って、dAppの言語をカスタマイズする
 
-デフォルトでは、RainbowKitは英語使用者のための`en-US`ロケールをサポートしています。
+デフォルトでは、RainbowKitは英語ユーザーのために`en-US`ロケールをサポートします。
 
-利用可能であれば、RainbowKitはユーザーの[優先言語](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)を検出し、適切な翻訳を選択します。 開発者は常にデフォルトの言語を上書きできます。
+利用可能な場合、RainbowKitはユーザーの[優先言語](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)を検出し、適切な翻訳を選択します。開発者は常にデフォルト言語を上書きすることができます。
 
-ユーザーに言語を指定するには、`RainbowKitProvider`に`locale="zh-CN"`プロップを追加するだけです
+ユーザーに特定の言語を指定するには、`RainbowKitProvider`内で `locale="zh-CN"`をプロップとして追加するだけです。
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -23,11 +23,11 @@ export const App = () => (
 );
 ```
 
-### Next.jsとの使用
+### Next.jsでの使用
 
-RainbowKitのローカリゼーションサポートは、[サブパスルーティング](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)ともにより良く機能します。
+RainbowKitのローカリゼーションサポートは、[サブパスルーティング](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)との連携でさらに改善されます。
 
-下記の例のようにNext.jsプロジェクトを設定して、`/locale/`サブパスをルートにオプションで追加すると、検索エンジンとユーザーがあなたの多言語サポートをより良く発見できます。
+以下の例のようにNext.jsプロジェクトを設定し、ルートにオプションの`/locale/`サブパスを追加して、検索エンジンとユーザーが多言語サポートをさらに発見しやすくします。
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ RainbowKitのローカリゼーションサポートは、[サブパスルーテ
 }
 ```
 
-次に、Pages Routerによって提供された`locale`を`RainbowKitProvider`に渡します
+その後、Pagesルーターが提供する `locale` を`RainbowKitProvider`に渡します。
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,43 +54,44 @@ export const App = () => {
 };
 ```
 
-Pages Routerの例を参照できます [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)。
+Pagesルーターの例は[こちら](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)を参照してください。
 
-App Routerはまだi18nをサポートしていません。 [`next-intl`](https://github.com/amannn/next-intl)のミドルウェアを使用した実装のベストプラクティスについては、別の例を参照してください [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)。
+App Routerはまだi18nをサポートしていません。次の例を参考にして[`next-intl`](https://github.com/amannn/next-intl)ミドルウェアを用いた実装のベストプラクティスを学んでください。[こちら](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)
 
-完全なローカリゼーションサポートのために、同じ技術を使用してdAppのコンテンツを翻訳することが推奨されます。 [`i18n-js`](https://github.com/fnando/i18n)や[`next-intl`](https://github.com/amannn/next-intl)のようなローカリゼーションライブラリとCrowdinのような管理ツールは、このプロセスを簡素化します。
+dAppのコンテンツを翻訳するためには同じ技術を使用することをお勧めします。`i18n-js`や[`next-intl`](https://github.com/amannn/next-intl)のようなローカリゼーションライブラリとCrowdinのような管理ツールはこのプロセスを簡素化します。
 
 ### サポートされる言語
 
-以下の`locale`地域に対して完全なサポートを提供します：
+以下の `locale` リージョンに完全対応しています:
 
 <Table
   header={[
-    '言語', '地域', 'ロケール', '短縮形'
+    '言語', '地域', 'ロケール', '略称'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
   ]}
   data={[
-    ['English', 'United States 🇺🇸', 'en-US', 'en'],
-    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
-    ['繁體中文', 'Hong Kong 🇭🇰', 'zh-HK'],
-    ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
-    ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
-    ['Español', 'Latin America 🌎', 'es-419', 'es'],
-    ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],
-    ['العربية', 'Middle East 🌍', 'ar-AR', 'ar'],
-    ['Português', 'Brazil 🇧🇷', 'pt-BR', 'pt'],
-    ['Русский', 'Russia 🇷🇺', 'ru-RU', 'ru'],
-    ['Bahasa Indonesia', 'Indonesia 🇮🇩', 'id-ID', 'id'],
-    ['日本語', 'Japan 🇯🇵', 'ja-JP', 'ja'],
-    ['Türkçe', 'Turkey 🇹🇷', 'tr-TR', 'tr'],
-    ['한국어', 'South Korea 🇰🇷', 'ko-KR', 'ko'],
-    ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
-    ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
-    ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['英語', 'アメリカ合衆国 🇺🇸', 'en-US', 'en'],
+    ['中文', '中国本土 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
+    ['繁體中文', '香港 🇭🇰', 'zh-HK'],
+    ['繁體中文', '台湾 🇹🇼', 'zh-TW', 'zh-Hant'],
+    ['हिंदी', 'インド 🇮🇳', 'hi-IN', 'hi'],
+    ['スペイン語', 'ラテンアメリカ 🌎', 'es-419', 'es'],
+    ['フランス語', 'フランス 🇫🇷', 'fr-FR', 'fr'],
+    ['アラビア語', '中東 🌍', 'ar-AR', 'ar'],
+    ['ポルトガル語', 'ブラジル 🇧🇷', 'pt-BR', 'pt'],
+    ['ロシア語', 'ロシア 🇷🇺', 'ru-RU', 'ru'],
+    ['インドネシア語', 'インドネシア 🇮🇩', 'id-ID', 'id'],
+    ['日本語', '日本 🇯🇵', 'ja-JP', 'ja'],
+    ['トルコ語', 'トルコ 🇹🇷', 'tr-TR', 'tr'],
+    ['韓国語', '韓国 🇰🇷', 'ko-KR', 'ko'],
+    ['タイ語', 'タイ 🇹🇭', 'th-TH', 'th'],
+    ['ウクライナ語', 'ウクライナ 🇺🇦', 'uk-UA', 'ua'],
+    ['ベトナム語', 'ベトナム 🇻🇳', 'vi-VN', 'vi'],
+    ['ドイツ語', 'ドイツ 🇩🇪', 'de-DE', 'de'],
+    ['マレー語', 'マレーシア 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
-追加の言語のサポートを希望する場合は、[GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas)を開いてください。できるだけ早くサポートできるように取り組みます。
+追加の言語サポートを希望する場合は、[GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas)に投稿してください。できるだけ早くサポートできるようにします。

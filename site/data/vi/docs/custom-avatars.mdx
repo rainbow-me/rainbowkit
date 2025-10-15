@@ -1,13 +1,13 @@
 ---
-title: Avatars Tùy Chỉnh
-description: Tùy chỉnh avatar người dùng của ứng dụng
+title: Ảnh đại diện tùy chỉnh
+description: Tùy chỉnh ảnh đại diện người dùng của ứng dụng
 ---
 
-# Avatars Tùy Chỉnh
+# Ảnh đại diện tùy chỉnh
 
-## Tùy chỉnh avatar người dùng của ứng dụng
+## Tùy chỉnh ảnh đại diện của người dùng ứng dụng
 
-Theo mặc định, chúng tôi cung cấp một avatar cho người dùng trong trường hợp hình ảnh ENS của họ không được thiết lập, nhưng bạn có thể tùy chỉnh điều này bằng cách cung cấp component avatar của riêng mình. Bạn có thể import kiểu `AvatarComponent` nếu sử dụng TypeScript:
+Theo mặc định, chúng tôi cung cấp một ảnh đại diện cho người dùng nếu hình ảnh ENS của họ chưa được thiết lập, nhưng bạn có thể tùy chỉnh điều này bằng cách cung cấp thành phần ảnh đại diện của riêng bạn. Bạn có thể nhập kiểu `AvatarComponent` nếu sử dụng TypeScript:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-`AvatarComponent` được truyền vào prop `avatar` có các loại prop như sau: `<{ address: string; ensImage?: string | null; size: number;}>`
+`AvatarComponent` được truyền vào thuộc tính `avatar` có các kiểu thuộc tính như sau: `<{ address: string; ensImage?: string | null; size: number;}>`

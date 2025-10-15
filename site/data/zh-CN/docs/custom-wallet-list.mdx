@@ -64,7 +64,7 @@ const App = () => (
 
 #### 通用钱包
 
-以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。
+以下钱包限定于通用连接方式，而非特定应用。因此，建议始终包含这些钱包。
 
 ##### WalletConnect
 
@@ -78,7 +78,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### 注入式钱包
 
-这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
+这是为存在`window.ethereum`但未被列表中的其他钱包提供的情境设计的备选钱包选项。当不需要备选，或没有可用注入钱包时，此钱包将自动从列表中隐藏。
 
 **建议您始终在列表中包含此钱包，以确保支持所有注入的钱包。**
 
@@ -86,7 +86,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### Safe (Gnosis Safe)
 
 对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括 `safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
 
@@ -104,10 +104,10 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Argent
+#### 准备好
 
 ```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Backpack
@@ -180,9 +180,9 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 
 此钱包连接器支持 Coinbase Wallet 应用和扩展程序，也支持在 Web 上的 Coinbase Smart Wallet。
 
-提供了一个`preference`参数，用于控制是否为用户启用和提供智能钱包。 基于偏好的行为记录于[此处](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
+提供了 `preference` 参数，可以控制用户是否偏好或禁用 Smart Wallet。基于偏好的行为记录在[这里](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
 
-在Coinbase Wallet SDK文档的[此处](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)中可以找到控制[支付者](https://docs.base.org/identity/smart-wallet/guides/paymasters)和[子账户](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)的其他配置选项。
+[支付主](https://docs.base.org/identity/smart-wallet/guides/paymasters)和[子账户](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)的控制附加配置选项可在Coinbase Wallet SDK文档中找到[这里](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)。
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -261,6 +261,21 @@ import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### 双子座钱包
+
+这个智能钱包连接器通过密钥提供无缝验证，无需下载、扩展或 API 密钥，使用现成的系统即可工作。
+
+`appName` 参数是标识 dApp 所必需的，`appIcon` 是可选的，用于品牌化您的连接体验。
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
+```
+
 #### imToken
 
 ```tsx
@@ -321,6 +336,12 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Nova Wallet
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### OKX Wallet
 
 ```tsx
@@ -349,6 +370,12 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 波尔图
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Rabby Wallet
@@ -423,10 +450,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### CTRL 钱包
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -510,7 +537,7 @@ const connectors = connectorsForWallets(
 
 #### 多个组
 
-你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
+您可以使用 `groupName` 键来命名不同的钱包组。如果您希望向用户沟通推荐哪些钱包以及其他可能的钱包，这非常有用。
 
 推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
 

@@ -214,18 +214,18 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "지갑에 더 빠르게 액세스하려면 Argent를 홈 화면에 놓으세요.",
-          "title": "Argent 앱을 열기"
+          "description": "더 빠른 액세스를 위해 Ready를 홈 스크린에 추가하세요.",
+          "title": "Ready 앱을 엽니다"
         },
         "step2": {
           "description": "지갑과 사용자 이름을 생성하거나 기존의 지갑을 가져옵니다.",
           "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요.",
           "title": "QR 코드 스캔 버튼을 누르기"
         }
       }
@@ -399,6 +399,20 @@
         "step3": {
           "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
           "title": "WalletConnect 버튼을 누르세요"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Binance Wallet 확장 프로그램 설치하기",
+          "description": "작업 표시줄에 Binance Wallet을 고정하여 지갑에 더 빠르게 접근할 수 있도록 추천합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
         }
       }
     },
@@ -1130,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI 지갑 확장 프로그램을 설치하세요",
-          "description": "지갑에 빠르게 액세스하기 위해 작업 표시줄에 XDEFI Wallet을 고정하는 것을 권장합니다."
+          "title": "CTRL Wallet 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 작업 표시줄에 CTRL Wallet을 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "지갑을 만들거나 가져오기",
-          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하세요. 비밀 문구를 누구와도 공유하지 마세요."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
         },
         "step3": {
-          "title": "브라우저를 새로고침 하세요",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
         }
       }
     },
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "keys.gemini.com 열기",
+          "description": "앱 다운로드 없이 이동 중에 모바일 브라우저에서 keys.gemini.com 방문하기."
+        },
+        "step2": {
+          "title": "즉시 지갑 생성",
+          "description": "디바이스의 내장 인증을 사용하여 초 단위로 스마트 월렛 설정."
+        },
+        "step3": {
+          "title": "연결을 위한 QR 코드 스캔",
+          "description": "QR 코드를 스캔하여 즉시 지갑을 연결하세요 - 바로 작동합니다."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "keys.gemini.com으로 가기",
+          "description": "확장 프로그램이나 다운로드가 필요 없습니다 - 지갑이 브라우저에 안전하게 저장됩니다."
+        },
+        "step2": {
+          "title": "원클릭 설정",
+          "description": "패스키 인증으로 스마트 월렛을 즉시 생성하세요 - 기존 월렛보다 더 쉽습니다."
+        },
+        "step3": {
+          "title": "연결하고 시작하기",
+          "description": "연결을 승인하면 준비가 완료됩니다 - 기능에 충실한 월렛."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "스캔 버튼을 누릅니다"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "ZilPay 앱을 엽니다",
-        "description": "더 빠른 액세스를 위해 ZilPay를 홈 스크린에 추가하세요."
-      },
-      "step2": {
-        "title": "지갑 생성 또는 가져오기",
-        "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
-      },
-      "step3": {
-        "title": "스캔 버튼을 누릅니다",
-        "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "ZilPay 앱을 엽니다",
+          "description": "더 빠른 액세스를 위해 ZilPay를 홈 스크린에 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Nova Wallet 앱을 열기",
+          "description": "월렛에 더 빠르게 액세스할 수 있도록 Nova Wallet을 홈 화면에 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
+        }
       }
     }
   }

@@ -1,15 +1,15 @@
 ---
-title: अनुकूलित ConnectButton
-description: एक अनुकूलित ConnectButton बनाना
+title: कस्टम कनेक्टबटन
+description: कस्टम कनेक्टबटन का निर्माण
 ---
 
-# अनुकूलित ConnectButton
+# कस्टम कनेक्टबटन
 
-## एक अनुकूलित ConnectButton बनाना
+## कस्टम कनेक्टबटन का निर्माण
 
-आप अपने स्वयं के कस्टम कनेक्शन बटन बनाने के लिए निम्न-स्तरीय `ConnectButton.Custom` का उपयोग कर सकते हैं। यह घटक एक फ़ंक्शन रेंडर करता है, जिसमें बिल्ट-इन बटनों को फिर से लागू करने के लिए आपको आवश्यक सब कुछ शामिल है।
+आप अपने स्वयं के कस्टम कनेक्शन बटन बनाने के लिए निम्न-स्तरीय `कनेक्टबटन.कस्टम` का उपयोग कर सकते हैं। यह घटक एक फ़ंक्शन को रेंडर करता है, जिसमें बिल्ट-इन बटनों को पुनः लागू करने के लिए आपकी आवश्यकता की सभी चीजें शामिल होती हैं।
 
-बिल्ट-इन बटनों का एक न्यूनतम पुनर्क्रिया कुछ इस तरह से हो सकती है:
+बिल्ट-इन बटनों का न्यूनतम पुनः कार्यान्वयन कुछ इस रूप में दिखाई देगा:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-निम्नलिखित props आपके रेंडर कार्य को पास किए जाते हैं।
+निम्नलिखित गुण आपके रेंडर फ़ंक्शन को पास किए जाते हैं।
 
 ### खाता गुण
 
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'वर्तमान खाता के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
+        'वर्तमान खाते के विवरणों को शामिल करने वाला ऑब्जेक्ट, नीचे वर्णित',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          पूरा खाता पता, उदाहरण के लिए
+          पूरा खाता पता, जैसे
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'अंक में खाता शेष',
+      description: 'अकाउंट बैलेंस का दशमलव में रूप',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          एक स्ट्रिंग के रूप में स्वरूपित खाता शेष, उदाहरण के लिए{' '}
+          स्ट्रिंग के रूप में स्वरूपित अकाउंट बैलेंस, जैसे {' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          शेष के लिए मुद्रा चिह्न, उदाहरण के लिए <code>ETH</code>
+          बैलेंस के लिए मुद्रा प्रतीक, जैसे <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          शेष को 3 महत्वपूर्ण अंक में स्वरूपित किया गया है, प्लस
-          चिह्न, उदाहरण के लिए <code>1.23 ETH</code>
+          बैलेंस को 3 महत्वपूर्ण अंकों में स्वरूपित करें, और
+          प्रतीक के साथ, जैसे <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,7 +179,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          ENS नाम, या पते का संक्षिप्त संस्करण, उदाहरण के लिए{' '}
+          ENS नाम, या पते का एक छोटा संस्करण, जैसे {' '}
           <code>"rainbowwallet.eth"</code> या <code>"0x7a…384f"</code>
         </>
       ),
@@ -196,7 +196,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          ENS नाम, उदाहरण के लिए <code>rainbowwallet.eth</code>
+          ENS नाम, जैसे <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'बूलियन जो यह संकेत करता है कि खाते की मौजूदा चेन के लिए लंबित लेनदेन हैं या नहीं',
+        'बूलियन जो यह इंगित करता है कि खाते में वर्तमान श्रृंखला के लिए लंबित लेन-देन हैं या नहीं',
     },
   ]}
 />
 
-### चेन गुण
+### श्रृंखला गुण
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'वर्तमान चेन के बारे में विवरणयुक्त वस्तु, नीचे वर्णित',
+        'वर्तमान श्रृंखला के विवरणों को शामिल करने वाला ऑब्जेक्ट, नीचे वर्णित',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'चेन का एक चिह्न है या नहीं',
+      description: 'क्या श्रृंखला का एक आइकन निर्दिष्ट है',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'चेन चिह्न का URL (जो Base64 डेटा URL डाउनलोड करते समय भी अपरिभाषित हो सकता है)',
+        'श्रृंखला का आइकन URL (जो Base64 डेटा URLs डाउनलोड करते समय भी अप्रबंधित हो सकता है)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'चेन आइकन की पृष्ठभूमि जो छवियां लोड होने पर दिखाई देगी',
+        'श्रृंखला आइकन पृष्ठभूमि जो छवियों के लोड होते समय दिखाई देगी',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          चेन ID, उदाहरण के लिए <code>1</code>
+          श्रृंखला आईडी, जैसे <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          चेन का नाम, उदाहरण के लिए <code>"Ethereum"</code>
+          श्रृंखला का नाम, जैसे <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'बूलियन जो यह दर्शाता है कि वर्तमान चेन असमर्थित है या नहीं',
+        'बूलियन जो यह इंगित करता है कि वर्तमान श्रृंखला असमर्थित है',
     },
   ]}
 />
 
-### मोडल स्टेट गुण
+### मोडल अवस्था गुण
 
 <PropsTable
   data={[
@@ -279,13 +279,13 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'खाता मोडल खोलने के लिए फ़ंक्शन',
+      description: 'अकाउंट मोडल खोलने के लिए फ़ंक्शन',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'चेन मोडल खोलने के लिए फ़ंक्शन',
+      description: 'श्रृंखला मोडल खोलने के लिए फ़ंक्शन',
     },
     {
       name: 'openConnectModal',
@@ -298,25 +298,25 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि खाता मोडल खुला है या नहीं',
+        'बूलियन जो यह इंगित करता है कि अकाउंट मोडल खुले हुआ है',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'बूलियन यह दर्शाने वाला कि चेन मोडल खुला है या नहीं',
+      description: 'बूलियन जो यह इंगित करता है कि श्रृंखला मोडल खुले हुआ है',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि कनेक्ट मोडल खुला है या नहीं',
+        'बूलियन जो यह इंगित करता है कि कनेक्ट मोडल खुले हुआ है',
     },
   ]}
 />
 
-### सामान्य स्थिति गुण
+### सामान्य अवस्था गुण
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'बूलियन यह दर्शाने वाला कि घटक माउंट हो गया है या नहीं',
+        'बूलियन जो यह इंगित करता है कि घटक माउंट हो गया है',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'प्रमाणीकरण स्थिति, या गैर-परिभाषित अगर प्रमाणीकरण कॉन्फ़िगर नहीं किया गया है',
+        'प्रमाणीकरण स्थिति, या अज्ञात यदि प्रमाणीकरण कॉन्फ़िगर नहीं किया गया है',
     },
   ]}
 />

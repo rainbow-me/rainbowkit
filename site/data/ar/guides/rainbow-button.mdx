@@ -1,24 +1,24 @@
 ---
-title: اعتماد زر القوس قزح في تطبيقك اللامركزي
-description: مكتبة قابلة للتوصيل والاستخدام لدعم محافظ قوس قزح في تطبيقك اللامركزي
+title: اعتماد زر Rainbow في تطبيقك اللامركزي (dApp)
+description: مكتبة للتوصيل والتشغيل لـ Wagmi لدعم محافظ Rainbow في تطبيقك اللامركزي
 image: guide-rainbow-button.png
 ---
 
-# اعتماد زر القوس قزح في تطبيقك اللامركزي
+# اعتماد زر Rainbow في تطبيقك اللامركزي (dApp)
 
-تُعتبر مكونة `RainbowButton` أسهل طريقة لدعم محافظ قوس قزح في تطبيقات اللامركزي التي تستخدم `wagmi` وتفضل تجربة اتصال مخصصة أكثر من [RainbowKit](https://www.rainbowkit.com/docs/installation).
+مكون `RainbowButton` هو الطريقة الأبسط لإضافة دعم لمحفظة Rainbow لتطبيقات dApps التي تستخدم `wagmi` وتفضل تجربة موصل أكثر تخصيصًا من [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. قم بتثبيت `@rainbow-me/rainbow-button` والوابل اللازم**
+**1. قم بتثبيت `@rainbow-me/rainbow-button` والتبعيات المرافقة له**
 
-الحزمة متوافقة مع Next.js وReact وVite. تأكد من اتباع الإرشادات بشأن الوابلِ اللازم.
+الحزمة متوافقة مع Next.js و React و Vite. تأكد من اتباع تحذيرات التبعية المرافقة.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. قم بتكوينه مع Wagmi وقم بتثبيت RainbowButton**
+**2. قم بالتكوين مع Wagmi وثبت RainbowButton**
 
-قم بتمرير نسخة من `rainbowConnector` إلى `createConfig` الخاص بـ Wagmi مع `projectId` و `appName`, وقم بتغليف تطبيقك في `RainbowButtonProvider`. ثم أضف مكون `RainbowButton` إلى التطبيق.
+مرر نسخة من `rainbowConnector` إلى `createConfig` الخاص بواغمي مع `projectId` و`appName`، ثم غلل تطبيقك في `RainbowButtonProvider`. ثم أضف مكون `RainbowButton`.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-يمكنك أيضًا استخدام المكون `RainbowButton.Custom` لأجل تنفيذات وتنسيقات مخصصة.
+يمكنك أيضًا استخدام مكون `RainbowButton.Custom` للتنفيذات والتصميمات المخصصة.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. هذا كل شيء!**
+**3. وهذا كل شيء!**
 
-الآن يمكن لمستخدميك الاستمتاع بتجربة اتصال سلسة مع قوس قزح - بدون أي صيانة أو صداع.
+الآن يمكن لمستخدميك الاستمتاع بتجربة اتصال سلسة لرينبو — دون أي صيانة أو مشاكل.
 
-هناك أيضًا مكون [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) المتاح في [RainbowKit](https://www.rainbowkit.com/docs/installation) إذا كنت ترغب في دعم محافظ إضافية.
+هناك مكون [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) أيضًا متاح في [RainbowKit](https://www.rainbowkit.com/docs/installation) إذا كنت ترغب في اعتماد دعم لمحافظ إضافية.
