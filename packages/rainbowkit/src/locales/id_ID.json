@@ -217,16 +217,16 @@
     "ready": {
       "qr_code": {
         "step1": {
-          "description": "Add Ready to your home screen for faster access to your wallet.",
-          "title": "Open the Ready app"
+          "description": "Tambahkan Ready ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi Ready"
         },
         "step2": {
-          "description": "Create a wallet and username, or import an existing wallet.",
-          "title": "Create or Import a Wallet"
+          "description": "Buat dompet dan nama pengguna, atau impor dompet yang ada.",
+          "title": "Buat atau Impor Dompet"
         },
         "step3": {
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
-          "title": "Tap the Scan QR button"
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol Scan QR"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Kami merekomendasikan untuk memasang Binance Wallet di taskbar Anda untuk akses yang lebih cepat ke wallet Anda."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Buat atau Impor Dompet",
           "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Buat atau Impor Dompet",
           "description": "Buat dompet baru atau impor yang sudah ada."
         },
         "step3": {
           "title": "Tekan tombol scan",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Tambahkan Nova Wallet ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Buat atau Impor Dompet",
           "description": "Buat dompet baru atau impor yang sudah ada."
         },
         "step3": {
           "title": "Tekan tombol scan",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
     }
