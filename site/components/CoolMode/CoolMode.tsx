@@ -8,7 +8,7 @@ export function CoolMode() {
   const coolCoinbaseRef = useCoolMode('/coinbase.svg');
   const coolMetaMaskRef = useCoolMode('/metaMask.svg');
   const coolRainbowRef = useCoolMode('/rainbow.svg');
-  const coolArgentRef = useCoolMode('/argent.svg');
+  const coolReadyRef = useCoolMode('/ready.svg');
   const coolWalletConnectRef = useCoolMode('/walletConnect.svg');
   const coolTrustRef = useCoolMode('/trust.svg');
 
@@ -26,8 +26,8 @@ export function CoolMode() {
       <Box ref={coolCoinbaseRef}>
         <CoolButton src="/coinbase.svg">Coinbase</CoolButton>
       </Box>
-      <Box ref={coolArgentRef}>
-        <CoolButton src="/argent.svg">Argent</CoolButton>
+      <Box ref={coolReadyRef}>
+        <CoolButton src="/ready.svg">Ready</CoolButton>
       </Box>
       <Box ref={coolTrustRef}>
         <CoolButton src="/trust.svg">Trust</CoolButton>

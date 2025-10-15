@@ -32,7 +32,7 @@ const Home: NextPage = () => {
 
         <span>RainbowKit WalletButton.Custom</span>
 
-        <WalletButton.Custom wallet="argent">
+        <WalletButton.Custom wallet="ready">
           {({ ready, connect, connector }) => {
             return (
               <button disabled={!ready} onClick={connect}>

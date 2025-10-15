@@ -47,6 +47,7 @@ import { portoWallet } from './portoWallet/portoWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { readyWallet } from './readyWallet/readyWallet';
 import { ramperWallet } from './ramperWallet/ramperWallet';
 import { roninWallet } from './roninWallet/roninWallet';
 import { safeWallet } from './safeWallet/safeWallet';
@@ -120,6 +121,7 @@ export {
   portoWallet,
   rabbyWallet,
   rainbowWallet,
+  readyWallet,
   ramperWallet,
   roninWallet,
   safeheronWallet,

@@ -1,5 +1,5 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { argentWallet, rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rainbowWallet, readyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, http } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { baseAccount, metaMask } from 'wagmi/connectors';
@@ -11,7 +11,7 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Popular',
-      wallets: [rainbowWallet, argentWallet],
+      wallets: [rainbowWallet, readyWallet],
     },
   ],
   {
