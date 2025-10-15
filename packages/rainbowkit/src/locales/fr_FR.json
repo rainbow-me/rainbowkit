@@ -1144,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Installez l'extension du portefeuille XDEFI",
-          "description": "Nous vous recommandons d'épingler XDEFI Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+          "title": "Installez l'extension CTRL Wallet",
+          "description": "Nous vous recommandons d'épingler CTRL Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Créer ou Importer un portefeuille",
-          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
+          "title": "Créez ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
           "title": "Rafraîchissez votre navigateur",
-          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
       }
     },
