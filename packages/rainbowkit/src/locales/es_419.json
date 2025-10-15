@@ -1144,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de la billetera XDEFI",
-          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
+          "title": "Instala la extensión CTRL Wallet",
+          "description": "Recomendamos anclar CTRL Wallet a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
+          "title": "Crea o Importa una Billetera",
           "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualice su navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
         }
       }
     },
