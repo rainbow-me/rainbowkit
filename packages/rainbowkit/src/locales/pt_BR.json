@@ -214,19 +214,19 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
-          "title": "Abra o aplicativo Argent"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
-          "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "Create a wallet and username, or import an existing wallet.",
+          "title": "Create or Import a Wallet"
         },
         "step3": {
-          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão Scan QR"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Recomendamos fixar a Carteira Binance na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
+          "title": "Create or Import a Wallet",
           "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Adicione o ZilPay à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
+          "title": "Create or Import a Wallet",
           "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
           "title": "Toque no botão de escanear",
-          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Adicione a Nova Wallet à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
+          "title": "Create or Import a Wallet",
           "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
           "title": "Toque no botão de escanear",
-          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }
