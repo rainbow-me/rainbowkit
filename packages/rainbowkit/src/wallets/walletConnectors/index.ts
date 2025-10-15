@@ -65,7 +65,7 @@ import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { wigwamWallet } from './wigwamWallet/wigwamWallet';
-import { ctrlWallet } from './ctrlWallet/ctrlWallet';
+import { ctrlWallet, xdefiWallet } from './ctrlWallet/ctrlWallet';
 import { xPortalWallet } from './xPortalWallet/xPortalWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
@@ -140,6 +140,10 @@ export {
   valoraWallet,
   walletConnectWallet,
   wigwamWallet,
+  /**
+   * @deprecated Use `ctrlWallet` instead. This wallet connector will be removed in a future version.
+   */
+  xdefiWallet,
   xPortalWallet,
   zealWallet,
   zerionWallet,

@@ -42,3 +42,8 @@ export const ctrlWallet = (): Wallet => {
     createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
   };
 };
+
+/**
+ * @deprecated Use `ctrlWallet` instead. This wallet connector will be removed in a future version.
+ */
+export const xdefiWallet = ctrlWallet;
