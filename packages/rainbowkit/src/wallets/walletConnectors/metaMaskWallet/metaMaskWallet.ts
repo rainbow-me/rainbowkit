@@ -56,7 +56,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isTokenPocket) return false;
   if (ethereum.isTokenary) return false;
   if (ethereum.isTrust || ethereum.isTrustWallet) return false;
-  if (ethereum.isXDEFI) return false;
+  if (ethereum.isCTRL) return false;
   if (ethereum.isZeal) return false;
   if (ethereum.isCoin98) return false;
   if (ethereum.isMEWwallet) return false;
