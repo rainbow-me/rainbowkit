@@ -241,7 +241,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             gap: '20px',
           }}
         >
-          {['rainbow', 'metamask', 'coinbase'].map((connector) => {
+          {['rainbow', 'metamask', 'baseAccount'].map((connector) => {
             return <WalletButton key={connector} wallet={connector} />;
           })}
         </div>

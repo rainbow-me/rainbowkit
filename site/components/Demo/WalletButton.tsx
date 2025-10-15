@@ -20,7 +20,7 @@ export function WalletButtonDemo() {
           <RKWalletButton wallet="metaMask" />
         </Box>
         <Box>
-          <RKWalletButton wallet="coinbase" />
+          <RKWalletButton wallet="baseAccount" />
         </Box>
         <Box>
           <RKWalletButton wallet="trust" />

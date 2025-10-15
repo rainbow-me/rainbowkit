@@ -1,5 +1,27 @@
 # example
 
+## 0.0.116
+
+### Patch Changes
+
+- c9ee131: Add providers page for inspecting injected providers and EIP-6963 wallets.
+- 66bcc18: Universal Profiles wallet connector
+- 5698ade: fix monad logo in rainbowkit package and include monad testnet in the example
+- d92a6c7: Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
+- Updated dependencies [e52ca05]
+- Updated dependencies [1e67f0d]
+- Updated dependencies [d92a6c7]
+- Updated dependencies [87257e6]
+- Updated dependencies [0b9052c]
+- Updated dependencies [b34d6c1]
+- Updated dependencies [66bcc18]
+- Updated dependencies [fe0496e]
+- Updated dependencies [5698ade]
+- Updated dependencies [1520f59]
+  - @rainbow-me/rainbowkit@2.2.9
+  - @rainbow-me/rainbow-button@0.2.26
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.115
 
 ### Patch Changes

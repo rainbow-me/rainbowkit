@@ -1,6 +1,7 @@
 import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   backpackWallet,
+  baseAccount,
   berasigWallet,
   bestWallet,
   bifrostWallet,
@@ -12,7 +13,6 @@ import {
   bybitWallet,
   clvWallet,
   coin98Wallet,
-  coinbaseWallet,
   compassWallet,
   coreWallet,
   dawnWallet,
@@ -131,12 +131,6 @@ const avalanche = {
   },
 } as const satisfies Chain;
 
-// Enable Smart Wallet and EOA
-// Testing `preference` type
-coinbaseWallet.preference = 'all';
-
-// TODO: Add subAccounts, paymasterUrls
-
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -191,10 +185,9 @@ export const config = getDefaultConfig({
       wallets: [
         safeWallet,
         rainbowWallet,
-        coinbaseWallet,
+        baseAccount,
         metaMaskWallet,
         walletConnectWallet,
-        novaWallet,
       ],
     },
     {
@@ -232,6 +225,7 @@ export const config = getDefaultConfig({
         magicEdenWallet,
         mewWallet,
         nestWallet,
+        novaWallet,
         oktoWallet,
         okxWallet,
         omniWallet,

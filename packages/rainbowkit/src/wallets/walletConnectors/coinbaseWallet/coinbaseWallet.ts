@@ -21,6 +21,9 @@ interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
   (params: CoinbaseWalletOptions): Wallet;
 }
 
+/**
+ * @deprecated Use `baseAccount` instead. This wallet connector will be removed in a future version.
+ */
 export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
   const getUri = (uri: string) => uri;
   const ios = isIOS();
