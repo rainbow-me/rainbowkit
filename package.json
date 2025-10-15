@@ -92,6 +92,7 @@
       "core-js",
       "core-js-pure",
       "keccak",
+      "msw",
       "protobufjs",
       "sharp",
       "utf-8-validate"
