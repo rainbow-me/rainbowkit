@@ -217,16 +217,16 @@
     "ready": {
       "qr_code": {
         "step1": {
-          "description": "Add Ready to your home screen for faster access to your wallet.",
-          "title": "Open the Ready app"
+          "description": "Agrega Ready a tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación Ready"
         },
         "step2": {
-          "description": "Create a wallet and username, or import an existing wallet.",
-          "title": "Create or Import a Wallet"
+          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
+          "title": "Crea o Importa una Billetera"
         },
         "step3": {
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
-          "title": "Tap the Scan QR button"
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón Escanear QR"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "Recomendamos anclar Binance Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Crea o Importa una Billetera",
           "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "Agrega ZilPay a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Crea o Importa una Billetera",
           "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
           "title": "Toque el botón de escaneo",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "Agrega Nova Wallet a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Create or Import a Wallet",
+          "title": "Crea o Importa una Billetera",
           "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
           "title": "Toque el botón de escaneo",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
         }
       }
     }
