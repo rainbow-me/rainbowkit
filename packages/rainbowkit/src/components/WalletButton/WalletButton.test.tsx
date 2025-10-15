@@ -68,7 +68,7 @@ describe('<WalletButton />', () => {
   });
 
   it('should throw error for non ready connectors', () => {
-    for (const connector of ['argent', 'xdefi', 'uniswap']) {
+    for (const connector of ['ready', 'xdefi', 'uniswap']) {
       expect(() =>
         renderWithProviders(<WalletButton wallet={connector} />, {
           chains: [mainnet],

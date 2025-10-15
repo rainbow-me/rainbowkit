@@ -26,7 +26,7 @@ export function WalletButtonDemo() {
           <RKWalletButton wallet="trust" />
         </Box>
         <Box>
-          <RKWalletButton wallet="argent" />
+          <RKWalletButton wallet="ready" />
         </Box>
         <Box>
           <RKWalletButton wallet="omni" />

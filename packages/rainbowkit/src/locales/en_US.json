@@ -226,11 +226,11 @@
   },
 
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Put Argent on your home screen for faster access to your wallet.",
-          "title": "Open the Argent app"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
           "description": "Create a wallet and username, or import an existing wallet.",

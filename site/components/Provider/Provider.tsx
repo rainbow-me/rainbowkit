@@ -1,9 +1,9 @@
 import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
-  argentWallet,
   imTokenWallet,
   ledgerWallet,
   omniWallet,
+  readyWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -58,7 +58,7 @@ const config = getDefaultConfig({
     {
       groupName: 'More',
       wallets: [
-        argentWallet,
+        readyWallet,
         trustWallet,
         omniWallet,
         imTokenWallet,
