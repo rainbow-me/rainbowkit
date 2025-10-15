@@ -214,19 +214,19 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "将 Argent 放到您的主屏幕上，以便更快地访问您的钱包。",
-          "title": "打开 Argent 应用"
+          "description": "Add Ready to your home screen for faster access to your wallet.",
+          "title": "Open the Ready app"
         },
         "step2": {
-          "description": "创建钱包和用户名，或导入现有钱包。",
-          "title": "创建或导入钱包"
+          "description": "Create a wallet and username, or import an existing wallet.",
+          "title": "Create or Import a Wallet"
         },
         "step3": {
-          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
-          "title": "点击扫描二维码按钮"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
         }
       }
     },
@@ -407,7 +407,7 @@
           "description": "我们建议您将Binance钱包固定到任务栏，以便更快地访问您的钱包。"
         },
         "step2": {
-          "title": "创建或导入钱包",
+          "title": "Create or Import a Wallet",
           "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
         },
         "step3": {
@@ -1457,12 +1457,12 @@
           "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
         },
         "step2": {
-          "title": "创建或导入钱包",
+          "title": "Create or Import a Wallet",
           "description": "创建新钱包或导入现有钱包。"
         },
         "step3": {
           "title": "点击扫描按钮",
-          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     },
@@ -1473,12 +1473,12 @@
           "description": "将Nova钱包添加到您的主屏幕，以便更快地访问您的钱包。"
         },
         "step2": {
-          "title": "创建或导入钱包",
+          "title": "Create or Import a Wallet",
           "description": "创建新钱包或导入现有钱包。"
         },
         "step3": {
           "title": "点击扫描按钮",
-          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }
