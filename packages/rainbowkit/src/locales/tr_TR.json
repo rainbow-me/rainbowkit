@@ -214,15 +214,15 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "Cüzdanınıza daha hızlı erişim için Ready'i ana ekranınıza ekleyin.",
+          "title": "Ready uygulamasını açın"
         },
         "step2": {
           "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
@@ -407,7 +407,7 @@
           "description": "Cüzdanınıza daha hızlı erişim için Binance Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "title": "Cüzdan Oluştur veya İçe Aktar",
           "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
         },
         "step3": {
@@ -1457,7 +1457,7 @@
           "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "title": "Cüzdan Oluştur veya İçe Aktar",
           "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
@@ -1473,7 +1473,7 @@
           "description": "Cüzdanınıza daha hızlı erişim için Nova Cüzdanı ana ekranınıza ekleyin."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "title": "Cüzdan Oluştur veya İçe Aktar",
           "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
