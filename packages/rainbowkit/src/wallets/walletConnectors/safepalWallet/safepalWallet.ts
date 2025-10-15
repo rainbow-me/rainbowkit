@@ -91,7 +91,7 @@ export const safepalWallet = ({
     // Note that we never resolve `installed` to `false` because the
     // SafePal Wallet provider falls back to other connection methods if
     // the injected connector isn't available
-    installed: isSafePalWalletInjected,
+    installed: !shouldUseWalletConnect ? isSafePalWalletInjected : undefined,
     iconAccent: '#3375BB',
     iconBackground: '#fff',
     downloadUrls: {
