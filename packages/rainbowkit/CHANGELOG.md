@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.10
+
+### Patch Changes
+
+- e58367e: Fix mobile visibility for Coin98, CLV, SafePal, Frontier, and BeraSig wallets.
+- b7b7b43: Rename the Argent wallet connector to `readyWallet`
+- 507f583: Add additional wallet flags to `isMetaMask()` to detect impersonating providers.
+- 16963de: Add `ctrlWallet` wallet connector to replace `xdefiWallet`. XDEFI Wallet has been rebranded to CTRL Wallet.
+
 ## 2.2.9
 
 ### Patch Changes
