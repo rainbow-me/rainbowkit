@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const tahoWallet = (): Wallet => {
+export const tahoWallet = () => {
   return {
-    id: 'taho',
+    id: 'taho' as const,
     name: 'Taho',
     iconBackground: '#d08d57',
     iconUrl: async () => (await import('./tahoWallet.svg')).default,
@@ -43,5 +43,5 @@ export const tahoWallet = (): Wallet => {
       namespace: 'tally',
       flag: 'isTally',
     }),
-  };
+  } satisfies Wallet;
 };

@@ -11,7 +11,7 @@ export type RainbowWalletOptions = DefaultWalletOptions;
 export const rainbowWallet = ({
   projectId,
   walletConnectParameters,
-}: RainbowWalletOptions): Wallet => {
+}: RainbowWalletOptions) => {
   const isRainbowInjected = hasInjectedProvider({ flag: 'isRainbow' });
   const shouldUseWalletConnect = !isRainbowInjected;
 
@@ -26,7 +26,7 @@ export const rainbowWallet = ({
   };
 
   return {
-    id: 'rainbow',
+    id: 'rainbow' as const,
     name: 'Rainbow',
     rdns: 'me.rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
@@ -78,5 +78,5 @@ export const rainbowWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isRainbow' }),
-  };
+  } satisfies Wallet;
 };

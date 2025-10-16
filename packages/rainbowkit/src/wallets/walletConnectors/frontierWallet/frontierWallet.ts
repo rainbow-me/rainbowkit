@@ -12,14 +12,14 @@ export type FrontierWalletOptions = DefaultWalletOptions;
 export const frontierWallet = ({
   projectId,
   walletConnectParameters,
-}: FrontierWalletOptions): Wallet => {
+}: FrontierWalletOptions) => {
   const isFrontierInjected = hasInjectedProvider({
     namespace: 'frontier.ethereum',
     flag: 'isFrontier',
   });
   const shouldUseWalletConnect = !isFrontierInjected;
   return {
-    id: 'frontier',
+    id: 'frontier' as const,
     name: 'Frontier Wallet',
     rdns: 'xyz.frontier.wallet',
     installed: !shouldUseWalletConnect ? isFrontierInjected : undefined,
@@ -108,5 +108,5 @@ export const frontierWallet = ({
           namespace: 'frontier.ethereum',
           flag: 'isFrontier',
         }),
-  };
+  } satisfies Wallet;
 };

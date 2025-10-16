@@ -10,7 +10,7 @@ export type RoninWalletOptions = DefaultWalletOptions;
 export const roninWallet = ({
   projectId,
   walletConnectParameters,
-}: RoninWalletOptions): Wallet => {
+}: RoninWalletOptions) => {
   const isRoninInjected = hasInjectedProvider({
     namespace: 'ronin.provider',
   });
@@ -22,7 +22,7 @@ export const roninWallet = ({
   };
 
   return {
-    id: 'ronin',
+    id: 'ronin' as const,
     name: 'Ronin Wallet',
     iconUrl: async () => (await import('./roninWallet.svg')).default,
     iconBackground: '#ffffff',
@@ -99,5 +99,5 @@ export const roninWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'ronin.provider' }),
-  };
+  } satisfies Wallet;
 };

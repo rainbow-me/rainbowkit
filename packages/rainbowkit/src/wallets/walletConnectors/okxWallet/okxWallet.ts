@@ -11,12 +11,12 @@ export type OKXWalletOptions = DefaultWalletOptions;
 export const okxWallet = ({
   projectId,
   walletConnectParameters,
-}: OKXWalletOptions): Wallet => {
+}: OKXWalletOptions) => {
   const isOKXInjected = hasInjectedProvider({ namespace: 'okxwallet' });
   const shouldUseWalletConnect = !isOKXInjected;
 
   return {
-    id: 'okx',
+    id: 'okx' as const,
     name: 'OKX Wallet',
     rdns: 'com.okex.wallet',
     iconUrl: async () => (await import('./okxWallet.svg')).default,
@@ -97,5 +97,5 @@ export const okxWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'okxwallet' }),
-  };
+  } satisfies Wallet;
 };

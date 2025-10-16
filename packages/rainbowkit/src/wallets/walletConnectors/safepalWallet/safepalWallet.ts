@@ -14,7 +14,7 @@ export type SafepalWalletOptions = DefaultWalletOptions;
 export const safepalWallet = ({
   projectId,
   walletConnectParameters,
-}: SafepalWalletOptions): Wallet => {
+}: SafepalWalletOptions) => {
   const isSafePalWalletInjected = hasInjectedProvider({
     namespace: 'safepalProvider',
     flag: 'isSafePal',
@@ -85,7 +85,7 @@ export const safepalWallet = ({
   };
 
   return {
-    id: 'safepal',
+    id: 'safepal' as const,
     name: 'SafePal Wallet',
     iconUrl: async () => (await import('./safepalWallet.svg')).default,
     // Note that we never resolve `installed` to `false` because the
@@ -116,5 +116,5 @@ export const safepalWallet = ({
           namespace: 'safepalProvider',
           flag: 'isSafePal',
         }),
-  };
+  } satisfies Wallet;
 };
