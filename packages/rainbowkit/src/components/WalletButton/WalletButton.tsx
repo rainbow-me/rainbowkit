@@ -12,8 +12,12 @@ import {
 
 export type { WalletButtonRendererProps } from './WalletButtonRenderer';
 
+export interface WalletButtonProps {
+  wallet?: string;
+}
+
 export const WalletButton: {
-  (props: { wallet?: string }): JSX.Element | undefined;
+  (props: WalletButtonProps): JSX.Element | undefined;
   Custom: (props: WalletButtonRendererProps) => ReactNode;
 } = ({ wallet }) => {
   return (
