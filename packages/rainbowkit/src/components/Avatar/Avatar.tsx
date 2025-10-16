@@ -3,12 +3,12 @@ import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { AvatarContext } from '../RainbowKitProvider/AvatarContext';
 
-interface AvatarProps {
+export type AvatarProps = {
   address: string;
   loading?: boolean;
   imageUrl?: string | null;
   size: number;
-}
+};
 
 export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
   const AvatarComponent = useContext(AvatarContext);
