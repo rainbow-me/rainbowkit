@@ -12,7 +12,7 @@ export type XPortalWalletOptions = DefaultWalletOptions;
 export const xPortalWallet = ({
   projectId,
   walletConnectParameters,
-}: XPortalWalletOptions): Wallet => {
+}: XPortalWalletOptions) => {
   const isXPortalInjected = hasInjectedProvider({
     flag: 'isxPortal',
   });
@@ -23,7 +23,7 @@ export const xPortalWallet = ({
   };
 
   return {
-    id: 'xportal',
+    id: 'xportal' as const,
     name: 'xPortal',
     rdns: 'com.elrond.maiar.wallet',
     iconUrl: async () => (await import('./xPortalWallet.svg')).default,
@@ -76,5 +76,5 @@ export const xPortalWallet = ({
       : getInjectedConnector({
           flag: 'isxPortal',
         }),
-  };
+  } satisfies Wallet;
 };

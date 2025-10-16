@@ -10,14 +10,14 @@ export type CoreWalletOptions = DefaultWalletOptions;
 export const coreWallet = ({
   projectId,
   walletConnectParameters,
-}: CoreWalletOptions): Wallet => {
+}: CoreWalletOptions) => {
   const isCoreInjected = hasInjectedProvider({
     namespace: 'avalanche',
     flag: 'isAvalanche',
   });
   const shouldUseWalletConnect = !isCoreInjected;
   return {
-    id: 'core',
+    id: 'core' as const,
     name: 'Core',
     rdns: 'app.core.extension',
     iconUrl: async () => (await import('./coreWallet.svg')).default,
@@ -92,5 +92,5 @@ export const coreWallet = ({
           namespace: 'avalanche',
           flag: 'isAvalanche',
         }),
-  };
+  } satisfies Wallet;
 };

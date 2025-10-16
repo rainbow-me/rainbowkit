@@ -4,9 +4,9 @@ import {
 } from '../../getInjectedConnector';
 import type { Wallet } from '../../Wallet';
 
-export const backpackWallet = (): Wallet => {
+export const backpackWallet = () => {
   return {
-    id: 'backpack',
+    id: 'backpack' as const,
     name: 'Backpack',
     rdns: 'app.backpack.mobile',
     iconUrl: async () => (await import('./backpackWallet.svg')).default,
@@ -48,5 +48,5 @@ export const backpackWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({ namespace: 'backpack.ethereum' }),
-  };
+  } satisfies Wallet;
 };

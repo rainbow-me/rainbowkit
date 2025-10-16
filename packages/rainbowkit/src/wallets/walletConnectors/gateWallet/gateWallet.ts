@@ -11,12 +11,12 @@ export type GateWalletOptions = DefaultWalletOptions;
 export const gateWallet = ({
   projectId,
   walletConnectParameters,
-}: GateWalletOptions): Wallet => {
+}: GateWalletOptions) => {
   const isGateInjected = hasInjectedProvider({ namespace: 'gatewallet' });
   const shouldUseWalletConnect = !isGateInjected;
 
   return {
-    id: 'gate',
+    id: 'gate' as const,
     name: 'Gate Wallet',
     rdns: 'io.gate.wallet',
     iconUrl: async () => (await import('./gateWallet.svg')).default,
@@ -95,5 +95,5 @@ export const gateWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'gatewallet' }),
-  };
+  } satisfies Wallet;
 };

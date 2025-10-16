@@ -10,14 +10,14 @@ export type FoxWalletOptions = DefaultWalletOptions;
 export const foxWallet = ({
   projectId,
   walletConnectParameters,
-}: FoxWalletOptions): Wallet => {
+}: FoxWalletOptions) => {
   const isFoxInjected = hasInjectedProvider({
     namespace: 'foxwallet.ethereum',
   });
   const shouldUseWalletConnect = !isFoxInjected;
 
   return {
-    id: 'foxwallet',
+    id: 'foxwallet' as const,
     name: 'FoxWallet',
     iconUrl: async () => (await import('./foxWallet.svg')).default,
     iconBackground: '#fff',
@@ -66,5 +66,5 @@ export const foxWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'foxwallet.ethereum' }),
-  };
+  } satisfies Wallet;
 };

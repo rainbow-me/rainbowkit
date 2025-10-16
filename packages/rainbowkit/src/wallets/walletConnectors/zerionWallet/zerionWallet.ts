@@ -12,7 +12,7 @@ export type ZerionWalletOptions = DefaultWalletOptions;
 export const zerionWallet = ({
   projectId,
   walletConnectParameters,
-}: ZerionWalletOptions): Wallet => {
+}: ZerionWalletOptions) => {
   const isZerionInjected = hasInjectedProvider({
     namespace: 'zerionWallet',
     flag: 'isZerion',
@@ -24,7 +24,7 @@ export const zerionWallet = ({
   };
 
   return {
-    id: 'zerion',
+    id: 'zerion' as const,
     name: 'Zerion',
     rdns: 'io.zerion.wallet',
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
@@ -104,5 +104,5 @@ export const zerionWallet = ({
           namespace: 'zerionWallet',
           flag: 'isZerion',
         }),
-  };
+  } satisfies Wallet;
 };

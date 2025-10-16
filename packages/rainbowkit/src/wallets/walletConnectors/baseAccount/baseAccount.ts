@@ -3,33 +3,23 @@ import {
   type BaseAccountParameters,
   baseAccount as baseAccountConnector,
 } from 'wagmi/connectors';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
+import type { Wallet, WalletDetailsParams, WalletFactory } from '../../Wallet';
 
-export interface BaseAccountOptions {
+// supports preference, paymasterUrls, subAccounts
+export interface BaseAccountOptions
+  extends Omit<BaseAccountParameters, 'appName' | 'appLogoUrl'> {
   appName: string;
   appIcon?: string;
 }
 
-// supports preference, paymasterUrls, subAccounts
-type AcceptedBaseAccountParameters = Omit<
-  BaseAccountParameters,
-  'appName' | 'appLogoUrl'
->;
-
-interface BaseAccount extends AcceptedBaseAccountParameters {
-  (params: BaseAccountOptions): Wallet;
-}
-
-export const baseAccount: BaseAccount = ({
+export const baseAccount: WalletFactory<BaseAccountOptions, 'baseAccount'> = ({
   appName,
   appIcon,
-}: BaseAccountOptions): Wallet => {
-  // Extract all AcceptedBaseAccountParameters from baseAccount
-  // This approach avoids type errors for properties not yet in upstream connector
-  const { preference, ...optionalConfig } = baseAccount;
-
+  preference,
+  ...optionalConfig
+}) => {
   return {
-    id: 'baseAccount',
+    id: 'baseAccount' as const,
     name: 'Base Account',
     shortName: 'Base Account',
     rdns: 'app.base.account',
@@ -54,5 +44,5 @@ export const baseAccount: BaseAccount = ({
         ...walletDetails,
       }));
     },
-  };
+  } satisfies Wallet;
 };

@@ -10,12 +10,12 @@ export type CLVWalletOptions = DefaultWalletOptions;
 export const clvWallet = ({
   projectId,
   walletConnectParameters,
-}: CLVWalletOptions): Wallet => {
+}: CLVWalletOptions) => {
   const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
   const shouldUseWalletConnect = !isCLVInjected;
 
   return {
-    id: 'clv',
+    id: 'clv' as const,
     name: 'CLV',
     iconUrl: async () => (await import('./clvWallet.svg')).default,
     iconBackground: '#fff',
@@ -84,5 +84,5 @@ export const clvWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'clover' }),
-  };
+  } satisfies Wallet;
 };

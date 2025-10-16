@@ -10,7 +10,7 @@ export type BifrostWalletOptions = DefaultWalletOptions;
 export const bybitWallet = ({
   projectId,
   walletConnectParameters,
-}: BifrostWalletOptions): Wallet => {
+}: BifrostWalletOptions) => {
   const isBybitInjected = hasInjectedProvider({
     namespace: 'bybitWallet',
   });
@@ -24,7 +24,7 @@ export const bybitWallet = ({
   };
 
   return {
-    id: 'bybit',
+    id: 'bybit' as const,
     name: 'Bybit Wallet',
     rdns: 'com.bybit',
     iconUrl: async () => (await import('./bybitWallet.svg')).default,
@@ -100,5 +100,5 @@ export const bybitWallet = ({
       : getInjectedConnector({
           namespace: 'bybitWallet',
         }),
-  };
+  } satisfies Wallet;
 };
