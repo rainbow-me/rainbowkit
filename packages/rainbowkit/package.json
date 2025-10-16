@@ -5,13 +5,15 @@
   "files": [
     "dist",
     "styles.css",
-    "wallets"
+    "wallets",
+    "components"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/index.css",
-    "./wallets": "./dist/wallets/walletConnectors/index.js"
+    "./wallets": "./dist/wallets/walletConnectors/index.js",
+    "./components": "./dist/components/index.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
