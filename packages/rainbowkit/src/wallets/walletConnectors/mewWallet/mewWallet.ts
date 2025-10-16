@@ -10,7 +10,7 @@ export type MEWWalletOptions = DefaultWalletOptions;
 export const mewWallet = ({
   projectId,
   walletConnectParameters,
-}: MEWWalletOptions): Wallet => {
+}: MEWWalletOptions) => {
   const isMEWInjected = hasInjectedProvider({ flag: 'isMEWwallet' });
   const shouldUseWalletConnect = !isMEWInjected;
 
@@ -20,7 +20,7 @@ export const mewWallet = ({
   };
 
   return {
-    id: 'mew',
+    id: 'mew' as const,
     name: 'MEW wallet',
     iconUrl: async () => (await import('./mewWallet.svg')).default,
     iconBackground: '#fff',
@@ -65,5 +65,5 @@ export const mewWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isMEWwallet' }),
-  };
+  } satisfies Wallet;
 };

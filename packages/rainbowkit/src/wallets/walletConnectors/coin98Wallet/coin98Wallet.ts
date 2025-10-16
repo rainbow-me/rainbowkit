@@ -10,7 +10,7 @@ export type Coin98WalletOptions = DefaultWalletOptions;
 export const coin98Wallet = ({
   projectId,
   walletConnectParameters,
-}: Coin98WalletOptions): Wallet => {
+}: Coin98WalletOptions) => {
   const isCoin98WalletInjected = hasInjectedProvider({
     namespace: 'coin98.provider',
     flag: 'isCoin98',
@@ -18,7 +18,7 @@ export const coin98Wallet = ({
 
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
-    id: 'coin98',
+    id: 'coin98' as const,
     name: 'Coin98 Wallet',
     iconUrl: async () => (await import('./coin98Wallet.svg')).default,
     installed: !shouldUseWalletConnect ? isCoin98WalletInjected : undefined,
@@ -97,5 +97,5 @@ export const coin98Wallet = ({
           namespace: 'coin98Wallet',
           flag: 'isCoin98',
         }),
-  };
+  } satisfies Wallet;
 };

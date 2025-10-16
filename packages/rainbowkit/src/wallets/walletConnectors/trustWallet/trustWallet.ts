@@ -15,7 +15,7 @@ export type TrustWalletOptions = DefaultWalletOptions;
 export const trustWallet = ({
   projectId,
   walletConnectParameters,
-}: TrustWalletOptions): Wallet => {
+}: TrustWalletOptions) => {
   const isTrustWalletInjected = isMobile()
     ? hasInjectedProvider({ flag: 'isTrust' })
     : hasInjectedProvider({ flag: 'isTrustWallet' });
@@ -85,7 +85,7 @@ export const trustWallet = ({
   };
 
   return {
-    id: 'trust',
+    id: 'trust' as const,
     name: 'Trust Wallet',
     rdns: 'com.trustwallet.app',
     iconUrl: async () => (await import('./trustWallet.svg')).default,
@@ -116,5 +116,5 @@ export const trustWallet = ({
       : isMobile()
         ? getInjectedConnector({ flag: 'isTrust' })
         : getInjectedConnector({ flag: 'isTrustWallet' }),
-  };
+  } satisfies Wallet;
 };

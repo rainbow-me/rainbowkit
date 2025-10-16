@@ -1,6 +1,5 @@
 import type { Connector, CreateConnectorFn } from 'wagmi';
 import type { WalletConnectParameters } from 'wagmi/connectors';
-import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import type { WalletConnectWalletOptions } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export type InstructionStepName =
@@ -77,6 +76,18 @@ export type Wallet = {
   createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
+/**
+ * Generic helper type for wallet factory functions that preserves literal ID types.
+ *
+ * @remarks
+ * - The `as const` assertion on the `id` field is REQUIRED for literal type preservation
+ * - Without it, TypeScript infers `id: string` instead of `id: 'literal'`
+ * - The `satisfies Wallet` validates the implementation conforms to the Wallet interface
+ */
+export type WalletFactory<Opts, ID extends string> = Opts extends void
+  ? () => Wallet & { id: ID }
+  : (options: Opts) => Wallet & { id: ID };
+
 export interface DefaultWalletOptions {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
@@ -84,10 +95,14 @@ export interface DefaultWalletOptions {
 
 export type CreateWalletFn = (
   // These parameters will be used when creating a wallet. If injected
-  // wallet doesn't have parameters it will just ignore these passed in parameters
-  createWalletParams: CoinbaseWalletOptions &
-    Omit<WalletConnectWalletOptions, 'projectId'> &
-    DefaultWalletOptions,
+  // wallet doesn't have parameters it will just ignore these passed in parameters.
+  // Note: appName and appIcon are required by certain wallets (baseAccount,
+  // coinbaseWallet, geminiWallet) that need app metadata for their connectors.
+  createWalletParams: Omit<WalletConnectWalletOptions, 'projectId'> &
+    DefaultWalletOptions & {
+      appName: string;
+      appIcon?: string;
+    },
 ) => Wallet;
 
 export type WalletList = {

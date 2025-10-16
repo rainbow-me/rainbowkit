@@ -4,12 +4,12 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export function seifWallet(): Wallet {
+export function seifWallet() {
   const injectedProvider = hasInjectedProvider({
     namespace: '__seif',
   });
   return {
-    id: 'seif',
+    id: 'seif' as const,
     name: 'Seif',
     installed: !!injectedProvider,
     iconUrl: async () => (await import('./seifWallet.svg')).default,
@@ -22,5 +22,5 @@ export function seifWallet(): Wallet {
       namespace: '__seif',
     }),
     rdns: 'com.passkeywallet.seif',
-  };
+  } satisfies Wallet;
 }

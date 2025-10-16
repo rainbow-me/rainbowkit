@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const oneKeyWallet = (): Wallet => {
+export const oneKeyWallet = () => {
   return {
-    id: 'onekey',
+    id: 'onekey' as const,
     name: 'OneKey',
     rdns: 'so.onekey.app.wallet',
     iconAccent: '#00B812',
@@ -54,5 +54,5 @@ export const oneKeyWallet = (): Wallet => {
     createConnector: getInjectedConnector({
       namespace: '$onekey.ethereum',
     }),
-  };
+  } satisfies Wallet;
 };

@@ -4,8 +4,8 @@ import type {
   DefaultWalletOptions,
   Wallet,
   WalletDetailsParams,
+  WalletFactory,
 } from '../../Wallet';
-import { hasInjectedProvider } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import { isMobile } from '../../../utils/isMobile';
 import type { WindowProvider } from '../../../types/utils';
@@ -68,10 +68,10 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   return true;
 }
 
-export const metaMaskWallet = ({
-  projectId,
-  walletConnectParameters,
-}: MetaMaskWalletOptions): Wallet => {
+export const metaMaskWallet: WalletFactory<
+  MetaMaskWalletOptions,
+  'metaMask'
+> = ({ projectId, walletConnectParameters }) => {
   // Custom logic to explicitly detect MetaMask
   // Whereas hasInjectedProvider only checks for impersonated `isMetaMask`
   // We need this because MetaMask SDK hangs on impersonated wallets
@@ -84,7 +84,7 @@ export const metaMaskWallet = ({
   const shouldUseMetaMaskConnector = isMetaMaskInjected || isMobile();
 
   return {
-    id: 'metaMask',
+    id: 'metaMask' as const,
     name: 'MetaMask',
     rdns: 'io.metamask',
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
@@ -200,5 +200,5 @@ export const metaMaskWallet = ({
             };
           });
         },
-  };
+  } satisfies Wallet;
 };

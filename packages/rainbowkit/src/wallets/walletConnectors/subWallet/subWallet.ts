@@ -14,7 +14,7 @@ export type SubWalletOptions = DefaultWalletOptions;
 export const subWallet = ({
   projectId,
   walletConnectParameters,
-}: SubWalletOptions): Wallet => {
+}: SubWalletOptions) => {
   const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
   const shouldUseWalletConnect = !isSubWalletInjected;
 
@@ -88,7 +88,7 @@ export const subWallet = ({
   };
 
   return {
-    id: 'subwallet',
+    id: 'subwallet' as const,
     name: 'SubWallet',
     rdns: 'app.subwallet',
     iconUrl: async () => (await import('./subWallet.svg')).default,
@@ -115,5 +115,5 @@ export const subWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ namespace: 'SubWallet' }),
-  };
+  } satisfies Wallet;
 };

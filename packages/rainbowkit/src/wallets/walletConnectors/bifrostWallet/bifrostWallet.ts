@@ -12,7 +12,7 @@ export type BifrostWalletOptions = DefaultWalletOptions;
 export const bifrostWallet = ({
   projectId,
   walletConnectParameters,
-}: BifrostWalletOptions): Wallet => {
+}: BifrostWalletOptions) => {
   const isBifrostInjected = hasInjectedProvider({ flag: 'isBifrost' });
 
   const shouldUseWalletConnect = !isBifrostInjected;
@@ -24,7 +24,7 @@ export const bifrostWallet = ({
   };
 
   return {
-    id: 'bifrostWallet',
+    id: 'bifrostWallet' as const,
     name: 'Bifrost Wallet',
     rdns: 'com.bifrostwallet',
     iconUrl: async () => (await import('./bifrostWallet.svg')).default,
@@ -77,5 +77,5 @@ export const bifrostWallet = ({
       : getInjectedConnector({
           flag: 'isBifrost',
         }),
-  };
+  } satisfies Wallet;
 };

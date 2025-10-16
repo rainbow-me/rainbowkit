@@ -5,9 +5,13 @@ import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import * as styles from './WalletButton.css';
-import { WalletButtonRenderer } from './WalletButtonRenderer';
+import { WalletButtonRenderer, type WalletId } from './WalletButtonRenderer';
 
-export const WalletButton = ({ wallet }: { wallet?: string }) => {
+export interface WalletButtonProps {
+  wallet?: WalletId;
+}
+
+export const WalletButton = ({ wallet }: WalletButtonProps) => {
   return (
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {

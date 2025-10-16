@@ -10,13 +10,13 @@ export type ZealWalletOptions = DefaultWalletOptions;
 export const zealWallet = ({
   projectId,
   walletConnectParameters,
-}: ZealWalletOptions): Wallet => {
+}: ZealWalletOptions) => {
   const isZealWalletInjected = hasInjectedProvider({ flag: 'isZeal' });
 
   const shouldUseWalletConnect = !isZealWalletInjected;
 
   return {
-    id: 'zeal',
+    id: 'zeal' as const,
     name: 'Zeal',
     rdns: 'app.zeal',
     iconUrl: async () => (await import('./zealWallet.svg')).default,
@@ -91,5 +91,5 @@ export const zealWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isZeal' }),
-  };
+  } satisfies Wallet;
 };
