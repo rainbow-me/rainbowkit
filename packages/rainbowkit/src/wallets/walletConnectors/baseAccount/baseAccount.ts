@@ -41,6 +41,10 @@ export const baseAccount: BaseAccount = ({ appName, appIcon }) => {
         appName,
         appLogoUrl: appIcon,
         ...optionalConfig,
+        preference: {
+          ...((optionalConfig as any)?.preference || {}),
+          telemetry: false,
+        },
       });
 
       return createConnector((config) => ({
