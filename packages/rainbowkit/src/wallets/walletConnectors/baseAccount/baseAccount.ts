@@ -42,8 +42,8 @@ export const baseAccount: BaseAccount = ({ appName, appIcon }) => {
         appLogoUrl: appIcon,
         ...optionalConfig,
         preference: {
-          ...((optionalConfig as any)?.preference || {}),
           telemetry: false,
+          ...((optionalConfig as any)?.preference || {}),
         },
       });
 
