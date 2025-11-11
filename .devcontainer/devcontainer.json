@@ -1,5 +1,5 @@
 {
   "name": "Node.js & TypeScript",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
-  "postCreateCommand": "npm i -g pnpm@10.17.0 && pnpm install"
+  "postCreateCommand": "npm i -g pnpm@10.21.0 && pnpm install"
 }

@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  pnpm: 10.17.0
+  pnpm: 10.21.0
   HUSKY: 0 # Avoid pre-commit hook tests
   RAINBOW_PROVIDER_API_KEY: RAINBOW_PROVIDER_API_KEY
 
