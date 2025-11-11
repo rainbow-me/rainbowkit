@@ -5,6 +5,7 @@ module.exports = {
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
     return config;
   },
+  turbopack: {},
   i18n: {
     defaultLocale: 'en-US',
     locales: [

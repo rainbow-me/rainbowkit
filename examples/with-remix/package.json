@@ -15,8 +15,8 @@
     "@remix-run/serve": "^2.17.1",
     "@tanstack/react-query": "^5.55.3",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "viem": "2.31.7",
     "wagmi": "^2.17.4"
   },
