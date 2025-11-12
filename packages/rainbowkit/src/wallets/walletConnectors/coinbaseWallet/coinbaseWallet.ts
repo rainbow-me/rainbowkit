@@ -24,7 +24,14 @@ interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
 /**
  * @deprecated Use `baseAccount` instead. This wallet connector will be removed in a future version.
  */
-export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
+export const coinbaseWallet: CoinbaseWallet = ({
+  appName,
+  appIcon,
+}: CoinbaseWalletOptions): Wallet => {
+  // Extract all AcceptedCoinbaseWalletParameters from coinbaseWallet
+  // This approach avoids type errors for properties not yet in upstream connector
+  const { preference, ...optionalConfig } = coinbaseWallet;
+
   const getUri = (uri: string) => uri;
   const ios = isIOS();
 
@@ -107,15 +114,11 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
           },
         }),
     createConnector: (walletDetails: WalletDetailsParams) => {
-      // Extract all AcceptedCoinbaseWalletParameters from coinbaseWallet
-      // This approach avoids type errors for properties not yet in upstream connector
-      const { ...optionalConfig }: AcceptedCoinbaseWalletParameters =
-        coinbaseWallet as any;
-
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
         ...optionalConfig,
+        ...(preference && { preference }),
       });
 
       return createConnector((config) => ({
