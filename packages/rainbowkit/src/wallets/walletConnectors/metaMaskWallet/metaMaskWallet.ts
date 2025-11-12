@@ -178,7 +178,7 @@ export const metaMaskWallet = ({
               },
               headless: true,
               checkInstallationImmediately: false,
-              enableAnalytics: false,
+              enableAnalytics: false, // Disable analytics by default
             })(config);
 
             /**
