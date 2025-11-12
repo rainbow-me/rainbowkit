@@ -3,7 +3,7 @@ name: CI
 on: [pull_request, push]
 
 env:
-  pnpm: 10.17.0
+  pnpm: 10.21.0
 
 jobs:
   tests:

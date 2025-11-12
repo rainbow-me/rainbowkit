@@ -37,8 +37,8 @@
     "three": "^0.172.0",
     "unified": "11.0.5",
     "unist-util-visit": "5.0.0",
-    "viem": "2.31.7",
-    "wagmi": "^2.17.4"
+    "viem": "2.38.0",
+    "wagmi": "^2.19.3"
   },
   "devDependencies": {
     "contentlayer": "npm:contentlayer2@0.5.8",
