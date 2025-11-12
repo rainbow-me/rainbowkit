@@ -76,7 +76,7 @@ export const geminiWallet = ({
       const connector: CreateConnectorFn = gemini({
         appMetadata: {
           name: appName,
-          icons: appIcon ? [appIcon] : undefined,
+          icon: appIcon,
         },
       });
 
