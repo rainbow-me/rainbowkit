@@ -18,6 +18,7 @@
     "test:setup": "rm -rf generated-test-app && INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli generated-test-app --skip-git",
     "test:dev": "pnpm test:setup && cd generated-test-app && pnpm dev",
     "test:build": "pnpm test:setup && cd generated-test-app && pnpm build",
+    "test:version-compat": "node test-version-compat.mjs",
     "test": "pnpm test:build"
   },
   "dependencies": {
