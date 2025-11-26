@@ -59,6 +59,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: packages
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
@@ -87,6 +88,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: packages
       - name: Scaffold new project (workspace RainbowKit + npm wagmi/viem)
         working-directory: packages/create-rainbowkit
         run: |
@@ -127,6 +129,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: packages
       - name: Build examples
         run: pnpm --filter "./examples/*" --parallel build
 
@@ -153,5 +156,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: packages
       - name: Build site
         run: pnpm --filter site --parallel build
