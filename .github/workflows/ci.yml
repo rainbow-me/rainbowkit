@@ -6,12 +6,11 @@ env:
   pnpm: 10.21.0
 
 jobs:
-  tests:
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
         node: [lts/*]
 
     steps:
@@ -20,18 +19,87 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache .pnpm-store
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install pnpm
-        run: npm i -g pnpm@${{env.pnpm}}
-      - name: Install dependencies
-        run: pnpm install
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.pnpm }}
+          run_install: true
       - name: Build packages
         run: pnpm build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            packages/rainbowkit/dist
+            packages/rainbow-button/dist
+            packages/rainbowkit-siwe-next-auth/dist
+            packages/create-rainbowkit/dist
+
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [18, 20, 22, lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.pnpm }}
+          run_install: true
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
         run: pnpm test && pnpm test:cli
+
+  cli:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [18, 20, 22, lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.pnpm }}
+          run_install: true
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+      - name: Scaffold new project (workspace RainbowKit + npm wagmi/viem)
+        working-directory: packages/create-rainbowkit
+        run: |
+          rm -rf generated-test-app
+          INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli generated-test-app --skip-git --use-pnpm
+      - name: Print dependency versions
+        working-directory: packages/create-rainbowkit/generated-test-app
+        run: |
+          echo "RainbowKit: $(pnpm list @rainbow-me/rainbowkit --depth=0 | grep rainbowkit | awk '{print $2}')"
+          echo "Wagmi: $(pnpm list wagmi --depth=0 | grep wagmi | awk '{print $2}')"
+          echo "Viem: $(pnpm list viem --depth=0 | grep viem | awk '{print $2}')"
+          echo "Next.js: $(pnpm list next --depth=0 | grep next | awk '{print $2}')"
+          echo "React: $(pnpm list react --depth=0 | grep -E '^.* react ' | awk '{print $2}')"
+      - name: Build generated project
+        working-directory: packages/create-rainbowkit/generated-test-app
+        run: pnpm build
