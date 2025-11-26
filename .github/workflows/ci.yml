@@ -25,7 +25,7 @@ jobs:
           version: ${{ env.pnpm }}
           run_install: true
       - name: Build packages
-        run: pnpm build
+        run: pnpm --filter "@rainbow-me/*" --filter example --parallel build
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -103,3 +103,55 @@ jobs:
       - name: Build generated project
         working-directory: packages/create-rainbowkit/generated-test-app
         run: pnpm build
+
+  examples:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.pnpm }}
+          run_install: true
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+      - name: Build examples
+        run: pnpm --filter "./examples/*" --parallel build
+
+  site:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.pnpm }}
+          run_install: true
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+      - name: Build site
+        run: pnpm --filter site --parallel build
