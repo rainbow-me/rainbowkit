@@ -1,0 +1,37 @@
+name: CLI
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+      - name: Scaffold new project with published CLI
+        run: yarn create @rainbow-me/rainbowkit generated-test-app --skip-git
+      - name: Print dependency versions
+        working-directory: generated-test-app
+        run: |
+          echo "RainbowKit: $(node -p \"require('./node_modules/@rainbow-me/rainbowkit/package.json').version\")"
+          echo "Wagmi: $(node -p \"require('./node_modules/wagmi/package.json').version\")"
+          echo "Viem: $(node -p \"require('./node_modules/viem/package.json').version\")"
+          echo "Next.js: $(node -p \"require('./node_modules/next/package.json').version\")"
+          echo "React: $(node -p \"require('./node_modules/react/package.json').version\")"
+      - name: Typecheck generated project
+        working-directory: generated-test-app
+        run: yarn tsc --noEmit
+      - name: Build generated project
+        working-directory: generated-test-app
+        run: yarn build

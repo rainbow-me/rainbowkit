@@ -6,20 +6,17 @@ on:
       - main
 
 env:
-  pnpm: 10.21.0
   HUSKY: 0 # Avoid pre-commit hook tests
-  RAINBOW_PROVIDER_API_KEY: RAINBOW_PROVIDER_API_KEY
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
         node: [lts/*]
 
     steps:
@@ -28,23 +25,16 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+      - run: corepack enable pnpm
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Cache .pnpm-store
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: Install pnpm
-        run: npm i -g pnpm@${{env.pnpm}}
+          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Create Release Pull Request
         uses: changesets/action@v1

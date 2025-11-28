@@ -2,36 +2,108 @@ name: CI
 
 on: [pull_request, push]
 
-env:
-  pnpm: 10.21.0
-
 jobs:
-  tests:
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
         node: [lts/*]
 
     steps:
       - uses: actions/checkout@v4
+      - run: corepack enable pnpm
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache .pnpm-store
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Install pnpm
-        run: npm i -g pnpm@${{env.pnpm}}
-      - name: Install dependencies
-        run: pnpm install
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - name: Build packages
-        run: pnpm build
+        run: pnpm --filter "@rainbow-me/*" --filter example --parallel build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            packages/rainbowkit/dist
+            packages/rainbow-button/dist
+            packages/rainbowkit-siwe-next-auth/dist
+            packages/create-rainbowkit/dist
+
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable pnpm
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: packages
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
         run: pnpm test && pnpm test:cli
+
+  examples:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable pnpm
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: packages
+      - name: Build examples
+        run: pnpm --filter "./examples/*" --parallel build
+
+  site:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [lts/*]
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable pnpm
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: packages
+      - name: Build site
+        run: pnpm --filter site --parallel build

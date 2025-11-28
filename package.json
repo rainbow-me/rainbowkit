@@ -51,7 +51,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/node": "^20.14.8",
+    "@types/node": "^22.19.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vanilla-extract/esbuild-plugin": "^2.3.17",
@@ -82,7 +82,7 @@
     "react-dom": "^19.1.0",
     "elliptic": "6.6.1"
   },
-  "packageManager": "pnpm@10.21.0",
+  "packageManager": "pnpm@10.24.0",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "@biomejs/biome",
@@ -106,6 +106,6 @@
     }
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
