@@ -25,6 +25,7 @@ export default {
     exclude: [
       '**/node_modules/**',
       '**/dist/**',
+      '**/.conductor/**',
       '**/examples/with-next-mint-nft/contract/**',
     ],
   },

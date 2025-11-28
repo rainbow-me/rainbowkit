@@ -108,6 +108,9 @@ dist
 # Content layer
 .contentlayer
 
+# Conductor scratch copies
+.conductor/
+
 # Others
 .DS_Store
 node-compile-cache/
