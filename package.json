@@ -82,7 +82,7 @@
     "react-dom": "^19.1.0",
     "elliptic": "6.6.1"
   },
-  "packageManager": "pnpm@10.21.0",
+  "packageManager": "pnpm@10.24.0",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "@biomejs/biome",
