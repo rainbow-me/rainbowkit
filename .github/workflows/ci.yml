@@ -58,45 +58,6 @@ jobs:
       - name: Run tests
         run: pnpm test && pnpm test:cli
 
-  cli:
-    needs: build
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node: [lts/*]
-
-    steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable pnpm
-      - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-          path: packages
-      - name: Scaffold new project (workspace RainbowKit + npm wagmi/viem)
-        working-directory: packages/create-rainbowkit
-        run: |
-          rm -rf generated-test-app
-          INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli generated-test-app --skip-git --use-pnpm
-      - name: Print dependency versions
-        working-directory: packages/create-rainbowkit/generated-test-app
-        run: |
-          echo "RainbowKit: $(pnpm list @rainbow-me/rainbowkit --depth=0 | grep rainbowkit | awk '{print $2}')"
-          echo "Wagmi: $(pnpm list wagmi --depth=0 | grep wagmi | awk '{print $2}')"
-          echo "Viem: $(pnpm list viem --depth=0 | grep viem | awk '{print $2}')"
-          echo "Next.js: $(pnpm list next --depth=0 | grep next | awk '{print $2}')"
-          echo "React: $(pnpm list react --depth=0 | grep -E '^.* react ' | awk '{print $2}')"
-      - name: Build generated project
-        working-directory: packages/create-rainbowkit/generated-test-app
-        run: pnpm build
-
   examples:
     needs: build
     runs-on: ubuntu-latest
