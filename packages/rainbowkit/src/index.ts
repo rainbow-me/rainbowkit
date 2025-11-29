@@ -28,7 +28,10 @@ export type {
 } from './components/RainbowKitProvider/AuthenticationContext';
 export type { Locale } from './locales/';
 export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
-export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
+export type {
+  AvatarComponent,
+  AvatarComponentProps,
+} from './components/RainbowKitProvider/AvatarContext';
 export type { RainbowKitChain as Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
