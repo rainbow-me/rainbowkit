@@ -1,5 +1,12 @@
 # with-next-rainbow-button
 
+## 0.0.36
+
+### Patch Changes
+
+- eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
+  - @rainbow-me/rainbow-button@0.2.27
+
 ## 0.0.35
 
 ### Patch Changes
