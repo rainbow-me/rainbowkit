@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [lts/*]
+        node: [22]
 
     steps:
       - name: Use Node.js ${{ matrix.node }}
@@ -23,11 +23,11 @@ jobs:
       - name: Print dependency versions
         working-directory: generated-test-app
         run: |
-          echo "RainbowKit: $(node -p \"require('./node_modules/@rainbow-me/rainbowkit/package.json').version\")"
-          echo "Wagmi: $(node -p \"require('./node_modules/wagmi/package.json').version\")"
-          echo "Viem: $(node -p \"require('./node_modules/viem/package.json').version\")"
-          echo "Next.js: $(node -p \"require('./node_modules/next/package.json').version\")"
-          echo "React: $(node -p \"require('./node_modules/react/package.json').version\")"
+          echo "RainbowKit: $(node -p 'require("./node_modules/@rainbow-me/rainbowkit/package.json").version')"
+          echo "Wagmi: $(node -p 'require("./node_modules/wagmi/package.json").version')"
+          echo "Viem: $(node -p 'require("./node_modules/viem/package.json").version')"
+          echo "Next.js: $(node -p 'require("./node_modules/next/package.json").version')"
+          echo "React: $(node -p 'require("./node_modules/react/package.json").version')"
       - name: Typecheck generated project
         working-directory: generated-test-app
         run: yarn tsc --noEmit
