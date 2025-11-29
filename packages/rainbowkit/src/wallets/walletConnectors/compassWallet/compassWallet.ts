@@ -4,11 +4,11 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const compassWallet = (): Wallet => {
+export const compassWallet = () => {
   const isCompassInjected = hasInjectedProvider({ namespace: 'compassEvm' });
 
   return {
-    id: 'compass',
+    id: 'compass' as const,
     name: 'Compass Wallet',
     installed: isCompassInjected,
     rdns: 'io.leapwallet.CompassWallet',
@@ -45,5 +45,5 @@ export const compassWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({ namespace: 'compassEvm' }),
-  };
+  } satisfies Wallet;
 };

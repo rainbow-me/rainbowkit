@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const ctrlWallet = (): Wallet => {
-  return {
-    id: 'ctrl',
+export const ctrlWallet = () =>
+  ({
+    id: 'ctrl' as const,
     name: 'CTRL Wallet',
     rdns: 'xyz.ctrl',
     installed: hasInjectedProvider({ namespace: 'ctrl.ethereum' }),
@@ -39,9 +39,8 @@ export const ctrlWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
-  };
-};
+    createConnector: getInjectedConnector({ namespace: 'ctrl.ethereum' }),
+  }) satisfies Wallet;
 
 /**
  * @deprecated Use `ctrlWallet` instead. This wallet connector will be removed in a future version.

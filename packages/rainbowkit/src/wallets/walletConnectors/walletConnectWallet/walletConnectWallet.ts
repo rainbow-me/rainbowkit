@@ -9,11 +9,11 @@ export interface WalletConnectWalletOptions {
 export const walletConnectWallet = ({
   projectId,
   options,
-}: WalletConnectWalletOptions): Wallet => {
+}: WalletConnectWalletOptions) => {
   const getUri = (uri: string) => uri;
 
   return {
-    id: 'walletConnect',
+    id: 'walletConnect' as const,
     name: 'WalletConnect',
     installed: undefined,
     iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
@@ -23,5 +23,5 @@ export const walletConnectWallet = ({
       projectId,
       walletConnectParameters: options,
     }),
-  };
+  } satisfies Wallet;
 };

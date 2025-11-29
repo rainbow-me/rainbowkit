@@ -11,7 +11,7 @@ export type BitgetWalletOptions = DefaultWalletOptions;
 export const bitgetWallet = ({
   projectId,
   walletConnectParameters,
-}: BitgetWalletOptions): Wallet => {
+}: BitgetWalletOptions) => {
   const isBitKeepInjected = hasInjectedProvider({
     namespace: 'bitkeep.ethereum',
     flag: 'isBitKeep',
@@ -19,7 +19,7 @@ export const bitgetWallet = ({
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
-    id: 'bitget',
+    id: 'bitget' as const,
     name: 'Bitget Wallet',
     rdns: 'com.bitget.web3',
     iconUrl: async () => (await import('./bitgetWallet.svg')).default,
@@ -106,5 +106,5 @@ export const bitgetWallet = ({
           namespace: 'bitkeep.ethereum',
           flag: 'isBitKeep',
         }),
-  };
+  } satisfies Wallet;
 };

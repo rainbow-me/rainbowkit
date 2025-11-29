@@ -17,7 +17,7 @@ function isNovaWallet(ethereum?: WindowProvider['ethereum']): boolean {
 export const novaWallet = ({
   projectId,
   walletConnectParameters,
-}: NovaWalletOptions): Wallet => {
+}: NovaWalletOptions) => {
   const isNovaWalletInjected =
     typeof window !== 'undefined' ? isNovaWallet(window.ethereum) : false;
 
@@ -32,7 +32,7 @@ export const novaWallet = ({
   };
 
   return {
-    id: 'nova',
+    id: 'nova' as const,
     name: 'Nova Wallet',
     rdns: 'io.novawallet',
     iconUrl: async () => (await import('./novaWallet.svg')).default,
@@ -80,5 +80,5 @@ export const novaWallet = ({
       : getInjectedConnector({
           namespace: 'ethereum',
         }),
-  };
+  } satisfies Wallet;
 };

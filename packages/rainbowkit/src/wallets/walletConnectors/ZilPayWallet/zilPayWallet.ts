@@ -10,12 +10,12 @@ export type ZilPayWalletOptions = DefaultWalletOptions;
 export const zilPayWallet = ({
   projectId,
   walletConnectParameters,
-}: ZilPayWalletOptions): Wallet => {
+}: ZilPayWalletOptions) => {
   const isZilPayInjected = hasInjectedProvider({ flag: 'isZilPay' });
   const shouldUseWalletConnect = !isZilPayInjected;
 
   return {
-    id: 'zilpay',
+    id: 'zilpay' as const,
     name: 'ZilPay',
     rdns: 'io.zilpay',
     iconUrl: async () => (await import('./zilPayWallet.svg')).default,
@@ -69,5 +69,5 @@ export const zilPayWallet = ({
       : getInjectedConnector({
           flag: 'isZilPay',
         }),
-  };
+  } satisfies Wallet;
 };

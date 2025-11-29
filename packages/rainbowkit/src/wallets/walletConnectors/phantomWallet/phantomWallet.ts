@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const phantomWallet = (): Wallet => {
+export const phantomWallet = () => {
   return {
-    id: 'phantom',
+    id: 'phantom' as const,
     name: 'Phantom',
     rdns: 'app.phantom',
     iconUrl: async () => (await import('./phantomWallet.svg')).default,
@@ -50,5 +50,5 @@ export const phantomWallet = (): Wallet => {
     createConnector: getInjectedConnector({
       namespace: 'phantom.ethereum',
     }),
-  };
+  } satisfies Wallet;
 };

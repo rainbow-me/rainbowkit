@@ -4,32 +4,30 @@ import {
   coinbaseWallet as coinbaseConnector,
 } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
-
-export interface CoinbaseWalletOptions {
-  appName: string;
-  appIcon?: string;
-}
+import type { Wallet, WalletDetailsParams, WalletFactory } from '../../Wallet';
 
 // supports preference, paymasterUrls, subAccounts
-type AcceptedCoinbaseWalletParameters = Omit<
-  CoinbaseWalletParameters<'4'>,
-  'headlessMode' | 'version' | 'appName' | 'appLogoUrl'
->;
-
-interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
-  (params: CoinbaseWalletOptions): Wallet;
+export interface CoinbaseWalletOptions
+  extends Omit<
+    CoinbaseWalletParameters<'4'>,
+    'headlessMode' | 'version' | 'appName' | 'appLogoUrl'
+  > {
+  appName: string;
+  appIcon?: string;
 }
 
 /**
  * @deprecated Use `baseAccount` instead. This wallet connector will be removed in a future version.
  */
-export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
+export const coinbaseWallet: WalletFactory<
+  CoinbaseWalletOptions,
+  'coinbase'
+> = ({ appName, appIcon, ...optionalConfig }) => {
   const getUri = (uri: string) => uri;
   const ios = isIOS();
 
   return {
-    id: 'coinbase',
+    id: 'coinbase' as const,
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     rdns: 'com.coinbase.wallet',
@@ -107,11 +105,6 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
           },
         }),
     createConnector: (walletDetails: WalletDetailsParams) => {
-      // Extract all AcceptedCoinbaseWalletParameters from coinbaseWallet
-      // This approach avoids type errors for properties not yet in upstream connector
-      const { ...optionalConfig }: AcceptedCoinbaseWalletParameters =
-        coinbaseWallet as any;
-
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
@@ -123,5 +116,5 @@ export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
         ...walletDetails,
       }));
     },
-  };
+  } satisfies Wallet;
 };

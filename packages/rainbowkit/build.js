@@ -133,16 +133,28 @@ const walletsBuildOptions = {
   outdir: 'dist/wallets/walletConnectors',
 };
 
+const componentsBuildOptions = {
+  ...baseBuildConfig((result) => {
+    if (result.errors.length) {
+      console.error('❌ components build failed', result.errors);
+    } else console.log('✅ components build succeeded');
+  }),
+  entryPoints: await getAllEntryPoints('src/components'),
+  outdir: 'dist/components',
+};
+
 const build = async () => {
   // Build and watch for new changes if --watch flag is passed
   if (isWatching) {
-    const [mainContext, walletsContext] = await Promise.all([
+    const [mainContext, walletsContext, componentsContext] = await Promise.all([
       esbuild.context(mainBuildOptions),
       esbuild.context(walletsBuildOptions),
+      esbuild.context(componentsBuildOptions),
     ]);
 
     await mainContext.watch();
     await walletsContext.watch();
+    await componentsContext.watch();
     return;
   }
 
@@ -150,6 +162,7 @@ const build = async () => {
   await Promise.all([
     esbuild.build(mainBuildOptions),
     esbuild.build(walletsBuildOptions),
+    esbuild.build(componentsBuildOptions),
   ]);
 };
 

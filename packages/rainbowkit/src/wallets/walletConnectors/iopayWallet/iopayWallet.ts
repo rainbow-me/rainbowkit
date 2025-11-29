@@ -17,50 +17,51 @@ function isIoPayMobile(): boolean {
 export const iopayWallet = ({
   projectId,
   walletConnectParameters,
-}: IoPayWalletOptions): Wallet => ({
-  id: 'iopay',
-  name: 'ioPay Wallet',
-  iconUrl: async () => (await import('./iopayWallet.svg')).default,
-  iconBackground: '#fff',
-  downloadUrls: {
-    android:
-      'https://play.google.com/store/apps/details?id=io.iotex.iopay.gp&pli=1',
-    ios: 'https://apps.apple.com/us/app/iopay-multichain-crypto-wallet/id1478086371',
-    qrCode: 'https://iopay.me/',
-    browserExtension: 'https://iopay.me/',
-  },
-  mobile: {
-    getUri: (uri: string) => {
-      return isAndroid() ? uri : `iopay://wc?uri=${encodeURIComponent(uri)}`;
+}: IoPayWalletOptions) =>
+  ({
+    id: 'iopay' as const,
+    name: 'ioPay Wallet',
+    iconUrl: async () => (await import('./iopayWallet.svg')).default,
+    iconBackground: '#fff',
+    downloadUrls: {
+      android:
+        'https://play.google.com/store/apps/details?id=io.iotex.iopay.gp&pli=1',
+      ios: 'https://apps.apple.com/us/app/iopay-multichain-crypto-wallet/id1478086371',
+      qrCode: 'https://iopay.me/',
+      browserExtension: 'https://iopay.me/',
     },
-  },
-  qrCode: {
-    getUri: (uri: string) => uri,
-    instructions: {
-      learnMoreUrl: 'https://iopay.me/',
-      steps: [
-        {
-          description: 'wallet_connectors.iopay.qr_code.step1.description',
-          step: 'install',
-          title: 'wallet_connectors.iopay.qr_code.step1.title',
-        },
-        {
-          description: 'wallet_connectors.iopay.qr_code.step2.description',
-          step: 'create',
-          title: 'wallet_connectors.iopay.qr_code.step2.title',
-        },
-        {
-          description: 'wallet_connectors.iopay.qr_code.step3.description',
-          step: 'scan',
-          title: 'wallet_connectors.iopay.qr_code.step3.title',
-        },
-      ],
+    mobile: {
+      getUri: (uri: string) => {
+        return isAndroid() ? uri : `iopay://wc?uri=${encodeURIComponent(uri)}`;
+      },
     },
-  },
-  createConnector: isIoPayMobile()
-    ? getInjectedConnector({})
-    : getWalletConnectConnector({
-        projectId,
-        walletConnectParameters,
-      }),
-});
+    qrCode: {
+      getUri: (uri: string) => uri,
+      instructions: {
+        learnMoreUrl: 'https://iopay.me/',
+        steps: [
+          {
+            description: 'wallet_connectors.iopay.qr_code.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.iopay.qr_code.step1.title',
+          },
+          {
+            description: 'wallet_connectors.iopay.qr_code.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.iopay.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.iopay.qr_code.step3.description',
+            step: 'scan',
+            title: 'wallet_connectors.iopay.qr_code.step3.title',
+          },
+        ],
+      },
+    },
+    createConnector: isIoPayMobile()
+      ? getInjectedConnector({})
+      : getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        }),
+  }) satisfies Wallet;

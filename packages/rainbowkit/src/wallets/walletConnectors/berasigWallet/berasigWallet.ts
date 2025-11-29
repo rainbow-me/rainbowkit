@@ -10,14 +10,14 @@ export type BerasigWalletOptions = DefaultWalletOptions;
 export const berasigWallet = ({
   projectId,
   walletConnectParameters,
-}: BerasigWalletOptions): Wallet => {
+}: BerasigWalletOptions) => {
   const isBerasigWalletInjected = hasInjectedProvider({
     namespace: 'berasig.ethereum',
   });
 
   const shouldUseWalletConnect = !isBerasigWalletInjected;
   return {
-    id: 'berasig',
+    id: 'berasig' as const,
     name: 'BeraSig',
     rdns: 'app.berasig',
     iconUrl: async () => (await import('./berasigWallet.svg')).default,
@@ -64,5 +64,5 @@ export const berasigWallet = ({
       : getInjectedConnector({
           namespace: 'berasig.ethereum',
         }),
-  };
+  } satisfies Wallet;
 };

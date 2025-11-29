@@ -10,7 +10,7 @@ export type KaiaWalletOptions = DefaultWalletOptions;
 export const kaiaWallet = ({
   projectId,
   walletConnectParameters,
-}: KaiaWalletOptions): Wallet => {
+}: KaiaWalletOptions) => {
   const isKaiaWalletInjected = hasInjectedProvider({
     namespace: 'klaytn',
   });
@@ -22,7 +22,7 @@ export const kaiaWallet = ({
   };
 
   return {
-    id: 'kaia',
+    id: 'kaia' as const,
     name: 'Kaia Wallet',
     iconUrl: async () => (await import('./kaiaWallet.svg')).default,
     installed: isKaiaWalletInjected || undefined,
@@ -92,5 +92,5 @@ export const kaiaWallet = ({
       : getInjectedConnector({
           namespace: 'klaytn',
         }),
-  };
+  } satisfies Wallet;
 };

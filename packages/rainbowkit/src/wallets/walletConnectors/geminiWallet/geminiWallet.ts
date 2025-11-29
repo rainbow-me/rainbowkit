@@ -1,18 +1,21 @@
 import { type CreateConnectorFn, createConnector } from 'wagmi';
-import { gemini } from 'wagmi/connectors';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
+import { gemini, type GeminiParameters } from 'wagmi/connectors';
+import type { Wallet, WalletDetailsParams, WalletFactory } from '../../Wallet';
 
-export interface GeminiWalletOptions {
+type AcceptedGeminiParameters = Omit<GeminiParameters, 'appMetadata'>;
+
+export interface GeminiWalletOptions extends AcceptedGeminiParameters {
   appName: string;
   appIcon?: string;
 }
 
-export const geminiWallet = ({
+export const geminiWallet: WalletFactory<GeminiWalletOptions, 'gemini'> = ({
   appName,
   appIcon,
-}: GeminiWalletOptions): Wallet => {
+  ...optionalConfig
+}) => {
   return {
-    id: 'gemini',
+    id: 'gemini' as const,
     name: 'Gemini Wallet',
     shortName: 'Gemini',
     rdns: 'com.gemini.wallet',
@@ -78,6 +81,7 @@ export const geminiWallet = ({
           name: appName,
           icon: appIcon,
         },
+        ...optionalConfig,
       });
 
       return createConnector((config) => ({
@@ -85,5 +89,5 @@ export const geminiWallet = ({
         ...walletDetails,
       }));
     },
-  };
+  } satisfies Wallet;
 };

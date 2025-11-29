@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const desigWallet = (): Wallet => {
+export const desigWallet = () => {
   return {
-    id: 'desig',
+    id: 'desig' as const,
     name: 'Desig Wallet',
     iconUrl: async () => (await import('./desigWallet.svg')).default,
     iconBackground: '#ffffff',
@@ -44,5 +44,5 @@ export const desigWallet = (): Wallet => {
     createConnector: getInjectedConnector({
       namespace: 'desig.ethereum',
     }),
-  };
+  } satisfies Wallet;
 };

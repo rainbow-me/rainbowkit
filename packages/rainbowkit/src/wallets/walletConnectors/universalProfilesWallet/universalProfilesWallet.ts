@@ -11,13 +11,13 @@ export type UniversalProfilesWalletOptions = DefaultWalletOptions;
 export const universalProfilesWallet = ({
   projectId,
   walletConnectParameters,
-}: UniversalProfilesWalletOptions): Wallet => {
+}: UniversalProfilesWalletOptions) => {
   const isInjected = hasInjectedProvider({ namespace: 'lukso' });
   // const isInjected = typeof window !== "undefined" && !!(window as any).lukso;
   const shouldUseWalletConnect = !isInjected;
 
   return {
-    id: 'universal-profiles',
+    id: 'universal-profiles' as const,
     name: 'Universal Profiles',
     rdns: 'io.universaleverything.universalprofiles',
     iconUrl: async () =>
@@ -96,5 +96,5 @@ export const universalProfilesWallet = ({
       : getInjectedConnector({
           namespace: 'lukso',
         }),
-  };
+  } satisfies Wallet;
 };

@@ -11,7 +11,7 @@ export type BinanceWalletOptions = DefaultWalletOptions;
 export const binanceWallet = ({
   projectId,
   walletConnectParameters,
-}: BinanceWalletOptions): Wallet => {
+}: BinanceWalletOptions) => {
   const isBinanceInjected = hasInjectedProvider({
     namespace: 'binancew3w.isExtension',
     flag: 'isBinance',
@@ -19,7 +19,7 @@ export const binanceWallet = ({
   const shouldUseWalletConnect = !isBinanceInjected;
 
   return {
-    id: 'binance',
+    id: 'binance' as const,
     name: 'Binance Wallet',
     rdns: 'com.binance.wallet',
     iconUrl: async () => (await import('./binanceWallet.svg')).default,
@@ -80,5 +80,5 @@ export const binanceWallet = ({
       : getInjectedConnector({
           flag: 'isBinance',
         }),
-  };
+  } satisfies Wallet;
 };

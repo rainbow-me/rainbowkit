@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const wigwamWallet = (): Wallet => {
+export const wigwamWallet = () => {
   return {
-    id: 'wigwam',
+    id: 'wigwam' as const,
     name: 'Wigwam',
     rdns: 'com.wigwam.wallet',
     iconBackground: '#80EF6E',
@@ -46,5 +46,5 @@ export const wigwamWallet = (): Wallet => {
       namespace: 'wigwamEthereum',
       flag: 'isWigwam',
     }),
-  };
+  } satisfies Wallet;
 };
