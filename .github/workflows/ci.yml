@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [lts/*]
+        node: [22]
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [lts/*]
+        node: [22]
 
     steps:
       - uses: actions/checkout@v4
@@ -64,7 +64,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [lts/*]
+        node: [22]
 
     steps:
       - uses: actions/checkout@v4
@@ -89,7 +89,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [lts/*]
+        node: [22]
 
     steps:
       - uses: actions/checkout@v4
