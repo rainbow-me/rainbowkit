@@ -2,7 +2,7 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Disabled third-party connector telemetry by default for user privacy.
+Disabled third-party connector telemetry by default for user privacy. h/t @TimDaub
 
 **To opt-in to WalletConnect analytics:**
 
