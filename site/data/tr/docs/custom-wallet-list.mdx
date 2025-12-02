@@ -104,16 +104,42 @@ Aşağıdaki cüzdanlar alfabetik sırayla `wallet` objesi aracılığıyla sağ
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Hazır
-
-```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Base Hesap (önceki adıyla Coinbase Cüzdan)
+
+Bu cüzdan konektörü Base Hesap'ı destekler, Coinbase Akıllı Cüzdan'ın evrimidir. Alt hesaplar ve harcama izinleri gibi sorunsuz kimlik doğrulama ve geliştirilmiş özellikler sağlar.
+
+Yapılandırma seçenekleri [Base Hesap SDK referansı](https://docs.base.org/base-account/reference/core/createBaseAccount) ile uyumludur.
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Bifrost Cüzdan
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Binance Web3 Cüzdan
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Cüzdan
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Bu cüzdan bağlayıcı, hem Coinbase Cüzdan uygulamasını hem de eklentisini, ayrıca web üzerindeki Coinbase Akıllı Cüzdan'ı destekler.
-
-Kullanıcılarınız için Akıllı Cüzdan'ın tercih edildiği veya devre dışı bırakıldığı tercihi kontrol etmek için bir `preference` argümanı mevcuttur. Tercih bazlı davranış [burada](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional) belgelenmiştir.
-
-[Ödemelemeler](https://docs.base.org/identity/smart-wallet/guides/paymasters) ve [Alt Hesaplar](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) kontrolü için ek yapılandırma seçenekleri Coinbase Cüzdan SDK belgelerinde [burada](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters) bulunabilir.
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 Cüzdan
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### CTRL Cüzdan
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Cüzdan
@@ -324,16 +325,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW Cüzdan
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW Cüzdanı
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Nova Cüzdan
@@ -396,7 +397,13 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Cüzdan
+#### Hazır
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin Cüzdanı
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -438,7 +445,7 @@ import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Cüzdan
+#### Uniswap Cüzdanı
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -450,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### CTRL Cüzdan
+#### Wigwam
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -472,12 +479,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### Örnekler
@@ -506,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Rainbow, MetaMask ve Coinbase'i jenerik yedek cüzdanlarla birlikte gösterin.
+Rainbow, MetaMask ve Base Hesabını genel yedek cüzdanlarla birlikte gösterin.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -524,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -539,14 +540,14 @@ const connectors = connectorsForWallets(
 
 Kullanıcılara önerdiğiniz cüzdanları ve diğer olası cüzdanları iletmek istiyorsanız `groupName` anahtarını farklı cüzdan gruplarını adlandırmak için kullanabilirsiniz.
 
-Rainbow ve MetaMask'i önerin, ancak aynı zamanda Coinbase ve jenerik yedek cüzdanlar da sunun.
+Rainbow ve MetaMask'i önerin, ancak Base Hesabını da genel yedek cüzdanlarla birlikte sunun.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -558,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
