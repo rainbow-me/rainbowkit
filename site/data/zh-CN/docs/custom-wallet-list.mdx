@@ -104,16 +104,42 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 准备好
-
-```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 基本账户（原 Coinbase Wallet）
+
+此钱包连接器支持基本账户，Coinbase Smart Wallet 的演变。它提供无缝的身份验证和增强功能，如子账户和支出权限。
+
+配置选项与[Base Account SDK 参考](https://docs.base.org/base-account/reference/core/createBaseAccount)保持一致。
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Bifrost 钱包
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Binance Web3 Wallet
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-此钱包连接器支持 Coinbase Wallet 应用和扩展程序，也支持在 Web 上的 Coinbase Smart Wallet。
-
-提供了 `preference` 参数，可以控制用户是否偏好或禁用 Smart Wallet。基于偏好的行为记录在[这里](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
-
-[支付主](https://docs.base.org/identity/smart-wallet/guides/paymasters)和[子账户](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)的控制附加配置选项可在Coinbase Wallet SDK文档中找到[这里](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)。
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 Wallet
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### CTRL 钱包
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Wallet
@@ -324,16 +325,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW Wallet
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW钱包
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Nova Wallet
@@ -396,7 +397,13 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### 准备好
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin钱包
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -432,13 +439,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Trust钱包
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Uniswap钱包
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -450,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### CTRL 钱包
+#### Wigwam
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -472,12 +479,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### 示例
@@ -506,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-显示Rainbow、MetaMask和Coinbase以及一般的备选钱包。
+显示Rainbow, MetaMask和Base账户以及一般的备选钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -524,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -539,14 +540,14 @@ const connectors = connectorsForWallets(
 
 您可以使用 `groupName` 键来命名不同的钱包组。如果您希望向用户沟通推荐哪些钱包以及其他可能的钱包，这非常有用。
 
-推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
+推荐Rainbow和MetaMask，但也提供Base账户以及一般的备选钱包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -558,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
