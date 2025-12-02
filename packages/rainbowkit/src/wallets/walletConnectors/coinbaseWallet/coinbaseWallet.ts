@@ -114,11 +114,17 @@ export const coinbaseWallet: CoinbaseWallet = ({
           },
         }),
     createConnector: (walletDetails: WalletDetailsParams) => {
+      // Build preference config based on user input, always disabling telemetry
+      const preferenceConfig: CoinbaseWalletParameters<'4'>['preference'] =
+        typeof preference === 'string'
+          ? { options: preference, telemetry: false }
+          : { options: 'all', ...preference, telemetry: false };
+
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
         ...optionalConfig,
-        ...(preference && { preference }),
+        preference: preferenceConfig,
       });
 
       return createConnector((config) => ({
