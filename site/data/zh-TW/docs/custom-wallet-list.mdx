@@ -104,16 +104,42 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### 準備好
-
-```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Base 帳戶（原 Coinbase Wallet）
+
+此錢包連接器支持 Base 帳戶，即 Coinbase 智能錢包的演變。它提供流暢的身份驗證和增強功能，如子賬戶和支出許可。
+
+配置選項與 [Base Account SDK 參考](https://docs.base.org/base-account/reference/core/createBaseAccount) 對齊。
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Bifrost 錢包
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Binance Web3 錢包
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost 錢包
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-此錢包連接器支援 Coinbase Wallet 應用程式和擴充功能，以及 Web 上的 Coinbase Smart Wallet。
-
-可用 `preference` 參數控制是否偏好或禁用用戶的 Smart Wallet。偏好行為在此處記錄 [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)。
-
-有關控制 [付款者](https://docs.base.org/identity/smart-wallet/guides/paymasters) 和 [子帳戶](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) 的其他配置選項，請參見 Coinbase Wallet SDK 文件的此處 [here](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters)。
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 錢包
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### CTRL 錢包
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn 錢包
@@ -324,16 +325,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW 錢包
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW 錢包
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Nova 錢包
@@ -396,6 +397,12 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### 準備好
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Ronin 錢包
 
 ```tsx
@@ -450,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### CTRL 錢包
+#### Wigwam
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -472,12 +479,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### 範例
@@ -506,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-顯示 Rainbow、MetaMask 和 Coinbase 同通用回退錢包。
+顯示 Rainbow、MetaMask 和 Base 帳戶，以及通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -524,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -539,14 +540,14 @@ const connectors = connectorsForWallets(
 
 您可以使用 `groupName` 鍵為不同的錢包群組命名。如果您希望向用戶推薦某些錢包，以及顯示其他可能的錢包，這會很有用。
 
-推薦 Rainbow 和 MetaMask，但同時提供 Coinbase 和通用回退錢包。
+推薦 Rainbow 和 MetaMask，但同時提供 Base 帳戶和通用回退錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -558,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
