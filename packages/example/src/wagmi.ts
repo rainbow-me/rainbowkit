@@ -122,6 +122,9 @@ baseAccount.preference = {
   attribution: { auto: true },
 };
 
+// Configure MetaMask analytics
+metaMaskWallet.enableAnalytics = false;
+
 const avalanche = {
   id: 43_114,
   name: 'Avalanche',
@@ -145,6 +148,9 @@ const avalanche = {
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
+  walletConnectParameters: {
+    telemetryEnabled: false,
+  },
   chains: [
     mainnet,
     base,
