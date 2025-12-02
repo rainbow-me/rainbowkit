@@ -1,16 +1,28 @@
 import { createConnector } from 'wagmi';
-import { metaMask } from 'wagmi/connectors';
+import { type MetaMaskParameters, metaMask } from 'wagmi/connectors';
 import type {
   DefaultWalletOptions,
   Wallet,
   WalletDetailsParams,
 } from '../../Wallet';
-import { hasInjectedProvider } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import { isMobile } from '../../../utils/isMobile';
 import type { WindowProvider } from '../../../types/utils';
 
 export type MetaMaskWalletOptions = DefaultWalletOptions;
+
+type AcceptedMetaMaskParameters = Omit<
+  MetaMaskParameters,
+  | 'checkInstallationImmediately'
+  | 'connectWith'
+  | 'dappMetadata'
+  | 'headless'
+  | 'preferDesktop'
+>;
+
+interface MetaMaskWallet extends AcceptedMetaMaskParameters {
+  (params: MetaMaskWalletOptions): Wallet;
+}
 
 function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   // Logic borrowed from wagmi's legacy MetaMaskConnector
@@ -68,10 +80,14 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   return true;
 }
 
-export const metaMaskWallet = ({
+export const metaMaskWallet: MetaMaskWallet = ({
   projectId,
   walletConnectParameters,
 }: MetaMaskWalletOptions): Wallet => {
+  // Extract all AcceptedMetaMaskParameters from metaMaskWallet
+  // This approach avoids type errors for properties not yet in upstream connector
+  const { ...optionalConfig } = metaMaskWallet;
+
   // Custom logic to explicitly detect MetaMask
   // Whereas hasInjectedProvider only checks for impersonated `isMetaMask`
   // We need this because MetaMask SDK hangs on impersonated wallets
@@ -178,7 +194,8 @@ export const metaMaskWallet = ({
               },
               headless: true,
               checkInstallationImmediately: false,
-              enableAnalytics: false,
+              enableAnalytics: false, // Disable analytics by default
+              ...optionalConfig,
             })(config);
 
             /**

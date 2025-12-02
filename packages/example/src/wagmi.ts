@@ -111,6 +111,20 @@ import {
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
+// Configure Base Account
+baseAccount.subAccounts = {
+  creation: 'on-connect',
+  defaultAccount: 'sub',
+  funding: 'spend-permissions',
+};
+
+baseAccount.preference = {
+  attribution: { auto: true },
+};
+
+// Configure MetaMask analytics
+metaMaskWallet.enableAnalytics = false;
+
 const avalanche = {
   id: 43_114,
   name: 'Avalanche',
@@ -134,6 +148,9 @@ const avalanche = {
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
+  walletConnectParameters: {
+    telemetryEnabled: false,
+  },
   chains: [
     mainnet,
     base,

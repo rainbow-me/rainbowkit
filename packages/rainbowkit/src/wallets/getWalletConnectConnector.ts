@@ -41,6 +41,7 @@ const getOrCreateWalletConnectInstance = ({
   typeof walletConnect
 > => {
   let config: WalletConnectParameters = {
+    telemetryEnabled: false, // Disable analytics by default
     ...(walletConnectParameters ? walletConnectParameters : {}),
     projectId,
     showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet

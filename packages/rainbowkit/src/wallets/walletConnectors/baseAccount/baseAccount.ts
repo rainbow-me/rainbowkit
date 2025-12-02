@@ -20,7 +20,14 @@ interface BaseAccount extends AcceptedBaseAccountParameters {
   (params: BaseAccountOptions): Wallet;
 }
 
-export const baseAccount: BaseAccount = ({ appName, appIcon }) => {
+export const baseAccount: BaseAccount = ({
+  appName,
+  appIcon,
+}: BaseAccountOptions): Wallet => {
+  // Extract all AcceptedBaseAccountParameters from baseAccount
+  // This approach avoids type errors for properties not yet in upstream connector
+  const { preference, ...optionalConfig } = baseAccount;
+
   return {
     id: 'baseAccount',
     name: 'Base Account',
@@ -32,15 +39,14 @@ export const baseAccount: BaseAccount = ({ appName, appIcon }) => {
     // a popup will appear prompting the user to connect or create a wallet via passkey.
     installed: true,
     createConnector: (walletDetails: WalletDetailsParams) => {
-      // Extract all AcceptedBaseAccountParameters from baseAccount
-      // This approach avoids type errors for properties not yet in upstream connector
-      const { ...optionalConfig }: AcceptedBaseAccountParameters =
-        baseAccount as any;
-
       const connector: CreateConnectorFn = baseAccountConnector({
         appName,
         appLogoUrl: appIcon,
         ...optionalConfig,
+        preference: {
+          telemetry: false,
+          ...(preference || {}),
+        },
       });
 
       return createConnector((config) => ({
