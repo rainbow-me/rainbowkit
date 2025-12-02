@@ -104,16 +104,42 @@ Dompet berikut disediakan menerusi objek `wallet` (mengikut urutan abjad).
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Sedia
-
-```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Akaun Asas (dahulu dikenali sebagai Dompet Coinbase)
+
+Penyambungan dompet ini menyokong Akaun Asas, evolusi Dompet Pintar Coinbase. Ia menyediakan pengesahan yang lancar dan ciri-ciri dipertingkatkan seperti sub-akaun dan kebenaran perbelanjaan.
+
+Pilihan konfigurasi selaras dengan [rujukan SDK Akaun Asas](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Dompet Bifrost
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Dompet Binance Web3
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Dompet Bifrost
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Penyambung dompet ini menyokong kedua-dua aplikasi dan sambungan Coinbase Wallet, serta Coinbase Smart Wallet di Web.
-
-Argumen `preference` tersedia untuk mengawal sama ada Smart Wallet lebih diutamakan atau dilumpuhkan untuk pengguna anda. Tingkah laku berasaskan keutamaan didokumentasikan [di sini](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
-
-Pilihan konfigurasi tambahan untuk kawalan [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) dan [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) boleh ditemukan dalam dokumen SDK Coinbase Wallet [di sini](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Dompet Coin98
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Dompet CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dompet Dawn
@@ -324,16 +325,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dompet MEW
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dompet Nova
@@ -396,7 +397,13 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dompet Ronin
+#### Sedia
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -432,7 +439,7 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Wallet Amanah
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -450,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dompet CTRL
+#### Wigwam
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -472,12 +479,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### Contoh
@@ -506,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Paparkan Rainbow, MetaMask dan Coinbase bersama dompet pemulihan generik.
+Tunjukkan Rainbow, MetaMask, dan Akaun Asas bersama dengan dompet fallback generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -524,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -539,14 +540,14 @@ const connectors = connectorsForWallets(
 
 Anda boleh menggunakan kunci `groupName` untuk menamakan kumpulan dompet yang berbeza. Ini berguna jika anda mahu berkomunikasi kepada pengguna anda dompet mana yang anda cadangkan, serta kemungkinan dompet lain.
 
-Cadangkan Rainbow dan MetaMask, tetapi juga tawarkan Coinbase bersama dompet pemulihan generik.
+Cadangkan Rainbow dan MetaMask, tetapi juga tawarkan Akaun Asas bersama dompet fallback generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -558,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
