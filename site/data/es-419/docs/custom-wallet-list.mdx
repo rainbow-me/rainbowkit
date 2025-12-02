@@ -104,16 +104,42 @@ Las siguientes billeteras se proporcionan a través del objeto `wallet` (en orde
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Listo
-
-```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Cuenta Base (anteriormente Coinbase Wallet)
+
+Este conector de billetera soporta Cuenta Base, la evolución de Coinbase Smart Wallet. Proporciona autenticación sin problemas y funciones mejoradas como subcuentas y permisos de gasto.
+
+Las opciones de configuración se alinean con la [referencia del SDK de Cuenta Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Billetera Bifrost
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Binance Billetera Web3
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Billetera
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Este conector de billetera soporta tanto la aplicación de Coinbase Wallet como la extensión, así como Coinbase Smart Wallet en la web.
-
-Un argumento `preference` está disponible para controlar si Smart Wallet es preferido o deshabilitado para tus usuarios. El comportamiento basado en preferencias está documentado [aquí](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
-
-Las opciones de configuración adicionales para el control de [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) y [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) se pueden encontrar en los documentos del SDK de Coinbase Wallet [aquí](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 Billetera
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Billetera CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Billetera
@@ -324,16 +325,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW Billetera
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Nova Billetera
@@ -396,7 +397,13 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Billetera
+#### Listo
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -420,7 +427,7 @@ import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Tokenario
+#### Tokenary
 
 ```tsx
 import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -432,13 +439,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Billetera
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Billetera
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -450,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera CTRL
+#### Wigwam
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -472,12 +479,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### Ejemplos
@@ -506,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostrar Rainbow, MetaMask y Coinbase junto con billeteras genéricas de respaldo.
+Mostrar Rainbow, MetaMask y Base Account junto con billeteras de reserva genéricas.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -524,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -539,14 +540,14 @@ const connectors = connectorsForWallets(
 
 Puedes usar la clave `groupName` para nombrar diferentes grupos de billeteras. Esto es útil si deseas comunicar a tus usuarios qué billeteras recomiendas, así como otras billeteras posibles.
 
-Recomendar Rainbow y MetaMask, pero también ofrecer Coinbase junto con billeteras genéricas de respaldo.
+Recomendar Rainbow y MetaMask, pero también ofrecer Base Account junto con billeteras genéricas de reserva.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -558,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
