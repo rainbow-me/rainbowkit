@@ -22,3 +22,8 @@ baseAccount.preference = {
   telemetry: true
 };
 ```
+
+**To opt-in to MetaMask analytics:**
+```ts
+metaMaskWallet.enableAnalytics = true;
+```
