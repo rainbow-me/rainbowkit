@@ -1,21 +1,21 @@
 ---
-title: Tematização
+title: Temas
 description: Usando e personalizando os temas
 ---
 
-# Tematização
+# Temas
 
 ## Usando e personalizando os temas
 
-Você pode ajustar a UI do RainbowKit para combinar com a sua marca. Você pode escolher entre algumas cores de destaque pré-definidas e configurações de raio de borda.
+Você pode ajustar a interface do RainbowKit para se adequar à sua identidade de marca. Você pode escolher entre algumas cores e configurações de raio de borda predefinidas.
 
-Existem 3 funções de tema integradas:
+Existem 3 funções de tema embutidas:
 
-- `lightTheme`   (padrão)
+- `lightTheme` &nbsp; (padrão)
 - `darkTheme`
 - `midnightTheme`
 
-Uma função de tema retorna um objeto de tema. Você pode passar o objeto para a prop `theme` do `RainbowKitProvider`.
+Uma função de tema retorna um objeto tema. Você pode passar o objeto para a prop `theme` do `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-Se quiser, você pode inserir `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` e `overlayBlur` para personalizá-los.
+Se desejar, você pode passar `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` e `overlayBlur` para personalizá-los.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -50,52 +50,52 @@ export const App = () => (
 
 ### Personalizando os temas embutidos
 
-As funções de tema embutidos também aceitam um objeto de opções, permitindo que você escolha entre vários estilos visuais diferentes.
+As funções de tema embutidas também aceitam um objeto de opções, permitindo que você selecione entre diferentes estilos visuais.
 
 <PropsTable
-  data={[
-    {
-      name: 'accentColor',
-      required: false,
-      default: '"#0E76FD"',
-      type: 'string',
-      description:
-        'The background/text color of various interactive elements.',
-    },
-    {
-      name: 'accentColorForeground',
-      required: false,
-      default: '"white"',
-      type: 'string',
-      description:
-        'The color used for foreground elements rendered on top of the accent color.',
-    },
-    {
-      name: 'borderRadius',
-      required: false,
-      default: 'large',
-      type: '"none" | "small" | "medium" | "large"',
-      typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
-    },
-    {
-      name: 'fontStack',
-      required: false,
-      default: 'rounded',
-      type: '"rounded" | "system"',
-      typeSimple: 'enum',
-      description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
-    },
-    {
-      name: 'overlayBlur',
-      required: false,
-      default: 'none',
-      type: '"large" | "small" | "none"',
-      typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
-    },
-  ]}
+ data={[
+ {
+ name: 'accentColor',
+ required: false,
+ default: '"#0E76FD"',
+ type: 'string',
+ description:
+ 'A cor de fundo/texto de vários elementos interativos.',
+ },
+ {
+ name: 'accentColorForeground',
+ required: false,
+ default: '"white"',
+ type: 'string',
+ description:
+ 'A cor usada para elementos de primeiro plano renderizados sobre a cor de destaque.',
+ },
+ {
+ name: 'borderRadius',
+ required: false,
+ default: 'large',
+ type: '"none" | "small" | "medium" | "large"',
+ typeSimple: 'enum',
+ description: 'O tamanho de toda a escala do raio da borda.',
+ },
+ {
+ name: 'fontStack',
+ required: false,
+ default: 'rounded',
+ type: '"rounded" | "system"',
+ typeSimple: 'enum',
+ description:
+ "A pilha de fontes utilizada em toda a interface. Note que 'rounded' tenta usar SF Pro Rounded, antes de voltar para fontes do sistema quando não está disponível.",
+ },
+ {
+ name: 'overlayBlur',
+ required: false,
+ default: 'none',
+ type: '"large" | "small" | "none"',
+ typeSimple: 'enum',
+ description: 'O desfoque do fundo do modal.',
+ },
+ ]}
 />
 
 Por exemplo, para personalizar o tema escuro com uma cor de destaque roxa e uma escala de raio de borda `medium`:
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Cada tema também fornece várias predefinições de cores de destaque (`blue`, `green`, `orange`, `pink`, `purple`, `red`) que podem ser espalhadas no objeto de opções. Por exemplo, para usar a pré-configuração de cor de destaque `rosa`:
+Cada tema também oferece vários presets de cor de destaque (`blue`, `green`, `orange`, `pink`, `purple`, `red`) que podem ser incluídos no objeto de opções. Por exemplo, para usar o preset de cor de destaque `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -142,7 +142,7 @@ const App = () => {
 
 #### Função de tema
 
-Aqui estão algumas maneiras diferentes de usar a propriedade `tema`.
+Aqui estão algumas maneiras diferentes de usar a prop `theme`.
 
 Use o tema `darkTheme`.
 
@@ -173,7 +173,7 @@ export const App = () => (
 
 #### Cor de destaque
 
-Aqui estão algumas maneiras diferentes de usar a configuração `corDeDestaque`.
+Aqui estão algumas maneiras diferentes de usar a configuração `accentColor`.
 
 Defina a cor de destaque para um valor roxo personalizado.
 
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-Defina a cor de destaque para a pré-configuração `verde` incorporada.
+Defina a cor de destaque para o preset embutido `green`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -214,11 +214,11 @@ const App = () => {
 };
 ```
 
-#### Raio da borda
+#### Raio de borda
 
-Aqui estão algumas maneiras diferentes de usar a configuração `raioDaBorda`.
+Aqui estão algumas maneiras diferentes de usar a configuração `borderRadius`.
 
-Defina o raio da borda para `médio`.
+Defina o raio de borda para `medium`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-Defina o raio da borda para `none`.
+Defina o raio de borda para `none`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,9 +260,9 @@ const App = () => {
 
 #### Pilha de fontes
 
-Por padrão, a `fontStack` está configurada como `rounded`. Mas aqui está como você pode usar a configuração `fontStack`.
+Por padrão, a `fontStack` está definida para `rounded`. Mas aqui está como você pode usar a configuração `fontStack`.
 
-Configure a pilha de fontes para `system`.
+Defina a pilha de fontes para `system`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -283,9 +283,9 @@ const App = () => {
 
 #### Desfoque de sobreposição
 
-Por padrão, o `overlayBlur` está configurado como `none`. Mas aqui está como você pode usar a configuração `overlayBlur`.
+Por padrão, o `overlayBlur` está definido para `none`. Mas aqui está como você pode usar a configuração `overlayBlur`.
 
-Configure o desfoque de sobreposição para `small`.
+Defina o desfoque de sobreposição para `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### Mix and Match
+#### Misturar e combinar
 
-Aqui estão algumas maneiras diferentes de você usar diferentes temas, com as props `accentColor`, `borderRadius` e `fontStack` juntas.
+Aqui estão algumas maneiras diferentes de usar diferentes temas, com as props `accentColor`, `borderRadius` and `fontStack` juntas.
 
 - Use o tema `lightTheme`
 - Defina a cor de destaque para um valor roxo personalizado
-- Defina o raio da borda para `medium`
-- Configure a pilha de fontes para `system`
+- Defina o raio de borda para `medium`
+- Defina a pilha de fontes para `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -334,9 +334,9 @@ const App = () => {
 ```
 
 - Use o tema `midnightTheme`
-- Defina a cor de destaque para o preset `pink` integrado.
-- Defina o raio da borda para `small`
-- Configure a pilha de fontes para `system`
+- Defina a cor de destaque para o preset embutido `pink`.
+- Defina o raio de borda para `small`
+- Defina a pilha de fontes para `system`
 
 ```tsx
 import {
@@ -362,7 +362,7 @@ const App = () => {
 
 #### Suporte para modo escuro
 
-Se seu aplicativo usa a consulta de mídia padrão `prefers-color-scheme: dark` para alternar entre modos claro e escuro, você pode opcionalmente fornecer um objeto tema dinâmico contendo valores `lightMode` e `darkMode`.
+Se o seu aplicativo usa a media query padrão `prefers-color-scheme: dark` para alternar entre os modos claro e escuro, você pode opcionalmente fornecer um objeto de tema dinâmico contendo valores `lightMode` e `darkMode`.
 
 ```tsx
 import {
