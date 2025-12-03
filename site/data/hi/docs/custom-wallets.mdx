@@ -7,198 +7,190 @@ description: एक कस्टम वॉलेट बनाएं
 
 ## एक कस्टम वॉलेट बनाएं
 
-> नोट: यह एपीआई अस्थिर है और निकट भविष्य में बदल सकती है। समय के साथ हम अधिक बिल्ट-इन वॉलेट्स जोड़ेंगे। [हमें बताएं](https://github.com/rainbow-me/rainbowkit/issues) यदि कोई विशेष वॉलेट्स हैं जिनमें आप रुचि रखते हैं।
+> नोट: यह API अस्थिर है और निकट भविष्य में बदल सकता है। हम समय के साथ अधिक बिल्ट-इन वॉलेट जोड़ेंगे। [हमें बताएं](https://github.com/rainbow-me/rainbowkit/issues) यदि कोई विशेष वॉलेट हैं जिनमें आप रुचि रखते हैं।
 
-`Wallet` फंक्शन प्रकार आपको अपने स्वयं के कस्टम वॉलेट्स परिभाषित करने में मदद करने के लिए प्रदान किया गया है। आपके `Wallet` फ़ंक्शन के रिटर्न मान पर निम्नलिखित गुण कॉन्फ़िगर किए जा सकते हैं:
+`वॉलेट` फ़ंक्शन प्रकार आपके अपने कस्टम वॉलेट को परिभाषित करने में मदद करने के लिए प्रदान किया गया है। आपकी `वॉलेट` फ़ंक्शन के रिटर्न मान पर निम्नलिखित प्रॉपर्टीज़ को कॉन्फ़िगर किया जा सकता है:
 
 ### वॉलेट गुण
 
 <PropsTable
-  data={[
-    {
-      name: 'id',
-      required: true,
-      type: 'string',
-      description: 'Unique ID per wallet',
-    },
-    {
-      name: 'name',
-      required: true,
-      type: 'string',
-      description: 'Human-readable wallet name',
-    },
-    {
-      name: 'rdns',
-      required: false,
-      type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
-    },
-    {
-      name: 'shortName',
-      required: false,
-      type: 'string | undefined',
-      description: 'Optional short name for mobile use',
-    },
-    {
-      name: 'iconUrl',
-      required: true,
-      type: 'string | (() => Promise<string>)',
-      description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
-    },
-    {
-      name: 'iconAccent',
-      required: false,
-      type: 'string',
-      description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
-    },
-    {
-      name: 'iconBackground',
-      required: true,
-      type: 'string',
-      description: 'Background color while the wallet icon loads',
-    },
-    {
-      name: 'installed',
-      required: false,
-      type: 'boolean | undefined',
-      description: (
-        <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
-        </>
-      ),
-    },
-    {
-      name: 'downloadUrls',
-      required: false,
-      type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
-      typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
-    },
-    {
-      name: 'hidden',
-      required: false,
-      type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
-      typeSimple: '(args) => boolean | undefined',
-      description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
-      description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
-      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
-  ]}
+ data={[
+ {
+ name: 'id',
+ required: true,
+ type: 'string',
+ description: 'प्रति वॉलेट अद्वितीय आईडी',
+ },
+ {
+ name: 'name',
+ required: true,
+ type: 'string',
+ description: 'मानव-पठनीय वॉलेट नाम',
+ },
+ {
+ name: 'rdns',
+ required: false,
+ type: 'string',
+ description: 'EIP6963 समर्थन करने वाले वॉलेट के लिए RDNS',
+ },
+ {
+ name: 'shortName',
+ required: false,
+ type: 'string | undefined',
+ description: 'मोबाइल उपयोग के लिए वैकल्पिक शॉर्ट नाम',
+ },
+ {
+ name: 'iconUrl',
+ required: true,
+ type: 'string | (() => Promise<string>)',
+ description: 'वॉलेट आइकन के लिए URL, या एक प्रॉमिस जो Base64 डेटा URL को हल करता है',
+ },
+ {
+ name: 'iconAccent',
+ required: false,
+ type: 'string',
+ description: 'ब्राउज़र एक्सटेंशन और मोबाइल ऐप वाले वॉलेट्स के लिए डाउनलोड फ्लोज़ में उपयोग किया गया एक्सेंट रंग',
+ },
+ {
+ name: 'iconBackground',
+ required: true,
+ type: 'string',
+ description: 'वॉलेट आइकन लोड होने के दौरान पृष्ठभूमि का रंग',
+ },
+ {
+ name: 'installed',
+ required: false,
+ type: 'boolean | undefined',
+ description: (
+ <>
+ वॉलेट के इंस्टाल होने का ज्ञात होना या <code>अपरिभाषित</code> होना अगर तनावमुक्त
+ </>
+ ),
+ },
+ {
+ name: 'downloadUrls',
+ required: false,
+ type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
+ typeSimple: 'डाउनलोडUrls | undefined',
+ description: 'डाउनलोड URL को समायोजित करने वाला ऑब्जेक्ट',
+ },
+ {
+ name: 'hidden',
+ required: false,
+ type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
+ typeSimple: '(args) => boolean | undefined',
+ description: 'इस वॉलेट को सूची से छिपाया जाना चाहिए या नहीं यह गणना करने के लिए फंक्शन। यह सामान्य फॉलबैक वॉलेट्स को परिभाषित करने के लिए उपयोगी है, उदाहरण के लिए, "Injected Wallet" फॉलबैक इस सुविधा का उपयोग करता है',
+ },
+ {
+ name: 'createConnector',
+ required: true,
+ type: '() => RainbowKitConnector',
+ typeSimple: 'RainbowKitConnector',
+ description: 'कनेक्टर इंस्टेंस और विभिन्न कनेक्शन विधियों के लिए कॉन्फ़िगरेशन प्रदान करने के लिए फंक्शन, नीचे वर्णित',
+ },
+ {
+ name: 'mobile',
+ required: false,
+ type: '{ getUri?: (uri: string) => string }',
+ typeSimple: 'ऑब्जेक्ट',
+ description: 'मूवाइल वॉलेट कनेक्शन URI को हल करने के लिए फंक्शन',
+ },
+ {
+ name: 'desktop',
+ required: false,
+ type: '{ getUri?: (uri: string) => string }',
+ typeSimple: 'ऑब्जेक्ट',
+ description: 'डेस्कटॉप ऐप दीप लिंक को हल करने के लिए फंक्शन',
+ },
+ {
+ name: 'qrCode',
+ required: false,
+ type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+ typeSimple: 'ऑब्जेक्ट',
+ description: 'ऑब्जेक्ट जिसमें QR कोड URI को हल करने के लिए एक फंक्शन शामिल है, साथ ही वैकल्पिक मूवाइल वॉलेट सेटअप निर्देश',
+ },
+ {
+ name: 'extension',
+ required: false,
+ type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+ typeSimple: 'ऑब्जेक्ट',
+ description: 'ऑब्जेक्ट जिसमें वैकल्पिक ब्राउज़र एकक्चन्सनसेटअप निर्देश शामिल हैं',
+ },
+ {
+ name: 'createConnector',
+ required: true,
+ type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+ typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+ description: 'कनेक्टर इंस्टेंस प्रदान करने के लिए फंक्शन',
+ },
+ ]}
 />
 
 ### DownloadUrls गुण
 
 <PropsTable
-  data={[
-    {
-      name: 'android',
-      required: false,
-      type: 'string',
-      description: 'गूगल प्ले URL',
-    },
-    {
-      name: 'ios',
-      required: false,
-      type: 'string',
-      description: 'ऐप्पल ऐप स्टोर URL',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: 'string',
-      description: 'मोबाइल उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब `android` या `ios` उपलब्ध नहीं हैं',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: 'string',
-      description: 'उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जो मोबाइल डाउनलोड QR कोड को स्कैन करते हैं',
-    },
-    {
-      name: 'chrome',
-      required: false,
-      type: 'string',
-      description: 'क्रोम वेब स्टोर URL',
-    },
-    {
-      name: 'edge',
-      required: false,
-      type: 'string',
-      description: 'माइक्रोसॉफ्ट एज ऐड-ऑन URL',
-    },
-    {
-      name: 'firefox',
-      required: false,
-      type: 'string',
-      description: 'फ़ायरफ़ॉक्स ब्राउजर ऐड-ऑन URL',
-    },
-    {
-      name: 'opera',
-      required: false,
-      type: 'string',
-      description: 'ओपेरा ऐड-ऑन URL',
-    },
-    {
-      name: 'safari',
-      required: false,
-      type: 'string',
-      description: 'मैक ऐप स्टोर URL',
-    },
-    {
-      name: 'browserExtension',
-      required: false,
-      type: 'string',
-      description: 'डेस्कटॉप एक्सटेंशन उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब ब्राउजर-संगत URL उपलब्ध नहीं हैं',
-    },
-  ]}
+ data={[
+ {
+ name: 'android',
+ required: false,
+ type: 'string',
+ description: 'गूगल प्ले URL',
+ },
+ {
+ name: 'ios',
+ required: false,
+ type: 'string',
+ description: 'ऐप्पल ऐप स्टोर URL',
+ },
+ {
+ name: 'mobile',
+ required: false,
+ type: 'string',
+ description: 'मोबाइल उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब `android` या `ios` उपलब्ध नहीं हैं',
+ },
+ {
+ name: 'qrCode',
+ required: false,
+ type: 'string',
+ description: 'उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जो मोबाइल डाउनलोड QR कोड को स्कैन करते हैं',
+ },
+ {
+ name: 'chrome',
+ required: false,
+ type: 'string',
+ description: 'क्रोम वेब स्टोर URL',
+ },
+ {
+ name: 'edge',
+ required: false,
+ type: 'string',
+ description: 'माइक्रोसॉफ्ट एज ऐड-ऑन URL',
+ },
+ {
+ name: 'firefox',
+ required: false,
+ type: 'string',
+ description: 'फ़ायरफ़ॉक्स ब्राउजर ऐड-ऑन URL',
+ },
+ {
+ name: 'opera',
+ required: false,
+ type: 'string',
+ description: 'ओपेरा ऐड-ऑन URL',
+ },
+ {
+ name: 'safari',
+ required: false,
+ type: 'string',
+ description: 'मैक ऐप स्टोर URL',
+ },
+ {
+ name: 'browserExtension',
+ required: false,
+ type: 'string',
+ description: 'डेस्कटॉप एक्सटेंशन उपयोगकर्ताओं के लिए लैंडिंग पृष्ठ जब ब्राउजर-संगत URL उपलब्ध नहीं हैं',
+ },
+ ]}
 />
 
 ### उदाहरण
