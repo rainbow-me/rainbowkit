@@ -1,13 +1,13 @@
 ---
-title: Infos de l'application personnalisée
+title: Infos personnalisées sur l'application
 description: Personnalisation des informations de votre application
 ---
 
-# Infos de l'application personnalisée
+# Infos personnalisées sur l'application
 
 ## Personnalisation des informations de votre application
 
-Vous pouvez passer les informations de votre application dans la propriété `appInfo` pour `RainbowKitProvider`. Les propriétés que vous pouvez modifier sont le nom de votre application (`appName`) et le lien où le bouton « En savoir plus » dans la fenêtre de connexion redirige (`learnMoreUrl`) :
+Vous pouvez passer les informations de votre application dans la propriété `appInfo` du `RainbowKitProvider`. Les propriétés que vous pouvez modifier sont le nom de votre application (`appName`) et le lien où le bouton « En savoir plus » dans la fenêtre modale de connexion redirige (`learnMoreUrl`) :
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### Ajouter un avertissement
+### Ajouter une clause de non-responsabilité
 
-Vous pouvez fournir votre propre avertissement à afficher en bas de la fenêtre de connexion. La propriété `disclaimer` dans `appInfo` prend un `DisclaimerComponent` avec les arguments `Text` et `Link`. Vous pouvez l'utiliser pour construire votre propre avertissement qui hérite du système de thème. Nous exportons le type `DisclaimerComponent` pour les utilisateurs de TypeScript :
+Vous pouvez fournir votre propre clause de non-responsabilité à afficher en bas de la fenêtre modale de connexion. La propriété `disclaimer` dans `appInfo` accepte un `DisclaimerComponent` avec les arguments `Text` et `Link`. Vous pouvez l'utiliser pour créer votre propre clause de non-responsabilité qui hérite du système de thème. Nous exportons le type `DisclaimerComponent` pour les utilisateurs de TypeScript :
 
 ```tsx
 import {
