@@ -1,15 +1,15 @@
 ---
-title: 自定 ConnectButton
-description: 創建自定 ConnectButton
+title: 自訂 ConnectButton
+description: 建立自訂 ConnectButton
 ---
 
-# 自定 ConnectButton
+# 自訂 ConnectButton
 
-## 創建自定 ConnectButton
+## 建立自訂 ConnectButton
 
-你可以使用低層的 `ConnectButton.Custom` 來創建自己的連接按鈕。 這個元件會渲染一個函數，包含了重新實現內置按鈕所需的一切。
+您可以使用低層次的 `ConnectButton.Custom` 來創建自訂的連接按鈕。此組件會呈現一個函數，內含重新實作內建按鈕所需的一切。
 
-內置按鈕的最小重新實現應該會像這樣：
+內建按鈕的極簡重新實作可能類似以下這樣：
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-以下的參數會傳遞給你的渲染函數。
+以下道具將傳遞至您的渲染函數。
 
-### 帳戶屬性
+### 帳號屬性
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        '包含當前帳號詳情的物件，如下所述',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          完整帳號地址，例如
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: '帳號餘額的小數格式',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          已格式化為字串的帳號餘額，例如{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          餘額的貨幣符號，例如 <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          餘額格式化為 3 個有效數字，加上符號，例如 <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +178,8 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ENS 名稱或地址截斷版本，例如{' '}
+          <code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +187,7 @@ export const YourApp = () => {
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'ENS Avatar URI',
     },
     {
       name: 'account.ensName',
@@ -196,7 +195,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ENS 名稱，例如 <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +204,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        '布林值指示當前鏈上帳號是否有待處理交易',
     },
   ]}
 />
@@ -219,27 +218,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current chain, described below',
+        '包含當前鏈詳情的物件，如下所述',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: '鏈是否指定了圖標',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        '鏈圖標 URL（下載 Base64 數據 URL 時，也可能未定義）',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'The chain icon background which will be visible while images are loading',
+        '圖像加載時顯示的鏈圖標背景',
     },
     {
       name: 'chain.id',
@@ -247,7 +246,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          鏈 ID，例如 <code>1</code>
         </>
       ),
     },
@@ -257,7 +256,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          鏈名稱，例如 <code>"以太坊"</code>
         </>
       ),
     },
@@ -266,12 +265,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        '布林值指示當前鏈是否不受支持',
     },
   ]}
 />
 
-### 模式狀態屬性
+### 彈窗狀態屬性
 
 <PropsTable
   data={[
@@ -279,44 +278,44 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: '開啟帳號彈窗的函數',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: '開啟鏈彈窗的函數',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: '開啟連接彈窗的函數',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        '布林值指示帳號彈窗是否開啟',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: '布林值指示鏈彈窗是否開啟',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        '布林值指示連接彈窗是否開啟',
     },
   ]}
 />
 
-### 常規狀態屬性
+### 一般狀態屬性
 
 <PropsTable
   data={[
@@ -325,14 +324,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        '布林值指示組件是否已掛載',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        '驗證狀態，或在未設定驗證時為 undefined',
     },
   ]}
 />
