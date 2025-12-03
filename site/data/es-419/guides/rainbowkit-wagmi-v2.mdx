@@ -1,32 +1,32 @@
 ---
-title: Actualizando tu dApp para RainbowKit v2
+title: Actualizando tu dApp a RainbowKit v2
 description: RainbowKit y Wagmi han sido promovidos a v2
-image: guide-rainbowkit-v2.png
+image: guia-boton-arcoiris.png
 ---
 
 # Migrando a RainbowKit y Wagmi v2
 
-La dependencia de pares [wagmi](https://wagmi.sh) y [viem](https://viem.sh) han llegado a `2.x.x` con cambios disruptivos.
+Las dependencias `wagmi` y `viem` ahora han alcanzado la versión `2.x.x` con cambios disruptivos.
 
-Sigue los pasos abajo para migrar.
+Sigue los pasos a continuación para migrar.
 
-**1. Actualice RainbowKit, `wagmi`, y `viem` a sus últimas versiones**
+**1. Actualiza RainbowKit, `wagmi`, y `viem` a sus últimas versiones**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Instalar la dependencia paralela `@tanstack/react-query`**
+**2. Instalar la dependencia `@tanstack/react-query`**
 
-Con Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) ahora es una dependencia par necesaria.
+Con Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) es ahora una dependencia necesaria.
 
-Instálala con el siguiente comando:
+Instálalo con el siguiente comando:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Actualice sus configuraciones de RainbowKit y Wagmi**
+**3. Actualiza tus configuraciones de RainbowKit y Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Busque cambios significativos en `wagmi` y `viem`**
+**4. Verifica los cambios significativos en `wagmi` y `viem`**
 
-Si utiliza hooks de `wagmi` y acciones de `viem` en su dApp, necesitará seguir las guías de migración para la v2:
+Si utilizas hooks de `wagmi` y acciones de `viem` en tu dApp, necesitarás seguir las guías de migración para v2:
 
-- [Guía de Migración de Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Cambios Significativos en Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Guía de Migración a Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Cambios Disruptivos en Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### Cambios en RainbowKit
 
 **1. Comportamiento mejorado para billeteras EIP-6963**
 
-Las billeteras que soportan el nuevo estándar de conexión EIP-6963 (incluyendo Rainbow, MetaMask y más) ahora aparecerán automáticamente en una sección `Instalado` durante la experiencia de Conectar Billetera. Esto asegura que los usuarios siempre puedan encontrar sus billeteras favoritas y conectarse a dApps sin conflictos o botones de reserva.
+Las billeteras que soportan el nuevo estándar de conexión EIP-6963 (incluyendo Rainbow, MetaMask y más) ahora aparecerán automáticamente en una sección `Instalado` durante la experiencia de Conectar Billetera, asegurando que los usuarios siempre puedan encontrar sus billeteras favoritas y conectarse a las dApps sin conflictos o botones de respaldo.
 
-Los desarrolladores continúan teniendo control total sobre la Lista de Billeteras Personalizadas para enfatizar las billeteras preferidas por los usuarios finales. Se recomienda que continúe incluyendo el `injectedWallet` y el `walletConnectWallet` en su lista para soportar todas las plataformas.
+Los desarrolladores continúan teniendo control total sobre la Lista Personalizada de Billeteras para enfatizar las billeteras preferidas por los usuarios finales. Se recomienda continuar incluyendo `injectedWallet` y `walletConnectWallet` en tu lista para soportar todas las plataformas.
 
 **2. Configuración de Wagmi con getDefaultConfig**
 
-Esta nueva API simplifica la experiencia de configuración y reemplaza la necesidad de usar directamente el `createConfig` de Wagmi. La configuración de la cadena se simplifica, incluyendo proveedores públicos inferidos para `transports`.
+Esta nueva API simplifica la experiencia de configuración y reemplaza la necesidad de usar `createConfig` de Wagmi directamente. La configuración de cadenas se simplifica, incluyendo proveedores públicos inferidos para `transports`.
 
-La lista de carteras predeterminada se incluirá automáticamente, dejando sin efecto la necesidad de usar `getDefaultWallets` y `connectorsForWallets`.
+La lista de billeteras predeterminada se incluirá automáticamente, relegando la necesidad de usar `getDefaultWallets` y `connectorsForWallets`.
 
-Puedes crear una Lista Personalizada de Carteras pasando conectores importados o conectores de Carteras Personalizadas a `wallets`. Ya no es necesario instanciar conectores de carteras ni pasar `projectId` y `chains`.
+Puedes crear una Lista de Billeteras Personalizadas pasando conectores de billetera importados o personalizados a `wallets`. Ya no es necesario instanciar conectores de billetera y pasar `projectId` y `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -133,7 +133,7 @@ Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 
 **4. Cadenas Personalizadas**
 
-El tipo `Chain` ha cambiado de acuerdo con Wagmi v2, y continúa soportando los metadatos `iconUrl` e `iconBackground` de RainbowKit.
+El tipo `Chain` ha cambiado de acuerdo con Wagmi v2 y continúa soportando los metadatos `iconUrl` e `iconBackground` de RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ Ejemplo con `createConfig`:
   })
 ```
 
-**5. Billeteras personalizadas**
+**5. Billeteras Personalizadas**
 
-RainbowKit wallet connectors han sufrido cambios sustanciales para soportar Wagmi v2. Consulte la [documentación actualizada](https://www.rainbowkit.com/docs/custom-wallets) y un [conector de ejemplo](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para actualizar cualquier Conector de Billetera Personalizada en su dApp.
+Los conectores de billetera de RainbowKit han experimentado cambios sustanciales para soportar Wagmi v2. Consulta la [documentación actualizada](https://www.rainbowkit.com/docs/custom-wallets) y un [conector de ejemplo](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para actualizar cualquier Conector de Billetera Personalizado en tu dApp.
 
-Los conectores de billetera ahora también soportan el estándar EIP-6963 con la propiedad `rdns`. Asegúrese de que esto esté poblado para evitar referencias duplicadas a billeteras que soportan EIP-6963 en su lista de billeteras.
+Los conectores de billetera ahora también soportan el estándar EIP-6963 con la propiedad `rdns`. Asegúrate de que esto esté poblado para prevenir referencias duplicadas a billeteras que soportan EIP-6963 en tu lista de billeteras.
 
-> Por favor, reporte cualquier problema o retroalimentación para RainbowKit v2 en GitHub [aquí](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Por favor, reporta cualquier problema o comentario sobre RainbowKit v2 en GitHub [aquí](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
