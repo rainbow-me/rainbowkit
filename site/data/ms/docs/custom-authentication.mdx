@@ -1,19 +1,19 @@
 ---
 title: Pengesahan Tersuai
-description: Sambungkan kepada pengesahan latar belakang anda sendiri
+description: Sambung ke belakang pengesahan anda sendiri
 ---
 
 # Pengesahan Tersuai
 
-## Sambungkan kepada pengesahan latar belakang anda sendiri
+## Sambung ke belakang pengesahan anda sendiri
 
-Walaupun RainbowKit menyediakan [sokongan kelas pertama untuk Log Masuk dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) anda juga boleh integrasi dengan latar belakang tersuai dan format mesej.
+Walaupun RainbowKit menyediakan [sokongan kelas pertama untuk Daftar Masuk dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) anda juga boleh mengintegrasikan dengan latar belakang dan format mesej tersuai.
 
-### Mewujudkan penyesuai tersuai
+### Mencipta penyesuai tersuai
 
-Mula-mula cipta penyesuai pengesahan. Ini membolehkan RainbowKit mencipta/menyediakan mesej dan berkomunikasi dengan latar belakang anda.
+Mula-mula cipta penyesuai pengesahan. Ini membolehkan RainbowKit membuat/menyediakan mesej dan berkomunikasi dengan belakang anda.
 
-Sebagai contoh, kita boleh membuat penyesuai pengesahan yang membenarkan kita menggunakan [Log Masuk dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API tersuai, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Sebagai contoh, kita boleh membuat penyesuai pengesahan yang membolehkan kita menggunakan [Daftar Masuk dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API tersuai, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Menyediakan keadaan pengesahan
+#### Menyediakan status pengesahan
 
-Dengan mengandaikan aplikasi anda sudah mengurus kitaran hayat pengesahan dengan cara tertentu, anda boleh menghantar status pengesahan semasa bersama penyesuai tersuai anda kepada `RainbowKitAuthenticationProvider`, menyarung `RainbowKitProvider` sedia ada anda.
+Mengandaikan aplikasi anda sudah menguruskan kitaran hayat pengesahan dengan cara tertentu, anda boleh menghantar status pengesahan semasa bersama penyesuai tersuai anda kepada `RainbowKitAuthenticationProvider`, membungkus `RainbowKitProvider` sedia ada anda.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Jika anda telah sampai ke tahap ini dan mencipta penyesuai untuk perpustakaan pengesahan sumber terbuka yang sedia ada, sila pertimbangkan untuk mencipta pakej untuk digunakan oleh orang lain!
+Jika anda sudah sampai sejauh ini dan mencipta penyesuai untuk perpustakaan pengesahan sumber terbuka sedia ada, sila pertimbangkan untuk mencipta pakej untuk orang lain gunakan!
