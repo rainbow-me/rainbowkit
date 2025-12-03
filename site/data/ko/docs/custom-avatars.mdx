@@ -1,13 +1,13 @@
 ---
-title: 맞춤형 아바타
-description: 앱의 사용자 아바타 맞춤화
+title: 사용자 지정 아바타
+description: 앱의 사용자 아바타를 사용자 정의하기
 ---
 
-# 맞춤형 아바타
+# 사용자 지정 아바타
 
-## 앱의 사용자 아바타 맞춤화
+## 앱의 사용자 아바타를 사용자 정의하기
 
-기본적으로 ENS 이미지가 설정되지 않은 경우 사용자를 위한 아바타를 제공하지만, 사용자 정의 아바타 컴포넌트를 제공하여 이를 맞춤 설정할 수 있습니다. TypeScript를 사용하는 경우 `AvatarComponent` 타입을 import할 수 있습니다:
+기본적으로 사용자가 ENS 이미지를 설정하지 않는 경우 아바타를 제공하지만, 사용자 지정 아바타 컴포넌트를 제공하여 이를 사용자 정의할 수 있습니다. TypeScript를 사용하는 경우 `AvatarComponent` 유형을 가져올 수 있습니다:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-`avatar` prop에 전달된 `AvatarComponent`는 다음과 같은 prop 타입을 가집니다: `<{ address: string; ensImage?: string | null; size: number;}>`
+`AvatarComponent`는 `avatar` 속성에 전달되며 다음과 같은 prop 유형을 가집니다: `<{ address: string; ensImage?: string | null; size: number;}>`
