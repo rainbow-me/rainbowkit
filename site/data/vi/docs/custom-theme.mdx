@@ -1,16 +1,15 @@
 ---
-title: Chủ đề tùy chỉnh
-description: Tạo chủ đề tùy chỉnh
+title: Giao diện Tùy chỉnh
+description: Tạo giao diện tùy chỉnh
 ---
 
-# Chủ đề tùy chỉnh
+# Giao diện Tùy chỉnh
 
-## Tạo chủ đề tùy chỉnh
+## Tạo giao diện tùy chỉnh
 
-> Lưu ý: API này không ổn định và có khả năng thay đổi
-> trong tương lai gần. Chúng tôi khuyến nghị bạn sử dụng [chủ đề tích hợp](/docs/theming) vào lúc này.
+> Lưu ý: API này chưa ổn định và có khả năng sẽ thay đổi trong tương lai gần. Chúng tôi khuyên bạn nên sử dụng [giao diện tích hợp](/docs/theming) cho bây giờ.
 
-Mặc dù các chủ đề tích hợp cung cấp một số mức độ tùy chỉnh, loại `Theme` được cung cấp để giúp bạn định nghĩa các chủ đề tùy chỉnh của riêng bạn với quyền truy cập cấp thấp hơn vào các biến chủ đề cơ bản.
+Mặc dù các giao diện tích hợp cung cấp một số mức độ tùy chỉnh, loại `Theme` được cung cấp để giúp bạn xác định giao diện tùy chỉnh của riêng mình với quyền truy cập cấp thấp hơn vào các biến giao diện cơ bản.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -78,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Mở rộng chủ đề tích hợp
+### Mở rộng một giao diện tích hợp
 
-Bạn có thể mở rộng một chủ đề tích hợp mà không cần phải định nghĩa lại toàn bộ chủ đề. Điều này hữu ích khi bạn chỉ muốn ghi đè các token chủ đề cụ thể.
+Bạn có thể mở rộng một giao diện tích hợp mà không cần định nghĩa lại toàn bộ giao diện. Điều này hữu ích khi bạn chỉ muốn ghi đè các token giao diện cụ thể.
 
-Để làm điều đó, cài đặt `lodash.merge` (hoặc tương đương):
+Để làm điều đó, hãy cài đặt `lodash.merge` (hoặc tương đương):
 
 ```bash
 npm install lodash.merge
 ```
 
-Nhập nó, cùng với chủ đề bạn muốn mở rộng (vd: `darkTheme`) và loại `Theme` của TypeScript:
+Nhập nó, cùng với giao diện bạn muốn mở rộng (ví dụ: `darkTheme`) và loại `Theme` của TypeScript:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -99,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Sau đó, hợp nhất chủ đề tích hợp, với các token chủ đề bạn muốn ghi đè. Trong ví dụ này, tôi đang ghi đè token `accentColor` để phù hợp với màu nhấn thương hiệu của tôi.
+Sau đó, kết hợp giao diện tích hợp, với các token giao diện bạn muốn ghi đè. Trong ví dụ này, tôi đang ghi đè token `accentColor` để hợp với màu sắc chính của thương hiệu của tôi.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -109,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Cuối cùng, bạn có thể chuyển chủ đề tùy chỉnh của mình đến prop `theme` của `RainbowKitProvider`.
+Cuối cùng, bạn có thể truyền giao diện tùy chỉnh của mình tới prop `theme` của `RainbowKitProvider`.
 
 ```tsx
 const App = () => {
@@ -121,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Tạo bộ chọn chủ đề tùy chỉnh
+### Tạo các bộ chọn giao diện tùy chỉnh
 
-Nếu ứng dụng của bạn được render trên máy chủ hoặc render tĩnh và cho phép người dùng chuyển đổi giữa các chủ đề, hệ thống chủ đề của RainbowKit có thể được kết nối với các bộ chọn CSS tùy chỉnh với các hàm sau đây, có thể sử dụng với bất kỳ hệ thống CSS-in-JS nào:
+Nếu ứng dụng của bạn được render trên máy chủ/tĩnh và cho phép người dùng chuyển đổi giữa các giao diện bằng tay, hệ thống theming của RainbowKit có thể kết nối với các bộ chọn CSS tùy chỉnh với các chức năng sau đây có thể được sử dụng với bất kỳ hệ thống CSS-in-JS nào:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-Những hàm này trả về CSS thiết lập tất cả các biến chủ đề cần thiết. Vì cả chuỗi và đối tượng đều được hỗ trợ, điều này có thể tích hợp với bất kỳ hệ thống CSS-in-JS nào.
+Các chức năng này trả lại CSS thiết lập tất cả biến giao diện cần thiết. Bởi vì cả chuỗi và đối tượng đều được hỗ trợ, điều này có thể tích hợp với bất kỳ hệ thống CSS-in-JS nào.
 
-Với một ví dụ cơ bản, bạn có thể render phần tử `style` của riêng mình với các bộ chọn tùy chỉnh cho mỗi chủ đề. Vì chúng tôi đang kiểm soát việc render CSS của chủ đề, chúng tôi chuyển `null` cho prop `theme` để RainbowKitProvider không render bất kỳ kiểu nào cho chúng tôi. Cũng lưu ý việc sử dụng tùy chọn extends trên hàm cssStringFromTheme để loại bỏ bất kỳ biến chủ đề nào giống với chủ đề cơ bản.
+Như một ví dụ cơ bản, bạn có thể render phần tử `style` của riêng bạn với các bộ chọn tùy chỉnh cho mỗi giao diện. Vì chúng tôi đang kiểm soát việc render CSS của giao diện, chúng tôi đang truyền `null` cho prop `theme` để RainbowKitProvider không render bất kỳ kiểu dáng nào cho chúng tôi. Cũng lưu ý việc sử dụng tùy chọn extends trên hàm cssStringFromTheme, nó loại bỏ bất kỳ biến giao diện nào giống như giao diện gốc.
 
 ```tsx
 import {
