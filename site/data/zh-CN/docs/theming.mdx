@@ -1,21 +1,21 @@
 ---
-title: 主题
+title: 主题化
 description: 使用和自定义主题
 ---
 
-# 主题
+# 主题化
 
 ## 使用和自定义主题
 
-您可以调整 RainbowKit UI 以匹配您的品牌。 您可以从几个预定义的重点色彩和边界半径配置中选择。
+您可以调整RainbowKit的UI以匹配您的品牌。 您可以从一些预定义的强调色和边框半径配置中选择。
 
-有3个内置主题函数：
+内置的三种主题函数：
 
-- `lightTheme` &nbsp; (默认)
+- `lightTheme` &nbsp;（默认）
 - `darkTheme`
 - `midnightTheme`
 
-主题函数返回一个主题对象。 您可以将该对象传递给 `RainbowKitProvider` 的 `theme` 属性。
+一个主题函数返回一个主题对象。 您可以将该对象传递给`RainbowKitProvider`的`theme`属性。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-如果您愿意，您可以传入 `accentColor`、`accentColorForeground`、`borderRadius`、`fontStack` 和 `overlayBlur` 进行自定义。
+如果您愿意，您可以传入`accentColor`、`accentColorForeground`、`borderRadius`、`fontStack`和`overlayBlur`来自定义它们。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -50,7 +50,7 @@ export const App = () => (
 
 ### 自定义内置主题
 
-内置主题功能还接受一个选项对象，允许您从几种不同的视觉样式中选择。
+内置主题函数也接受一个选项对象，允许您从几种不同的视觉样式中进行选择。
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        '各种交互元素的背景/文本颜色。',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        '用于在强调色上渲染的前景元素的颜色。',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: '整个边框半径规模的大小。',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "UI中使用的字体堆栈。 请注意，`rounded` 试图使用 SF Pro Rounded，当不可用时会使用系统字体。", 
     },
     {
       name: 'overlayBlur',
@@ -93,12 +93,12 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: '模态背景模糊。',
     },
   ]}
 />
 
-例如，要使用紫罗兰色的重音颜色和`中等`边界半径尺寸自定义深色主题：
+例如，自定义深色主题为紫色强调色和“medium”边框半径尺度：
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-每个主题也提供了几种强调色彩预设（`blue`, `green`, `orange`, `pink`, `purple`, `red`）可以扩展到选项对象中。 例如，使用 `pink` 强调色预设：
+每个主题还提供了几个强调色预设（`blue`、`green`、`orange`、`pink`、`purple`、`red`），可以扩展到选项对象中。例如，要使用`pink`强调色预设：
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -142,9 +142,9 @@ const App = () => {
 
 #### 主题函数
 
-这里有一些不同的方式可以使用 `theme` 属性。
+这里有几种使用`theme`属性的不同方式。
 
-使用 `darkTheme` 主题。
+使用`darkTheme`主题。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-使用 `midnightTheme` 主题。
+使用`midnightTheme`主题。
 
 ```tsx
 import {
@@ -173,9 +173,9 @@ export const App = () => (
 
 #### 强调色
 
-以下是一些可以使用 `accentColor` 配置的不同方式。
+这里有几种使用`accentColor`配置的不同方式。
 
-将强调色设为自定义紫色值。
+将强调色设置为自定义紫色值。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-将强调色设为内置的 `green` 预设。
+将强调色设置为内置的`green`预设。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +216,9 @@ const App = () => {
 
 #### 边框半径
 
-以下是一些可以使用 `borderRadius` 配置的不同方式。
+这里有几种使用`borderRadius`配置的不同方式。
 
-将边框半径设置为 `medium`。
+将边框半径设置为"medium"。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-将边框半径设置为 `none`。
+将边框半径设置为"none"。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> 提醒：可用的边框半径值有：`large`（默认），`medium`，`small` 和 `none`。
+> 提醒：可用的边框半径值为：`large`（默认）、`medium`、`small` 和 `none`。
 
 #### 字体堆栈
 
-默认情况下，`fontStack` 设置为 `rounded`。 但是这是你如何使用 `fontStack` 配置的方法。
+默认情况下，`fontStack`设置为`rounded`。 但这里是如何使用`fontStack`配置。
 
-将字体堆栈设置为 `system`。
+将字体堆栈设置为`system`。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -283,9 +283,9 @@ const App = () => {
 
 #### 覆盖模糊
 
-默认情况下，`overlayBlur` 设置为 `none`。 但这是你可以如何使用 `overlayBlur` 配置的方法。
+默认情况下，`overlayBlur`设置为“none”。 但这里是如何使用`overlayBlur`配置。
 
-将覆盖模糊设置为 `small`。
+将覆盖模糊设置为`small`。
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### 混合和匹配
+#### 混搭
 
-这是你可以使用不同主题的几种不同方式，将 `accentColor`，`borderRadius` 和 `fontStack` 属性一起使用。
+这里有几种使用不同主题，并结合`accentColor`、`borderRadius`和`fontStack`属性的方法。
 
-- 使用 `lightTheme` 主题
-- 将突出色设置为自定义的紫色值
-- 将边框半径设置为 `medium`
-- 将字体堆栈设置为 `system`
+- 使用`lightTheme`主题
+- 将强调色设置为自定义紫色值
+- 将边框半径设置为"medium"
+- 将字体堆栈设置为`system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- 使用 `midnightTheme` 主题
-- 将突出色设置为内置的 `pink` 预设。
-- 将边框半径设置为 `small`
-- 将字体堆栈设置为 `system`
+- 使用`midnightTheme`主题
+- 将强调色设置为内置的`pink`预设。
+- 将边框半径设置为"small"
+- 将字体堆栈设置为`system`
 
 ```tsx
 import {
@@ -360,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### 支持暗黑模式
+#### 深色模式支持
 
-如果您的应用使用标准的 `prefers-color-scheme: dark` 媒体查询来在轻量和暗黑模式之间切换，您可以选择性地提供一个包含 `lightMode` 和 `darkMode` 值的动态主题对象。
+如果您的应用程序使用标准`prefers-color-scheme: dark`媒体查询在浅色和深色模式之间切换，您可以选择提供一个包含`lightMode`和`darkMode`值的动态主题对象。
 
 ```tsx
 import {
