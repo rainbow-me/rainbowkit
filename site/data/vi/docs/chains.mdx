@@ -1,25 +1,25 @@
 ---
-title: Chuỗi
+title: Các chuỗi
 description: Tùy chỉnh chuỗi
 ---
 
-# Chuỗi
+# Các chuỗi
 
 ## Tùy chỉnh chuỗi
 
 RainbowKit được thiết kế để tích hợp với [đối tượng `chain` của wagmi](https://wagmi.sh/react/chains). Xem danh sách các chuỗi được hỗ trợ [tại đây](https://wagmi.sh/react/chains#supported-chains).
 
-### Tùy chỉnh chuỗi ban đầu
+### Tùy chỉnh chuỗi khởi đầu
 
-Theo mặc định, RainbowKit sẽ kết nối với chuỗi đầu tiên được cung cấp cho Wagmi. Hành vi này có thể được tùy chỉnh thông qua `initialChain` prop.
+Theo mặc định, RainbowKit sẽ kết nối với chuỗi đầu tiên được cung cấp cho Wagmi. Hành vi này có thể tùy chỉnh qua thuộc tính `initialChain`.
 
-Chuỗi ban đầu có thể được cấu hình bằng cách sử dụng chain ID.
+Chuỗi khởi đầu có thể được cấu hình bằng ID chuỗi.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Để thuận tiện, bạn cũng có thể truyền một đối tượng chuỗi.
+Để tiện lợi, bạn cũng có thể chuyển một đối tượng chuỗi.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
@@ -27,7 +27,7 @@ Chuỗi ban đầu có thể được cấu hình bằng cách sử dụng chain
 
 ### Siêu dữ liệu chuỗi tùy chỉnh
 
-Một số biểu tượng và hình nền chuỗi được cung cấp theo mặc định, nhưng bạn có thể tùy chỉnh biểu tượng và hình nền cho mỗi chuỗi bằng cách sử dụng các thuộc tính `iconUrl` và `iconBackground`.
+Một số biểu tượng và hình nền chuỗi được cung cấp theo mặc định, nhưng bạn có thể tùy chỉnh biểu tượng và nền cho từng chuỗi bằng các thuộc tính `iconUrl` và `iconBackground`.
 
 Ví dụ với `getDefaultConfig`
 
