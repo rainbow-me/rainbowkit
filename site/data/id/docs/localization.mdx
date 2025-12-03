@@ -9,9 +9,9 @@ description: Menyesuaikan bahasa dApp Anda dengan terjemahan bawaan
 
 Secara default, RainbowKit mendukung lokal `en-US` untuk pengguna berbahasa Inggris.
 
-Jika tersedia, RainbowKit akan mendeteksi [bahasa pilihan](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) pengguna dan memilih terjemahan yang sesuai. Pengembang selalu dapat mengesampingkan bahasa default.
+Jika tersedia, RainbowKit akan mendeteksi [bahasa pilihan](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) pengguna dan memilih terjemahan yang sesuai. Pengembang selalu dapat mengganti bahasa default.
 
-Untuk menentukan bahasa bagi pengguna Anda, cukup tambahkan `locale="zh-CN"` sebagai prop dalam `RainbowKitProvider` Anda
+Untuk menentukan bahasa bagi pengguna Anda, cukup tambahkan `locale="zh-CN"` sebagai properti dalam `RainbowKitProvider` Anda
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,9 +25,9 @@ export const App = () => (
 
 ### Menggunakan dengan Next.js
 
-Dukungan lokalisasi RainbowKit bekerja lebih baik dengan [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+Dukungan lokalisasi RainbowKit berfungsi lebih baik dengan [Pembagian Jalur Sub](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Konfigurasikan proyek Next.js Anda seperti contoh di bawah ini untuk menambahkan sub-path `/locale/` opsional ke rute Anda, yang akan membantu mesin pencari dan pengguna lebih baik menemukan dukungan multibahasa Anda.
+Konfigurasikan proyek Next.js Anda seperti contoh di bawah ini untuk menambahkan jalur sub `/locale/` opsional ke rute Anda, yang akan membantu mesin pencari dan pengguna lebih mengenali dukungan multi-bahasa Anda.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Konfigurasikan proyek Next.js Anda seperti contoh di bawah ini untuk menambahkan
 }
 ```
 
-Lalu berikan `locale` yang disediakan oleh Pages Router ke `RainbowKitProvider`
+Kemudian berikan `locale` yang disediakan oleh Pages Router ke `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,19 +54,19 @@ export const App = () => {
 };
 ```
 
-Anda dapat merujuk contoh untuk Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+Anda dapat merujuk contoh untuk Pages Router [di sini](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-App Router belum mendukung i18n. Rujuk contoh terpisah kami [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) untuk praktik terbaik implementasi dengan middleware [`next-intl`](https://github.com/amannn/next-intl).
+Router Aplikasi belum mendukung i18n. Rujuk contoh terpisah kami [di sini](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) untuk praktik implementasi terbaik dengan middleware [`next-intl`](https://github.com/amannn/next-intl).
 
-Disarankan agar Anda menggunakan teknik yang sama untuk menerjemahkan konten dApp Anda untuk dukungan lokalisasi penuh. Perpustakaan lokalisasi seperti [`i18n-js`](https://github.com/fnando/i18n) dan [`next-intl`](https://github.com/amannn/next-intl) dan alat manajemen seperti Crowdin akan menyederhanakan proses ini.
+Disarankan agar Anda menggunakan teknik yang sama untuk menerjemahkan konten dApp Anda untuk mendukung lokalisasi penuh. Perpustakaan lokalisasi seperti [`i18n-js`](https://github.com/fnando/i18n) dan [`next-intl`](https://github.com/amannn/next-intl) dan alat manajemen seperti Crowdin akan menyederhanakan proses ini.
 
 ### Bahasa yang Didukung
 
-Kami memberikan dukungan penuh untuk daerah `locale` berikut:
+Kami menyediakan dukungan penuh untuk wilayah `locale` berikut:
 
 <Table
   header={[
-    'Bahasa', 'Wilayah', 'Locale', 'Singkatan'
+    'Bahasa', 'Wilayah', 'Locale', 'Bentuk Singkat'
   ]}
   dataTypes={[
     'string', 'string', 'kode', 'kode'
@@ -89,7 +89,8 @@ Kami memberikan dukungan penuh untuk daerah `locale` berikut:
     ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
     ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
     ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de'],
+    ['Bahasa Melayu', 'Malaysia 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
