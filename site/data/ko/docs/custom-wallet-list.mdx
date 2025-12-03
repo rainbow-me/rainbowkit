@@ -1,15 +1,15 @@
 ---
-title: 사용자 지정 지갑 목록
-description: 지갑 목록 사용자 정의하기
+title: 맞춤형 지갑 목록
+description: 지갑 목록 사용자 정의
 ---
 
-# 사용자 지정 지갑 목록
+# 맞춤형 지갑 목록
 
-## 지갑 목록 사용자 정의하기
+## 지갑 목록 사용자 정의
 
-'@rainbow-me/rainbowkit/wallets'에서 개별 지갑을 가져오고, 필요한 커넥터를 가진 자신의 지갑 목록을 만드는 `connectorsForWallets` 함수를 가져올 수 있습니다. 이렇게 하면 표시할 지갑과 그 순서를 전적으로 제어할 수 있습니다.
+필요한 커넥터들과 함께 `'@rainbow-me/rainbowkit/wallets'`에서 개별 지갑을 가져와 자신의 지갑 목록을 만들 수 있습니다. 이렇게 하면 표시할 지갑과 그 순서를 완전히 제어할 수 있습니다.
 
-예를 들어, Rainbow와 일반적인 대체 지갑만 표시하기로 선택할 수 있습니다.
+예를 들어 Rainbow와 일반 보조 지갑만 표시하도록 선택할 수 있습니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-그런 다음 Wagmi의 `createConfig`에 커넥터를 전달할 수 있습니다.
+그런 다음 커넥터를 Wagmi의 `createConfig`에 전달할 수 있습니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,19 +58,19 @@ const App = () => (
 );
 ```
 
-### 내장된 지갑들
+### 내장된 지갑
 
-다음 지갑들은 `wallet` 객체를 통해 제공됩니다.
+다음 지갑은 `wallet` 객체를 통해 제공됩니다.
 
-#### 일반적인 지갑들
+#### 일반 지갑
 
-다음 지갑들은 특정 앱보다는 일반적인 연결 방법에 범위를 정의하고 있습니다. 결과적으로, 이러한 지갑들을 항상 포함하는 것이 권장됩니다.
+다음 지갑은 특정 앱보다는 일반 연결 방법에 한정되어 있습니다. 결과적으로, 이러한 지갑은 항상 포함시키는 것이 좋습니다.
 
 ##### WalletConnect
 
-이것은 목록의 다른 지갑에서 제공되지 않은 WalletConnect 기반 지갑을 위한 페일오버 지갑 옵션입니다.
+이 옵션은 목록에 제공되지 않은 WalletConnect 기반 지갑을 위한 보조 지갑 옵션입니다.
 
-**모든 WalletConnect 기반 지갑이 지원되도록 이 지갑을 항상 목록에 포함하는 것이 권장됩니다.**
+**모든 WalletConnect 기반 지갑을 지원하기 위해 항상 이 지갑을 목록에 포함시키는 것이 좋습니다.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -78,9 +78,9 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Injected Wallet
 
-이것은 `window.ethereum`이 존재하지만 목록의 다른 지갑에서 제공되지 않은 경우를 위한 페일오버 지갑 옵션입니다. 이 지갑은 페일오버가 필요하지 않거나 주입된 지갑이 없으면 목록에서 자동으로 숨겨집니다.
+이 옵션은 `window.ethereum`이 존재하지만 목록에 다른 지갑으로 제공되지 않은 시나리오를 위한 보조 지갑 옵션입니다. 보조 지갑이 필요하지 않거나 사용 가능한 인젝티드 지갑이 없을 경우 이 지갑은 자동으로 목록에서 숨겨질 것입니다.
 
-**모든 Injected 지갑이 지원되도록 이 지갑을 항상 목록에 포함하는 것이 권장됩니다.**
+**모든 인젝티드 지갑을 지원하기 위해 항상 이 지갑을 목록에 포함시키는 것이 좋습니다.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -88,15 +88,15 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-dApp이 사용자의 Safe 볼트나 멀티시그와 쉽게 연결을 지원하도록 Safe Apps를 지원하는 경우, 자동 연결을 위해 `safeWallet` 옵션을 포함하세요. Safe 옵션은 Safe Wallet 브라우저 환경에서만 나타납니다.
+Safe Apps를 지원하여 사용자가 Safe 금고 또는 다중 서명에 쉽게 연결할 수 있도록 하려면, 자동 연결을 위한 `safeWallet` 옵션을 포함하세요. Safe 옵션은 Safe Wallet 브라우저 환경에서만 나타납니다.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### 특정 지갑들
+### 특정 지갑
 
-다음의 지갑들은 `wallet` 객체를 통해 제공됩니다 (알파벳 순서).
+다음 지갑은 `wallet` 객체를 통해 제공됩니다 (알파벳 순).
 
 #### 1inch Wallet
 
@@ -104,16 +104,42 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Argent
-
-```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 베이스 계정 (이전에는 Coinbase Wallet)
+
+이 지갑 커넥터는 베이스 계정을 지원하며, Coinbase 스마트 지갑의 진화된 형태입니다. 하위 계정 및 지출 권한과 같은 향상된 기능을 제공하며, 원활한 인증을 제공합니다.
+
+구성 옵션은 [베이스 계정 SDK 참고](https://docs.base.org/base-account/reference/core/createBaseAccount)와 일치합니다.
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -128,6 +154,12 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### 바이프로스트 지갑
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Binance Web3 Wallet
 
 ```tsx
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -176,37 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-이 지갑 커넥터는 Coinbase Wallet 앱 및 확장, 그리고 Web의 Coinbase Smart Wallet을 모두 지원합니다.
-
-`preference` 인수는 Smart Wallet의 활성화 및 사용 가능성을 제어할 수 있습니다. 환경설정 기반 동작은 [여기](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional)에서 문서화되어 있습니다.
-
-[Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) 및 [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts)를 제어할 수 있는 추가 설정 옵션은 [여기](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters) 있는 Coinbase Wallet SDK 문서에서 찾을 수 있습니다.
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 Wallet
 
 ```tsx
@@ -223,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### CTRL 지갑
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Wallet
@@ -259,6 +260,21 @@ import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 제미니 지갑
+
+이 스마트 지갑 커넥터는 keys.gemini.com에서 패스키를 통한 매끄러운 인증을 가능하게 합니다 – 다운로드, 확장 프로그램, 또는 API 키가 필요하지 않습니다. 기본 상태에서 바로 작동합니다.
+
+`appName` 매개변수는 귀하의 dApp을 식별하기 위해 필요하며, `appIcon`은 연결 경험의 브랜딩을 위해 선택적으로 사용할 수 있습니다.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -309,16 +325,22 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MEW Wallet
+#### MetaMask
+
+```tsx
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW 지갑
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### MetaMask
+#### Nova Wallet
 
 ```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OKX Wallet
@@ -351,6 +373,12 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### 포르토
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Rabby Wallet
 
 ```tsx
@@ -369,7 +397,13 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### 준비 완료
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin 지갑
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -405,13 +439,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### 트러스트 지갑
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Uniswap 지갑
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -423,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Wigwam
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -447,19 +481,13 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-### 예제
+### 예시들
 
 #### 주문
 
-다른 순서로 다양한 지갑을 표시하는 몇 가지 예시입니다.
+다른 순서로 다양한 지갑을 표시하는 몇 가지 예시가 있습니다.
 
-일반적인 백업 지갑과 함께 MetaMask를 표시합니다.
+일반 보조 지갑과 함께 MetaMask를 표시합니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -479,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Rainbow, MetaMask 및 Coinbase를 일반적인 백업 지갑과 함께 표시합니다.
+레인보우, 메타마스크 및 베이스 계정을 일반적인 백업 지갑과 함께 표시합니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -497,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -506,20 +534,20 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> 참고: `지갑` 배열의 순서는 UI에서 지갑이 표시되는 순서를 정의합니다.
+> 알림: `wallets` 배열의 순서는 UI에 지갑이 표시되는 순서를 정의합니다.
 
-#### 다수의 그룹
+#### 여러 그룹
 
-`그룹이름` 키를 사용하여 다른 지갑 그룹을 이름 지을 수 있습니다. 여러분이 사용자들에게 권장하는 지갑과 다른 가능한 지갑을 알리고 싶을 때 유용합니다.
+`groupName` 키를 사용하여 다양한 지갑 그룹의 이름을 지정할 수 있습니다. 이는 사용자가 추천하는 지갑 및 다른 가능한 지갑을 사용자에게 전달하려 할 때 유용합니다.
 
-Rainbow과 MetaMask를 추천하되, 일반적인 백업 지갑과 함께 Coinbase도 제공합니다.
+레인보우와 메타마스크를 추천하되, 일반적인 백업 지갑과 함께 베이스 계정도 제공합니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -531,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
