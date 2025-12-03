@@ -1,19 +1,19 @@
 ---
-title: 模態鈎子
-description: 程式化地透過鈎子開啟模態視窗
+title: 模式掛鈎
+description: 透過掛鈎以程式化開啟模式
 ---
 
-# 模態鈎子
+# 模式掛鈎
 
-## 程式化地透過鈎子開啟模態視窗
+## 透過掛鈎以程式化開啟模式
 
-以下鈎子允許在應用程式中的任何地方程式化地開啟模態視窗。
+提供以下掛鈎，以允許在應用程式的任何地方程式化地開啟模式。
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-這些鈎子每個都會返回一個對象，其中包含一個開啟相應模態視窗的函數。 請注意，如果您的應用程式不是在需要的狀態下，返回的函數將是未定義的。
+這些掛鈎中的每一個都會返回一個包含開啟各自模式的函數的對象。請注意，如果您的應用程式未處於開啟模式所需的狀態，返回的函數將是未定義。
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-每個鈎子還返回一個布爾值，用於表示模態視窗的狀態。 通常建議您純粹依賴於 Wagmi 鈎子（即 `useAccount`）直接回應使用者的錢包連結狀態，而不是依賴於連結模態視窗的狀態。
+每個掛鈎還會返回一個布林值以表示模式的狀態。通常建議您完全依賴 Wagmi 的掛鈎（例如 `useAccount`) 以直接對用戶的錢包連接狀態作出反應，而不是依賴於連接模式的狀態。
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit 設計是不打擾且具回應性的，所以無論使用者是否連接了他們的錢包，dApp 應該始終渲染一個界面給使用者。 使用者可以直接從 MetaMask 連接或斷開他們的錢包，所以 dApp 必須直接回應底層的連接狀態。
+RainbowKit 被設計為非中斷和響應式，因此 dApps 無論用戶是否已連接其錢包，都應始終為用戶呈現介面。用戶可以從 MetaMask 直接連接或斷開其錢包，因此 dApp 必須直接對基礎連接狀態作出響應。
 
-依賴於使用以太坊登錄等機制進行使用者驗證的 dApps 應該改為依賴於 [Authentication](/docs/authentication) 功能。
+依賴 Sign-in with Ethereum 做用戶驗證的 dApps 應改為依賴 [身份驗證](/docs/authentication) 功能。
