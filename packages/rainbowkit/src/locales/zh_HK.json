@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "將 Argent 加到你的主畫面以快速訪問你的錢包。",
-          "title": "打開 Argent 應用程式"
+          "description": "將 Ready 加到主畫面以便更快速存取您的錢包。",
+          "title": "開啟 Ready 應用程式"
         },
         "step2": {
           "description": "創建一個錢包和用戶名，或導入現有的錢包。",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "掃描後，將會出現連接提示，讓你連接你的錢包。",
           "title": "點擊 WalletConnect 按鈕"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "安裝 Binance Wallet 擴充功能",
+          "description": "我們建議將 Binance Wallet 釘在工作列上，便可以更快存取你的電子錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "請確保使用安全方法備份你的錢包，絕不要與任何人分享你的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "設置你的錢包後，點擊下方按鈕刷新瀏覽器並載入擴展。"
         }
       }
     },
@@ -1130,11 +1144,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "安裝 XDEFI Wallet 擴充功能",
-          "description": "我們建議把 XDEFI Wallet 釘在工作列上，以便更快捷地進入你的錢包。"
+          "title": "安裝 CTRL Wallet 擴展套件",
+          "description": "我們建議將 CTRL Wallet 固定到你的任務欄，以便更快地訪問你的錢包。"
         },
         "step2": {
           "title": "創建或導入錢包",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "開啟 keys.gemini.com",
+          "description": "在你的手機瀏覽器中訪問 keys.gemini.com，不需要下載應用程式。"
+        },
+        "step2": {
+          "title": "即時創建您的錢包",
+          "description": "使用裝置的內置認證來在短短幾秒內設置您的智能錢包。"
+        },
+        "step3": {
+          "title": "掃描以連接",
+          "description": "掃描 QR 碼即可即時連接您的錢包，它非常方便。"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "前往 keys.gemini.com",
+          "description": "無需擴展或下載—您的錢包安全地存在於瀏覽器中。"
+        },
+        "step2": {
+          "title": "一鍵設置",
+          "description": "使用通行密鑰認證立即創建您的智能錢包 - 比任何其他錢包都更容易。"
+        },
+        "step3": {
+          "title": "連接並開始",
+          "description": "批准連接後即可開始使用 - 無偏見的錢包，順利運作。"
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "點擊掃描按鈕"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "開啟 ZilPay 應用程式",
-        "description": "將 ZilPay 加到主畫面以便更快速存取您的錢包。"
-      },
-      "step2": {
-        "title": "創建或導入錢包",
-        "description": "創建新的錢包或導入現有的錢包。"
-      },
-      "step3": {
-        "title": "點擊掃描按鈕",
-        "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "開啟 ZilPay 應用程式",
+          "description": "將 ZilPay 加到主畫面以便更快速存取您的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "開啟 Nova Wallet 應用程式",
+          "description": "新增 Nova Wallet 至你的主畫面，便可以更快存取你的電子錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
+        }
       }
     }
   }
