@@ -1,28 +1,28 @@
 ---
 title: 将您的 dApp 升级到 WalletConnect v2
-description: RainbowKit 已迁移至 v2，您可以在5分钟或更短时间内准备您的 dApp
+description: RainbowKit 已迁移到 v2，您可以在 5 分钟内或更短时间内准备好您的 dApp
 image: guide-walletconnect-v2.png
 ---
 
 # 迁移到 WalletConnect v2
 
-## 在5分钟或更短时间内为 v2 升级准备您的 dApp
+## 在 5 分钟内或更短时间内为 v2 升级准备您的 dApp
 
-WalletConnect v1 协议将在 2023年6月28日关闭，而 RainbowKit 能帮助您简单地进行转换。
+WalletConnect v1 协议将于 2023 年 6 月 28 日关闭，RainbowKit 为您简化过渡提供支持。
 
-现在，RainbowKit 对 WalletConnect v2 的支持已成为标准，不会产生破坏性更改。 只需升级并参考下面的指南以获取更多详细信息。
+RainbowKit 现在对 WalletConnect v2 的支持已成标准，且无破坏性更改。只需升级并参考下方指南以获取更多详细信息。
 
-#### 理解 WalletConnect v2
+#### 了解 WalletConnect v2
 
-WalletConnect 是允许用户将他们的移动钱包连接到您的 dApp 的协议，这是 RainbowKit 的重要基础。 WalletConnect v2 的最近发布带来了一些重要的升级，使钱包-dApp 的体验变得更好。
+WalletConnect 是允许用户将他们的移动钱包连接到您的 dApp 的协议，它是 RainbowKit 的重要基础。WalletConnect v2 的最新发布带来了一些重要升级，使钱包和 dApp 体验更好。
 
-在v2中，您的用户现在可以同时连接到多个链，因此您可以忘记关于切换链的握手操作。 它还扩大了对更多网络的支持，并带来了使以太坊登录更快的改进。
+在 v2 中，您的用户现在可以同时连接到多个链，因此您无需再担心链的切换操作。同时，它还扩展了对更多网络的支持，并带来了一些改进，使使用 Ethereum 登录更加快捷。
 
-#### 升级您的dApp
+#### 升级您的 dApp
 
-如果您已经按照 RainbowKit `0.12.x` 和 `1.0.x` 的迁移指导操作，那么您几乎就成功了！ 只需升级到最新的补丁发布并试一试。
+如果您已经遵循了 RainbowKit `0.12.x` 和 `1.0.x` 的迁移指南，那么您已经接近完成了！只需升级到最新的补丁版本并尝试一下。
 
-RainbowKit 默认启用了 `0.12.15` 和 `1.0.2` 的 WalletConnect v2。 我们将继续支持 `0.12.x`，以防您的dApp尚未升级到wagmi v1和RainbowKit v1。
+RainbowKit 已在 `0.12.15` 和 `1.0.2` 中默认启用了 WalletConnect v2。我们将继续支持 `0.12.x`，以防您的 dApp 尚未升级到 Wagmi v1 和 RainbowKit v1。
 
 **1. 升级依赖项**
 
@@ -30,15 +30,15 @@ RainbowKit 默认启用了 `0.12.15` 和 `1.0.2` 的 WalletConnect v2。 我们�
 npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 ```
 
-如果您在使用 `0.12.x` 或 `1.0.x` 之前的RainbowKit版本，只需遵循[迁移指南](/docs/migration-guide)进行更新。
+如果您使用的是 RainbowKit `0.12.x` 或 `1.0.x` 之前的版本，只需按[迁移指南](/docs/migration-guide)更新。
 
-建议`0.12.x`的dApps开始升级到wagmi v1，因为WalletConnect v2的稳定性改进将只包含在wagmi的未来版本中。
+建议 `0.12.x` 的 dApp 开始升级到 Wagmi v1，因为 WalletConnect v2 的稳定性改进将仅包含在未来的 Wagmi 版本中。
 
-**2. 提供一个 projectId**
+**2. 提供 projectId**
 
-现在依赖于WalletConnect的每一个dApp都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取一个`projectId`。 这完全免费，只需要几分钟。
+每个依赖于WalletConnect的dApp现在都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取一个`projectId`。这完全免费并只需几分钟即可完成。
 
-把你的 `projectId` 提供给 `getDefaultWallets` 和单独的 RainbowKit 钱包连接器，如下所示：
+将您的 `projectId` 提供给 `getDefaultWallets` 和以下各个 RainbowKit 钱包连接器：
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -52,7 +52,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      argentWallet({ projectId, chains }),
+      readyWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
     ],
@@ -60,13 +60,13 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit 是类型安全的，当 `projectId` 缺失时，它会警告你。 请参考我们的示例来查看 v2 的操作过程：
+RainbowKit 是类型安全的，当 `projectId` 缺失时会发出警告。参考我们的示例以查看 v2 的实际应用：
 
-- [创建 React 应用程序](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- [Next.js 应用程序路由器](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 - [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 - [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 - [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
 
-参考 [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) 获取额外支持的选项。
+参考[文档](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect)以获取更多支持的选项。
