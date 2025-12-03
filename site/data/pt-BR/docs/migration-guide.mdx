@@ -6,29 +6,29 @@ title: Guia de Migração
 
 ## Migrando RainbowKit
 
-### 2.x.x Alterações que quebram
+### Alterações de quebra da versão 2.x.x
 
-As dependências de pares [wagmi](https://wagmi.sh) e [viem](https://viem.sh) alcançaram a versão `2.x.x` com mudanças significativas.
+As dependências de pares [wagmi](https://wagmi.sh) e [viem](https://viem.sh) alcançaram `2.x.x` com alterações significativas.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-**1. Atualize o RainbowKit, `wagmi` e `viem` para as suas versões mais recentes**
+**1. Atualize RainbowKit, `wagmi` e `viem` para suas versões mais recentes**
 
 ```bash
 npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 ```
 
-**2. Instale a dependência de peer `@tanstack/react-query`**
+**2. Instale a dependência de par `@tanstack/react-query`**
 
-Com o Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) agora é uma dependência paralela obrigatória.
+Com o Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) agora é uma dependência de par obrigatória.
 
-Instale-o com o seguinte comando:
+Instale com o seguinte comando:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. Atualize suas configurações do RainbowKit e Wagmi**
+**3. Atualize suas configurações de RainbowKit e Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -91,28 +91,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Verifique se há alterações que quebram a compatibilidade no `wagmi` e `viem`**
+**4. Verifique alterações de quebra em `wagmi` e `viem`**
 
-Se você usa hooks do `wagmi` e ações do `viem` em seu dApp, você precisará seguir os guias de migração para v2:
+Se você usa hooks do `wagmi` e ações do `viem` no seu dApp, você precisará seguir os guias de migração para v2:
 
-- [Guia de Migração do Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Mudanças que Quebram a Compatibilidade no Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Guia de Migração Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Alterações Significativas Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### Mudanças no RainbowKit
+#### Alterações no RainbowKit
 
 **1. Comportamento aprimorado para carteiras EIP-6963**
 
-Carteiras que suportam o novo padrão de conexão EIP-6963 (incluindo Rainbow, MetaMask e outras) agora aparecerão automaticamente em uma seção `Instaladas` durante a experiência de Conectar Carteira. Isso garante que os usuários possam sempre encontrar suas carteiras favoritas e se conectar a dApps sem conflitos ou botões de alternativa.
+Carteiras que suportam o novo padrão de conexão EIP-6963 (incluindo Rainbow, MetaMask e outras) agora aparecerão automaticamente em uma seção `Instalado` durante a experiência de Conectar Carteira. Isso garante que os usuários sempre possam encontrar suas carteiras favoritas e se conectar a dApps sem conflitos ou botões de fallback.
 
-Os desenvolvedores continuam tendo controle total sobre a Lista de Carteiras Personalizadas para enfatizar carteiras preferenciais para os usuários finais. É incentivado que você continue a incluir a `injectedWallet` e a `walletConnectWallet` em sua lista para dar suporte a todas as plataformas.
+Os desenvolvedores continuam a ter controle total sobre a Lista de Carteiras Personalizadas para enfatizar carteiras preferenciais para os usuários finais. É encorajado que você continue a incluir a `injectedWallet` e a `walletConnectWallet` em sua lista para dar suporte a todas as plataformas.
 
 **2. Configuração do Wagmi com getDefaultConfig**
 
-Esta nova API simplifica a experiência de configuração e substitui a necessidade de usar diretamente o `createConfig` do Wagmi. A configuração da cadeia é simplificada, incluindo provedores públicos inferidos para `transports`.
+Esta nova API simplifica a experiência de configuração e substitui a necessidade de usar o `createConfig` do Wagmi diretamente. A configuração da cadeia é simplificada, incluindo provedores públicos inferidos para `transports`.
 
-A lista padrão de carteiras será incluída automaticamente, tornando obsoleta a necessidade de usar `getDefaultWallets` e `connectorsForWallets`.
+A lista de carteiras padrão será incluída automaticamente, eliminando a necessidade de usar `getDefaultWallets` e `connectorsForWallets`.
 
-Você pode criar uma Lista Personalizada de Carteiras passando conectores importados ou conectores de Carteiras Personalizadas para `wallets`. Não é mais necessário instanciar conectores de carteira e passar `projectId` e `chains`.
+Você pode criar uma Lista de Carteiras Personalizadas passando conectores de Carteiras importadas ou Personalizadas para `wallets`. A instância de conectores de carteira e a passagem de `projectId` e `chains` não são mais necessárias.
 
 ```
 const config = getDefaultConfig({
@@ -135,7 +135,7 @@ Você não precisa mais passar `chains` para `<RainbowKitProvider>`.
 
 **4. Cadeias Personalizadas**
 
-O tipo `Chain` mudou de acordo com o Wagmi v2 e continua a suportar os metadados `iconUrl` e `iconBackground` do RainbowKit.
+O tipo `Chain` foi alterado de acordo com o Wagmi v2, e continua a suportar os metadados `iconUrl` e `iconBackground` do RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -197,19 +197,19 @@ Exemplo com `createConfig`:
 
 **5. Carteiras Personalizadas**
 
-Os conectores de carteira do RainbowKit passaram por mudanças substanciais para suportar o Wagmi v2. Consulte a [documentação atualizada](https://www.rainbowkit.com/docs/custom-wallets) e um [exemplo de conector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para atualizar qualquer Conector de Carteira Personalizado em seu dApp.
+Os conectores de carteiras RainbowKit passaram por mudanças substanciais para dar suporte ao Wagmi v2. Consulte os [docs atualizados](https://www.rainbowkit.com/docs/custom-wallets) e um [exemplo de conector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para atualizar quaisquer Conectores de Carteiras Personalizados no seu dApp.
 
-Os conectores de carteira agora também suportam o padrão EIP-6963 com a propriedade `rdns`. Certifique-se de que isso esteja preenchido para evitar referências duplicadas a carteiras que suportam EIP-6963 na sua lista de carteiras.
+Os conectores de carteiras agora também suportam o padrão EIP-6963 com a propriedade `rdns`. Certifique-se de que isso esteja preenchido para evitar referências duplicadas a carteiras compatíveis com EIP-6963 na sua lista de carteiras.
 
-### 1.x.x Alterações que quebram
+### Alterações de quebra da versão 1.x.x
 
 #### Atualizado para wagmi v1
 
-A dependência par a par do [wagmi](https://wagmi.sh) foi atualizada para `1.x.x`.
+A dependência de par [wagmi](https://wagmi.sh) foi atualizada para `1.x.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-**1. Atualize RainbowKit e `wagmi` para a versão mais recente**
+**1. Atualize RainbowKit e `wagmi` para sua versão mais recente**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
@@ -217,47 +217,47 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 
 **2. Instale a dependência de par `viem`**
 
-wagmi v1 requer a dependência de par `viem`. Instale-o com o seguinte comando:
+o wagmi v1 requer a dependência de par `viem`. Instale com o seguinte comando:
 
 ```bash
 npm i viem
 ```
 
-**3. Garanta a compatibilidade do empacotador e do polyfill**
+**3. Garanta compatibilidade com pacote e preenchimento**
 
-Consulte a nossa [Configuração de Webpack do Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) e amostras de [Polyfills do Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) para orientações de configuração para o seu projeto.
+Consulte nosso exemplo de [Configuração do Webpack para Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) para orientação de configuração para seu projeto.
 
 Guias adicionais do framework para Vite e Remix estão disponíveis [aqui](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-**4. Verifique se há alterações que quebram em `wagmi`**
+**4. Verifique alterações de quebra em `wagmi`**
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará seguir o guia de migração de `wagmi` para v1.
+Se você usa ganchos `wagmi` em sua aplicação, precisará seguir o guia de migração da `wagmi` para v1.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide).
 
-### 0.12.x Alterações que quebram
+### Alterações de quebra da versão 0.12.x
 
-A dependência de pares wagmi foi atualizada para `0.12.x`.
+A dependência de par wagmi foi atualizada para `0.12.x`.
 
-O RainbowKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para manter o suporte à WalletConnect v1. O suporte para WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização de correção, sem quebras de compatibilidade.
+RainbowKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para suporte contínuo ao WalletConnect v1. O suporte para o WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização, sem alterações de quebra.
 
-As carteiras serão transicionadas automaticamente nas futuras edições.
+As carteiras serão automaticamente transferidas em lançamentos futuros.
 
-Cada dApp deve agora fornecer um [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` para habilitar WalletConnect v2. Isso deve ser concluído antes que os servidores de ponte WalletConnect v1 sejam desativados em 28 de junho de 2023. RainbowKit preferirá silenciosamente v1 para todas as carteiras se `projectId` não for especificado.
+Cada dApp agora deve fornecer um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/) para habilitar o WalletConnect v2. Isso deve ser concluído antes que os servidores de ponte v1 do WalletConnect sejam desativados em 28 de junho de 2023. RainbowKit preferirá silenciosamente o v1 para todas as carteiras se o `projectId` não for especificado.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2. Forneça um projectId do WalletConnect Cloud
+#### 2. Forneça um projectId da WalletConnect Cloud
 
-Todo dApp que depende do WalletConnect agora precisa obter um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/). Isso é totalmente grátis e leva apenas alguns minutos.
+Cada dApp que depende do WalletConnect agora precisa obter um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/). Isso é absolutamente gratuito e leva apenas alguns minutos.
 
-Forneça o `projectId` para `getDefaultWallets` e conectores individuais de carteira RainbowKit como o seguinte:
+Forneça o `projectId` para `getDefaultWallets` e conectores de carteiras individuais RainbowKit, como o seguinte:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -273,7 +273,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      argentWallet({ projectId, chains }),
+      readyWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
     ],
@@ -281,81 +281,81 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.11.x Alterações que quebram
+### Alterações de quebra da versão 0.11.x
 
-A dependência de pares wagmi foi atualizada para `0.11.x`.
+A dependência de par wagmi foi atualizada para `0.11.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. Verifique se há alterações que quebram em `wagmi`
+#### 2. Verifique alterações de quebra em `wagmi`
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade no `wagmi`.
+Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações de quebra no `wagmi`.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### 0.10.x Alterações que quebram
+### Alterações de quebra da versão 0.10.x
 
-A dependência de pares wagmi foi atualizada para `0.10.x`.
+A dependência de par wagmi foi atualizada para `0.10.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. Verifique se há alterações que quebram em `wagmi`
+#### 2. Verifique alterações de quebra em `wagmi`
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade no `wagmi`.
+Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações de quebra no `wagmi`.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
-### 0.9.x Alterações que quebram
+### Alterações de quebra da versão 0.9.x
 
-A dependência de pares wagmi foi atualizada para `0.9.x`.
+A dependência de par wagmi foi atualizada para `0.9.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. Verifique se há alterações que quebram em `wagmi`
+#### 2. Verifique alterações de quebra em `wagmi`
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade no `wagmi`.
+Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações de quebra no `wagmi`.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### 0.8.x Alterações que quebram
+### Alterações de quebra da versão 0.8.x
 
-A dependência de pares wagmi foi atualizada para `0.8.x`.
+A dependência de par wagmi foi atualizada para `0.8.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Verifique se há alterações que quebram em `wagmi`
+#### 2. Verifique alterações de quebra em `wagmi`
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade no `wagmi`.
+Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações de quebra no `wagmi`.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### 0.7.x Alterações que quebram
+### Alterações de quebra da versão 0.7.x
 
-Se você está criando uma lista de carteiras personalizada, agora deve importar cada carteira individualmente para reduzir o tamanho do pacote. Observe que, como as carteiras não são mais namespace via o objeto `wallet`, todas as carteiras agora têm um sufixo `Wallet`.
+Se você está criando uma lista personalizada de carteiras, agora deve importar cada carteira individualmente para reduzir o tamanho do pacote. Note que, uma vez que as carteiras não são mais nomeadas via objeto `wallet`, todas as carteiras agora possuem um sufixo `Wallet`.
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -382,7 +382,7 @@ const wallets = [
 ];
 ```
 
-Também observe que a camada de compatibilidade retroativa do Steakwallet foi removida. O Omni deve ser usado em vez disso.
+Observe também que a camada de compatibilidade retroativa para Steakwallet foi removida. Omni deve ser usado em vez disso.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -394,33 +394,33 @@ const wallets = [
 ];
 ```
 
-### 0.4.x Alterações que quebram
+### Alterações de quebra da versão 0.4.x
 
-O RainbowKit atualizou a dependência de pares `wagmi` para `0.5.x`.
+RainbowKit atualizou a dependência de par `wagmi` para `0.5.x`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
 #### 1. Atualize as dependências
 
-Atualize RainbowKit e wagmi para a versão mais recente
+Atualize RainbowKit e wagmi para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Verifique se há alterações que quebram em `wagmi`
+#### 2. Verifique alterações de quebra em `wagmi`
 
-Se você usa hooks `wagmi` em sua aplicação, você precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade no `wagmi`.
+Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações de quebra no `wagmi`.
 
 [Você pode ver o guia de migração deles aqui](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.x Alterações que quebram a compatibilidade
+### Alterações de quebra da versão 0.3.x
 
-Removido o parâmetro `chainId` de `createConnector` no tipo `Wallet`.
+Removido o parâmetro `chainId` do `createConnector` no tipo `Wallet`.
 
-**Observe que todas as carteiras integradas estão usando a nova API. A maioria dos consumidores não será afetada. Esta alteração afeta apenas os consumidores que criaram/consumiram [carteiras personalizadas](/docs/custom-wallets).**
+**Observe que todas as carteiras embutidas estão usando a nova API. A maioria dos consumidores será inalterada. Esta mudança só afeta consumidores que criaram/consumiram [carteiras personalizadas](/docs/custom-wallets).**
 
-Se você anteriormente derivou URLs de RPC do `chainId` no `createConnector`, agora você pode remover essa lógica pois o `wagmi` agora lida internamente com as URLs de RPC quando utilizado com `configureChains`.
+Se você anteriormente derivava URLs de RPC do `chainId` em `createConnector`, agora pode remover essa lógica, pois o `wagmi` agora manipula URLs de RPC internamente quando usado com `configureChains`.
 
 ```diff
 import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
@@ -474,15 +474,15 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x Alterações que quebram a compatibilidade
+### Alterações de quebra da versão 0.2.x
 
-O RainbowKit atualizou a dependência de pares `wagmi` para `^0.4`.
+RainbowKit atualizou a dependência de par `wagmi` para `^0.4`.
 
-Siga os passos abaixo para migrar.
+Siga os passos abaixo para realizar a migração.
 
 #### 1. Atualize as dependências
 
-Atualize RainbowKit e wagmi para a versão mais recente
+Atualize RainbowKit e wagmi para sua versão mais recente
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
@@ -490,14 +490,14 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 
 #### 2. Substitua a importação de configureChains
 
-Importe `configureChains` do wagmi, em vez do RainbowKit:
+Importe `configureChains` do wagmi em vez do RainbowKit:
 
 ```diff
 - import { configureChains } from '@rainbow-me/rainbowkit';
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3. Migre os provedores
+#### 3. Migre provedores
 
 RainbowKit não exporta mais uma API `apiProvider`. Substitua-o pelo provedor desejado do wagmi.
 
