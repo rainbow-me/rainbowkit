@@ -1,15 +1,15 @@
 ---
-title: Список Кастомних Гаманців
-description: Налаштування списку гаманців
+title: Користувацький список гаманців
+description: Настроювання списку гаманців
 ---
 
-# Список Кастомних Гаманців
+# Користувацький список гаманців
 
-## Налаштування списку гаманців
+## Настроювання списку гаманців
 
-Ви можете імпортувати окремі гаманці з `'@rainbow-me/rainbowkit/wallets'`, разом з функцією `connectorsForWallets`, щоб створити власний список гаманців з їх потрібними з'єднувачами. Таким чином ви маєте повний контроль над тим, які гаманці відображати і в якому порядку.
+Ви можете імпортувати індивідуальні гаманці з `'@rainbow-me/rainbowkit/wallets'` разом з функцією `connectorsForWallets`, щоб створити власний список гаманців з необхідними підключеннями. Таким чином, ви матимете повний контроль над тим, які гаманці показувати, і в якому порядку.
 
-Наприклад, ви можете вирішити показувати лише Rainbow разом з універсальними запасними гаманцями.
+Наприклад, ви можете обрати показ лише Rainbow разом з універсальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Потім ви можете передати свої з'єднувачі до `createConfig` від Wagmi.
+Після цього ви можете передати свої підключення до `createConfig` Wagmi.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -60,60 +60,86 @@ const App = () => (
 
 ### Вбудовані гаманці
 
-Нижче наведені гаманці, які надаються через об'єкт `wallet`.
+Наступні гаманці надаються через об'єкт `wallet`.
 
-#### Загальні Гаманці
+#### Універсальні гаманці
 
-Ці гаманці засновані на загальних методах підключення, а не на конкретних додатках. Отже, рекомендується завжди включати ці гаманці.
+Наступні гаманці призначені для універсальних методів підключення, а не для конкретних додатків. В результаті, рекомендується завжди включати ці гаманці.
 
 ##### WalletConnect
 
-Це варіант резервного гаманця, розроблений для гаманців на базі WalletConnect, які не були надані іншим гаманцем у списку.
+Це запасний варіант гаманця, призначений для гаманців, які базуються на WalletConnect і не надані іншим гаманцем у списку.
 
-**Рекомендується завжди включати цей гаманець у список, щоб забезпечити підтримку всіх гаманців на базі WalletConnect.**
+**Рекомендується завжди включати цей гаманець в список, щоб гарантувати підтримку всіх гаманців, що базуються на WalletConnect.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Вбудований Гаманець
+##### Інжектований гаманець
 
-Це варіант резервного гаманця, розроблений для сценаріїв, коли `window.ethereum` існує, але не був наданий іншим гаманцем у списку. Цей гаманець автоматично приховає себе зі списку, коли резервний варіант не є необхідним або якщо вбудований гаманець недоступний.
+Це запасний варіант гаманця, призначений для сценаріїв, коли `window.ethereum` існує, але не наданий іншим гаманцем у списку. Цей гаманець автоматично приховає себе зі списку, коли запасний варіант не потрібний або якщо відсутній інжектований гаманець.
 
-**Рекомендується завжди включати цей гаманець до списку, щоб забезпечити підтримку всіх вбудованих гаманців.**
+**Рекомендується завжди включати цей гаманець у список, щоб гарантувати підтримку всіх інжектованих гаманців.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### Безпечний гаманець
 
-Для dApps, які підтримують Safe Apps, щоб дозволити користувачам легко підключатися до їхнього Safe сховища або мульти-підпису, включіть опцію `safeWallet` для автоматичних підключень. Опція Safe відображається тільки в середовищі браузера Safe Wallet.
+Для дАпп, які підтримують Safe Apps, щоб дозволити користувачам легко підключатися до свого Safe vault або мульти-підпису, включайте опцію `safeWallet` для автоматичних підключень. Опція Safe з'явиться тільки в середовищі браузера Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Конкретні Гаманці
+### Специфічні гаманці
 
 Наступні гаманці надаються через об'єкт `wallet` (в алфавітному порядку).
 
-#### 1inch Wallet
+#### 1inch Гаманець
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Argent
-
-```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Backpack
+#### Рюкзак
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Базовий рахунок (раніше Coinbase Wallet)
+
+Цей конектор гаманця підтримує Базовий рахунок, еволюцію Coinbase Smart Wallet. Забезпечує безперебійну аутентифікацію та розширені функції, такі як підрахунки і права витрат.
+
+Опції конфігурації відповідають [довідці SDK для Базового рахунку](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -122,13 +148,19 @@ import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Best Wallet
+#### Найкращий гаманець
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### Гаманець Bifrost
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Binance Web3 Гаманець
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -158,62 +184,31 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom Wallet
+#### Bloom Гаманець
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave Wallet
+#### Brave Гаманець
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit Wallet
+#### Bybit Гаманець
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Цей з'єднувач гаманців підтримує як додаток, так і розширення Coinbase Wallet, а також Coinbase Smart Wallet у веб.
-
-Доступний аргумент `preference`, що дозволяє керувати тим, чи буде Smart Wallet надано перевагу або відключено для ваших користувачів. Поведінка на основі переваг задокументована [тут](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
-
-Смарт Гаманець буде увімкнено за замовчуванням з `all` на початку червня, без додаткового оновлення.
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
-#### Coin98 Wallet
+#### Coin98 Гаманець
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Compass Wallet
+#### Compass Гаманець
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -225,13 +220,19 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dawn Wallet
+#### CTRL Wallet
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Dawn Гаманець
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Enkrypt Wallet
+#### Enkrypt Гаманець
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -243,22 +244,37 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame Wallet
+#### Frame Гаманець
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Wallet
+#### Frontier Гаманець
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Wallet
+#### Gate Гаманець
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Кам'янецький гаманець
+
+Цей розумний конектор гаманця забезпечує безперешкодну аутентифікацію за допомогою ключів на keys.gemini.com - не потрібні завантаження, розширення або ключі API. Все працює одразу з коробки.
+
+Параметр `appName` потрібний для ідентифікації вашого додатку dApp, а `appIcon` є необов'язковим для брендування вашого підключення.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -267,13 +283,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay Wallet
+#### ioPay Гаманець
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kaia Wallet
+#### Kaia Гаманець
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -285,13 +301,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken Wallet
+#### Kraken Гаманець
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus Wallet
+#### Kresus Гаманець
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -303,16 +319,10 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### Magic Eden Гаманець
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MEW Wallet
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
@@ -321,7 +331,19 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX Wallet
+#### MEW Гаманець
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Nova Гаманець
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### OKX Гаманець
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -351,7 +373,13 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby Wallet
+#### Порто
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Rabby Гаманець
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -363,13 +391,19 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### Ramper Гаманець
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### Готово
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin Гаманець
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -405,13 +439,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Trust Гаманець
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Uniswap Гаманець
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -423,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Wigwam
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -447,19 +481,13 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 ### Приклади
 
-#### Сортування
+#### Порядок
 
 Ось кілька прикладів відображення різних гаманців у різному порядку.
 
-Показати MetaMask разом із загальними запасними гаманцями.
+Показати MetaMask разом з універсальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -479,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Показати Rainbow, MetaMask та Coinbase разом із загальними запасними гаманцями.
+Показати Rainbow, MetaMask та Base Account разом з загальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -497,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -506,20 +534,20 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Нагадування: Порядок масиву `wallets` визначає порядок, у якому гаманці будуть відображатися в інтерфейсі користувача.
+> Нагадування: порядок масиву `wallets` визначає порядок, у якому гаманці будуть відображатися в інтерфейсі користувача.
 
-#### Декілька груп
+#### Кілька груп
 
-Ви можете використовувати ключ `groupName`, щоб називати різні групи гаманців. Це корисно, якщо ви хочете заявити своїм користувачам, які гаманці ви рекомендуєте, а також інші можливі гаманці.
+Ви можете використовувати ключ `groupName` для назви різних груп гаманців. Це корисно, якщо ви хочете спілкуватися з користувачами, які гаманці ви рекомендуєте, а також інші можливі гаманці.
 
-Рекомендуємо Rainbow та MetaMask, але також пропонуємо Coinbase разом із загальнодоступними гаманцями.
+Рекомендуємо Rainbow та MetaMask, але також пропонуємо Base Account разом із загальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -531,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
