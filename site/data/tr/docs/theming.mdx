@@ -1,21 +1,21 @@
 ---
-title: Tema Oluşturma
+title: Temalandırma
 description: Temaları kullanma ve özelleştirme
 ---
 
-# Tema Oluşturma
+# Temalandırma
 
 ## Temaları kullanma ve özelleştirme
 
-RainbowKit UI'yi markanıza uyacak şekilde ayarlayabilirsiniz. Birkaç önceden tanımlanmış vurgu rengi ve kenar yarıçapı konfigürasyonlarından seçim yapabilirsiniz.
+RainbowKit UI'ı markanızla uyumlu hale getirebilirsiniz. Önceden tanımlanmış birkaç vurgu rengi ve kenar yarıçapı yapılandırmasından seçim yapabilirsiniz.
 
-3 yerleşik tema fonksiyonu bulunmaktadır:
+3 yerleşik tema işlevi vardır:
 
-- `lightTheme`   (varsayılan)
+- `lightTheme` &nbsp; (varsayılan)
 - `darkTheme`
 - `midnightTheme`
 
-Bir tema fonksiyonu bir tema nesnesi döndürür. Nesneyi `RainbowKitProvider`'ın `theme` özelliğine geçirebilirsiniz.
+Bir tema işlevi bir tema nesnesi döndürür. Nesneyi `RainbowKitProvider`'ın `theme` prop'una geçirebilirsiniz.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-İsterseniz, `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` ve `overlayBlur`'u özelleştirebilmek için içlerine geçirebilirsiniz.
+İsterseniz, `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` ve `overlayBlur` ayarlarını özelleştirebilirsiniz.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### Yerleşik temaları özelleştirme
+### Yerleşik temaların özelleştirilmesi
 
-Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size birkaç farklı görsel stilden seçme imkanı sunar.
+Yerleşik tema işlevleri ayrıca bir seçenekler nesnesi kabul eder ve birkaç farklı görsel stil seçmenize olanak tanır.
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'Çeşitli etkileşimli öğelerin arka planı/metin rengi.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'Vurgu renginin üstüne yerleştirilen ön plan öğeleri için kullanılan renk.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'Tüm kenar yarıçapı ölçeğinin boyutu.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "Arayüzde kullanılan font kümesi. `rounded`, SF Pro Rounded kullanmayı dener ve kullanılabilir olmadığında sistem fontlarına geçer.",
     },
     {
       name: 'overlayBlur',
@@ -93,12 +93,12 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'Modal arka plan bulanıklığı.',
     },
   ]}
 />
 
-Örneğin, koyu temayı mor bir aksan rengi ve `orta` bir kenar yarıçapı ölçeği ile özelleştirmek için:
+Örneğin, koyu temayı mor vurgu rengi ve `orta` kenar yarıçapı ölçeği ile özelleştirmek için:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Her tema ayrıca (`mavi`, `yeşil`, `turuncu`, `pembe`, `mor`, `kırmızı`) olmak üzere birçok aksan rengi ön ayarını seçenekler nesnesine yayabilir. Örneğin, `pembe` aksan rengi ön ayarını kullanmak için:
+Her tema aynı zamanda birkaç vurgu rengi ön ayarı (`mavi`, `yeşil`, `turuncu`, `pembe`, `mor`, `kırmızı`) sağlar ve bu ayarları seçenekler nesnesine yayabilirsiniz. Örneğin, `pembe` vurgu rengi ön ayarını kullanmak için:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -140,9 +140,9 @@ const App = () => {
 
 ### Örnekler
 
-#### Tema fonksiyonu
+#### Tema işlevi
 
-`theme` prop'unun farklı yollarını kullanabilirsiniz.
+İşte `theme` prop'unu kullanabileceğiniz birkaç farklı yol.
 
 `darkTheme` temasını kullanın.
 
@@ -173,7 +173,7 @@ export const App = () => (
 
 #### Vurgu rengi
 
-`accentColor` config'ını çeşitli yollarla kullanabilirsiniz.
+İşte `accentColor` ayarını kullanabileceğiniz birkaç farklı yol.
 
 Vurgu rengini özel bir mor değere ayarlayın.
 
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-Vurgu rengini dahili `green` ön ayarına ayarlayın.
+Vurgu rengini yerleşik `yeşil` ön ayarına ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +216,9 @@ const App = () => {
 
 #### Kenar yarıçapı
 
-`borderRadius` config'ini farklı şekillerde kullanabilirsiniz.
+`borderRadius` ayarını kullanabileceğiniz birkaç farklı yol burada.
 
-Kenar yarıçapını `medium` olarak ayarlayın.
+Kenar yarıçapını `orta` olarak ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-Kenar yarıçapını `none` olarak ayarlayın.
+Kenar yarıçapını `yok` olarak ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> Hatırlatma: mevcut kenar yarıçapı değerleri: `large` (varsayılan), `medium`, `small` ve `none`.
+> Hatırlatma: Mevcut kenar yarıçapı değerleri: `büyük` (varsayılan), `orta`, `küçük` ve `yok`.
 
-#### Yazı tipi yığını
+#### Font kümesi
 
-Varsayılan olarak, `fontStack` `rounded` olarak ayarlanmıştır. Ama işte `fontStack` konfigürasyonunu nasıl kullanabileceğiniz.
+Varsayılan olarak, `fontStack` `yuvarlak` olarak ayarlanmış durumda. Ancak `fontStack` ayarını nasıl kullanabileceğiniz burada.
 
-Font yığınını `system` olarak ayarlayın.
+Font kümesini `sistem` olarak ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### Üst örtü bulanıklığı
+#### Arka plan bulanıklığı
 
-Varsayılan olarak, `overlayBlur` `none` olarak ayarlanmıştır. Ama işte `overlayBlur` konfigürasyonunu nasıl kullanabileceğiniz.
+Varsayılan olarak, `overlayBlur` `yok` olarak ayarlanmış durumda. Ancak `overlayBlur` ayarını nasıl kullanabileceğiniz burada.
 
-Üst örtü bulanıklığını `small` olarak ayarlayın.
+Arka plan bulanıklığını `küçük` olarak ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -306,12 +306,12 @@ const App = () => {
 
 #### Karıştır ve eşleştir
 
-`accentColor`, `borderRadius` ve `fontStack` propsları ile farklı temaları nasıl kullanabileceğinizin birkaç farklı yolu.
+Farklı temaları `accentColor`, `borderRadius` ve `fontStack` özellikleriyle birlikte nasıl kullanabileceğiniz bazı yollar burada.
 
 - `lightTheme` temasını kullanın
-- Vurgu rengini özel mor değeri olarak ayarlayın
-- Kenar yarıçapını `medium` olarak ayarlayın
-- Yazı tipi yığınını `system` olarak ayarlayın
+- Vurgu rengini özel bir mor değere ayarlayın
+- Kenar yarıçapını `orta` olarak ayarlayın
+- Font kümesini `sistem` olarak ayarlayın
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -334,9 +334,9 @@ const App = () => {
 ```
 
 - `midnightTheme` temasını kullanın
-- Vurgu rengini yerleşik `pink` ön ayara ayarlayın.
-- Kenar yuvarlaklığını `small` olarak ayarlayın
-- Yazı tipi yığınını `system` olarak ayarlayın
+- Vurgu rengini yerleşik `pembe` ön ayarına ayarlayın.
+- Kenar yarıçapını `küçük` olarak ayarlayın
+- Font kümesini `sistem` olarak ayarlayın
 
 ```tsx
 import {
@@ -360,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### Karanlık mod desteği
+#### Koyu mod desteği
 
-Uygulamanız ışık ve karanlık modlar arasında geçiş yapmak için standart `prefers-color-scheme: dark` medya sorgusunu kullanıyorsa, seçeneğe bağlı olarak `lightMode` ve `darkMode` değerlerini içeren dinamik bir tema nesnesi sağlayabilirsiniz.
+Uygulamanız, açık ve koyu modlar arasında geçiş yapmak için standart `prefers-color-scheme: dark` medya sorgusunu kullanıyorsa, `lightMode` ve `darkMode` değerlerini içeren dinamik bir tema nesnesi sağlamayı tercih edebilirsiniz.
 
 ```tsx
 import {
