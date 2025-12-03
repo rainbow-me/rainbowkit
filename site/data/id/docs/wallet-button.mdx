@@ -1,23 +1,23 @@
 ---
-title: WalletButton
-description: Menggunakan dan menyesuaikan WalletButton
+title: TombolWallet
+description: Menggunakan dan menyesuaikan TombolWallet
 ---
 
-# WalletButton
+# TombolWallet
 
-> Catatan: `WalletButton` saat ini bergantung pada standar dompet EIP-1193, tetapi akan mendukung EIP-6963 dalam waktu dekat.
+> Catatan: `TombolWallet` saat ini mengandalkan standar dompet EIP-1193, tetapi akan segera mendukung EIP-6963.
 
-Komponen `WalletButton` yang baru membantu dApps dengan implementasi daftar dompet kustom untuk mengadopsi RainbowKit dan semua manfaatnya yang bebas perawatan.
+Komponen baru `TombolWallet` membantu dApps dengan implementasi daftar dompet kustom mengadopsi RainbowKit dan semua keuntungannya yang bebas perawatan.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
 
 <WalletButton wallet="rainbow" />
 <WalletButton wallet="metamask" />
-<WalletButton wallet="coinbase" />
+<WalletButton wallet="baseAccount" />
 ```
 
-Seperti `ConnectButton`, komponen `WalletButton.Custom` tersedia untuk implementasi dan gaya kustom.
+Seperti `TombolConnect`, komponen `TombolWallet.Custom` tersedia untuk implementasi dan gaya kustom.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ Seperti `ConnectButton`, komponen `WalletButton.Custom` tersedia untuk implement
 </WalletButton.Custom>
 ```
 
-Sebagian besar dApps paling baik menggunakan [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Rujuk dokumen [di sini](https://www.rainbowkit.com/docs/wallet-button) untuk informasi lebih lanjut tentang adopsi dan kasus penggunaan `WalletButton`.
+Sebagian besar dApps terbaik dilayani oleh [TombolConnect](https://www.rainbowkit.com/docs/connect-button). Rujuk dokumen [di sini](https://www.rainbowkit.com/docs/wallet-button) untuk informasi lebih lanjut tentang adopsi dan kasus penggunaan `TombolWallet`.
 
 #### Demo
 
 Tekan tombol di bawah ini untuk melihat seperti apa titik masuk RainbowKit ini.
 
-<WalletButtonDemo />
+<DemoTombolWallet />
