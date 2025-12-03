@@ -7,19 +7,19 @@ description: Anpassen von Ketten
 
 ## Anpassen von Ketten
 
-RainbowKit ist dafür ausgelegt, mit [wagmis `chain` Objekt](https://wagmi.sh/react/chains) zu interagieren. Schauen Sie sich die Liste der unterstützten Ketten [hier](https://wagmi.sh/react/chains#supported-chains) an.
+RainbowKit ist darauf ausgelegt, sich mit dem [wagmi `chain` Objekt](https://wagmi.sh/react/chains) zu integrieren. Schauen Sie sich die Liste der unterstützten Ketten [hier](https://wagmi.sh/react/chains#supported-chains) an.
 
-### Anpassen der initialen Kette
+### Anpassen der ursprünglichen Kette
 
-Standardmäßig verbindet sich RainbowKit mit der ersten an Wagmi übergebenen Kette. Dieses Verhalten kann über die `initialChain` Eigenschaft angepasst werden.
+Standardmäßig wird RainbowKit die erste an Wagmi gelieferte Kette verbinden. Dieses Verhalten kann über die `initialChain` Eigenschaft angepasst werden.
 
-Die initiale Kette kann mithilfe einer Ketten-ID konfiguriert werden.
+Die ursprüngliche Kette kann mit einer Ketten-ID konfiguriert werden.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Bequemlicherweise können Sie auch ein Kettenobjekt übergeben.
+Als praktische Lösung können Sie auch ein Kettenobjekt übergeben.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
@@ -27,7 +27,7 @@ Bequemlicherweise können Sie auch ein Kettenobjekt übergeben.
 
 ### Benutzerdefinierte Kettenmetadaten
 
-Standardmäßig werden mehrere Kettensymbole und Hintergründe bereitgestellt, aber Sie können das Symbol und den Hintergrund für jede Kette mit den Eigenschaften `iconUrl` und `iconBackground` anpassen.
+Mehrere Kettensymbole und Hintergründe werden standardmäßig bereitgestellt, aber Sie können das Symbol und den Hintergrund für jede Kette über die Eigenschaften `iconUrl` und `iconBackground` anpassen.
 
 Beispiel mit `getDefaultConfig`
 
