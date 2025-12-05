@@ -9,6 +9,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
+    "cuer": "^0.0.3",
     "next": "^15.3.6",
     "next-auth": "4.24.11",
     "react": "^19.1.2",
