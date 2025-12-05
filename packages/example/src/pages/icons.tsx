@@ -24,8 +24,8 @@ export const getStaticProps: GetStaticProps<IconsProps> = async () => {
     const files = fs.readdirSync(walletConnectorsPath);
 
     // Find hashed JS files (e.g., backpackWallet-QESORHY7.js)
-    const hashedJsFiles = files.filter(file =>
-      /^[a-zA-Z0-9]+(Wallet|Account)-[A-Z0-9]+\.js$/.test(file)
+    const hashedJsFiles = files.filter((file) =>
+      /^[a-zA-Z0-9]+(Wallet|Account)-[A-Z0-9]+\.js$/.test(file),
     );
 
     const seenWallets = new Set<string>();
@@ -36,7 +36,9 @@ export const getStaticProps: GetStaticProps<IconsProps> = async () => {
         const jsFilePath = path.join(walletConnectorsPath, jsFile);
         const jsContent = fs.readFileSync(jsFilePath, 'utf-8');
 
-        const svgDataUrlMatch = jsContent.match(/var \w+_default = "(data:image\/svg\+xml,[^"]+)";/);
+        const svgDataUrlMatch = jsContent.match(
+          /var \w+_default = "(data:image\/svg\+xml,[^"]+)";/,
+        );
 
         if (svgDataUrlMatch?.[1] && !seenWallets.has(walletName)) {
           seenWallets.add(walletName);
@@ -109,16 +111,42 @@ export default function Icons({ wallets }: IconsProps) {
                 <button
                   className="file-path"
                   onClick={() => {
-                    navigator.clipboard.writeText(`packages/rainbowkit/src/wallets/walletConnectors/${wallet.name}/${wallet.name}.svg`);
+                    navigator.clipboard.writeText(
+                      `packages/rainbowkit/src/wallets/walletConnectors/${wallet.name}/${wallet.name}.svg`,
+                    );
                   }}
                   aria-label="Copy file path"
                   title="Copy full path to clipboard"
                 >
-                  <span>src/wallets/walletConnectors/{wallet.name}/{wallet.name}.svg</span>
-                  <svg className="copy-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Copy to clipboard">
+                  <span>
+                    src/wallets/walletConnectors/{wallet.name}/{wallet.name}
+                    .svg
+                  </span>
+                  <svg
+                    className="copy-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Copy to clipboard"
+                  >
                     <title>Copy to clipboard</title>
-                    <path d="M9.5 1H2.5C1.94772 1 1.5 1.44772 1.5 2V9C1.5 9.55228 1.94772 10 2.5 10H9.5C10.0523 10 10.5 9.55228 10.5 9V2C10.5 1.44772 10.0523 1 9.5 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M3.5 10V11.5C3.5 12.0523 3.94772 12.5 4.5 12.5H11.5C12.0523 12.5 12.5 12.0523 12.5 11.5V4.5C12.5 3.94772 12.0523 3.5 11.5 3.5H10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path
+                      d="M9.5 1H2.5C1.94772 1 1.5 1.44772 1.5 2V9C1.5 9.55228 1.94772 10 2.5 10H9.5C10.0523 10 10.5 9.55228 10.5 9V2C10.5 1.44772 10.0523 1 9.5 1Z"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M3.5 10V11.5C3.5 12.0523 3.94772 12.5 4.5 12.5H11.5C12.0523 12.5 12.5 12.0523 12.5 11.5V4.5C12.5 3.94772 12.0523 3.5 11.5 3.5H10"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </div>
@@ -132,7 +160,9 @@ export default function Icons({ wallets }: IconsProps) {
             min-height: 100vh;
             background: #f5f5f5;
             padding: 40px 20px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont,
+              'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+              sans-serif;
         }
 
         .container {
@@ -142,7 +172,10 @@ export default function Icons({ wallets }: IconsProps) {
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            grid-template-columns: repeat(
+              auto-fill,
+              minmax(550px, 1fr)
+            );
             gap: 24px;
         }
 
