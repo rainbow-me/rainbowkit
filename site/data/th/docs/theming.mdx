@@ -1,21 +1,21 @@
 ---
-title: ธีม
+title: การตกแต่งธีม
 description: การใช้และปรับแต่งธีม
 ---
 
-# ธีม
+# การตกแต่งธีม
 
 ## การใช้และปรับแต่งธีม
 
-คุณสามารถปรับ UI ของ RainbowKit ให้ตรงกับแบรนด์ของคุณ. คุณสามารถเลือกสีเน้นและการตั้งค่ารัศมีขอบจากที่กำหนดไว้ล่วงหน้า.
+คุณสามารถปรับแต่ง RainbowKit UI ให้ตรงกับแบรนด์ของคุณได้ คุณสามารถเลือกจากสีเน้นและขนาดรัศมีขอบที่กำหนดล่วงหน้าได้เล็กน้อย
 
-มีฟังก์ชันธีมในตัว 3 ฟังก์ชัน:
+มีฟังก์ชันธีมในตัว 3 รูปแบบ:
 
-- `lightTheme` (ค่าเริ่มต้น)
+- `lightTheme` &nbsp; (ค่าเริ่มต้น)
 - `darkTheme`
 - `midnightTheme`
 
-ฟังก์ชันธีมจะส่งคืนวัตถุธีม. คุณสามารถส่งวัตถุไปยัง `RainbowKitProvider`'s `theme` prop.
+ฟังก์ชันธีมจะคืนค่าเป็นวัตถุธีม คุณสามารถส่งวัตถุนี้ไปยัง `RainbowKitProvider` ตำแหน่ง `theme` ได้
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-ถ้าคุณต้องการ, คุณสามารถส่ง `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` และ `overlayBlur` เพื่อปรับแต่ง.
+หากต้องการ คุณสามารถส่งค่า `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` และ `overlayBlur` เพื่อนำมาปรับแต่งได้
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### การปรับแต่งธีมที่สร้างไว้แล้ว
+### การปรับแต่งธีมในตัว
 
-ฟังก์ชันธีมที่มีอยู่ภายในยังยอมรับอ็อบเจ็กต์ตัวเลือก, ทำให้คุณสามารถเลือกจากหลายสไตล์ทางตาซึ่งแตกต่างกันได้
+ฟังก์ชันธีมในตัวยังรับวัตถุออปชัน ซึ่งช่วยให้คุณสามารถเลือกจากสไตล์ภาพที่แตกต่างกันได้หลายรูปแบบ
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        'สีพื้นหลัง/ข้อความขององค์ประกอบที่โต้ตอบได้หลายอย่าง',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'สีที่ใช้สำหรับองค์ประกอบเบื้องหน้าที่แสดงบนสีเน้น',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: 'ขนาดของสเกลรัศมีขอบทั้งหมด',
     },
     {
       name: 'fontStack',
@@ -85,20 +85,19 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
-    },
+        "สแต็คฟอนต์ที่ใช้ทั่ว UI โปรดทราบว่า `rounded` พยายามใช้ SF Pro Rounded หากไม่มี จะเป็นฟอนต์ระบบแทน",n    },
     {
       name: 'overlayBlur',
       required: false,
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'ความเบลอของพื้นหลังกระบวนการ',
     },
   ]}
 />
 
-ตัวอย่างเช่น การปรับแต่งธีมสีเข้มด้วยสีแอคเซนท์สีม่วงและสเกลรัศมีขอบ `medium`:
+เช่น การปรับแต่งธีมเข้มด้วยสีเน้นสีม่วงและสเกลรัศมีขอบ `medium`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +118,7 @@ const App = () => {
 };
 ```
 
-แต่ละธีมยังให้คำประกอบสีเฉพาะ (`blue`, `green`, `orange`, `pink`, `purple`, `red`) ที่สามารถแพร่ไปในวัตถุตัวเลือก ตัวอย่างเช่น การใช้คำประกอบสี `pink`:
+ในแต่ละธีมยังมีการตั้งค่าสีกำหนดไว้ล่วงหน้า (`blue`, `green`, `orange`, `pink`, `purple`, `red`) ที่สามารถนำไปใส่ในวัตถุออปชันได้ เช่น การใช้การตั้งค่าสีเน้น `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -140,9 +139,9 @@ const App = () => {
 
 ### ตัวอย่าง
 
-#### ฟังก์ชั่นของธีม
+#### ฟังก์ชันธีม
 
-นี่คือบางวิธีที่คุณสามารถใช้ prop `theme`
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ `theme` prop ได้
 
 ใช้ธีม `darkTheme`
 
@@ -173,9 +172,9 @@ export const App = () => (
 
 #### สีเน้น
 
-นี่คือวิธีการที่แตกต่างกันสองสามวิธีที่คุณสามารถใช้ `accentColor` config.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้การตั้งค่า `accentColor` ได้
 
-ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง.
+ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +194,7 @@ const App = () => {
 };
 ```
 
-ตั้งค่าสีเน้นเป็น `green` ที่ตั้งค่าไว้แล้ว.
+ตั้งค่าสีเน้นเป็นการตั้งค่า `green` ที่กำหนดไว้ล่วงหน้า
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +215,9 @@ const App = () => {
 
 #### รัศมีขอบ
 
-นี่คือวิธีการที่แตกต่างกันสองสามวิธีที่คุณสามารถใช้ `borderRadius` config.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้การตั้งค่า `borderRadius` ได้
 
-ตั้งค่ารัศมีขอบเป็น `medium`.
+ตั้งค่ารัศมีขอบเป็น `medium`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +236,7 @@ const App = () => {
 };
 ```
 
-ตั้งค่ารัศมีขอบเป็น `none`.
+ตั้งค่ารัศมีขอบเป็น `none`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +255,13 @@ const App = () => {
 };
 ```
 
-> เตือนความทรงจำ: ค่ารัศมีขอบที่มีให้คือ: `large` (ค่าเริ่มต้น), `medium`, `small` และ `none`.
+> เตือนความจํา: ค่ารัศมีขอบที่สามารถใช้งานได้คือ: `large` (ค่าเริ่มต้น), `medium`, `small` และ `none`
 
-#### ฟอนต์สแต็ก
+#### สแต็กฟอนต์
 
-โดยค่าเริ่มต้น, `fontStack` ถูกตั้งเป็น `rounded`. แต่นี่คือวิธีที่คุณสามารถใช้การตั้งค่า `fontStack`.
+โดยค่าเริ่มต้นนั้น `fontStack` จะตั้งค่าเป็น `rounded` นี่คือวิธีการใช้การตั้งค่า `fontStack`
 
-ตั้งค่า stack ของฟอนต์เป็น `system`.
+ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +280,11 @@ const App = () => {
 };
 ```
 
-#### เบลอซ้อนทับ
+#### การเบลอเลเยอร์ใน
 
-โดยค่าเริ่มต้น, `overlayBlur` ถูกตั้งเป็น `none`. แต่นี่คือวิธีที่คุณสามารถใช้การตั้งค่า `overlayBlur`.
+โดยค่าเริ่มต้นนั้น `overlayBlur` จะตั้งค่าเป็น `none` นี่คือวิธีการใช้การตั้งค่า `overlayBlur`
 
-ตั้งค่าเบลอโอเวอเลย์เป็น `small`.
+ตั้งค่าเบลอเลเยอร์ในเป็น `small`
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -306,12 +305,12 @@ const App = () => {
 
 #### ผสมและจับคู่
 
-นี่คือวิธีที่แตกต่างๆที่คุณสามารถใช้ธีมต่างๆ, กับ `accentColor`, `borderRadius` และ `fontStack` props ร่วมกัน.
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ธีมที่แตกต่างกันได้ พร้อมกับคุณสมบัติ `accentColor`, `borderRadius` และ `fontStack`
 
 - ใช้ธีม `lightTheme`
-- ตั้งค่าสีเน้นบนค่าสีม่วงที่กำหนดเอง
+- ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง
 - ตั้งค่ารัศมีขอบเป็น `medium`
-- ตั้งค่า stack ของฟอนต์เป็น `system`
+- ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -334,9 +333,9 @@ const App = () => {
 ```
 
 - ใช้ธีม `midnightTheme`
-- ตั้งค่าสีเน้นเป็นพรีเซ็ต `pink` ที่สร้างไว้ล่วงหน้า
+- ตั้งค่าสีเน้นเป็นการตั้งค่า `pink` ที่กำหนดไว้ล่วงหน้า
 - ตั้งค่ารัศมีขอบเป็น `small`
-- ตั้งค่า stack ของฟอนต์เป็น `system`
+- ตั้งค่าสแต็กฟอนต์เป็น `system`
 
 ```tsx
 import {
@@ -360,9 +359,9 @@ const App = () => {
 };
 ```
 
-#### สนับสนุนโหมดมืด
+#### รองรับโหมดมืด
 
-หากแอพของคุณใช้คิวรีมีเดีย `prefers-color-scheme: dark` มาตรฐานในการสลับระหว่างโหมดสว่างและมืด คุณสามารถให้ theme object ที่มีค่า `lightMode` และ `darkMode` ในการใช้งานเพิ่มเติม
+หากแอปของคุณใช้คิวรี่สื่อ `prefers-color-scheme: dark` มาตรฐานเพื่อสลับระหว่างโหมดสว่างและโหมดเข้ม คุณสามารถกำหนดวัตถุธีมไดนามิกที่มีค่า `lightMode` และ `darkMode` ได้ตามต้องการ
 
 ```tsx
 import {

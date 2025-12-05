@@ -1,13 +1,13 @@
 ---
-title: ConnectButton
-description: การใช้และปรับแต่ง ConnectButton
+title: ปุ่มเชื่อมต่อ
+description: การใช้และการปรับแต่งปุ่มเชื่อมต่อ
 ---
 
-# ConnectButton
+# ปุ่มเชื่อมต่อ
 
-## การใช้และปรับแต่ง ConnectButton
+## การใช้และการปรับแต่งปุ่มเชื่อมต่อ
 
-นี่คือส่วนประกอบหลัก มีหน้าที่ในการแสดงผลปุ่มเชื่อมต่อ/ยกเลิกการเชื่อมต่อ รวมถึง UI การสลับ chain
+นี่คือคอมโพเนนต์หลัก มันมีหน้าที่ในการแสดงปุ่มเชื่อมต่อ/ยกเลิกการเชื่อมต่อ รวมไปถึง UI สำหรับการสลับโซ่ด้วย
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,38 +17,38 @@ export const YourApp = () => {
 };
 ```
 
-> หมายเหตุ: ตรวจสอบให้แน่ใจว่าแอปของคุณถูกห่อด้วยผู้ให้บริการที่จำเป็น [อ่านเพิ่มเติม](/docs/installation#wrap-providers).
+> หมายเหตุ: ตรวจสอบให้แน่ใจว่าแอปของคุณถูกหุ้มด้วย provider ที่จำเป็น [อ่านเพิ่มเติม](/docs/installation#wrap-providers).
 
-### พร็อพ
+### คุณสมบัติ (Props)
 
-องค์ประกอบ `ConnectButton` เผยพร็อพหลายตัวให้กำหนดลักษณะของมัน ซึ่งรวมถึงการแสดง/ซ่อนขององค์ประกอบต่างๆ
+คอมโพเนนต์ `ConnectButton` เปิดเผยหลาย prop เพื่อปรับแต่งลักษณะการแสดงผล รวมถึงการแสดงผลวัตถุที่แตกต่างกัน
 
 <PropsTable
   data={[
     {
       name: 'label',
       required: false,
-      default: 'Connect Wallet',
+      default: 'เชื่อมต่อกระเป๋าเงิน',
       type: 'string',
-      description: 'ข้อความที่ปรากฏบนปุ่มเชื่อมต่อ',
+      description: 'ป้ายข้อความที่แสดงบนปุ่มเชื่อมต่อ',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'full',
+      default: 'เต็ม',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'สถานะของบัญชีว่าจะมีการแสดงอวตารหรือที่อยู่หรือไม่',
+        "ไม่ว่าที่อยู่หรืออวาตาร์ของบัญชีที่ใช้งานจะถูกแสดง",
     },
     {
       name: 'chainStatus',
       required: false,
-      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      default: '{ smallScreen: "icon", largeScreen: "เต็ม" }',
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        'สถานะของเชนว่าจะมีการแสดงไอคอนหรือชื่อหรือถูกซ่อนทั้งหมด',
+        "ไม่ว่าไอคอนหรือชื่อของโซ่ปัจจุบันจะถูกแสดงหรือถูกซ่อนไว้ทั้งหมด",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ export const YourApp = () => {
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        'การแสดงยอดคงเหลือที่อยู่ถัดจากชื่อบัญชี',
+        'ไม่ว่ายอดคงเหลือจะมองเห็นได้ถัดจากชื่อบัญชี',
     },
   ]}
 />
 
-> หมายเหตุ: ขนาดการแบ่งจอที่กำหนดในตัวของ `largeScreen` คือ `768px`
+> หมายเหตุ: จุดแบ่งหน้าจอแบบ `largeScreen` ที่ฝังในระบบคือ `768px`
 
 ### ตัวอย่าง
 
-#### ป้ายชื่อ
+#### ป้ายข้อความ (Label)
 
-ใช้พร็อพ `label` เพื่อกำหนดข้อความ ConnectButton เอง
+ใช้ prop `label` เพื่อกำหนดข้อความ `ConnectButton` แบบกำหนดเอง
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,57 +76,57 @@ export const YourApp = () => {
 
 #### สถานะบัญชี
 
-นี่คือบางวิธีที่คุณสามารถใช้พร็อพ `accountStatus`
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ prop `accountStatus`
 
-แสดงเฉพาะอวตารของบัญชี
+แสดงเฉพาะอวาตาร์ของบัญชีเท่านั้น
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-แสดงเฉพาะที่อยู่ของบัญชี
+แสดงเฉพาะที่อยู่ของบัญชีเท่านั้น
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### สถานะ chain
+#### สถานะโซ่
 
-นี่คือบางวิธีที่คุณสามารถใช้พร็อพ `chainStatus`
+นี่คือวิธีต่างๆ ที่คุณสามารถใช้ prop `chainStatus`
 
-แสดงเฉพาะไอคอนของ chain ปัจจุบัน
+แสดงเฉพาะไอคอนของโซ่ปัจจุบันเท่านั้น
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-แสดงเฉพาะชื่อของ chain ปัจจุบัน
+แสดงเฉพาะชื่อของโซ่ปัจจุบันเท่านั้น
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-ซ่อน UI ของ chain ทั้งหมด
+ซ่อน UI ของโซ่ทั้งหมด
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### แสดงยอดเงิน
+#### แสดงยอดเงินคงเหลือ
 
-ใช้พร็อพ `showBalance` เพื่อซ่อน/แสดงยอดเงิน
+ใช้ prop `showBalance` เพื่อซ่อน/แสดงยอดเงินคงเหลือ
 
-ซ่อนยอดเงิน
+ซ่อนยอดเงินคงเหลือ
 
 ```tsx
 <ConnectButton showBalance={__false__} />
 ```
 
-#### การตอบสนอง
+#### ตอบสนอง (Responsive)
 
-พร็อพเหล่านี้ยังสามารถกำหนดในรูปแบบการตอบสนองได้
+คุณสมบัติเหล่านี้ยังสามารถกำหนดรูปแบบที่ตอบสนองได้
 
-บนหน้าจอขนาดเล็ก แสดงเฉพาะไอคอนบัญชี แต่ในหน้าจอขนาดใหญ่ แสดงไอคอนและที่อยู่
+บนหน้าจอขนาดเล็ก ให้แสดงเฉพาะไอคอนของบัญชี แต่บนหน้าจอขนาดใหญ่ ให้แสดงทั้งไอคอนและที่อยู่
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-บนหน้าจอขนาดเล็ก ซ่อนยอดเงิน แต่บนหน้าจอขนาดใหญ่ แสดงมัน
+บนหน้าจอขนาดเล็ก ให้ซ่อนยอดเงินคงเหลือ แต่บนหน้าจอขนาดใหญ่ ให้แสดงยอดเงินคงเหลือ
 
 ```tsx
 <ConnectButton

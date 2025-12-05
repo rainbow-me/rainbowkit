@@ -1,17 +1,17 @@
 ---
 title: Carteras Personalizadas
-description: Crear una billetera personalizada
+description: Crear una cartera personalizada
 ---
 
 # Carteras Personalizadas
 
-## Crear una billetera personalizada
+## Crear una cartera personalizada
 
-> Nota: Esta API es inestable y es probable que cambie en un futuro cercano. Agregaremos más billeteras incorporadas con el tiempo. [Háganos saber](https://github.com/rainbow-me/rainbowkit/issues) si hay alguna billetera particular que le interese.
+> Nota: Esta API es inestable y probablemente cambie en el futuro cercano. Iremos añadiendo más carteras integradas con el tiempo. [Háganos saber](https://github.com/rainbow-me/rainbowkit/issues) si hay alguna cartera en particular que le interese.
 
-El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias billeteras personalizadas. Las siguientes propiedades se pueden configurar en el valor de retorno de su función `Wallet`:
+El tipo de función `Wallet` se proporciona para ayudarle a definir sus propias carteras personalizadas. Las siguientes propiedades se pueden configurar en el valor de retorno de su función `Wallet`:
 
-### Propiedades de la Billetera
+### Propiedades de la Cartera
 
 <PropsTable
   data={[
@@ -19,63 +19,58 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'ID único por cartera',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: 'Nombre de cartera legible por humanos',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'RDNS para cartera que soporta EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'Nombre corto opcional para uso móvil',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL para el icono de la cartera, o una promesa que resuelve a un URL de datos Base64',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Color de énfasis utilizado en flujos de descarga para carteras con una extensión de navegador y una aplicación móvil',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Color de fondo mientras carga el icono de la cartera',
     },
     {
       name: 'installed',
       required: false,
       type: 'boolean | undefined',
-      description: (
-        <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
-        </>
-      ),
+      description: 'Si se sabe que la cartera está instalada o <code>undefined</code> si no se puede determinar',
     },
     {
       name: 'downloadUrls',
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Objeto que contiene URLs de descarga',
     },
     {
       name: 'hidden',
@@ -83,7 +78,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Función para calcular si esta cartera debe ocultarse de la lista. Esto es útil para definir carteras genéricas de respaldo, por ejemplo, el "Injected Wallet" integrado utiliza esta función',
     },
     {
       name: 'createConnector',
@@ -91,7 +86,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Función para proporcionar la instancia del conector y la configuración de diferentes métodos de conexión, descritos a continuación',
     },
     {
       name: 'mobile',
@@ -99,14 +94,14 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'Función para resolver un URI de conexión de cartera móvil',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'Función para resolver un enlace profundo de aplicación de escritorio',
     },
     {
       name: 'qrCode',
@@ -114,7 +109,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'Objeto que contiene una función para resolver el URI del código QR, además de instrucciones opcionales de configuración de cartera móvil',
     },
     {
       name: 'extension',
@@ -122,14 +117,14 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'Objeto que contiene instrucciones opcionales de configuración de extensiones de navegador',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'Función para proporcionar la instancia del conector',
     },
   ]}
 />
@@ -148,7 +143,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'URL de Apple App Store',
+      description: 'URL de la App Store de Apple',
     },
     {
       name: 'mobile',
@@ -162,25 +157,25 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuarios que escanean el Código QR de descarga móvil',
+        'Página de destino para usuarios que escanean el código QR de descarga móvil',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'URL de Chrome Web Store',
+      description: 'URL de la Chrome Web Store',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'URL de complementos de Microsoft Edge',
+      description: 'URL de Microsoft Edge Add-ons',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'URL de complementos de Firefox',
+      description: 'URL de Firefox Browser Add-ons',
     },
     {
       name: 'opera',
@@ -192,21 +187,21 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'URL de Mac App Store',
+      description: 'URL de la Mac App Store',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Página de destino para usuarios de extensiones de escritorio cuando las URLs compatibles con el navegador no están disponibles',
+        'Página de destino para usuarios de extensiones de escritorio cuando no hay URLs compatibles con navegadores disponibles',
     },
   ]}
 />
 
 ### Ejemplos
 
-Por ejemplo, para crear una billetera personalizada utilizando WalletConnect:
+Por ejemplo, para crear una cartera personalizada usando WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +273,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Luego puedes agregar tu billetera personalizada en la [lista de billeteras](/docs/custom-wallet-list).
+Luego puede añadir su cartera personalizada en la [lista de carteras](/docs/custom-wallet-list).

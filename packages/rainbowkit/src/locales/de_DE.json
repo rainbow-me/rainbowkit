@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Fügen Sie Argent zu Ihrem Startbildschirm hinzu, um schneller auf Ihr Wallet zuzugreifen.",
-          "title": "Öffnen Sie die Argent-App"
+          "description": "Füge Ready zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen.",
+          "title": "Öffnen Sie die Ready App"
         },
         "step2": {
           "description": "Erstellen Sie ein Wallet und einen Benutzernamen oder importieren Sie ein bestehendes Wallet.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden.",
           "title": "Tippen Sie auf die WalletConnect-Schaltfläche"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Installieren Sie die Binance Wallet Erweiterung",
+          "description": "Wir empfehlen, die Binance Wallet an Ihre Taskleiste zu heften, um schneller darauf zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Stellen Sie sicher, dass Sie Ihr Wallet mit einer sicheren Methode sichern. Teilen Sie niemals Ihre geheime Phrase mit jemandem."
+        },
+        "step3": {
+          "title": "Aktualisieren Sie Ihren Browser",
+          "description": "Sobald Sie Ihr Wallet eingerichtet haben, klicken Sie unten, um den Browser zu aktualisieren und die Erweiterung zu laden."
         }
       }
     },
@@ -1130,11 +1144,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Installieren Sie die XDEFI Wallet-Erweiterung",
-          "description": "Wir empfehlen, die XDEFI Wallet an Ihre Taskleiste anzuheften, um schnelleren Zugriff auf Ihre Wallet zu haben."
+          "title": "Installieren Sie die CTRL Wallet-Erweiterung",
+          "description": "Wir empfehlen, CTRL Wallet an Ihre Taskleiste zu heften, um schneller auf Ihr Wallet zugreifen zu können."
         },
         "step2": {
           "title": "Erstellen oder importieren Sie ein Wallet",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffnen Sie keys.gemini.com",
+          "description": "Besuchen Sie keys.gemini.com in Ihrem mobilen Browser – kein App-Download erforderlich."
+        },
+        "step2": {
+          "title": "Erstellen Sie Ihr Wallet sofort",
+          "description": "Richten Sie Ihr Smart Wallet in Sekundenschnelle ein, indem Sie die integrierte Authentifizierung Ihres Geräts verwenden."
+        },
+        "step3": {
+          "title": "Scannen zum Verbinden",
+          "description": "Scannen Sie den QR-Code, um Ihr Wallet sofort zu verbinden – es funktioniert einfach."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Gehen Sie zu keys.gemini.com",
+          "description": "Keine Erweiterungen oder Downloads erforderlich – Ihr Wallet ist sicher im Browser integriert."
+        },
+        "step2": {
+          "title": "Ein-Klick Einrichtung",
+          "description": "Erstellen Sie Ihre Smart Wallet sofort mit Passkey-Authentifizierung – einfacher als jedes andere Wallet."
+        },
+        "step3": {
+          "title": "Verbinden und los",
+          "description": "Genehmigen Sie die Verbindung und Sie sind bereit – die unvoreingenommene Wallet, die einfach funktioniert."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Tippen Sie auf die Scan-Schaltfläche"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Öffne die ZilPay-App",
-        "description": "Füge ZilPay zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen."
-      },
-      "step2": {
-        "title": "Erstellen oder importieren Sie ein Wallet",
-        "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
-      },
-      "step3": {
-        "title": "Tippen Sie auf die Scan-Schaltfläche",
-        "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffne die ZilPay-App",
+          "description": "Füge ZilPay zu deinem Startbildschirm hinzu, um schneller auf dein Wallet zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Öffnen Sie die Nova Wallet App",
+          "description": "Fügen Sie die Nova Wallet Ihrem Startbildschirm hinzu, um schneller auf Ihr Wallet zuzugreifen."
+        },
+        "step2": {
+          "title": "Erstellen oder importieren Sie ein Wallet",
+          "description": "Erstellen Sie ein neues Wallet oder importieren Sie ein bestehendes."
+        },
+        "step3": {
+          "title": "Tippen Sie auf die Scan-Schaltfläche",
+          "description": "Nach dem Scannen erscheint eine Verbindungsmeldung, um Ihr Wallet zu verbinden."
+        }
       }
     }
   }

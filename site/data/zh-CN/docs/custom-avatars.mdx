@@ -1,13 +1,13 @@
 ---
 title: 自定义头像
-description: 定制您的应用程序的用户头像
+description: 自定义应用程序的用户头像
 ---
 
 # 自定义头像
 
-## 定制您的应用程序的用户头像
+## 自定义您的应用的用户头像
 
-默认情况下，我们为用户提供一个头像，以防他们的ENS图像未设置，但您可以通过提供自己的头像组件来自定义这个头像。 如果使用TypeScript，你可以导入`AvatarComponent`类型：
+默认情况下，如果用户的 ENS 图像未设置，我们会提供头像，但您可以通过提供自定义头像组件进行自定义。 如果使用 TypeScript，可以导入 `AvatarComponent` 类型：
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-传递给`avatar`属性的`AvatarComponent`的属性类型如下：`<{ address: string; ensImage?: string | null; size: number;}>`
+传递给 `avatar` 属性的 `AvatarComponent` 具有以下属性类型： `<{ address: string; ensImage?: string | null; size: number;}>`

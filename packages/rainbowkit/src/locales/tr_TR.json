@@ -214,15 +214,15 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "Cüzdanınıza daha hızlı erişim için Ready'i ana ekranınıza ekleyin.",
+          "title": "Ready uygulamasını açın"
         },
         "step2": {
           "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
           "title": "CüzdanBağlantısı düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Binance Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Binance Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
         }
       }
     },
@@ -1130,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "CTRL Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için CTRL Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
         },
         "step3": {
           "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
         }
       }
     },
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "keys.gemini.com adresini açın",
+          "description": "Mobil tarayıcınızdan keys.gemini.com adresini ziyaret edin - uygulama indirmenize gerek yok."
+        },
+        "step2": {
+          "title": "Cüzdanınızı Hemen Oluşturun",
+          "description": "Akıllı cüzdanınızı cihazınızın yerleşik kimlik doğrulamasıyla saniyeler içinde kurun."
+        },
+        "step3": {
+          "title": "Bağlanmak için Tarayın",
+          "description": "Cüzdanınızı anında bağlamak için QR kodunu tarayın - sadece çalışıyor."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "keys.gemini.com adresine gidin",
+          "description": "Genişletme veya indirme gerekmez - cüzdanınız tarayıcıda güvenle yer alır."
+        },
+        "step2": {
+          "title": "Tek Tıkla Kurulum",
+          "description": "Akıllı cüzdanınızı anında oluşturun: geçiş anahtarı doğrulaması ile - piyasadaki diğer cüzdanlardan daha kolay."
+        },
+        "step3": {
+          "title": "Bağlan ve Git",
+          "description": "Bağlantıyı onaylayın ve hazırsınız - sadece çalışan yorumsuz cüzdan."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Tarayıcı düğmesine dokunun"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "ZilPay uygulamasını açın",
-        "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
-      },
-      "step2": {
-        "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-        "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
-      },
-      "step3": {
-        "title": "Tarayıcı düğmesine dokunun",
-        "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "ZilPay uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için ZilPay'i ana ekranınıza ekleyin."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcı düğmesine dokunun",
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Nova Cüzdan uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Nova Cüzdanı ana ekranınıza ekleyin."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcı düğmesine dokunun",
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+        }
       }
     }
   }

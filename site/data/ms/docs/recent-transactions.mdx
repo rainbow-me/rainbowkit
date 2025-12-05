@@ -9,9 +9,9 @@ description: Tunjukkan transaksi terkini anda
 
 Anda boleh memilih untuk memaparkan transaksi terkini dalam mod akaun RainbowKit. Perhatikan bahawa semua transaksi disimpan dalam storan tempatan dan mesti didaftarkan secara manual dengan RainbowKit untuk dipaparkan.
 
-Pelaksanaan `ConnectButton` lalai juga akan memaparkan penunjuk pemuatan di sekitar avatar pengguna jika terdapat sebarang transaksi yang tertunda. Pelaksanaan `ConnectButton` khusus boleh mencipta semula tingkah laku ini melalui sifat `account.hasPendingTransactions` yang dihantar ke fungsi render anda.
+Pelaksanaan `ConnectButton` lalai juga akan memaparkan indikator pemuatan di sekitar avatar pengguna jika terdapat mana-mana transaksi yang belum selesai. Pelaksanaan `ConnectButton` custom boleh menghasilkan semula tingkah laku ini melalui properti `account.hasPendingTransactions` yang diserahkan kepada fungsi render anda.
 
-Untuk menggunakan ciri ini, mula-mula aktifkan pilihan `showRecentTransactions` pada `RainbowKitProvider`.
+Untuk menggunakan ciri ini, aktifkan dahulu pilihan `showRecentTransactions` pada `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transaksi kemudiannya boleh didaftarkan dengan RainbowKit menggunakan hook `useAddRecentTransaction`.
+Transaksi kemudian boleh didaftarkan dengan RainbowKit menggunakan hook `useAddRecentTransaction`.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Sebaik sahaja transaksi didaftarkan dengan RainbowKit, statusnya akan dikemas kini setelah selesai.
+Setelah transaksi didaftarkan dengan RainbowKit, statusnya akan dikemas kini setelah selesai.
 
-Secara lalai, transaksi akan dianggap selesai sebaik sahaja satu blok dilombong di atas blok di mana transaksi itu dilombong, tetapi ini boleh dikonfigurasikan dengan menentukan nilai `confirmations` tersuai.
+Secara lalai, transaksi akan dianggap selesai setelah satu blok telah dilombong di atas blok di mana transaksi tersebut dilombong, tetapi ini boleh ditetapkan dengan menentukan nilai `confirmations` yang khusus.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

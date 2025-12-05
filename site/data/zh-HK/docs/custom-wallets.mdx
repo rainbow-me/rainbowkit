@@ -7,9 +7,9 @@ description: 建立自訂錢包
 
 ## 建立自訂錢包
 
-> 注意：此 API 不穩定，可能在不久的將來會發生變化。 我們會隨著時間的推移加入更多內建錢包。 如果您對任何特定的錢包有興趣，[請告訴我們](https://github.com/rainbow-me/rainbowkit/issues)。
+> 注意：此 API 不穩定，可能會在近期內更改。我們將會隨時間增加更多內置錢包。[如果您對任何特定錢包感興趣，請告訴我們](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性：
+提供了 `Wallet` 函數類型來幫助您定義自己的自訂錢包。您可以在 `Wallet` 函數的返回值中配置以下屬性：
 
 ### 錢包屬性
 
@@ -19,45 +19,45 @@ description: 建立自訂錢包
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: '每個錢包的唯一 ID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: '人類可讀的錢包名稱',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: '支持 EIP6963 的錢包的 RDNS',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: '用於移動設備的可選短名稱',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        '錢包圖標的 URL，或解析為 Base64 數據 URL 的 promise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        '用於有瀏覽器擴展和移動應用錢包下載流程的重點顏色',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '錢包圖標加載時使用的背景顏色',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: 建立自訂錢包
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          錢包是否已知安裝，或{' '}
+          <code>undefined</code> 如果無法確定
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: 建立自訂錢包
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '包含下載 URL 的物件',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: 建立自訂錢包
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '用於計算此錢包是否應從列表中隱藏的函數。這對於定義通用的備用錢包非常有用，例如內置的 "注入錢包" 備用選項使用此功能',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: 建立自訂錢包
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '提供連接器實例和不同連接方法配置的函數，描述如下',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: 建立自訂錢包
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        '用於解析移動錢包連接 URI 的函數',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: '用於解析桌面應用深層鏈接的函數',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: 建立自訂錢包
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        '包含解析 QR 碼 URI 的函數的物件，以及可選的移動錢包設置說明',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ description: 建立自訂錢包
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        '包含瀏覽器擴展設置說明的可選物件',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: '提供連接器實例的函數',
     },
   ]}
 />
 
-### 下載網址屬性
+### DownloadUrls 屬性
 
 <PropsTable
   data={[
@@ -155,14 +155,14 @@ description: 建立自訂錢包
       required: false,
       type: 'string',
       description:
-        '行動用戶在 `android` 或 `ios` 不可用時的著陸頁',
+        '當 `android` 或 `ios` 不可用時，為行動用戶設置的著陸頁',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        '用戶掃描移動下載二維碼後的著陸頁',
+        '用於掃描行動下載 QR 碼用戶的著陸頁',
     },
     {
       name: 'chrome',
@@ -199,14 +199,14 @@ description: 建立自訂錢包
       required: false,
       type: 'string',
       description:
-        '桌面擴展用戶在瀏覽器兼容 URL 不可用時的著陸頁',
+        '當瀏覽器兼容的 URL 不可用時，為桌面擴展用戶設置的著陸頁',
     },
   ]}
 />
 
 ### 示例
 
-例如，使用 WalletConnect 建立自訂錢包：
+例如，使用 WalletConnect 來建立自訂錢包：
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-然後可以在[錢包列表](/docs/custom-wallet-list)中添加您的自訂錢包。
+然後，您可以在[自訂錢包列表](/docs/custom-wallet-list)中添加您的自訂錢包。

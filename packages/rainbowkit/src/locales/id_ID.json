@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Letakkan Argent di layar utama Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Buka aplikasi Argent"
+          "description": "Tambahkan Ready ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi Ready"
         },
         "step2": {
           "description": "Buat dompet dan nama pengguna, atau impor dompet yang ada.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
           "title": "Ketuk tombol WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pasang ekstensi Binance Wallet",
+          "description": "Kami merekomendasikan untuk memasang Binance Wallet di taskbar Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
         }
       }
     },
@@ -1130,15 +1144,15 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Dompet XDEFI",
-          "description": "Kami merekomendasikan menempelkan XDEFI Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "Instal ekstensi CTRL Wallet",
+          "description": "Kami merekomendasikan untuk menempelkan CTRL Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
         },
         "step3": {
           "title": "Segarkan browser Anda",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka keys.gemini.com",
+          "description": "Kunjungi keys.gemini.com di browser ponsel Anda - tidak perlu mengunduh aplikasi."
+        },
+        "step2": {
+          "title": "Buat Dompet Anda Seketika",
+          "description": "Siapkan dompet pintar Anda dalam hitungan detik menggunakan autentikasi bawaan perangkat Anda."
+        },
+        "step3": {
+          "title": "Pindai untuk Terhubung",
+          "description": "Pindai kode QR untuk langsung menghubungkan dompet Anda - ini berfungsi dengan sangat baik."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Pergi ke keys.gemini.com",
+          "description": "Tidak diperlukan ekstensi atau unduhan - dompet Anda aman di dalam browser."
+        },
+        "step2": {
+          "title": "Pengaturan Sekali Klik",
+          "description": "Buat dompet pintar Anda secara instan dengan otentikasi passkey - lebih mudah dari semua dompet yang ada diluar sana."
+        },
+        "step3": {
+          "title": "Sambungkan dan Mulai",
+          "description": "Setujui sambungan dan Anda siap - dompet yang tidak memihak yang hanya berfungsi."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Tekan tombol scan"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Buka aplikasi ZilPay",
-        "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
-      },
-      "step2": {
-        "title": "Buat atau Impor Dompet",
-        "description": "Buat dompet baru atau impor yang sudah ada."
-      },
-      "step3": {
-        "title": "Tekan tombol scan",
-        "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi ZilPay",
+          "description": "Tambahkan ZilPay ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Nova Wallet",
+          "description": "Tambahkan Nova Wallet ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
       }
     }
   }

@@ -1,19 +1,19 @@
 ---
 title: カスタム認証
-description: 自身の認証バックエンドに接続する
+description: 独自の認証バックエンドに接続する
 ---
 
 # カスタム認証
 
-## 自身の認証バックエンドに接続する
+## 独自の認証バックエンドに接続する
 
-RainbowKitはエテリアムとNextAuthでのサインインを最優先サポートしていますが、カスタムバックエンドやメッセージフォーマットとも統合することが出来ます。
+RainbowKitは、[EthereumでサインインとNextAuthに対する第一級のサポートを提供しますが、](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)独自のバックエンドやメッセージフォーマットと統合することもできます。
 
 ### カスタムアダプタの作成
 
-まず、認証アダプタを作成します。 これにより、RainbowKitがメッセージを作成/準備し、バックエンドと通信することができます。
+まず、認証アダプターを作成します。これにより、RainbowKitはメッセージを作成/準備してバックエンドと通信できます。
 
-例えば、カスタムAPIエンドポイントに対してエテリアムでサインインするための認証アダプタを作成することができます。例えば、[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)などです。
+例として、カスタムAPIエンドポイントに対して[Sign-In with Ethereum](https://login.xyz)を使用できる認証アダプターを作成するとします。例えば[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)のように。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### 認証状態の提供
 
-あなたのアプリケーションが既に何らかの形で認証ライフサイクルを管理している場合、現在の認証状態をカスタムアダプタと共に`RainbowKitAuthenticationProvider`に渡し、既存の`RainbowKitProvider`をラップすることができます。
+あなたのアプリケーションが既に認証ライフサイクルを何らかの形で管理している場合、`RainbowKitAuthenticationProvider`にカスタムアダプターを渡し、既存の`RainbowKitProvider`をラップして、現在の認証ステータスを渡すことができます。
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-ここまで来て、既存のオープンソース認証ライブラリーに対してアダプターを作成したなら、他の人が利用できるパッケージを作成することを検討してください！
+ここまで進み、既存のオープンソース認証ライブラリに対するアダプタを作成した場合、他の人が使用できるパッケージを作成することをご検討ください！

@@ -1,23 +1,23 @@
 ---
-title: WalletButton
-description: 使用和自訂 WalletButton
+title: 錢包按鈕
+description: 使用及自訂錢包按鈕
 ---
 
-# WalletButton
+# 錢包按鈕
 
-> 注意：`WalletButton` 目前依賴於 EIP-1193 錢包標準，但很快將支援EIP-6963。
+> 注意：`WalletButton` 目前依賴於 EIP-1193 錢包標準，但將在不久的將來支持 EIP-6963。
 
-全新的 `WalletButton` 組件幫助 dApp 在自定義錢包列表的實施中採用 RainbowKit 及其所有免維護的優勢。
+新的 `WalletButton` 組件幫助 dApps 採用自訂錢包列表實現及 RainbowKit 所有免維護的優勢。
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
 
 <WalletButton wallet="rainbow" />
 <WalletButton wallet="metamask" />
-<WalletButton wallet="coinbase" />
+<WalletButton wallet="baseAccount" />
 ```
 
-如同 `ConnectButton`，`WalletButton.Custom` 組件適用於自定義實作和樣式。
+就像 `ConnectButton`，`WalletButton.Custom` 組件適用於自訂實現和樣式設置。
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-大多數 dApps 都最佳化為使用 [ConnectButton](https://www.rainbowkit.com/docs/connect-button)。 參考 [說明文件](https://www.rainbowkit.com/docs/wallet-button) 獲取更多關於`WalletButton`採用和使用案例的信息。
+大多數 dApps 最佳選擇是 [ConnectButton](https://www.rainbowkit.com/docs/connect-button)。參考 [這裡](https://www.rainbowkit.com/docs/wallet-button) 的文檔以獲得更多關於 `WalletButton` 採用和使用案例的信息。
 
-#### 演示
+#### 示範
 
-按下面的按鈕以查看此RainbowKit入口點的樣子。
+按下面的按鈕查看這個 RainbowKit 入口的外觀。
 
 <WalletButtonDemo />

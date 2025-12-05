@@ -1,15 +1,15 @@
 ---
-title: Nút Kết Nối Tùy Chỉnh
-description: Tạo một Nút Kết Nối Tùy Chỉnh
+title: ConnectButton Tùy chỉnh
+description: Tạo một ConnectButton tùy chỉnh
 ---
 
-# Nút Kết Nối Tùy Chỉnh
+# ConnectButton Tùy chỉnh
 
-## Tạo một Nút Kết Nối Tùy Chỉnh
+## Tạo một ConnectButton tùy chỉnh
 
-Bạn có thể sử dụng `ConnectButton.Custom` cấp thấp để tạo nút kết nối tùy chỉnh của riêng bạn. Thành phần này kết xuất một hàm, bao gồm tất cả những gì bạn cần để tái triển khai các nút tích hợp sẵn.
+Bạn có thể sử dụng `ConnectButton.Custom` mức độ thấp để tạo nút kết nối tùy chỉnh của riêng bạn. Thành phần này sẽ hiển thị một hàm, bao gồm tất cả mọi thứ bạn cần để tái triển khai các nút tích hợp sẵn.
 
-Một tái triển khai tối thiểu của các nút tích hợp sẵn sẽ trông giống như sau:
+Một phiên bản tái triển khai tối nghĩa của các nút tích hợp sẽ trông giống như sau:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-Các thuộc tính sau đây được truyền vào hàm kết xuất của bạn.
+Các thuộc tính sau được chuyển vào hàm hiển thị của bạn.
 
 ### Thuộc tính tài khoản
 
@@ -122,7 +122,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'Đối tượng chứa các chi tiết về tài khoản hiện tại, được mô tả bên dưới',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          Địa chỉ tài khoản đầy đủ, ví dụ như
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'Số dư tài khoản bằng số thập phân',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          Số dư tài khoản được định dạng như một chuỗi, ví dụ như{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          Ký hiệu tiền tệ cho số dư, ví dụ như <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          Số dư được định dạng bằng 3 chữ số có ý nghĩa, cộng
+          ký hiệu, ví dụ như <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          Tên ENS, hoặc phiên bản rút gọn của địa chỉ, ví dụ như{' '}
+          <code>"rainbowwallet.eth"</code> hoặc <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'URI của avatar ENS',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          Tên ENS, ví dụ như <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Boolean chỉ định tài khoản có giao dịch đang chờ xử lý cho chuỗi hiện tại hay không',
     },
   ]}
 />
 
-### Thuộc tính chuỗi
+### Thuộc tính của chuỗi
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'object | undefined',
       description:
-        'Đối tượng chứa chi tiết về chuỗi hiện tại, được mô tả dưới đây',
+        'Đối tượng chứa các chi tiết về chuỗi hiện tại, được mô tả bên dưới',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Chuỗi có biểu tượng nào được chỉ định hay không',
+      description: 'Chuỗi có biểu tượng được chỉ định hay không',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'URL biểu tượng của chuỗi (có thể chưa được xác định khi tải xuống URLs dữ liệu Base64)',
+        'URL biểu tượng chuỗi (có thể cũng không được xác định trong khi tải dữ liệu URLs Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Nền của biểu tượng chuỗi sẽ hiển thị trong khi tải hình ảnh',
+        'Nền biểu tượng chuỗi sẽ hiển thị trong khi hình ảnh đang tải',
     },
     {
       name: 'chain.id',
@@ -247,7 +247,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'number',
       description: (
         <>
-          ID của chuỗi, ví dụ <code>1</code>
+          ID chuỗi, ví dụ như <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       type: 'string | undefined',
       description: (
         <>
-          Tên của chuỗi, ví dụ <code>"Ethereum"</code>
+          Tên chuỗi, ví dụ như <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean | undefined',
       description:
-        'Giá trị boolean cho biết chuỗi hiện tại có được hỗ trợ hay không',
+        'Boolean chỉ định chuỗi hiện tại có được hỗ trợ hay không',
     },
   ]}
 />
 
-### Thuộc tính trạng thái mô-đun
+### Thuộc tính trạng thái của modal
 
 <PropsTable
   data={[
@@ -279,39 +279,39 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại tài khoản',
+      description: 'Hàm mở modal tài khoản',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại chuỗi',
+      description: 'Hàm mở modal chuỗi',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Hàm để mở hộp thoại kết nối',
+      description: 'Hàm mở modal kết nối',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Giá trị boolean cho biết hộp thoại tài khoản có đang mở hay không',
+        'Boolean chỉ định modal tài khoản có mở hay không',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Giá trị boolean cho biết hộp thoại chuỗi có đang mở hay không',
+      description: 'Boolean chỉ định modal chuỗi có mở hay không',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Giá trị boolean cho biết hộp thoại kết nối có đang mở hay không',
+        'Boolean chỉ định modal kết nối có mở hay không',
     },
   ]}
 />
@@ -325,14 +325,14 @@ Các thuộc tính sau đây được truyền vào hàm kết xuất của bạ
       required: false,
       type: 'boolean',
       description:
-        'Boolean cho biết liệu thành phần đã được gắn chưa',
+        'Boolean chỉ định thành phần đã được gắn kết hay chưa',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Trạng thái xác thực hoặc chưa xác định nếu xác thực chưa được cấu hình',
+        'Trạng thái xác thực, hoặc không xác định nếu chưa được cấu hình.',
     },
   ]}
 />

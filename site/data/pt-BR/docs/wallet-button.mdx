@@ -1,23 +1,23 @@
 ---
-title: WalletButton
-description: Usando e personalizando o WalletButton
+title: BotãoCarteira
+description: Usando e personalizando o BotãoCarteira
 ---
 
-# WalletButton
+# BotãoCarteira
 
-> Nota: O `WalletButton` atualmente depende do padrão de carteira EIP-1193, mas dará suporte ao EIP-6963 em um futuro próximo.
+> Nota: O `BotãoCarteira` atualmente depende do padrão de carteiras EIP-1193, mas em breve suportará o EIP-6963.
 
-O novo componente `WalletButton` ajuda os dApps com implementações personalizadas de lista de carteiras a adotar o RainbowKit e todos os seus benefícios sem manutenção.
+O novo componente `BotãoCarteira` ajuda dApps com implementações de lista de carteiras personalizadas a adotarem o RainbowKit e todos os seus benefícios sem manutenção.
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
 
 <WalletButton wallet="rainbow" />
 <WalletButton wallet="metamask" />
-<WalletButton wallet="coinbase" />
+<WalletButton wallet="baseAccount" />
 ```
 
-Assim como o `ConnectButton`, o componente `WalletButton.Custom` está disponível para implementações e estilizações personalizadas.
+Assim como o `BotãoConectar`, o componente `BotãoCarteira.Custom` está disponível para implementações e estilos personalizados.
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ Assim como o `ConnectButton`, o componente `WalletButton.Custom` está disponív
 </WalletButton.Custom>
 ```
 
-A maioria dos dApps são melhor atendidos pelo [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Consulte a documentação [aqui](https://www.rainbowkit.com/docs/wallet-button) para mais informações sobre a adoção e casos de uso do `WalletButton`.
+A maioria dos dApps são melhor atendidos pelo [BotãoConectar](https://www.rainbowkit.com/docs/connect-button). Consulte a documentação [aqui](https://www.rainbowkit.com/docs/wallet-button) para mais informações sobre a adoção e casos de uso do `BotãoCarteira`.
 
 #### Demo
 
-Pressione os botões abaixo para ver como é esta entrada do RainbowKit.
+Pressione os botões abaixo para ver como este ponto de entrada do RainbowKit se parece.
 
-<WalletButtonDemo />
+<DemonstraçãoBotãoCarteira />

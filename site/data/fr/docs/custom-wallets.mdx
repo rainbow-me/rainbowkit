@@ -7,7 +7,7 @@ description: Créer un portefeuille personnalisé
 
 ## Créer un portefeuille personnalisé
 
-> Note : Cette API est instable et susceptible de changer dans un futur proche. Nous ajouterons plus de portefeuilles intégrés avec le temps. [Faites-nous savoir](https://github.com/rainbow-me/rainbowkit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
+> Remarque : Cette API est instable et susceptible de changer dans un avenir proche. Nous ajouterons de plus en plus de portefeuilles intégrés au fil du temps. [Faites-nous savoir](https://github.com/rainbow-me/rainbowkit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
 
 Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres portefeuilles personnalisés. Les propriétés suivantes peuvent être configurées sur la valeur de retour de votre fonction `Wallet` :
 
@@ -19,45 +19,45 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'ID unique par portefeuille',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: 'Nom du portefeuille lisible par l\'homme',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'RDNS pour portefeuille supportant EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'Nom court facultatif pour utilisation mobile',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL pour l\'icône du portefeuille, ou une promesse qui retourne une URL de données Base64',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Couleur d\'accent utilisée dans les flux de téléchargement pour les portefeuilles avec une extension de navigateur et une application mobile',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Couleur de fond pendant le chargement de l\'icône du portefeuille',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          Indique si le portefeuille est connu pour être installé, ou{' '}
+          <code>undefined</code> si indéterminé
         </>
       ),
     },
@@ -75,7 +75,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Objet contenant les URLs de téléchargement',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Fonction pour calculer si ce portefeuille doit être caché de la liste. Utile pour définir des portefeuilles de secours génériques, par exemple le "Injected Wallet" intégré utilise cette fonctionnalité',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Fonction pour fournir l\'instance du connecteur et la configuration pour différentes méthodes de connexion, décrites ci-dessous',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'Fonction pour résoudre un URI de connexion de portefeuille mobile',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'Fonction pour résoudre un lien profond d\'application de bureau',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'Objet contenant une fonction pour résoudre l\'URI du code QR, plus des instructions optionnelles de configuration de portefeuille mobile',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'Objet contenant les instructions de configuration optionnelles pour les extensions de navigateur',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'Fonction pour fournir l\'instance du connecteur',
     },
   ]}
 />
 
-### Propriétés de DownloadUrls
+### Propriétés DownloadUrls
 
 <PropsTable
   data={[
@@ -142,64 +142,64 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'URL Google Play',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'URL Apple App Store',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        'Page de destination pour les utilisateurs mobiles lorsque `android` ou `ios` sont indisponibles',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'Page de destination pour les utilisateurs qui scannent le code QR de téléchargement mobile',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'URL Chrome Web Store',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'URL Microsoft Edge Add-ons',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'URL des modules complémentaires Firefox',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'URL des add-ons Opera',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'URL Mac App Store',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'Page de destination pour les utilisateurs de l\'extension de bureau lorsque les URL compatibles avec les navigateurs ne sont pas disponibles',
     },
   ]}
 />
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Vous pouvez ensuite ajouter votre portefeuille personnalisé dans la [liste de portefeuilles](/docs/custom-wallet-list).
+Vous pouvez ensuite ajouter votre portefeuille personnalisé dans la [liste des portefeuilles](/docs/custom-wallet-list).

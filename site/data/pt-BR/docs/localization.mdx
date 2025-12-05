@@ -1,17 +1,17 @@
 ---
 title: Localização
-description: Personalizando o idioma do seu dApp com traduções embutidas
+description: Customizando o idioma do seu dApp com traduções integradas
 ---
 
 # Localização
 
-## Personalizando o idioma do seu dApp com traduções embutidas
+## Customizando o idioma do seu dApp com traduções integradas
 
-Por padrão, o RainbowKit suporta o local `en-US` para usuários de língua inglesa.
+Por padrão, o RainbowKit oferece suporte ao local `en-US` para usuários da língua inglesa.
 
-Se disponível, o RainbowKit detectará o [idioma preferido](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) do usuário e escolherá as traduções apropriadas. Os desenvolvedores podem sempre substituir o idioma padrão.
+Se disponível, o RainbowKit detectará a [linguagem preferida](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) do usuário e escolherá as traduções apropriadas. Os desenvolvedores sempre podem sobrescrever o idioma padrão.
 
-Para especificar um idioma para seus usuários, basta adicionar `locale="zh-CN"` como uma prop no seu `RainbowKitProvider`
+Para especificar um idioma para seus usuários, basta adicionar `locale="zh-CN"` como uma propriedade no seu `RainbowKitProvider`
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,9 +25,9 @@ export const App = () => (
 
 ### Usando com Next.js
 
-O suporte à localização do RainbowKit funciona ainda melhor com o [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+O suporte à localização do RainbowKit funciona ainda melhor com [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Configure seu projeto Next.js como o exemplo abaixo para adicionar um sub-caminho `/locale/` opcional às suas rotas, o que ajudará os motores de busca e usuários a descobrir melhor seu suporte multilíngue.
+Configure o seu projeto Next.js como o exemplo abaixo para adicionar um subcaminho `/locale/` opcional às suas rotas, o que ajudará os motores de busca e os usuários a descobrirem melhor seu suporte multilíngue.
 
 ```json
 // next.config.js
@@ -54,11 +54,11 @@ export const App = () => {
 };
 ```
 
-Você pode referenciar um exemplo para o Pages Router [aqui](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+Você pode consultar um exemplo para o Pages Router [aqui](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
 
-App Router ainda não suporta i18n. Consulte nosso exemplo separado [aqui](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) para melhores práticas de implementação com o middleware [`next-intl`](https://github.com/amannn/next-intl).
+O App Router ainda não suporta i18n. Consulte nosso exemplo separado [aqui](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) para as melhores práticas de implementação com o middleware [`next-intl`](https://github.com/amannn/next-intl).
 
-É recomendado que você use as mesmas técnicas para traduzir o conteúdo do seu dApp para suporte completo de localização. Bibliotecas de localização como [`i18n-js`](https://github.com/fnando/i18n) e [`next-intl`](https://github.com/amannn/next-intl) e ferramentas de gerenciamento como Crowdin simplificarão esse processo.
+Recomenda-se que você use as mesmas técnicas para traduzir o conteúdo do seu dApp para obter suporte total à localização. Bibliotecas de localização, como [`i18n-js`](https://github.com/fnando/i18n) e [`next-intl`](https://github.com/amannn/next-intl), e ferramentas de gerenciamento como Crowdin simplificarão esse processo.
 
 ### Idiomas Suportados
 
@@ -66,31 +66,31 @@ Oferecemos suporte completo para as seguintes regiões `locale`:
 
 <Table
   header={[
-    'Idioma', 'Região', 'Localidade', 'Abreviação'
+    'Idioma', 'Região', 'Locale', 'Forma abreviada'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
   ]}
   data={[
-    ['English', 'United States 🇺🇸', 'en-US', 'en'],
-    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
+    ['Inglês', 'Estados Unidos 🇺🇸', 'en-US', 'en'],
+    ['中文', 'China Continental 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
     ['繁體中文', 'Hong Kong 🇭🇰', 'zh-HK'],
     ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
-    ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
-    ['Español', 'Latin America 🌎', 'es-419', 'es'],
-    ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],
-    ['العربية', 'Middle East 🌍', 'ar-AR', 'ar'],
-    ['Português', 'Brazil 🇧🇷', 'pt-BR', 'pt'],
-    ['Русский', 'Russia 🇷🇺', 'ru-RU', 'ru'],
-    ['Bahasa Indonesia', 'Indonesia 🇮🇩', 'id-ID', 'id'],
-    ['日本語', 'Japan 🇯🇵', 'ja-JP', 'ja'],
-    ['Türkçe', 'Turkey 🇹🇷', 'tr-TR', 'tr'],
-    ['한국어', 'South Korea 🇰🇷', 'ko-KR', 'ko'],
-    ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
-    ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
-    ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
+    ['हिंदी', 'Índia 🇮🇳', 'hi-IN', 'hi'],
+    ['Espanhol', 'América Latina 🌎', 'es-419', 'es'],
+    ['Francês', 'França 🇫🇷', 'fr-FR', 'fr'],
+    ['العربية', 'Oriente Médio 🌍', 'ar-AR', 'ar'],
+    ['Português', 'Brasil 🇧🇷', 'pt-BR', 'pt'],
+    ['Russo', 'Rússia 🇷🇺', 'ru-RU', 'ru'],
+    ['Bahasa Indonésia', 'Indonésia 🇮🇩', 'id-ID', 'id'],
+    ['Japonês', 'Japão 🇯🇵', 'ja-JP', 'ja'],
+    ['Turco', 'Turquia 🇹🇷', 'tr-TR', 'tr'],
+    ['Tailandês', 'Tailândia 🇹🇭', 'th-TH', 'th'],
+    ['Ucraniano', 'Ucrânia 🇺🇦', 'uk-UA', 'ua'],
+    ['Tiếng Việt', 'Vietnã 🇻🇳', 'vi-VN', 'vi'],
+    ['Alemão', 'Alemanha 🇩🇪', 'de-DE', 'de'],
+    ['Malaio', 'Malásia 🇲🇾', 'ms-MY', 'ms']
   ]}
 />
 
-Se você gostaria de ver suporte para um idioma adicional, por favor, abra uma [Discussão no GitHub](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) e trabalharemos para apoiá-lo o mais rápido possível.
+Se você gostaria de ver suporte para um idioma adicional, por favor abra uma [Discussão no GitHub](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) e trabalharemos para suportá-lo o mais rápido possível.

@@ -1,17 +1,17 @@
 ---
 title: 最近交易
-description: 显示您的最近交易
+description: 显示您的近期交易记录
 ---
 
 # 最近交易
 
-## 显示您的最近交易
+## 显示您的近期交易记录
 
-您可以选择在 RainbowKit 的账户模态框中显示最近的交易。 请注意，所有交易都保留在本地存储中，必须手动注册至 RainbowKit 才能显示。
+您可以选择在 RainbowKit 的帐户模式中显示最近的交易记录。请注意，所有交易都保存在本地存储中，必须手动注册到 RainbowKit 中才能显示。
 
-`ConnectButton`的默认实现还将在用户的头像周围显示一个加载指示器，如果有任何挂起的交易。 自定义 `ConnectButton` 实现可以通过传递给您的渲染函数的 `account.hasPendingTransactions` 属性重现此行为。
+默认的 `ConnectButton` 实现还将在用户头像周围显示加载指示器，如果有任何未决交易。自定义 `ConnectButton` 实现可以通过传递给渲染函数的 `account.hasPendingTransactions` 属性重现此行为。
 
-要使用此功能，首先启用 `RainbowKitProvider` 上的 `showRecentTransactions` 选项。
+要使用此功能，首先在 `RainbowKitProvider` 上启用 `showRecentTransactions` 选项。
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-然后可以使用 `useAddRecentTransaction` hook 将交易注册到 RainbowKit。
+然后可以使用 `useAddRecentTransaction` 钩子将交易注册到 RainbowKit。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-一旦交易已经在 RainbowKit 中注册，其状态将在完成时进行更新。
+一旦交易在 RainbowKit 中注册，其状态将在完成后更新。
 
-默认情况下，一旦在交易被挖矿的区块之上挖出一个区块，交易就会被视为已完成，但是可以通过指定自定义的`confirmations`值来配置这一点。
+默认情况下，交易将在其所在区块上已开采出一个新区块后被视为已完成，但这可以通过指定自定义的 `confirmations` 值进行配置。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

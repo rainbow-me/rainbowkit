@@ -7,7 +7,7 @@ description: Personalizando a lista de carteiras
 
 ## Personalizando a lista de carteiras
 
-Você pode importar carteiras individuais de `'@rainbow-me/rainbowkit/wallets'` junto com a função `connectorsForWallets` para construir sua própria lista de carteiras com seus respectivos conectores necessários. Dessa forma, você tem controle total sobre quais carteiras exibir e em que ordem.
+Você pode importar carteiras individuais de `'@rainbow-me/rainbowkit/wallets'` juntamente com a função `connectorsForWallets` para criar sua própria lista de carteiras com os conectores necessários. Dessa forma, você tem total controle sobre quais carteiras exibir e em qual ordem.
 
 Por exemplo, você pode optar por mostrar apenas a Rainbow junto com carteiras genéricas de fallback.
 
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Você pode então passar seus conectores para o `createConfig` do `wagmi`.
+Você pode então passar seus conectores para a função `createConfig` do Wagmi.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -58,19 +58,19 @@ const App = () => (
 );
 ```
 
-### SafePal Wallet
+### Carteiras Integradas
 
 As seguintes carteiras são fornecidas através do objeto `wallet`.
 
 #### Carteiras Genéricas
 
-As seguintes carteiras são destinadas a métodos de conexão genéricos, em vez de aplicativos específicos. Como resultado, é recomendado que essas carteiras estejam sempre incluídas.
+As seguintes carteiras são destinadas a métodos de conexão genéricos em vez de aplicativos específicos. Como resultado, é recomendado que essas carteiras sejam sempre incluídas.
 
 ##### WalletConnect
 
-Esta é uma opção de carteira de fallback projetada para carteiras baseadas em WalletConnect que não foram fornecidas por outra carteira na lista.
+Esta é uma opção de carteira fallback projetada para carteiras baseadas no WalletConnect que não foram fornecidas por outra carteira na lista.
 
-**É recomendado que você sempre inclua esta carteira na lista para garantir que todas as carteiras baseadas em WalletConnect sejam suportadas.**
+**Recomenda-se que você sempre inclua esta carteira na lista para garantir que todas as carteiras baseadas no WalletConnect sejam suportadas.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -78,36 +78,30 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Carteira Injetada
 
-Esta é uma opção de carteira de fallback projetada para cenários onde `window.ethereum` existe, mas não foi fornecida por outra carteira na lista. Esta carteira irá se ocultar automaticamente da lista quando o fallback não for necessário ou se não houver carteira injetada disponível.
+Esta é uma opção de carteira fallback projetada para cenários onde `window.ethereum` existe, mas não foi fornecida por outra carteira na lista. Esta carteira se ocultará automaticamente da lista quando o fallback não for necessário ou se não houver uma carteira injetada disponível.
 
-**É recomendado que você sempre inclua esta carteira na lista para garantir que todas as carteiras injetadas sejam suportadas.**
+**Recomenda-se que você sempre inclua esta carteira na lista para garantir que todas as carteiras injetadas sejam suportadas.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### Carteira Safe
 
-Para dApps que suportam Safe Apps para permitir que os usuários se conectem facilmente com seu cofre Safe ou multi-sig, inclua a opção `safeWallet` para conexões automáticas. A opção Safe só aparecerá no ambiente do navegador Safe Wallet.
+Para dApps que suportam Safe Apps, permitindo que os usuários conectem facilmente com seu cofre Safe ou multi-sig, inclua a opção `safeWallet` para conexões automáticas. A opção Safe só aparecerá no ambiente do navegador Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-### Carteiras Especificas
+### Carteiras Específicas
 
 As seguintes carteiras são fornecidas através do objeto `wallet` (em ordem alfabética).
 
-#### 1inch Wallet
+#### Carteira 1inch
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Argent
-
-```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Backpack
@@ -116,19 +110,57 @@ import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Conta Base (antes conhecida como Coinbase Wallet)
+
+Este conector de carteira suporta Conta Base, a evolução da Coinbase Smart Wallet. Ele fornece autenticação contínua e recursos aprimorados como subcontas e permissões de gasto.
+
+As opções de configuração estão alinhadas com a [referência do SDK da Conta Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
+```
+
 #### BeraSig
 
 ```tsx
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Best Wallet
+#### Melhor Carteira
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### Carteira Bifrost
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Binance Web3
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -138,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -158,62 +184,31 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom Wallet
+#### Carteira Bloom
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave Wallet
+#### Carteira Brave
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit Wallet
+#### Carteira Bybit
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Este conector de carteira suporta tanto o aplicativo e extensão da Coinbase Wallet, quanto a Coinbase Smart Wallet na Web.
-
-Um argumento de `preferência` está disponível para controlar se a Smart Wallet está ativada e disponível para os usuários. O comportamento baseado em preferência está documentado [aqui](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
-
-Opções adicionais de configuração para controle de [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) e [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) podem ser encontradas na documentação do Coinbase Wallet SDK [aqui](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
-#### Coin98 Wallet
+#### Carteira Coin98
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Compass Wallet
+#### Carteira Compass
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
@@ -225,13 +220,19 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dawn Wallet
+#### Carteira CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Dawn
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Enkrypt Wallet
+#### Carteira Enkrypt
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -243,22 +244,37 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame Wallet
+#### Carteira Frame
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Wallet
+#### Carteira Frontier
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Wallet
+#### Carteira Gate
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Gemini
+
+Este conector de carteira inteligente permite autenticação perfeita através de passkeys em keys.gemini.com - sem downloads, extensões ou chaves API necessárias. Funciona direto de fábrica.
+
+O parâmetro `appName` é obrigatório para identificar seu dApp, e `appIcon` é opcional para a personalização da experiência de conexão.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -267,13 +283,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay Wallet
+#### Carteira ioPay
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kaia Wallet
+#### Carteira Kaia
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -285,13 +301,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken Wallet
+#### Carteira Kraken
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus Wallet
+#### Carteira Kresus
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -303,16 +319,10 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### Carteira Magic Eden
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MEW Wallet
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
@@ -321,7 +331,19 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX Wallet
+#### Carteira MEW
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Nova
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira OKX
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -351,7 +373,13 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby Wallet
+#### Porto
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Rabby
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -363,13 +391,19 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### Carteira Ramper
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### Pronto
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Carteira Ronin
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -411,7 +445,7 @@ import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Carteira Uniswap
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -423,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Wigwam
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -447,17 +481,11 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 ### Exemplos
 
 #### Ordenação
 
-Aqui estão alguns exemplos de exibição de diferentes carteiras, em diferentes ordens.
+Aqui estão alguns exemplos de como exibir diferentes carteiras, em diferentes ordens.
 
 Mostre MetaMask junto com carteiras genéricas de fallback.
 
@@ -479,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostrar Rainbow, MetaMask e Coinbase juntamente com carteiras genéricas de fallback.
+Mostrar Rainbow, MetaMask e Conta Base juntamente com carteiras genéricas de fallback.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -497,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -506,20 +534,20 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Lembrete: A ordem do array `wallets` define a ordem em que as carteiras serão exibidas na interface do usuário.
+> Lembrete: A ordem do array `wallets` define a ordem em que as carteiras serão exibidas na UI.
 
 #### Múltiplos grupos
 
-Você pode usar a chave `groupName` para nomear diferentes grupos de carteira. Isso é útil se você deseja comunicar aos seus usuários quais carteiras você recomenda, bem como outras carteiras possíveis.
+Você pode usar a chave `groupName` para nomear diferentes grupos de carteiras. Isso é útil se você quiser comunicar aos seus usuários quais carteiras você recomenda, bem como outras possíveis carteiras.
 
-Recomende Rainbow e MetaMask, mas também ofereça Coinbase juntamente com carteiras genéricas de fallback.
+Recomende Rainbow e MetaMask, mas também ofereça Conta Base juntamente com carteiras genéricas de fallback.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -531,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

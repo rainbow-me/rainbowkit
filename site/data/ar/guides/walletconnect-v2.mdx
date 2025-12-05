@@ -1,44 +1,44 @@
 ---
-title: ترقية التطبيق الخاص بك إلى WalletConnect v2
-description: تم ترقية RainbowKit إلى الإصدار v2، ويمكنك تجهيز تطبيقك خلال 5 دقائق أو أقل
+title: ترقية تطبيقك اللامركزي إلى WalletConnect الإصدار 2
+description: لقد تمت ترقية RainbowKit إلى الإصدار 2، ويمكنك تحضير تطبيقك اللامركزي في غضون 5 دقائق أو أقل
 image: guide-walletconnect-v2.png
 ---
 
-# الانتقال إلى WalletConnect v2
+# الترقية إلى WalletConnect الإصدار 2
 
-## أعد تطبيقك للترقية إلى الإصدار v2 في 5 دقائق أو أقل
+## حضر تطبيقك اللامركزي للترقية إلى الإصدار 2 في 5 دقائق أو أقل
 
-سيتم إغلاق بروتوكول WalletConnect v1 في 28 يونيو 2023، و RainbowKit في خدمتك لجعل الانتقال بسيط للغاية.
+سيتم إيقاف تشغيل بروتوكول WalletConnect الإصدار 1 في 28 يونيو 2023، ويدعمك RainbowKit لجعل الانتقال بسيطاً للغاية.
 
-الدعم الآن متوفر كمعيار في RainbowKit لـ WalletConnect v2 بدون أي تغييرات تقوضه. فقط قم بالترقية وراجع الدليل أدناه للحصول على تفاصيل إضافية.
+تم الآن دعم WalletConnect الإصدار 2 بشكل قياسي في RainbowKit، بدون تغيرات مفاجئة. فقط قم بالترقية وارجع إلى الدليل أدناه للحصول على تفاصيل إضافية.
 
-#### فهم WalletConnect v2
+#### فهم WalletConnect الإصدار 2
 
-WalletConnect هو البروتوكول الذي يسمح للمستخدمين بربط محافظهم المحمولة بالتطبيق الخاص بك، وهو أساس مهم لـ RainbowKit. تقدم الإصدار الحديث من WalletConnect v2 العديد من الترقيات المهمة لجعل تجربة الحافظة والـ dApp أفضل من ذي قبل.
+WalletConnect هو البروتوكول الذي يتيح للمستخدمين توصيل محافظهم المتنقلة مع تطبيقك اللامركزي، وهو قاعدة أساسية لـ RainbowKit. الإصدار الأخير من WalletConnect 2 يجلب عدداً من الترقيات الهامة لتحسين تجربة المحفظة والتطبيق.
 
-مع الإصدار v2، يمكن للمستخدمين الآن الاتصال بشكل متزامن بعدة سلاسل، لذا يمكنك نسيان مصافحة تبديل السلسلة. كما يوسع الدعم لمزيد من الشبكات، ويجلب تحسينات تجعل تسجيل الدخول مع Ethereum أسرع حتى.
+مع الإصدار 2، يمكن للمستخدمين الآن الاتصال المتزامن بسلاسل متعددة، لذلك يمكنك نسيان المصافحة بالتبديل بين السلاسل. كما يقدم دعماً أوسع لمزيد من الشبكات، ومزايا تجعل تسجيل الدخول باستخدام Ethereum أسرع.
 
-#### ترقية dApp الخاص بك
+#### ترقية تطبيقك اللامركزي
 
-إذا قمت بالفعل باتباع دلائل الترحيل لـ RainbowKit`0.12.x` و `1.0.x`، فأنت على بعد خطوة واحدة من ذلك! فقط قم بالترقية إلى الإصدار الختم الأخير وجربه.
+إذا كنت قد اتبعت بالفعل أدلة الترقية لـ RainbowKit `0.12.x` و `1.0.x`، فأنت قد اقتربت بالفعل! فقط قم بالترقية إلى أحدث إصدار جزيئي وجربه.
 
-قام RainbowKit بتمكين WalletConnect v2 بشكل افتراضي مع `0.12.15` و `1.0.2`. نحن مستمرون في الدعم لـ `0.12.x` في حالة عدم ترقية dApp الخاص بك بعد إلى wagmi v1 و RainbowKit v1.
+قام RainbowKit بتمكين WalletConnect الإصدار 2 بشكل افتراضي مع `0.12.15` و `1.0.2`. نحن نواصل دعم `0.12.x` في حال لم يقم تطبيقك اللامركزي بالترقية إلى Wagmi الإصدار 1 وRainbowKit الإصدار 1 بعد.
 
-**1. ترقية الاعتمادات**
+**1. ترقية التبعيات**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 ```
 
-إذا كنت تستخدم إصدارًا من RainbowKit قبل `0.12.x` أو `1.0.x`، فقط اتبع [دلائل الترحيل](/docs/migration-guide) للحصول على أحدث تحديث.
+إذا كنت تستخدم إصدار من RainbowKit قبل `0.12.x` أو `1.0.x`، فقط اتبع [أدلة الترحيل](/docs/migration-guide) لتحديث خطواتك.
 
-يُوصى بأن تبدأ dApps `0.12.x` في الترقية إلى wagmi v1، حيث أن تحسينات الثبات لـ WalletConnect v2 ستتضمن فقط في الإصدارات المستقبلية من wagmi.
+يوصى بأن تبدأ التطبيقات اللامركزية `0.12.x` في الترقية إلى Wagmi الإصدار 1، حيث سيتم تضمين تحسينات استقرار WalletConnect الإصدار 2 فقط في الإصدارات المستقبلية من Wagmi.
 
-**2. توفير projectId**
+**2. تزويد projectId**
 
-كل تطبيق dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تماما ولا يستغرق سوى بضع دقائق.
+كل dApp يعتمد على WalletConnect يحتاج الآن للحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا عمل مجاني تمامًا ولا يستغرق سوى بضع دقائق.
 
-قم بتزويد `projectId` الخاص بك إلى `getDefaultWallets` والموصلات المحفظة RainbowKit الفردية مثل ما يلي:
+قم بتقديم `projectId` إلى `getDefaultWallets` وموصلات المحفظة الفردية لـ RainbowKit كما في الآتي:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
@@ -52,7 +52,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      argentWallet({ projectId, chains }),
+      readyWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
     ],
@@ -60,13 +60,13 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit آمن من حيث النوع وسيحذرك عندما يكون `projectId` مفقودًا. راجع أمثلتنا لمشاهدة v2 في العمل:
+RainbowKit آمن من ناحية الأنواع وسيحذرك عندما يكون `projectId` مفقودًا. راجع أمثلتنا لرؤية الإصدار 2 في العمل:
 
-- [إنشاء React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- [إنشاء تطبيق React](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- [توجيه تطبيق Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- [مع Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- [مع Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- [رد فعل الموجه](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- [موجه تطبيق Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- [ريمكس](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- [فيت](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
 
-راجع [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) للحصول على خيارات مدعومة إضافية.
+ارجع إلى [الوثائق](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) للحصول على خيارات إضافية مدعومة.

@@ -1,15 +1,15 @@
 ---
-title: Özel ConnectButton
-description: Özel bir ConnectButton oluşturma
+title: Özel BağlanDüğmesi
+description: Özel bir BağlanDüğmesi oluşturma
 ---
 
-# Özel ConnectButton
+# Özel BağlanDüğmesi
 
-## Özel bir ConnectButton oluşturma
+## Özel bir BağlanDüğmesi oluşturma
 
-Kendi özel bağlantı düğmenizi oluşturmak için düşük seviye `ConnectButton.Custom` kullanabilirsiniz. Bu bileşen, yerleşik düğmeleri yeniden uygulamanız gereken her şeyi içeren bir fonksiyon oluşturur.
+Kendi özel bağlantı düğmenizi oluşturmak için düşük seviyeli `ConnectButton.Custom` kullanabilirsiniz. Bu bileşen, yerleşik düğmeleri yeniden uygulamanız için gereken her şeyi içeren bir fonksiyon sunar.
 
-Yerleşik düğmelerin minimal yeniden uygulanması şöyle görünebilir:
+Yerleşik düğmelerin minimal bir yeniden uygulaması şöyle görünebilir:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,101 +111,101 @@ export const YourApp = () => {
 };
 ```
 
-Aşağıdaki özellikler render fonksiyonunuza geçirilir.
+Aşağıdaki props, render fonksiyonunuza iletilir.
 
 ### Hesap özellikleri
 
 <PropsTable
   data={[
     {
-      name: 'account',
+      name: 'hesap',
       required: false,
-      type: 'object | undefined',
+      type: 'object | tanımsız',
       description:
-        'Object containing details about the current account, described below',
+        'Aşağıda açıklanan mevcut hesap hakkında bilgiler içeren nesne',
     },
     {
-      name: 'account.address',
+      name: 'hesap.adres',
       required: false,
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          Tam hesap adresi, örn.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
     },
     {
-      name: 'account.balanceDecimals',
+      name: 'hesap.bakiyeOndalik',
       required: false,
-      type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      type: 'string | tanımsız	',
+      description: 'Hesap bakiyesi ondalıklarla',
     },
     {
-      name: 'account.balanceFormatted',
+      name: 'hesap.bakiyeFormatli',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | tanımsız	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          Bir dizi olarak formatlanmış hesap bakiyesi, örn.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
     },
     {
-      name: 'account.balanceSymbol',
+      name: 'hesap.bakiyeSembol',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | tanımsız	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          Bakiyenin para birimi sembolü, örn. <code>ETH</code>
         </>
       ),
     },
     {
-      name: 'account.displayBalance',
+      name: 'hesap.gorunenBakiye',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | tanımsız	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          Bakiyeyi 3 anlamlı basamakta, artı sembol
+          ile formatlanmış, örn. <code>1.23 ETH</code>
         </>
       ),
     },
     {
-      name: 'account.displayName',
+      name: 'hesap.gorunenAd',
       required: false,
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          ENS adı veya adresin kısaltılmış versiyonu, örn.{' '}
+          <code>"rainbowwallet.eth"</code> veya <code>"0x7a…384f"</code>
         </>
       ),
     },
     {
-      name: 'account.ensAvatar',
+      name: 'hesap.ensAvatar',
       required: false,
-      type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      type: 'string	| tanımsız',
+      description: 'ENS avatar URI',
     },
     {
-      name: 'account.ensName',
+      name: 'hesap.ensAdı',
       required: false,
-      type: 'string	| undefined',
+      type: 'string	| tanımsız',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          ENS adı, örn. <code>rainbowwallet.eth</code>
         </>
       ),
     },
     {
-      name: 'account.hasPendingTransactions',
+      name: 'hesap.bekleyenIslemler',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Hesabın mevcut zincirde bekleyen işlemleri olup olmadığını gösteren boolean',
     },
   ]}
 />
@@ -215,58 +215,58 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
 <PropsTable
   data={[
     {
-      name: 'chain',
+      name: 'zincir',
       required: false,
-      type: 'object | undefined',
+      type: 'object | tanımsız',
       description:
-        'Object containing details about the current chain, described below',
+        'Aşağıda açıklanan mevcut zincir hakkında bilgiler içeren nesne',
     },
     {
-      name: 'chain.hasIcon',
+      name: 'zincir.simgeVarmi',
       required: false,
       type: 'boolean',
-      description: 'Whether the chain as an icon specified',
+      description: 'Zincirin belirlenmiş bir ikonu olup olmadığını gösterir',
     },
     {
-      name: 'chain.iconUrl',
+      name: 'zincir.simgeUrl',
       required: false,
-      type: 'string | undefined',
+      type: 'string | tanımsız',
       description:
-        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+        'Zincir simge URL\'si (Base64 veri URL\'leri indirirken tanımsız olabilir)',
     },
     {
-      name: 'chain.iconBackground',
+      name: 'zincir.simgeArkaPlan',
       required: false,
-      type: 'string | undefined',
+      type: 'string | tanımsız',
       description:
-        'The chain icon background which will be visible while images are loading',
+        'Resimler yüklenirken görünen zincir simge arka planı',
     },
     {
-      name: 'chain.id',
+      name: 'zincir.id',
       required: false,
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          Zincir Kimliği, örn. <code>1</code>
         </>
       ),
     },
     {
-      name: 'chain.name',
+      name: 'zincir.adı',
       required: false,
-      type: 'string | undefined',
+      type: 'string | tanımsız',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          Zincir adı, örn. <code>"Ethereum"</code>
         </>
       ),
     },
     {
-      name: 'chain.unsupported',
+      name: 'zincir.desteklenmeyen',
       required: false,
-      type: 'boolean | undefined',
+      type: 'boolean | tanımsız',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Mevcut zincirin desteklenip desteklenmediğini gösteren boolean',
     },
   ]}
 />
@@ -276,42 +276,42 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
 <PropsTable
   data={[
     {
-      name: 'openAccountModal',
+      name: 'hesapModaliAc',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Hesap modali açma işlevi',
     },
     {
-      name: 'openChainModal',
+      name: 'zincirModaliAc',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Zincir modali açma işlevi',
     },
     {
-      name: 'openConnectModal',
+      name: 'bağlanModaliAc',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Bağlan modali açma işlevi',
     },
     {
-      name: 'accountModalOpen',
+      name: 'hesapModaliAcik',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Hesap modali açık olup olmadığını gösteren boolean',
     },
     {
-      name: 'chainModalOpen',
+      name: 'zincirModaliAcik',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Zincir modali açık olup olmadığını gösteren boolean',
     },
     {
-      name: 'connectModalOpen',
+      name: 'bağlanModaliAcik',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Bağlan modali açık olup olmadığını gösteren boolean',
     },
   ]}
 />
@@ -321,18 +321,18 @@ Aşağıdaki özellikler render fonksiyonunuza geçirilir.
 <PropsTable
   data={[
     {
-      name: 'mounted',
+      name: 'monteEdildi',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the component has mounted',
+        'Bileşenin monte edilip edilmediğini gösteren boolean',
     },
     {
-      name: 'authenticationStatus',
+      name: 'kimlikDogrulamaDurumu',
       required: false,
-      type: '"loading" | "unauthenticated" | "authenticated" | undefined',
+      type: '"yükleniyor" | "kimlik doğrulanmadı" | "kimliği doğrulandı" | tanımsız',
       description:
-        'The authentication status, or undefined if authentication has not been configured',
+        'Kimlik doğrulama durumu, veya kimlik doğrulama yapılandırılmadıysa tanımsız',
     },
   ]}
 />

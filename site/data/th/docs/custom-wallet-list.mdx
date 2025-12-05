@@ -1,13 +1,15 @@
 ---
 title: รายการกระเป๋าเงินที่กำหนดเอง
-description: การปรับแต่งรายการ wallet
+description: การปรับแต่งรายการกระเป๋าเงิน
 ---
 
 # รายการกระเป๋าเงินที่กำหนดเอง
 
-## การปรับแต่งรายการ wallet
+## การปรับแต่งรายการกระเป๋าเงิน
 
-คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ  ตัวอย่างเช่น คุณสามารถเลือกแสดงเฉพาะ Rainbow พร้อมกับ wallet ที่เป็นทั่วไป
+คุณสามารถนำเข้ากระเป๋าเงินแต่ละชนิดจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการกระเป๋าเงินของคุณพร้อมตัวเชื่อมต่อที่จำเป็นได้ ด้วยวิธีนี้คุณมีการควบคุมเต็มที่เกี่ยวกับว่าจะให้แสดงกระเป๋าเงินอะไรบ้างและในลำดับใด.
+
+ตัวอย่างเช่น คุณสามารถเลือกที่จะแสดงเฉพาะ Rainbow พร้อมกับกระเป๋าเงินสำรองทั่วไปได้.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -30,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-คุณสามารถส่งตัวเชื่อมต่อของคุณไปยัง `createConfig` ของ Wagmi
+จากนั้นคุณสามารถส่งต่อเข้าตัวเชื่อมต่อของคุณไปยังการกำหนดค่า `createConfig` ของ Wagmi ได้.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -56,27 +58,29 @@ const App = () => (
 );
 ```
 
-### เชื่อมต่อกระเป๋าเงิน
+### กระเป๋าเงินที่มีในตัว
 
-Wallet ต่อไปนี้มีผ่านข้อมูล `wallet` object.
+กระเป๋าเงินต่อไปนี้ให้ผ่านทางวัตถุ `wallet`. 
 
-#### Wallet ทั่วไป
+#### กระเป๋าเงินทั่วไป
 
-Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
+กระเป๋าเงินต่อไปนี้มีขอบเขตเชื่อมต่อทั่วไปอย่างไม่เฉพาะเจาะจงไปยังแอฟพลิเคชัน ทำให้แนะนำว่ากระเป๋าเหล่านี้ควรรวมอยู่ด้วยเสมอ.
 
 ##### WalletConnect
 
-นี่เป็นตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับกระเป๋าเงินที่ใช้ WalletConnect ที่ยังไม่ได้รับจากกระเป๋าเงินอื่น ๆ ในรายการ **แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
+นี่คือทางเลือกแบบ fallback สำหรับกระเป๋าเงินที่ใช้ WalletConnect ซึ่งยังไม่ได้มีการให้ผ่านกระเป๋าเงินอื่นในรายการ.
+
+**ขอแนะนำให้คุณรวมกระเป๋านี้ไว้ในรายการเพื่อให้แน่ใจว่ากระเป๋าที่ใช้ WalletConnect ได้รับการสนับสนุนทั้งหมด.** 
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Wallet ที่มีอยู่ภายใน
+##### Injected Wallet
 
-นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
+นี่คือทางเลือกกระเป๋าเงิน fallback สำหรับสถานการณ์ที่มี `window.ethereum` แต่ยังไม่ได้รับการให้ผ่านกระเป๋าเงินอื่นในรายการ ซึ่งกระเป๋าเงินนี้จะซ่อนตัวเองจากรายการอัตโนมัติ ถ้าการ fallback ไม่มีความจำเป็นหรือไม่มีกระเป๋าเงินที่ถูกฉีดเข้ามา.
 
-**แนะนำให้คุณเสมอรวมกระเป๋าเงินนี้ไว้ในรายการเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ใช้ WalletConnect ทั้งหมด.**
+**ขอแนะนำให้คุณรวมกระเป๋านี้ไว้ในรายการเพื่อให้แน่ใจว่ากระเป๋าเงินที่ถูกฉีดเข้ามาได้รับการสนับสนุนทั้งหมด.** 
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -84,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe Wallet
 
-สำหรับ dApps ที่รองรับ Safe Apps เพื่อให้ผู้ใช้สามารถเชื่อมต่อกับตู้นิรภัยของพวกเขาหรือ multi-sig ได้อย่างง่ายดาย ให้รวมตัวเลือก `safeWallet` สำหรับการเชื่อมต่ออัตโนมัติ ตัวเลือก Safe จะปรากฏขึ้นเฉพาะในสภาพแวดล้อมของเบราว์เซอร์กระเป๋าเงินที่ปลอดภัยเท่านั้น
+สำหรับ dApps ที่สนับสนุน Safe Apps เพื่อให้ผู้ใช้สามารถเชื่อมต่อกับ Safe vault หรือ multi-sig ของตัวเองได้ง่ายๆ ให้รวมตัวเลือก `safeWallet` สำหรับการเชื่อมต่ออัตโนมัติ ตัวเลือก Safe จะปรากฏในสภาพแวดล้อมเบราว์เซอร์ของ Safe Wallet เท่านั้น.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -92,24 +96,50 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ### กระเป๋าเงินเฉพาะ
 
-กระเป๋าตังค์ต่อไปนี้นำเสนอผ่านทางวัตถุ `wallet` (เรียงตามลำดับตัวอักษร)
+กระเป๋าเงินต่อไปนี้ให้ผ่านทางวัตถุ `wallet` (ในลำดับตัวอักษร).
 
-#### 1inch Wallet
+#### กระเป๋าเงิน 1inch
 
 ```tsx
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Argent
-
-```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### บัญชีพื้นฐาน (เดิมชื่อกระเป๋าเงิน Coinbase)
+
+ตัวเชื่อมกระเป๋าเงินนี้รองรับบัญชีพื้นฐาน พัฒนาการใหม่ของกระเป๋าเงิน Coinbase อัจฉริยะ มอบการตรวจสอบสิทธิ์ที่ไม่มีสะดุดและฟีเจอร์เพิ่มเติม เช่น บัญชีย่อยและการอนุญาตการใช้จ่าย
+
+ตัวเลือกการกำหนดค่าเข้ากันได้กับ [เอกสารอ้างอิง Base Account SDK](https://docs.base.org/base-account/reference/core/createBaseAccount)
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -124,7 +154,13 @@ import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### กระเป๋าเงิน Bifrost
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### กระเป๋าเงิน Binance Web3
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -134,12 +170,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Bitski
@@ -172,35 +202,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-มีการอาร์กิวเมนต์ `preference` ที่สามารถควบคุมว่า Smart Wallet ถูกเปิดใช้งานและพร้อมใช้งานสำหรับผู้ใช้หรือไม่ การทำงานตามตัวเลือกที่เลือกจะถูกบันทึกไว้ [ที่นี่](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)
-
-สามารถดูตัวเลือกการกำหนดค่าสำหรับการควบคุม [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) และ [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) เพิ่มเติมได้ที่เอกสาร SDK ของ Coinbase Wallet [ที่นี่](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
 #### Coin98 Wallet
 
 ```tsx
@@ -217,6 +218,12 @@ import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### กระเป๋าเงิน CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Dawn Wallet
@@ -253,6 +260,21 @@ import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### กระเป๋าเงิน Gemini
+
+ตัวเชื่อมต่อกระเป๋าอัจฉริยะนี้ช่วยให้การตรวจสอบสิทธิ์เป็นไปอย่างราบรื่นผ่านคีย์ผ่านที่ keys.gemini.com โดยไม่ต้องดาวน์โหลด ไม่มีส่วนขยายหรือคีย์ API ที่จำเป็น ใช้งานได้ทันที
+
+พารามิเตอร์ `appName` จำเป็นสำหรับการระบุ dApp ของคุณ และ `appIcon` เป็นตัวเลือกสำหรับการสร้างแบรนด์ประสบการณ์การเชื่อมต่อของคุณ
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -297,22 +319,28 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### กระเป๋าเงิน Magic Eden
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MEW Wallet
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MEW กระเป๋าเงิน
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Nova Wallet
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OKX Wallet
@@ -345,6 +373,12 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+#### Porto
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Rabby Wallet
 
 ```tsx
@@ -357,13 +391,19 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### กระเป๋าเงิน Ramper
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ronin Wallet
+#### พร้อม
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ronin กระเป๋าเงิน
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -399,13 +439,13 @@ import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Trust Wallet
+#### Trust กระเป๋าเงิน
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Uniswap Wallet
+#### Uniswap กระเป๋าเงิน
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -417,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Wigwam
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -441,19 +481,13 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 ### ตัวอย่าง
 
-#### การสั่งซื้อ
+#### การจัดลำดับ
 
-นี่คือตัวอย่างบางส่วนของการแสดงกระเป๋าสตางค์ที่แตกต่างกัน, ในลำดับที่แตกต่างกัน.
+นี่คือตัวอย่างการแสดงกระเป๋าเงินต่างๆ ในลำดับที่ต่างกัน.
 
-แสดง MetaMask พร้อมกับกระเป๋าสตางค์ fallback ทั่วไป.
+แสดง MetaMask พร้อมกับกระเป๋าเงินสำรองทั่วไป.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -473,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-แสดง Rainbow, MetaMask และ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+แสดง Rainbow, MetaMask และ Base Account พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -491,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -500,20 +534,20 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> เตือนความจำ: ลำดับของอาร์เรย์ `wallets` กำหนดลำดับที่กระเป๋าเงินจะแสดงใน UI.
+> เตือนความจำ: ลำดับของอาร์เรย์ 'wallets' กำหนดลำดับที่จะแสดงกระเป๋าเงินใน UI.
 
 #### หลายกลุ่ม
 
-คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้
+คุณสามารถใช้คีย์ `groupName` เพื่อรับชมกลุ่มกระเป๋าเงินที่แตกต่างกันได้ นี่เป็นประโยชน์ถ้าคุณต้องการสื่อให้ผู้ใช้ของคุณรู้ว่ากระเป๋าเงินไหนที่แนะนำใช้ได้พร้อมกับที่เป็นไปได้อื่นๆ.
 
-แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+แนะนำ Rainbow และ MetaMask แต่ยังเสนอ Base Account พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -525,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

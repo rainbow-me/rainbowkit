@@ -7,9 +7,9 @@ description: 建立自訂主題
 
 ## 建立自訂主題
 
-> 注意：此 API 不穩定，可能在不久的將來會變更。 我們建議目前先使用[內建主題](/docs/theming)。
+> 注意：此 API 不穩定，可能會在不久的將來發生變化。我們建議暫時使用[內建主題](/docs/theming)。
 
-雖然內建主題提供了一定程度的自訂性，但 `Theme` 類型可幫助您定義自己的自訂主題，並提供較低層級的主題變量存取。
+雖然內建主題提供了一定程度的自訂設置，但`Theme`型別有助於您定義自己的自訂主題，並深入訪問底層主題變數。
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -77,17 +77,17 @@ const App = () => (
 )
 ```
 
-### 延伸內建主題
+### 擴展內建主題
 
-您可以延伸內建主題，而無需重新定義整個主題。 這在您只想覆蓋特定主題標記時非常有用。
+您可以擴展內建主題而無需重新定義整個主題。這對於您只想覆蓋特定主題標記時非常有用。
 
-要這樣做，安裝 `lodash.merge` (或等效模組)：
+為此，請安裝`lodash.merge`（或其他等效套件）：
 
 ```bash
 npm install lodash.merge
 ```
 
-導入它，以及您想延伸的主題（例如：<b>`darkTheme`</b>）和 TypeScript <b>`Theme`</b> 類型：
+導入它，以及您要擴展的主題（例如：`darkTheme`）和 TypeScript 的`Theme`型別：
 
 ```tsx
 import merge from 'lodash.merge';
@@ -98,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-然後，將內建主題與您想要覆蓋的主題標記合併。 在此範例中，我正在覆蓋 `accentColor` 標記以匹配我品牌的重點顏色。
+然後，將內建主題與您希望覆蓋的主題標記合併。在此範例中，我將`accentColor`標記覆蓋為品牌的強調顏色。
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -108,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-最後，您可以將自訂主題傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+最後，您可以將自訂主題傳遞給`RainbowKitProvider`的`theme`屬性。
 
 ```tsx
 const App = () => {
@@ -120,16 +120,16 @@ const App = () => {
 };
 ```
 
-### 建立自訂主題選擇器
+### 創建自訂主題選擇器
 
-如果您的應用程式是伺服器或靜態渲染，並允許用戶手動在主題之間切換，RainbowKit 的主題系統可以與任何 CSS-in-JS 系統搭配以下函數連接自訂 CSS 選擇器：
+如果您的應用是伺服器/靜態渲染的，並允許用戶手動切換主題，RainbowKit 的主題系統可以通過以下功能與任何 CSS-in-JS 系統的自訂 CSS 選擇器掛鉤：
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-這些函數返回設置所有必需主題變量的 CSS。 由於支援字串和對象，可以整合到任何 CSS-in-JS 系統中。
+這些功能會返回設置所有所需主題變數的 CSS。由於支持字符串和對象，因此可以與任何 CSS-in-JS 系統集成。
 
-作為基本範例，您可以為每個主題渲染自訂的 `style` 元素。 因為我們掌控了渲染主題 CSS，所以將 `null` 傳遞給 `theme` 屬性，讓 RainbowKitProvider 不為我們渲染任何樣式。 還請注意在 cssStringFromTheme 函數上使用 extends 選項，忽略與基礎主題相同的任何主題變量。
+作為基本範例，您可以渲染自己的`style`元素，為每個主題設置自訂選擇器。由於我們控制主題的 CSS 渲染，所以將`null`傳遞給`theme`屬性，以使 RainbowKitProvider 不會為我們渲染任何樣式。此外，請注意擴展 cssStringFromTheme 函數中的`extends`選項，以省略與基礎主題相同的任何主題變數。
 
 ```tsx
 import {

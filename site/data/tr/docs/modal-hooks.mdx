@@ -1,19 +1,19 @@
 ---
 title: Modal Kancaları
-description: Kancalar aracılığıyla programatik olarak modalların açılması
+description: Kancalar aracılığıyla programlı olarak modalları açın
 ---
 
 # Modal Kancaları
 
-## Kancalar aracılığıyla programatik olarak modalların açılması
+## Kancalar aracılığıyla programlı olarak modalları açın
 
-Uygulamanızın herhangi bir yerinde modalların programatik olarak açılmasına olanak tanımak için aşağıdaki kancalar sağlanmıştır.
+Uygulamanızda her yerde modalların programlı olarak açılmasına izin vermek için aşağıdaki Kancalar sağlanmıştır.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Bu kancaların her biri, ilgili modalın açılması için bir işlev içeren bir nesne döndürür. Uygulamanız modalın açılması için gerekli durumda değilse, döndürülen işlevlerin tanımsız olacağını unutmayın.
+Bu kancaların her biri, ilgili modalın açılması için bir işlev içeren bir nesne döndürür. Uygulamanız, modalın açılması için gerekli durumda değilse, döndürülen işlevlerin tanımsız olacağını unutmayın.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Her kanca ayrıca modalın durumu için bir boole değeri döndürür. Genellikle, kullanıcının cüzdan bağlantı durumuna doğrudan tepki vermek için Wagmi kancalarına (ör. `useAccount`) tamamen güvenmeniz ve Connect Modal durumuna güvenmemeniz önerilir.
+Her kanca ayrıca modanın durumu için bir boolean döndürür. Cüzdan Bağlantısı Modalı'nın durumuna güvenmek yerine, kullanıcı cüzdanı bağlantı durumuna doğrudan yanıt vermek için yalnızca Wagmi kancalarına (örneğin: `useAccount`) güvenmeniz genellikle tavsiye edilir.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit, kesintisiz ve duyarlı olacak şekilde tasarlanmıştır, bu nedenle dApp'ler, kullanıcının cüzdanını bağlayıp bağlamadığına bakılmaksızın her zaman bir arayüz oluşturmalıdır. Bir kullanıcı, MetaMask'tan direkt olarak cüzdanını bağlayabilir veya bağlantısını kesebilir, bu yüzden dApp, temel bağlantı durumuna doğrudan duyarlı olmalıdır.
+RainbowKit, kesintisiz ve duyarlı olacak şekilde tasarlanmıştır, bu nedenle dApp'lerin kullanıcıların cüzdanlarını bağladıklarına bakılmaksızın her zaman bir arayüz sunmaları gerekir. Bir kullanıcı cüzdanını doğrudan MetaMask'tan bağlayabilir veya bağlantısını kesebilir, bu nedenle dApp alttaki bağlantı durumuna doğrudan yanıt vermelidir.
 
-Kullanıcı doğrulaması için Ethereum ile Oturum Açma gibi mekanizmalara güvenen dApp'ler bunun yerine [Kimlik Doğrulama](/docs/authentication) özelliğine güvenmelidir.
+Kullanıcı doğrulaması için Ethereum ile Giriş yapma gibi mekanizmalara güvenen dApp'ler bunun yerine [Kimlik Doğrulama](/docs/authentication) özelliğine güvenmelidir.

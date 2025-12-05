@@ -7,7 +7,7 @@ description: Anpassen der Informationen Ihrer App
 
 ## Anpassen der Informationen Ihrer App
 
-Sie können die Informationen Ihrer App in der `appInfo` Eigenschaft des `RainbowKitProvider` übergeben. Eigenschaften, die Sie ändern können, sind der Name Ihrer App (`appName`) und der Link, auf den die Schaltfläche „Mehr erfahren“ im Verbindungsdialogfeld weiterleitet (`learnMoreUrl`):
+Sie können die Informationen Ihrer App in der `appInfo` Eigenschaft von `RainbowKitProvider` angeben. Eigenschaften, die Sie ändern können, sind der Name Ihrer App (`appName`) und der Link, zu dem der „Mehr erfahren“ Button im Verbindungsmodul weiterleitet (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### Einen Haftungsausschluss hinzufügen
+### Haftungsausschluss hinzufügen
 
-Sie können Ihren eigenen Haftungsausschluss bereitstellen, der unten im Verbindungsdialogfeld angezeigt wird. Die `disclaimer` Eigenschaft in `appInfo` nimmt ein `DisclaimerComponent` mit den Argumenten `Text` und `Link` an. Sie können es verwenden, um Ihren eigenen Haftungsausschluss zu erstellen, der das Thematisierungssystem erbt. Wir exportieren den `DisclaimerComponent` Typ für TypeScript-Nutzer:
+Sie können einen eigenen Haftungsausschluss bereitstellen, der unten im Verbindungsmodul angezeigt wird. Die `disclaimer` Eigenschaft in `appInfo` nimmt eine `DisclaimerComponent` mit den Argumenten `Text` und `Link`. Sie können es verwenden, um Ihren eigenen Haftungsausschluss zu erstellen, der das Themensystem erbt. Wir exportieren den `DisclaimerComponent` Typ für TypeScript Nutzer:
 
 ```tsx
 import {

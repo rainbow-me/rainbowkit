@@ -1,15 +1,15 @@
 ---
 title: 自定義錢包
-description: 創建一個自定義錢包
+description: 創建自定義錢包
 ---
 
 # 自定義錢包
 
-## 創建一個自定義錢包
+## 創建自定義錢包
 
-> 注意：此 API 不穩定，可能在不久的將來會發生變化。 我們會隨著時間的推移加入更多內建錢包。 如果您對任何特定的錢包有興趣，[請告訴我們](https://github.com/rainbow-me/rainbowkit/issues)。
+> 注意：此 API 不穩定，並且可能在不久的將來發生更改。我們將隨時間添加更多內建錢包。若您對任何特定錢包有興趣，請[告知我們](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`Wallet` 函數類型提供了幫助您定義自訂錢包的功能。 可以在您的 `Wallet` 函數的返回值中配置以下屬性：
+`Wallet` 函數類型是為幫助您定義自己的自定義錢包提供的。以下屬性可以在返回值中配置您的 `Wallet` 函數：
 
 ### 錢包屬性
 
@@ -37,21 +37,21 @@ description: 創建一個自定義錢包
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: '用於移動裝置的可選短名',
+      description: '可選的移動使用簡稱',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        '錢包圖標的 URL，或者一個解析為 Base64 數據 URL 的承諾',
+        '錢包圖標的 URL，或變成 Base64 數據 URL 的 promise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        '用於同時具有瀏覽器擴展和移動應用的錢包的下載流程中的強調色',
+        '在同時有瀏覽器擴展和移動應用的下載流程中使用的強調顏色',
     },
     {
       name: 'iconBackground',
@@ -65,8 +65,8 @@ description: 創建一個自定義錢包
       type: 'boolean | undefined',
       description: (
         <>
-          錢包是否已知已安裝，或{' '}
-          <code>undefined</code> 若未確定
+          是否知道已安裝錢包，或為{' '}
+          <code>undefined</code> 若未決定
         </>
       ),
     },
@@ -83,7 +83,7 @@ description: 創建一個自定義錢包
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        '計算此錢包是否應從列表中隱藏的函數。 This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '計算此錢包是否應從列表中隱藏的功能。這對於定義通用回退錢包很有用，例如內建的 "Injected Wallet" 回退就利用了這一功能',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: 創建一個自定義錢包
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '提供連接方法的連接器實例和配置的功能，如下所述',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: 創建一個自定義錢包
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        '解析移動錢包連接 URI 的功能',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: '解析桌面應用深層鏈接的功能',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: 創建一個自定義錢包
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        '包含解析 QR 碼 URI 的功能物件，外加可選的移動錢包設置說明',
     },
     {
       name: 'extension',
@@ -122,19 +122,19 @@ description: 創建一個自定義錢包
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        '包含可選浏覽器擴展設置說明的物件',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: '提供連接器實例的功能',
     },
   ]}
 />
 
-### 下載網址屬性
+### DownloadUrls 屬性
 
 <PropsTable
   data={[
@@ -155,14 +155,14 @@ description: 創建一個自定義錢包
       required: false,
       type: 'string',
       description:
-        '行動用戶在 `android` 或 `ios` 不可用時的著陸頁',
+        '當 `android` 或 `ios` 不可用時，給移動用戶的登陸頁面',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        '用戶掃描移動下載二維碼後的著陸頁',
+        '用戶掃描移動下載 QR 碼後的登陸頁面',
     },
     {
       name: 'chrome',
@@ -174,19 +174,19 @@ description: 創建一個自定義錢包
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge 插件 URL',
+      description: 'Microsoft Edge 附加元件 URL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox 瀏覽器插件 URL',
+      description: 'Firefox 瀏覽器附加元件 URL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera 插件 URL',
+      description: 'Opera 附加元件 URL',
     },
     {
       name: 'safari',
@@ -199,14 +199,14 @@ description: 創建一個自定義錢包
       required: false,
       type: 'string',
       description:
-        '桌面擴展用戶在瀏覽器兼容 URL 不可用時的著陸頁',
+        '當瀏覽器兼容的 URL 不可用時，供桌面擴展用戶使用的登陸頁面',
     },
   ]}
 />
 
 ### 範例
 
-例如，要使用 WalletConnect 創建一個自定義錢包：
+例如，使用 WalletConnect 創建自定義錢包：
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-然後您可以將您的自定義錢包添加到[錢包列表](/docs/custom-wallet-list)中。
+然後，您可以添加您的自定義錢包到[錢包列表](/docs/custom-wallet-list)中。

@@ -7,11 +7,11 @@ description: Zeigen Sie Ihre letzten Transaktionen an
 
 ## Zeigen Sie Ihre letzten Transaktionen an
 
-Sie können sich dafür entscheiden, in RainbowKits Konto-Modul die letzten Transaktionen anzuzeigen. Beachten Sie, dass alle Transaktionen im lokalen Speicher aufbewahrt werden und manuell bei RainbowKit registriert werden müssen, um angezeigt zu werden.
+Sie können sich dafür entscheiden, die letzten Transaktionen im Konto-Modul von RainbowKit anzuzeigen. Beachten Sie, dass alle Transaktionen im lokalen Speicher gespeichert werden und manuell bei RainbowKit registriert werden müssen, um angezeigt zu werden.
 
-Die Standardimplementierung des `ConnectButton` zeigt auch einen Ladeindikator um das Benutzer-Avatar an, wenn ausstehende Transaktionen vorhanden sind. Benutzerdefinierte `ConnectButton`-Implementierungen können dieses Verhalten über die `account.hasPendingTransactions` Eigenschaft nachbilden, die an Ihre Render-Funktion übergeben wird.
+Die Standardimplementierung des `ConnectButton` zeigt auch einen Ladeindikator um das Benutzer-Avatar an, wenn es ausstehende Transaktionen gibt. Benutzerdefinierte Implementierungen des `ConnectButton` können dieses Verhalten über die `account.hasPendingTransactions`-Eigenschaft, die an Ihre Renderfunktion übergeben wird, nachbilden.
 
-Um diese Funktion zu nutzen, aktivieren Sie zuerst die `showRecentTransactions`-Option auf `RainbowKitProvider`.
+Um diese Funktion zu nutzen, aktivieren Sie zuerst die Option `showRecentTransactions` im `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-Transaktionen können dann mit RainbowKit über den `useAddRecentTransaction` Hook registriert werden.
+Transaktionen können dann mit dem `useAddRecentTransaction`-Hook bei RainbowKit registriert werden.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -50,7 +50,7 @@ export default () => {
 
 Sobald eine Transaktion bei RainbowKit registriert wurde, wird ihr Status nach Abschluss aktualisiert.
 
-Standardmäßig wird die Transaktion als abgeschlossen betrachtet, sobald ein einziger Block auf dem Block abgebaut wurde, in dem die Transaktion abgebaut wurde. Dies kann jedoch durch Angabe eines benutzerdefinierten `confirmations`-Wertes konfiguriert werden.
+Standardmäßig wird die Transaktion als abgeschlossen betrachtet, sobald ein einzelner Block auf dem Block, in dem die Transaktion gemined wurde, abgebaut wurde, aber dies kann konfiguriert werden, indem ein benutzerdefinierter `confirmations`-Wert angegeben wird.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

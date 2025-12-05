@@ -1,15 +1,15 @@
 ---
 title: Cadenas personalizadas
-description: Crear una cadena personalizada
+description: Crea una cadena personalizada
 ---
 
 # Cadenas personalizadas
 
-## Crear una cadena personalizada
+## Crea una cadena personalizada
 
-Puedes usar el tipo `Chain` para ayudarte a crear una cadena personalizada. Luego, pasa eso a la función [`configureChains`](https://wagmi.sh/docs/providers/configuring-chains).
+Puede usar el tipo `Chain` para ayudarlo a crear una cadena personalizada. Luego, pásela a `getDefaultConfig` o [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig) de Wagmi.
 
-Por ejemplo, así es cómo puedes crear una cadena Avalanche para [avax.network](https://avax.network).
+Por ejemplo, aquí le mostramos cómo puede crear una cadena Avalanche para [avax.network](https://avax.network).
 
 ```tsx
 import {

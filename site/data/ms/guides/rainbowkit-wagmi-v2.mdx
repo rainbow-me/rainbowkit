@@ -1,26 +1,26 @@
 ---
-title: Menaiktaraf dApp anda untuk RainbowKit v2
-description: RainbowKit dan Wagmi telah dinaik taraf kepada v2
-image: panduan-rainbowkit-v2.png
+title: Naik taraf dApp anda untuk RainbowKit v2.
+description: RainbowKit dan Wagmi telah dinaik taraf ke v2.
+image: panduan-butang-pelangi.png
 ---
 
-# Beralih ke RainbowKit dan Wagmi v2
+# Beralih kepada RainbowKit dan Wagmi v2.
 
-Kebergantungan sama [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah mencapai `2.x.x` dengan perubahan mendasar.
+Kebergantungan peer [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah mencapai `2.x.x` dengan perubahan besar.
 
-Ikuti langkah di bawah untuk berhijrah.
+Ikut langkah di bawah untuk beralih.
 
-**1. Naik taraf RainbowKit, `wagmi`, dan `viem` kepada versi terkini mereka**
+**1. Naik taraf RainbowKit, `wagmi`, dan `viem` ke versi terkini**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Pasang kebergantungan sama `@tanstack/react-query`**
+**2. Pasang kebergantungan rakan sebaya `@tanstack/react-query`**
 
-Dengan Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) kini diperlukan sebagai kebergantungan sama.
+Dengan Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) kini merupakan kebergantungan peer yang diperlukan.
 
-Pasangnya dengan arahan berikut:
+Pasang ia dengan arahan berikut:
 
 ```bash
 npm i @tanstack/react-query
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Periksa perubahan mendasar dalam `wagmi` dan `viem`**
+**4. Semak perubahan besar dalam `wagmi` dan `viem`**
 
-Jika anda menggunakan cangkuk `wagmi` dan tindakan `viem` dalam dApp anda, anda perlu mengikuti panduan penghijrahan untuk v2:
+Jika anda menggunakan `wagmi` hooks dan `viem` actions dalam dApp anda, anda perlu mengikuti panduan beralih untuk v2:
 
-- [Panduan Penghijrahan Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Perubahan Mendasar Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Panduan Berlaih Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Perubahan Besar Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### Perubahan RainbowKit
 
-**1. Tingkah laku yang diperbaiki untuk dompet EIP-6963**
+**1. Kelakuan yang dipertingkatkan untuk dompet EIP-6963**
 
-Dompet yang menyokong standard sambungan EIP-6963 baharu (termasuk Rainbow, MetaMask, dan lebih banyak lagi) kini akan secara automatik muncul dalam bahagian `Dipasang` semasa pengalaman Connect Wallet. Ini memastikan bahawa pengguna sentiasa dapat mencari dompet kegemaran mereka dan menyambung kepada dApps tanpa konflik atau butang fallback.
+Dompet yang menyokong standard sambungan EIP-6963 yang baru (termasuk Rainbow, MetaMask dan lain-lain) kini secara automatik akan dipaparkan dalam seksyen `Dipasang` semasa pengalaman Menghubungkan Wallet. Ini memastikan bahawa pengguna sentiasa dapat mencari dompet kegemaran mereka dan menghubungkan ke dApps tanpa konflik atau butang gantian.
 
-Pembangun terus mempunyai kawalan penuh ke atas Senarai Dompet Kustom untuk menekankan dompet pilihan untuk pengguna akhir. Disyorkan agar anda terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam senarai anda untuk menyokong semua platform.
+Pembangun terus mempunyai kawalan penuh ke atas Senarai Dompet Khusus untuk menekankan dompet yang diutamakan untuk pengguna akhir. Anda digalakkan untuk terus memasukkan `injectedWallet` dan `walletConnectWallet` dalam senarai anda untuk menyokong semua platform.
 
 **2. Konfigurasi Wagmi dengan getDefaultConfig**
 
-API baharu ini mempermudahkan pengalaman konfigurasi dan menggantikan keperluan untuk menggunakan `createConfig` dari Wagmi secara langsung. Konfigurasi rantaian dipermudahkan, termasuk penyedia awam yang disimpulkan untuk `transports`.
+API baru ini memudahkan pengalaman konfigurasi dan menggantikan keperluan untuk menggunakan secara langsung `createConfig` Wagmi. Konfigurasi rangkaian diperbaharui, termasuk penyedia awam yang disimpulkan untuk `transports`.
 
-Senarai dompet lalai akan dimasukkan secara automatik, memansuhkan keperluan untuk menggunakan `getDefaultWallets` dan `connectorsForWallets`.
+Senarai dompet lalai akan dipaparkan secara automatik, menghapuskan keperluan untuk menggunakan `getDefaultWallets` dan `connectorsForWallets`.
 
-Anda boleh mencipta Senarai Dompet Kustom dengan menghantar penyambung Dompet yang diimport atau Kustom kepada `wallets`. Memperkenalkan penyambung dompet dan menghantar `projectId` dan `chains` tidak lagi diperlukan.
+Anda boleh membuat Senarai Dompet Khusus dengan memajukan penyambung Dompet import atau Khusus ke `wallets`. Memulakan penyambung dompet dan memajukan `projectId` dan `chains` tidak lagi diperlukan.
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-Anda tidak lagi perlu menghantar `chains` kepada `<RainbowKitProvider>`.
+Anda tidak lagi perlu menyampaikan `chains` kepada `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Rantaian Kustom**
+**4. Rangkaian Khusus**
 
-Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` dari RainbowKit.
+Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ Contoh dengan `createConfig`:
   })
 ```
 
-**5. Dompet Tersuai**
+**5. Dompet Khusus**
 
-Penyambung dompet RainbowKit telah mengalami perubahan ketara untuk menyokong Wagmi v2. Rujuk [dokumentasi terkini](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh penyambung](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk menaik taraf mana-mana Penyambung Dompet Tersuai dalam dApp anda.
+Penyambung dompet RainbowKit telah mengalami perubahan besar untuk menyokong Wagmi v2. Rujuk [dokumen terkini](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh penyambung](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk menaik taraf mana-mana Penyambung Dompet Khusus dalam dApp anda.
 
-Penyambung dompet kini juga menyokong standard EIP-6963 dengan prop `rdns`. Pastikan ini diisi untuk mengelakkan rujukan berulang kepada dompet yang menyokong EIP-6963 dalam senarai dompet anda.
+Penyambung dompet kini juga menyokong standard EIP-6963 dengan prop `rdns`. Pastikan bahawa ini diisi untuk mengelakkan rujukan berganda kepada dompet yang menyokong EIP-6963 dalam senarai dompet anda.
 
 > Sila laporkan sebarang isu atau maklum balas untuk RainbowKit v2 di GitHub [di sini](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

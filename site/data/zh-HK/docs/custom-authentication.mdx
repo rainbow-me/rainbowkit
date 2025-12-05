@@ -1,19 +1,19 @@
 ---
-title: 自訂身份驗證
-description: 連接到你自己的身份驗證後端
+title: 自訂驗證
+description: 連接到您自己的驗證後端
 ---
 
-# 自訂身份驗證
+# 自訂驗證
 
-## 連接到你自己的身份驗證後端
+## 連接到您自己的驗證後端
 
-雖然 RainbowKit 提供完善的 [用 Ethereum 和 NextAuth 登入的支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) 你亦可以配合自定後端和訊息格式進行整合。
+雖然 RainbowKit 提供[與 Ethereum 和 NextAuth 的頭等支持](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)，您也可以與自訂的後端和消息格式集成。
 
-### 建立自訂適配器
+### 創建自訂適配器
 
-首先建立一個身份驗證適配器。 這樣 RainbowKit 就可以創建/準備消息並與你的後端通信。
+首先創建一個驗證適配器。這允許 RainbowKit 創建/準備消息並與您的後端進行通信。
 
-例如，我們可以製作一個認證適配器，讓我們可以使用 [用 Ethereum 登入](https://login.xyz) 對接一些自定 API 終端，如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
+例如，我們可以製作一個驗證適配器，讓我們可以使用 [Ethereum 登入](https://login.xyz) 針對一些自訂 API 端點，如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### 提供身份驗證狀態
+#### 提供驗證狀態
 
-假設你的應用已經某種方式管理身份驗證生命周期，你可以將當前的身份驗證狀態與你的自訂適配器一起傳遞給 `RainbowKitAuthenticationProvider`，封裝你現有的 `RainbowKitProvider`。
+假設您的應用程式已經設法管理驗證生命週期，您可以將當前驗證狀態與自訂適配器一起傳遞給 `RainbowKitAuthenticationProvider`，包裝您現有的 `RainbowKitProvider`。
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-如果你已經到這一步並為現有的開源身份驗證庫創建了適配器，請考慮創建一個包讓其他人使用！
+如果您已經做到這麼多，並為現有的開源驗證庫創建了一個適配器，請考慮創建一個包供其他人使用！

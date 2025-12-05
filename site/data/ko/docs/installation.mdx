@@ -1,15 +1,15 @@
 ---
 title: 설치
-description: RainbowKit으로 시작하고 실행하기
+description: RainbowKit로 실행 및 준비를 완료하십시오
 ---
 
 # 설치
 
-## RainbowKit으로 시작하고 실행하기
+## RainbowKit로 실행 및 준비를 완료하십시오
 
 ### 빠른 시작
 
-선택한 패키지 관리자를 사용하여 다음 명령 중 하나로 새로운 RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) 앱을 스캐폴드 할 수 있습니다:
+다음 명령을 사용하여 새로운 RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) 앱을 패키지 매니저로 스캐폴드할 수 있습니다.
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -19,23 +19,23 @@ pnpm create @rainbow-me/rainbowkit@latest
 yarn create @rainbow-me/rainbowkit
 ```
 
-이것은 프로젝트 이름을 요청하고, 보일러플레이트 프로젝트가 포함된 새 디렉토리를 생성하고, 필요한 모든 종속성을 설치합니다.
+프로젝트 이름을 입력하라는 메시지가 나타나고 템플릿 프로젝트가 포함된 새 디렉터리가 생성되며 필요한 모든 종속성이 설치됩니다.
 
-또는, 기존 프로젝트에 RainbowKit를 수동으로 통합할 수 있습니다.
+대안으로 기존 프로젝트에 RainbowKit을 수동으로 통합할 수 있습니다.
 
 ### 수동 설정
 
-RainbowKit 및 동료 의존성인 [wagmi](https://wagmi.sh/), [viem](https://viem.sh), 그리고 [@tanstack/react-query](https://tanstack.com/query/v5)를 설치하세요.
+RainbowKit 및 그 연관 종속성인 [wagmi](https://wagmi.sh/), [viem](https://viem.sh), [@tanstack/react-query](https://tanstack.com/query/v5)를 설치합니다.
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> 참고: RainbowKit는 [React](https://reactjs.org/) 라이브러리입니다.
+> 참고: RainbowKit은 [React](https://reactjs.org/) 라이브러리입니다.
 
 #### 가져오기
 
-RainbowKit, Wagmi 및 TanStack Query를 가져오세요.
+RainbowKit, Wagmi 및 TanStack Query를 가져옵니다.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -58,11 +58,11 @@ import {
 } from "@tanstack/react-query";
 ```
 
-#### 설정
+#### 구성
 
-원하는 체인을 설정하고 필요한 커넥터를 생성합니다. `wagmi` 설정도 마련해야 합니다. 귀하의 dApp이 서버 사이드 렌더링 (SSR)을 사용하는 경우 `ssr`을 `true`로 설정해야 합니다.
+원하는 체인을 구성하고 필요한 커넥터를 생성하십시오. dApp이 서버 사이드 렌더링(SSR)을 사용하는 경우 `ssr`을 `true`로 설정해야 합니다.
 
-> 참고: WalletConnect를 사용하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 얻어야 합니다. 이것은 완전히 무료이며 몇 분 밖에 걸리지 않습니다.
+> 참고: WalletConnect에 의존하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 얻어야 합니다. 이는 완전히 무료이며 몇 분 내에 완료할 수 있습니다.
 
 ```tsx line=4-99
 ...
@@ -76,9 +76,9 @@ const config = getDefaultConfig({
 });
 ```
 
-#### 공급자 감싸기
+#### 프로바이더 래핑
 
-애플리케이션을 `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), 그리고 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)로 감싸세요.
+애플리케이션을 `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) 및 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)로 감쌉니다.
 
 ```tsx
 const queryClient = new QueryClient();
@@ -98,7 +98,7 @@ const App = () => {
 
 #### 연결 버튼 추가
 
-그런 다음, 앱에서 `ConnectButton` 컴포넌트를 가져와서 렌더링합니다.
+그런 다음, 앱에서 `ConnectButton` 컴포넌트를 가져와 렌더링합니다.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -108,15 +108,15 @@ export const YourApp = () => {
 };
 ```
 
-RainbowKit은 이제 사용자의 지갑 선택을 처리하며, 지갑/거래 정보를 표시하고 네트워크/지갑 전환을 처리합니다.
+RainbowKit은 이제 사용자의 지갑 선택을 처리하고, 지갑/거래 정보를 표시하며, 네트워크/지갑 전환을 처리합니다.
 
-#### 추가적인 빌드 도구 설정
+#### 추가 빌드 도구 설정
 
-일부 빌드 도구는 추가 설정이 필요할 수 있습니다.
+일부 빌드 도구에는 추가 설정이 필요할 수 있습니다.
 
 ##### Remix
 
-[Remix](https://remix.run)를 사용할 때, `buffer`, `events` 및 `http` 모듈을 폴리필해야 합니다. 아래 Remix 구성을 참조하거나, [샘플 Remix 프로젝트](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)를 참조하십시오.
+[Remix](https://remix.run)를 사용하는 경우 `buffer`, `events` 및 `http` 모듈을 폴리필 해야 합니다. 아래 Remix 구성을 참조하거나 [샘플 Remix 프로젝트](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)를 확인하십시오.
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -130,11 +130,11 @@ export default {
 
 ### 배포 준비
 
-기본적으로, 귀하의 dApp은 각 체인에 대해 공용 RPC 공급자를 사용하여 잔액을 가져오고, ENS 이름을 해결하는 등 다양한 작업을 수행합니다. 이는 공용 노드가 속도 제한을 받기 때문에 사용자에게 신뢰성 문제를 자주 일으킬 수 있습니다. 대신, [Alchemy](https://www.alchemy.com/)나 [QuickNode](https://www.quicknode.com/)와 같은 서비스로부터 RPC 공급자에 대한 접근을 구매하고 Wagmi에서 자체 Transports를 정의해야 합니다. 이는 `getDefaultConfig`에서 `transports` 매개변수나 Wagmi의 `createConfig`를 통해 직접 구현할 수 있습니다.
+기본적으로 dApp은 각 체인의 잔액을 가져오거나 ENS 이름을 해결하는 등의 작업을 위한 공개 RPC 제공자를 사용합니다. 이는 종종 사용자의 신뢰성 문제를 초래할 수 있습니다. 대신 [Alchemy](https://www.alchemy.com/) 또는 [QuickNode](https://www.quicknode.com/)와 같은 서비스로 RPC 제공자에 대한 액세스를 구매하고 Wagmi에서 자체 트랜스포트를 정의해야 합니다. 이는 `getDefaultConfig`에 `transports` 매개변수를 추가하거나 Wagmi의 `createConfig`를 통해 직접 수행할 수 있습니다.
 
-Transport는 JSON-RPC 요청을 Ethereum Node Provider (예: Alchemy, Infura 등)로 전송하는 네트워킹 중간 계층입니다.
+트랜스포트는 JSON-RPC 요청을 이더리움 노드 제공자(Alchemy, Infura 등)에 보내는 네트워크 중간 계층입니다.
 
-**`http` 트랜스포트 예제**
+**`http` 트랜스포트를 사용하는 예제**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -154,23 +154,23 @@ const config = getDefaultConfig({
 
 자세한 내용은 [wagmi 트랜스포트 문서](https://wagmi.sh/core/api/transports#transports)를 참조하십시오.
 
-### 자신만의 기능을 추가하십시오
+### 자신의 기능 추가
 
-이제 사용자들이 지갑을 연결할 수 있으므로, [wagmi.](https://wagmi.sh)를 사용하여 앱의 나머지 부분을 구축할 수 있습니다.
+사용자가 지갑을 연결할 수 있게 되었으므로 [wagmi](https://wagmi.sh)를 사용하여 앱의 나머지 부분을 구축할 수 있습니다.
 
-wagmi의 포괄적인 React Hooks 세트를 이용하여 트랜잭션을 전송하고, 계약에 상호 작용하고, ENS 세부 정보를 해결하고 더 많은 작업을 수행할 수 있습니다.
+트랜잭션 전송, 계약과 상호 작용, ENS 세부 정보 해결 등 wagmi의 포괄적인 React 훅을 사용하여 다양한 작업을 수행할 수 있습니다.
 
 자세한 내용은 [wagmi 문서](https://wagmi.sh)를 참조하십시오.
 
 ### 추가 예제
 
-RainbowKit의 실행 예제를 보거나, 심지어 새 프로젝트를 자동으로 스캐폴드하는 데 사용하려면, [공식 예제](https://github.com/rainbow-me/rainbowkit/tree/main/examples)를 확인하십시오.
+RainbowKit의 실행 중 예제를 보거나 이를 사용하여 새 프로젝트를 자동으로 스캐폴드하려면 [공식 예제](https://github.com/rainbow-me/rainbowkit/tree/main/examples)를 확인하십시오.
 
-브라우저에서 RainbowKit를 직접 시도하기 위해 아래의 CodeSandbox 링크를 확인하십시오:
+브라우저에서 직접 RainbowKit를 시도하려면 아래 CodeSandbox 링크를 확인하십시오.
 
-- [리액트 앱 생성](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)을 사용하여
-- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)을 사용하여
-- [Next.js 앱 라우터](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)을 사용하여
-- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)을 사용하여
-- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)을 사용하여
-- [React 라우터](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)와 함께
+- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)와 함께
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)와 함께
+- [Next.js 앱 라우터](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)와 함께
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)와 함께
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)와 함께
+- [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)와 함께

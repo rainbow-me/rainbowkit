@@ -1,32 +1,32 @@
 ---
-title: ترقية تطبيقك اللامركزي لـ RainbowKit الإصدار 2
-description: تمت ترقية RainbowKit و Wagmi إلى الإصدار 2
+title: ترقية تطبيقك اللامركزي لاستخدام RainbowKit v2
+description: تمت ترقية RainbowKit وWagmi إلى الإصدار v2
 image: guide-rainbowkit-v2.png
 ---
 
-# الترحيل إلى RainbowKit و Wagmi الإصدار 2
+# الهجرة إلى RainbowKit وWagmi v2
 
-لقد وصلت تبعيات [wagmi](https://wagmi.sh) و [viem](https://viem.sh) النظيرة إلى الإصدار `2.x.x` مع تغييرات جذرية.
+وصلت الاعتمادات النظيرة [wagmi](https://wagmi.sh) و[viem](https://viem.sh) إلى `2.x.x` مع تغييرات مهمة.
 
-اتبع الخطوات أدناه للترحيل.
+اتبع الخطوات أدناه للهجرة.
 
-**1. قم بترقية RainbowKit، `wagmi`، و `viem` إلى أحدث إصداراتها**
+**1. قم بترقية RainbowKit و`wagmi` و`viem` إلى أحدث الإصدارات**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. تثبيت تبعية النظير `@tanstack/react-query`**
+**2. قم بتثبيت التبعية النظيرة `@tanstack/react-query`**
 
-مع Wagmi v2، أصبح [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) تبعية ضرورية مشتركة.
+مع Wagmi v2، أصبح [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) الآن اعتماداً نظيراً مطلوبًا.
 
-قم بتثبيتها بالأمر التالي:
+قم بتثبيته باستخدام الأمر التالي:
 
 ```bash
 npm i @tanstack/react-query
 ```
 
-**3. قم بترقية تكوينات RainbowKit و Wagmi الخاصة بك**
+**3. قم بترقية إعدادات RainbowKit وWagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,28 +89,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. تحقق من التغييرات الجذرية في `wagmi` و `viem`**
+**4. تحقق من التغييرات الجذرية في `wagmi` و`viem`**
 
-إذا كنت تستخدم خطافات `wagmi` وإجراءات `viem` في تطبيقك اللامركزي، ستحتاج إلى اتباع دليل الهجرة للإصدار v2:
+إذا كنت تستخدم الأساليب والوظائف `wagmi` و`viem` في تطبيقك، فستحتاج إلى اتباع إرشادات الهجرة للإصدار v2:
 
 - [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [التغييرات الهامة في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### تغييرات RainbowKit
 
-**1. تحسين سلوك محافظ EIP-6963**
+**1. تحسين السلوك لمحافظ EIP-6963**
 
-المحافظ التي تدعم معيار الاتصال الجديد EIP-6963 (بما في ذلك Rainbow وMetaMask وغيرها) ستظهر الآن تلقائيًا في قسم `مُثبت` أثناء تجربة ربط المحفظة. هذا يضمن أن المستخدمين يمكنهم دائمًا العثور على محافظهم المفضلة والاتصال بالتطبيقات اللامركزية دون تعارضات أو أزرار احتياطية.
+المحافظ التي تدعم معيار الاتصال الجديد EIP-6963 (بما في ذلك Rainbow وMetaMask وغيرها) ستظهر الآن تلقائيًا في قسم `Installed` أثناء تجربة الاتصال بالمحفظة. يضمن ذلك أن المستخدمين يمكن أن يجدوا محافظهم المفضلة دائمًا ويتصلوا بتطبيقات dApps بدون تعارضات أو أزرار احتياطية.
 
-يستمر المطورون في السيطرة الكاملة على قائمة المحافظ المخصصة لتسليط الضوء على المحافظ المفضلة للمستخدمين النهائيين. يُشجع على أن تستمر في تضمين `injectedWallet` و `walletConnectWallet` في قائمتك لدعم جميع المنصات.
+يستمر المطورون في التحكم الكامل في قائمة المحافظ المخصصة لتأكيد المحافظ المفضلة لدى المستخدمين النهائيين. يُشجّع على الاستمرار في تضمين `المحفظة المدخلية` و`walletConnectWallet` في قائمتك لدعم جميع المنصات.
 
-**2. تكوين Wagmi مع getDefaultConfig**
+**2. إعداد Wagmi مع getDefaultConfig**
 
-هذه الواجهة البرمجية الجديدة تبسط تجربة التكوين وتحل محل الحاجة لاستخدام `createConfig` من Wagmi مباشرةً. تم تبسيط تكوين السلسلة، بما في ذلك مزودي الخدمات العامة المستنتجة لـ `transports`.
+يُبسط هذا API الجديد تجربة الإعداد ويستبدل الحاجة لاستخدام `createConfig` في Wagmi مباشرةً. تم تبسيط إعداد السلسلة، بما في ذلك توفر مقدمي الخدمة العامين لـ `transports`.
 
-سيتم تضمين قائمة المحافظ الافتراضية تلقائيًا، مما يلغي الحاجة إلى استخدام `getDefaultWallets` و `connectorsForWallets`.
+سيتم تضمين قائمة المحافظ الافتراضية تلقائيًا، مما يلغي الحاجة لاستخدام `getDefaultWallets` و`connectorsForWallets`.
 
-يمكنك إنشاء قائمة محافظ مخصصة عن طريق تمرير موصلات المحافظ المستوردة أو المخصصة إلى `wallets`. لم يعد مطلوبًا توصيل موصلات المحافظ وتمرير `projectId` و `chains`.
+يمكنك إنشاء قائمة محافظ مخصصة عن طريق تمرير موصلات محافظ مستوردة أو مخصصة إلى `wallets`. لم يعد من الضروري إنشاء موصلات المحافظ وتمرير `projectId` و`chains`.
 
 ```
 const config = getDefaultConfig({
@@ -133,7 +133,7 @@ const config = getDefaultConfig({
 
 **4. السلاسل المخصصة**
 
-تغير نوع `Chain` وفقًا لـ Wagmi v2، ويستمر في دعم بيانات `iconUrl` و `iconBackground` الوصفية لـ RainbowKit.
+تغيّر نوع `Chain` وفقًا لـ Wagmi v2، ويواصل دعم بيانات RainbowKit التعريفية مثل `iconUrl` و`iconBackground`.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -174,7 +174,7 @@ const config = getDefaultConfig({
 });
 ```
 
-مثال باستخدام `createConfig`:
+مثال مع `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ const config = getDefaultConfig({
   })
 ```
 
-**5. محافظ مخصصة**
+**5. المحافظ المخصصة**
 
-موصلات محفظة RainbowKit قد خضعت لتغييرات جوهرية لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و [مثال الموصل](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيق dApp الخاص بك.
+أجرى موصلو محافظ RainbowKit تغييرات كبيرة لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و[مثال على الموصل](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيقك.
 
-موصلات المحفظة الآن تدعم أيضًا المعيار EIP-6963 بخاصية `rdns`. تأكد من ملء هذه الخاصية لمنع الإشارات المكررة إلى محافظ تدعم EIP-6963 في قائمة محفظتك.
+يدعم موصلين المحافظ الآن أيضًا معيار EIP-6963 مع خاصية `rdns`. تأكد من ملئها لمنع الإشارات المكررة إلى المحافظ الداعمة لـ EIP-6963 في قائمة المحافظ الخاصة بك.
 
-> يرجى الإبلاغ عن أية مشاكل أو ملاحظات لـ RainbowKit الإصدار 2 على GitHub [هنا](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> يرجى الإبلاغ عن أي مشاكل أو ملاحظات على RainbowKit v2 على GitHub [هنا](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

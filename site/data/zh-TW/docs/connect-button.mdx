@@ -1,13 +1,13 @@
 ---
 title: 連接按鈕
-description: 使用及自定義連接按鈕
+description: 使用以及自訂 連接按鈕
 ---
 
 # 連接按鈕
 
-## 使用及自定義連接按鈕
+## 使用以及自訂 連接按鈕
 
-這是主要的組件。 它負責渲染連接/斷開按鈕及切換鏈的介面。
+這是主要的元件。它負責渲染連接/斷開按鈕，以及鏈交換的 UI。
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,20 +17,20 @@ export const YourApp = () => {
 };
 ```
 
-> 注意：確保您的應用程式包裝在必要的提供者中。 [閱讀更多](/docs/installation#wrap-providers).
+> 注意：確保您的應用程式包含必要的提供者包裹。[閱讀更多](/docs/installation#wrap-providers)。
 
 ### 屬性
 
-`ConnectButton` 組件暴露了幾個屬性用於自定義其外觀，包括切換不同元素的可見性。
+`ConnectButton` 元件提供多個屬性，以自訂其外觀，包括切換不同元素的可見性。
 
 <PropsTable
   data={[
     {
       name: 'label',
       required: false,
-      default: '連接錢包',
+      default: 'Connect Wallet',
       type: 'string',
-      description: '顯示在連接按鈕上的文字標籤',
+      description: '連接按鈕上顯示的文字標籤',
     },
     {
       name: 'accountStatus',
@@ -39,7 +39,7 @@ export const YourApp = () => {
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        "是否顯示活躍帳戶的頭像和/或地址",
+        "是否顯示活動帳戶的頭像或地址",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ export const YourApp = () => {
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        "是否顯示或完全隱藏當前鏈的圖標和/或名稱",
+        "是否顯示當前鏈的圖標或名稱，或完全隱藏",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ export const YourApp = () => {
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        '是否在帳戶名稱旁顯示餘額',
+        '帳戶名稱旁的餘額是否可見',
     },
   ]}
 />
 
-> 注意：內置的`largeScreen`斷點是`768px`。
+> 注意：內建的 `largeScreen` 斷點是 `768px`。
 
 ### 範例
 
 #### 標籤
 
-使用`label`屬性設置自定義`ConnectButton`文本。
+使用 `label` 屬性設置自訂的 `ConnectButton` 文本。
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,15 +76,15 @@ export const YourApp = () => {
 
 #### 帳戶狀態
 
-以下是幾種不同的方式來使用`accountStatus`屬性。
+以下是幾種使用 `accountStatus` 屬性的方法。
 
-只顯示帳戶的頭像。
+僅顯示帳戶的頭像。
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-只顯示帳戶的地址。
+僅顯示帳戶的地址。
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
@@ -92,21 +92,21 @@ export const YourApp = () => {
 
 #### 鏈狀態
 
-以下是幾種不同的方式來使用`chainStatus`屬性。
+以下是幾種使用 `chainStatus` 屬性的方法。
 
-只顯示當前鏈的圖標。
+僅顯示當前鏈的圖標。
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-只顯示當前鏈的名稱。
+僅顯示當前鏈的名稱。
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-完全隱藏鏈的介面。
+完全隱藏鏈的 UI。
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
@@ -114,7 +114,7 @@ export const YourApp = () => {
 
 #### 顯示餘額
 
-使用`showBalance`屬性來隱藏/顯示餘額。
+使用 `showBalance` 屬性來隱藏/顯示餘額。
 
 隱藏餘額。
 
@@ -124,9 +124,9 @@ export const YourApp = () => {
 
 #### 響應式
 
-這些屬性也可以定義為響應式格式。
+這些屬性也可以用響應式格式定義。
 
-在小屏幕上，只顯示帳戶圖標。 但在大屏幕上，顯示圖標和地址。
+在小螢幕上，僅顯示帳戶圖標。但在大螢幕上，顯示圖標和地址。
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-在小屏幕上，隱藏餘額。 但在大屏幕上，顯示餘額。
+在小螢幕上，隱藏餘額。但在大螢幕上，顯示餘額。
 
 ```tsx
 <ConnectButton
