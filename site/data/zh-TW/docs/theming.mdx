@@ -53,49 +53,49 @@ export const App = () => (
 內建的主題函數還接受選項對象，允許您選擇多種不同的視覺樣式。
 
 <PropsTable
-data=[
-{
-name: 'accentColor',
-required: false,
-default: '"#0E76FD"',
-type: 'string',
-description:
-'各種交互元素的背景/文本顏色。',
-},
-{
-name: 'accentColorForeground',
-required: false,
-default: '"white"',
-type: 'string',
-description:
-'用於在重點顏色上顯示的前景元素的顏色。',
-},
-{
-name: 'borderRadius',
-required: false,
-default: 'large',
-type: '"none" | "small" | "medium" | "large"',
-typeSimple: 'enum',
-description: '整個邊框半徑比例的大小。',
-},
-{
-name: 'fontStack',
-required: false,
-default: 'rounded',
-type: '"rounded" | "system"',
-typeSimple: 'enum',
-description:
-'整個 UI 使用的字體堆疊。注意，當 SF Pro Rounded 不可用時，`rounded` 將回退到系統字體。',
-},
-{
-name: 'overlayBlur',
-required: false,
-default: 'none',
-type: '"large" | "small" | "none"',
-typeSimple: 'enum',
-description: '模態背景的模糊效果。',
-},
-]
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        '各種交互元素的背景/文本顏色。',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        '用於在重點顏色上顯示的前景元素的顏色。',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: '整個邊框半徑比例的大小。',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        '整個 UI 使用的字體堆疊。注意，當 SF Pro Rounded 不可用時，`rounded` 將回退到系統字體。',
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: '模態背景的模糊效果。',
+    },
+  ]}
 />
 
 例如，自定義暗色主題使其帶有紫色重點色和 `medium` 大小的邊框半徑：
