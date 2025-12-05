@@ -31,7 +31,7 @@ description: Özel bir cüzdan oluştur
  name: 'rdns',
  required: false,
  type: 'string',
- description: 'EIP6963'ü destekleyen cüzdan için RDNS',
+ description: 'EIP6963\'ü destekleyen cüzdan için RDNS',
  },
  {
  name: 'shortName',
@@ -44,7 +44,7 @@ description: Özel bir cüzdan oluştur
  required: true,
  type: 'string | (() => Promise<string>)',
  description:
- 'Cüzdan simgesi için URL veya bir Base64 veri URL'sine çözümlenecek bir taahhüt',
+ 'Cüzdan simgesi için URL veya bir Base64 veri URL\'sine çözümlenecek bir taahhüt',
  },
  {
  name: 'iconAccent',
@@ -65,7 +65,7 @@ description: Özel bir cüzdan oluştur
  type: 'boolean | undefined',
  description: (
  <>
- Cüzdanın bilindiğine dair indikatör veya {code}undefined{code} indirimli
+ Cüzdanın bilindiğine dair indikatör veya <code>undefined</code> indirimli
  </>
  ),
  },
@@ -74,7 +74,7 @@ description: Özel bir cüzdan oluştur
  required: false,
  type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
  typeSimple: 'DownloadUrls | undefined',
- description: 'İndirme URL'lerini içeren obje',
+ description: 'İndirme URL\'lerini içeren obje',
  },
  {
  name: 'hidden',
@@ -98,7 +98,7 @@ description: Özel bir cüzdan oluştur
  type: '{ getUri?: (uri: string) => string }',
  typeSimple: 'object',
  description:
- 'Mobil cüzdan bağlantısı URI'sini çözen fonksiyon',
+ 'Mobil cüzdan bağlantısı URI\'sini çözen fonksiyon',
  },
  {
  name: 'desktop',
@@ -113,8 +113,7 @@ description: Özel bir cüzdan oluştur
  type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
  typeSimple: 'object',
  description:
- 'QR kod URI'sini çözen fonksiyon ve isteğe bağlı mobil cüzdan kurulum talimatlarını içeren
- obje',
+ 'QR kod URI\'sini çözen fonksiyon ve isteğe bağlı mobil cüzdan kurulum talimatlarını içeren obje',
  },
  {
  name: 'extension',
