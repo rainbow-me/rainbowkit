@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps<IconsProps> = async () => {
   try {
     const walletConnectorsPath = path.join(
       process.cwd(),
-      'node_modules/@rainbow-me/rainbowkit/dist/wallets/walletConnectors'
+      'node_modules/@rainbow-me/rainbowkit/dist/wallets/walletConnectors',
     );
 
     const files = fs.readdirSync(walletConnectorsPath);
@@ -89,7 +89,11 @@ export default function Icons({ wallets }: IconsProps) {
                   <div className="svg-box">
                     <div className="size-label">QR</div>
                     <div className="svg-display large">
-                      <Cuer.Root errorCorrection="medium" size={120} value="https://wevm.dev">
+                      <Cuer.Root
+                        errorCorrection="medium"
+                        size={120}
+                        value="https://wevm.dev"
+                      >
                         <Cuer.Cells radius={1} />
                         <Cuer.Finder radius={0.25} />
                         <Cuer.Arena>
