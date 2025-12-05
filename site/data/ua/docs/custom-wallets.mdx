@@ -19,13 +19,13 @@ description: Створіть користувацький гаманець
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Унікальний ідентифікатор для кожного гаманця',
+      description: 'Унікальний ID для кожного гаманця',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Назва гаманця, що читається людиною',
+      description: 'Зрозуміла людині назва гаманця',
     },
     {
       name: 'rdns',
@@ -37,27 +37,27 @@ description: Створіть користувацький гаманець
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Опціональна коротка назва для мобільного використання',
+      description: 'Необов\'язкова коротка назва для мобільного використання',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL для іконки гаманця або обіцянка, яка повертає URL-адресу у форматі Base64',
+        'URL для іконки гаманця або обіцянка, що розв\'язується в Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Ацентний колір, що використовується в процесах завантаження для гаманців із розширенням браузера та мобільним додатком',
+        'Акцентний колір для потоків завантаження для гаманців з розширенням браузера та мобільним додатком',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Фоновий колір під час завантаження іконки гаманця',
+      description: 'Колір фону під час завантаження іконки гаманця',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: Створіть користувацький гаманець
       type: 'boolean | undefined',
       description: (
         <>
-          Чи відомо, чи гаманець встановлено, або{' '}
-          <code>undefined</code> якщо це невизначено
+          Чи відомо, що гаманець встановлено, або{' '}
+          <code>undefined</code>, якщо невизначено
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: Створіть користувацький гаманець
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Об'єкт, що містить URL-адреси для завантаження',
+      description: 'Об\'єкт, що містить URL-адреси для завантаження',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: Створіть користувацький гаманець
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Функція для розрахунку, чи повинен цей гаманець бути прихований зі списку. Це корисно для визначення генеричних резервних гаманців, наприклад, вбудований резервний "ін'єктований гаманець" використовує цю функцію',
+        'Функція для обчислення, чи слід приховати цей гаманець зі списку. Це корисно для визначення загальних резервних гаманців, наприклад, вбудований резервний "Ін\'єктований гаманець" використовує цю функцію',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: Створіть користувацький гаманець
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Функція для забезпечення екземпляра з'єднувача та налаштування для різних методів з'єднання, описаних нижче',
+        'Функція для надання екземпляра з\'єднувача та конфігурації для різних методів підключення, описаних нижче',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: Створіть користувацький гаманець
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Функція для вирішення URI мобільного з'єднання гаманця',
+        'Функція для розв\'язання URI підключення мобільного гаманця',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Функція для вирішення глибокого посилання на програму для робочого столу',
+      description: 'Функція для розв\'язання глибокого посилання настільного додатка',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: Створіть користувацький гаманець
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Об'єкт, що містить функцію для вирішення URI QR-коду, плюс опціональні інструкції для налаштування мобільного гаманця',
+        'Об\'єкт, що містить функцію для розв\'язання URI QR-коду, плюс необов\'язкові інструкції з налаштування мобільного гаманця',
     },
     {
       name: 'extension',
@@ -122,14 +122,14 @@ description: Створіть користувацький гаманець
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Об'єкт, що містить опціональні інструкції для встановлення розширення браузера',
+        'Об\'єкт, що містить необов\'язкові інструкції з налаштування розширення браузера',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Функція для забезпечення екземпляра з'єднувача',
+      description: 'Функція для надання екземпляра з\'єднувача',
     },
   ]}
 />
