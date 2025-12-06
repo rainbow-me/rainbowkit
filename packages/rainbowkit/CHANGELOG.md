@@ -570,7 +570,7 @@
   If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
 
   - [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-  - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+  - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
 ## 1.3.6
 
