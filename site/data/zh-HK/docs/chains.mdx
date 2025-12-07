@@ -1,35 +1,35 @@
 ---
-title: 區塊鏈
-description: 自定義區塊鏈
+title: 鏈
+description: 自訂鏈設置
 ---
 
-# 區塊鏈
+# 鏈
 
-## 自定義區塊鏈
+## 自訂鏈設置
 
-RainbowKit 設計上與 [wagmi 的 `chain` 對象](https://wagmi.sh/react/chains) 整合。 查看支援的區塊鏈列表[這裡](https://wagmi.sh/react/chains#supported-chains)。
+RainbowKit 設計可與 [wagmi 的 `chain` 獲取對象](https://wagmi.sh/react/chains) 集成。查看支援的鏈列表：[此處](https://wagmi.sh/react/chains#supported-chains)。
 
-### 自定義初始區塊鏈
+### 自訂初始鏈
 
-預設情況下，RainbowKit 會連接到 Wagmi 提供的第一個區塊鏈。 這個行為可以通過 `initialChain` 屬性自定義。
+預設情況下，RainbowKit 將連接到 Wagmi 提供的第一條鏈。此行為可通過 `initialChain` 屬性自訂。
 
-初始區塊鏈可以使用區塊鏈 ID 來配置。
+可以使用鏈 ID 配置初始鏈。
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-為了方便，你也可以傳遞一個區塊鏈對象。
+為了方便起見，您還可以傳遞一個鏈物件。
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### 自定義區塊鏈元數據
+### 自訂鏈的元數據
 
-預設情況下，提供了多個區塊鏈圖標和背景，但你可以使用 `iconUrl` 和 `iconBackground` 屬性為每個區塊鏈自定義圖標和背景。
+預設情況下，提供了多個鏈圖標和背景，但您可以使用 `iconUrl` 和 `iconBackground` 屬性自訂每條鏈的圖標和背景。
 
-`getDefaultConfig` 範例
+使用 `getDefaultConfig` 示例
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig` 範例
+使用 `createConfig` 示例
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';

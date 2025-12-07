@@ -73,7 +73,7 @@ export default function App({
 
 `RainbowKitSiweNextAuthProvider`의 `getSiweMessageOptions` prop에 함수를 전달하여 [SIWE 메시지 옵션](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)을 사용자 정의할 수 있습니다.
 
-새 메시지가 생성될 때마다 이 함수가 호출됩니다. 이 함수에서 반환된 옵션은 기본값과 병합됩니다.
+이 함수는 새로운 메시지가 생성될 때마다 호출됩니다. 이 함수에서 반환된 옵션은 기본값에 병합됩니다.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 세션 서버에 접근
 
-NextAuth의 `getToken` 함수를 `next-auth/jwt`에서 가져와 세션 토큰에 접근할 수 있습니다. 사용자가 성공적으로 인증하면, 세션 토큰의 `sub` 속성 (토큰의 "subject", 즉 사용자)이 사용자의 주소가 될 것입니다.
+사용자가 성공적으로 인증하면, 세션 토큰의 `sub` 속성 (토큰의 "subject", 즉 사용자)이 사용자의 주소가 될 것입니다.
 
 또한, `getServerSideProps`를 통해 서버에서 해결된 세션 객체를 클라이언트로 전달하여 NextAuth가 클라이언트에서 다시 해석할 필요가 없게 할 수 있습니다.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 세션 관리에 대한 자세한 정보는 다음 문서를 참조하십시오:
 
-- [Next.js 인증 가이드](https://nextjs.org/docs/authentication)
+- [Next.js 인증 가이드](https://nextjs.org/docs/pages/guides/authentication)
 - [NextAuth 문서](https://next-auth.js.org)

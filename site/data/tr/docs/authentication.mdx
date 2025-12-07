@@ -13,7 +13,7 @@ description: Kullanıcılarınızın kimlik doğrulaması
 
 ### Ethereum ve NextAuth ile Giriş Yapmayı Ayarlayın
 
-#### Kur
+#### Install
 
 `@rainbow-me/rainbowkit-siwe-next-auth` paketini kurun.
 
@@ -73,7 +73,7 @@ export default function App({
 
 [SIWE mesaj seçeneklerini](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) `RainbowKitSiweNextAuthProvider` üzerindeki `getSiweMessageOptions` özelliğine bir fonksiyon geçirerek özelleştirebilirsiniz.
 
-Bu fonksiyon, yeni bir mesaj oluşturulduğunda çağrılacaktır. Bu fonksiyondan dönen seçenekler varsayılanlarla birleştirilecektir.
+Bu fonksiyon her yeni mesaj oluşturulduğunda çağrılacaktır. Bu fonksiyondan dönen seçenekler varsayılanlarla birleştirilecektir.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Oturumu sunucu tarafında erişin
 
-`next-auth/jwt`ten içe aktarılan NextAuth'ın `getToken` fonksiyonu ile oturum token'ına erişebilirsiniz. Eğer kullanıcı başarılı bir şekilde kimlik doğrulaması yaptıysa, oturum token'ının `sub` özelliği (token'ın "konusu", yani kullanıcı) kullanıcının adresi olacaktır.
+Kullanıcı başarılı bir şekilde kimlik doğrulaması yaptığında, oturum token'ının `sub` özelliği (token'ın "konusu", yani kullanıcı) kullanıcının adresi olacaktır.
 
 Ayrıca çözümlenmiş oturum nesnesini sunucudan `getServerSideProps` vasıtasıyla iletip NextAuth'ın bunu istemci üzerinde tekrar çözümlemesi gerekmemesini sağlayabilirsiniz.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 Oturumu yönetmek hakkında daha fazla bilgi için aşağıdaki belgelere başvurabilirsiniz:
 
-- [Next.js kimlik doğrulama rehberi](https://nextjs.org/docs/authentication)
+- [Next.js kimlik doğrulama rehberi](https://nextjs.org/docs/pages/guides/authentication)
 - [NextAuth belgeleri](https://next-auth.js.org)

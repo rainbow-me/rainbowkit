@@ -1,21 +1,21 @@
 ---
 title: 테마 설정
-description: 테마 사용 및 사용자 정의
+description: 테마 사용 및 맞춤화
 ---
 
 # 테마 설정
 
-## 테마 사용 및 사용자 정의
+## 테마 사용 및 맞춤화
 
-RainbowKit UI를 귀하의 브랜드에 맞게 조정할 수 있습니다. 미리 정의된 몇 가지 강조 색상과 테두리 반경 구성에서 선택할 수 있습니다.
+RainbowKit UI를 브랜드와 일치하도록 조정할 수 있습니다. 사전 정의된 몇 가지 강조색상 및 테두리 반경 설정에서 선택할 수 있습니다.
 
-3가지 내장 테마 함수가 있습니다:
+3개의 기본 테마 함수가 있습니다:
 
-- `lightTheme`   (기본)
+- `lightTheme` &nbsp; (기본값)
 - `darkTheme`
 - `midnightTheme`
 
-테마 함수는 테마 객체를 반환합니다. 이 객체를 `RainbowKitProvider`의 `theme` prop에 전달할 수 있습니다.
+테마 함수는 테마 객체를 반환합니다. 해당 객체를 `RainbowKitProvider`의 `theme` 속성에 전달할 수 있습니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-원한다면, `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` 및 `overlayBlur`를 사용자 정의하기 위해 전달할 수 있습니다.
+원하는 경우 `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack`, 및 `overlayBlur`를 전달하여 설정을 맞춤화할 수 있습니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### 내장 테마 사용자 정의
+### 내장 테마 맞춤화
 
-내장된 테마 기능은 또한 옵션 객체를 받아들여 여러 다른 시각적 스타일 중에서 선택할 수 있게 합니다.
+기본 제공되는 테마 함수는 여러 다른 시각 스타일 중에서 선택할 수 있는 옵션 객체도 수용합니다.
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'The background/text color of various interactive elements.',
+        '다양한 인터랙티브 요소의 배경/텍스트 색상.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        '강조 색상 위에 렌더링되는 전경 요소의 색상.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      description: '전체 테두리 반경 스케일의 크기.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "UI 전반에 사용되는 폰트 스택입니다. `rounded`는 SF Pro Rounded를 사용하며, 사용할 수 없는 경우 시스템 폰트로 대체됩니다.",
     },
     {
       name: 'overlayBlur',
@@ -93,12 +93,12 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: '모달 배경 블러.',
     },
   ]}
 />
 
-예를 들어, 보라색 강조 색상과 `medium` 테두리 둥글기를 사용하여 다크 테마를 사용자 정의하는 경우:
+예를 들어, 보라색 강조 색상과 `medium` 테두리 반경 스케일로 어두운 테마를 맞춤화하려면:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-각 테마는 강조 색상 사전 설정(`blue`, `green`, `orange`, `pink`, `purple`, `red`)을 여러 개 제공하여 옵션 객체에 분산할 수 있습니다. 예를 들어, `pink` 강조 색상 사전 설정을 사용하는 경우:
+각 테마는 옵션 객체에 확산할 수 있는 몇 가지 강조 색상 프리셋(`blue`, `green`, `orange`, `pink`, `purple`, `red`)을 제공합니다. 예를 들어, `pink` 강조 색상 프리셋을 사용하려면:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -138,13 +138,13 @@ const App = () => {
 };
 ```
 
-### 예제
+### 예시들
 
 #### 테마 함수
 
-다양한 방법으로 `theme` prop을 사용할 수 있습니다.
+다음은 `theme` 속성을 사용할 수 있는 몇 가지 방법입니다.
 
-`darkTheme` 테마를 사용하세요.
+`darkTheme` 테마를 사용합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -156,7 +156,7 @@ export const App = () => (
 );
 ```
 
-`midnightTheme` 테마를 사용하세요.
+`midnightTheme` 테마를 사용합니다.
 
 ```tsx
 import {
@@ -173,9 +173,9 @@ export const App = () => (
 
 #### 강조 색상
 
-`accentColor` 설정을 사용하는 몇 가지 다양한 방법이 있습니다.
+다음은 `accentColor` 설정을 사용할 수 있는 몇 가지 방법입니다.
 
-강조 색상을 사용자 정의 보라색 값으로 설정하세요.
+강조 색상을 사용자 정의 보라색 값으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -195,7 +195,7 @@ const App = () => {
 };
 ```
 
-강조 색상을 내장 `green` 프리셋으로 설정하세요.
+강조 색상을 기본 제공 `green` 프리셋으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -216,9 +216,9 @@ const App = () => {
 
 #### 테두리 반경
 
-`borderRadius` 설정을 사용하는 몇 가지 다양한 방법이 있습니다.
+다음은 `borderRadius` 설정을 사용할 수 있는 방법입니다.
 
-테두리 반경을 `medium`으로 설정하세요.
+테두리 반경을 `medium`으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -237,7 +237,7 @@ const App = () => {
 };
 ```
 
-테두리 반경을 `none`으로 설정하세요.
+테두리 반경을 `none`으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,13 +256,13 @@ const App = () => {
 };
 ```
 
-> 알림: 사용 가능한 테두리 반경 값은: `large` (기본), `medium`, `small` 그리고 `none`.
+> 알림: 사용 가능한 테두리 반경 값은: `large` (기본값), `medium`, `small`, `none`입니다.
 
 #### 폰트 스택
 
-기본적으로, `fontStack`은 `rounded`로 설정됩니다. 그러나 `fontStack` 설정을 사용하는 방법입니다.
+기본적으로 `fontStack`는 `rounded`로 설정되지만, `fontStack` 설정을 사용할 수 있는 방법은 다음과 같습니다.
 
-글꼴 스택을 `system`으로 설정하세요.
+폰트 스택을 `system`으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -281,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### 오버레이 블러
+#### 블러 효과 오버레이
 
-기본적으로, `overlayBlur`은 `none`으로 설정됩니다. 그러나 `overlayBlur` 설정을 사용하는 방법입니다.
+기본적으로 `overlayBlur`는 `none`으로 설정되지만, `overlayBlur` 설정을 사용하는 방법은 다음과 같습니다.
 
-오버레이 블러를 `small`로 설정합니다.
+블러 효과 오버레이를 `small`로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -304,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### 혼합하여 사용
+#### 혼합 및 매칭
 
-다른 테마를 사용하는 몇 가지 방법, `accentColor`, `borderRadius` 및 `fontStack` props을 함께 사용합니다.
+다음은 `accentColor`, `borderRadius`, `fontStack` 속성을 함께 사용하여 다양한 테마를 혼합하여 사용할 수 있는 몇 가지 방법입니다.
 
-- `lightTheme` 테마를 사용하세요
-- 강조 색상을 사용자 정의 보라색 값으로 설정하세요
-- 테두리 반경을 `medium`으로 설정하세요
-- 글꼴 스택을 `system`으로 설정하세요
+- `lightTheme` 테마를 사용합니다.
+- 강조 색상을 사용자 정의 보라색 값으로 설정합니다.
+- 테두리 반경을 `medium`으로 설정합니다.
+- 폰트 스택을 `system`으로 설정합니다.
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -333,10 +333,10 @@ const App = () => {
 };
 ```
 
-- `midnightTheme` 테마를 사용하세요
-- 강조 색상을 내장 `pink` 프리셋에 설정하세요.
-- 테두리 반경을 `small`로 설정하세요
-- 글꼴 스택을 `system`으로 설정하세요
+- `midnightTheme` 테마를 사용합니다.
+- 강조 색상을 기본 제공 `pink` 프리셋으로 설정합니다.
+- 테두리 반경을 `small`으로 설정합니다.
+- 폰트 스택을 `system`으로 설정합니다.
 
 ```tsx
 import {
@@ -362,7 +362,7 @@ const App = () => {
 
 #### 다크 모드 지원
 
-앱이 표준 `prefers-color-scheme: dark` 미디어 쿼리를 사용하여 라이트 모드와 다크 모드를 전환하는 경우, 선택적으로 'lightMode'와 'darkMode' 값을 포함하는 동적 테마 객체를 제공할 수 있습니다.
+앱이 표준 `prefers-color-scheme: dark` 미디어 쿼리를 사용하여 라이트 및 다크 모드를 전환하는 경우, `lightMode` 및 `darkMode` 값을 포함하는 동적 테마 객체를 선택적으로 제공할 수 있습니다.
 
 ```tsx
 import {

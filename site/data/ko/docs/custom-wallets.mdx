@@ -7,9 +7,9 @@ description: 사용자 정의 지갑 생성
 
 ## 사용자 정의 지갑 생성
 
-> 참고: 이 API는 불안정하며 가까운 미래에 변경될 가능성이 있습니다. 저희는 시간이 지남에 따라 더 많은 내장 지갑을 추가할 예정입니다. 관심 있는 특정 지갑이 있다면 [알려주세요](https://github.com/rainbow-me/rainbowkit/issues).
+> 참고: 이 API는 안정적이지 않으며 가까운 미래에 변경될 가능성이 있습니다. 시간이 지남에 따라 더 많은 내장 지갑이 추가될 예정입니다. 관심 있는 지갑이 있다면 [알려주세요](https://github.com/rainbow-me/rainbowkit/issues).
 
-`Wallet` 기능 유형은 사용자 정의 지갑을 정의하는 데 도움이 됩니다. 다음 속성들은 `Wallet` 기능의 반환 값에 설정할 수 있습니다:
+`Wallet` 함수 타입은 사용자 정의 지갑을 정의하는 데 도움을 줍니다. 다음 속성들을 `Wallet` 함수의 반환 값에 설정할 수 있습니다.
 
 ### 지갑 속성
 
@@ -19,7 +19,7 @@ description: 사용자 정의 지갑 생성
       name: 'id',
       required: true,
       type: 'string',
-      description: '각 지갑에 대한 고유 ID',
+      description: '지갑 당 고유 ID',
     },
     {
       name: 'name',
@@ -37,25 +37,27 @@ description: 사용자 정의 지갑 생성
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: '모바일 사용을 위한 선택적 단축 이름',
+      description: '모바일 사용을 위한 선택적 짧은 이름',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
-      description: '지갑 아이콘의 URL 또는 Base64 데이터 URL로 처리되는 약속',
+      description:
+        '지갑 아이콘의 URL 또는 Base64 데이터 URL로 변환되는 프로미스',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
-      description: '브라우저 확장 기능과 모바일 앱 모두를 가진 지갑을 위한 다운로드 흐름에 사용되는 강조 색상',
+      description:
+        '브라우저 확장 및 모바일 앱이 있는 지갑의 다운로드 흐름에서 사용되는 강조 색상',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: '지갑 아이콘이 로드되는 동안의 배경색',
+      description: '지갑 아이콘 로드 시 배경 색상',
     },
     {
       name: 'installed',
@@ -63,8 +65,8 @@ description: 사용자 정의 지갑 생성
       type: 'boolean | undefined',
       description: (
         <>
-          지갑이 설치되었는지 여부 또는 불확실한 경우{' '}
-          <code>undefined</code> 
+          지갑이 설치된 것으로 알려져 있는지 여부 또는 {' '}
+          <code>undefined</code>로 불확정인 경우
         </>
       ),
     },
@@ -80,7 +82,8 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
-      description: '목록에서 이 지갑을 숨겨야 하는지 계산하는 함수. 일반적인 대체 지갑을 정의하는 데 유용합니다. 예를 들어, 내장된 "Injected Wallet" 대체는 이 기능을 사용합니다',
+      description:
+        '지갑 목록에서 이 지갑을 숨기는지 여부를 계산하는 함수입니다. 예를 들어 내장 "Injected Wallet" 대체 기능이 이 특징을 사용합니다',
     },
     {
       name: 'createConnector',
@@ -88,7 +91,7 @@ description: 사용자 정의 지갑 생성
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        '아래에 설명된 다양한 연결 방법에 대한 커넥터 인스턴스와 구성을 제공하는 기능',
+        '아래에 설명된 다양한 연결 방법을 위한 커넥터 인스턴스를 제공하기 위한 함수',
     },
     {
       name: 'mobile',
@@ -103,7 +106,7 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: '데스크톱 앱 딥링크를 해결하기 위한 함수',
+      description: '데스크톱 앱 딥 링크를 해결하기 위한 함수',
     },
     {
       name: 'qrCode',
@@ -111,7 +114,7 @@ description: 사용자 정의 지갑 생성
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'QR 코드 URI를 해결하기 위한 함수를 포함하는 객체, 선택적 모바일 지갑 설정 지침 포함',
+        'QR 코드 URI를 해결하기 위한 함수와 선택적 모바일 지갑 설정 지침을 포함하는 객체',
     },
     {
       name: 'extension',
@@ -119,7 +122,7 @@ description: 사용자 정의 지갑 생성
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        '선택적 브라우저 확장 기능 설정 지침을 포함하는 객체',
+        '선택적 브라우저 확장 설정 지침을 포함하는 객체',
     },
     {
       name: 'createConnector',
@@ -127,7 +130,7 @@ description: 사용자 정의 지갑 생성
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
       description: '커넥터 인스턴스를 제공하기 위한 함수',
-    }
+    },
   ]}
 />
 
@@ -152,14 +155,14 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: 'string',
       description:
-        '`android` 또는 `ios`가 사용 불가능할 때 모바일 사용자를 위한 랜딩 페이지',
+        '안드로이드 또는 iOS가 사용할 수 없는 경우 모바일 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        '모바일 다운로드 QR 코드를 스캔한 사용자를 위한 랜딩 페이지',
+        '모바일 다운로드 QR 코드를 스캔하는 사용자를 위한 랜딩 페이지',
     },
     {
       name: 'chrome',
@@ -196,14 +199,14 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: 'string',
       description:
-        '브라우저 호환 URL이 사용 불가능할 때 데스크톱 확장 기능 사용자를 위한 랜딩 페이지',
+        '브라우저 호환 URL이 사용할 수 없는 경우 데스크톱 확장 사용자를 위한 랜딩 페이지',
     },
   ]}
 />
 
-### 예제
+### 예시들
 
-예를 들어, WalletConnect를 사용하여 사용자 정의 지갑을 생성하는 방법:
+예를 들어, WalletConnect를 사용해 사용자 정의 지갑을 생성하려면:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -275,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-그런 다음 사용자 정의 지갑을 [지갑 목록](/docs/custom-wallet-list)에 추가할 수 있습니다.
+그런 다음 [지갑 목록](/docs/custom-wallet-list)에 사용자 정의 지갑을 추가할 수 있습니다.

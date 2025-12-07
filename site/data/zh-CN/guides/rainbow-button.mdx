@@ -1,24 +1,24 @@
 ---
-title: 在您的 dApp 中使用 Rainbow Button
-description: 一种适用于 Wagmi 的即插即用库，用于支持您的 dApp 中 Rainbow 钱包
+title: 在您的 dApp 中采用 Rainbow 按钮
+description: Wagmi 的即插即用库，以支持您 dApp 中的 Rainbow 钱包
 image: guide-rainbow-button.png
 ---
 
-# 在您的 dApp 中使用 Rainbow Button
+# 在您的 dApp 中采用 Rainbow 按钮
 
-`RainbowButton` 组件是在使用 `wagmi` 的 dApp 中为 Rainbow 钱包添加支持的最简单方法，相较于 [RainbowKit](https://www.rainbowkit.com/docs/installation)，它提供了更加自定义的连接器体验。
+`RainbowButton` 组件是为使用 `wagmi` 的 dApp 添加 Rainbow Wallet 支持的最简单方式，并且比 [RainbowKit](https://www.rainbowkit.com/docs/installation) 提供了更定制化的连接体验。
 
-**1. 安装 `@rainbow-me/rainbow-button` 及其他依赖**
+**1. 安装 `@rainbow-me/rainbow-button` 及其对等依赖项**
 
-此包兼容 Next.js、React 和 Vite。 确保遵循对等依赖的警告。
+该软件包兼容 Next.js、React 和 Vite。请确保遵循对等依赖警告。
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. 配置 Wagmi 并安装 RainbowButton**
+**2. 使用 Wagmi 配置并安装 RainbowButton**
 
-将 `rainbowConnector` 的一个实例传递给 Wagmi 的 `createConfig`，并传入 `projectId` 和 `appName`，然后将您的应用包装在 `RainbowButtonProvider` 中。 然后加入 `RainbowButton` 组件。
+将 `rainbowConnector` 的实例传递给 Wagmi 的 `createConfig`，并提供 `projectId` 和 `appName`，然后将您的应用程序封装在 `RainbowButtonProvider` 中。接下来插入使用 `RainbowButton` 组件。
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. 就是这样了!**
+**3. 这样就完成了！**
 
-现在您的用户无需进行任何维护或烦恼，就可以享受到与 Rainbow 的无缝连接体验。
+现在您的用户可以享受无缝连接的体验，不再需要维护头痛。
 
-另外，如果您想支持更多的钱包，也可以在 [RainbowKit](https://www.rainbowkit.com/docs/installation) 中使用 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 组件。
+如果您希望支持更多的钱包，RainbowKit 还提供一个 [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) 组件。

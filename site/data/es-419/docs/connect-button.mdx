@@ -1,13 +1,13 @@
 ---
-title: ConnectButton
-description: Usando y personalizando el ConnectButton
+title: ConectarBotón
+description: Usar y personalizar el Botón de Conexión
 ---
 
-# ConnectButton
+# ConectarBotón
 
-## Usando y personalizando el ConnectButton
+## Usar y personalizar el Botón de Conexión
 
-Este es el componente principal. Es responsable de renderizar el botón de conectar/desconectar, así como la interfaz de usuario para cambiar de cadena.
+Este es el componente principal. Es responsable de renderizar el botón de conectar/desconectar, así como la interfaz de usuario para el cambio de cadena.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,29 +17,29 @@ export const YourApp = () => {
 };
 ```
 
-> Nota: Asegúrese de que su aplicación está envuelta en los proveedores necesarios. [Lea más](/docs/installation#wrap-providers).
+> Nota: Asegúrate de que tu aplicación esté envuelta en los proveedores necesarios. [Leer más](/docs/installation#wrap-providers).
 
 ### Props
 
-El componente `ConnectButton` expone varias props para personalizar su apariencia, incluyendo el cambio de visibilidad de diferentes elementos.
+El componente `ConnectButton` expone varios props para personalizar su apariencia, incluyendo la visibilidad de diferentes elementos.
 
 <PropsTable
   data={[
     {
       name: 'label',
       required: false,
-      default: 'Conectar Billetera',
+      default: 'Conectar Cartera',
       type: 'string',
-      description: 'La etiqueta de texto mostrada en el botón Conectar',
+      description: 'La etiqueta de texto mostrada en el botón de conexión',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'completo',
+      default: 'full',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'Si se muestra el avatar y/o la dirección de la cuenta activa',
+        "Si se muestra el avatar o la dirección de la cuenta activa",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ El componente `ConnectButton` expone varias props para personalizar su aparienci
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        'Si se muestra o se oculta completamente el icono y/o el nombre de la cadena actual',
+        "Si se muestra el icono y/o nombre de la cadena actual, o se oculta completamente",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ El componente `ConnectButton` expone varias props para personalizar su aparienci
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        'Si el saldo es visible junto al nombre de la cuenta',
+        'Si el saldo es visible al lado del nombre de la cuenta',
     },
   ]}
 />
 
-> Nota: el punto de interrupción `largeScreen` incorporado es `768px`.
+> Nota: el punto de quiebre `largeScreen` incorporado es `768px`.
 
 ### Ejemplos
 
 #### Etiqueta
 
-Utilice la prop `label` para establecer un texto personalizado para `ConnectButton`.
+Usa el prop `label` para establecer un texto personalizado para el `ConnectButton`.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,7 +76,7 @@ Utilice la prop `label` para establecer un texto personalizado para `ConnectButt
 
 #### Estado de la cuenta
 
-Aquí hay algunas maneras diferentes en las que puede usar la prop `accountStatus`.
+Aquí hay algunas formas diferentes de usar el prop `accountStatus`.
 
 Mostrar solo el avatar de la cuenta.
 
@@ -92,9 +92,9 @@ Mostrar solo la dirección de la cuenta.
 
 #### Estado de la cadena
 
-Aquí hay algunas maneras diferentes en las que puede usar la prop `chainStatus`.
+Aquí hay algunas formas diferentes de usar el prop `chainStatus`.
 
-Mostrar solo el ícono de la cadena actual.
+Mostrar solo el icono de la cadena actual.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
@@ -106,7 +106,7 @@ Mostrar solo el nombre de la cadena actual.
 <ConnectButton chainStatus="__name__" />
 ```
 
-Ocultar completamente la interfaz de la cadena.
+Ocultar completamente la interfaz de usuario de la cadena.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
@@ -114,7 +114,7 @@ Ocultar completamente la interfaz de la cadena.
 
 #### Mostrar saldo
 
-Use la prop `showBalance` para ocultar/mostrar el saldo.
+Usa el prop `showBalance` para ocultar/mostrar el saldo.
 
 Ocultar el saldo.
 
@@ -124,9 +124,9 @@ Ocultar el saldo.
 
 #### Responsivo
 
-Estas props también pueden ser definidas en un formato responsivo.
+Estos props también se pueden definir en un formato responsivo.
 
-En pantallas pequeñas, mostrar solo el icono de la cuenta. Pero en pantallas grandes, mostrar el icono y la dirección.
+En pantallas pequeñas, muestra solo el icono de la cuenta. Pero en pantallas grandes, muestra el icono y la dirección.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ En pantallas pequeñas, mostrar solo el icono de la cuenta. Pero en pantallas gr
 />
 ```
 
-En pantallas pequeñas, ocultar el saldo. Pero en pantallas grandes, mostrarlo.
+En pantallas pequeñas, oculta el saldo. Pero en pantallas grandes, muéstralo.
 
 ```tsx
 <ConnectButton

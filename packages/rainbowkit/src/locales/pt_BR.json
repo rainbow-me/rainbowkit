@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
-          "title": "Abra o aplicativo Argent"
+          "description": "Adicione o Ready à sua tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Ready"
         },
         "step2": {
           "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
           "title": "Toque no botão WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão da Carteira Binance",
+          "description": "Recomendamos fixar a Carteira Binance na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
@@ -1130,11 +1144,11 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão XDEFI Wallet",
-          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "Instale a extensão CTRL Wallet",
+          "description": "Recomendamos fixar CTRL Wallet na sua barra de tarefas para acesso mais rápido à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "Abrir keys.gemini.com",
+          "description": "Visite keys.gemini.com no seu navegador móvel - não é necessário baixar app."
+        },
+        "step2": {
+          "title": "Crie Sua Carteira Instantaneamente",
+          "description": "Configure sua carteira inteligente em segundos usando a autenticação embutida do seu dispositivo."
+        },
+        "step3": {
+          "title": "Escanear para Conectar",
+          "description": "Escaneie o código QR para conectar sua carteira instantaneamente - simplesmente funciona."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Acesse keys.gemini.com",
+          "description": "Sem necessidade de extensões ou downloads - sua carteira permanece segura no navegador."
+        },
+        "step2": {
+          "title": "Configuração com Um Clique",
+          "description": "Crie sua carteira inteligente instantaneamente com autenticação por chave de acesso - mais fácil que qualquer outra carteira."
+        },
+        "step3": {
+          "title": "Conectar e Ir",
+          "description": "Aprove a conexão e você está pronto - a carteira imparcial que simplesmente funciona."
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "Toque no botão de escanear"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "Abra o aplicativo ZilPay",
-        "description": "Adicione o ZilPay à sua tela inicial para um acesso mais rápido à sua carteira."
-      },
-      "step2": {
-        "title": "Criar ou Importar uma Carteira",
-        "description": "Crie uma nova carteira ou importe uma existente."
-      },
-      "step3": {
-        "title": "Toque no botão de escanear",
-        "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo ZilPay",
+          "description": "Adicione o ZilPay à sua tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Nova Wallet",
+          "description": "Adicione a Nova Wallet à sua tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
       }
     }
   }

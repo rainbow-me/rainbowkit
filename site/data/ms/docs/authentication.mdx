@@ -73,7 +73,7 @@ Dengan `RainbowKitSiweNextAuthProvider` di tempatnya, pengguna anda kini akan di
 
 Anda boleh menyesuaikan [pilihan mesej SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) dengan menyerahkan fungsi kepada prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
 
-Fungsi ini akan dipanggil setiap kali mesej baru dicipta. Pilihan yang dipulangkan dari fungsi ini akan digabungkan dengan pilihan lalai.
+Fungsi ini akan dipanggil setiap kali mesej baru dicipta. Pilihan yang dikembalikan daripada fungsi ini akan digabungkan dengan tetapan lalai.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Akses pelayan sesi sebelah
 
-Anda boleh mengakses token sesi dengan fungsi `getToken` NextAuth yang diimport dari `next-auth/jwt`. Jika pengguna telah berjaya disahkan, sifat `sub` token sesi ("subjek" token, iaitu pengguna) akan menjadi alamat pengguna.
+Anda boleh mengakses token sesi dengan fungsi `getToken` NextAuth yang diimport dari `next-auth/jwt`. Sekiranya pengguna telah berjaya mengesahkan, sifat `sub` token sesi ("subjek" token, iaitu pengguna) akan menjadi alamat pengguna.
 
 Anda juga boleh memindahkan objek sesi yang telah diselesaikan dari pelayan melalui `getServerSideProps` supaya NextAuth tidak perlu menyelesaikannya lagi pada pelanggan.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 Untuk maklumat lanjut mengenai pengurusan sesi, anda boleh merujuk kepada dokumentasi berikut:
 
-- [Panduan pengesahan Next.js](https://nextjs.org/docs/authentication)
+- [Panduan pengesahan Next.js](https://nextjs.org/docs/pages/guides/authentication)
 - [Dokumentasi NextAuth](https://next-auth.js.org)

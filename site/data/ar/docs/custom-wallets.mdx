@@ -7,57 +7,56 @@ description: إنشاء محفظة مخصصة
 
 ## إنشاء محفظة مخصصة
 
-> ملاحظة: هذا الواجهة البرمجية للتطبيقات غير مستقرة ومرجح أن تتغير في المستقبل القريب. سنقوم بإضافة المزيد من المحافظ المدمجة مع مرور الوقت. [أعلمنا](https://github.com/rainbow-me/rainbowkit/issues) إذا كانت هناك أي محافظ معينة تهمك.
+> ملاحظة: واجهة برمجة التطبيقات هذه غير مستقرة وقد تتغير في المستقبل القريب. سنضيف المزيد من المحافظ المدمجة مع مرور الوقت. [أخبرنا](https://github.com/rainbow-me/rainbowkit/issues) إذا كانت هناك محافظ معينة تهمك.
 
-يتم توفير نوع الوظيفة `Wallet` لمساعدتك في تعريف محافظك المخصصة. يمكن تكوين الخصائص التالية على قيمة الإرجاع لوظيفة `Wallet` الخاصة بك:
+يتم توفير نوع الوظيفة `Wallet` لمساعدتك في تعريف المحافظ المخصصة الخاصة بك. يمكن تكوين الخصائص التالية على القيمة التي ترجعها وظيفة `Wallet` الخاصة بك:
 
 ### خصائص المحفظة
 
 <PropsTable
-  data={[
-    {
+  data={[  {
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'معرف فريد لكل محفظة',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: 'اسم المحفظة القابل للقراءة من قبل البشر',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'RDNS للمحفظة التي تدعم EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'اسم مختصر اختياري للاستخدام على الموبايل',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'عنوان URL لأيقونة المحفظة، أو وعد يكتمل مع رابط بيانات Base64',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'لون التمييز المستخدم في تدفقات التحميل للمحافظ التي تحتوي على امتداد للمتصفح وتطبيق الموبايل',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'لون الخلفية أثناء تحميل أيقونة المحفظة',
     },
     {
       name: 'installed',
@@ -65,8 +64,8 @@ description: إنشاء محفظة مخصصة
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          هل المحفظة معروفة بأنها مُثبتة، أو{' '}
+          <code>undefined</code> إذا كانت غير محددة
         </>
       ),
     },
@@ -75,7 +74,7 @@ description: إنشاء محفظة مخصصة
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'كائن يحتوي على روابط التحميل',
     },
     {
       name: 'hidden',
@@ -83,7 +82,7 @@ description: إنشاء محفظة مخصصة
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'وظيفة لحساب ما إذا كان يجب إخفاء هذه المحفظة من القائمة. هذا مفيد لتحديد المحافظ الاحتياطية العامة، على سبيل المثال، الاستخدام التلقائي للمحفظة "المدخل" المبني على حق خاصية `hidden`.'
     },
     {
       name: 'createConnector',
@@ -91,7 +90,7 @@ description: إنشاء محفظة مخصصة
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'وظيفة لتوفير مثيل الموصل وتكوينه لطرق اتصال مختلفة موصوفة أدناه',
     },
     {
       name: 'mobile',
@@ -99,14 +98,14 @@ description: إنشاء محفظة مخصصة
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'وظيفة لحل عنوان اتصال محفظة الموبايل',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'وظيفة لحل رابط التطبيقات المكتبية العميقة',
     },
     {
       name: 'qrCode',
@@ -114,7 +113,7 @@ description: إنشاء محفظة مخصصة
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'كائن يحتوي على وظيفة لحل عنوان QR code المميز، بالإضافة إلى تعليمات اختيارية لإعداد محفظة الموبايل',
     },
     {
       name: 'extension',
@@ -122,14 +121,14 @@ description: إنشاء محفظة مخصصة
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'كائن يحتوي على تعليمات إعدادية اختيارية لامتداد المتصفح',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'وظيفة لتوفير مثيل الموصل',
     },
   ]}
 />
@@ -137,76 +136,75 @@ description: إنشاء محفظة مخصصة
 ### خصائص روابط التحميل
 
 <PropsTable
-  data={[
-    {
+  data={[  {
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'رابط متجر جوجل بلاي',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'رابط متجر آبل ستور',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        'صفحة هبوط للمستخدمين عند عدم توفر `اندرويد` أو `آي أو إس`',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'صفحة هبوط للمستخدمين الذين يمسحون رمز QR لتنزيل الموبايل',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'رابط متجر كروم ويب',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'رابط إضافات مايكروسوفت إيدج',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox Browser Add-ons URL',
+      description: 'رابط إضافات فايرفوكس برورسر',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'رابط إضافات أوبرا',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'رابط متجر ماك ستور',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'صفحة هبوط لمستخدمي الإضافة المكتبية عندما تكون روابط المتصفح غير متوفرة',
     },
   ]}
 />
 
 ### أمثلة
 
-مثلا، لإنشاء محفظة مخصصة باستخدام WalletConnect:
+على سبيل المثال، لإنشاء محفظة مخصصة باستخدام WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +276,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-يمكنك بعد ذلك إضافة محفظتك المخصصة في [قائمة المحفظة](/docs/custom-wallet-list).
+يمكنك بعد ذلك إضافة محفظتك المخصصة في [قائمة المحافظ](/docs/custom-wallet-list).

@@ -1,19 +1,19 @@
 ---
 title: المصادقة المخصصة
-description: الاتصال بنظام المصادقة الخلفي الخاص بك
+description: الاتصال بخادم استيثاق خلفي خاص بك
 ---
 
 # المصادقة المخصصة
 
-## الاتصال بنظام المصادقة الخلفي الخاص بك
+## الاتصال بخادم استيثاق خلفي خاص بك
 
-بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل.
+بينما يوفر RainbowKit [دعماً عالي المستوى لتسجيل الدخول بإستخدام إثريوم وNextAuth،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) يمكنك أيضًا التكامل مع الواجهات الخلفية والتنسيقات المخصصة للرسائل.
 
 ### إنشاء محول مخصص
 
-قم أولاً بإنشاء محول للمصادقة. هذا يسمح لـ RainbowKit بإنشاء / تحضير الرسائل والاتصال بخادم الخلفية الخاص بك.
+أولاً، أنشئ محول استيثاق. هذا يسمح ل RainbowKit بإنشاء/تحضير الرسائل والتواصل مع خادم الاستيثاق الخلفي الخاص بك.
 
-كمثال، يمكننا صنع محول مصادقة يتيح لنا استخدام [تسجيل الدخول باستخدام Ethereum](https://login.xyz) ضد بعض النقاط النهائية المخصصة لواجهة برمجة التطبيقات، مثل [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+كمثال، يمكننا صنع محول استيثاق يسمح لنا باستخدام [تسجيل الدخول باستخدام إثريوم](https://login.xyz) مع بعض نقاط نهاية API المخصصة، مثل [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### توفير حالة المصادقة
+#### توفير حالة الاستيثاق
 
-باستخدام الافتراض أن تطبيقك يدير حياة المصادقة بطريقة ما، يمكنك تمرير حالة المصادقة الحالية مع المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، مع تغليف `RainbowKitProvider` الخاص بك.
+على افتراض أن تطبيقك يدير بالفعل دورة حياة الاستيثاق بطريقة معينة، يمكنك تمرير حالة الاستيثاق الحالية مع مزود المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، تغليف مزود RainbowKit الحالي الخاص بك.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-إذا وصلت إلى هذا الحد وأنشأت محولًا لمكتبة المصادقة المفتوحة المصدر الحالية، فيرجى النظر في إنشاء حزمة للآخرين لاستخدامها!
+إذا وصلت إلى هذه النقطة وقمت بإنشاء محول لمكتبة استيثاق مفتوحة المصدر موجودة، نرجو منك النظر في إنشاء حزمة ليستخدمها الآخرون!

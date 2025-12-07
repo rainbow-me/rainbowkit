@@ -7,7 +7,7 @@ description: Sử dụng và tùy chỉnh Nút Kết Nối
 
 ## Sử dụng và tùy chỉnh Nút Kết Nối
 
-Đây là thành phần chính. Nó chịu trách nhiệm vẽ nút kết nối/ngắt kết nối, cũng như giao diện trao đổi chuỗi.
+Đây là thành phần chính. Nó chịu trách nhiệm hiển thị nút kết nối/ngắt kết nối, cũng như giao diện hoán đổi chuỗi.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,29 +17,29 @@ export const YourApp = () => {
 };
 ```
 
-> Lưu ý: Đảm bảo ứng dụng của bạn được bao trong nhà cung cấp cần thiết. [Đọc thêm](/docs/installation#wrap-providers).
+> Ghi chú: Hãy chắc chắn rằng ứng dụng của bạn được bao bọc trong các nhà cung cấp cần thiết. [Đọc thêm](/docs/installation#wrap-providers).
 
 ### Thuộc tính
 
-Thành phần `ConnectButton` cung cấp nhiều thuộc tính để tùy chỉnh giao diện của nó, bao gồm bật/tắt hiển thị các phần tử khác nhau.
+Thành phần `Nút Kết Nối` cung cấp nhiều thuộc tính để tùy chỉnh giao diện, bao gồm điều chỉnh khả năng hiển thị của các phần tử khác nhau.
 
 <PropsTable
   data={[
     {
       name: 'label',
       required: false,
-      default: 'Kết nối Ví',
+      default: 'Kết Nối Ví',
       type: 'string',
-      description: 'Nhãn văn bản hiển thị trên nút Kết nối',
+      description: 'Nhãn văn bản hiển thị trên nút Kết Nối',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'đầy đủ',
+      default: 'full',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'Liệu hình đại diện và/hoặc địa chỉ của tài khoản đang hoạt động có được hiển thị hay không',
+        "Liệu hình đại diện và/hoặc địa chỉ của tài khoản đang hoạt động có hiển thị",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ Thành phần `ConnectButton` cung cấp nhiều thuộc tính để tùy chỉn
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        "Liệu biểu tượng và/hoặc tên của chuỗi hiện tại được hiển thị hay bị ẩn hoàn toàn",
+        "Liệu biểu tượng và/hoặc tên của chuỗi hiện tại có hiển thị, hoặc ẩn hoàn toàn",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ Thành phần `ConnectButton` cung cấp nhiều thuộc tính để tùy chỉn
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        'Liệu số dư có được hiển thị bên cạnh tên tài khoản',
+        'Liệu số dư có hiển thị cạnh tên tài khoản',
     },
   ]}
 />
 
-> Lưu ý: điểm ngắt `largeScreen` tích hợp là `768px`.
+> Lưu ý: điểm ngắt `màn hình lớn` tích hợp sẵn là `768px`.
 
 ### Ví dụ
 
 #### Nhãn
 
-Sử dụng thuộc tính `label` để đặt văn bản tuỳ chỉnh cho `ConnectButton`.
+Sử dụng thuộc tính `label` để đặt văn bản tùy chỉnh cho `Nút Kết Nối`.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,9 +76,9 @@ Sử dụng thuộc tính `label` để đặt văn bản tuỳ chỉnh cho `Con
 
 #### Trạng thái tài khoản
 
-Đây là một vài cách khác nhau bạn có thể sử dụng thuộc tính `accountStatus`.
+Dưới đây là một vài cách khác nhau mà bạn có thể sử dụng thuộc tính `accountStatus`.
 
-Chỉ hiển thị ảnh đại diện của tài khoản.
+Chỉ hiển thị hình đại diện của tài khoản.
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
@@ -92,15 +92,15 @@ Chỉ hiển thị địa chỉ của tài khoản.
 
 #### Trạng thái chuỗi
 
-Đây là một vài cách khác nhau bạn có thể sử dụng thuộc tính `chainStatus`.
+Dưới đây là một vài cách khác nhau mà bạn có thể sử dụng thuộc tính `chainStatus`.
 
-Chỉ hiển thị biểu tượng chuỗi hiện tại.
+Chỉ hiển thị biểu tượng của chuỗi hiện tại.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-Chỉ hiển thị tên chuỗi hiện tại.
+Chỉ hiển thị tên của chuỗi hiện tại.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
@@ -124,9 +124,9 @@ Sử dụng thuộc tính `showBalance` để ẩn/hiển thị số dư.
 
 #### Đáp ứng
 
-Các thuộc tính này cũng có thể được định nghĩa ở định dạng đáp ứng.
+Những thuộc tính này cũng có thể được định nghĩa ở định dạng đáp ứng.
 
-Trên màn hình nhỏ, chỉ hiển thị biểu tượng tài khoản. Nhưng trên màn hình lớn, hiển thị biểu tượng và địa chỉ.
+Trên các màn hình nhỏ, chỉ hiển thị biểu tượng tài khoản. Nhưng trên các màn hình lớn, hiển thị cả biểu tượng và địa chỉ.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ Trên màn hình nhỏ, chỉ hiển thị biểu tượng tài khoản. Nhưng 
 />
 ```
 
-Trên màn hình nhỏ, ẩn số dư. Nhưng trên màn hình lớn, hiển thị nó.
+Trên các màn hình nhỏ, ẩn số dư. Nhưng trên các màn hình lớn, hiển thị chúng.
 
 ```tsx
 <ConnectButton

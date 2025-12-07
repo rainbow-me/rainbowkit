@@ -1,15 +1,15 @@
 ---
-title: ConnectButton personalizado
-description: Creando un ConnectButton personalizado
+title: Botón de Conexión Personalizado
+description: Crear un botón de conexión personalizado
 ---
 
-# ConnectButton personalizado
+# Botón de Conexión Personalizado
 
-## Creando un ConnectButton personalizado
+## Crear un botón de conexión personalizado
 
-Puede usar el `ConnectButton.Custom` de bajo nivel para crear su propio botón de conexión personalizado. Este componente renderiza una función, que incluye todo lo que necesita para volver a implementar los botones integrados.
+Puede usar el `ConnectButton.Custom` de bajo nivel para crear su propio botón de conexión personalizado. Este componente renderiza una función, que incluye todo lo necesario para reimplementar los botones incorporados.
 
-Una re-implemetación mínima de los botones integrados se vería algo así:
+Una reimplementación mínima de los botones integrados se vería algo así:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-Las siguientes propiedades son pasadas a su función de renderizado.
+Las siguientes propiedades se pasan a su función de renderizado.
 
 ### Propiedades de la cuenta
 
@@ -122,7 +122,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'Objeto que contiene detalles sobre la cuenta actual, descrito a continuación',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          La dirección completa de la cuenta, por ejemplo
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -139,7 +139,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      description: 'El saldo de la cuenta en decimales',
     },
     {
       name: 'account.balanceFormatted',
@@ -147,7 +147,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          El saldo de la cuenta formateado como una cadena, por ejemplo{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -158,7 +158,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          El símbolo de la moneda para el saldo, por ejemplo <code>ETH</code>
         </>
       ),
     },
@@ -168,8 +168,8 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          El saldo formateado a 3 dígitos significativos, más el
+          símbolo, por ejemplo <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,8 +179,8 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          El nombre ENS, o una versión truncada de la dirección, por ejemplo{' '}
+          <code>"rainbowwallet.eth"</code> o <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -188,7 +188,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      description: 'El URI del avatar ENS',
     },
     {
       name: 'account.ensName',
@@ -196,7 +196,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string	| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          El nombre ENS, por ejemplo <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,7 +205,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Booleano que indica si la cuenta tiene transacciones pendientes para la cadena actual',
     },
   ]}
 />
@@ -232,14 +232,14 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'string | undefined',
       description:
-        'La URL del icono de la cadena (que también puede ser indefinida mientras se descargan URLs de datos Base64)',
+        'La URL del icono de la cadena (que también puede ser indefinida mientras se descargan las URLs de datos Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'El fondo del icono de la cadena que será visible mientras las imágenes se están cargando',
+        'El fondo del icono de la cadena, que será visible mientras se cargan las imágenes',
     },
     {
       name: 'chain.id',
@@ -266,12 +266,12 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Booleano que indica si la cadena actual no está soportada',
+        'Booleano que indica si la cadena actual no es compatible',
     },
   ]}
 />
 
-### Propiedades del estado modal
+### Propiedades del estado del modal
 
 <PropsTable
   data={[
@@ -316,7 +316,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
   ]}
 />
 
-### Propiedades generales del estado
+### Propiedades de estado general
 
 <PropsTable
   data={[
@@ -332,7 +332,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'El estado de la autenticación, o indefinido si la autenticación no ha sido configurada',
+        'El estado de autenticación, o indefinido si la autenticación no ha sido configurada',
     },
   ]}
 />

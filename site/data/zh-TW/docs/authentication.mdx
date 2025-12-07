@@ -5,7 +5,7 @@ description: 驗證你的用戶
 
 # 身份驗證
 
-## 為你的應用程式提供已驗證的訪問
+## 提供應用程式的認證訪問
 
 您可以選擇強制用戶在連接過程中使用錢包簽署消息，證明他們擁有已連接的帳戶，並允許您創建具備特權訪問的認證用戶會話，以訪問您的應用程式。
 
@@ -23,13 +23,13 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 #### 設置提供者
 
-在`App`組件中，導入`RainbowKitSiweNextAuthProvider`。
+在您的 `App` 元件中，匯入 `RainbowKitSiweNextAuthProvider`。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-用`RainbowKitSiweNextAuthProvider`包裝`RainbowKitProvider`，確保它嵌套在NextAuth的`SessionProvider`內，以便能夠訪問會話。
+將 `RainbowKitProvider` 用 `RainbowKitSiweNextAuthProvider` 包裝，確保它嵌套在 NextAuth 的 `SessionProvider` 中，以便它可以訪問會話。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-有了`RainbowKitSiweNextAuthProvider`，您的用戶現在會在連接他們的錢包後被提示通過簽署消息進行認證。
+有了 `RainbowKitSiweNextAuthProvider`，您的用戶將在連接錢包後被要求簽名來進行身份驗證。
 
-#### 自定義SIWE消息選項
+#### 自定義 SIWE 訊息選項
 
-您可以透過將函數傳遞至 `RainbowKitSiweNextAuthProvider` 上的 `getSiweMessageOptions` 屬性來自訂 [SIWE 訊息選項](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
+您可以透過將一個函數傳遞給 `RainbowKitSiweNextAuthProvider` 的 `getSiweMessageOptions` 道具來自定義 [SIWE 訊息選項](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
 
-每當創建一條新消息時，這個函數就會被調用。 從這個函數返回的選項將與默認選項合併。
+每當創建新訊息時都會調用此函數。從此函數返回的選項將與默認值合併。
 
 ```tsx
 import {
@@ -92,11 +92,11 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### 伺服器端訪問會話
+#### 在服務器端訪問會話
 
-您可以使用`next-auth/jwt`中導入的NextAuth函數`getToken`來訪問會話令牌。 如果用戶成功驗證，會話令牌的<b>`sub`</b>屬性（令牌的"主題"，即用戶）將是用戶的地址。
+您可以使用從 `next-auth/jwt` 匯入的 NextAuth 的 `getToken` 函數來訪問會話令牌。如果用戶已成功驗證，會話令牌的 `sub` 屬性（即令牌的 "主體"，即用戶）將是用戶的地址。
 
-您也可以通過`getServerSideProps`從伺服器傳遞解析的會話對象，以便NextAuth不需要在客戶端再次解析它。
+您還可以通過 `getServerSideProps` 從服務器傳遞已解決的會話對象，以便 NextAuth 不需要在客戶端再次解決它。
 
 例如：
 
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-有關管理會話的更多信息，您可以參考以下文檔：
+如需了解更多有關管理會話的信息可以參考以下文件：
 
-- [Next.js身份驗證指南](https://nextjs.org/docs/authentication)
-- [NextAuth 文件](https://next-auth.js.org)
+- [Next.js身份驗證指南](https://nextjs.org/docs/pages/guides/authentication)
+- [NextAuth 文檔](https://next-auth.js.org)

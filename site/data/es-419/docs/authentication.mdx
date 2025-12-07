@@ -73,7 +73,7 @@ Con `RainbowKitSiweNextAuthProvider` en su lugar, ahora se solicitará a sus usu
 
 Puede personalizar las [opciones de mensaje SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) pasando una función a la propiedad `getSiweMessageOptions` en `RainbowKitSiweNextAuthProvider`.
 
-Esta función será llamada siempre que se cree un nuevo mensaje. Las opciones devueltas de esta función se combinarán con las predeterminadas.
+Esta función se llamará cuando se cree un nuevo mensaje. Las opciones devueltas por esta función se fusionarán con los valores predeterminados.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Acceda al servidor de sesiones en el lado del servidor
 
-Puedes acceder al token de sesión con la función `getToken` de NextAuth importada desde `next-auth/jwt`. Si el usuario se ha autenticado correctamente, la propiedad `sub` del token de sesión (el "sujeto" del token, es decir, el usuario) será la dirección del usuario.
+Puede acceder al token de sesión con la función `getToken` de NextAuth importada desde `next-auth/jwt`. Si el usuario se ha autenticado correctamente, la propiedad `sub` del token de sesión (el "sujeto" del token, es decir, el usuario) será la dirección del usuario.
 
 También puede pasar el objeto de sesión resuelto desde el servidor a través de `getServerSideProps` para que NextAuth no necesite resolverlo nuevamente en el cliente.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 Para obtener más información sobre cómo gestionar la sesión, puede hacer referencia a la siguiente documentación:
 
-- [Guía de autenticación de Next.js](https://nextjs.org/docs/authentication)
+- [Guía de autenticación de Next.js](https://nextjs.org/docs/pages/guides/authentication)
 - [Documentación de NextAuth](https://next-auth.js.org)

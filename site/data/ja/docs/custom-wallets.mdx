@@ -1,17 +1,17 @@
 ---
 title: カスタムウォレット
-description: カスタムウォレットを作成
+description: カスタムウォレットを作成する
 ---
 
 # カスタムウォレット
 
-## カスタムウォレットを作成
+## カスタムウォレットを作成する
 
-> 注意: このAPIは不安定で、近い将来に変更される可能性があります。 時間をかけて、内蔵ウォレットを増やしていきます。 [お知らせください](https://github.com/rainbow-me/rainbowkit/issues) あなたが興味を持っている特定のウォレットがあれば。
+> 注意: このAPIは不安定で、近い将来変更される可能性があります。時間とともに、より多くの組み込みウォレットを追加します。興味のある特定のウォレットがあれば、[こちらからお知らせください](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`Wallet`関数型は、独自のカスタムウォレットを定義するのに役立ちます。 次のプロパティは `Wallet` 関数の戻り値に設定できます：
+`Wallet`関数タイプは、独自のカスタムウォレットを定義するのに役立つよう提供されています。次のプロパティが`Wallet`関数の戻り値で設定可能です:
 
-### ウォレットのプロパティ
+### ウォレットプロパティ
 
 <PropsTable
   data={[
@@ -19,13 +19,13 @@ description: カスタムウォレットを作成
       name: 'id',
       required: true,
       type: 'string',
-      description: 'ウォレットごとのユニークID',
+      description: '各ウォレットごとに一意のID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: '人間が読めるウォレット名',
+      description: '人間に読みやすいウォレット名',
     },
     {
       name: 'rdns',
@@ -37,27 +37,27 @@ description: カスタムウォレットを作成
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'モバイル用のオプションの短縮名',
+      description: 'モバイル用のオプション短縮名',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'ウォレットアイコンのURL、またはBase64データURLに解決するpromise',
+        'ウォレットアイコンのURL、またはBase64データURLへのPromise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'ブラウザ拡張機能とモバイルアプリの両方を持つウォレットで使用される強調表示色',
+        'ウォレットがブラウザ拡張機能とモバイルアプリの両方を持つ場合のダウンロードフローに使用されるアクセントカラー',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'ウォレットアイコンがロードされる間の背景色',
+      description: 'ウォレットアイコンがロードされる際の背景色',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: カスタムウォレットを作成
       type: 'boolean | undefined',
       description: (
         <>
-          ウォレットがインストールされているかどうか、または不明な場合は{' '}
-          <code>undefined</code> 
+          ウォレットがインストールされているか、判別不能な場合は<code>undefined</code>{' '}
+          か
         </>
       ),
     },
@@ -83,7 +83,7 @@ description: カスタムウォレットを作成
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'リストからこのウォレットを非表示にするかどうかを計算する関数 これは一般的なフォールバックウォレットを定義するのに便利であり、例えば内蔵の"Injected Wallet" フォールバックはこの機能を利用します',
+        'このウォレットをリストから非表示にするかどうかを計算するための関数。ビルトインの\"インジェクティッドウォレット\"フォールバックがこの機能を利用している',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: カスタムウォレットを作成
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'さまざまな接続方法のためのコネクタインスタンスと設定を提供するための関数',
+        '接続方法の異なるインスタンスと設定を提供するための関数',
     },
     {
       name: 'mobile',
@@ -114,7 +114,7 @@ description: カスタムウォレットを作成
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'QRコードURIを解決するための関数を含むオブジェクト、オプションのモバイルウォレット設定の手順付き',
+        'QRコードURIを解決するための関数、加えてオプションのモバイルウォレットセットアップ手順',
     },
     {
       name: 'extension',
@@ -122,7 +122,7 @@ description: カスタムウォレットを作成
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'オプションのブラウザ拡張機能の設定手順を含むオブジェクト',
+        'オプションのブラウザ拡張セットアップ手順を含むオブジェクト',
     },
     {
       name: 'createConnector',
@@ -134,7 +134,7 @@ description: カスタムウォレットを作成
   ]}
 />
 
-### DownloadUrls のプロパティ
+### ダウンロードURL プロパティ
 
 <PropsTable
   data={[
@@ -142,65 +142,65 @@ description: カスタムウォレットを作成
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'Google PlayのURL',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'Apple App StoreのURL',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        '`android` または `ios` が利用できない場合のモバイルユーザー向けランディングページ',
+        '`android`または`ios`が利用できない場合のモバイルユーザー用ランディングページ',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'モバイルダウンロードQRコードをスキャンしたユーザー向けのランディングページ',
+        'モバイルダウンロードQRコードをスキャンしたユーザー用ランディングページ',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome Web StoreのURL',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge アドオンの URL',
+      description: 'Microsoft EdgeアドオンのURL',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox ブラウザーアドオンの URL',
+      description: 'FirefoxブラウザアドオンのURL',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera アドオンの URL',
+      description: 'OperaアドオンのURL',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac App StoreのURL',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        'ブラウザー互換のURLが利用できない場合のデスクトップ拡張機能ユーザー向けランディングページ',
-    },
+        'ブラウザ互換のURLが利用できない場合のデスクトップ拡張ユーザー用ランディングページ',
+    }
   ]}
 />
 
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-あなたはその後、カスタムウォレットを[ウォレットリスト](/docs/custom-wallet-list)に追加することができます。
+その後、[ウォレットリスト](/docs/custom-wallet-list)にカスタムウォレットを追加できます。

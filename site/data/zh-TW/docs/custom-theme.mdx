@@ -1,15 +1,15 @@
 ---
-title: 自訂主題
-description: 創建自訂主題
+title: 自定義主題
+description: 創建自定義主題
 ---
 
-# 自訂主題
+# 自定義主題
 
-## 創建自訂主題
+## 創建自定義主題
 
-> 注意：此 API 不穩定，未來可能會更改。 我們建議暫時使用[內建主題](/docs/theming)。
+> 注意：此 API 不穩定，近期可能會發生變更。我們建議目前使用[內建主題](/docs/theming)。
 
-儘管內建主題提供了一些自訂功能，`Theme` 類型旨在幫助您定義自己的自訂主題，並能較低層次地訪問基本的主題變數。
+雖然內建主題提供了一定程度的自定義， `Theme` 類型可以幫助您以更低級的方式獲取主題變數來定義自己的自定義主題。
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,15 +79,15 @@ const App = () => (
 
 ### 擴展內建主題
 
-您可以擴展內建主題，而無需重新定義整個主題。 這在您只想覆蓋特定主題標記時非常有用。
+您可以擴展內建主題，而無需重新定義整個主題。這樣可讓您只覆蓋特定主題 token。
 
-為此，請安裝 `lodash.merge`（或等效的）：
+為此，請安裝 `lodash.merge` （或同類庫）：
 
 ```bash
 npm install lodash.merge
 ```
 
-導入它，以及您想要擴展的主題（例如：`darkTheme`）和 TypeScript 的 `Theme` 類型：
+並導入您想擴展的主題（例如：`darkTheme`）和 TypeScript 的 `Theme` 類型：
 
 ```tsx
 import merge from 'lodash.merge';
@@ -98,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-然後，將內建主題與您想要覆蓋的主題標記合併。 在此例中，我將 `accentColor` 標記覆蓋為符合我品牌的強調色。
+然後，將內建主題與想要覆蓋的主題 token 合併。在此例中，我將覆蓋 `accentColor` token 以配合我的品牌強調色。
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -108,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-最後，您現在可以將您的自訂主題傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+最後，您現在可以將自定義主題傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
 
 ```tsx
 const App = () => {
@@ -120,16 +120,16 @@ const App = () => {
 };
 ```
 
-### 創建自訂主題選擇器
+### 創建自定義主題選擇器
 
-如果您的應用伺服器呈現或靜態呈現並允許用戶手動切換主題，RainbowKit 的主題系統可以通過以下函數連接到自訂 CSS 選擇器，並且可以與任何 CSS-in-JS 系統一起使用：
+如果您的應用程式是服務器/靜態渲染的，並允許用戶手動切換主題，RainbowKit 的主題系統可以透過以下函數與任何 CSS-in-JS 系統搭配使用以連接到自定義的 CSS 選擇器：
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-這些函數返回設置所有必需主題變數的 CSS。 由於同時支持字串和物件，它可以與任何 CSS-in-JS 系統集成。
+這些函數返回設定所有所需主題變數的 CSS 。由於同時支持字串和對象，此函數可與任何 CSS-in-JS 系統集成。
 
-作為基本例子，您可以為每個主題渲染自己的 `style` 元素和自訂選擇器。 由於我們控制主題 CSS 的渲染，因此我們將 `theme` 屬性設定為 `null`，以便 RainbowKitProvider 不會為我們渲染任何樣式。 還請注意 cssStringFromTheme 函數上的 extends 選項，它會忽略與基礎主題相同的任何主題變數。
+作為基礎範例，您可以使用自定義選擇器為每個主題呈現自己的 `style` 元素。由於我們接管了渲染主題 CSS 的控制權，因此我們將 `null` 傳遞給 `theme` 屬性，以便 RainbowKitProvider 不會為我們渲染任何樣式。同時需要注意，在 cssStringFromTheme 函數中擴展選項的應用省略了與基礎主題相同的任何主題變數。
 
 ```tsx
 import {

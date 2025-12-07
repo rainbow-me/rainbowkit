@@ -1,15 +1,15 @@
 ---
-title: Butang Sambung Tersuai
-description: Mencipta Butang Sambung Tersuai
+title: Butang Sambungan Tersuai
+description: Membuat Butang Sambungan Tersuai
 ---
 
-# Butang Sambung Tersuai
+# Butang Sambungan Tersuai
 
-## Mencipta Butang Sambung Tersuai
+## Membuat Butang Sambungan Tersuai
 
-Anda boleh menggunakan `ConnectButton.Custom` peringkat rendah untuk mencipta butang sambungan tersuai anda sendiri. Komponen ini memaparkan fungsi, yang merangkumi semua yang anda perlukan untuk melaksanakan semula butang bina dalam.
+Anda boleh menggunakan `ConnectButton.Custom` aras rendah untuk mencipta butang sambungan tersuai anda. Komponen ini memaparkan fungsi, yang merangkumi segala yang diperlukan untuk melaksanakan semula butang terbina dalam.
 
-Pelaksanaan semula minimum untuk butang bina dalam akan kelihatan seperti berikut:
+Pelaksanaan semula minimal butang terbina dalam akan kelihatan seperti ini:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Props berikut disalurkan kepada fungsi render anda.
+Props berikut dihantar ke fungsi render anda.
 
-### Sifat akaun
+### Sifat Akaun
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ Props berikut disalurkan kepada fungsi render anda.
       required: false,
       type: 'object | undefined',
       description:
-        'Objek yang mengandungi butiran mengenai akaun semasa, diterangkan di bawah',
+        'Objek yang mengandungi butiran tentang akaun semasa, diterangkan di bawah',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Props berikut disalurkan kepada fungsi render anda.
       type: 'string',
       description: (
         <>
-          Alamat penuh akaun, cth.
+          Alamat akaun penuh, e.g.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -138,16 +138,16 @@ Props berikut disalurkan kepada fungsi render anda.
     {
       name: 'account.balanceDecimals',
       required: false,
-      type: 'string | undefined\t',
-      description: 'Baki akaun dalam perpuluhan',
+      type: 'string | undefined	',
+      description: 'Baki akaun dalam angka perpuluhan',
     },
     {
       name: 'account.balanceFormatted',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string | undefined	',
       description: (
         <>
-          Baki akaun diformat sebagai rentetan, cth.{' '}
+          Baki akaun diformatkan sebagai string, e.g.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -155,20 +155,21 @@ Props berikut disalurkan kepada fungsi render anda.
     {
       name: 'account.balanceSymbol',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string | undefined	',
       description: (
         <>
-          Simbol mata wang untuk baki, cth. <code>ETH</code>
+          Simbol mata wang untuk baki, e.g. <code>ETH</code>
         </>
       ),
     },
     {
       name: 'account.displayBalance',
       required: false,
-      type: 'string | undefined\t',
+      type: 'string',
       description: (
         <>
-          Baki yang diformat kepada 3 digit yang signifikan, ditambah simbol, cth. <code>1.23 ETH</code>
+          Baki yang dipendekkan ke 3 digit ketara, ditambah simbol, e.g.{' '}
+          <code>"1.23 ETH"</code>
         </>
       ),
     },
@@ -178,7 +179,7 @@ Props berikut disalurkan kepada fungsi render anda.
       type: 'string',
       description: (
         <>
-          Nama ENS, atau versi yang dipendekkan dari alamat, cth.{' '}
+          Nama ENS, atau versi alamat yang dipendekkan, e.g.{' '}
           <code>"rainbowwallet.eth"</code> atau <code>"0x7a…384f"</code>
         </>
       ),
@@ -186,16 +187,16 @@ Props berikut disalurkan kepada fungsi render anda.
     {
       name: 'account.ensAvatar',
       required: false,
-      type: 'string\t| undefined',
+      type: 'string	| undefined',
       description: 'URI avatar ENS',
     },
     {
       name: 'account.ensName',
       required: false,
-      type: 'string\t| undefined',
+      type: 'string	| undefined',
       description: (
         <>
-          Nama ENS, cth. <code>rainbowwallet.eth</code>
+          Nama ENS, e.g. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -204,130 +205,130 @@ Props berikut disalurkan kepada fungsi render anda.
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan sama ada akaun mempunyai transaksi tertunda untuk rantaian semasa',
+        'Boolean menunjukkan sama ada akaun mempunyai transaksi tertunda untuk rantaian semasa',
     },
   ]}
 />
 
-### Sifat rantaian
+### Sifat Rantaian
 
 <PropsTable
   data={[
     {
-      name: 'chain',
+      name: 'rantaian',
       required: false,
       type: 'object | undefined',
       description:
         'Objek yang mengandungi butiran tentang rantaian semasa, diterangkan di bawah',
     },
     {
-      name: 'chain.hasIcon',
+      name: 'rantaian.adaIkon',
       required: false,
       type: 'boolean',
-      description: 'Sama ada rantaian mempunyai ikon yang ditentukan',
+      description: 'Sama ada rantaian mempunyai ikon ditentukan',
     },
     {
-      name: 'chain.iconUrl',
+      name: 'rantaian.urlIkon',
       required: false,
       type: 'string | undefined',
       description:
-        'URL ikon rantaian (yang mungkin juga tidak ditentukan semasa memuat turun URL data Base64)',
+        'URL ikon rantaian (yang mungkin juga undefined semasa memuat turun data Base64)',
     },
     {
-      name: 'chain.iconBackground',
+      name: 'rantaian.latarBelakangIkon',
       required: false,
       type: 'string | undefined',
       description:
-        'Latar belakang ikon rantaian yang akan kelihatan semasa imej dimuatkan',
+        'Latar belakang ikon rantaian yang akan terlihat semasa imej sedang dimuat',
     },
     {
-      name: 'chain.id',
+      name: 'rantaian.id',
       required: false,
       type: 'number',
       description: (
         <>
-          ID rantaian, cth. <code>1</code>
+          ID rantaian, e.g. <code>1</code>
         </>
       ),
     },
     {
-      name: 'chain.name',
+      name: 'rantaian.nama',
       required: false,
       type: 'string | undefined',
       description: (
         <>
-          Nama rantaian, cth. <code>"Ethereum"</code>
+          Nama rantaian, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
     {
-      name: 'chain.unsupported',
+      name: 'rantaian.tidakDisokong',
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean yang menunjukkan sama ada rantaian semasa tidak disokong',
+        'Boolean menunjukkan sama ada rantaian semasa tidak disokong',
     },
   ]}
 />
 
-### Sifat keadaan modal
+### Sifat Negeri Modalk
 
 <PropsTable
   data={[
     {
-      name: 'openAccountModal',
+      name: 'bukaModalAkaun',
       required: false,
       type: '() => void',
       description: 'Fungsi untuk membuka modal akaun',
     },
     {
-      name: 'openChainModal',
+      name: 'bukaModalRantaian',
       required: false,
       type: '() => void',
-      description: 'Fungsi untuk membuka modal rantai',
+      description: 'Fungsi untuk membuka modal rantaian',
     },
     {
-      name: 'openConnectModal',
+      name: 'bukaModalSambungan',
       required: false,
       type: '() => void',
       description: 'Fungsi untuk membuka modal sambungan',
     },
     {
-      name: 'accountModalOpen',
+      name: 'modalAkaunBuka',
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan sama ada modal akaun dibuka',
+        'Boolean menunjukkan sama ada modal akaun dibuka',
     },
     {
-      name: 'chainModalOpen',
+      name: 'modalRantaianBuka',
       required: false,
       type: 'boolean',
-      description: 'Boolean yang menunjukkan sama ada modal rantai dibuka',
+      description: 'Boolean menunjukkan sama ada modal rantaian dibuka',
     },
     {
-      name: 'connectModalOpen',
+      name: 'modalSambunganBuka',
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan sama ada modal sambungan dibuka',
+        'Boolean menunjukkan sama ada modal sambungan dibuka',
     },
   ]}
 />
 
-### Sifat keadaan am
+### Sifat Negeri Umum
 
 <PropsTable
   data={[
     {
-      name: 'mounted',
+      name: 'dipaparkan',
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan sama ada komponen telah dipasang',
+        'Boolean menunjukkan sama ada komponen telah dipasang',
     },
     {
-      name: 'authenticationStatus',
+      name: 'statusPengesahan',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:

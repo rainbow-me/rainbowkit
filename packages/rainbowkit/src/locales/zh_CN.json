@@ -214,11 +214,11 @@
     }
   },
   "wallet_connectors": {
-    "argent": {
+    "ready": {
       "qr_code": {
         "step1": {
-          "description": "将 Argent 放到您的主屏幕上，以便更快地访问您的钱包。",
-          "title": "打开 Argent 应用"
+          "description": "将Ready添加到你的主屏幕，以便更快地访问你的钱包。",
+          "title": "打开 Ready 应用"
         },
         "step2": {
           "description": "创建钱包和用户名，或导入现有钱包。",
@@ -399,6 +399,20 @@
         "step3": {
           "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
           "title": "点击WalletConnect按钮"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "安装Binance钱包扩展",
+          "description": "我们建议您将Binance钱包固定到任务栏，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },
@@ -1130,19 +1144,19 @@
         }
       }
     },
-    "xdefi": {
+    "ctrl": {
       "extension": {
         "step1": {
-          "title": "安装 XDEFI 钱包扩展程序",
-          "description": "我们建议将XDEFI钱包固定到您的任务栏，以便更快地访问您的钱包。"
+          "title": "安装 CTRL Wallet 扩展",
+          "description": "我们建议将 CTRL Wallet 固定到任务栏，以便更快地访问您的钱包。"
         },
         "step2": {
           "title": "创建或导入钱包",
-          "description": "确保使用安全的方法备份您的钱包。永远不要与任何人共享您的秘密短语。"
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
         },
         "step3": {
           "title": "刷新您的浏览器",
-          "description": "一旦你设置好你的钱包，点击下面刷新浏览器和加载扩展。"
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },
@@ -1374,6 +1388,36 @@
         }
       }
     },
+    "gemini": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 keys.gemini.com",
+          "description": "在您的移动浏览器上访问 keys.gemini.com—无需下载应用程序。"
+        },
+        "step2": {
+          "title": "立即创建您的钱包",
+          "description": "使用设备内置身份验证，瞬间设置智能钱包。"
+        },
+        "step3": {
+          "title": "扫码连接",
+          "description": "扫描二维码，即可立即连接您的钱包，一切尽在掌握。"
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "进入 keys.gemini.com",
+          "description": "无需扩展或下载—您的钱包安全地存于浏览器中。"
+        },
+        "step2": {
+          "title": "一键设定",
+          "description": "通过密码认证即时创建您的智能钱包——比任何其他钱包都更简单。"
+        },
+        "step3": {
+          "title": "连接并前往",
+          "description": "批准连接就准备好了——这是一个没有意见的简单好用钱包。"
+        }
+      }
+    },
     "xportal": {
       "qr_code": {
         "step1": {
@@ -1405,21 +1449,37 @@
           "title": "点击扫描按钮"
         }
       }
-    }
-  },
-  "zilpay": {
-    "qr_code": {
-      "step1": {
-        "title": "打开ZilPay应用",
-        "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
-      },
-      "step2": {
-        "title": "创建或导入钱包",
-        "description": "创建新钱包或导入现有钱包。"
-      },
-      "step3": {
-        "title": "点击扫描按钮",
-        "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+    },
+    "zilpay": {
+      "qr_code": {
+        "step1": {
+          "title": "打开ZilPay应用",
+          "description": "将ZilPay添加到你的主屏幕，以便更快地访问你的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
+      }
+    },
+    "nova": {
+      "qr_code": {
+        "step1": {
+          "title": "打开Nova钱包应用",
+          "description": "将Nova钱包添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
       }
     }
   }

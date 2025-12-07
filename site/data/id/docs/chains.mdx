@@ -1,17 +1,17 @@
 ---
 title: Rantai
-description: Mengkustomisasi rantai
+description: Menyesuaikan rantai
 ---
 
 # Rantai
 
-## Mengkustomisasi rantai
+## Menyesuaikan rantai
 
-RainbowKit dirancang untuk berintegrasi dengan [objek `chain` dari wagmi](https://wagmi.sh/react/chains). Lihat daftar rantai yang didukung [di sini](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit dirancang untuk berintegrasi dengan [objek `chain` wagmi](https://wagmi.sh/react/chains). Lihat daftar rantai yang didukung [di sini](https://wagmi.sh/react/chains#supported-chains).
 
-### Mengkustomisasi rantai awal
+### Menyesuaikan rantai awal
 
-Secara default, RainbowKit akan terhubung ke rantai pertama yang disediakan ke Wagmi. Perilaku ini dapat dikustomisasi melalui prop `initialChain`.
+Secara default, RainbowKit akan terhubung ke rantai pertama yang disuplai ke Wagmi. Perilaku ini dapat disesuaikan melalui properti `initialChain`.
 
 Rantai awal dapat dikonfigurasi menggunakan ID rantai.
 
@@ -19,15 +19,15 @@ Rantai awal dapat dikonfigurasi menggunakan ID rantai.
 <RainbowKitProvider initialChain={1}>
 ```
 
-Untuk kenyamanan, Anda juga dapat melewati sebuah objek rantai.
+Sebagai kemudahan, Anda juga dapat menyerahkan objek rantai.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Metadata rantai kustom
+### Metadata rantai khusus
 
-Beberapa ikon dan latar belakang rantai disediakan secara default, tetapi Anda dapat mengkustomisasi ikon dan latar belakang untuk setiap rantai menggunakan properti `iconUrl` dan `iconBackground`.
+Beberapa ikon rantai dan latar belakang disediakan secara default, tetapi Anda dapat menyesuaikan ikon dan latar belakang untuk setiap rantai menggunakan properti `iconUrl` dan `iconBackground`.
 
 Contoh dengan `getDefaultConfig`
 

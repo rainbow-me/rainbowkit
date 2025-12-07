@@ -1,33 +1,33 @@
 ---
 title: Cadenas
-description: Personalizando cadenas
+description: Personalización de cadenas
 ---
 
 # Cadenas
 
-## Personalizando cadenas
+## Personalización de cadenas
 
-RainbowKit está diseñado para integrarse con el objeto `chain` de [wagmi](https://wagmi.sh/react/chains). Consulte la lista de cadenas soportadas [here](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit está diseñado para integrarse con el [objeto `chain` de wagmi](https://wagmi.sh/react/chains). Consulte la lista de cadenas compatibles [aquí](https://wagmi.sh/react/chains#supported-chains).
 
-### Personalizando la cadena inicial
+### Personalización de la cadena inicial
 
-Por defecto, RainbowKit se conectará a la primera cadena en su matriz `chains` para asegurar que los usuarios no se encuentren inmediatamente con el estado de "Red incorrecta". Este comportamiento puede ser personalizado a través de la prop `initialChain`.
+De forma predeterminada, RainbowKit se conectará a la primera cadena suministrada a Wagmi. Este comportamiento se puede personalizar mediante la propiedad `initialChain`.
 
-La cadena inicial puede ser configurada usando un ID de cadena.
+La cadena inicial se puede configurar utilizando un ID de cadena.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-Como una facilidad, también puedes pasar un objeto de cadena.
+Como conveniencia, también puede pasar un objeto de cadena.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Iconos de cadena personalizados
+### Metadatos de cadena personalizados
 
-Se proporcionan varios iconos de cadena por defecto, pero puedes personalizar el icono de cada cadena usando la propiedad iconUrl.
+Por defecto, se proporcionan varios iconos y fondos de cadena, pero puede personalizar el icono y fondo para cada cadena usando las propiedades `iconUrl` y `iconBackground`.
 
 Ejemplo con `getDefaultConfig`
 

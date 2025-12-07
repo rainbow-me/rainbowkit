@@ -7,9 +7,9 @@ description: Створення користувацької кнопки під
 
 ## Створення користувацької кнопки підключення
 
-You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
+Ви можете використовувати низькорівневий `ConnectButton.Custom` для створення вашої власної користувацької кнопки підключення. Цей компонент рендерить функцію, яка включає всі необхідні засоби для перевпровадження вбудованих кнопок.
 
-Мінімальна повторна реалізація вбудованих кнопок може виглядати приблизно так:
+Мінімальне перевпровадження вбудованих кнопок виглядатиме наступним чином:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-Наступні властивості передаються вашій функції відтворення.
+Наступні props передаються вашій функції для рендеринга.
 
-### Властивості облікового запису
+### Атрибути акаунта
 
 <PropsTable
   data={[
@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Object containing details about the current account, described below',
+        'Об\'єкт, що містить деталі про поточний акаунт, описані нижче',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The full account address, e.g.
+          Повна адреса акаунта, напр.
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -138,16 +138,16 @@ export const YourApp = () => {
     {
       name: 'account.balanceDecimals',
       required: false,
-      type: 'string | undefined	',
-      description: 'The account balance in decimals',
+      type: 'string | undefined\t',
+      description: 'Баланс акаунта у десятковому вигляді',
     },
     {
       name: 'account.balanceFormatted',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The account balance formatted as a string, e.g.{' '}
+          Баланс акаунта у форматі рядка, напр.{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -155,21 +155,21 @@ export const YourApp = () => {
     {
       name: 'account.balanceSymbol',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The currency symbol for the balance, e.g. <code>ETH</code>
+          Символ валюти для балансу, напр. <code>ETH</code>
         </>
       ),
     },
     {
       name: 'account.displayBalance',
       required: false,
-      type: 'string | undefined	',
+      type: 'string | undefined\t',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the
-          symbol, e.g. <code>1.23 ETH</code>
+          Баланс, відформатований до 3 значущих цифр, з доданим
+          символом, напр. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -179,24 +179,24 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+          Ім\'я ENS або скорочена версія адреси, напр.{' '}
+          <code>\"rainbowwallet.eth\"</code> або <code>\"0x7a…384f\"</code>
         </>
       ),
     },
     {
       name: 'account.ensAvatar',
       required: false,
-      type: 'string	| undefined',
-      description: 'The ENS avatar URI',
+      type: 'string\t| undefined',
+      description: 'URI аватару ENS',
     },
     {
       name: 'account.ensName',
       required: false,
-      type: 'string	| undefined',
+      type: 'string\t| undefined',
       description: (
         <>
-          The ENS name, e.g. <code>rainbowwallet.eth</code>
+          Ім\'я ENS, напр. <code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -205,12 +205,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account has pending transactions for the current chain',
+        'Булеве значення, що вказує, чи є у акаунта незавершені транзакції для поточного ланцюга',
     },
   ]}
 />
 
-### Властивості ланцюга
+### Атрибути ланцюга
 
 <PropsTable
   data={[
@@ -219,27 +219,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        'Обʼєкт, що містить деталі про поточний ланцюг, описаний нижче',
+        'Об\'єкт, що містить деталі про поточний ланцюг, описані нижче',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: 'Чи має ланцюг заданий значок',
+      description: 'Наявність піктограми для ланцюга',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        'URL значка ланцюга (який також може бути невизначеним під час завантаження URL-адрес даних Base64)',
+        'URL-адреса піктограми ланцюга (яка може не визначатися під час завантаження URL-адрес у форматі Base64)',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        'Фон значка ланцюга, який буде видно під час завантаження зображень',
+        'Фон піктограми ланцюга, що буде видно під час завантаження зображень',
     },
     {
       name: 'chain.id',
@@ -266,12 +266,12 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'Булеве значення, яке вказує, чи підтримується поточний ланцюг',
+        'Булеве значення, що вказує, чи є поточний ланцюг непідтримуваним',
     },
   ]}
 />
 
-### Властивості стану модального вікна
+### Атрибути стану модального вікна
 
 <PropsTable
   data={[
@@ -279,7 +279,7 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Функція для відкриття модального вікна аккаунта',
+      description: 'Функція для відкриття модального вікна акаунта',
     },
     {
       name: 'openChainModal',
@@ -291,32 +291,32 @@ export const YourApp = () => {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Функція для відкриття модального вікна підключення',
+      description: 'Функція для відкриття підключеного модального вікна',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи відкрите модальне вікно аккаунта',
+        'Булеве значення, що вказує, чи відкрите модальне вікно акаунта',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Булеве значення, яке вказує, чи відкрите модальне вікно ланцюга',
+      description: 'Булеве значення, що вказує, чи відкрите модальне вікно ланцюга',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи відкрите модальне вікно підключення',
+        'Булеве значення, що вказує, чи відкрите підключене модальне вікно',
     },
   ]}
 />
 
-### Загальні властивості стану
+### Атрибути загального стану
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        'Булеве значення, яке вказує, чи було компонент змонтовано',
+        'Булеве значення, що вказує, чи було компонент підключено',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Статус аутентифікації, або undefined, якщо аутентифікація не налаштована',
+        'Статус аутентифікації, або не визначений, якщо аутентифікація не налаштована',
     },
   ]}
 />

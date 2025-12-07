@@ -1,15 +1,15 @@
 ---
-title: Tombol Koneksi Khusus
-description: Membuat tombol koneksi khusus
+title: Tombol Hubungkan Kustom
+description: Membuat Tombol Hubungkan Kustom
 ---
 
-# Tombol Koneksi Khusus
+# Tombol Hubungkan Kustom
 
-## Membuat tombol koneksi khusus
+## Membuat Tombol Hubungkan Kustom
 
-Anda dapat menggunakan `ConnectButton.Custom` level rendah untuk membuat tombol koneksi khusus Anda sendiri. Komponen ini merender fungsi, yang mencakup segala sesuatu yang Anda butuhkan untuk menerapkan ulang tombol bawaannya.
+Anda dapat menggunakan `ConnectButton.Custom` level rendah untuk membuat tombol koneksi kustom Anda sendiri. Komponen ini menampilkan fungsi, yang mencakup semua yang Anda butuhkan untuk menerapkan ulang tombol bawaan.
 
-Penerapan ulang minimal dari tombol bawaan mungkin akan terlihat seperti ini:
+Implementasi ulang minimal untuk tombol bawaan akan terlihat seperti ini:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,7 +111,7 @@ export const YourApp = () => {
 };
 ```
 
-Properti berikut diteruskan ke fungsi render Anda.
+Props berikut diteruskan ke fungsi render Anda.
 
 ### Properti Akun
 
@@ -122,7 +122,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'object | undefined',
       description:
-        'Objek berisi detail tentang akun saat ini, dijelaskan di bawah ini',
+        'Objek yang berisi detail tentang akun saat ini, dijelaskan di bawah',
     },
     {
       name: 'account.address',
@@ -130,7 +130,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       type: 'string',
       description: (
         <>
-          Alamat lengkap akun, misalnya
+          Alamat akun lengkap, misalnya
           "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
@@ -168,7 +168,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       type: 'string | undefined	',
       description: (
         <>
-          Saldo diformat menjadi 3 digit signifikan, ditambah simbol,
+          Saldo diformat ke 3 digit signifikan, plus simbolnya,
           misalnya <code>1.23 ETH</code>
         </>
       ),
@@ -205,7 +205,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan apakah akun memiliki transaksi tertunda untuk chain saat ini',
+        'Boolean menunjukkan apakah akun memiliki transaksi tertunda untuk rantai saat ini',
     },
   ]}
 />
@@ -219,7 +219,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'object | undefined',
       description:
-        'Objek yang berisi rincian tentang rantai saat ini, dijelaskan di bawah ini',
+        'Objek yang berisi detail tentang rantai saat ini, dijelaskan di bawah',
     },
     {
       name: 'chain.hasIcon',
@@ -232,7 +232,7 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'string | undefined',
       description:
-        'URL ikon rantai (yang mungkin juga tidak ditentukan saat mengunduh data URL Base64)',
+        'URL ikon rantai (yang mungkin juga tidak ada sambil mengunduh URL data Base64)',
     },
     {
       name: 'chain.iconBackground',
@@ -266,12 +266,12 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean yang menunjukkan apakah rantai saat ini tidak didukung',
+        'Boolean menunjukkan apakah rantai saat ini tidak didukung',
     },
   ]}
 />
 
-### Properti status Modal
+### Properti Status Modal
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ Properti berikut diteruskan ke fungsi render Anda.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Fungsi untuk membuka modale akun',
+      description: 'Fungsi untuk membuka modal akun',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Fungsi untuk membuka modale rantai',
+      description: 'Fungsi untuk membuka modal rantai',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Fungsi untuk membuka modale koneksi',
+      description: 'Fungsi untuk membuka modal hubungkan',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan apakah modale akun terbuka',
+        'Boolean menunjukkan apakah modal akun terbuka',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean yang menunjukkan apakah modale rantai terbuka',
+      description: 'Boolean menunjukkan apakah modal rantai terbuka',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan apakah modale koneksi terbuka',
+        'Boolean menunjukkan apakah modal hubungkan terbuka',
     },
   ]}
 />
 
-### Properti status umum
+### Properti Status Umum
 
 <PropsTable
   data={[
@@ -325,14 +325,14 @@ Properti berikut diteruskan ke fungsi render Anda.
       required: false,
       type: 'boolean',
       description:
-        'Boolean yang menunjukkan apakah komponen sudah terpasang',
+        'Boolean menunjukkan apakah komponen telah dimount',
     },
     {
       name: 'authenticationStatus',
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        'Status autentikasi, atau undefined jika autentikasi belum dikonfigurasi',
+        'Status otentikasi, atau undefined jika otentikasi belum dikonfigurasikan',
     },
   ]}
 />

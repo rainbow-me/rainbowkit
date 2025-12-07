@@ -7,9 +7,9 @@ description: Настройка списка кошельков
 
 ## Настройка списка кошельков
 
-Вы можете импортировать отдельные кошельки из `'@rainbow-me/rainbowkit/wallets'` вместе с функцией `connectorsForWallets` для построения собственного списка кошельков с необходимыми коннекторами. Таким образом, у вас есть полный контроль над тем, какие кошельки отображать и в каком порядке.
+Вы можете импортировать индивидуальные кошельки из `'@rainbow-me/rainbowkit/wallets'` вместе с функцией `connectorsForWallets`, чтобы создать свой собственный список кошельков с их необходимыми соединителями. Таким образом, у вас будет полный контроль над тем, какие кошельки отображать и в каком порядке.
 
-Например, вы можете выбрать, чтобы показывать только Rainbow вместе с общими резервными кошельками.
+Например, вы можете выбрать отображение только Rainbow вместе с универсальными резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -32,7 +32,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Затем вы можете передать свои коннекторы в `createConfig` Wagmi.
+Вы можете затем передать свои соединители в Wagmi `createConfig`.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -62,33 +62,33 @@ const App = () => (
 
 Следующие кошельки предоставляются через объект `wallet`.
 
-#### Общие кошельки
+#### Универсальные кошельки
 
-Следующие кошельки относятся к общим методам подключения, а не конкретным приложениям. В результате рекомендуется всегда включать эти кошельки.
+Следующие кошельки ориентированы на универсальные методы подключения, а не на конкретные приложения. В результате рекомендуется всегда включать эти кошельки.
 
 ##### WalletConnect
 
-Это резервный вариант кошелька, предназначенный для кошельков, основанных на WalletConnect, которые не были предоставлены другим кошельком из списка.
+Это резервный вариант кошелька, предназначенный для кошельков на базе WalletConnect, которые не были предоставлены другим кошельком в списке.
 
-**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех кошельков основанных на WalletConnect.**
+**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех кошельков на базе WalletConnect.**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Инъекционный кошелек
+##### Встроенный кошелек
 
-Это резервный вариант кошелька, предназначенный для случаев, когда `window.ethereum` существует, но не был предоставлен другим кошельком из списка. Этот кошелек автоматически скрывается из списка, когда резервный вариант не требуется или если доступен инъекционный кошелек.
+Это резервный вариант кошелька, предназначенный для ситуаций, когда `window.ethereum` существует, но не был предоставлен другим кошельком в списке. Этот кошелек автоматически скроет себя из списка, когда резерв не требуется или если доступного встроенного кошелька нет.
 
-**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех инъекционных кошельков.**
+**Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех встроенных кошельков.**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Safe Wallet
+##### Безопасный кошелек
 
-Для децентрализованных приложений, которые поддерживают Safe Apps, чтобы позволить пользователям легко подключаться к своему сейф-кошельку или multi-sig, включите опцию `safeWallet` для автоматического подключения. Опция Safe будет отображаться только в браузерной среде Safe Wallet.
+Для dApps, которые поддерживают Safe Apps, предоставляя пользователям возможность легко подключаться к их Safe vault или мульти-сиг, включите опцию `safeWallet` для автоматического подключения. Опция Safe будет отображаться только в браузерной среде Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -104,16 +104,42 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Argent
-
-```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Backpack
 
 ```tsx
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Базовый аккаунт (ранее Coinbase Wallet)
+
+Этот коннектор для кошелька поддерживает Базовый аккаунт, который является развитием Coinbase Smart Wallet. Он обеспечивает беспрепятственную аутентификацию и улучшенные функции, такие как подаккаунты и разрешения на расходы.
+
+Настройки конфигурации соответствуют [ссылочному руководству SDK Базового аккаунта](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+```tsx
+import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+
+// Configure attribution (choose one approach)
+baseAccount.preference = {
+  attribution: { auto: true }, // Smart Wallet generates origin-based identifier
+};
+
+// Or use custom attribution
+baseAccount.preference = {
+  attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
+};
+
+// Configure sub-accounts
+baseAccount.subAccounts = {
+  creation: 'on-connect', // or 'manual'
+  defaultAccount: 'sub', // or 'universal'
+  funding: 'spend-permissions', // or 'manual'
+};
+
+// Configure paymaster URLs for gasless transactions
+baseAccount.paymasterUrls = {
+  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+};
 ```
 
 #### BeraSig
@@ -122,10 +148,16 @@ import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Best Wallet
+#### Лучший кошелек
 
 ```tsx
 import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bifrost Wallet
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Binance Web3 Wallet
@@ -140,12 +172,6 @@ import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bifrost Wallet
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 #### Bitski
 
 ```tsx
@@ -158,80 +184,55 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bloom Wallet
+#### Wallet Bloom
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Brave Wallet
+#### Brave кошелек
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bybit Wallet
+#### Bybit кошелек
 
 ```tsx
 import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase
-
-Этот коннектор для кошелька поддерживает как Coinbase Wallet app так и расширение, а также Coinbase Smart Wallet в сети.
-
-Доступен аргумент `preference` для управления тем, включен ли Smart Wallet и доступен ли он для пользователей. Поведение на основе предпочтений документировано [здесь](https://docs.base.org/identity/smart-wallet/technical-reference/sdk/#options-optional).
-
-Дополнительные параметры конфигурации для управления [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) и [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) можно найти в документации SDK для кошелька Coinbase, [здесь](https://docs.base.org/identity/smart-wallet/technical-reference/sdk#parameters).
-
-```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-
-// Limit your dApp to only Smart Wallet
-coinbaseWallet.preference = 'smartWalletOnly';
-
-// Limit your dApp to the Coinbase Wallet app
-coinbaseWallet.preference = 'eoaOnly';
-
-// Configure the Paymaster for gas sponsorship
-coinbaseWallet.paymasterUrls: {
-  [base.id]: '...'
-}
-
-// Enable Sub Accounts
-coinbaseWallet.subAccounts: {
-  enableAutoSubAccounts: true,
-  defaultSpendLimits: {
-    ...
-  }
-}
-```
-
-#### Coin98 Wallet
+#### Coin98 кошелек
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Compass Wallet
+#### Compass кошелек
 
 ```tsx
 import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
-#### Core
+#### Основа
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Dawn Wallet
+#### Кошелек CTRL
+
+```tsx
+import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Заря кошелек
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Enkrypt Wallet
+#### Энкрипт кошелек
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -243,22 +244,37 @@ import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frame Wallet
+#### Frame кошелек
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Frontier Wallet
+#### Граница кошелек
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Gate Wallet
+#### Кошелек ворот
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Кошелек Gemini
+
+Этот умный коннектор кошелька позволяет безупречно аутентифицироваться через ключи на keys.gemini.com — без загрузок, расширений или API ключей. Просто работает из коробки.
+
+Параметр `appName` необходим для идентификации вашего dApp, а `appIcon` является необязательным для брендинга опыта подключения.
+
+```tsx
+import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const gemini = geminiWallet({
+  appName: 'My App',
+  appIcon: 'https://my-app.com/logo.png', // Optional
+});
 ```
 
 #### imToken
@@ -267,13 +283,13 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### ioPay Wallet
+#### ioPay кошелек
 
 ```tsx
 import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kaia Wallet
+#### Кая кошелек
 
 ```tsx
 import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -285,13 +301,13 @@ import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken Wallet
+#### Kraken кошелек
 
 ```tsx
 import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kresus Wallet
+#### Kresus кошелек
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -303,16 +319,10 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Magic Eden Wallet
+#### Magic Eden кошелек
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MEW Wallet
-
-```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
@@ -321,7 +331,19 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### OKX Wallet
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Nova кошелек
+
+```tsx
+import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### OKX кошелек
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -351,7 +373,13 @@ import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Rabby Wallet
+#### Порту
+
+```tsx
+import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Rabby кошелек
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -363,10 +391,16 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Ramper Wallet
+#### Ramper кошелек
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Готово
+
+```tsx
+import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ronin Wallet
@@ -423,10 +457,10 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### XDEFI Wallet
+#### Вигвам
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### xPortal
@@ -447,19 +481,13 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
 ### Примеры
 
 #### Заказ
 
-Вот несколько примеров отображения разных кошельков в разном порядке.
+Вот несколько примеров отображения различных кошельков в разном порядке.
 
-Показать MetaMask наряду с общими кошельками резервного хранения.
+Покажите MetaMask вместе с универсальными резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -479,14 +507,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Показать Rainbow, MetaMask и Coinbase вместе с общими резервными кошельками.
+Показать Rainbow, MetaMask и аккаунт Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -497,7 +525,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        coinbaseWallet,
+        baseAccount,
         walletConnectWallet,
       ],
     },
@@ -506,20 +534,20 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> Напоминание: Порядок кошельков в массиве `wallets` определяет порядок, в котором кошельки будут отображаться в пользовательском интерфейсе.
+> Напоминание: порядок массива `кошельков` определяет порядок, в котором кошельки будут отображаться в интерфейсе.
 
 #### Несколько групп
 
-Вы можете использовать ключ `groupName` для назначения разных групп кошельков. Это полезно, если вы хотите сообщить своим пользователям, какие кошельки вы рекомендуете, а также о других возможных кошельках.
+Вы можете использовать ключ `groupName`, чтобы назвать различные группы кошельков. Это удобно, если вы хотите сообщить пользователям, какие кошельки вы рекомендуете, а также другие возможные кошельки.
 
-Рекомендовать Rainbow и MetaMask, но также предлагать Coinbase вместе с общими резервными кошельками.
+Рекомендовать Rainbow и MetaMask, но также предлагать аккаунт Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  coinbaseWallet,
+  baseAccount,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -531,7 +559,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [coinbaseWallet, walletConnectWallet],
+      wallets: [baseAccount, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

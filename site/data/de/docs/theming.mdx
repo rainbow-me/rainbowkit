@@ -1,13 +1,13 @@
 ---
-title: Themen
-description: Verwenden und Anpassen der Themen
+title: Themening
+description: Verwendung und Anpassung der Themen
 ---
 
-# Themen
+# Themening
 
-## Verwenden und Anpassen der Themen
+## Verwendung und Anpassung der Themen
 
-Du kannst die RainbowKit-Benutzeroberfläche anpassen, um sie an dein Branding anzupassen. Du kannst aus einigen vordefinierten Akzentfarben und Konfigurationen des Randradius wählen.
+Sie können die RainbowKit-Benutzeroberfläche an Ihr Branding anpassen. Sie können aus einigen vordefinierten Akzentfarben und Rahmenradius-Konfigurationen wählen.
 
 Es gibt 3 eingebaute Themenfunktionen:
 
@@ -15,7 +15,7 @@ Es gibt 3 eingebaute Themenfunktionen:
 - `darkTheme`
 - `midnightTheme`
 
-Eine Themenfunktion gibt ein Themenobjekt zurück. Sie können das Objekt der `theme`-Eigenschaft von `RainbowKitProvider` übergeben.
+Eine Themenfunktion gibt ein Themenobjekt zurück. Sie können das Objekt an die `theme`-Eigenschaft des `RainbowKitProvider` übergeben.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export const App = () => (
 );
 ```
 
-### Anpassen der eingebauten Themen
+### Anpassung der integrierten Themen
 
-Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen ermöglicht, aus mehreren verschiedenen visuellen Stilen auszuwählen.
+Die integrierten Themenfunktionen akzeptieren auch ein Optionsobjekt, das die Auswahl mehrerer visueller Stile ermöglicht.
 
 <PropsTable
   data={[
@@ -60,7 +60,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'Die Hintergrund-/Textfarbe verschiedener interaktiver Elemente.',
+        'Die Hintergrund-/Schriftfarbe verschiedener interaktiver Elemente.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: '"white"',
       type: 'string',
       description:
-        'Die Farbe, die für Vordergrundelemente verwendet wird, die über der Akzentfarbe gerendert werden.',
+        'Die Farbe, die für im Vordergrund auf der Akzentfarbe gerenderte Elemente verwendet wird.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'Die Größe der gesamten Eckenradius-Skala.',
+      description: 'Die Größe der gesamten Rahmenradius-Skala.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        'Der Schriftstapel, der in der gesamten Benutzeroberfläche verwendet wird.',
+        "Der in der gesamten Benutzeroberfläche verwendete Schriftstapel. Beachten Sie, dass `rounded` versucht, SF Pro Rounded zu verwenden und auf Systemschriften zurückgreift, wenn es nicht verfügbar ist.",
     },
     {
       name: 'overlayBlur',
@@ -93,20 +93,12 @@ Die eingebauten Themenfunktionen akzeptieren auch ein Optionsobjekt, das Ihnen e
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: "Der Hintergrundunschärfegrad für ein überlagertes Fenster. Beachten Sie, dass `rounded` versucht, SF Pro Rounded zu verwenden und auf Systemschriftarten zurückgreift, wenn diese nicht verfügbar sind.",
-    },
-    {
-      name: 'overlayBlur',
-      required: false,
-      default: 'none',
-      type: '"large" | "small" | "none"',
-      typeSimple: 'enum',
-      description: 'Das Weichzeichnen des modalen Hintergrunds.',
+      description: 'Die Weichzeichnung des Modalfensterhintergrunds.',
     },
   ]}
 />
 
-Zum Beispiel, um das dunkle Thema mit einer lila Akzentfarbe und einer `medium` Rahmenradius-Skala anzupassen:
+Um beispielsweise das Dunkel-Thema mit einer violetten Akzentfarbe und einer `mittleren` Rahmenradius-Skala anzupassen:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -127,7 +119,7 @@ const App = () => {
 };
 ```
 
-Jedes Thema bietet auch mehrere Akzentfarben-Voreinstellungen (`blau`, `grün`, `orange`, `rosa`, `lila`, `rot`), die in das Optionsobjekt übernommen werden können. Zum Beispiel, um die Akzentfarben-Voreinstellung `rosa` zu verwenden:
+Jedes Thema bietet auch mehrere Akzentfarb-Voreinstellungen (`blau`, `grün`, `orange`, `rosa`, `violett`, `rot`), die in das Optionsobjekt eingefügt werden können. Um beispielsweise die `rosa` Akzentfarb-Voreinstellung zu verwenden:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -183,7 +175,7 @@ export const App = () => (
 
 Hier sind einige verschiedene Möglichkeiten, wie Sie die `accentColor`-Konfiguration verwenden können.
 
-Setzen Sie die Akzentfarbe auf einen benutzerdefinierten lila Wert.
+Setzen Sie die Akzentfarbe auf einen benutzerdefinierten violetten Wert.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -203,7 +195,7 @@ const App = () => {
 };
 ```
 
-Setzen Sie die Akzentfarbe auf das eingebaute `green`-Preset.
+Setzen Sie die Akzentfarbe auf die eingebaute `grün`-Voreinstellung.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -226,7 +218,7 @@ const App = () => {
 
 Hier sind einige verschiedene Möglichkeiten, wie Sie die `borderRadius`-Konfiguration verwenden können.
 
-Setzen Sie den Rahmenradius auf `medium`.
+Setzen Sie den Rahmenradius auf `mittel`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -245,7 +237,7 @@ const App = () => {
 };
 ```
 
-Setzen Sie den Rahmenradius auf `none`.
+Setzen Sie den Rahmenradius auf `keinen`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -264,13 +256,13 @@ const App = () => {
 };
 ```
 
-> Erinnerung: Die verfügbaren Rahmenradius-Werte sind: `large` (Standard), `medium`, `small` und `none`.
+> Erinnerung: Die verfügbaren Rahmenradius-Werte sind: `groß` (Standard), `mittel`, `klein` und `keiner`.
 
 #### Schriftstapel
 
-Standardmäßig ist der `fontStack` auf `rounded` gesetzt. Aber so können Sie die `fontStack`-Konfiguration verwenden.
+Standardmäßig ist der `fontStack` auf `abgerundet` eingestellt. So können Sie die `fontStack`-Konfiguration verwenden.
 
-Setzen Sie den Schriftstapel auf `system`.
+Setzen Sie den Schriftstapel auf `System`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -289,11 +281,11 @@ const App = () => {
 };
 ```
 
-#### Overlay-Unschärfe
+#### Überblendungsunschärfe
 
-Standardmäßig ist `overlayBlur` auf `none` gesetzt. Aber so können Sie die `overlayBlur`-Konfiguration verwenden.
+Standardmäßig ist die `overlayBlur` auf `keine` eingestellt. So können Sie die `overlayBlur`-Konfiguration verwenden.
 
-Setzen Sie die Overlay-Unschärfe auf `small`.
+Setzen Sie die Überblendungsunschärfe auf `klein`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -312,14 +304,14 @@ const App = () => {
 };
 ```
 
-#### Kombinieren und Anpassen
+#### Mix und Match
 
-Hier sind einige verschiedene Möglichkeiten, wie Sie verschiedene Themen mit den Eigenschaften `accentColor`, `borderRadius` und `fontStack` zusammen verwenden können.
+Hier sind einige verschiedene Möglichkeiten, wie Sie verschiedene Themen mit `accentColor`, `borderRadius` und `fontStack`-Eigenschaften kombinieren können.
 
 - Verwenden Sie das `lightTheme`-Thema
-- Setzen Sie die Akzentfarbe auf einen benutzerdefinierten lila Wert
-- Setzen Sie den Rahmenradius auf `medium`
-- Setzen Sie den Schriftstapel auf `system`
+- Setzen Sie die Akzentfarbe auf einen benutzerdefinierten violetten Wert
+- Setzen Sie den Rahmenradius auf `mittel`
+- Setzen Sie den Schriftstapel auf `System`
 
 ```tsx
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
@@ -342,9 +334,9 @@ const App = () => {
 ```
 
 - Verwenden Sie das `midnightTheme`-Thema
-- Setzen Sie die Akzentfarbe auf das eingebaute `pink`-Preset.
-- Setzen Sie den Rahmenradius auf `small`
-- Setzen Sie den Schriftstapel auf `system`
+- Setzen Sie die Akzentfarbe auf die eingebaute `rosa`-Voreinstellung.
+- Setzen Sie den Rahmenradius auf `klein`
+- Setzen Sie den Schriftstapel auf `System`
 
 ```tsx
 import {
@@ -368,9 +360,9 @@ const App = () => {
 };
 ```
 
-#### Unterstützung für Dunkelmodus
+#### Dunkelmodus-Unterstützung
 
-Wenn Ihre App die standardmäßige `prefers-color-scheme: dark`-Medienabfrage verwendet, um zwischen hellen und dunklen Modi zu wechseln, können Sie optional ein dynamisches Themenobjekt bereitstellen, das Werte für `lightMode` und `darkMode` enthält.
+Wenn Ihre App die standardmäßige `prefers-color-scheme: dark`-Mediabfrage verwendet, um zwischen hellen und dunklen Modi zu wechseln, können Sie optional ein dynamisches Themenobjekt mit `lightMode` und `darkMode` Werten bereitstellen.
 
 ```tsx
 import {

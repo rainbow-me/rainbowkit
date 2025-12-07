@@ -7,201 +7,200 @@ description: Özel bir cüzdan oluştur
 
 ## Özel bir cüzdan oluştur
 
-> Not: Bu API kararsızdır ve yakın gelecekte değişiklik göstermesi muhtemeldir. Zamanla daha fazla yerleşik cüzdan ekleyeceğiz. Herhangi bir cüzdanla ilgileniyorsanız [bize bildirin](https://github.com/rainbow-me/rainbowkit/issues).
+> Not: Bu API dengesizdir ve yakın gelecekte değişiklik gösterebilir. Zamanla daha fazla yerleşik cüzdan ekleyeceğiz. İlgilendiğiniz belirli cüzdanlar varsa, [bize bildirin](https://github.com/rainbow-me/rainbowkit/issues).
 
-`Cüzdan` işlev türü, kendi özel cüzdanlarınızı tanımlamanıza yardımcı olmak için sağlanmıştır. Aşağıdaki özellikler, `Cüzdan` işlevinizin dönüş değeri üzerinde yapılandırılabilecektir:
+`Wallet` fonksiyon türü, kendi özel cüzdanlarınızı tanımlamanıza yardımcı olmak için sağlanmıştır. `Wallet` fonksiyonunuzun dönüş değerinde yapılandırılabilecek özellikler şunlardır:
 
 ### Cüzdan Özellikleri
 
 <PropsTable
-  data={[
-    {
-      name: 'id',
-      required: true,
-      type: 'string',
-      description: 'Unique ID per wallet',
-    },
-    {
-      name: 'name',
-      required: true,
-      type: 'string',
-      description: 'Human-readable wallet name',
-    },
-    {
-      name: 'rdns',
-      required: false,
-      type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
-    },
-    {
-      name: 'shortName',
-      required: false,
-      type: 'string | undefined',
-      description: 'Optional short name for mobile use',
-    },
-    {
-      name: 'iconUrl',
-      required: true,
-      type: 'string | (() => Promise<string>)',
-      description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
-    },
-    {
-      name: 'iconAccent',
-      required: false,
-      type: 'string',
-      description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
-    },
-    {
-      name: 'iconBackground',
-      required: true,
-      type: 'string',
-      description: 'Background color while the wallet icon loads',
-    },
-    {
-      name: 'installed',
-      required: false,
-      type: 'boolean | undefined',
-      description: (
-        <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
-        </>
-      ),
-    },
-    {
-      name: 'downloadUrls',
-      required: false,
-      type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
-      typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
-    },
-    {
-      name: 'hidden',
-      required: false,
-      type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
-      typeSimple: '(args) => boolean | undefined',
-      description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
-      description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: (uri: string) => string }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-    {
-      name: 'createConnector',
-      required: true,
-      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
-      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
-    },
-  ]}
+ data={[
+ {
+ name: 'id',
+ required: true,
+ type: 'string',
+ description: 'Cüzdan başına benzersiz ID',
+ },
+ {
+ name: 'name',
+ required: true,
+ type: 'string',
+ description: 'İnsan tarafından okunabilir cüzdan adı',
+ },
+ {
+ name: 'rdns',
+ required: false,
+ type: 'string',
+ description: 'EIP6963\u00fc destekleyen cüzdan için RDNS',
+ },
+ {
+ name: 'shortName',
+ required: false,
+ type: 'string | undefined',
+ description: 'Mobil kullanım için isteğe bağlı kısa ad',
+ },
+ {
+ name: 'iconUrl',
+ required: true,
+ type: 'string | (() => Promise<string>)',
+ description:
+ 'Cüzdan simgesi için URL veya bir Base64 veri URL\'sine çözümlenecek bir taahhüt',
+ },
+ {
+ name: 'iconAccent',
+ required: false,
+ type: 'string',
+ description:
+ 'Hem tarayıcı uzantısı hem de mobil uygulaması olan cüzdanlar için indirme akışlarındaki vurgu rengi',
+ },
+ {
+ name: 'iconBackground',
+ required: true,
+ type: 'string',
+ description: 'Cüzdan ikonu yüklenirken arka plan rengi',
+ },
+ {
+ name: 'installed',
+ required: false,
+ type: 'boolean | undefined',
+ description: (
+ <>
+ Cüzdanın bilindiğine dair indikatör veya <code>undefined</code> indirimli
+ </>
+ ),
+ },
+ {
+ name: 'downloadUrls',
+ required: false,
+ type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
+ typeSimple: 'DownloadUrls | undefined',
+ description: 'İndirme URL\'lerini içeren obje',
+ },
+ {
+ name: 'hidden',
+ required: false,
+ type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
+ typeSimple: '(args) => boolean | undefined',
+ description:
+ 'Bu cüzdanın listeden gizlenip gizlenmeyeceğini hesaplayan fonksiyon. Bu özellik, \"Enjekte Edilmiş Cüzdan\" gibi yerleşik yedek cüzdanlar tanımlamak için faydalıdır',
+ },
+ {
+ name: 'createConnector',
+ required: true,
+ type: '() => RainbowKitConnector',
+ typeSimple: 'RainbowKitConnector',
+ description:
+ 'Farklı bağlantı yöntemleri ve konfigürasyon için konektör örneğini sağlayan fonksiyon',
+ },
+ {
+ name: 'mobile',
+ required: false,
+ type: '{ getUri?: (uri: string) => string }',
+ typeSimple: 'object',
+ description:
+ 'Mobil cüzdan bağlantısı URI\'sini çözen fonksiyon',
+ },
+ {
+ name: 'desktop',
+ required: false,
+ type: '{ getUri?: (uri: string) => string }',
+ typeSimple: 'object',
+ description: 'Masaüstü uygulama derin bağlantısını çözen fonksiyon',
+ },
+ {
+ name: 'qrCode',
+ required: false,
+ type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+ typeSimple: 'object',
+ description:
+ 'QR kod URI\'sini çözen fonksiyon ve isteğe bağlı mobil cüzdan kurulum talimatlarını içeren obje',
+ },
+ {
+ name: 'extension',
+ required: false,
+ type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+ typeSimple: 'object',
+ description:
+ 'İsteğe bağlı tarayıcı uzantı kurulum talimatlarını içeren obje',
+ },
+ {
+ name: 'createConnector',
+ required: true,
+ type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+ typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+ description: 'Konektör örneğini sağlayan fonksiyon',
+ },
+ ]}
 />
 
-### IndirmeUrlsi Özellikleri
+### DownloadUrls Özellikleri
 
 <PropsTable
-  data={[
-    {
-      name: 'android',
-      required: false,
-      type: 'string',
-      description: 'Google Play URL',
-    },
-    {
-      name: 'ios',
-      required: false,
-      type: 'string',
-      description: 'Apple App Store URL',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for users that scan the mobile download QR Code',
-    },
-    {
-      name: 'chrome',
-      required: false,
-      type: 'string',
-      description: 'Chrome Web Store URL',
-    },
-    {
-      name: 'edge',
-      required: false,
-      type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
-    },
-    {
-      name: 'firefox',
-      required: false,
-      type: 'string',
-      description: 'Firefox Browser Add-ons URL',
-    },
-    {
-      name: 'opera',
-      required: false,
-      type: 'string',
-      description: 'Opera add-ons URL',
-    },
-    {
-      name: 'safari',
-      required: false,
-      type: 'string',
-      description: 'Mac App Store URL',
-    },
-    {
-      name: 'browserExtension',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
-    },
-  ]}
+ data={[
+ {
+ name: 'android',
+ required: false,
+ type: 'string',
+ description: 'Google Play URL',
+ },
+ {
+ name: 'ios',
+ required: false,
+ type: 'string',
+ description: 'Apple App Store URL',
+ },
+ {
+ name: 'mobile',
+ required: false,
+ type: 'string',
+ description:
+ '`android` veya `ios` kullanılabilir değilse mobil kullanıcılar için açılış sayfası',
+ },
+ {
+ name: 'qrCode',
+ required: false,
+ type: 'string',
+ description:
+ 'Mobil indirme QR Kodunu tarayan kullanıcılar için açılış sayfası',
+ },
+ {
+ name: 'chrome',
+ required: false,
+ type: 'string',
+ description: 'Chrome Mağazası URL',
+ },
+ {
+ name: 'edge',
+ required: false,
+ type: 'string',
+ description: 'Microsoft Edge Eklentiler URL',
+ },
+ {
+ name: 'firefox',
+ required: false,
+ type: 'string',
+ description: 'Firefox Tarayıcı Eklentiler URL',
+ },
+ {
+ name: 'opera',
+ required: false,
+ type: 'string',
+ description: 'Opera eklentiler URL',
+ },
+ {
+ name: 'safari',
+ required: false,
+ type: 'string',
+ description: 'Mac App Store URL',
+ },
+ {
+ name: 'browserExtension',
+ required: false,
+ type: 'string',
+ description:
+ 'Tarayıcı tarafından kullanılabilir URL\'ler mevcut değilse masaüstü uzantı kullanıcıları için açılış sayfası',
+ },
+ ]}
 />
 
 ### Örnekler

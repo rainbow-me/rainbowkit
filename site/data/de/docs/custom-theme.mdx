@@ -1,16 +1,15 @@
 ---
-title: Benutzerdefiniertes Thema
-description: Ein benutzerdefiniertes Thema erstellen
+title: Benutzerdefiniertes Design
+description: Erstellen eines benutzerdefinierten Designs
 ---
 
-# Benutzerdefiniertes Thema
+# Benutzerdefiniertes Design
 
-## Ein benutzerdefiniertes Thema erstellen
+## Erstellen eines benutzerdefinierten Designs
 
-> Hinweis: Diese API ist instabil und wird sich wahrscheinlich
-> in naher Zukunft ändern. Wir empfehlen vorerst, bei den [integrierten Themen](/docs/theming) zu bleiben.
+> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Es wird empfohlen, vorerst die [integrierten Designs](/docs/theming) zu verwenden.
 
-Während die integrierten Themen ein gewisses Maß an Anpassung bieten, wird der `Theme`-Typ bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Themen mit einem niedrigeren Zugriff auf die zugrundeliegenden Theme-Variablen zu definieren.
+Während die integrierten Designs ein gewisses Maß an Anpassung bieten, wird der `Theme`-Typ bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Designs mit einem niedrigerem Zugriff auf die zugrunde liegenden Designvariablen zu definieren.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -78,17 +77,17 @@ const App = () => (
 )
 ```
 
-### Ein integriertes Thema erweitern
+### Erweitern eines integrierten Designs
 
-Sie können ein integriertes Thema erweitern, ohne das gesamte Thema neu zu definieren. Dies ist nützlich, wenn Sie nur bestimmte Theme-Token überschreiben möchten.
+Sie können ein integriertes Design erweitern, ohne das gesamte Design neu definieren zu müssen. Dies ist nützlich, wenn Sie nur bestimmte Design-Token überschreiben möchten.
 
-Um dies zu tun, installieren Sie `lodash.merge` (oder ein Äquivalent):
+Um dies zu tun, installieren Sie `lodash.merge` (oder Ähnliches):
 
 ```bash
 npm install lodash.merge
 ```
 
-Importieren Sie es zusammen mit dem Thema, das Sie erweitern möchten (z.B.: `darkTheme`) und dem TypeScript-Typ `Theme`:
+Importieren Sie es zusammen mit dem Design, das Sie erweitern möchten (z. B. `darkTheme`) und dem `Theme`-Typ von TypeScript:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -99,7 +98,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Dann verbinden Sie das integrierte Thema mit den Theme-Token, die Sie überschreiben möchten. In diesem Beispiel überschreibe ich den `accentColor`-Token, um ihn an die Akzentfarbe meiner Marke anzupassen.
+Dann kombinieren Sie das integrierte Design mit den Design-Token, die Sie überschreiben möchten. In diesem Beispiel überschreibe ich das `accentColor`-Token, um es an die Akzentfarbe meiner Marke anzupassen.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -109,7 +108,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Schließlich können Sie nun Ihr benutzerdefiniertes Thema an das `theme`-Prop von `RainbowKitProvider` übergeben.
+Schließlich können Sie jetzt Ihr benutzerdefiniertes Design an die `theme`-Eigenschaft des `RainbowKitProvider` übergeben.
 
 ```tsx
 const App = () => {
@@ -121,16 +120,16 @@ const App = () => {
 };
 ```
 
-### Erstellen von benutzerdefinierten Theme-Selektoren
+### Erstellen von benutzerdefinierten Design-Selektoren
 
-Wenn Ihre App server-/statisch gerendert wird und es den Benutzern ermöglicht, manuell zwischen Themen zu wechseln, kann das Themensystem von RainbowKit mit benutzerdefinierten CSS-Selektoren verknüpft werden, die folgende Funktionen verwenden, die mit jedem CSS-in-JS-System verwendet werden können:
+Wenn Ihre App server-/statisch gerendert ist und es den Benutzern ermöglicht, manuell zwischen Designs umzuschalten, kann das Designsystem von RainbowKit mit benutzerdefinierten CSS-Selektoren verbunden werden, mit den folgenden Funktionen, die mit jedem CSS-in-JS-System verwendet werden können:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-Diese Funktionen geben CSS zurück, das alle erforderlichen Theme-Variablen festlegt. Da sowohl Strings als auch Objekte unterstützt werden, kann dies in jedes CSS-in-JS-System integriert werden.
+Diese Funktionen liefern CSS, das alle erforderlichen Designvariablen setzt. Da sowohl Zeichenfolgen als auch Objekte unterstützt werden, kann dies in jedes CSS-in-JS-System integriert werden.
 
-Als einfaches Beispiel können Sie Ihr eigenes `style`-Element mit benutzerdefinierten Selektoren für jedes Thema rendern. Da wir die Kontrolle über das Rendering des CSS des Themas übernehmen, übergeben wir `null` an das `theme`-Prop, damit RainbowKitProvider keine Stile für uns rendert. Beachten Sie auch die Verwendung der extends-Option bei der cssStringFromTheme-Funktion, die alle Theme-Variablen auslässt, die mit dem Basisthema identisch sind.
+Als einfaches Beispiel können Sie Ihr eigenes `style`-Element mit benutzerdefinierten Selektoren für jedes Design rendern. Da wir die Kontrolle über das Rendern des Design-CSS übernehmen, übergeben wir `null` an die `theme`-Eigenschaft, damit `RainbowKitProvider` keine Stile für uns rendert. Beachten Sie auch die Verwendung der extends-Option bei der Funktion cssStringFromTheme, die alle Designvariablen, die mit dem Basisthema übereinstimmen, ausschließt.
 
 ```tsx
 import {

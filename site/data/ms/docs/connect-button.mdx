@@ -1,13 +1,13 @@
 ---
-title: Butang Sambung
-description: Menggunakan dan menyesuaikan ConnectButton
+title: ButangSambung
+description: Menggunakan dan menyesuaikan ButangSambung
 ---
 
-# Butang Sambung
+# ButangSambung
 
-## Menggunakan dan menyesuaikan ConnectButton
+## Menggunakan dan menyesuaikan ButangSambung
 
-Ini adalah komponen utama. Ia bertanggungjawab untuk memaparkan butang sambung/padam, serta pertukaran UI rangkaian.
+Ini adalah komponen utama. Ia bertanggungjawab untuk memaparkan butang sambung/putus sambungan, serta UI pertukaran rantaian.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> Nota: Pastikan aplikasi anda dibalut dengan penyedia yang perlu. [Baca lagi](/docs/installation#wrap-providers).
+> Nota: Pastikan aplikasi anda dibungkus dalam penyedia yang diperlukan. [Baca lebih lanjut](/docs/installation#wrap-providers).
 
-### Props
+### Properti
 
-Komponen `ConnectButton` menyediakan beberapa prop untuk menyesuaikan penampilannya, termasuk menukar kebolehlihatan elemen yang berbeza.
+Komponen `ButangSambung` mendedahkan beberapa properti untuk menyesuaikan penampilannya, termasuk menukar kebolehnampakan elemen yang berbeza.
 
 <PropsTable
   data={[
@@ -30,16 +30,16 @@ Komponen `ConnectButton` menyediakan beberapa prop untuk menyesuaikan penampilan
       required: false,
       default: 'Sambung Dompet',
       type: 'string',
-      description: 'Label teks yang dipaparkan pada butang Sambung',
+      description: 'Teks label yang dipaparkan pada butang Sambung',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'penuh',
+      default: 'full',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'Sama ada avatar dan/atau alamat akaun aktif dipaparkan',
+        "Sama ada avatar akaun aktif dan/atau alamat dipaparkan",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ Komponen `ConnectButton` menyediakan beberapa prop untuk menyesuaikan penampilan
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        'Sama ada ikon dan/atau nama rantai semasa dipaparkan, atau sepenuhnya tersembunyi',
+        "Sama ada ikon dan/atau nama rantaian semasa dipaparkan, atau tersembunyi sepenuhnya",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ Komponen `ConnectButton` menyediakan beberapa prop untuk menyesuaikan penampilan
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        'Sama ada baki kelihatan di sebelah nama akaun',
+        'Sama ada baki kelihatan sebelah nama akaun',
     },
   ]}
 />
 
-> Nota: titik pemecah `largeScreen` terbina dalam adalah `768px`.
+> Nota: titik pecah `skrinBesar` terbina dalam adalah `768px`.
 
-### Contoh-contoh
+### Contoh
 
 #### Label
 
-Gunakan prop `label` untuk menetapkan teks `ConnectButton` tersuai.
+Guna properti `label` untuk menetapkan teks `ButangSambung` tersuai.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,45 +76,45 @@ Gunakan prop `label` untuk menetapkan teks `ConnectButton` tersuai.
 
 #### Status akaun
 
-Berikut adalah beberapa cara berbeza anda boleh menggunakan prop `accountStatus`.
+Berikut adalah beberapa cara berbeza anda boleh menggunakan properti `statusAkaun`.
 
-Hanya paparkan avatar akaun.
+Hanya tunjukkan avatar akaun.
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-Hanya paparkan alamat akaun.
+Hanya tunjukkan alamat akaun.
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### Status rangkaian
+#### Status rantaian
 
-Berikut adalah beberapa cara berbeza anda boleh menggunakan prop `chainStatus`.
+Berikut adalah beberapa cara berbeza anda boleh menggunakan properti `statusRantaian`.
 
-Hanya paparkan ikon rantai semasa.
+Hanya tunjukkan ikon rantaian semasa.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-Hanya paparkan nama rantai semasa.
+Hanya tunjukkan nama rantaian semasa.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-Sembunyikan keseluruhan UI rantai.
+Sembunyikan sepenuhnya UI rantaian.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### Paparkan baki
+#### Papar baki
 
-Gunakan prop `showBalance` untuk sembunyi/papar baki.
+Guna properti `paparBaki` untuk sembunyikan/tunjukkan baki.
 
 Sembunyikan baki.
 
@@ -124,9 +124,9 @@ Sembunyikan baki.
 
 #### Responsif
 
-Prop ini juga boleh ditakrifkan dalam format responsif.
+Properti ini juga boleh ditakrifkan dalam format responsif.
 
-Pada skrin kecil, hanya paparkan ikon akaun. Tetapi pada skrin besar, paparkan ikon dan alamat.
+Pada skrin kecil, hanya tunjukkan ikon akaun. Tetapi pada skrin besar, tunjukkan ikon dan alamat.
 
 ```tsx
 <ConnectButton

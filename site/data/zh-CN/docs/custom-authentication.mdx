@@ -1,19 +1,19 @@
 ---
-title: 自定义认证
-description: 连接到您自己的认证后端
+title: 自定义身份验证
+description: 连接到您自己的身份验证后端
 ---
 
-# 自定义认证
+# 自定义身份验证
 
-## 连接到您自己的认证后端
+## 连接到您自己的身份验证后端
 
-尽管RainbowKit提供了[对以太坊和NextAuth登录的一流支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)你也可以与自定义后端和信息格式集成。
+虽然RainbowKit 为以太坊登入和NextAuth提供一流支持，但您也可以集成到自定义后端和消息格式。详情请访问 [这里](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)。
 
 ### 创建自定义适配器
 
-首先创建一个认证适配器。 这允许RainbowKit创建/准备消息并与您的后端通信。
+首先创建一个身份验证适配器。这允许RainbowKit创建/准备消息并与您的后端通讯。
 
-举个例子，我们可以制作一个让我们使用[以太坊登录](https://login.xyz)对一些自定义API端点（例如[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)）的认证适配器。
+例如，我们可以创建一个身份验证适配器，使我们能够使用 [以太坊登录](https://login.xyz) 对某些自定义API端点进行身份验证，例如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### 提供认证状态
+#### 提供身份验证状态
 
-假设您的应用程序已以某种方式管理了认证生命周期，您可以将当前的认证状态与您的自定义适配器一起传递给`RainbowKitAuthenticationProvider`，包装您现有的`RainbowKitProvider`。
+假设您的应用程序已经以某种方式管理身份验证生命周期，您可以将当前身份验证状态与自定义适配器一起传递给 `RainbowKitAuthenticationProvider`，并包装现有的 `RainbowKitProvider`。
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-如果你已经走到这一步并为现有的开源认证库创建了一个适配器，请考虑创建一个供他人使用的软件包！
+如果您已走到这一步并为现有的开源身份验证库创建了适配器，请考虑创建一个包供其他人使用！

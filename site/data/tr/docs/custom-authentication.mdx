@@ -1,19 +1,19 @@
 ---
 title: Özel Kimlik Doğrulama
-description: Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
+description: Kendi kimlik doğrulama arka ucunuza bağlanın
 ---
 
 # Özel Kimlik Doğrulama
 
-## Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
+## Kendi kimlik doğrulama arka ucunuza bağlanın
 
-RainbowKit, Ethereum ve NextAuth ile Giriş için birinci sınıf desteğini sağlasa da, özel arka uçlar ve mesaj formatlarıyla da entegrasyon yapabilirsiniz.
+RainbowKit, [Ethereum ve NextAuth ile Kayıt](\{/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) konusunda birinci sınıf destek sağlarken, özel arka uçlar ve mesaj formatlarıyla da entegre olabilirsiniz.
 
 ### Özel bir adaptör oluşturma
 
-Öncelikle bir kimlik doğrulama adaptörü oluşturun. Bu, RainbowKit'in mesajlar oluşturmasına/hazırlamasına ve arka uçunuzla iletişim kurmasına olanak sağlar.
+İlk olarak bir kimlik doğrulama adaptörü oluşturun. Bu, RainbowKit'in mesajlar oluşturup hazırlamasına ve arka ucunuzla iletişim kurmasına olanak tanır.
 
-Örneğin, bize Ethereum ile Giriş yapmayı sağlayan özel API uç noktalarına, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) gibi, karşı bir kimlik doğrulama adaptörü yapabiliriz.
+Örneğin, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) gibi bazı özel API uç noktalarına karşı [Ethereum ile Kayıt](https://login.xyz) kullanmamızı sağlayan bir kimlik doğrulama adaptörü yapabiliriz.
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
@@ -53,9 +53,9 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
-#### Kimlik doğrulama durumunu sağlama
+#### Kimlik doğrulama durumunun sağlanması
 
-Uygulamanızın zaten bir şekilde kimlik doğrulama yaşam döngüsünü yönettiğini varsayarsak, mevcut `RainbowKitProvider`ınızı kapsayan `RainbowKitAuthenticationProvider`a özel adaptörünüzle beraber mevcut kimlik doğrulama durumunu iletebilirsiniz.
+Uygulamanızın zaten bir şekilde kimlik doğrulama döngüsünü yönetmekte olduğunu varsayarak, mevcut kimlik doğrulama durumunu kendi özel adaptörünüzle birlikte `RainbowKitAuthenticationProvider`'a, mevcut `RainbowKitProvider` sarmalayarak iletebilirsiniz.
 
 ```tsx
 import {
@@ -99,4 +99,4 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Eğer bu noktaya kadar geldiyseniz ve mevcut bir açık kaynaklı kimlik doğrulama kütüphanesi için bir adaptör oluşturduysanız, lütfen diğerlerinin de kullanabilmesi için bir paket oluşturmayı düşünün!
+Bu kadar ilerleyip mevcut bir açık kaynak kimlik doğrulama kütüphanesi için bir adaptör yarattıysanız, başkalarının da kullanabilmesi için bir paket oluşturmayı düşünebilirsiniz!

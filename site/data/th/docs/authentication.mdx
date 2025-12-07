@@ -73,7 +73,7 @@ export default function App({
 
 คุณสามารถปรับแต่ง[ตัวเลือกข้อความ SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) โดยการส่งฟังก์ชันไปยัง prop `getSiweMessageOptions` บน `RainbowKitSiweNextAuthProvider`.
 
-ฟังก์ชันนี้จะถูกเรียกเมื่อมีการสร้างข้อความใหม่. ตัวเลือกที่ส่งคืนจากฟังก์ชันนี้จะถูกผสานกับค่าเริ่มต้น.
+ฟังก์ชันนี้จะถูกเรียกทุกครั้งที่มีการสร้างข้อความใหม่ ตัวเลือกที่กลับมาจากฟังก์ชันนี้จะถูกผสานกับค่าเริ่มต้น.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### เข้าถึงเซสชันด้านเซิร์ฟเวอร์
 
-คุณสามารถเข้าถึงโทเค็นเซสชันด้วยฟังก์ชัน `getToken` ของ NextAuth ที่นำเข้าจาก `next-auth/jwt`. หากผู้ใช้รับรองความถูกต้องสำเร็จ 'sub' ของโทเค็นเซสชัน (ซึ่งเป็น "subject" ของโทเค็น หรือผู้ใช้) จะเป็นที่อยู่ของผู้ใช้.
+คุณสามารถเข้าถึงเซสชันโทเค็นด้วยฟังก์ชัน `getToken` ของ NextAuth ที่นำเข้าจาก `next-auth/jwt`. หากผู้ใช้รับรองความถูกต้องสำเร็จ 'sub' ของโทเค็นเซสชัน (ซึ่งเป็น "subject" ของโทเค็น หรือผู้ใช้) จะเป็นที่อยู่ของผู้ใช้.
 
 คุณยังสามารถส่งต่อวัตถุเซสชันที่ได้รับการแก้ไขจากเซิร์ฟเวอร์ผ่าน `getServerSideProps` ให้ NextAuth ไม่จำเป็นต้องแก้ไขอีกครั้งทางลูกค้า.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 สำหรับข้อมูลเพิ่มเติมเกี่ยวกับการจัดการเซสชัน คุณสามารถอ้างอิงเอกสารต่อไปนี้:
 
-- [คู่มือการรับรองความถูกต้องของ Next.js](https://nextjs.org/docs/authentication)
+- [คู่มือการรับรองความถูกต้องของ Next.js](https://nextjs.org/docs/pages/guides/authentication)
 - [เอกสาร NextAuth](https://next-auth.js.org)

@@ -7,11 +7,11 @@ description: Anpassung der Sprache Ihrer dApp mit eingebauten Übersetzungen
 
 ## Anpassung der Sprache Ihrer dApp mit eingebauten Übersetzungen
 
-Standardmäßig unterstützt RainbowKit das `en-US`-Gebietsschema für englischsprachige Benutzer.
+Standardmäßig unterstützt RainbowKit das `en-US`-Locale für englischsprachige Nutzer.
 
-Wenn verfügbar, erkennt RainbowKit die [bevorzugte Sprache](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) des Benutzers und wählt die entsprechenden Übersetzungen. Entwickler können die Standardsprache jederzeit überschreiben.
+Falls verfügbar, erkennt RainbowKit die [bevorzugte Sprache](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) des Nutzers und wählt die entsprechenden Übersetzungen. Entwickler können die Standard-Sprache immer überschreiben.
 
-Um eine Sprache für Ihre Benutzer anzugeben, fügen Sie einfach `locale="zh-CN"` als Prop in Ihrem `RainbowKitProvider` hinzu
+Um eine Sprache für Ihre Benutzer festzulegen, fügen Sie einfach `locale="zh-CN"` als Prop in Ihren `RainbowKitProvider` ein.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,9 +25,9 @@ export const App = () => (
 
 ### Verwendung mit Next.js
 
-Die Lokalisierungsunterstützung von RainbowKit funktioniert noch besser mit der [Sub-Pfad-Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+Die Lokalisierungsunterstützung von RainbowKit funktioniert noch besser mit [Sub-Pfade-Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
-Konfigurieren Sie Ihr Next.js-Projekt wie im folgenden Beispiel, um einen optionalen `/locale/`-Sub-Pfad zu Ihren Routen hinzuzufügen, der Suchmaschinen und Benutzern hilft, Ihre mehrsprachige Unterstützung besser zu entdecken.
+Konfigurieren Sie Ihr Next.js-Projekt wie im folgenden Beispiel, um einen optionalen `/locale/`-Unterpfad zu Ihren Routen hinzuzufügen, was Suchmaschinen und Benutzern hilft, Ihre mehrsprachige Unterstützung besser zu entdecken.
 
 ```json
 // next.config.js
@@ -39,7 +39,7 @@ Konfigurieren Sie Ihr Next.js-Projekt wie im folgenden Beispiel, um einen option
 }
 ```
 
-Übergeben Sie dann das vom Pages Router bereitgestellte `locale` an den `RainbowKitProvider`
+Übergeben Sie dann das vom Pages-Router bereitgestellte `locale` an den `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
@@ -54,43 +54,44 @@ export const App = () => {
 };
 ```
 
-Sie können ein Beispiel für den Seitenrouter [hier](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next) einsehen.
+Sie können ein Beispiel für den Pages-Router [hier](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next) einsehen.
 
-App-Router unterstützt i18n noch nicht. Sehen Sie sich unser separates Beispiel [hier](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) für bewährte Verfahren mit dem [`next-intl`](https://github.com/amannn/next-intl)-Middleware an.
+Der App-Router unterstützt i18n noch nicht. Sehen Sie sich unser separates Beispiel [hier](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) für die Implementierungsbest-Practices mit [`next-intl`](https://github.com/amannn/next-intl)-Middleware an.
 
-Es wird empfohlen, die gleichen Techniken zu verwenden, um den Inhalt Ihrer dApp für eine vollständige Lokalisierungsunterstützung zu übersetzen. Lokalisierungsbibliotheken wie [`i18n-js`](https://github.com/fnando/i18n) und [`next-intl`](https://github.com/amannn/next-intl) und Verwaltungswerkzeuge wie Crowdin werden diesen Prozess vereinfachen.
+Es wird empfohlen, dieselben Techniken zu verwenden, um den Inhalt Ihrer dApp für vollständige Lokalisierungsunterstützung zu übersetzen. Lokalisierungsbibliotheken wie [`i18n-js`](https://github.com/fnando/i18n) und [`next-intl`](https://github.com/amannn/next-intl) und Management-Tools wie Crowdin werden diesen Prozess vereinfachen.
 
 ### Unterstützte Sprachen
 
-Wir bieten vollständige Unterstützung für die folgenden `locale`-Regionen an:
+Wir bieten volle Unterstützung für die folgenden `Locale`-Regionen:
 
 <Table
-  header={[
-    'Sprache', 'Region', 'Gebietsschema', 'Kurzform'
-  ]}
-  dataTypes={[
-    'string', 'string', 'code', 'code'
-  ]}
-  data={[
-    ['English', 'United States 🇺🇸', 'en-US', 'en'],
-    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
-    ['繁體中文', 'Hong Kong 🇭🇰', 'zh-HK'],
-    ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
-    ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
-    ['Español', 'Latin America 🌎', 'es-419', 'es'],
-    ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],
-    ['العربية', 'Middle East 🌍', 'ar-AR', 'ar'],
-    ['Português', 'Brazil 🇧🇷', 'pt-BR', 'pt'],
-    ['Русский', 'Russia 🇷🇺', 'ru-RU', 'ru'],
-    ['Bahasa Indonesia', 'Indonesia 🇮🇩', 'id-ID', 'id'],
-    ['日本語', 'Japan 🇯🇵', 'ja-JP', 'ja'],
-    ['Türkçe', 'Turkey 🇹🇷', 'tr-TR', 'tr'],
-    ['한국어', 'South Korea 🇰🇷', 'ko-KR', 'ko'],
-    ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
-    ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
-    ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
-    ['Deutsch', 'Germany 🇩🇪', 'de-DE', 'de']
-  ]}
+ header={[
+ 'Sprache', 'Region', 'Locale', 'Kurzform'
+ ]}
+ dataTypes={[
+ 'string', 'string', 'code', 'code'
+ ]}
+ data={[
+ ['Englisch', 'Vereinigte Staaten 🇺🇸', 'en-US', 'en'],
+ ['中文', 'Festlandchina 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
+ ['繁體中文', 'Hongkong 🇭🇰', 'zh-HK'],
+ ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
+ ['हिंदी', 'Indien 🇮🇳', 'hi-IN', 'hi'],
+ ['Español', 'Lateinamerika 🌎', 'es-419', 'es'],
+ ['Français', 'Frankreich 🇫🇷', 'fr-FR', 'fr'],
+ ['العربية', 'Naher Osten 🌍', 'ar-AR', 'ar'],
+ ['Português', 'Brasilien 🇧🇷', 'pt-BR', 'pt'],
+ ['Русский', 'Russland 🇷🇺', 'ru-RU', 'ru'],
+ ['Bahasa Indonesia', 'Indonesien 🇮🇩', 'id-ID', 'id'],
+ ['日本語', 'Japan 🇯🇵', 'ja-JP', 'ja'],
+ ['Türkçe', 'Türkei 🇹🇷', 'tr-TR', 'tr'],
+ ['한국어', 'Südkorea 🇰🇷', 'ko-KR', 'ko'],
+ ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
+ ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
+ ['Tiếng Việt', 'Vietnam 🇻🇳', 'vi-VN', 'vi'],
+ ['Deutsch', 'Deutschland 🇩🇪', 'de-DE', 'de'],
+ ['Bahasa Melayu', 'Malaysia 🇲🇾', 'ms-MY', 'ms']
+ ]}
 />
 
-Wenn Sie Unterstützung für eine zusätzliche Sprache sehen möchten, eröffnen Sie bitte eine [GitHub-Diskussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) und wir werden daran arbeiten, sie so schnell wie möglich zu unterstützen.
+Wenn Sie Unterstützung für eine zusätzliche Sprache wünschen, eröffnen Sie bitte eine [GitHub-Diskussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) und wir werden uns bemühen, sie so schnell wie möglich zu unterstützen.

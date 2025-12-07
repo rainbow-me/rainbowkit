@@ -1,17 +1,17 @@
 ---
-title: กระเป๋าเงินที่กำหนดเอง
-description: สร้างกระเป๋าเงินที่กำหนดเอง
+title: กระเป๋าสตางค์ที่กำหนดเอง
+description: สร้างกระเป๋าสตางค์ที่กำหนดเอง
 ---
 
-# กระเป๋าเงินที่กำหนดเอง
+# กระเป๋าสตางค์ที่กำหนดเอง
 
-## สร้างกระเป๋าเงินที่กำหนดเอง
+## สร้างกระเป๋าสตางค์ที่กำหนดเอง
 
-> หมายเหตุ: API นี้ไม่เสถียรและมีความเป็นไปได้ที่จะเปลี่ยนแปลงในอนาคตใกล้. เราจะเพิ่มกระเป๋าเงินในตัวมากขึ้นตามเวลา. [แจ้งให้เรารู้](https://github.com/rainbow-me/rainbowkit/issues) หากมีกระเป๋าเงินเฉพาะที่คุณสนใจ.
+> หมายเหตุ: API นี้ยังไม่เสถียรและอาจมีการเปลี่ยนแปลงในอนาคตอันใกล้ เราจะเพิ่มกระเป๋าสตางค์ในตัวที่มีอยู่ในเวลาที่กำหนด [แจ้งให้เราทราบ](https://github.com/rainbow-me/rainbowkit/issues) หากคุณสนใจในกระเป๋าสตางค์ใดเป็นพิเศษ 
 
-ฟังก์ชันประเภท `Wallet` ได้รับการให้เพื่อช่วยคุณกำหนดกระเป๋าเงินที่กำหนดเองของคุณเอง. คุณสามารถกำหนดค่าทรัพย์สินต่อไปนี้บนค่าที่คืนกลับของฟังก์ชัน `Wallet` ของคุณ:
+ฟังก์ชัน `Wallet` ถูกเสนอขึ้นมาเพื่อช่วยให้คุณสามารถกำหนดกระเป๋าสตางค์ที่กำหนดเองของคุณเองได้ สามารถกำหนดคุณสมบัติต่อไปนี้ในผลลัพธ์ของฟังก์ชัน `Wallet`:
 
-### คุณสมบัติของ Wallet
+### คุณสมบัติของกระเป๋าสตางค์
 
 <PropsTable
   data={[
@@ -19,45 +19,45 @@ description: สร้างกระเป๋าเงินที่กำห�
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'รหัสเฉพาะต่อกระเปีซา',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: 'ชื่อกระเปีซาที่สามารถอ่านได้',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'RDNS สำหรับกระเปีซาที่รองรับ EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'ชื่อสั้นๆ ที่เลือกสำหรับการใชงงานขคดมือถือ',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL สำหรับไอคอนของกระเปีซา หรือคำมั่นที่จะแปลงไปยัง Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'สีเน้นที่ใช้ในฟลอสสำหรับการดาวนโหลดปิดหลังขหญ่แนวเบราุซเออร์และแอปพมือถือ',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'พื้นหลังสีขณะไอคอนของกระเปีซากำลังโหลด',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          ว่ากระเปีซานั้นติดตั้งหรือ {' '}
+          <code>undefined</code> หากยังไม่แน่ชัด
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: สร้างกระเป๋าเงินที่กำห�
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'วัตถุที่มี URL สำหรับการดาวนโหลด',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'ฟังก์ชันสำหรับคำนวณว่าควรลดกระเปีซานี้จากรายชื่หรือไม มีประโยชน์สำหรับการกำหนดโดยทั่วไปเช่น',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'ฟังก์ชันสำหรับการดำเนินอินสเตนซ์และการตั้งค่าสำหรับวิธีการเชื่อมต่างๆ',
     },
     {
       name: 'mobile',
@@ -99,14 +99,14 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'ฟังก์ชันสำหรับการแก้URIการเชื่อมต่อกระเปีซามือถือ',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      description: 'ฟังก์ชันสำหรับการแก้ลิงก์สึกลงของแอปเดสคตอป',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'วัตถุที่มีฟังก์ชันสำหรับการแก้ URIควรมไมๆใหม่พลุคำแนะนำการติดตั้งงานขคดมือถือ',
     },
     {
       name: 'extension',
@@ -122,14 +122,14 @@ description: สร้างกระเป๋าเงินที่กำห�
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing optional browser extension setup instructions',
+        'วัตถุที่มิคำแนะนำการติดตั้งงานทัวขยายเบราถอหแอป',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Function for providing the connector instance',
+      description: 'ฟังก์ชันสำหรับการดำเนินอินสเตนซ์',
     },
   ]}
 />
@@ -155,14 +155,14 @@ description: สร้างกระเป๋าเงินที่กำห�
       required: false,
       type: 'string',
       description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
+        'หน้า landing page สำหรับผู้ใช้มือถือเมื่อ `android` หรือ `ios` ไม่พร้อมใช้งาน',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Landing page for users that scan the mobile download QR Code',
+        'หน้า landing page สำหรับผู้ใช้ที่สแกน QR Code การดาวน์โหลดบนมือถือ',
     },
     {
       name: 'chrome',
@@ -186,7 +186,7 @@ description: สร้างกระเป๋าเงินที่กำห�
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera add-ons URL',
+      description: 'Opera Add-ons URL',
     },
     {
       name: 'safari',
@@ -199,14 +199,14 @@ description: สร้างกระเป๋าเงินที่กำห�
       required: false,
       type: 'string',
       description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+        'หน้า landing page สำหรับผู้ใช้ที่ติดตั้ง extension บนเดสก์ท็อปเมื่อ URL ที่เข้ากับเบราว์เซอร์ไม่พร้อมใช้งาน',
     },
   ]}
 />
 
 ### ตัวอย่าง
 
-เช่น เพื่อสร้างกระเป๋าเงินที่กำหนดเองโดยใช้ WalletConnect:
+ตัวอย่างเช่น เพื่อสร้างกระเป๋าสตางค์ที่กำหนดเองโดยใช้ WalletConnect:
 
 ```tsx
 import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-คุณสามารถเพิ่มกระเป๋าเงินที่กำหนดเองของคุณใน[รายการกระเป๋าเงิน](/docs/custom-wallet-list).
+จากนั้นคุณสามารถเพิ่มกระเป๋าสตางค์ที่กำหนดเองลงใน [รายการกระเป๋าสตางค์](/docs/custom-wallet-list) ของคุณได้

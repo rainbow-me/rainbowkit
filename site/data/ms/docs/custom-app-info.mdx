@@ -1,13 +1,13 @@
 ---
-title: Maklumat Apl Tersuai
-description: Menyesuaikan maklumat apl anda
+title: Maklumat Aplikasi Tersuai
+description: Menyesuaikan maklumat aplikasi anda
 ---
 
-# Maklumat Apl Tersuai
+# Maklumat Aplikasi Tersuai
 
-## Menyesuaikan maklumat apl anda
+## Menyesuaikan maklumat aplikasi anda
 
-Anda boleh menghantar maklumat apl anda dalam prop `appInfo` untuk `RainbowKitProvider`. Sifat-sifat yang anda boleh ubah ialah nama apl anda (`appName`) dan pautan yang di mana butang “Learn More” dalam modal sambungan mengalihkan ke (`learnMoreUrl`):
+Anda boleh memasukkan maklumat aplikasi anda dalam prop `appInfo` untuk `RainbowKitProvider`. Ciri-ciri yang boleh anda ubah ialah nama aplikasi anda (`appName`) dan pautan di mana butang "Pelajari Lebih Lanjut" dalam mod sambungan mengarah (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -29,7 +29,7 @@ const App = () => {
 
 ### Tambah Penafian
 
-Anda boleh menyediakan penafian anda sendiri untuk dipaparkan di bahagian bawah modal sambungan. Hartanah `disclaimer` dalam `appInfo` memerlukan `DisclaimerComponent` dengan argumen `Text` dan `Link`. Anda boleh menggunakannya untuk membina penafian anda sendiri yang mewarisi sistem tematik. Kami mengeksport jenis `DisclaimerComponent` untuk pengguna TypeScript:
+Anda boleh menyediakan penafian anda sendiri untuk dipaparkan di bahagian bawah mod sambungan. Ciri `disclaimer` dalam `appInfo` mengambil `DisclaimerComponent` dengan argumen `Text` dan `Link`. Anda boleh menggunakannya untuk membina penafian anda sendiri yang mewarisi sistem tema. Kami mengekspor jenis `DisclaimerComponent` untuk pengguna TypeScript:
 
 ```tsx
 import {

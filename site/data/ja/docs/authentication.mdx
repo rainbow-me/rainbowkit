@@ -73,7 +73,7 @@ export default function App({
 
 [SIWEメッセージオプション](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
 
-新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
+この関数は新しいメッセージが作成されるたびに呼び出されます。この関数から返されるオプションはデフォルトとマージされます。
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### セッションをサーバーサイドでアクセスします
 
-`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
+NextAuthの`getToken`関数を`next-auth/jwt`からインポートすることで、セッショントークンにアクセスできます。ユーザーが正常に認証された場合、セッショントークンの`sub`プロパティ（トークンの「subject」、つまりユーザー）はユーザーのアドレスになります。
 
 また、NextAuthがクライアント側で再度それを解決する必要がないように、解決済みのセッションオブジェクトを`getServerSideProps`経由で渡すこともできます。
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 セッションの管理に関する詳細は、以下のドキュメンテーションを参照してください：
 
-- [Next.js認証ガイド](https://nextjs.org/docs/authentication)
+- [Next.js認証ガイド](https://nextjs.org/docs/pages/guides/authentication)
 - [NextAuthドキュメンテーション](https://next-auth.js.org)

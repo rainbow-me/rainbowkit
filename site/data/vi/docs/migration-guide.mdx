@@ -1,28 +1,28 @@
 ---
-title: Hướng Dẫn Di Chuyển
+title: Hướng dẫn di chuyển
 ---
 
-# Hướng Dẫn Di Chuyển
+# Hướng dẫn di chuyển
 
-## Di Chuyển RainbowKit
+## Di chuyển RainbowKit
 
-### Thay Đổi Phá Vỡ 2.x.x
+### 2.x.x Thay đổi làm hỏng
 
-Các peer dependencies [wagmi](https://wagmi.sh) và [viem](https://viem.sh) đã đạt phiên bản `2.x.x` với các thay đổi phá vỡ.
+Các phần phụ thuộc ngang hàng [wagmi](https://wagmi.sh) và [viem](https://viem.sh) đã đạt `2.x.x` với các thay đổi quan trọng.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
-**1. Nâng cấp RainbowKit, `wagmi` và `viem` lên phiên bản mới nhất**
+**1. Nâng cấp RainbowKit, `wagmi`, và `viem` lên phiên bản mới nhất**
 
 ```bash
 npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 ```
 
-**2. Cài đặt peer dependency `@tanstack/react-query`**
+**2. Cài đặt phụ thuộc ngang hàng `@tanstack/react-query`**
 
-Với Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) bây giờ là một peer dependency bắt buộc.
+Với Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) hiện là phần phụ thuộc ngang hàng cần thiết.
 
-Cài đặt nó bằng lệnh sau:
+Cài đặt nó với lệnh sau:
 
 ```bash
 npm i @tanstack/react-query
@@ -91,28 +91,28 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Kiểm tra các thay đổi phá vỡ trong `wagmi` và `viem`**
+**4. Kiểm tra thay đổi làm hỏng trong `wagmi` và `viem`**
 
-Nếu bạn sử dụng các hooks `wagmi` và các actions `viem` trong dApp của bạn, bạn sẽ cần theo dõi các hướng dẫn di chuyển cho v2:
+Nếu bạn sử dụng các hook `wagmi` và các hành động `viem` trong dApp của bạn, bạn sẽ cần làm theo các hướng dẫn di chuyển cho v2:
 
-- [Hướng dẫn di chuyển Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
-- [Thay đổi phá vỡ Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Wagmi v2 Hướng dẫn Di chuyển](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Thay đổi phá vỡ Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Thay đổi RainbowKit
+#### Thay đổi trong RainbowKit
 
-**1. Cải thiện hành vi cho các ví EIP-6963**
+**1. Cải thiện hành vi cho ví EIP-6963**
 
-Các ví hỗ trợ tiêu chuẩn kết nối EIP-6963 mới (bao gồm Rainbow, MetaMask, và nhiều hơn nữa) bây giờ sẽ tự động xuất hiện trong một phần 'Đã cài đặt' trong quá trình kết nối ví. Điều này đảm bảo rằng người dùng luôn có thể tìm thấy các ví ưa thích của họ và kết nối với dApps mà không gặp xung đột hoặc nút dự phòng.
+Các ví hỗ trợ tiêu chuẩn kết nối mới EIP-6963 (bao gồm Rainbow, MetaMask, và hơn thế nữa) giờ đây sẽ tự động xuất hiện trong phần `Installed` trong quá trình trải nghiệm Connect Wallet. Điều này đảm bảo rằng người dùng luôn có thể tìm thấy ví yêu thích của họ và kết nối với dApps mà không gặp các xung đột hoặc nút dự phòng.
 
-Các nhà phát triển tiếp tục có toàn quyền kiểm soát Danh sách Ví Tùy chỉnh để nhấn mạnh các ví ưa thích cho người dùng cuối. Khuyến nghị rằng bạn tiếp tục bao gồm `injectedWallet` và `walletConnectWallet` trong danh sách của bạn để hỗ trợ tất cả các nền tảng.
+Các nhà phát triển vẫn có toàn quyền kiểm soát danh sách Ví Tùy chỉnh để nhấn mạnh ví ưa thích cho người dùng cuối. Khuyến khích bạn tiếp tục đưa `injectedWallet` và `walletConnectWallet` vào danh sách của mình để hỗ trợ mọi nền tảng.
 
 **2. Cấu hình Wagmi với getDefaultConfig**
 
-API mới này đơn giản hóa trải nghiệm cấu hình và thay thế nhu cầu sử dụng trực tiếp `createConfig` của Wagmi. Cấu hình chuỗi đơn giản hơn, bao gồm các nhà cung cấp công khai được suy luận cho `transports`.
+API mới này đơn giản hóa trải nghiệm cấu hình và thay thế nhu cầu sử dụng trực tiếp `createConfig` của Wagmi. Cấu hình chuỗi được đơn giản hóa, bao gồm các nhà cung cấp công cộng suy luận cho `transports`.
 
-Danh sách ví mặc định sẽ được tự động bao gồm, bãi bỏ nhu cầu sử dụng `getDefaultWallets` và `connectorsForWallets`.
+Danh sách ví mặc định sẽ được bao gồm tự động, loại bỏ nhu cầu sử dụng `getDefaultWallets` và `connectorsForWallets`.
 
-Bạn có thể tạo một Danh sách Ví Tùy chỉnh bằng cách truyền các connector Ví nhập khẩu hoặc Tùy chỉnh vào `wallets`. Khởi tạo các connector ví và truyền `projectId` và `chains` không còn bắt buộc nữa.
+Bạn có thể tạo một danh sách Ví Tùy chỉnh bằng cách truyền các kết nối Ví Tùy chỉnh hoặc đã nhập khẩu vào `wallets`. Không cần khởi tạo các kết nối ví và truyền `projectId` và `chains` nữa.
 
 ```
 const config = getDefaultConfig({
@@ -126,7 +126,7 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-Bạn không còn cần truyền `chains` vào `<RainbowKitProvider>`.
+Bạn không cần phải truyền `chains` vào `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
@@ -135,7 +135,7 @@ Bạn không còn cần truyền `chains` vào `<RainbowKitProvider>`.
 
 **4. Chuỗi Tùy chỉnh**
 
-Loại `Chain` đã thay đổi theo Wagmi v2 và tiếp tục hỗ trợ siêu dữ liệu `iconUrl` và `iconBackground` của RainbowKit.
+Loại `Chain` đã thay đổi theo Wagmi v2 và tiếp tục hỗ trợ metadata `iconUrl` và `iconBackground` của RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,57 +195,57 @@ Ví dụ với `createConfig`:
   })
 ```
 
-**5. Ví tùy chỉnh**
+**5. Ví Tùy chỉnh**
 
-Các connector ví RainbowKit đã trải qua nhiều thay đổi đáng kể để hỗ trợ Wagmi v2. Tham khảo [tài liệu đã được cập nhật](https://www.rainbowkit.com/docs/custom-wallets) và một [ví dụ về connector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) để nâng cấp bất kỳ Kết Nối Ví Tùy Chỉnh nào trong dApp của bạn.
+Các kết nối ví RainbowKit đã trải qua những thay đổi đáng kể để hỗ trợ Wagmi v2. Tham khảo [tài liệu cập nhật](https://www.rainbowkit.com/docs/custom-wallets) và [ví dụ về kết nối](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) để nâng cấp bất kỳ Kết nối Ví Tùy chỉnh nào trong dApp của bạn.
 
-Các connector ví bây giờ cũng hỗ trợ tiêu chuẩn EIP-6963 với thuộc tính `rdns`. Đảm bảo rằng điều này được điền để ngăn chặn các tham chiếu trùng lặp tới các ví hỗ trợ EIP-6963 trong danh sách ví của bạn.
+Các kết nối ví giờ đây cũng hỗ trợ tiêu chuẩn EIP-6963 với thuộc tính `rdns`. Đảm bảo rằng điều này được điền vào để tránh các tham chiếu trùng lặp đến các ví hỗ trợ EIP-6963 trong danh sách ví của bạn.
 
-### Thay Đổi Phá Vỡ 1.x.x
+### 1.x.x Thay đổi làm hỏng
 
-#### Cập Nhật lên phiên bản wagmi v1
+#### Cập nhật lên wagmi v1
 
-Phụ thuộc đồng hành [wagmi](https://wagmi.sh) đã được cập nhật lên `1.x.x`.
+Thành phần phụ thuộc ngang hàng [wagmi](https://wagmi.sh) đã được cập nhật lên `1.x.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
-\*\*1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
+**1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất**
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-\*\*2. Cài đặt phụ thuộc `viem`
+**2. Cài đặt phụ thuộc ngang hàng `viem`**
 
-wagmi v1 yêu cầu phụ thuộc đồng hành `viem`. Cài đặt nó bằng lệnh sau:
+wagmi v1 yêu cầu phụ thuộc ngang hàng `viem`. Cài đặt nó bằng lệnh sau:
 
 ```bash
 npm i viem
 ```
 
-\*\*3. Đảm bảo tính tương thích của bundler và polyfill
+**3. Đảm bảo tương thích của bundler và polyfill**
 
-Tham khảo [Cấu hình Webpack của Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) của chúng tôi để được hướng dẫn cấu hình cho dự án của bạn.
+Tham khảo [Cấu hình Webpack của Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) của chúng tôi để hướng dẫn cấu hình cho dự án của bạn.
 
 Hướng dẫn khung bổ sung cho Vite và Remix có sẵn [tại đây](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-\*\*4. Kiểm tra thay đổi phá vỡ trong `wagmi`
+**4. Kiểm tra thay đổi làm hỏng trong `wagmi`**
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần theo dõi hướng dẫn di chuyển `wagmi` lên v1.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần thực hiện theo hướng dẫn di chuyển `wagmi` đến v1.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide).
 
-### Thay Đổi Phá Vỡ 0.12.x
+### 0.12.x Thay đổi làm hỏng
 
-Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.12.x`.
+Phụ thuộc ngang hàng wagmi đã được cập nhật lên `0.12.x`.
 
-RainbowKit đã thông qua kết nối `WalletConnectLegacyConnector` trong `wagmi` để tiếp tục hỗ trợ WalletConnect v1. Hỗ trợ cho WalletConnect v2 và `WalletConnectConnector` sẽ sớm có bản phát hành bản vá mà không có thay đổi phá vỡ.
+RainbowKit đã áp dụng kết nối `WalletConnectLegacyConnector` trong `wagmi` để tiếp tục hỗ trợ WalletConnect v1. Hỗ trợ WalletConnect v2 và `WalletConnectConnector` sẽ sớm được phát hành dưới dạng bản vá, không có thay đổi làm hỏng.
 
-Ví sẽ được chuyển tự động trong các bản phát hành tương lai.
+Các ví sẽ được chuyển đổi tự động trong các bản phát hành tương lai.
 
-Mọi dApp bây giờ phải cung cấp một `projectId` [WalletConnect Cloud](https://cloud.walletconnect.com/) để kích hoạt WalletConnect v2. Điều này phải hoàn thành trước khi các máy chủ cầu nối của WalletConnect v1 bị tắt vào ngày 28 tháng 6 năm 2023. RainbowKit sẽ âm thầm ưu tiên v1 cho tất cả các ví nếu `projectId` không được chỉ định.
+Mỗi dApp bây giờ phải cung cấp một `projectId` từ [WalletConnect Cloud](https://cloud.walletconnect.com/) để kích hoạt WalletConnect v2. Điều này phải được hoàn thành trước khi các máy chủ cầu nối WalletConnect v1 bị ngừng hoạt động vào ngày 28 tháng 6 năm 2023. RainbowKit sẽ âm thầm ưu tiên v1 cho tất cả các ví nếu không có `projectId`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -253,9 +253,9 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2. Cung cấp một WalletConnect Cloud projectId
+#### 2. Cung cấp một projectId từ WalletConnect Cloud
 
-Mỗi dApp dựa vào WalletConnect hiện nay cần phải có `projectId` từ [WalletConnect Cloud](https://cloud.walletconnect.com/). Việc này hoàn toàn miễn phí và chỉ mất vài phút.
+Mọi dApp phụ thuộc vào WalletConnect bây giờ cần phải lấy một `projectId` từ [WalletConnect Cloud](https://cloud.walletconnect.com/). Điều này hoàn toàn miễn phí và chỉ mất vài phút.
 
 Cung cấp `projectId` cho `getDefaultWallets` và các kết nối ví RainbowKit cá nhân như sau:
 
@@ -273,7 +273,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      argentWallet({ projectId, chains }),
+      readyWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
     ],
@@ -281,11 +281,11 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### Thay Đổi Phá Vỡ 0.11.x
+### 0.11.x Thay đổi làm hỏng
 
-Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.11.x`.
+Phụ thuộc ngang hàng wagmi đã được cập nhật lên `0.11.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -293,17 +293,17 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra thay đổi làm hỏng trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra liệu ứng dụng của mình có bị ảnh hưởng bởi các thay đổi làm hỏng trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### Thay Đổi Phá Vỡ 0.10.x
+### 0.10.x Thay đổi làm hỏng
 
-Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.10.x`.
+Phụ thuộc ngang hàng wagmi đã được cập nhật lên `0.10.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -311,17 +311,17 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra thay đổi làm hỏng trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra liệu ứng dụng của mình có bị ảnh hưởng bởi các thay đổi làm hỏng trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
-### Thay Đổi Phá Vỡ 0.9.x
+### 0.9.x Thay đổi làm hỏng
 
-Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.9.x`.
+Phụ thuộc ngang hàng wagmi đã được cập nhật lên `0.9.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -329,17 +329,17 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra thay đổi làm hỏng trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra liệu ứng dụng của mình có bị ảnh hưởng bởi các thay đổi làm hỏng trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### Thay Đổi Phá Vỡ 0.8.x
+### 0.8.x Thay đổi làm hỏng
 
-Phụ thuộc đồng hành wagmi đã được cập nhật lên `0.8.x`.
+Phụ thuộc ngang hàng wagmi đã được cập nhật lên `0.8.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
 #### 1. Nâng cấp RainbowKit và `wagmi` lên phiên bản mới nhất
 
@@ -347,15 +347,15 @@ Làm theo các bước dưới đây để di chuyển.
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra thay đổi làm hỏng trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra liệu ứng dụng của mình có bị ảnh hưởng bởi các thay đổi làm hỏng trong `wagmi` hay không.
 
 [Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### Thay Đổi Phá Vỡ 0.7.x
+### 0.7.x Thay đổi làm hỏng
 
-Nếu bạn đang tạo một danh sách ví tùy chỉnh, bây giờ bạn phải import từng ví riêng lẻ để giảm kích thước gói. Lưu ý rằng vì các ví không còn được đặt tên qua object `wallet`, tất cả các ví bây giờ có hậu tố `Wallet`.
+Nếu bạn đang tạo danh sách ví tùy chỉnh, bạn phải nhập từng ví riêng lẻ để giảm kích thước gói. Lưu ý rằng do ví không còn được đặt tên không gian thông qua `wallet` object, tất cả các ví hiện có hậu tố `Wallet`.
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -382,7 +382,7 @@ const wallets = [
 ];
 ```
 
-Cũng lưu ý rằng lớp tương thích ngược của Steakwallet đã bị loại bỏ. Nên sử dụng Omni thay thế.
+Cũng lưu ý rằng lớp tương thích ngược Steakwallet đã bị loại bỏ. Omni nên được sử dụng thay thế.
 
 ```diff
 -import { wallet } from '@rainbow-me/rainbowkit';
@@ -394,13 +394,13 @@ const wallets = [
 ];
 ```
 
-### Thay Đổi Phá Vỡ 0.4.x
+### 0.4.x Thay đổi làm hỏng
 
-RainbowKit đã cập nhật phụ thuộc đồng hành `wagmi` lên `0.5.x`.
+RainbowKit đã cập nhật phụ thuộc ngang hàng `wagmi` lên `0.5.x`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
-#### 1. Nâng cấp các phụ thuộc
+#### 1. Nâng cấp phụ thuộc
 
 Nâng cấp RainbowKit và wagmi lên phiên bản mới nhất
 
@@ -408,19 +408,19 @@ Nâng cấp RainbowKit và wagmi lên phiên bản mới nhất
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Kiểm tra thay đổi phá vỡ trong `wagmi`
+#### 2. Kiểm tra thay đổi làm hỏng trong `wagmi`
 
-Nếu bạn sử dụng các hook của `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra xem ứng dụng của mình có bị ảnh hưởng bởi các thay đổi phá vỡ trong `wagmi` hay không.
+Nếu bạn sử dụng các hook `wagmi` trong ứng dụng của mình, bạn sẽ cần kiểm tra liệu ứng dụng của mình có bị ảnh hưởng bởi các thay đổi làm hỏng trong `wagmi` hay không.
 
-[Bạn có thể xem hướng dẫn di chuyển của họ ở đây](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
+[Bạn có thể xem hướng dẫn di chuyển của họ tại đây](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.x Những thay đổi quan trọng
+### 0.3.x Thay đổi làm hỏng
 
-Đã xóa tham số `chainId` khỏi `createConnector` trên loại `Wallet`.
+Đã xóa tham số `chainId` từ `createConnector` trong kiểu `Wallet`.
 
-**Lưu ý rằng tất cả các ví tích hợp sẵn đang sử dụng API mới. Hầu hết người dùng sẽ không bị ảnh hưởng. Thay đổi này chỉ ảnh hưởng đến những người dùng đã tạo/tiêu thụ [ví tùy chỉnh](/docs/custom-wallets).**
+**Lưu ý rằng tất cả các ví được tích hợp sẵn đều sử dụng API mới. Hầu hết người tiêu dùng sẽ không bị ảnh hưởng. Thay đổi này chỉ ảnh hưởng đến người tiêu dùng đã tạo/sử dụng [ví tùy chỉnh](/docs/custom-wallets).**
 
-Nếu bạn trước đây đã dẫn xuất các URL RPC từ `chainId` trên `createConnector`, hiện tại bạn có thể loại bỏ logic đó vì `wagmi` hiện xử lý URL RPC nội bộ khi được sử dụng với `configureChains`.
+Nếu trước đây bạn lấy các URL RPC từ `chainId` trên `createConnector`, bạn có thể xóa logic này vì `wagmi` giờ đây xử lý các URL RPC nội bộ khi được sử dụng với `configureChains`.
 
 ```diff
 import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
@@ -474,13 +474,13 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x Những thay đổi quan trọng
+### 0.2.x Thay đổi làm hỏng
 
-RainbowKit đã cập nhật phụ thuộc đối tác `wagmi` lên `^0.4`.
+RainbowKit đã cập nhật phụ thuộc ngang hàng `wagmi` lên `^0.4`.
 
-Làm theo các bước dưới đây để di chuyển.
+Thực hiện theo các bước dưới đây để di chuyển.
 
-#### 1. Nâng cấp các phụ thuộc
+#### 1. Nâng cấp phụ thuộc
 
 Nâng cấp RainbowKit và wagmi lên phiên bản mới nhất
 
@@ -497,9 +497,9 @@ Nhập `configureChains` từ wagmi thay vì RainbowKit:
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3. Di chuyển các providers
+#### 3. Di chuyển các nhà cung cấp dịch vụ
 
-RainbowKit không còn xuất API `apiProvider` nữa. Thay thế nó với provider mong muốn của bạn từ wagmi.
+RainbowKit không còn xuất một API `apiProvider`. Thay thế nó bằng nhà cung cấp mong muốn của bạn từ wagmi.
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### Provider công khai
+#### Nhà cung cấp công cộng
 
 Nhập `publicProvider` từ `wagmi/providers/public`.
 
@@ -569,7 +569,7 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4. Đổi tên provider của wagmi
+#### 4. Đổi tên nhà cung cấp wagmi
 
 Đổi tên `WagmiProvider` thành `WagmiConfig`.
 
@@ -587,4 +587,4 @@ const App = () => {
 };
 ```
 
-Và bạn đã hoàn thành! 🌈
+Và bạn đã xong! 🌈

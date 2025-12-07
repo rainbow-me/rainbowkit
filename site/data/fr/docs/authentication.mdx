@@ -73,7 +73,7 @@ Avec `RainbowKitSiweNextAuthProvider` en place, vos utilisateurs seront désorma
 
 Vous pouvez personnaliser les [options de message SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) en passant une fonction à la propriété `getSiweMessageOptions` sur `RainbowKitSiweNextAuthProvider`.
 
-Cette fonction sera appelée chaque fois qu'un nouveau message est créé. Les options renvoyées par cette fonction seront fusionnées avec les valeurs par défaut.
+Cette fonction sera appelée chaque fois qu'un nouveau message est créé. Les options retournées par cette fonction seront fusionnées avec les valeurs par défaut.
 
 ```tsx
 import {
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 Pour plus d'informations sur la gestion de la session, vous pouvez consulter la documentation suivante :
 
-- [Guide d'authentification Next.js](https://nextjs.org/docs/authentication)
+- [Guide d'authentification Next.js](https://nextjs.org/docs/pages/guides/authentication)
 - [Documentation NextAuth](https://next-auth.js.org)

@@ -1,13 +1,13 @@
 ---
-title: ConnectButton
-description: ConnectButton 사용 및 사용자 정의
+title: 연결버튼
+description: 연결버튼 사용 및 맞춤 설정
 ---
 
-# ConnectButton
+# 연결버튼
 
-## ConnectButton 사용 및 사용자 정의
+## 연결버튼 사용 및 맞춤 설정
 
-이것은 주요 구성 요소입니다. 연결/연결 해제 버튼 및 체인 전환 UI를 렌더링하는 책임이 있습니다.
+이것은 주요 컴포넌트입니다. 연결/연결 해제 버튼을 렌더링할 뿐만 아니라 체인 스와핑 UI를 담당합니다.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> 참고: 앱이 필요한 제공자들에 의해 래핑되었는지 확인하세요. [자세히 읽기](/docs/installation#wrap-providers).
+> 참고: 앱이 필요한 프로바이더로 래핑되었는지 확인하십시오. [더 읽어보기](/docs/installation#wrap-providers).
 
 ### Props
 
-`ConnectButton` 구성 요소는 외관을 사용자 정의하기 위한 여러 속성을 노출하며, 다양한 요소의 가시성을 전환할 수 있습니다.
+`연결버튼` 컴포넌트는 외관을 커스터마이징하기 위해 다양한 props를 제공합니다. 서로 다른 요소의 가시성을 토글하는 등의 기능을 포함합니다.
 
 <PropsTable
   data={[
@@ -30,7 +30,7 @@ export const YourApp = () => {
       required: false,
       default: '지갑 연결',
       type: 'string',
-      description: '연결 버튼에 표시되는 텍스트 라벨',
+      description: '연결 버튼에 표시되는 텍스트 레이블',
     },
     {
       name: 'accountStatus',
@@ -39,7 +39,7 @@ export const YourApp = () => {
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        '활성 계정의 아바타 및/또는 주소가 표시되는지 여부',
+        "활성 계정의 아바타 및/또는 주소가 표시되는지 여부",
     },
     {
       name: 'chainStatus',
@@ -48,7 +48,7 @@ export const YourApp = () => {
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        '현재 체인의 아이콘 및/또는 이름이 표시되거나 완전히 숨길지 여부',
+        "현재 체인의 아이콘 및/또는 이름이 표시되는지, 또는 완전히 숨겨지는지 여부",
     },
     {
       name: 'showBalance',
@@ -57,18 +57,18 @@ export const YourApp = () => {
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
-        '계정 이름 옆에 잔액이 표시되는지 여부',
+        '잔고가 계정 이름 옆에 보이는지 여부',
     },
   ]}
 />
 
-> 참고: 내장된 `largeScreen` 브레이크포인트는 `768px`입니다.
+> 참고: 내장된 `largeScreen` 중단점은 `768px` 입니다.
 
-### 예제
+### 예시들
 
-#### Label
+#### 레이블
 
-`label` 속성을 사용하여 맞춤형 `ConnectButton` 텍스트를 설정합니다.
+`label` prop을 사용하여 맞춤 `연결버튼` 텍스트를 설정하십시오.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,7 +76,7 @@ export const YourApp = () => {
 
 #### 계정 상태
 
-`accountStatus` 속성을 사용하는 몇 가지 다양한 방법이 있습니다.
+다음은 `accountStatus` prop을 사용할 수 있는 몇 가지 방법입니다.
 
 계정의 아바타만 표시합니다.
 
@@ -92,7 +92,7 @@ export const YourApp = () => {
 
 #### 체인 상태
 
-`chainStatus` 속성을 사용하는 몇 가지 다양한 방법이 있습니다.
+다음은 `chainStatus` prop을 사용할 수 있는 몇 가지 방법입니다.
 
 현재 체인의 아이콘만 표시합니다.
 
@@ -112,11 +112,11 @@ export const YourApp = () => {
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### 잔액 표시
+#### 잔고 표시
 
-`showBalance` 속성을 사용하여 잔액을 숨기거나 표시합니다.
+`showBalance` prop을 사용하여 잔고를 숨기거나 표시합니다.
 
-잔액 숨기기.
+잔고를 숨깁니다.
 
 ```tsx
 <ConnectButton showBalance={__false__} />
@@ -124,9 +124,9 @@ export const YourApp = () => {
 
 #### 반응형
 
-이 속성들은 반응형 형식으로도 정의될 수 있습니다.
+이러한 props는 또한 반응형 포맷으로 정의될 수 있습니다.
 
-작은 화면에서는 계정 아이콘만 표시합니다. 그러나 큰 화면에서는 아이콘과 주소를 표시합니다.
+작은 화면에서는 계정 아이콘만 표시합니다. 하지만 큰 화면에서는 아이콘과 주소를 모두 표시합니다.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-작은 화면에서는 잔액을 숨깁니다. 그러나 큰 화면에서는 표시합니다.
+작은 화면에서는 잔고를 숨기고, 큰 화면에서는 표시합니다.
 
 ```tsx
 <ConnectButton

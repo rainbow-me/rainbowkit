@@ -1,13 +1,13 @@
 ---
 title: ConnectButton
-description: Verwendung und Anpassung des ConnectButton
+description: Verwendung und Anpassung des ConnectButtons
 ---
 
 # ConnectButton
 
-## Verwendung und Anpassung des ConnectButton
+## Verwendung und Anpassung des ConnectButtons
 
-Dies ist die Hauptkomponente. Sie ist verantwortlich für das Rendern des Verbindungs-/Trennungsknopfes sowie der Kettenwechsel-UI.
+Dies ist die Hauptkomponente. Sie ist für das Rendern des Verbindungs-/Trennungs-Buttons verantwortlich sowie für die Chain-Swap-Benutzeroberfläche.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> Hinweis: Stellen Sie sicher, dass Ihre App in die erforderlichen Provider eingebunden ist. [Mehr erfahren](/docs/installation#wrap-providers).
+> Hinweis: Stellen Sie sicher, dass Ihre App in die erforderlichen Provider eingebettet ist. [Weiterlesen](/docs/installation#wrap-providers).
 
-### Requisiten
+### Eigenschaften
 
-Die `ConnectButton`-Komponente bietet mehrere Requisiten, um ihr Erscheinungsbild anzupassen, einschließlich des Umschaltens der Sichtbarkeit verschiedener Elemente.
+Die `ConnectButton` Komponente bietet mehrere Eigenschaften zur Anpassung ihres Erscheinungsbildes, einschließlich des Umschaltens der Sichtbarkeit verschiedener Elemente.
 
 <PropsTable
   data={[
@@ -30,13 +30,13 @@ Die `ConnectButton`-Komponente bietet mehrere Requisiten, um ihr Erscheinungsbil
       required: false,
       default: 'Wallet verbinden',
       type: 'string',
-      description: 'Der Text, der auf dem Verbindungs-Button angezeigt wird',
+      description: 'Das Textlabel, das auf dem Verbinden-Button angezeigt wird',
     },
     {
       name: 'accountStatus',
       required: false,
-      default: 'vollständig',
-      type: '"avatar" | "adresse" | "vollständig" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Ob das Avatar und/oder die Adresse des aktiven Kontos angezeigt wird",
@@ -44,11 +44,11 @@ Die `ConnectButton`-Komponente bietet mehrere Requisiten, um ihr Erscheinungsbil
     {
       name: 'chainStatus',
       required: false,
-      default: '{ smallScreen: "icon", largeScreen: "vollständig" }',
-      type: '"icon" | "name" | "vollständig" | "keine" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        "Ob das Symbol und/oder der Name der aktuellen Kette angezeigt oder vollständig versteckt wird",
+        "Ob das Icon und/oder der Name der aktuellen Blockchain angezeigt oder vollständig versteckt wird",
     },
     {
       name: 'showBalance',
@@ -62,13 +62,13 @@ Die `ConnectButton`-Komponente bietet mehrere Requisiten, um ihr Erscheinungsbil
   ]}
 />
 
-> Hinweis: Der eingebaute `largeScreen`-Breakpunkt ist `768px`.
+> Hinweis: Der eingebaute `largeScreen`-Breakpoint ist `768px`.
 
 ### Beispiele
 
-#### Beschriftung
+#### Label
 
-Verwenden Sie die `label`-Requisite, um einen benutzerdefinierten Text für den `ConnectButton` festzulegen.
+Verwenden Sie die `label` Eigenschaft, um einen benutzerdefinierten `ConnectButton`-Text festzulegen.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,7 +76,7 @@ Verwenden Sie die `label`-Requisite, um einen benutzerdefinierten Text für den 
 
 #### Kontostatus
 
-Hier sind einige verschiedene Möglichkeiten, wie Sie die Requisite `accountStatus` verwenden können.
+Hier sind einige verschiedene Möglichkeiten, wie Sie die `accountStatus`-Eigenschaft verwenden können.
 
 Nur das Avatar des Kontos anzeigen.
 
@@ -90,23 +90,23 @@ Nur die Adresse des Kontos anzeigen.
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### Kettenstatus
+#### Chain-Status
 
-Hier sind einige verschiedene Möglichkeiten, wie Sie die Requisite `chainStatus` verwenden können.
+Hier sind einige verschiedene Möglichkeiten, wie Sie die `chainStatus`-Eigenschaft verwenden können.
 
-Nur das aktuelle Ketten-Icon anzeigen.
+Nur das Icon der aktuellen Chain anzeigen.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-Nur den Namen der aktuellen Kette anzeigen.
+Nur den Namen der aktuellen Chain anzeigen.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-Die Ketten-UI vollständig ausblenden.
+Die Chain-Benutzeroberfläche vollständig ausblenden.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
@@ -114,7 +114,7 @@ Die Ketten-UI vollständig ausblenden.
 
 #### Guthaben anzeigen
 
-Verwenden Sie die Requisite `showBalance`, um das Guthaben auszublenden/anzuzeigen.
+Verwenden Sie die `showBalance`-Eigenschaft, um das Guthaben ein- oder auszublenden.
 
 Das Guthaben ausblenden.
 
@@ -122,11 +122,11 @@ Das Guthaben ausblenden.
 <ConnectButton showBalance={__false__} />
 ```
 
-#### Responsiv
+#### Responsive
 
-Diese Requisiten können auch in einem responsiven Format definiert werden.
+Diese Eigenschaften können auch in einem responsiven Format definiert werden.
 
-Auf kleinen Bildschirmen nur das Konto-Icon anzeigen. Aber auf großen Bildschirmen Icon und Adresse anzeigen.
+Auf kleinen Bildschirmen nur das Konto-Icon anzeigen. Auf großen Bildschirmen jedoch Icon und Adresse anzeigen.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ Auf kleinen Bildschirmen nur das Konto-Icon anzeigen. Aber auf großen Bildschir
 />
 ```
 
-Auf kleinen Bildschirmen Guthaben ausblenden. Aber auf großen Bildschirmen anzeigen.
+Auf kleinen Bildschirmen das Guthaben ausblenden. Auf großen Bildschirmen anzeigen.
 
 ```tsx
 <ConnectButton

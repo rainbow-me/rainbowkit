@@ -21,7 +21,7 @@ description: مصادقة المستخدمين الخاصين بك
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### قم بإعداد الموفر
+#### إعداد الموفر
 
 في مكون `App` الخاص بك، قم باستيراد `RainbowKitSiweNextAuthProvider`.
 
@@ -29,7 +29,7 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-قم بلف `RainbowKitProvider` بـ `RainbowKitSiweNextAuthProvider`، مع التأكد من تغليفه ضمن `SessionProvider` الخاص بـ NextAuth حتى يتمكن من الوصول إلى الجلسة.
+قم بتغليف `RainbowKitProvider` بـ `RainbowKitSiweNextAuthProvider`، مع التأكد من أنه مدمج داخل `SessionProvider` الخاص بـNextAuth حتى يتمكن من الوصول إلى الجلسة.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-مع وجود `RainbowKitSiweNextAuthProvider` في مكانه، سيتم الآن مطالبة المستخدمين بالمصادقة من خلال توقيع رسالة بمجرد اتصالهم بمحفظتهم.
+مع وجود `RainbowKitSiweNextAuthProvider`، سيتم حث المستخدمين الآن على المصادقة بتوقيع رسالة بمجرد أن يقوموا بتوصيل محفظتهم.
 
-#### قم بتخصيص خيارات الرسالة SIWE
+#### تخصيص خيارات رسالة SIWE
 
-يمكنك تخصيص [خيارات رسالة SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) عن طريق تمرير وظيفة إلى الدالة `getSiweMessageOptions` prop على `RainbowKitSiweNextAuthProvider`.
+يمكنك تخصيص [خيارات رسالة SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) عن طريق تمرير دالة إلى الخاصية `getSiweMessageOptions` في `RainbowKitSiweNextAuthProvider`.
 
-سيتم استدعاء هذه الوظيفة كلما تم إنشاء رسالة جديدة. سيتم دمج الخيارات المسترجعة من هذه الوظيفة مع القيم الافتراضية.
+سيتم استدعاء هذه الوظيفة كلما تم إنشاء رسالة جديدة. سيتم دمج الخيارات التي يتم إرجاعها من هذه الوظيفة مع الخيارات الافتراضية.
 
 ```tsx
 import {
@@ -92,11 +92,11 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 </RainbowKitSiweNextAuthProvider>;
 ```
 
-#### الوصول إلى جلسة الخادم
+#### الوصول إلى الجلسة على الجانب الخادم
 
-يمكنك الوصول إلى رمز الجلسة باستخدام وظيفة `getToken` من NextAuth المستوردة من `next-auth/jwt`. إذا تم التحقق من المستخدم بنجاح، ستكون خاصية `sub` (ال"الموضوع" للرمز، أي المستخدم) لرمز الجلسة عنوان المستخدم.
+يمكنك الوصول إلى رمز الجلسة باستخدام وظيفة `getToken` الخاصة بـ NextAuth المستوردة من `next-auth/jwt`. إذا كان المستخدم قد قام بالمصادقة بنجاح، سيكون خاصية `sub` في رمز الجلسة (الموضوع في الرمز، أي المستخدم) هو عنوان المستخدم.
 
-يمكنك أيضاً تمرير كائن الجلسة المحلول من الخادم عبر `getServerSideProps` بحيث لا يحتاج NextAuth إلى حله مرة أخرى على العميل.
+يمكنك أيضًا تمرير كائن الجلسة المستقر من الخادم عبر `getServerSideProps` بحيث لا يحتاج NextAuth إلى حله مرة أخرى على العميل.
 
 على سبيل المثال:
 
@@ -139,7 +139,7 @@ export default function AuthenticatedPage({
 }
 ```
 
-لمزيد من المعلومات حول إدارة الجلسة، يمكنك الرجوع إلى الوثائق التالية:
+لمزيد من المعلومات حول إدارة الجلسة، يمكنك الرجوع إلى التوثيق التالي:
 
-- [دليل المصادقة Next.js](https://nextjs.org/docs/authentication)
-- [وثائق NextAuth](https://next-auth.js.org)
+- [دليل المصادقة Next.js](https://nextjs.org/docs/pages/guides/authentication)
+- [توثيق NextAuth](https://next-auth.js.org)

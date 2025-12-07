@@ -73,7 +73,7 @@ Với `RainbowKitSiweNextAuthProvider` được thiết lập, người dùng c�
 
 Bạn có thể tùy chỉnh [tùy chọn thông điệp SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) bằng cách truyền một hàm vào thuộc tính `getSiweMessageOptions` trên `RainbowKitSiweNextAuthProvider`.
 
-Hàm này sẽ được gọi bất kỳ khi nào một tin nhắn mới được tạo. Các tuỳ chọn trả về từ hàm này sẽ được gộp với các mặc định.
+Hàm này sẽ được gọi bất cứ khi nào một tin nhắn mới được tạo. Các tùy chọn trả về từ hàm này sẽ được kết hợp với những mặc định.
 
 ```tsx
 import {
@@ -94,7 +94,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Truy cập phiên từ phía máy chủ
 
-Bạn có thể truy cập mã phiên bằng hàm `getToken` của NextAuth được nhập từ `next-auth/jwt`. Nếu người dùng đã xác thực thành công, thuộc tính `sub` của mã phiên (chủ đề của mã, tức là người dùng) sẽ là địa chỉ của người dùng.
+Bạn có thể truy cập mã thông báo phiên với hàm `getToken` của NextAuth được nhập từ `next-auth/jwt`. Nếu người dùng đã xác thực thành công, thuộc tính `sub` của mã thông báo phiên (đối tượng "chủ thể" của mã, tức là người dùng) sẽ là địa chỉ của người dùng.
 
 Bạn cũng có thể chuyển đối tượng phiên đã giải quyết từ máy chủ thông qua `getServerSideProps` để NextAuth không cần phải giải quyết lại trên phía máy khách.
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 Để biết thêm thông tin về quản lý phiên, bạn có thể tham khảo tài liệu sau:
 
-- [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/authentication)
+- [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/pages/guides/authentication)
 - [Tài liệu NextAuth](https://next-auth.js.org)

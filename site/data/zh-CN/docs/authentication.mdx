@@ -23,13 +23,13 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 #### 设置提供者
 
-在你的 `App` 组件中，导入 `RainbowKitSiweNextAuthProvider`。
+在您的`App`组件中，导入`RainbowKitSiweNextAuthProvider`。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
 
-用 `RainbowKitSiweNextAuthProvider` 包装 `RainbowKitProvider`，确保它嵌套在 NextAuth 的 `SessionProvider` 中，这样它就可以访问会话。
+用`RainbowKitSiweNextAuthProvider`封装`RainbowKitProvider`，确保它嵌套在NextAuth的`SessionProvider`中，以便可以访问会话。
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -67,13 +67,13 @@ export default function App({
 }
 ```
 
-有了 `RainbowKitSiweNextAuthProvider`，一旦用户连接了他们的钱包，他们现在将被提示通过签署一条信息进行认证。
+利用`RainbowKitSiweNextAuthProvider`，当用户连接他们的钱包时，他们将需要通过签名消息进行身份验证。
 
-#### 自定义 SIWE 消息选项
+#### 自定义SIWE消息选项
 
-您可以通过在`RainbowKitSiweNextAuthProvider`上传递一个函数到`getSiweMessageOptions`属性，自定义[SIWE信息选项](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
+您可以通过将函数传递给`RainbowKitSiweNextAuthProvider`上的`getSiweMessageOptions`属性，自定义[SIWE消息选项](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters)。
 
-每当创建新的消息时，都会调用此功能。 从此函数返回的选项将与默认值合并。
+每当创建新消息时将调用此函数。从该函数返回的选项将与默认选项合并。
 
 ```tsx
 import {
@@ -94,9 +94,9 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 在服务器端访问会话
 
-您可以使用NextAuth的 `getToken` 函数从 `next-auth/jwt` 导入会话令牌。 如果用户成功进行身份验证，会话令牌的 <b>`sub`</b> 属性（令牌的<b>"主题"</b>，即用户）将是用户的地址。
+您可以使用NextAuth的`getToken`函数（从`next-auth/jwt`中导入）来访问会话令牌。如果用户已成功认证，会话令牌的`sub`属性（即令牌的"subject"，即用户）将是用户的地址。
 
-您还可以通过 `getServerSideProps` 将已解析的会话对象从服务器传递下来，这样 NextAuth 就不需要在客户端再次解析它。
+您还可以通过`getServerSideProps`从服务器传递已解析的会话对象，以便NextAuth不需要在客户端再次解析它。
 
 例如：
 
@@ -141,5 +141,5 @@ export default function AuthenticatedPage({
 
 有关管理会话的更多信息，您可以参考以下文档：
 
-- [Next.js 身份验证指南](https://nextjs.org/docs/authentication)
+- [Next.js 身份验证指南](https://nextjs.org/docs/pages/guides/authentication)
 - [NextAuth文档](https://next-auth.js.org)

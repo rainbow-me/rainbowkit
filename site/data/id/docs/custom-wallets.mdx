@@ -7,9 +7,9 @@ description: Buat dompet kustom
 
 ## Buat dompet kustom
 
-> Catatan: API ini tidak stabil dan mungkin akan berubah dalam waktu dekat. Kami akan menambahkan lebih banyak dompet bawaan seiring waktu. [Beri tahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika ada dompet tertentu yang Anda minati.
+> Catatan: API ini tidak stabil dan kemungkinan akan berubah di waktu dekat. Kami akan menambah lebih banyak dompet built-in seiring waktu. [Beri tahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika ada dompet tertentu yang Anda minati.
 
-Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom Anda sendiri. Properti berikut dapat dikonfigurasi pada nilai balik fungsi `Wallet` Anda:
+Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom Anda sendiri. Properti berikut dapat dikonfigurasi pada nilai pengembalian fungsi `Wallet` Anda:
 
 ### Properti Dompet
 
@@ -19,45 +19,45 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       name: 'id',
       required: true,
       type: 'string',
-      description: 'Unique ID per wallet',
+      description: 'ID unik untuk setiap dompet',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: 'Human-readable wallet name',
+      description: 'Nama dompet yang dapat dibaca oleh manusia',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: 'RDNS for wallet which supports EIP6963',
+      description: 'RDNS untuk dompet yang mendukung EIP6963',
     },
     {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
-      description: 'Optional short name for mobile use',
+      description: 'Nama pendek opsional untuk penggunaan di ponsel',
     },
     {
       name: 'iconUrl',
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL untuk ikon dompet, atau janji yang menyelesaikan ke Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Warna aksen digunakan dalam aliran unduhan untuk dompet dengan ekstensi browser dan aplikasi seluler',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Warna latar belakang saat ikon dompet dimuat',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          Apakah dompet diketahui terpasang, atau{' '}
+          <code>undefined</code> jika tidak dapat ditentukan
         </>
       ),
     },
@@ -75,7 +75,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Objek yang berisi URL unduhan',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. Ini berguna untuk mendefinisikan dompet fallback generik, misalnya, fallback "Injected Wallet" bawaan memanfaatkan fitur ini',
+        'Fungsi untuk menghitung apakah dompet ini harus disembunyikan dari daftar. Ini berguna untuk mendefinisikan dompet fallback umum, misalnya, "Injected Wallet" bawaan menggunakan fitur ini',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Fungsi untuk menyediakan instance konektor dan konfigurasi untuk berbagai metode koneksi, dijelaskan di bawah',
+        'Fungsi untuk menyediakan instance konektor dan konfigurasi untuk metode koneksi yang berbeda, dijelaskan di bawah ini',
     },
     {
       name: 'mobile',
@@ -106,7 +106,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Fungsi untuk menyelesaikan tautan dalam aplikasi desktop',
+      description: 'Fungsi untuk menyelesaikan link dalam aplikasi desktop',
     },
     {
       name: 'qrCode',
@@ -114,7 +114,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Objek yang berisi fungsi untuk menyelesaikan URI kode QR, plus instruksi pengaturan dompet seluler opsional',
+        'Objek yang berisi fungsi untuk menyelesaikan URI kode QR, ditambah instruksi pengaturan dompet seluler yang opsional',
     },
     {
       name: 'extension',
@@ -122,7 +122,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Objek yang berisi instruksi pengaturan ekstensi browser opsional',
+        'Objek yang berisi instruksi pengaturan ekstensi browser yang opsional',
     },
     {
       name: 'createConnector',
@@ -155,14 +155,14 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: false,
       type: 'string',
       description:
-        'Halaman arahan untuk pengguna seluler ketika `android` atau `ios` tidak tersedia',
+        'Halaman pendaratan untuk pengguna ponsel ketika `android` atau `ios` tidak tersedia',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        'Halaman arahan untuk pengguna yang memindai Kode QR unduhan seluler',
+        'Halaman pendaratan untuk pengguna yang memindai kode QR unduhan ponsel',
     },
     {
       name: 'chrome',
@@ -174,19 +174,19 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'URL Add-on Microsoft Edge',
+      description: 'URL Microsoft Edge Add-ons',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'URL Add-on Firefox Browser',
+      description: 'URL Firefox Browser Add-ons',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'URL Add-on Opera',
+      description: 'URL add-ons Opera',
     },
     {
       name: 'safari',
@@ -199,7 +199,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: false,
       type: 'string',
       description:
-        'Halaman arahan untuk pengguna ekstensi desktop ketika URL yang kompatibel dengan browser tidak tersedia',
+        'Halaman pendaratan untuk pengguna ekstensi desktop saat URL kompatibel browser tidak tersedia',
     },
   ]}
 />
@@ -278,4 +278,4 @@ export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-Anda kemudian dapat menambahkan dompet kustom Anda di [daftar dompet](/docs/custom-wallet-list).
+Anda kemudian dapat menambahkan dompet kustom Anda dalam [daftar dompet](/docs/custom-wallet-list).

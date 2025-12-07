@@ -1,35 +1,35 @@
 ---
-title: السلاسل
-description: تخصيص السلاسل
+title: سلاس (Chains)
+description: تخصيص السلاسل (Customizing chains)
 ---
 
-# السلاسل
+# سلاس (Chains)
 
-## تخصيص السلاسل
+## تخصيص السلاسل (Customizing chains)
 
-تم تصميم RainbowKit للتكامل مع [كائن `chain` الخاص بـ wagmi](https://wagmi.sh/react/chains). تحقق من قائمة السلاسل المدعومة [here](https://wagmi.sh/react/chains#supported-chains).
+تم تصميم RainbowKit ليتكامل مع [كائن Wagmi `chain`](https://wagmi.sh/react/chains). تحقق من قائمة السلاسل المدعومة [هنا](https://wagmi.sh/react/chains#supported-chains).
 
-### تخصيص السلسلة الأولية
+### تخصيص السلسلة الأولى (Customizing the initial chain)
 
-بشكل افتراضي، سيقوم RainbowKit بالاتصال بالسلسلة الأولى المقدمة إلى Wagmi. يمكن تخصيص هذا السلوك عبر خاصية `initialChain`.
+افتراضيًا، سيتصل RainbowKit بالسلسلة الأولى التي يتم توفيرها لWagmi. يمكن تخصيص هذا السلوك عبر الخاصية `initialChain`.
 
-يمكن تكوين السلسلة الأولية باستخدام معرف السلسلة.
+يمكن تهيئة السلسلة الأولية باستخدام معرف السلسلة.
 
 ```tsx
 <RainbowKitProvider initialChain={1}>
 ```
 
-للراحة، يمكنك أيضًا تمرير كائن السلسلة.
+للتسهيل، يمكنك أيضًا تمرير كائن السلسلة.
 
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### بيانات وصفية خاصة بالسلاسل المخصصة
+### بيانات تعريف السلاسل المخصصة (Custom chain metadata)
 
-يتم توفير العديد من أيقونات السلاسل والخلفيات بشكل افتراضي، ولكن يمكنك تخصيص أيقونة وخلفية كل سلسلة باستخدام خاصيتي `iconUrl` و `iconBackground`.
+يتم توفير عدة أيقونات وخلفيات للسلاسل بشكل افتراضي، ولكن يمكنك تخصيص الأيقونة والخلفية لكل سلسلة باستخدام خصائص `iconUrl` و`iconBackground`.
 
-مثال مع `getDefaultConfig`
+مثال باستخدام `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';

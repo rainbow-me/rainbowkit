@@ -1,24 +1,24 @@
 ---
 title: Применение кнопки Rainbow в вашем dApp
-description: Библиотека для поддержки Rainbow Wallet в вашем dApp
+description: Библиотека plug-and-play для Wagmi для поддержки кошельков Rainbow в вашем dApp
 image: guide-rainbow-button.png
 ---
 
 # Применение кнопки Rainbow в вашем dApp
 
-Компонент `RainbowButton` - самый простой способ добавить поддержку Rainbow Wallet в dApps, использующие `wagmi`, и предпочитающие более индивидуальное подключение, чем [RainbowKit](https://www.rainbowkit.com/docs/installation).
+Компонент `RainbowButton` является самым простым способом добавить поддержку Rainbow Wallet для dApp, которые используют `wagmi` и предпочитают более индивидуальный опыт подключения [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. Установите `@rainbow-me/rainbow-button` и его зависимости**
+**1. Установите `@rainbow-me/rainbow-button` и его зависимые пакеты**
 
-Пакет совместим с Next.js, React и Vite. Убедитесь, что вы соблюдаете предупреждения о зависимостях.
+Пакет совместим с Next.js, React и Vite. Убедитесь, что вы учитываете предупреждения о зависимостях.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Настройте с Wagmi и установите RainbowButton**
+**2. Настройка с Wagmi и установка RainbowButton**
 
-Передайте экземпляр `rainbowConnector` в `createConfig` Wagmi с `projectId` и `appName`, а затем оберните ваше приложение в `RainbowButtonProvider`. После этого добавьте компонент `RainbowButton`.
+Передайте экземпляр `rainbowConnector` в `createConfig` Wagmi с `projectId` и `appName`, и оберните ваше приложение в `RainbowButtonProvider`. Затем добавьте компонент `RainbowButton`.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-Вы также можете использовать компонент `RainbowButton.Custom` для настройки и стилизации.
+Вы также можете использовать компонент `RainbowButton.Custom` для пользовательской реализации и стилей.
 
 ```tsx
 <RainbowButton.Custom>
@@ -81,8 +81,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. Вот и всё!**
+**3. И все!**
 
-Теперь ваши пользователи могут наслаждаться беспроблемным подключением к Rainbow — без какого-либо обслуживания или проблем.
+Теперь ваши пользователи смогут наслаждаться бесшовным подключением к Rainbow — без какого-либо обслуживания или головной боли.
 
-Также доступен [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) компонент в [RainbowKit](https://www.rainbowkit.com/docs/installation), если вы хотите добавить поддержку дополнительных кошельков.
+Компонент [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) также доступен в [RainbowKit](https://www.rainbowkit.com/docs/installation), если вы хотите добавить поддержку дополнительных кошельков.
