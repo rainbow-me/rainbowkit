@@ -65,7 +65,7 @@ Các chức năng chủ đề tích hợp sẵn cũng chấp nhận một đối
     {
       name: 'accentColorForeground',
       required: false,
-      default: '"trắng"',
+      default: '"white"',
       type: 'string',
       description:
         'Màu được sử dụng cho các phần tử nền trước được hiển thị trên màu nhấn.',
@@ -73,25 +73,25 @@ Các chức năng chủ đề tích hợp sẵn cũng chấp nhận một đối
     {
       name: 'borderRadius',
       required: false,
-      default: 'lớn',
-      type: '"không có" | "nhỏ" | "vừa" | "lớn"',
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
       description: 'Kích thước của thang đo bán kính biên toàn bộ.',
     },
     {
       name: 'fontStack',
       required: false,
-      default: 'bo tròn',
-      type: '"bo tròn" | "hệ thống"',
+      default: 'rounded',
+      type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "Kiểu chữ sử dụng trong toàn bộ giao diện. Lưu ý rằng `bo tròn` cố gắng sử dụng SF Pro Rounded, tự động chuyển sang font hệ thống khi không có sẵn.",
+        "Kiểu chữ sử dụng trong toàn bộ giao diện. Lưu ý rằng `rounded` cố gắng sử dụng SF Pro Rounded, tự động chuyển sang font hệ thống khi không có sẵn.",
     },
     {
       name: 'overlayBlur',
       required: false,
-      default: 'không có',
-      type: '"lớn" | "nhỏ" | "không có"',
+      default: 'none',
+      type: '"large" | "small" | "none"',
       typeSimple: 'enum',
       description: 'Độ mờ của nền sau mô hình.',
     },
