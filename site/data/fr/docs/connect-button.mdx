@@ -23,7 +23,7 @@ export const YourApp = () => {
 
 Le composant `BoutonConnecter` expose plusieurs props pour personnaliser son apparence, y compris la possibilité de modifier la visibilité de différents éléments.
 
-<TableauDesProps
+<PropsTable
   data={[
     {
       name: 'label',
@@ -35,8 +35,8 @@ Le composant `BoutonConnecter` expose plusieurs props pour personnaliser son app
     {
       name: 'accountStatus',
       required: false,
-      default: 'complet',
-      type: '"avatar" | "adresse" | "complet" | { petitÉcran: StatutCompte, grandÉcran?: StatutCompte }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Si l'avatar et/ou l'adresse du compte actif est affiché",
@@ -44,8 +44,8 @@ Le composant `BoutonConnecter` expose plusieurs props pour personnaliser son app
     {
       name: 'chainStatus',
       required: false,
-      default: '{ petitÉcran: "icône", grandÉcran: "complet" }',
-      type: '"icône" | "nom" | "complet" | "aucun" | { petitÉcran: StatutChaîne, grandÉcran?: StatutChaîne }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "Si l'icône et/ou le nom de la chaîne actuelle est affiché, ou entièrement caché",
@@ -53,8 +53,8 @@ Le composant `BoutonConnecter` expose plusieurs props pour personnaliser son app
     {
       name: 'showBalance',
       required: false,
-      default: '{ petitÉcran: false, grandÉcran: true }',
-      type: 'boolean | { petitÉcran: boolean, grandÉcran?: boolean }',
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
         "Si le solde est visible à côté du nom du compte",
