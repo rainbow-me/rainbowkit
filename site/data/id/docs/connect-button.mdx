@@ -35,8 +35,8 @@ Komponen `TombolKoneksi` memiliki beberapa properti untuk menyesuaikan tampilann
     {
       name: 'accountStatus',
       required: false,
-      default: 'lengkap',
-      type: '"avatar" | "alamat" | "lengkap" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Apakah avatar dan/atau alamat akun aktif ditampilkan",
@@ -44,8 +44,8 @@ Komponen `TombolKoneksi` memiliki beberapa properti untuk menyesuaikan tampilann
     {
       name: 'chainStatus',
       required: false,
-      default: '{ smallScreen: "ikon", largeScreen: "lengkap" }',
-      type: '"ikon" | "nama" | "lengkap" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "Apakah ikon dan/atau nama rantai saat ini ditampilkan, atau disembunyikan sepenuhnya",
