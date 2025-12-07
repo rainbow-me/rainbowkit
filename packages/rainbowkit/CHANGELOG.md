@@ -11,7 +11,9 @@
 - 507f583: Add additional wallet flags to `isMetaMask()` to detect impersonating providers.
 - 16963de: Add `ctrlWallet` wallet connector to replace `xdefiWallet`. XDEFI Wallet has been rebranded to CTRL Wallet.
 - 6c745a5: Disable third-party connector telemetry by default for user privacy. h/t @TimDaub
+
   **To opt-in to WalletConnect analytics:**
+  
   With `getDefaultConfig`:
   ```ts
   const config = getDefaultConfig({
