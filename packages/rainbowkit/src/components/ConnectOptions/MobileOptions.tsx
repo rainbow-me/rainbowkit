@@ -240,7 +240,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             paddingBottom="20"
             paddingTop="6"
             paddingX="20"
-            gap="30"
+            style={{
+              // Dynamic gap to show ~13px of 5th wallet as scroll hint
+              gap: 'calc((100% - 40px - 240px + 47px) / 4)',
+            }}
           >
             {wallets
               .filter((wallet) => wallet.ready)
