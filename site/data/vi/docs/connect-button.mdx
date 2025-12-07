@@ -35,8 +35,8 @@ Thành phần `Nút Kết Nối` cung cấp nhiều thuộc tính để tùy ch�
     {
       name: 'accountStatus',
       required: false,
-      default: 'đầy đủ',
-      type: '"hình đại diện" | "địa chỉ" | "đầy đủ" | { màn hình nhỏ: Trạng tháiTàiKhoản, màn hình lớn?: Trạng tháiTàiKhoản }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Liệu hình đại diện và/hoặc địa chỉ của tài khoản đang hoạt động có hiển thị",
@@ -44,8 +44,8 @@ Thành phần `Nút Kết Nối` cung cấp nhiều thuộc tính để tùy ch�
     {
       name: 'chainStatus',
       required: false,
-      default: '{ màn hình nhỏ: "biểu tượng", màn hình lớn: "đầy đủ" }',
-      type: '"biểu tượng" | "tên" | "đầy đủ" | "không có" | { màn hình nhỏ: Trạng tháiChuỗi, màn hình lớn?: Trạng tháiChuỗi }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "Liệu biểu tượng và/hoặc tên của chuỗi hiện tại có hiển thị, hoặc ẩn hoàn toàn",
@@ -53,8 +53,8 @@ Thành phần `Nút Kết Nối` cung cấp nhiều thuộc tính để tùy ch�
     {
       name: 'showBalance',
       required: false,
-      default: '{ màn hình nhỏ: false, màn hình lớn: true }',
-      type: 'boolean | { màn hình nhỏ: boolean, màn hình lớn?: boolean }',
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
         'Liệu số dư có hiển thị cạnh tên tài khoản',
