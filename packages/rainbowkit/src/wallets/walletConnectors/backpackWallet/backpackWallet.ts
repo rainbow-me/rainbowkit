@@ -10,7 +10,7 @@ export const backpackWallet = (): Wallet => {
     name: 'Backpack',
     rdns: 'app.backpack.mobile',
     iconUrl: async () => (await import('./backpackWallet.svg')).default,
-    iconBackground: '#0C0D10',
+    iconBackground: '#ffffff',
     installed: hasInjectedProvider({ namespace: 'backpack.ethereum' }),
     downloadUrls: {
       android:
