@@ -65,7 +65,7 @@ export const App = () => (
     {
       name: 'accentColorForeground',
       required: false,
-      default: '"білий"',
+      default: '"white"',
       type: 'string',
       description:
         'Колір, що використовується для переднього плану елементів, які відображаються поверх акцентного кольору.',
@@ -73,8 +73,8 @@ export const App = () => (
     {
       name: 'borderRadius',
       required: false,
-      default: 'великий',
-      type: '"none" | "мале" | "середнє" | "велике"',
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
       description: 'Розмір усього масштабу радіусу межі.',
     },
@@ -91,7 +91,7 @@ export const App = () => (
       name: 'overlayBlur',
       required: false,
       default: 'none',
-      type: '"велике" | "мале" | "none"',
+      type: '"large" | "small" | "none"',
       typeSimple: 'enum',
       description: 'Розмиття фону модального вікна.',
     },
