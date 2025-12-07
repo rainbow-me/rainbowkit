@@ -1,7 +1,7 @@
 {
   "name": "with-next-siwe-iron-session",
   "private": true,
-  "version": "0.0.89",
+  "version": "0.0.88",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,8 +13,8 @@
     "next": "^15.3.6",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3",
+    "viem": "^2.38.0",
+    "wagmi": "3.x",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {

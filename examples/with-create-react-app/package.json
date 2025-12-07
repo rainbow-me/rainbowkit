@@ -16,8 +16,8 @@
     "react": "^19.1.2",
     "typescript": "5.5.4",
     "util": "0.12.5",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3",
+    "viem": "^2.38.0",
+    "wagmi": "3.x",
     "@tanstack/react-query": "^5.55.3"
   },
   "scripts": {

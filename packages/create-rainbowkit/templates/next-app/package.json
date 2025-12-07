@@ -1,7 +1,7 @@
 {
   "name": "rainbowkit-next-app",
   "private": true,
-  "version": "0.0.109",
+  "version": "0.0.108",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,8 +13,8 @@
     "next": "^15.3.6",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3"
+    "viem": "^2.38.0",
+    "wagmi": "3.x"
   },
   "devDependencies": {
     "@types/node": "^22.19.1",

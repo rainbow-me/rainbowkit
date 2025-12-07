@@ -29,7 +29,7 @@
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": "2.2.x",
+    "@rainbow-me/rainbowkit": "3.x",
     "next-auth": ">=4.21.0 <5",
     "react": ">=18"
   },

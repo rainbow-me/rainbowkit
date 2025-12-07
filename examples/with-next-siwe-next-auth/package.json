@@ -1,7 +1,7 @@
 {
   "name": "with-next-siwe-next-auth",
   "private": true,
-  "version": "0.0.90",
+  "version": "0.0.89",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,8 +14,8 @@
     "next-auth": "4.24.11",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3",
+    "viem": "^2.38.0",
+    "wagmi": "3.x",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {

@@ -8,7 +8,7 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
-import { http, WagmiProvider } from 'wagmi';
+import { type Config, http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   avalanche,
@@ -67,7 +67,7 @@ const config = getDefaultConfig({
     },
   ],
   ssr: true,
-});
+}) as Config;
 
 const client = new QueryClient();
 

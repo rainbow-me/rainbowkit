@@ -1,7 +1,7 @@
 {
   "name": "with-vite",
   "private": true,
-  "version": "0.0.95",
+  "version": "0.0.94",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -12,15 +12,15 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3",
+    "viem": "^2.38.0",
+    "wagmi": "3.x",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
     "typescript": "5.5.4",
-    "vite": "^7.2.6"
+    "vite": "^6.3.5"
   }
 }
