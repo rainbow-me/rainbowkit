@@ -14,7 +14,7 @@ description: カスタムウォレットを作成する
 ### ウォレットプロパティ
 
 <PropsTable
-  data=[
+  data={[
     {
       name: 'id',
       required: true,
@@ -44,7 +44,7 @@ description: カスタムウォレットを作成する
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'ウォレットアイコンのURL、またはBase64データURLへのPromise',
+        'ウォレットアイコンのURL、まBase64データーURLへのPromise',
     },
     {
       name: 'iconAccent',
@@ -83,7 +83,7 @@ description: カスタムウォレットを作成する
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'このウォレットをリストから非表示にするかどうかを計算するための関数。ビルトインの「インジェクティッドウォレット」フォールバックがこの機能を利用しています',
+        'このウォレットをリストから非表示にするかどうかを計算するための関数。ビルトインの「インジェクティッドウォレット」フォールバックがこの機能を利用している',
     },
     {
       name: 'createConnector',
@@ -131,7 +131,7 @@ description: カスタムウォレットを作成する
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
       description: 'コネクタインスタンスを提供するための関数',
     }
-  ]
+  ]}
 />
 
 ### ダウンロードURL プロパティ
