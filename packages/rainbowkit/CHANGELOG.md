@@ -1,5 +1,41 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.10
+
+### Patch Changes
+
+- e74f604: Improve UI on the mobile connect flow to hint to users that they can horizontally scroll to see additional wallet connectors
+- eb72c37: Fix Gemini wallet connector to use `icon` instead of `icons` in `appMetadata`
+- e58367e: Fix mobile visibility for Coin98, CLV, SafePal, Frontier, and BeraSig wallets.
+- b7b7b43: Rename the Argent wallet connector to `readyWallet`
+- 507f583: Add additional wallet flags to `isMetaMask()` to detect impersonating providers.
+- 16963de: Add `ctrlWallet` wallet connector to replace `xdefiWallet`. XDEFI Wallet has been rebranded to CTRL Wallet.
+- 6c745a5: Disable third-party connector telemetry by default for user privacy. h/t @TimDaub
+
+  **To opt-in to WalletConnect analytics:**
+  
+  With `getDefaultConfig`:
+  ```ts
+  const config = getDefaultConfig({
+    /** ... **/
+    walletConnectParameters: {
+      telemetryEnabled: true,
+    },
+  });
+  ```
+  
+  **To opt-in to Base Account telemetry:**
+  ```ts
+  baseAccount.preference = {
+    telemetry: true,
+  };
+  ```
+  
+  **To opt-in to MetaMask analytics:**
+  ```ts
+  metaMaskWallet.enableAnalytics = true;
+  ```
+
 ## 2.2.9
 
 ### Patch Changes
