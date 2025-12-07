@@ -19,19 +19,19 @@ description: 创建一个自定义钱包
       name: 'id',
       required: true,
       type: 'string',
-      description: '每个钱包的唯一ID',
+      description: '钱包的唯一 ID',
     },
     {
       name: 'name',
       required: true,
       type: 'string',
-      description: '可读的钱包名称',
+      description: '人类可读的钱包名称',
     },
     {
       name: 'rdns',
       required: false,
       type: 'string',
-      description: '支持EIP6963的钱包的RDNS',
+      description: '支持 EIP6963 的钱包的 RDNS',
     },
     {
       name: 'shortName',
@@ -44,20 +44,20 @@ description: 创建一个自定义钱包
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        '钱包图标的URL，或解析为Base64数据URL的Promise',
+        '钱包图标的网址，或者一个解析为 Base64 数据网址的 promise',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        '用于同时拥有浏览器扩展和移动应用的钱包下载流程中的强调颜色',
+        '在下载流程中用于同时具有浏览器扩展和移动应用程序的钱包的强调色',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: '钱包图标加载期间的背景颜色',
+      description: '钱包图标加载时的背景颜色',
     },
     {
       name: 'installed',
@@ -65,8 +65,7 @@ description: 创建一个自定义钱包
       type: 'boolean | undefined',
       description: (
         <>
-          钱包是否安装，或为{' '}
-          <code>undefined</code>如果不确定
+            钱包是否已知安装，如果未安装则为 <code>undefined</code>
         </>
       ),
     },
@@ -75,7 +74,7 @@ description: 创建一个自定义钱包
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: '包含下载URL的对象',
+      description: '包含下载网址的对象',
     },
     {
       name: 'hidden',
@@ -83,7 +82,7 @@ description: 创建一个自定义钱包
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        '用于计算该钱包是否应从列表中隐藏的函数。这对定义通用备用钱包很有用，例如内置的“注入式钱包”备用使用此功能',
+        '用于检测这个钱包是否应该从列表中隐藏的函数。这对于定义通用回退钱包很有用,例如内置的 "Injected Wallet" 回退利用了此功能',
     },
     {
       name: 'createConnector',
@@ -91,7 +90,7 @@ description: 创建一个自定义钱包
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        '用于提供不同连接方法的连接器实例和配置的函数，将在下面介绍',
+        '提供连接器实例和不同连接方法的配置的函数，如下所述',
     },
     {
       name: 'mobile',
@@ -99,14 +98,14 @@ description: 创建一个自定义钱包
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        '用于解析移动钱包连接URI的函数',
+        '用于解析移动钱包连接 URI 的函数',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: '用于解析桌面应用程序深层链接的函数',
+      description: '用于解析桌面应用深层链接的函数',
     },
     {
       name: 'qrCode',
@@ -114,7 +113,7 @@ description: 创建一个自定义钱包
       type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        '对象中包含解析二维码URI的函数，以及可选的移动钱包设置说明',
+        '包含一个用于解析二维码URI的函数的对象,以及可选的移动钱包设置说明',
     },
     {
       name: 'extension',
@@ -122,14 +121,14 @@ description: 创建一个自定义钱包
       type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        '对象中包含可选的浏览器扩展程序安装说明',
+        '包含可选的浏览器扩展设置说明的对象',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: '用于提供连接器实例的函数',
+      description: '提供连接器实例的函数',
     },
   ]}
 />
@@ -142,64 +141,64 @@ description: 创建一个自定义钱包
       name: 'android',
       required: false,
       type: 'string',
-      description: 'Google Play URL',
+      description: 'Google Play 网址',
     },
     {
       name: 'ios',
       required: false,
       type: 'string',
-      description: 'Apple App Store URL',
+      description: 'Apple App Store 网址',
     },
     {
       name: 'mobile',
       required: false,
       type: 'string',
       description:
-        '当`android`或`ios`不可用时移动用户的着陆页',
+        '当 `android` 或 `ios` 不可用时，移动用户的登录页面',
     },
     {
       name: 'qrCode',
       required: false,
       type: 'string',
       description:
-        '扫描移动下载二维码后的用户着陆页',
+        '移动端下载二维码扫描后的登陆页面',
     },
     {
       name: 'chrome',
       required: false,
       type: 'string',
-      description: 'Chrome Web Store URL',
+      description: 'Chrome Web Store 网址',
     },
     {
       name: 'edge',
       required: false,
       type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
+      description: 'Microsoft Edge Add-ons 网址',
     },
     {
       name: 'firefox',
       required: false,
       type: 'string',
-      description: 'Firefox 浏览器附加组件 URL',
+      description: 'Firefox Browser Add-ons 网址',
     },
     {
       name: 'opera',
       required: false,
       type: 'string',
-      description: 'Opera 附加组件 URL',
+      description: 'Opera add-ons 网址',
     },
     {
       name: 'safari',
       required: false,
       type: 'string',
-      description: 'Mac App Store URL',
+      description: 'Mac App Store 网址',
     },
     {
       name: 'browserExtension',
       required: false,
       type: 'string',
       description:
-        '桌面扩展用户的着陆页，当浏览器兼容的URL不可用时',
+        '当浏览器不兼容某些网址时，桌面扩展用户会看到的登陆页面',
     },
   ]}
 />
