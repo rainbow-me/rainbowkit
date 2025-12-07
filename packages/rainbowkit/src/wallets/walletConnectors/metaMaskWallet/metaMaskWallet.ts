@@ -10,8 +10,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import { isMobile } from '../../../utils/isMobile';
 import type { WindowProvider } from '../../../types/utils';
 
-export type MetaMaskWalletOptions = DefaultWalletOptions;
-
 type AcceptedMetaMaskParameters = Omit<
   MetaMaskParameters,
   | 'checkInstallationImmediately'
@@ -20,6 +18,9 @@ type AcceptedMetaMaskParameters = Omit<
   | 'headless'
   | 'preferDesktop'
 >;
+
+export type MetaMaskWalletOptions = DefaultWalletOptions &
+  AcceptedMetaMaskParameters;
 
 function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   // Logic borrowed from wagmi's legacy MetaMaskConnector
