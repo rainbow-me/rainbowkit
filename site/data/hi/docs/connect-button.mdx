@@ -26,32 +26,32 @@ export const YourApp = () => {
 <PropsTable
   data={[
     {
-      name: 'लेबल',
+      name: 'label',
       required: false,
       default: 'वॉलेट को कनेक्ट करें',
       type: 'string',
       description: 'कनेक्ट बटन पर प्रदर्शित पाठ लेबल',
     },
     {
-      name: 'खाता स्थिति',
+      name: 'accountStatus',
       required: false,
-      default: 'पूरा',
-      type: '"अवतार" | "पता" | "पूरा" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "क्या सक्रिय खाते का अवतार और/या पता दिखाया जाता है",
     },
     {
-      name: 'चेन स्थिति',
+      name: 'chainStatus',
       required: false,
-      default: '{ smallScreen: "चिह्न", largeScreen: "पूरा" }',
-      type: '"चिह्न" | "नाम" | "पूरा" | "कोई नहीं" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "क्या वर्तमान चेन का चिह्न और/या नाम प्रदर्शित किया जाता है, या पूरी तरह छुपा है",
     },
     {
-      name: 'बैलेंस दिखाएं',
+      name: 'showBalance',
       required: false,
       default: '{ smallScreen: false, largeScreen: true }',
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',

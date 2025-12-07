@@ -118,14 +118,14 @@ Props berikut dihantar ke fungsi render anda.
 <PropsTable
   data={[
     {
-      name: 'akaun',
+      name: 'account',
       required: false,
       type: 'object | undefined',
       description:
         'Objek yang mengandungi butiran tentang akaun semasa, diterangkan di bawah',
     },
     {
-      name: 'akaun.alamat',
+      name: 'account.address',
       required: false,
       type: 'string',
       description: (
@@ -136,13 +136,13 @@ Props berikut dihantar ke fungsi render anda.
       ),
     },
     {
-      name: 'akaun.bakiDecimal',
+      name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
       description: 'Baki akaun dalam angka perpuluhan',
     },
     {
-      name: 'akaun.bakiBerformat',
+      name: 'account.balanceFormatted',
       required: false,
       type: 'string | undefined	',
       description: (
@@ -153,7 +153,7 @@ Props berikut dihantar ke fungsi render anda.
       ),
     },
     {
-      name: 'akaun.simbolBaki',
+      name: 'account.balanceSymbol',
       required: false,
       type: 'string | undefined	',
       description: (
@@ -163,7 +163,18 @@ Props berikut dihantar ke fungsi render anda.
       ),
     },
     {
-      name: 'akaun.namaPaparan',
+      name: 'account.displayBalance',
+      required: false,
+      type: 'string',
+      description: (
+        <>
+          Baki yang dipendekkan ke 3 digit ketara, ditambah simbol, e.g.{' '}
+          <code>"1.23 ETH"</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.displayName',
       required: false,
       type: 'string',
       description: (
@@ -174,13 +185,13 @@ Props berikut dihantar ke fungsi render anda.
       ),
     },
     {
-      name: 'akaun.avatarEns',
+      name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
       description: 'URI avatar ENS',
     },
     {
-      name: 'akaun.namaEns',
+      name: 'account.ensName',
       required: false,
       type: 'string	| undefined',
       description: (
@@ -190,7 +201,7 @@ Props berikut dihantar ke fungsi render anda.
       ),
     },
     {
-      name: 'akaun.transaksiTertunda',
+      name: 'account.hasPendingTransactions',
       required: false,
       type: 'boolean',
       description:

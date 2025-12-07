@@ -26,35 +26,35 @@ export const YourApp = () => {
 <PropsTable
   data={[
     {
-      name: 'etiket',
+      name: 'label',
       required: false,
       default: 'Cüzdanı Bağla',
       type: 'string',
       description: 'Bağlan butonunda görünen metin etiketi',
     },
     {
-      name: 'hesapDurumu',
+      name: 'accountStatus',
       required: false,
-      default: 'ful',
-      type: '"avatar" | "adres" | "ful" | { küçükEkran: HesapDurumu, büyükEkran?: HesapDurumu }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Aktif hesabın avatarı ve/veya adresi gösterilsin mi?",
     },
     {
-      name: 'zincirDurumu',
+      name: 'chainStatus',
       required: false,
-      default: '{ küçükEkran: "icon", büyükEkran: "ful" }',
-      type: '"icon" | "isim" | "ful" | "hiçbiri" | { küçükEkran: ZincirDurumu, büyükEkran?: ZincirDurumu }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "Mevcut zincirin simgesinin ve/veya isminin görüntülenip görüntülenmeyeceği ya da tamamen gizli tutulup tutulmayacağı",
     },
     {
-      name: 'bakiyeGöster',
+      name: 'showBalance',
       required: false,
-      default: '{ küçükEkran: false, büyükEkran: true }',
-      type: 'boolean | { küçükEkran: boolean, büyükEkran?: boolean }',
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
         'Hesap isminin yanında bakiyenin görünür olması',

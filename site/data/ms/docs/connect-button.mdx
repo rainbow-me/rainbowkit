@@ -33,28 +33,28 @@ Komponen `ButangSambung` mendedahkan beberapa properti untuk menyesuaikan penamp
       description: 'Teks label yang dipaparkan pada butang Sambung',
     },
     {
-      name: 'statusAkaun',
+      name: 'accountStatus',
       required: false,
-      default: 'penuh',
-      type: '"avatar" | "alamat" | "penuh" | { skrinKecil: StatusAkaun, skrinBesar?: StatusAkaun }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "Sama ada avatar akaun aktif dan/atau alamat dipaparkan",
     },
     {
-      name: 'statusRantaian',
+      name: 'chainStatus',
       required: false,
-      default: '{ skrinKecil: "ikon", skrinBesar: "penuh" }',
-      type: '"ikon" | "nama" | "penuh" | "tiada" | { skrinKecil: StatusRantaian, skrinBesar?: StatusRantaian }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "Sama ada ikon dan/atau nama rantaian semasa dipaparkan, atau tersembunyi sepenuhnya",
     },
     {
-      name: 'paparBaki',
+      name: 'showBalance',
       required: false,
-      default: '{ skrinKecil: false, skrinBesar: true }',
-      type: 'boolean | { skrinKecil: boolean, skrinBesar?: boolean }',
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
         'Sama ada baki kelihatan sebelah nama akaun',

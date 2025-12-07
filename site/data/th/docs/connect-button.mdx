@@ -35,7 +35,7 @@ export const YourApp = () => {
     {
       name: 'accountStatus',
       required: false,
-      default: 'เต็ม',
+      default: 'full',
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
@@ -44,7 +44,7 @@ export const YourApp = () => {
     {
       name: 'chainStatus',
       required: false,
-      default: '{ smallScreen: "icon", largeScreen: "เต็ม" }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:

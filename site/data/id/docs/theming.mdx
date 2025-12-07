@@ -55,7 +55,7 @@ Fungsi tema bawaan juga menerima objek opsi, memungkinkan Anda memilih dari bebe
 <PropsTable
   data={[
     {
-      name: 'warnaAksen',
+      name: 'accentColor',
       required: false,
       default: '"#0E76FD"',
       type: 'string',
@@ -63,35 +63,35 @@ Fungsi tema bawaan juga menerima objek opsi, memungkinkan Anda memilih dari bebe
         'Warna latar/babel dari berbagai elemen interaktif.',
     },
     {
-      name: 'warnaAksenDepan',
+      name: 'accentColorForeground',
       required: false,
-      default: '"putih"',
+      default: '"white"',
       type: 'string',
       description:
         'Warna digunakan untuk elemen depan yang dirender di atas warna aksen.',
     },
     {
-      name: 'radiusBatas',
+      name: 'borderRadius',
       required: false,
-      default: 'besar',
-      type: '"tidak" | "kecil" | "sedang" | "besar"',
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
       description: 'Ukuran skala keseluruhan radius batas.',
     },
     {
       name: 'fontStack',
       required: false,
-      default: 'bulat',
-      type: '"bulat" | "sistem"',
+      default: 'rounded',
+      type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "Tumpukan font yang digunakan di seluruh UI. Perhatikan bahwa `bulat` mencoba menggunakan SF Pro Rounded, beralih ke font sistem ketika tidak tersedia.",
+        "Tumpukan font yang digunakan di seluruh UI. Perhatikan bahwa `rounded` mencoba menggunakan SF Pro Rounded, beralih ke font sistem ketika tidak tersedia.",
     },
     {
       name: 'overlayBlur',
       required: false,
-      default: 'tidak',
-      type: '"besar" | "kecil" | "tidak"',
+      default: 'none',
+      type: '"large" | "small" | "none"',
       typeSimple: 'enum',
       description: 'Keburaman backdrop modal.',
     },

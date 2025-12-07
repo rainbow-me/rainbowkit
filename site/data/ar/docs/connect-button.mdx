@@ -35,8 +35,8 @@ export const YourApp = () => {
     {
       name: 'accountStatus',
       required: false,
-      default: 'كامل',
-      type: '"صورة رمزية" | "العنوان" | "كامل" | { شاشة صغيرة: AccountStatus, شاشة كبيرة؟: AccountStatus }',
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
         "ما إذا كان يتم عرض الصورة الرمزية والعنوان للحساب النشط",
@@ -44,8 +44,8 @@ export const YourApp = () => {
     {
       name: 'chainStatus',
       required: false,
-      default: '{ شاشة صغيرة: "أيقونة", شاشة كبيرة: "كامل" }',
-      type: '"أيقونة" | "اسم" | "كامل" | "لا أحد" | { شاشة صغيرة: ChainStatus, شاشة كبيرة؟: ChainStatus }',
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
         "ما إذا كانت أيقونة واسم السلسلة الحالية مرئيان، أم مخفيان تماماً",
@@ -53,8 +53,8 @@ export const YourApp = () => {
     {
       name: 'showBalance',
       required: false,
-      default: '{ شاشة صغيرة: false, شاشة كبيرة: true }',
-      type: 'boolean | { شاشة صغيرة: boolean, شاشة كبيرة؟: boolean }',
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
       description:
         'ما إذا كان الرصيد مرئيًا بجانب اسم الحساب',
