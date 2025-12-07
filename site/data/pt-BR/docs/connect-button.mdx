@@ -23,40 +23,40 @@ export const YourApp = () => {
 
 O componente `BotãoConectar` expõe várias propriedades para customizar sua aparência, incluindo a alternância da visibilidade de diferentes elementos.
 
-<PropriedadesTabela
-  dados={[
+<PropsTable
+  data={[
     {
-      nome: 'label',
-      requerido: false,
-      padrão: 'Conectar Carteira',
-      tipo: 'string',
-      descrição: 'O texto da etiqueta exibida no BotãoConectar',
+      name: 'label',
+      required: false,
+      default: 'Conectar Carteira',
+      type: 'string',
+      description: 'O texto da etiqueta exibida no BotãoConectar',
     },
     {
-      nome: 'statusConta',
-      requerido: false,
-      padrão: 'completo',
-      tipo: '"avatar" | "endereço" | "completo" | { pequenaTela: StatusConta, grandeTela?: StatusConta }',
-      tipoSimples: 'enum',
-      descrição:
+      name: 'accountStatus',
+      required: false,
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      typeSimple: 'enum',
+      description:
         "Se o avatar e/ou o endereço da conta ativa são exibidos",
     },
     {
-      nome: 'statusCadeia',
-      requerido: false,
-      padrão: '{ pequenaTela: "ícone", grandeTela: "completo" }',
-      tipo: '"ícone" | "nome" | "completo" | "nenhum" | { pequenaTela: StatusCadeia, grandeTela?: StatusCadeia }',
-      tipoSimples: 'enum',
-      descrição:
+      name: 'chainStatus',
+      required: false,
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      typeSimple: 'enum',
+      description:
         "Se o ícone e/ou nome da cadeia atual são exibidos, ou totalmente escondidos",
     },
     {
-      nome: 'mostrarSaldo',
-      requerido: false,
-      padrão: '{ pequenaTela: false, grandeTela: true }',
-      tipo: 'boolean | { pequenaTela: boolean, grandeTela?: boolean }',
-      tipoSimples: 'enum',
-      descrição:
+      name: 'showBalance',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description:
         'Se o saldo é visível ao lado do nome da conta',
     },
   ]}
