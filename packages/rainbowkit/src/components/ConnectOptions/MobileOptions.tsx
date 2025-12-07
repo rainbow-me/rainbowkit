@@ -239,20 +239,21 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             display="flex"
             paddingBottom="20"
             paddingTop="6"
+            paddingX="20"
+            style={{
+              // Dynamic gap to show ~13px of 5th wallet as scroll hint
+              gap: 'calc((100% - 40px - 240px + 47px) / 4)',
+            }}
           >
-            <Box display="flex" style={{ margin: '0 auto' }}>
-              {wallets
-                .filter((wallet) => wallet.ready)
-                .map((wallet) => {
-                  return (
-                    <Box key={wallet.id} paddingX="20">
-                      <Box width="60">
-                        <WalletButton onClose={onClose} wallet={wallet} />
-                      </Box>
-                    </Box>
-                  );
-                })}
-            </Box>
+            {wallets
+              .filter((wallet) => wallet.ready)
+              .map((wallet) => {
+                return (
+                  <Box key={wallet.id} width="60">
+                    <WalletButton onClose={onClose} wallet={wallet} />
+                  </Box>
+                );
+              })}
           </Box>
 
           <Box
