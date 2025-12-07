@@ -1,5 +1,21 @@
 # example
 
+## 0.0.117
+
+### Patch Changes
+
+- eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
+- Updated dependencies [6c745a5]
+- Updated dependencies [e74f604]
+- Updated dependencies [eb72c37]
+- Updated dependencies [e58367e]
+- Updated dependencies [b7b7b43]
+- Updated dependencies [507f583]
+- Updated dependencies [16963de]
+  - @rainbow-me/rainbowkit@2.2.10
+  - @rainbow-me/rainbow-button@0.2.27
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+
 ## 0.0.116
 
 ### Patch Changes

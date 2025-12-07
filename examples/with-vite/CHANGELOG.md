@@ -1,5 +1,32 @@
 # with-vite
 
+## 0.0.95
+
+### Patch Changes
+
+- 060e074: Security update: upgraded React, Vite, and related dependencies to patch critical vulnerabilities.
+
+  **Critical CVEs Fixed:**
+
+  - CVE-2025-55182: React Server Components RCE - https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components
+
+  **Updated:**
+
+  - React/React-DOM: 19.1.0 → 19.1.2
+  - Vite: 6.3.5 → 7.2.6
+  - @types/react-dom: 19.1.6 → 19.2.3
+  - @vitejs/plugin-react: 4.5.2 → 5.1.1
+
+- eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
+- Updated dependencies [6c745a5]
+- Updated dependencies [e74f604]
+- Updated dependencies [eb72c37]
+- Updated dependencies [e58367e]
+- Updated dependencies [b7b7b43]
+- Updated dependencies [507f583]
+- Updated dependencies [16963de]
+  - @rainbow-me/rainbowkit@2.2.10
+
 ## 0.0.94
 
 ### Patch Changes
