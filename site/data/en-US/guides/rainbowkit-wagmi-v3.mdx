@@ -1,0 +1,62 @@
+---
+title: Upgrading your dApp for RainbowKit v3
+description: RainbowKit and Wagmi have been promoted to v3
+image: guide-rainbowkit-v3.png
+---
+
+# Migrating to RainbowKit v3 and Wagmi v3
+
+The [wagmi](https://wagmi.sh) peer dependency has reached `3.x.x` with breaking changes.
+
+Follow the steps below to migrate.
+
+**1. Upgrade RainbowKit, `wagmi`, `viem`, and `@tanstack/react-query` to their latest versions**
+
+```bash
+npm i @rainbow-me/rainbowkit@latest wagmi@latest viem@2 @tanstack/react-query@latest
+```
+
+**2. Check for breaking changes in `wagmi`**
+
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the full migration guide for v3:
+
+- [Wagmi v3 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v2-to-v3)
+
+#### RainbowKit Changes
+
+**1. Bundled Connector Dependencies**
+
+RainbowKit now bundles all wallet connector dependencies directly. This means:
+
+- Better tree-shaking support for smaller bundle sizes
+- No need to install connector packages separately
+- Consistent versions across all wallet integrations
+
+The following packages are now bundled:
+- `@walletconnect/ethereum-provider`
+- `@coinbase/wallet-sdk`
+- `@metamask/sdk`
+- `@safe-global/safe-apps-sdk`
+- And other wallet-specific SDKs
+
+**2. No Changes to RainbowKit API**
+
+The RainbowKit API itself remains unchanged. Your existing configuration with `getDefaultConfig` or custom wallet lists will continue to work:
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { mainnet, polygon, optimism, arbitrum, base } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, polygon, optimism, arbitrum, base],
+  ssr: true,
+});
+```
+
+**3. TypeScript 5.7 Support**
+
+RainbowKit v3 is built with TypeScript 5.7, providing improved type inference and compatibility with the latest TypeScript features.
+
+> Please report any issues or feedback for RainbowKit v3 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
