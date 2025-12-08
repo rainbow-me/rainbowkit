@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useAccount, useAccountEffect } from 'wagmi';
+import { useConnection, useConnectionEffect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { isMobile } from '../../utils/isMobile';
@@ -71,9 +71,9 @@ export function WalletButtonRenderer({
     if (!connectModalOpen && connector) setConnector(null);
   }, [connectModalOpen, connector, setConnector]);
 
-  const { isConnected, isConnecting } = useAccount();
+  const { isConnected, isConnecting } = useConnection();
 
-  useAccountEffect({
+  useConnectionEffect({
     onConnect: () => {
       // If you get error on desktop and then switch to mobile view
       // and connect your wallet the error will remain there. We will

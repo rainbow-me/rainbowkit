@@ -93,7 +93,9 @@ export const metaMaskWallet: MetaMaskWallet = ({
   // We need this because MetaMask SDK hangs on impersonated wallets
   // Previously MetaMask provider would trigger for impersonated wallets
   const isMetaMaskInjected =
-    typeof window !== 'undefined' ? isMetaMask(window.ethereum) : false;
+    typeof window !== 'undefined'
+      ? isMetaMask((window as WindowProvider).ethereum)
+      : false;
 
   // TODO: This is a temporary solution to prefer WalletConnect for desktop qr code.
   const shouldUseWalletConnect = !isMetaMaskInjected && !isMobile();

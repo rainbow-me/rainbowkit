@@ -1,5 +1,5 @@
 import React, { type ReactNode, createContext, useContext } from 'react';
-import { useAccountEffect } from 'wagmi';
+import { useConnectionEffect } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import type { ThemeVars } from '../../css/sprinkles.css';
@@ -92,7 +92,7 @@ export function RainbowKitProvider({
   usePreloadImages();
   useFingerprint();
 
-  useAccountEffect({ onDisconnect: clearWalletConnectDeepLink });
+  useConnectionEffect({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
     throw new Error(
