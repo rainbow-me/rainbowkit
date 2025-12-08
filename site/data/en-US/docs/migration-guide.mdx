@@ -6,6 +6,34 @@ title: Migration Guide
 
 ## Migrating RainbowKit
 
+### 3.x.x Breaking changes
+
+The [wagmi](https://wagmi.sh) peer dependency has reached `3.x.x` with breaking changes.
+
+Follow the steps below to migrate.
+
+**1. Upgrade RainbowKit, `wagmi`, `viem`, and `@tanstack/react-query` to their latest versions**
+
+```bash
+npm i @rainbow-me/rainbowkit@3 wagmi@3 viem@2 @tanstack/react-query@latest
+```
+
+**2. Check for breaking changes in `wagmi`**
+
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guide for v3:
+
+- [Wagmi v3 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v2-to-v3)
+
+#### RainbowKit Changes
+
+**1. Bundled Connector Dependencies**
+
+RainbowKit now bundles all wallet connector dependencies directly. This provides better tree-shaking support for smaller bundle sizes. You no longer need to install connector packages separately.
+
+**2. No Changes to RainbowKit API**
+
+The RainbowKit API itself remains unchanged. Your existing configuration with `getDefaultConfig` or custom wallet lists will continue to work without modification.
+
 ### 2.x.x Breaking changes
 
 The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
