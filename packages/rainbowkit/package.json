@@ -47,8 +47,8 @@
     "@tanstack/react-query": ">=5.0.0",
     "react": ">=18",
     "react-dom": ">=18",
-    "viem": "2.x",
-    "wagmi": "^2.9.0"
+    "viem": ">=2.48.8 <3",
+    "wagmi": ">=3.6.9 <4"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
@@ -67,11 +67,20 @@
     "vitest": "4.1.5"
   },
   "dependencies": {
+    "@base-org/account": "^2.5.1",
+    "@coinbase/wallet-sdk": "^4.3.6",
+    "@gemini-wallet/core": "~0.3.1",
+    "@metamask/connect-evm": "~1.0.0",
+    "@safe-global/safe-apps-provider": "~0.18.6",
+    "@safe-global/safe-apps-sdk": "^9.1.0",
     "@vanilla-extract/css": "1.20.1",
     "@vanilla-extract/dynamic": "2.1.5",
     "@vanilla-extract/sprinkles": "1.6.5",
+    "@walletconnect/ethereum-provider": "^2.21.1",
+    "accounts": "~0.8.1",
     "clsx": "2.1.1",
     "cuer": "0.0.3",
+    "porto": "~0.2.35",
     "react-remove-scroll": "2.7.2",
     "ua-parser-js": "^2.0.9"
   },

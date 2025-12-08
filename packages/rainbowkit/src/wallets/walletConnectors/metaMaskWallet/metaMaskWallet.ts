@@ -93,7 +93,9 @@ export const metaMaskWallet: MetaMaskWallet = ({
   // We need this because MetaMask SDK hangs on impersonated wallets
   // Previously MetaMask provider would trigger for impersonated wallets
   const isMetaMaskInjected =
-    typeof window !== 'undefined' ? isMetaMask(window.ethereum) : false;
+    typeof window !== 'undefined'
+      ? isMetaMask((window as WindowProvider).ethereum)
+      : false;
 
   // TODO: This is a temporary solution to prefer WalletConnect for desktop qr code.
   const shouldUseWalletConnect = !isMetaMaskInjected && !isMobile();
@@ -187,14 +189,11 @@ export const metaMaskWallet: MetaMaskWallet = ({
           return createConnector((config) => {
             const metamaskConnector = metaMask({
               dappMetadata: {
-                connector: 'rainbowkit',
                 name: walletConnectParameters?.metadata?.name,
                 iconUrl: walletConnectParameters?.metadata?.icons[0],
                 url: walletConnectParameters?.metadata?.url,
               },
               headless: true,
-              checkInstallationImmediately: false,
-              enableAnalytics: false, // Disable analytics by default
               ...optionalConfig,
             })(config);
 

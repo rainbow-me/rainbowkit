@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import type { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -32,7 +32,7 @@ export function TxItem({ tx }: TxProps) {
   const mobile = isMobile();
   const Icon = getTxStatusIcon(tx.status);
   const color = tx.status === 'failed' ? 'error' : 'accentColor';
-  const { chain: activeChain } = useAccount();
+  const { chain: activeChain } = useConnection();
 
   const confirmationStatus =
     tx.status === 'confirmed'

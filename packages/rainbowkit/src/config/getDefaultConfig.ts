@@ -1,5 +1,6 @@
 import type { Transport } from 'viem';
-import { type CreateConfigParameters, createConfig, http } from 'wagmi';
+import { type Config, http, type CreateConfigParameters } from 'wagmi';
+import { createConfig } from 'wagmi';
 import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
@@ -67,7 +68,7 @@ export const getDefaultConfig = <
   projectId,
   walletConnectParameters,
   ...wagmiParameters
-}: GetDefaultConfigParameters<chains, transports>) => {
+}: GetDefaultConfigParameters<chains, transports>): Config => {
   const { transports, chains, ...restWagmiParameters } = wagmiParameters;
 
   const metadata = computeWalletConnectMetaData({

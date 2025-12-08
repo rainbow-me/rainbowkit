@@ -18,9 +18,9 @@
     "react": "^19.2.5",
     "typescript": "5.9.3",
     "util": "0.12.5",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3",
-    "@tanstack/react-query": "^5.55.3"
+    "viem": "2.48.8",
+    "wagmi": "3.6.9",
+    "@tanstack/react-query": "5.100.9"
   },
   "scripts": {
     "dev": "GENERATE_SOURCEMAP=false react-scripts start",

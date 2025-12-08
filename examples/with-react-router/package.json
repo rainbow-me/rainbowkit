@@ -13,7 +13,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@react-router/node": "^7.14.2",
     "@react-router/serve": "^7.14.2",
-    "@tanstack/react-query": "^5.55.3",
+    "@tanstack/react-query": "5.100.9",
     "buffer": "6.0.3",
     "events": "3.3.0",
     "isbot": "^5.1.39",
@@ -21,8 +21,8 @@
     "react-dom": "^19.2.5",
     "react-router": "^7.14.2",
     "react-router-dom": "^7.14.2",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3"
+    "viem": "2.48.8",
+    "wagmi": "3.6.9"
   },
   "devDependencies": {
     "@react-router/dev": "^7.14.2",

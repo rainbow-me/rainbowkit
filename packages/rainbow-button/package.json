@@ -42,8 +42,8 @@
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18",
-    "viem": "2.x",
-    "wagmi": "^2.9.0"
+    "viem": ">=2.48.8 <3",
+    "wagmi": ">=3.6.9 <4"
   },
   "repository": {
     "type": "git",
