@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useAccount, useDisconnect, useSwitchChain } from 'wagmi';
+import { useConnection, useDisconnect, useSwitchChain } from 'wagmi';
 import { useConfig } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
@@ -23,7 +23,7 @@ export interface ChainModalProps {
 }
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
-  const { chainId } = useAccount();
+  const { chainId } = useConnection();
   const { chains } = useConfig();
   const [pendingChainId, setPendingChainId] = useState<number | null>(null);
   const { switchChain } = useSwitchChain({

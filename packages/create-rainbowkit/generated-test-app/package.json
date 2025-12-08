@@ -9,17 +9,17 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@tanstack/react-query": "^5.55.3",
+    "@tanstack/react-query": "^5.90.12",
     "next": "^15.3.6",
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
     "viem": "2.38.0",
-    "wagmi": "^2.19.3"
+    "wagmi": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.19.1",
     "@types/react": "^19.1.8",
     "eslint-config-next": "^15.1.7",
-    "typescript": "5.5.4"
+    "typescript": "5.7.3"
   }
 }

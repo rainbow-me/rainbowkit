@@ -1,6 +1,6 @@
 import React from 'react';
 import type { PublicClient, TransactionReceipt } from 'viem';
-import { useAccount, useBalance, usePublicClient } from 'wagmi';
+import { useConnection, useBalance, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import {
   type TransactionStore,
@@ -23,7 +23,7 @@ export function TransactionStoreProvider({
   children: React.ReactNode;
 }) {
   const provider = usePublicClient() as PublicClient;
-  const { address } = useAccount();
+  const { address } = useConnection();
   const chainId = useChainId();
   const { refetch } = useBalance({
     address,
