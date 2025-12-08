@@ -46,7 +46,7 @@
     "@changesets/cli": "2.29.4",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
-    "@tanstack/react-query": "^5.55.3",
+    "@tanstack/react-query": "^5.90.12",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -69,11 +69,11 @@
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
     "recursive-readdir-files": "^2.3.1",
-    "typescript": "5.5.4",
+    "typescript": "5.7.3",
     "viem": "2.38.0",
     "vite": "^7.2.6",
     "vitest": "2.1.9",
-    "wagmi": "^2.19.3"
+    "wagmi": "^3.1.0"
   },
   "resolutions": {
     "@types/react": "^19.1.8",

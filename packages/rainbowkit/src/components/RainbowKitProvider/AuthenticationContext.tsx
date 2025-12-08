@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 import type { Address } from 'viem';
-import { type Config, useAccount, useAccountEffect } from 'wagmi';
+import { type Config, useConnection, useConnectionEffect } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -55,12 +55,12 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
-  const { connector } = useAccount();
+  const { connector } = useConnection();
   // Used to track whether an active connector is changed to log user out.
   // Wagmi supports multiple connections.
   const [currentConnectorUid, setCurrentConnectorUid] = useState<string>();
 
-  useAccountEffect({
+  useConnectionEffect({
     onDisconnect: () => {
       adapter.signOut();
       setCurrentConnectorUid(undefined);

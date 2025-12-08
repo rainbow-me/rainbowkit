@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import type { GetEnsNameReturnType } from 'viem';
 import type { GetEnsAvatarReturnType } from 'viem/actions';
-import type { useAccount } from 'wagmi';
+import type { useConnection } from 'wagmi';
 import type { useProfile } from '../../hooks/useProfile';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
@@ -20,7 +20,7 @@ import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  address: ReturnType<typeof useAccount>['address'];
+  address: ReturnType<typeof useConnection>['address'];
   ensAvatar: GetEnsAvatarReturnType | undefined;
   ensName: GetEnsNameReturnType | undefined;
   balance: ReturnType<typeof useProfile>['balance'];
