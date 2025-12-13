@@ -11,7 +11,7 @@ export type TokenPocketWalletOptions = DefaultWalletOptions;
 export const tokenPocketWallet = ({
   projectId,
   walletConnectParameters,
-}: TokenPocketWalletOptions): Wallet => {
+}: TokenPocketWalletOptions) => {
   const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
   const shouldUseWalletConnect = !isTokenPocketInjected;
 
@@ -20,7 +20,7 @@ export const tokenPocketWallet = ({
   };
 
   return {
-    id: 'tokenPocket',
+    id: 'tokenPocket' as const,
     name: 'TokenPocket',
     rdns: 'pro.tokenpocket',
     iconUrl: async () => (await import('./tokenPocketWallet.svg')).default,
@@ -99,5 +99,5 @@ export const tokenPocketWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isTokenPocket' }),
-  };
+  } satisfies Wallet;
 };

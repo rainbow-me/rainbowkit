@@ -23,9 +23,13 @@ import {
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
+import type * as walletConnectors from '../../wallets/walletConnectors';
+
+type WalletFactories = typeof walletConnectors;
+export type WalletId = ReturnType<WalletFactories[keyof WalletFactories]>['id'];
 
 export interface WalletButtonRendererProps {
-  wallet?: string;
+  wallet?: WalletId;
   children: (renderProps: {
     error: boolean;
     loading: boolean;

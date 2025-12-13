@@ -4,12 +4,11 @@ import type {
   DefaultWalletOptions,
   Wallet,
   WalletDetailsParams,
+  WalletFactory,
 } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import { isMobile } from '../../../utils/isMobile';
 import type { WindowProvider } from '../../../types/utils';
-
-export type MetaMaskWalletOptions = DefaultWalletOptions;
 
 type AcceptedMetaMaskParameters = Omit<
   MetaMaskParameters,
@@ -20,9 +19,8 @@ type AcceptedMetaMaskParameters = Omit<
   | 'preferDesktop'
 >;
 
-interface MetaMaskWallet extends AcceptedMetaMaskParameters {
-  (params: MetaMaskWalletOptions): Wallet;
-}
+export type MetaMaskWalletOptions = DefaultWalletOptions &
+  AcceptedMetaMaskParameters;
 
 function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   // Logic borrowed from wagmi's legacy MetaMaskConnector
@@ -80,14 +78,10 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   return true;
 }
 
-export const metaMaskWallet: MetaMaskWallet = ({
-  projectId,
-  walletConnectParameters,
-}: MetaMaskWalletOptions): Wallet => {
-  // Extract all AcceptedMetaMaskParameters from metaMaskWallet
-  // This approach avoids type errors for properties not yet in upstream connector
-  const { ...optionalConfig } = metaMaskWallet;
-
+export const metaMaskWallet: WalletFactory<
+  MetaMaskWalletOptions,
+  'metaMask'
+> = ({ projectId, walletConnectParameters, ...optionalConfig }) => {
   // Custom logic to explicitly detect MetaMask
   // Whereas hasInjectedProvider only checks for impersonated `isMetaMask`
   // We need this because MetaMask SDK hangs on impersonated wallets
@@ -100,7 +94,7 @@ export const metaMaskWallet: MetaMaskWallet = ({
   const shouldUseMetaMaskConnector = isMetaMaskInjected || isMobile();
 
   return {
-    id: 'metaMask',
+    id: 'metaMask' as const,
     name: 'MetaMask',
     rdns: 'io.metamask',
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
@@ -217,5 +211,5 @@ export const metaMaskWallet: MetaMaskWallet = ({
             };
           });
         },
-  };
+  } satisfies Wallet;
 };

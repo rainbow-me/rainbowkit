@@ -9,11 +9,11 @@ export type ArgentWalletOptions = ReadyWalletOptions;
 /**
  * @deprecated Use {@link readyWallet} instead.
  */
-export const argentWallet = (options: ArgentWalletOptions): Wallet => {
+export const argentWallet = (options: ArgentWalletOptions) => {
   const wallet = readyWallet(options);
 
   return {
     ...wallet,
-    id: 'argent',
-  };
+    id: 'argent' as const,
+  } satisfies Wallet;
 };

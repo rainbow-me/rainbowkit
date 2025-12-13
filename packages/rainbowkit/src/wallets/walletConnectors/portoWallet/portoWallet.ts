@@ -1,10 +1,12 @@
 import { porto, type PortoParameters } from 'wagmi/connectors';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
+import type { Wallet, WalletDetailsParams, WalletFactory } from '../../Wallet';
 import { createConnector } from 'wagmi';
 
-export const portoWallet = (parameters: PortoParameters): Wallet => {
+export const portoWallet: WalletFactory<PortoParameters, 'porto'> = (
+  parameters,
+) => {
   return {
-    id: 'porto',
+    id: 'porto' as const,
     name: 'Porto',
     shortName: 'Porto',
     rdns: 'xyz.ithaca.porto',
@@ -17,5 +19,5 @@ export const portoWallet = (parameters: PortoParameters): Wallet => {
         ...porto(parameters)(config),
         ...walletDetails,
       })),
-  };
+  } satisfies Wallet;
 };

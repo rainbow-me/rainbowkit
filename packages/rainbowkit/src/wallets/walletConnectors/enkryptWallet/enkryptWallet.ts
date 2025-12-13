@@ -4,9 +4,9 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export const enkryptWallet = (): Wallet => {
+export const enkryptWallet = () => {
   return {
-    id: 'enkrypt',
+    id: 'enkrypt' as const,
     name: 'Enkrypt Wallet',
     rdns: 'com.enkrypt',
     installed: hasInjectedProvider({ namespace: 'enkrypt.providers.ethereum' }),
@@ -50,5 +50,5 @@ export const enkryptWallet = (): Wallet => {
     createConnector: getInjectedConnector({
       namespace: 'enkrypt.providers.ethereum',
     }),
-  };
+  } satisfies Wallet;
 };
