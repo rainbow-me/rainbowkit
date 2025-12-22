@@ -7,8 +7,6 @@ import {
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
-import type { GetServerSideProps } from 'next';
-import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import type React from 'react';
 import { type ComponentProps, useEffect, useState } from 'react';
@@ -20,15 +18,6 @@ import {
   useSignTypedData,
 } from 'wagmi';
 import type { AppContextProps } from '../lib/AppContextProps';
-import { getAuthOptions } from './api/auth/[...nextauth]';
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  return {
-    props: {
-      session: await getServerSession(req, res, getAuthOptions(req)),
-    },
-  };
-};
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
