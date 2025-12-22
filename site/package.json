@@ -47,7 +47,7 @@
   },
   "scripts": {
     "dev": "next dev --port 3001",
-    "build": "INIT_CWD=$PWD contentlayer2 build && next build",
+    "build": "INIT_CWD=$PWD contentlayer2 build && next build --webpack",
     "postbuild": "next-sitemap",
     "typecheck": "INIT_CWD=$PWD contentlayer2 build && pnpm tsc --noEmit"
   },
