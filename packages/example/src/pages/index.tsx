@@ -232,43 +232,44 @@ const Example = ({ authEnabled }: AppContextProps) => {
       </div>
 
       <div>
-        <h3 style={{ fontFamily: 'sans-serif' }}>Custom wallet buttons</h3>
-
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {['rainbow', 'metamask', 'baseAccount'].map((wallet) => {
-            return (
-              <WalletButton.Custom key={wallet} wallet={wallet}>
-                {({ connect, ready }) => {
-                  return (
-                    <button
-                      type="button"
-                      disabled={!ready}
-                      onClick={connect}
-                      style={{ marginLeft: '16px' }}
-                    >
-                      Connect {wallet}
-                    </button>
-                  );
-                }}
-              </WalletButton.Custom>
-            );
-          })}
-        </div>
-      </div>
-
-      <div>
         <h3 style={{ fontFamily: 'sans-serif' }}>Wallet buttons</h3>
 
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
             flexWrap: 'wrap',
             gap: '20px',
           }}
         >
           {['rainbow', 'metamask', 'baseAccount'].map((connector) => {
             return <WalletButton key={connector} wallet={connector} />;
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Custom wallet buttons</h3>
+
+        <div style={{ display: 'flex', gap: 12 }}>
+          {['rainbow', 'metamask', 'baseAccount'].map((wallet) => {
+            return (
+              <WalletButton.Custom key={wallet} wallet={wallet}>
+                {({ connect, ready }) => {
+                  return (
+                    <button type="button" disabled={!ready} onClick={connect}>
+                      Connect{' '}
+                      {
+                        {
+                          rainbow: 'Rainbow',
+                          metamask: 'MetaMask',
+                          baseAccount: 'Base Account',
+                        }[wallet]
+                      }
+                    </button>
+                  );
+                }}
+              </WalletButton.Custom>
+            );
           })}
         </div>
       </div>
