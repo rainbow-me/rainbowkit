@@ -394,11 +394,13 @@ const Example = ({ authEnabled }: AppContextProps) => {
               <tbody>
                 <tr>
                   <td>
-                    <label htmlFor="accountStatus">accountStatus</label>
+                    <label htmlFor="accountStatus-smallScreen">
+                      accountStatus
+                    </label>
                   </td>
                   <td>
                     <select
-                      id="accountStatus"
+                      id="accountStatus-smallScreen"
                       onChange={(event) =>
                         setAccountStatusSmallScreen(
                           event.currentTarget.value as AccountStatus,
@@ -413,7 +415,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   </td>
                   <td>
                     <select
-                      id="accountStatus"
+                      id="accountStatus-largeScreen"
                       onChange={(event) =>
                         setAccountStatusLargeScreen(
                           event.currentTarget.value as AccountStatus,
@@ -429,12 +431,12 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 </tr>
                 <tr>
                   <td>
-                    <label htmlFor="showBalance">showBalance</label>
+                    <label htmlFor="showBalance-smallScreen">showBalance</label>
                   </td>
                   <td>
                     <input
                       checked={showBalanceSmallScreen}
-                      id="showBalance"
+                      id="showBalance-smallScreen"
                       onChange={(event) => {
                         setShowBalanceSmallScreen(event.currentTarget.checked);
                       }}
@@ -444,7 +446,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <input
                       checked={showBalanceLargeScreen}
-                      id="showBalance"
+                      id="showBalance-largeScreen"
                       onChange={(event) => {
                         setShowBalanceLargeScreen(event.currentTarget.checked);
                       }}
@@ -454,11 +456,11 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 </tr>
                 <tr>
                   <td>
-                    <label htmlFor="chainStatus">chainStatus</label>
+                    <label htmlFor="chainStatus-smallScreen">chainStatus</label>
                   </td>
                   <td>
                     <select
-                      id="chainStatus"
+                      id="chainStatus-smallScreen"
                       onChange={(event) =>
                         setChainStatusSmallScreen(
                           event.currentTarget.value as ChainStatus,
@@ -474,7 +476,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   </td>
                   <td>
                     <select
-                      id="chainStatus"
+                      id="chainStatus-largeScreen"
                       onChange={(event) =>
                         setChainStatusLargeScreen(
                           event.currentTarget.value as ChainStatus,
