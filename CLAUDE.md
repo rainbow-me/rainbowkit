@@ -109,17 +109,16 @@ pnpm changeset  # Creates markdown file in .changeset/
 ### Git Workflow Tools
 Use the following tools for git operations:
 - **Graphite (`gt`)** - Preferred tool for all git interactions:
-  - **Creating commits**: `gt create -m "commit message"`
+  - **Creating commits**: `gt create @username/precise-branch-name -m "commit message"`
+    - **Stylize gt branch names like the following**: `@username/fix-feature` or `@username/upgrade-package-v10`
   - **Modifying existing commits**: `gt modify`
     - **Prefer this over adding new commits unless explicitly asked**
     - **Need to stage changes with git add or use --all to stage all changes**
-    - **Always resubmit after running gt modify** using `gt submit --stack`
   - **Creating branches**: `gt branch create <branch-name>`
   - **Tracking branches**: `gt track` - Always track branches if they aren't already tracked
   - **Moving branches in stack**: `gt move --onto <target-branch>` - Use when repositioning commits/branches
   - **Submitting/updating pull requests**: `gt submit --stack`
   - **Checking out PRs**: `gt checkout <pr-number>`
-  - **Resubmitting after changes**: Always run `gt submit --stack` after making changes or commits
   - **Always ask before committing changes or manipulating/resubmitting branches or opening PRs**
   - **Always use gt modify by default when asked to make a commit**
 - **GitHub CLI (`gh`)** - For viewing CI/CD status:
