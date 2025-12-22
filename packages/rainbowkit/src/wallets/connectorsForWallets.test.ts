@@ -20,7 +20,7 @@ describe('connectorsForWallets', () => {
   describe('injected fallback', () => {
     it('should return wallet connect and injected wallet connectors', () => {
       const customWallet: CreateWalletFn = (params) => ({
-        createConnector: () => walletConnect({ projectId: params?.projectId! }),
+        createConnector: () => walletConnect({ projectId: params.projectId }),
         iconBackground: '#fff',
         iconUrl: '/test.png',
         id: 'test-walletconnect-wallet',
@@ -50,7 +50,7 @@ describe('connectorsForWallets', () => {
 
     it("should not return connector if 'hidden' returns true", () => {
       const customWallet: CreateWalletFn = (params) => ({
-        createConnector: () => walletConnect({ projectId: params?.projectId! }),
+        createConnector: () => walletConnect({ projectId: params.projectId }),
         hidden: () => true,
         iconBackground: '#fff',
         iconUrl: '/test.png',
