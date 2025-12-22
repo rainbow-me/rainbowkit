@@ -210,7 +210,7 @@ export function useWalletConnectors(
         ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)
         : undefined,
       getMobileUri: wallet.mobile?.getUri
-        ? () => getWalletConnectUri(wallet, wallet.mobile?.getUri!)
+        ? () => getWalletConnectUri(wallet, wallet.mobile!.getUri!)
         : undefined,
       recent,
       showWalletConnectModal: wallet.walletConnectModalConnector
