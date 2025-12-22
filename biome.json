@@ -11,7 +11,8 @@
       "build/",
       ".react-router",
       "examples/with-next-mint-nft/contract/",
-      "packages/rainbowkit/assets/wallets/registry.json"
+      "packages/rainbowkit/assets/wallets/registry.json",
+      "**/next-env.d.ts"
     ]
   },
   "formatter": {
