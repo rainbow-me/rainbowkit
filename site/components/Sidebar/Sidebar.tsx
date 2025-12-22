@@ -2,6 +2,7 @@ import { Box } from 'components/Box/Box';
 import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';
 import { Text } from 'components/Text/Text';
+import type { RouteProps } from 'lib/docsRoutes';
 import { useTranslations } from 'next-intl';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,7 +10,7 @@ import type React from 'react';
 import { link } from './Sidebar.css';
 import { allDocs } from '.contentlayer/generated';
 
-export function Sidebar({ routes }: { routes: any }) {
+export function Sidebar({ routes }: { routes: RouteProps[] }) {
   const { locale } = useRouter();
   const t = useTranslations('docs.sidebar.section');
   return (
@@ -72,32 +73,30 @@ export function Sidebar({ routes }: { routes: any }) {
         )}
       </SearchButton>
 
-      {routes.map(
-        (route: { section: React.Key | null | undefined; pages: any[] }) => (
-          <Box key={route.section} marginBottom="7">
-            <Text
-              as="h3"
-              variant="subhead"
-              color="labelTertiary"
-              marginTop="2"
-              marginBottom="4"
-              marginLeft="5"
-              weight="semibold"
-            >
-              {t(route.section)}
-            </Text>
-            {route.pages.map((page) => (
-              <Link key={page.slug} slug={page.slug}>
-                {
-                  allDocs.find(
-                    (doc) => doc.slug === page.slug && doc.locale === locale,
-                  )?.title
-                }
-              </Link>
-            ))}
-          </Box>
-        ),
-      )}
+      {routes.map((route) => (
+        <Box key={route.section} marginBottom="7">
+          <Text
+            as="h3"
+            variant="subhead"
+            color="labelTertiary"
+            marginTop="2"
+            marginBottom="4"
+            marginLeft="5"
+            weight="semibold"
+          >
+            {t(route.section)}
+          </Text>
+          {route.pages.map((page) => (
+            <Link key={page.slug} slug={page.slug}>
+              {
+                allDocs.find(
+                  (doc) => doc.slug === page.slug && doc.locale === locale,
+                )?.title
+              }
+            </Link>
+          ))}
+        </Box>
+      ))}
     </>
   );
 }
