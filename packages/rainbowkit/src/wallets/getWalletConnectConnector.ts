@@ -1,6 +1,10 @@
 import { createConnector } from 'wagmi';
 import type { CreateConnectorFn } from 'wagmi';
-import { type WalletConnectParameters, walletConnect } from 'wagmi/connectors';
+import {
+  mock,
+  type WalletConnectParameters,
+  walletConnect,
+} from 'wagmi/connectors';
 import type {
   CreateConnector,
   RainbowKitDetails,
@@ -26,6 +30,8 @@ interface GetOrCreateWalletConnectInstanceParams {
   rkDetailsIsWalletConnectModalConnector?: RainbowKitDetails['isWalletConnectModalConnector'];
 }
 
+const isServer = typeof window === 'undefined';
+
 const walletConnectInstances = new Map<
   string,
   ReturnType<typeof walletConnect>
@@ -37,9 +43,14 @@ const getOrCreateWalletConnectInstance = ({
   walletConnectParameters,
   rkDetailsShowQrModal,
   rkDetailsIsWalletConnectModalConnector,
-}: GetOrCreateWalletConnectInstanceParams): ReturnType<
-  typeof walletConnect
-> => {
+}: GetOrCreateWalletConnectInstanceParams): CreateConnectorFn => {
+  // Return mock connector on server-side to avoid SSR errors
+  // WalletConnect relies on browser-only APIs that aren't available during SSR
+  if (isServer) {
+    const mockAddress = '0x0000000000000000000000000000000000000000' as const;
+    return mock({ accounts: [mockAddress] });
+  }
+
   let config: WalletConnectParameters = {
     telemetryEnabled: false, // Disable analytics by default
     ...(walletConnectParameters ? walletConnectParameters : {}),
