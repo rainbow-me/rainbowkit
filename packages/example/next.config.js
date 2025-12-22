@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  transpilePackages: ['next-auth'],
   reactStrictMode: true,
   i18n: {
     defaultLocale: 'en-US',
