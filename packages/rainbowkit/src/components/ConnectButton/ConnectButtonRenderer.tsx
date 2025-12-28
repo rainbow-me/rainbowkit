@@ -1,5 +1,6 @@
 import React, { type ReactNode, useContext } from 'react';
 import { useAccount, useConfig } from 'wagmi';
+import { formatUnits } from 'viem';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useProfile } from '../../hooks/useProfile';
@@ -105,9 +106,19 @@ export function ConnectButtonRenderer({
     includeBalance: shouldShowBalance,
   });
 
-  const displayBalance = balance
-    ? `${abbreviateETHBalance(Number.parseFloat(balance.formatted))} ${balance.symbol}`
-    : undefined;
+  const formatted =
+      balance && 'formatted' in (balance as any)
+          ? (balance as any).formatted
+          : balance
+              ? formatUnits((balance as any).value, (balance as any).decimals)
+              : undefined;
+
+  const symbol = (balance as any)?.symbol;
+
+  const displayBalance =
+      formatted != null && symbol
+          ? `${abbreviateETHBalance(Number.parseFloat(formatted))} ${symbol}`
+          : undefined;
 
   const { openConnectModal } = useConnectModal();
   const { openChainModal } = useChainModal();
@@ -122,7 +133,7 @@ export function ConnectButtonRenderer({
           ? {
               address,
               balanceDecimals: balance?.decimals,
-              balanceFormatted: balance?.formatted,
+              balanceFormatted: formatted,
               balanceSymbol: balance?.symbol,
               displayBalance,
               displayName: ensName

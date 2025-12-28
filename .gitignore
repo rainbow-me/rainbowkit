@@ -115,3 +115,4 @@ dist
 # Others
 .DS_Store
 node-compile-cache/
+/.idea/
