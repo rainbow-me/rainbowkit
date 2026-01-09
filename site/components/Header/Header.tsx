@@ -1,19 +1,25 @@
-import {
-  ConnectButton,
-  type Locale,
-  RainbowKitProvider,
-  darkTheme,
-  lightTheme,
-} from '@rainbow-me/rainbowkit';
+import { type Locale, darkTheme, lightTheme } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
 import { vars } from 'css/vars.css';
+import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
 import { header, logo, row } from './Header.css';
+
+// Dynamically import components that use wagmi hooks to avoid SSG errors
+const RainbowKitProvider = dynamic(
+  () => import('@rainbow-me/rainbowkit').then((mod) => mod.RainbowKitProvider),
+  { ssr: false },
+);
+
+const ConnectButton = dynamic(
+  () => import('@rainbow-me/rainbowkit').then((mod) => mod.ConnectButton),
+  { ssr: false },
+);
 
 const RAINBOWKIT_VERSION = pckg.version;
 

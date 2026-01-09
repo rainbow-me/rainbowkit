@@ -1,6 +1,10 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { WalletButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();

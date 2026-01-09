@@ -1,7 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
   type Locale,
-  RainbowKitProvider,
   __private__,
   darkTheme,
   lightTheme,
@@ -16,6 +15,7 @@ import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
 import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import type React from 'react';
 import { useState } from 'react';
@@ -23,7 +23,21 @@ import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
 import { WideIcon } from './WideIcon';
 
-const { DesktopOptions, dialogContent } = __private__;
+const { dialogContent } = __private__;
+
+// Dynamically import components that use wagmi hooks to avoid SSG errors
+const RainbowKitProvider = dynamic(
+  () => import('@rainbow-me/rainbowkit').then((mod) => mod.RainbowKitProvider),
+  { ssr: false },
+);
+
+const DesktopOptions = dynamic(
+  () =>
+    import('@rainbow-me/rainbowkit').then(
+      (mod) => mod.__private__.DesktopOptions,
+    ),
+  { ssr: false },
+);
 
 const THEMES = {
   dark: darkTheme,

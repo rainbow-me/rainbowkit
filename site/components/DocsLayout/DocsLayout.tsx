@@ -20,7 +20,6 @@ import { useCoolMode } from 'lib/useCoolMode';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { type Ref, useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
 import {
   content,
   navigationSidebar,
@@ -50,10 +49,10 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     null,
   ) as React.RefObject<HTMLDivElement>;
 
-  const { isConnected } = useAccount();
+  // Cool mode ref - wagmi connection check is done inside useConnectionStatus hook
   const ref = useCoolMode(
     '/rainbow.svg',
-    !isConnected,
+    true, // Always enable cool mode during SSG/initial render
     true,
   ) as Ref<HTMLDivElement>;
 

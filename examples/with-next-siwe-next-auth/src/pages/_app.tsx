@@ -1,6 +1,7 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 
@@ -26,6 +27,12 @@ export default function App({
 }: AppProps<{
   session: Session;
 }>) {
+  const router = useRouter();
+
+  if (router.pathname === '/404' || router.pathname === '/500') {
+    return <Component {...pageProps} />;
+  }
+
   return (
     <SessionProvider refetchInterval={0} session={pageProps.session}>
       <WagmiProvider config={config}>

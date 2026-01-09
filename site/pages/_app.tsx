@@ -2,16 +2,23 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { NextIntlClientProvider } from 'next-intl';
 import type { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-import { Provider } from 'components/Provider/Provider';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
 import '../css/docsSearch.css';
 import '../css/global.css';
 import { vars } from '../css/vars.css';
+
+// Dynamically import Provider with ssr: false to avoid wagmi v3 SSG errors
+// wagmi v3 requires all hooks to be used within WagmiProvider context
+const Provider = dynamic(
+  () => import('components/Provider/Provider').then((mod) => mod.Provider),
+  { ssr: false },
+);
 
 const highlightColors = [
   vars.colors.orange,
@@ -61,6 +68,18 @@ function App({ Component, pageProps }: AppProps) {
     );
   }, [isDocs, isGuides]);
 
+  const content = isDocs ? (
+    <DocsLayout>
+      <Component {...pageProps} />
+    </DocsLayout>
+  ) : isGuides ? (
+    <GuidesLayout>
+      <Component {...pageProps} />
+    </GuidesLayout>
+  ) : (
+    <Component {...pageProps} />
+  );
+
   return (
     <>
       <NextIntlClientProvider
@@ -68,19 +87,7 @@ function App({ Component, pageProps }: AppProps) {
         messages={pageProps.messages}
         timeZone="America/New_York" // Required to not get warnings
       >
-        <Provider>
-          {isDocs ? (
-            <DocsLayout>
-              <Component {...pageProps} />
-            </DocsLayout>
-          ) : isGuides ? (
-            <GuidesLayout>
-              <Component {...pageProps} />
-            </GuidesLayout>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </Provider>
+        <Provider>{content}</Provider>
       </NextIntlClientProvider>
       <SpeedInsights />
     </>

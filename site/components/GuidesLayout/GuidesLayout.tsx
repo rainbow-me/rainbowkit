@@ -4,16 +4,11 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { useCoolMode } from 'lib/useCoolMode';
 import type React from 'react';
 import type { Ref } from 'react';
-import { useAccount } from 'wagmi';
 import { content } from './GuidesLayout.css';
 
 export function GuidesLayout({ children }: { children: React.ReactNode }) {
-  const { isConnected } = useAccount();
-  const ref = useCoolMode(
-    '/rainbow.svg',
-    !isConnected,
-    true,
-  ) as Ref<HTMLDivElement>;
+  // Always enable cool mode - removed wagmi useAccount hook to fix SSG errors with wagmi v3
+  const ref = useCoolMode('/rainbow.svg', true, true) as Ref<HTMLDivElement>;
 
   return (
     <div ref={ref}>

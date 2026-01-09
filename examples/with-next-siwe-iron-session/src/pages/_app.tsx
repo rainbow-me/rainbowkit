@@ -3,6 +3,7 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -20,6 +21,7 @@ import { config } from '../wagmi';
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   const fetchingStatusRef = useRef(false);
   const verifyingRef = useRef(false);
   const [authStatus, setAuthStatus] = useState<AuthenticationStatus>('loading');
@@ -102,6 +104,10 @@ export default function App({ Component, pageProps }: AppProps) {
       },
     });
   }, []);
+
+  if (router.pathname === '/404' || router.pathname === '/500') {
+    return <Component {...pageProps} />;
+  }
 
   return (
     <WagmiProvider config={config}>

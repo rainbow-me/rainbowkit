@@ -12,7 +12,16 @@ import { config } from '../wagmi';
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { locale } = useRouter() as { locale: Locale };
+  const router = useRouter();
+  const locale = router.locale as Locale;
+
+  // Error pages (404, 500) must be rendered without providers to avoid SSG errors with wagmi v3
+  // wagmi v3 requires hooks to be used within WagmiProvider context,
+  // which isn't available during static generation of error pages
+  if (router.pathname === '/404' || router.pathname === '/500') {
+    return <Component {...pageProps} />;
+  }
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>

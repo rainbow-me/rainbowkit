@@ -1,6 +1,10 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};
 
 const Home: NextPage = () => {
   return (

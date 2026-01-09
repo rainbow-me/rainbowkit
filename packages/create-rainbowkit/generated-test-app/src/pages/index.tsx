@@ -1,5 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
@@ -80,6 +80,11 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
+};
+
+// Opt out of static generation to avoid SSG errors with wagmi v3
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
 };
 
 export default Home;

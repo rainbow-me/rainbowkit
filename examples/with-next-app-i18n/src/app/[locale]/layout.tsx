@@ -2,9 +2,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@rainbow-me/rainbowkit';
 import { Providers } from './providers';
 
-export function generateStaticParams() {
-  return [{ locale: 'en-US' }, { locale: 'zh-CN' }];
-}
+// Force dynamic rendering for all pages to avoid SSG errors with wagmi v3
+// wagmi v3 requires hooks to be used within WagmiProvider context,
+// which isn't available during static generation
+export const dynamic = 'force-dynamic';
 
 // Dynamic metadata with locale
 export async function generateMetadata(props: {

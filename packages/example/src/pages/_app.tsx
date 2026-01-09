@@ -519,7 +519,9 @@ export default function App(
   const router = useRouter();
 
   // Pages that don't need RainbowKit - render without providers to avoid SSG issues with wagmi v3
-  if (router.pathname === '/icons' || router.pathname === '/providers') {
+  // Error pages (404, 500) must be excluded to prevent "useConfig must be used within WagmiProvider" errors during SSG
+  const pagesWithoutProviders = ['/icons', '/providers', '/404', '/500'];
+  if (pagesWithoutProviders.includes(router.pathname)) {
     return (
       <>
         <Head>
