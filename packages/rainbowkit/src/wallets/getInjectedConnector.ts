@@ -92,11 +92,27 @@ function createInjectedConnector(provider?: any): CreateConnector {
         }
       : {};
 
-    return createConnector((config) => ({
-      // Spread the injectedConfig object, which may be empty or contain the target function
-      ...injected(injectedConfig)(config),
-      ...walletDetails,
-    }));
+    return createConnector((config) => {
+      const baseConnector = injected(injectedConfig)(config);
+      let getAccountsPromise: Promise<readonly `0x${string}`[]> | null = null;
+
+      return {
+        // Spread the injectedConfig object, which may be empty or contain the target function
+        ...baseConnector,
+        ...walletDetails,
+        getAccounts: async () => {
+          // Prevent duplicate getAccounts calls when onConnect event fires multiple times
+          if (getAccountsPromise) return getAccountsPromise;
+          try {
+            getAccountsPromise = baseConnector.getAccounts();
+            const accounts = await getAccountsPromise;
+            return accounts;
+          } finally {
+            getAccountsPromise = null;
+          }
+        },
+      };
+    });
   };
 }
 
