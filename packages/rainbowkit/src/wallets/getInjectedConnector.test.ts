@@ -1,10 +1,26 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { mainnet } from 'wagmi/chains';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from './getInjectedConnector';
 
+const mockConfig = {
+  chains: [mainnet],
+  emitter: {
+    on: vi.fn(),
+    off: vi.fn(),
+    emit: vi.fn(),
+    listenerCount: vi.fn(() => 0),
+  },
+  storage: undefined,
+} as any;
+
 describe('getInjectedConnector', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('only rainbow provider', () => {
     window.ethereum = { isMetaMask: true, isRainbow: true };
     const connector = getInjectedConnector({
@@ -19,6 +35,75 @@ describe('getInjectedConnector', () => {
       flag: 'isMetaMask',
     });
     expect(!!connector).toEqual(true);
+  });
+
+  it('deduplicates concurrent getAccounts calls on the same connector instance', async () => {
+    const mockAccounts = [
+      '0x1234567890123456789012345678901234567890' as const,
+    ];
+    const mockRequest = vi.fn().mockResolvedValue(mockAccounts);
+    window.ethereum = {
+      isMetaMask: true,
+      request: mockRequest,
+    };
+
+    const connector = getInjectedConnector({
+      flag: 'isMetaMask',
+    });
+
+    const connectorInstance = connector({
+      rkDetails: {
+        id: 'metaMask',
+        name: 'MetaMask',
+        isRainbowKitConnector: true,
+      },
+    } as any)(mockConfig);
+
+    const call1 = connectorInstance.getAccounts();
+    const call2 = connectorInstance.getAccounts();
+    const call3 = connectorInstance.getAccounts();
+
+    const [result1, result2, result3] = await Promise.all([
+      call1,
+      call2,
+      call3,
+    ]);
+    expect(result1).toEqual(mockAccounts);
+    expect(result2).toEqual(mockAccounts);
+    expect(result3).toEqual(mockAccounts);
+
+    expect(mockRequest).toHaveBeenCalledTimes(1);
+  });
+
+  it('handles getAccounts errors and clears promise', async () => {
+    const mockError = new Error('RPC Error');
+    const mockRequest = vi
+      .fn()
+      .mockRejectedValueOnce(mockError)
+      .mockResolvedValueOnce(['0x1234567890123456789012345678901234567890']);
+
+    window.ethereum = {
+      isMetaMask: true,
+      request: mockRequest,
+    };
+
+    const connector = getInjectedConnector({
+      flag: 'isMetaMask',
+    });
+
+    const connectorInstance = connector({
+      rkDetails: {
+        id: 'metaMask',
+        name: 'MetaMask',
+        isRainbowKitConnector: true,
+      },
+    } as any)(mockConfig);
+
+    await expect(connectorInstance.getAccounts()).rejects.toThrow('RPC Error');
+
+    const result = await connectorInstance.getAccounts();
+    expect(result).toEqual(['0x1234567890123456789012345678901234567890']);
+    expect(mockRequest).toHaveBeenCalledTimes(2);
   });
 });
 
