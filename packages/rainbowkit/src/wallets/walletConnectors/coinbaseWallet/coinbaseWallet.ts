@@ -22,7 +22,7 @@ interface CoinbaseWallet extends AcceptedCoinbaseWalletParameters {
 }
 
 /**
- * @deprecated Use `baseAccount` instead. This wallet connector will be removed in a future version.
+ * @deprecated Use `base` instead. This legacy connector remains available for backwards compatibility.
  */
 export const coinbaseWallet: CoinbaseWallet = ({
   appName,
@@ -37,6 +37,7 @@ export const coinbaseWallet: CoinbaseWallet = ({
 
   return {
     id: 'coinbase',
+    aliases: ['coinbaseWallet'],
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     rdns: 'com.coinbase.wallet',

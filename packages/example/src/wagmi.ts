@@ -2,7 +2,7 @@ import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   anchorageDigitalWallet,
   backpackWallet,
-  baseAccount,
+  base,
   berasigWallet,
   bestWallet,
   bifrostWallet,
@@ -74,7 +74,7 @@ import {
   arbitrum,
   arbitrumSepolia,
   avalancheFuji,
-  base,
+  base as baseChain,
   baseSepolia,
   berachain,
   berachainTestnetbArtio,
@@ -114,14 +114,14 @@ import { createTransports } from './transports';
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-// Configure Base Account
-baseAccount.subAccounts = {
+// Configure Base
+base.subAccounts = {
   creation: 'on-connect',
   defaultAccount: 'sub',
   funding: 'spend-permissions',
 };
 
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true },
 };
 
@@ -150,7 +150,7 @@ const avalanche = {
 
 const chains = [
   mainnet,
-  base,
+  baseChain,
   optimism,
   arbitrum,
   polygon,
@@ -208,7 +208,7 @@ export const config = getDefaultConfig({
       wallets: [
         safeWallet,
         rainbowWallet,
-        baseAccount,
+        base,
         metaMaskWallet,
         walletConnectWallet,
       ],

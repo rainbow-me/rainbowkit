@@ -8,7 +8,7 @@ import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
 import { safeWallet } from './walletConnectors/safeWallet/safeWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
-import { baseAccount } from './walletConnectors/baseAccount/baseAccount';
+import { base } from './walletConnectors/base/base';
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: CreateConnectorFn[];
@@ -24,7 +24,7 @@ export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
       wallets: [
         safeWallet,
         rainbowWallet,
-        baseAccount,
+        base,
         metaMaskWallet,
         walletConnectWallet,
       ],

@@ -47,11 +47,16 @@ export function WalletButtonRenderer({
   const { openConnectModal } = useConnectModal();
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(WalletButtonContext);
+  const walletId = wallet.toLowerCase();
   const [firstConnector] = useWalletConnectors()
     .filter((wallet) => wallet.isRainbowKitConnector)
     // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
-    .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
+    .filter(
+      (_wallet) =>
+        _wallet.id.toLowerCase() === walletId ||
+        _wallet.aliases?.some((alias) => alias.toLowerCase() === walletId),
+    )
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
   if (!firstConnector) {
