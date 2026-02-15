@@ -32,7 +32,7 @@ export function RainbowKitSiweNextAuthProvider({
   enabled,
   getSiweMessageOptions,
 }: RainbowKitSiweNextAuthProviderProps) {
-  const { status } = useSession();
+  const { status } = useSession() ?? { status: 'loading' as const };
   const adapter = useMemo(
     () =>
       createAuthenticationAdapter({

@@ -40,7 +40,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openChainModal, chainModalOpen } = useChainModal();
   const { openConnectModal, connectModalOpen } = useConnectModal();
   const { address, isConnected: isWagmiConnected } = useAccount();
-  const { status } = useSession();
+  const { status } = useSession() ?? { status: 'loading' as const };
 
   const defaultProps = ConnectButton.__defaultProps;
 

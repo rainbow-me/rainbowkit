@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/legacy/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import {
   useAccount,
   useReadContract,
@@ -148,6 +148,10 @@ const Home: NextPage = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
 };
 
 export default Home;
