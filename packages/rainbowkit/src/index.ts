@@ -11,6 +11,8 @@ export {
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
+export { useSpeedUpTransaction } from './transactions/useSpeedUpTransaction';
+export { useCancelTransaction } from './transactions/useCancelTransaction';
 export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,

@@ -15,10 +15,13 @@ import { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
   useAccount,
+  useEstimateFeesPerGas,
+  useEstimateGas,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
+import { usePublicClient } from 'wagmi';
 import type { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
 
@@ -62,12 +65,50 @@ const Example = ({ authEnabled }: AppContextProps) => {
   );
 
   const { chain: activeChain } = useAccount();
+  const publicClient = usePublicClient();
 
   const {
     data: transactionData,
     error: transactionError,
     sendTransaction,
+    sendTransactionAsync,
   } = useSendTransaction();
+
+  const addRecentTransaction = useAddRecentTransaction();
+
+  const handleSendTransaction = async () => {
+    if (!address || !publicClient || !sendTransactionAsync) return;
+
+    try {
+      const nonce = await publicClient.getTransactionCount({
+        address,
+      });
+
+      const { maxFeePerGas, maxPriorityFeePerGas } =
+        await publicClient.estimateFeesPerGas();
+
+      const hash = await sendTransactionAsync({
+        to: address as Address,
+        value: parseEther('0.00001'),
+        nonce,
+        maxFeePerGas,
+        maxPriorityFeePerGas,
+      });
+
+      addRecentTransaction({
+        hash,
+        description: 'Send Transaction',
+        nonce,
+        from: address,
+        to: address,
+        value: parseEther('0.00001').toString(),
+        maxFeePerGas: maxFeePerGas?.toString(),
+        maxPriorityFeePerGas: maxPriorityFeePerGas?.toString(),
+      });
+    } catch (error) {
+      console.error('Failed to send transaction:', error);
+    }
+  };
 
   const {
     data: signingData,
@@ -314,12 +355,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
                 disabled={!connected || !sendTransaction}
-                onClick={() =>
-                  sendTransaction?.({
-                    to: address as Address,
-                    value: parseEther('0.00001'),
-                  })
-                }
+                onClick={handleSendTransaction}
                 type="button"
               >
                 Send Transaction

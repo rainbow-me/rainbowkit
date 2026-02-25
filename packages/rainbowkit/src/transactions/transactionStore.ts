@@ -9,6 +9,15 @@ export interface Transaction {
   description: string;
   status: TransactionStatus;
   confirmations?: number;
+  nonce?: number;
+  from?: Address;
+  to?: Address;
+  value?: string;
+  data?: string;
+  gasPrice?: string;
+  maxFeePerGas?: string;
+  maxPriorityFeePerGas?: string;
+  replacedBy?: string;
 }
 
 export type NewTransaction = Omit<Transaction, 'status'>;
@@ -118,6 +127,36 @@ export function createTransactionStore({
       return transactions.map((transaction) =>
         transaction.hash === hash ? { ...transaction, status } : transaction,
       );
+    });
+  }
+
+  function replaceTransaction(
+    account: string,
+    chainId: number,
+    oldHash: string,
+    newTransaction: NewTransaction,
+  ): void {
+    const errors = validateTransaction(newTransaction);
+
+    if (errors.length > 0) {
+      throw new Error(['Unable to replace transaction', ...errors].join('\n'));
+    }
+
+    updateTransactions(account, chainId, (transactions) => {
+      return [
+        { ...newTransaction, status: 'pending' as TransactionStatus },
+        ...transactions
+          .map((transaction) =>
+            transaction.hash === oldHash
+              ? {
+                  ...transaction,
+                  status: 'failed' as TransactionStatus,
+                  replacedBy: newTransaction.hash,
+                }
+              : transaction,
+          )
+          .filter(({ hash }) => hash !== newTransaction.hash),
+      ];
     });
   }
 
@@ -244,6 +283,7 @@ export function createTransactionStore({
     getTransactions,
     onTransactionStatus,
     onChange,
+    replaceTransaction,
     setProvider,
     waitForPendingTransactions,
   };
