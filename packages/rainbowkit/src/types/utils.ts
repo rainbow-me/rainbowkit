@@ -26,6 +26,7 @@ export type WalletProviderFlags =
   | 'isBitski'
   | 'isBinance'
   | 'isBlockWallet'
+  | 'isCipherTrade'
   | 'isBraveWallet'
   | 'isCoinbaseWallet'
   | 'isDawn'

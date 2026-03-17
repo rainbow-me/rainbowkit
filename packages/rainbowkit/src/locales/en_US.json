@@ -409,6 +409,23 @@
       }
     },
 
+    "ciphertrade": {
+      "qr_code": {
+        "step1": {
+          "description": "Add CipherTrade to your home screen for faster access to your wallet.",
+          "title": "Open the CipherTrade app"
+        },
+        "step2": {
+          "description": "Create a new wallet or import an existing one.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the scan button"
+        }
+      }
+    },
+
     "binance": {
       "qr_code": {
         "step1": {
