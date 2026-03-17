@@ -71,6 +71,7 @@ import { xPortalWallet } from './xPortalWallet/xPortalWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 import { zilPayWallet } from './ZilPayWallet/zilPayWallet';
+import { cipherTradeWallet } from './cipherTradeWallet/cipherTradeWallet';
 
 export {
   argentWallet,
@@ -147,4 +148,5 @@ export {
   zealWallet,
   zerionWallet,
   zilPayWallet,
+  cipherTradeWallet,
 };
