@@ -11,6 +11,7 @@ import { bitverseWallet } from './bitverseWallet/bitverseWallet';
 import { bloomWallet } from './bloomWallet/bloomWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { bybitWallet } from './bybitWallet/bybitWallet';
+import { cipherTradeWallet } from './cipherTradeWallet/cipherTradeWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -86,6 +87,7 @@ export {
   bloomWallet,
   braveWallet,
   bybitWallet,
+  cipherTradeWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
