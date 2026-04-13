@@ -1,0 +1,23 @@
+.github/dependabot.yml
+  395bee29d37526f2 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "4a47cb47525d04d7ab0878ef0c5d4f0cd2b201b3",
+  "prompts": {
+    "395bee29d37526f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c78a58d-5620-4770-8423-733761e302ab",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 36,
+      "total_deletions": 18,
+      "accepted_lines": 18,
+      "overriden_lines": 0
+    }
+  }
+}
