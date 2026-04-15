@@ -5,6 +5,7 @@ updates:
     schedule:
       interval: weekly
     versioning-strategy: lockfile-only
+    open-pull-requests-limit: 0
     groups:
       security:
         applies-to: security-updates
