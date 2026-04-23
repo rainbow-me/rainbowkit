@@ -1,5 +1,6 @@
 import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
+  anchorageDigitalWallet,
   backpackWallet,
   baseAccount,
   berasigWallet,
@@ -212,6 +213,7 @@ export const config = getDefaultConfig({
       groupName: 'Other',
       wallets: [
         readyWallet,
+        anchorageDigitalWallet,
         backpackWallet,
         berasigWallet,
         bestWallet,

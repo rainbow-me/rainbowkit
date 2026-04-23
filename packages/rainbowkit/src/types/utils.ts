@@ -17,6 +17,7 @@ export type Omit<type, keys extends keyof type> = Pick<
 // window.ethereum types
 
 export type WalletProviderFlags =
+  | 'isAnchorageDigital'
   | 'isApexWallet'
   | 'isAvalanche'
   | 'isBackpack'
