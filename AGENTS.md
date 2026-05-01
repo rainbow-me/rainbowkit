@@ -161,3 +161,14 @@ pnpm link:cli  # Makes `create-rainbowkit` available system-wide
 - React 19 and Next.js 15 compatible
 - Built on wagmi v2 and viem 2.x
 - Node.js >= 22 required
+
+## Cursor Cloud specific instructions
+
+- **Node.js**: Installed via nvm (v22). Source nvm before running any commands: `export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh"`.
+- **pnpm**: Enabled via `corepack enable pnpm`. The lockfile pins pnpm 10.24.0.
+- **`pnpm install`** runs `prepare` scripts that build the three library packages (`rainbowkit`, `rainbow-button`, `rainbowkit-siwe-next-auth`). A separate `pnpm build` is needed only for the `site`, `example`, and other example apps.
+- **Dev servers**: `pnpm dev:example` starts library watch-mode + the example Next.js app on port 3000. `pnpm dev:site` starts library watch-mode + the docs site on port 3001. `pnpm dev` runs both.
+- **Environment variables**: `RAINBOW_PROVIDER_API_KEY` and `WALLETCONNECT_PROJECT_ID` are optional; the example app and tests work without them (enhanced provider is disabled and WalletConnect falls back to a placeholder).
+- **No external services**: No databases, Docker, or external APIs are required. This is a pure frontend/library monorepo.
+- **Lint/test/build commands**: See the "Development Commands" section above. All commands are run from the repo root.
+- **Pre-commit hooks**: Husky runs `pnpm lint` on pre-commit and commitlint on commit-msg. Commit messages must follow conventional commit format (see `commitlint.config.js`).
