@@ -1,0 +1,27 @@
+examples/with-vite/package.json
+  f3cdefa574a73266 24
+examples/with-react-router/package.json
+  f3cdefa574a73266 33
+package.json
+  f3cdefa574a73266 74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "0526ebf9e97c109a2e3f0ba13e039789e9832c9c",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
