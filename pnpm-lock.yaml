@@ -73,8 +73,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       husky:
-        specifier: ^9.1.5
-        version: 9.1.5
+        specifier: ^9.1.7
+        version: 9.1.7
       jsdom:
         specifier: ^25.0.0
         version: 25.0.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
@@ -566,7 +566,7 @@ importers:
         version: 0.1.6
       '@vanilla-extract/next-plugin':
         specifier: 2.4.17
-        version: 2.4.17(babel-plugin-macros@3.1.0)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(webpack@5.94.0(esbuild@0.25.12))
+        version: 2.4.17(babel-plugin-macros@3.1.0)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(webpack@5.94.0(esbuild@0.27.7))
       '@vanilla-extract/recipes':
         specifier: 0.5.7
         version: 0.5.7(@vanilla-extract/css@1.18.0(babel-plugin-macros@3.1.0))
@@ -639,10 +639,10 @@ importers:
     devDependencies:
       contentlayer:
         specifier: npm:contentlayer2@0.5.8
-        version: contentlayer2@0.5.8(esbuild@0.25.12)
+        version: contentlayer2@0.5.8(esbuild@0.27.7)
       next-contentlayer:
         specifier: npm:next-contentlayer2@0.5.8
-        version: next-contentlayer2@0.5.8(contentlayer2@0.5.8(esbuild@0.25.12))(esbuild@0.25.12)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: next-contentlayer2@0.5.8(contentlayer2@0.5.8(esbuild@0.27.7))(esbuild@0.27.7)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       next-sitemap:
         specifier: ^4.2.3
         version: 4.2.3(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
@@ -5156,9 +5156,6 @@ packages:
   '@types/debounce@1.2.4':
     resolution: {integrity: sha512-jBqiORIzKDOToaF63Fm//haOCHuwQuLa2202RK4MozpA6lh93eCBc+/8+wZn5OzjJt3ySdc+74SXWXB55Ewtyw==}
 
-  '@types/debug@4.1.12':
-    resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
-
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
 
@@ -8328,8 +8325,8 @@ packages:
   humanize-ms@1.2.1:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
 
-  husky@9.1.5:
-    resolution: {integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==}
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -14771,9 +14768,9 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.6.2
 
-  '@contentlayer2/cli@0.5.8(esbuild@0.25.12)':
+  '@contentlayer2/cli@0.5.8(esbuild@0.27.7)':
     dependencies:
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
       '@contentlayer2/utils': 0.5.8
       clipanion: 3.2.1(typanion@3.14.0)
       typanion: 3.14.0
@@ -14783,22 +14780,22 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/client@0.5.8(esbuild@0.25.12)':
+  '@contentlayer2/client@0.5.8(esbuild@0.27.7)':
     dependencies:
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - esbuild
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/core@0.5.8(esbuild@0.25.12)':
+  '@contentlayer2/core@0.5.8(esbuild@0.27.7)':
     dependencies:
       '@contentlayer2/utils': 0.5.8
       camel-case: 4.1.2
       comment-json: 4.2.5
       gray-matter: 4.0.3
-      mdx-bundler: 10.1.1(esbuild@0.25.12)
+      mdx-bundler: 10.1.1(esbuild@0.27.7)
       rehype-stringify: 10.0.1
       remark-frontmatter: 5.0.0
       remark-parse: 11.0.0
@@ -14807,14 +14804,14 @@ snapshots:
       type-fest: 4.26.1
       unified: 11.0.5
     optionalDependencies:
-      esbuild: 0.25.12
+      esbuild: 0.27.7
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - supports-color
 
-  '@contentlayer2/source-files@0.5.8(esbuild@0.25.12)':
+  '@contentlayer2/source-files@0.5.8(esbuild@0.27.7)':
     dependencies:
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
       '@contentlayer2/utils': 0.5.8
       chokidar: 3.6.0
       fast-glob: 3.3.2
@@ -14831,10 +14828,10 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/source-remote-files@0.5.8(esbuild@0.25.12)':
+  '@contentlayer2/source-remote-files@0.5.8(esbuild@0.27.7)':
     dependencies:
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
-      '@contentlayer2/source-files': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
+      '@contentlayer2/source-files': 0.5.8(esbuild@0.27.7)
       '@contentlayer2/utils': 0.5.8
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
@@ -15002,11 +14999,11 @@ snapshots:
   '@emotion/memoize@0.7.4':
     optional: true
 
-  '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.25.12)':
+  '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.27.7)':
     dependencies:
       '@types/resolve': 1.20.6
       debug: 4.4.3
-      esbuild: 0.25.12
+      esbuild: 0.27.7
       escape-string-regexp: 4.0.0
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -15988,11 +15985,11 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@mdx-js/esbuild@3.0.1(esbuild@0.25.12)':
+  '@mdx-js/esbuild@3.0.1(esbuild@0.27.7)':
     dependencies:
       '@mdx-js/mdx': 3.0.1
       '@types/unist': 3.0.3
-      esbuild: 0.25.12
+      esbuild: 0.27.7
       vfile: 6.0.3
       vfile-message: 4.0.2
     transitivePeerDependencies:
@@ -16185,7 +16182,7 @@ snapshots:
       '@metamask/superstruct': 3.2.1
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
-      '@types/debug': 4.1.12
+      '@types/debug': 4.1.13
       debug: 4.4.3
       lodash.memoize: 4.1.2
       pony-cause: 2.1.11
@@ -16210,7 +16207,7 @@ snapshots:
       '@metamask/superstruct': 3.2.1
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
-      '@types/debug': 4.1.12
+      '@types/debug': 4.1.13
       debug: 4.4.3
       pony-cause: 2.1.11
       semver: 7.7.4
@@ -18422,10 +18419,6 @@ snapshots:
 
   '@types/debounce@1.2.4': {}
 
-  '@types/debug@4.1.12':
-    dependencies:
-      '@types/ms': 2.1.0
-
   '@types/debug@4.1.13':
     dependencies:
       '@types/ms': 2.1.0
@@ -18925,9 +18918,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@vanilla-extract/next-plugin@2.4.17(babel-plugin-macros@3.1.0)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(webpack@5.94.0(esbuild@0.25.12))':
+  '@vanilla-extract/next-plugin@2.4.17(babel-plugin-macros@3.1.0)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(webpack@5.94.0(esbuild@0.27.7))':
     dependencies:
-      '@vanilla-extract/webpack-plugin': 2.3.25(babel-plugin-macros@3.1.0)(webpack@5.94.0(esbuild@0.25.12))
+      '@vanilla-extract/webpack-plugin': 2.3.25(babel-plugin-macros@3.1.0)(webpack@5.94.0(esbuild@0.27.7))
       next: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -18964,13 +18957,13 @@ snapshots:
       - tsx
       - yaml
 
-  '@vanilla-extract/webpack-plugin@2.3.25(babel-plugin-macros@3.1.0)(webpack@5.94.0(esbuild@0.25.12))':
+  '@vanilla-extract/webpack-plugin@2.3.25(babel-plugin-macros@3.1.0)(webpack@5.94.0(esbuild@0.27.7))':
     dependencies:
       '@vanilla-extract/integration': 8.0.7(babel-plugin-macros@3.1.0)
       debug: 4.4.3
       loader-utils: 2.0.4
       picocolors: 1.1.1
-      webpack: 5.94.0(esbuild@0.25.12)
+      webpack: 5.94.0(esbuild@0.27.7)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -20667,13 +20660,13 @@ snapshots:
 
   content-type@1.0.5: {}
 
-  contentlayer2@0.5.8(esbuild@0.25.12):
+  contentlayer2@0.5.8(esbuild@0.27.7):
     dependencies:
-      '@contentlayer2/cli': 0.5.8(esbuild@0.25.12)
-      '@contentlayer2/client': 0.5.8(esbuild@0.25.12)
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
-      '@contentlayer2/source-files': 0.5.8(esbuild@0.25.12)
-      '@contentlayer2/source-remote-files': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/cli': 0.5.8(esbuild@0.27.7)
+      '@contentlayer2/client': 0.5.8(esbuild@0.27.7)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
+      '@contentlayer2/source-files': 0.5.8(esbuild@0.27.7)
+      '@contentlayer2/source-remote-files': 0.5.8(esbuild@0.27.7)
       '@contentlayer2/utils': 0.5.8
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
@@ -22965,7 +22958,7 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  husky@9.1.5: {}
+  husky@9.1.7: {}
 
   hyperdyperid@1.2.0: {}
 
@@ -24423,13 +24416,13 @@ snapshots:
 
   mdn-data@2.0.4: {}
 
-  mdx-bundler@10.1.1(esbuild@0.25.12):
+  mdx-bundler@10.1.1(esbuild@0.27.7):
     dependencies:
       '@babel/runtime': 7.28.3
-      '@esbuild-plugins/node-resolve': 0.2.2(esbuild@0.25.12)
+      '@esbuild-plugins/node-resolve': 0.2.2(esbuild@0.27.7)
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
-      '@mdx-js/esbuild': 3.0.1(esbuild@0.25.12)
-      esbuild: 0.25.12
+      '@mdx-js/esbuild': 3.0.1(esbuild@0.27.7)
+      esbuild: 0.27.7
       gray-matter: 4.0.3
       remark-frontmatter: 5.0.0
       remark-mdx-frontmatter: 4.0.0
@@ -24853,7 +24846,7 @@ snapshots:
 
   micromark@3.2.0:
     dependencies:
-      '@types/debug': 4.1.12
+      '@types/debug': 4.1.13
       debug: 4.4.3
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
@@ -24875,7 +24868,7 @@ snapshots:
 
   micromark@4.0.0:
     dependencies:
-      '@types/debug': 4.1.12
+      '@types/debug': 4.1.13
       debug: 4.4.3
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
@@ -25090,11 +25083,11 @@ snapshots:
 
   next-compose-plugins@2.2.1: {}
 
-  next-contentlayer2@0.5.8(contentlayer2@0.5.8(esbuild@0.25.12))(esbuild@0.25.12)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  next-contentlayer2@0.5.8(contentlayer2@0.5.8(esbuild@0.27.7))(esbuild@0.27.7)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
-      '@contentlayer2/core': 0.5.8(esbuild@0.25.12)
+      '@contentlayer2/core': 0.5.8(esbuild@0.27.7)
       '@contentlayer2/utils': 0.5.8
-      contentlayer2: 0.5.8(esbuild@0.25.12)
+      contentlayer2: 0.5.8(esbuild@0.27.7)
       next: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
@@ -27656,6 +27649,17 @@ snapshots:
     optionalDependencies:
       esbuild: 0.25.12
 
+  terser-webpack-plugin@5.3.10(esbuild@0.27.7)(webpack@5.94.0(esbuild@0.27.7)):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.30
+      jest-worker: 27.5.1
+      schema-utils: 3.3.0
+      serialize-javascript: 6.0.2
+      terser: 5.32.0
+      webpack: 5.94.0(esbuild@0.27.7)
+    optionalDependencies:
+      esbuild: 0.27.7
+
   terser@5.32.0:
     dependencies:
       '@jridgewell/source-map': 0.3.11
@@ -28608,6 +28612,36 @@ snapshots:
       schema-utils: 3.3.0
       tapable: 2.2.1
       terser-webpack-plugin: 5.3.10(esbuild@0.25.12)(webpack@5.94.0(esbuild@0.25.12))
+      watchpack: 2.4.2
+      webpack-sources: 3.2.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+
+  webpack@5.94.0(esbuild@0.27.7):
+    dependencies:
+      '@types/estree': 1.0.8
+      '@webassemblyjs/ast': 1.12.1
+      '@webassemblyjs/wasm-edit': 1.12.1
+      '@webassemblyjs/wasm-parser': 1.12.1
+      acorn: 8.15.0
+      acorn-import-attributes: 1.9.5(acorn@8.15.0)
+      browserslist: 4.25.0
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.18.1
+      es-module-lexer: 1.7.0
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.0
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 3.3.0
+      tapable: 2.2.1
+      terser-webpack-plugin: 5.3.10(esbuild@0.27.7)(webpack@5.94.0(esbuild@0.27.7))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:

@@ -60,7 +60,7 @@
     "dotenv": "^16.4.5",
     "esbuild": "^0.25.5",
     "esbuild-plugin-replace": "^1.4.0",
-    "husky": "^9.1.5",
+    "husky": "^9.1.7",
     "jsdom": "^25.0.0",
     "next": "^16.2.4",
     "next-auth": "4.24.11",
