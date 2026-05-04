@@ -1497,6 +1497,22 @@
           "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Anchorage Digital",
+          "description": "Kami merekomendasikan menempelkan Anchorage Digital ke taskbar Anda untuk akses dompet Anda lebih mudah."
+        },
+        "step2": {
+          "title": "Pindai kode QR untuk login",
+          "description": "Hubungkan dompet organisasi Anda ke dApp dengan keamanan tingkat institusi."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
