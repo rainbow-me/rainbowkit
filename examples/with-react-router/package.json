@@ -14,7 +14,7 @@
     "@react-router/node": "^7.10.1",
     "@react-router/serve": "^7.10.1",
     "isbot": "^5.1.25",
-    "react": "^19.2.3",
+    "react": "^19.2.5",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.10.1",
     "react-router": "^7.10.1",

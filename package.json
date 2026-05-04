@@ -66,7 +66,7 @@
     "next-auth": "4.24.11",
     "postcss": "^8.5.5",
     "postcss-prefix-selector": "^2.1.1",
-    "react": "^19.2.3",
+    "react": "^19.2.5",
     "react-dom": "^19.2.3",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.5.4",
@@ -78,7 +78,7 @@
   "resolutions": {
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "react": "^19.2.3",
+    "react": "^19.2.5",
     "react-dom": "^19.2.3",
     "elliptic": "6.6.1"
   },

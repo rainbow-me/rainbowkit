@@ -11,7 +11,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "iron-session": "^6.3.1",
     "next": "^16.2.4",
-    "react": "^19.2.3",
+    "react": "^19.2.5",
     "react-dom": "^19.2.3",
     "viem": "2.38.0",
     "wagmi": "^2.19.3",

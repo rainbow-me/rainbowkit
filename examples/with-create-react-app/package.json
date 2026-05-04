@@ -13,7 +13,7 @@
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
     "react-dom": "^19.2.3",
     "react-scripts": "5.0.1",
-    "react": "^19.2.3",
+    "react": "^19.2.5",
     "typescript": "5.5.4",
     "util": "0.12.5",
     "viem": "2.38.0",
