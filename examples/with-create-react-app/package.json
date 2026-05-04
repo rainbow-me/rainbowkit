@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^30.0.0",
     "@types/node": "^22.19.1",
     "@types/react": "^19.2.7",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
