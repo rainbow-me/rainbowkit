@@ -1,0 +1,27 @@
+package.json
+  f3cdefa574a73266 50-53
+examples/with-create-react-app/package.json
+  f3cdefa574a73266 7-9
+packages/rainbowkit/package.json
+  f3cdefa574a73266 52-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "0ac79461e74957ed603e5b0780baacea4fde9b12",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 11,
+      "accepted_lines": 11,
+      "overriden_lines": 0
+    }
+  }
+}
