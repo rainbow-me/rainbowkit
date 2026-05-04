@@ -1,0 +1,47 @@
+examples/with-next-custom-button/tsconfig.json
+  f3cdefa574a73266 17
+packages/create-rainbowkit/generated-test-app/tsconfig.json
+  f3cdefa574a73266 16
+examples/with-next-siwe-next-auth/tsconfig.json
+  f3cdefa574a73266 17
+examples/with-next-rainbow-button/tsconfig.json
+  f3cdefa574a73266 17
+examples/with-next-wallet-button/tsconfig.json
+  f3cdefa574a73266 17
+packages/create-rainbowkit/templates/next-app/tsconfig.json
+  f3cdefa574a73266 12
+examples/with-next-app/tsconfig.json
+  f3cdefa574a73266 17
+packages/example/tsconfig.json
+  f3cdefa574a73266 17
+examples/with-next-app-i18n/tsconfig.json
+  f3cdefa574a73266 17
+examples/with-next-siwe-iron-session/tsconfig.json
+  f3cdefa574a73266 17
+site/tsconfig.json
+  f3cdefa574a73266 23
+examples/with-next-mint-nft/tsconfig.json
+  f3cdefa574a73266 17
+examples/with-next/tsconfig.json
+  f3cdefa574a73266 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "dc9fc80e13170b4f8f92d2353a4463b9384797df",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 34,
+      "overriden_lines": 0
+    }
+  }
+}
