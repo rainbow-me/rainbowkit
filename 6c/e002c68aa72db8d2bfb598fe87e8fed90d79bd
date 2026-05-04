@@ -1,0 +1,59 @@
+examples/with-next-mint-nft/package.json
+  f3cdefa574a73266 18
+examples/with-next-wallet-button/package.json
+  f3cdefa574a73266 13
+package.json
+  f3cdefa574a73266 69,81
+examples/with-react-router/package.json
+  f3cdefa574a73266 17
+examples/with-remix/package.json
+  f3cdefa574a73266 18
+examples/with-vite/package.json
+  f3cdefa574a73266 13
+packages/create-rainbowkit/generated-test-app/package.json
+  f3cdefa574a73266 14
+examples/with-next-siwe-next-auth/package.json
+  f3cdefa574a73266 15
+examples/with-next-app/package.json
+  f3cdefa574a73266 13
+site/package.json
+  f3cdefa574a73266 32
+examples/with-next-app-i18n/package.json
+  f3cdefa574a73266 14
+examples/with-next-rainbow-button/package.json
+  f3cdefa574a73266 13
+examples/with-create-react-app/package.json
+  f3cdefa574a73266 16
+packages/example/package.json
+  f3cdefa574a73266 15
+examples/with-next/package.json
+  f3cdefa574a73266 13
+examples/with-next-siwe-iron-session/package.json
+  f3cdefa574a73266 14
+examples/with-next-custom-button/package.json
+  f3cdefa574a73266 13
+packages/create-rainbowkit/templates/next-app/package.json
+  f3cdefa574a73266 14
+packages/rainbowkit/package.json
+  f3cdefa574a73266 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "6ce002c68aa72db8d2bfb598fe87e8fed90d79bd",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 20,
+      "accepted_lines": 20,
+      "overriden_lines": 0
+    }
+  }
+}
