@@ -70,6 +70,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
                 router.push(itemUrl);
               },
             }}
+            onAskAiToggle={() => {}}
             onClose={onClose}
             placeholder="Search documentation"
             searchParameters={{ facetFilters: [`lang:${router.locale}`] }}
