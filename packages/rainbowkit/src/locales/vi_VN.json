@@ -1501,16 +1501,16 @@
     "anchorage_digital": {
       "extension": {
         "step1": {
-          "title": "Install the Anchorage Digital extension",
-          "description": "We recommend pinning Anchorage Digital to your taskbar for easier access to your wallet."
+          "title": "Cài đặt tiện ích mở rộng Anchorage Digital",
+          "description": "Chúng tôi đề xuất ghim Anchorage Digital vào thanh tác vụ của bạn để truy cập ví dễ dàng hơn."
         },
         "step2": {
-          "title": "Scan the QR code to login",
-          "description": "Securely connect your organization's wallets to dApps with institutional-grade security."
+          "title": "Quét mã QR để đăng nhập",
+          "description": "Kết nối ví của tổ chức bạn với dApps một cách an toàn với bảo mật cấp độ doanh nghiệp."
         },
         "step3": {
           "title": "Làm mới trình duyệt của bạn",
-          "description": "Once you log in, click below to refresh the browser and load up the extension."
+          "description": "Một khi bạn đăng nhập, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
         }
       }
     }
