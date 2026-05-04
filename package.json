@@ -58,7 +58,7 @@
     "@vanilla-extract/vite-plugin": "^5.2.2",
     "autoprefixer": "^10.5.0",
     "dotenv": "^16.4.5",
-    "esbuild": "^0.25.5",
+    "esbuild": "^0.28.0",
     "esbuild-plugin-replace": "^1.4.0",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
