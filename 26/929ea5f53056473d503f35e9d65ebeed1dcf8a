@@ -1,0 +1,85 @@
+.github/workflows/ci.yml
+  f3cdefa574a73266 19,48,75,100
+package.json
+  f3cdefa574a73266 54,109
+examples/with-next-app-i18n/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+.github/workflows/cli.yml
+  f3cdefa574a73266 14
+examples/with-next-app/package.json
+  f3cdefa574a73266 20,25
+examples/with-next-custom-button/package.json
+  f3cdefa574a73266 20
+examples/with-next-siwe-iron-session/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-remix/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-next/package.json
+  f3cdefa574a73266 20
+examples/with-react-router/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-next-siwe-iron-session/package.json
+  f3cdefa574a73266 21
+examples/with-react-router/package.json
+  f3cdefa574a73266 28
+examples/with-next-rainbow-button/package.json
+  f3cdefa574a73266 20
+.github/workflows/release.yml
+  f3cdefa574a73266 20
+examples/with-create-react-app/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-remix/package.json
+  f3cdefa574a73266 30
+examples/with-next-app/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-next-custom-button/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-next-mint-nft/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+CLAUDE.md
+  f3cdefa574a73266 160,162
+examples/with-next-wallet-button/package.json
+  f3cdefa574a73266 20
+examples/with-vite/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+packages/create-rainbowkit/generated-test-app/package.json
+  f3cdefa574a73266 20
+examples/with-next-siwe-next-auth/package.json
+  f3cdefa574a73266 22
+.nvmrc
+  f3cdefa574a73266 1
+examples/with-next-app-i18n/package.json
+  f3cdefa574a73266 21,26
+examples/with-create-react-app/package.json
+  f3cdefa574a73266 11
+examples/with-next-siwe-next-auth/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+examples/with-next/.devcontainer/devcontainer.json
+  f3cdefa574a73266 3
+packages/create-rainbowkit/templates/next-app/package.json
+  f3cdefa574a73266 20
+AGENTS.md
+  f3cdefa574a73266 161,163,167-168
+examples/with-next-mint-nft/package.json
+  f3cdefa574a73266 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "26929ea5f53056473d503f35e9d65ebeed1dcf8a",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 42,
+      "total_deletions": 42,
+      "accepted_lines": 42,
+      "overriden_lines": 0
+    }
+  }
+}
