@@ -24,7 +24,7 @@
     "deepmerge": "^4.2.2",
     "framer-motion": "^12.38.0",
     "hast-util-to-html": "9.0.5",
-    "hast-util-to-string": "3.0.0",
+    "hast-util-to-string": "3.0.1",
     "next": "^16.2.4",
     "next-compose-plugins": "2.2.1",
     "next-intl": "^4.11.0",
