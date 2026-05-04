@@ -1497,6 +1497,22 @@
           "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "ติดตั้งส่วนขยาย Anchorage Digital",
+          "description": "เราขอแนะนำให้ตรึง Anchorage Digital ไว้ที่แถบงานของคุณเพื่อให้เข้าถึงกระเป๋าเงินได้ง่ายขึ้น"
+        },
+        "step2": {
+          "title": "สแกน QR โค้ดเพื่อเข้าสู่ระบบ",
+          "description": "เชื่อมต่อกระเป๋าเงินขององค์กรอื่นของคุณเข้ากับ dApp ด้วยความปลอดภัยระดับสถาบัน"
+        },
+        "step3": {
+          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
