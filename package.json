@@ -52,7 +52,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.19.1",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vanilla-extract/esbuild-plugin": "^2.3.22",
     "@vanilla-extract/vite-plugin": "^5.2.2",
@@ -76,7 +76,7 @@
     "wagmi": "^2.19.3"
   },
   "resolutions": {
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
