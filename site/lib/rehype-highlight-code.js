@@ -2,7 +2,7 @@
 
 import { toString as nodeToString } from 'hast-util-to-string';
 import parseNumericRange from 'parse-numeric-range';
-import { refractor } from 'refractor/lib/all.js';
+import { refractor } from 'refractor/all';
 import { visit } from 'unist-util-visit';
 import { highlightLine } from './rehype-highlight-line.js';
 import { highlightWord } from './rehype-highlight-word.js';
