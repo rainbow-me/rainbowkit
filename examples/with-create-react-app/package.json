@@ -8,7 +8,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^22.19.1",
+    "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
     "react-dom": "^19.2.5",

@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [22]
+        node: [24]
 
     steps:
       - name: Use Node.js ${{ matrix.node }}

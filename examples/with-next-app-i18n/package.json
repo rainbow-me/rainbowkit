@@ -18,11 +18,11 @@
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
-    "@types/node": "^22.19.1",
+    "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "typescript": "5.5.4"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }
