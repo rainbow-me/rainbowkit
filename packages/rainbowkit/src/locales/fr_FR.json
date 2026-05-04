@@ -1501,16 +1501,16 @@
     "anchorage_digital": {
       "extension": {
         "step1": {
-          "title": "Install the Anchorage Digital extension",
-          "description": "We recommend pinning Anchorage Digital to your taskbar for easier access to your wallet."
+          "title": "Installez l'extension Anchorage Digital",
+          "description": "Nous vous recommandons d'épingler Anchorage Digital à votre barre des tâches pour un accès plus facile à votre portefeuille."
         },
         "step2": {
-          "title": "Scan the QR code to login",
-          "description": "Securely connect your organization's wallets to dApps with institutional-grade security."
+          "title": "Scannez le code QR pour vous connecter",
+          "description": "Connectez en toute sécurité les portefeuilles de votre organisation à des dApps avec une sécurité de niveau institutionnel."
         },
         "step3": {
           "title": "Rafraîchissez votre navigateur",
-          "description": "Once you log in, click below to refresh the browser and load up the extension."
+          "description": "Une fois connecté, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
       }
     }
