@@ -1497,6 +1497,22 @@
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Anchorage Digital",
+          "description": "Recomendamos fixar Anchorage Digital na sua barra de tarefas para facilitar o acesso à sua carteira."
+        },
+        "step2": {
+          "title": "Escaneie o código QR para fazer login",
+          "description": "Conecte as carteiras da sua organização com segurança a dApps com segurança de nível institucional."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
