@@ -1,5 +1,24 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.11
+
+### Patch Changes
+
+- 3672dc6: Added Anchorage Digital wallet support with the `anchorageDigitalWallet` wallet connector.
+- b0f6d52: fix: harden useCoolMode against malicious wallet icon URLs
+
+  The cool mode particle animation built image elements via `innerHTML`, which
+  parses its input as HTML. A malicious EIP-6963 wallet could supply a crafted
+  icon URL containing injected attributes (e.g. `onerror`) that would execute
+  in the dApp's origin when a user interacts with the wallet button.
+
+  Switched to `document.createElement('img')` with property assignment so the
+  icon value is always treated as a plain URL rather than markup.
+
+- 1043d88: Added MeCo Wallet support with `mecoWallet` wallet connector.
+- 25c4c2b: Improved SSR safety to prevent WalletConnect initialization warnings.
+- f2523a9: Updated MetaMask wallet icon
+
 ## 2.2.10
 
 ### Patch Changes
@@ -13,8 +32,9 @@
 - 6c745a5: Disable third-party connector telemetry by default for user privacy. h/t @TimDaub
 
   **To opt-in to WalletConnect analytics:**
-  
+
   With `getDefaultConfig`:
+
   ```ts
   const config = getDefaultConfig({
     /** ... **/
@@ -23,15 +43,17 @@
     },
   });
   ```
-  
+
   **To opt-in to Base Account telemetry:**
+
   ```ts
   baseAccount.preference = {
     telemetry: true,
   };
   ```
-  
+
   **To opt-in to MetaMask analytics:**
+
   ```ts
   metaMaskWallet.enableAnalytics = true;
   ```
