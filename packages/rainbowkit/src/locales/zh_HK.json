@@ -1497,6 +1497,22 @@
           "description": "掃描後，將會出現連接提示，讓你連接你的錢包。"
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "安裝 Anchorage Digital 擴充套件 ",
+          "description": "我們建議您將 Anchorage Digital 固定在工作列上，以便更輕鬆地存取您的錢包。"
+        },
+        "step2": {
+          "title": "掃描 QR 碼以登入",
+          "description": "透過機構級別的安全性，安全地將您的組織錢包連接至 dApps。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
