@@ -1481,6 +1481,38 @@
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación MeCo Wallet",
+          "description": "Coloca MeCo Wallet en tu pantalla de inicio para acceder más rápidamente a tu billetera."
+        },
+        "step2": {
+          "title": "Crea o Importa una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión Anchorage Digital",
+          "description": "Recomendamos anclar Anchorage Digital a tu barra de tareas para acceder más fácilmente a tu cartera."
+        },
+        "step2": {
+          "title": "Escanea el código QR para iniciar sesión",
+          "description": "Conecta de manera segura las carteras de tu organización a dApps con seguridad de nivel institucional."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que inicies sesión, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      }
     }
   }
 }

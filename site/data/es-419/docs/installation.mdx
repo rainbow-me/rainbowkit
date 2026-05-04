@@ -114,6 +114,21 @@ Ahora RainbowKit manejará la selección de billetera de tus usuarios, mostrará
 
 Algunas herramientas de compilación requerirán configuración adicional.
 
+##### Next.js
+
+RainbowKit funciona tanto con [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (el empaquetador predeterminado en Next.js 16+) como con [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+Si estás utilizando complementos que aún requieren Webpack, agrega la bandera `--webpack` a tus scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 Cuando uses [Remix](https://remix.run), deberás incluir polifills para los módulos `buffer`, `events` y `http`. Consulta la configuración de Remix a continuación, o [nuestro proyecto de ejemplo Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

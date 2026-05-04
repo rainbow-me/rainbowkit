@@ -122,7 +122,7 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '包含当前账户详细信息的对象，如下所述',
+        '包含当前账户详细信息的对象，详情如下所述',
     },
     {
       name: 'account.address',
@@ -130,7 +130,8 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          完整的账户地址，例如 "0x7a3d05c70581bD345fe117c06e45f9669205384f"
+          完整的账户地址，例如：
+          "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
     },
@@ -138,7 +139,7 @@ export const YourApp = () => {
       name: 'account.balanceDecimals',
       required: false,
       type: 'string | undefined	',
-      description: '账户余额（以小数表示）',
+      description: '以小数表示的账户余额',
     },
     {
       name: 'account.balanceFormatted',
@@ -146,7 +147,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          账户余额格式化为字符串，例如 {' '}
+          格式化为字符串的账户余额，例如：{' '}
           <code>1.234567890123456789</code>
         </>
       ),
@@ -157,7 +158,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          账户余额的符号，例如 <code>ETH</code>
+          余额的货币符号，例如：<code>ETH</code>
         </>
       ),
     },
@@ -167,7 +168,7 @@ export const YourApp = () => {
       type: 'string | undefined	',
       description: (
         <>
-          将余额格式化为3位有效数字，并带有符号，例如{' '}<code>1.23 ETH</code>
+          格式化为3位有效数字的余额以及符号，例如：<code>1.23 ETH</code>
         </>
       ),
     },
@@ -177,7 +178,8 @@ export const YourApp = () => {
       type: 'string',
       description: (
         <>
-          ENS 名称或地址的截断版本，例如{' '}<code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
+          ENS 名称或地址的缩写版本，例如：{' '}
+          <code>"rainbowwallet.eth"</code> 或 <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -185,7 +187,7 @@ export const YourApp = () => {
       name: 'account.ensAvatar',
       required: false,
       type: 'string	| undefined',
-      description: 'ENS 头像的 URI',
+      description: 'ENS头像 URI',
     },
     {
       name: 'account.ensName',
@@ -193,7 +195,7 @@ export const YourApp = () => {
       type: 'string	| undefined',
       description: (
         <>
-          ENS名称，例如{' '}<code>rainbowwallet.eth</code>
+          ENS名称，例如：<code>rainbowwallet.eth</code>
         </>
       ),
     },
@@ -202,7 +204,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean',
       description:
-        '布尔值，表示当前链上该账户是否有待处理的交易',
+        '布尔值，指示账户是否有当前链的待处理交易',
     },
   ]}
 />
@@ -216,27 +218,27 @@ export const YourApp = () => {
       required: false,
       type: 'object | undefined',
       description:
-        '包含当前链的详细信息的对象，如下所述',
+        '包含当前链详细信息的对象，详情如下所述',
     },
     {
       name: 'chain.hasIcon',
       required: false,
       type: 'boolean',
-      description: '是否为链指定了图标',
+      description: '链是否有指定的图标',
     },
     {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
       description:
-        '链图标 URL（在下载 Base64 数据 URL 时可能也是未定义的）',
+        '链图标的 URL（在下载 Base64 数据 URLs 时可能也未定义）',
     },
     {
       name: 'chain.iconBackground',
       required: false,
       type: 'string | undefined',
       description:
-        '图片加载时会显示的链图标背景',
+        '图标加载时可见的链图标背景',
     },
     {
       name: 'chain.id',
@@ -244,7 +246,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          链 ID,例如 <code>1</code>
+          链ID，例如：<code>1</code>
         </>
       ),
     },
@@ -254,7 +256,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          链名称，例如 <code>"Ethereum"</code>
+          链名称，例如：<code>"Ethereum"</code>
         </>
       ),
     },
@@ -263,7 +265,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        '一个布尔值，表示当前链是否被支持。',
+        '布尔值，指示当前链是否不受支持',
     },
   ]}
 />
@@ -276,44 +278,44 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: '打开账户模态窗口的函数',
+      description: '打开账户模态的函数',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: '打开链模态对话框的函数',
+      description: '打开链模态的函数',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: '打开连接钱包模态框的函数',
+      description: '打开连接模态的函数',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '指示账户模态窗口是否打开的布尔值',
+        '布尔值，指示账户模态是否已打开',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: '一个布尔值，指示链式模态框是否打开',
+      description: '布尔值，指示链模态是否已打开',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '表示连接模态框是否打开的布尔值',
+        '布尔值，指示连接模态是否已打开',
     },
   ]}
 />
 
-### 常规状态属性
+### 通用状态属性
 
 <PropsTable
   data={[
@@ -329,8 +331,7 @@ export const YourApp = () => {
       required: false,
       type: '"loading" | "unauthenticated" | "authenticated" | undefined',
       description:
-        '身份验证状态，如果尚未配置身份验证，则为 undefined',
+        '身份验证状态，或如果未配置身份验证，则为未定义',
     },
   ]}
 />
-

@@ -114,6 +114,21 @@ RainbowKit übernimmt nun die Wallet-Auswahl Ihrer Benutzer, zeigt Wallet-/Trans
 
 Einige Build-Tools benötigen zusätzliche Einrichtung.
 
+##### Next.js
+
+RainbowKit funktioniert sowohl mit [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (dem Standard-Bundler in Next.js 16+) als auch mit [Webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+Wenn Sie Plugins verwenden, die noch Webpack benötigen, fügen Sie das `--webpack`-Flag zu Ihren Scripts hinzu:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 Wenn Sie [Remix](https://remix.run) verwenden, müssen Sie die Module `buffer`, `events` und `http` polyfillen. Verwenden Sie die Remix-Konfiguration unten oder [unser Beispiel-Remix-Projekt](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

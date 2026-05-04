@@ -1481,6 +1481,38 @@
           "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application MeCo Wallet",
+          "description": "Placez MeCo Wallet sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créez ou Importer un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension Anchorage Digital",
+          "description": "Nous vous recommandons d'épingler Anchorage Digital à votre barre des tâches pour un accès plus facile à votre portefeuille."
+        },
+        "step2": {
+          "title": "Scannez le code QR pour vous connecter",
+          "description": "Connectez en toute sécurité les portefeuilles de votre organisation à des dApps avec une sécurité de niveau institutionnel."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois connecté, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
+        }
+      }
     }
   }
 }

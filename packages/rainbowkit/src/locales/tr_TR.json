@@ -1481,6 +1481,38 @@
           "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "MeCo Cüzdan uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için MeCo Cüzdan'ı ana ekranınıza koyun."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcı düğmesine dokunun",
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Anchorage Digital eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim için Anchorage Digital'i görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Giriş yapmak için QR kodunu tarayın",
+          "description": "Kurumsal düzeyde güvenlik ile organizasyonunuzun cüzdanlarını dApp'lere güvenle bağlayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Giriş yaptıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
     }
   }
 }

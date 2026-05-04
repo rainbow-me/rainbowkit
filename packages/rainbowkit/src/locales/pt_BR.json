@@ -1481,6 +1481,38 @@
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo da Carteira MeCo",
+          "description": "Coloque o MeCo Wallet na sua tela inicial para acessar sua carteira mais rapidamente."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Anchorage Digital",
+          "description": "Recomendamos fixar Anchorage Digital na sua barra de tarefas para facilitar o acesso à sua carteira."
+        },
+        "step2": {
+          "title": "Escaneie o código QR para fazer login",
+          "description": "Conecte as carteiras da sua organização com segurança a dApps com segurança de nível institucional."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de fazer login, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
     }
   }
 }

@@ -114,6 +114,21 @@ RainbowKit artık kullanıcılarınızın cüzdan seçimini gerçekleştirecek, 
 
 Bazı yapı araçları ek ayarlar gerektirecektir.
 
+##### Next.js
+
+RainbowKit hem [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (Next.js 16+'da varsayılan paketleyici) hem de [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack) ile çalışır.
+
+Eğer hala Webpack gerektiren eklentiler kullanıyorsanız, scriptlerinize `--webpack` bayrağını ekleyin:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 [Remix](https://remix.run) kullanırken `buffer`, `events` ve `http` modüllerini polyfill yapmanız gerekmektedir. aşağıdaki Remix yapılandırmasına veya [örnek Remix projemize](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) bakabilirsiniz.

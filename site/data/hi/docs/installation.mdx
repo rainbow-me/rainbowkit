@@ -114,6 +114,21 @@ export const YourApp = () => {
 
 कुछ बिल्ड उपकरणों के लिए अतिरिक्त सेटअप की आवश्यकता होगी।
 
+##### नेक्स्ट.js
+
+RainbowKit [टर्बो पैक](https://nextjs.org/docs/app/api-reference/turbopack) (नेक्स्ट.js 16+ में डिफ़ॉल्ट बंडलर) और [वेबपैक](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack) दोनों के साथ काम करता है।
+
+यदि आप ऐसे प्लगइन्स का उपयोग कर रहे हैं जो अभी भी वेबपैक की आवश्यकता रखते हैं, तो अपने स्क्रिप्ट्स में `--webpack` फ्लैग जोड़ें:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### रीमिक्स
 
 [रीमिक्स](https://remix.run) का उपयोग करते वक्त, आपको `buffer`, `events` और `http` मॉड्यूल्स को पोलीफ़िल करना होगा। नीचे रीमिक्स कॉन्फ़िगरेशन का संदर्भ लें, या [हमारे नमूना रीमिक्स प्रोजेक्ट](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) को देखें।

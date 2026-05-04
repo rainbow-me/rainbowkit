@@ -114,6 +114,21 @@ RainbowKit sẽ xử lý việc lựa chọn ví của người dùng, hiển th
 
 Một số công cụ xây dựng sẽ yêu cầu cài đặt bổ sung.
 
+##### Next.js
+
+RainbowKit hoạt động với cả [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (gói mặc định trong Next.js 16+) và [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+Nếu bạn đang sử dụng các plugin vẫn yêu cầu Webpack, hãy thêm cờ `--webpack` vào script của bạn:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 Khi sử dụng [Remix](https://remix.run), bạn phải tạo bộ đệm, sự kiện và các mô-đun http. Tham khảo cấu hình Remix dưới đây, hoặc [dự án mẫu Remix của chúng tôi](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

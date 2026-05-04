@@ -1481,6 +1481,38 @@
           "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "MeCo Wallet 앱을 엽니다",
+          "description": "지갑에 더 빠르게 접근하기 위해 홈 화면에 MeCo Wallet을 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Anchorage Digital 확장 프로그램 설치",
+          "description": "지갑을 더 쉽게 접근하기 위해 작업 표시줄에 Anchorage Digital을 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "로그인하려면 QR 코드를 스캔하세요",
+          "description": "기관급 보안을 통해 조직의 지갑을 dApp에 안전하게 연결하세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "로그인 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+        }
+      }
     }
   }
 }

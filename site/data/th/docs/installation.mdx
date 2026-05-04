@@ -114,6 +114,21 @@ export const YourApp = () => {
 
 เครื่องมือบางอย่างอาจต้องการการตั้งค่าเพิ่มเติม
 
+##### Next.js
+
+RainbowKit ทำงานได้กับทั้ง [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (การรวมค่าเริ่มต้นใน Next.js 16+) และ [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+หากคุณใช้ปลั๊กอินที่ยังต้องการ Webpack ให้เพิ่ม flag `--webpack` ลงในสคริปต์ของคุณ:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 เมื่อใช้ [Remix](https://remix.run), คุณต้องเติมเต็ม `buffer`, `events` และโมดูล `http` อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โครงการตัวอย่าง Remix ของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

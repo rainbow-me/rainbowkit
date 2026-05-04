@@ -114,6 +114,21 @@ RainbowKit kini akan menguruskan pemilihan dompet pengguna anda, memaparkan makl
 
 Beberapa alat pembinaan memerlukan persediaan tambahan.
 
+##### Next.js
+
+RainbowKit berfungsi dengan kedua-duanya [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (penggabung lalai dalam Next.js 16+) dan [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+Jika anda menggunakan plugin yang masih memerlukan Webpack, tambah bendera `--webpack` ke dalam skrip anda:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 Apabila menggunakan [Remix](https://remix.run), anda mesti mengisi modul `buffer`, `events`, dan `http`. Rujuk konfigurasi Remix di bawah, atau [projek contoh Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

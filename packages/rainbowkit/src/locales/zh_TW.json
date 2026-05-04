@@ -1481,6 +1481,38 @@
           "description": "掃描後，將出現連接提示以連接您的錢包。"
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "打開 MeCo Wallet 應用程式",
+          "description": "將 MeCo Wallet 放在您的主螢幕上，以便更快地訪問您的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "創建一個新的錢包或導入現有的錢包。"
+        },
+        "step3": {
+          "title": "點擊掃描按鈕",
+          "description": "掃描後，將出現連接提示以連接您的錢包。"
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "安裝 Anchorage Digital 擴充功能",
+          "description": "我們建議將 Anchorage Digital 固定到工作列上，以便更輕鬆地存取您的錢包。"
+        },
+        "step2": {
+          "title": "掃描二維碼以登入",
+          "description": "以機構級安全性，安全地連接您的組織錢包至dApps。"
+        },
+        "step3": {
+          "title": "刷新您的瀏覽器",
+          "description": "一旦您登入，請點擊下方以重新整理瀏覽器並載入擴展功能。"
+        }
+      }
     }
   }
 }

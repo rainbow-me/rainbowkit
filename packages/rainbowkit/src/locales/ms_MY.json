@@ -1481,6 +1481,38 @@
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi MeCo Wallet",
+          "description": "Letakkan MeCo Wallet pada skrin utama anda untuk akses yang lebih cepat ke dompet anda."
+        },
+        "step2": {
+          "title": "Cipta atau Import Dompet",
+          "description": "Cipta dompet baharu atau import dompet sedia ada."
+        },
+        "step3": {
+          "title": "Ketuk butang Imbas",
+          "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Pasang sambungan Anchorage Digital",
+          "description": "Kami mengesyorkan menyematkan Anchorage Digital pada bar tugas anda untuk akses mudah ke dompet anda."
+        },
+        "step2": {
+          "title": "Imbas kod QR untuk log masuk",
+          "description": "Sambungkan dompet organisasi anda ke dApps dengan keselamatan setara institusi."
+        },
+        "step3": {
+          "title": "Segarkan pelayar anda",
+          "description": "Setelah anda log masuk, klik di bawah untuk menyegar semula pelayar dan memuatkan sambungan."
+        }
+      }
     }
   }
 }

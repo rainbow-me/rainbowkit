@@ -114,6 +114,21 @@ RainbowKit тепер буде обробляти вибір гаманця ко
 
 Деякі інструменти збірки можуть вимагати додаткового налаштування.
 
+##### Next.js
+
+RainbowKit працює як із [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (стандартний завантажувач у Next.js 16+), так і з [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+Якщо ви використовуєте плагіни, що все ще потребують Webpack, додайте прапорець `--webpack` до своїх скриптів:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 Використовуючи [Remix](https://remix.run), ви повинні заповнити `buffer`, `events` та `http` модулі. Дивіться конфігурацію Remix нижче або [наш зразковий проект Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).

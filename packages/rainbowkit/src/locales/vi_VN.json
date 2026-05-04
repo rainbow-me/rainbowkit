@@ -1481,6 +1481,38 @@
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng MeCo Wallet",
+          "description": "Thêm MeCo Wallet vào màn hình chính của bạn để truy cập nhanh vào ví của bạn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Cài đặt tiện ích mở rộng Anchorage Digital",
+          "description": "Chúng tôi đề xuất ghim Anchorage Digital vào thanh tác vụ của bạn để truy cập ví dễ dàng hơn."
+        },
+        "step2": {
+          "title": "Quét mã QR để đăng nhập",
+          "description": "Kết nối ví của tổ chức bạn với dApps một cách an toàn với bảo mật cấp độ doanh nghiệp."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Một khi bạn đăng nhập, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
+        }
+      }
     }
   }
 }
