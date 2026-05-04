@@ -36,7 +36,7 @@
     "rehype-slug": "^6.0.0",
     "three": "^0.184.0",
     "unified": "11.0.5",
-    "unist-util-visit": "5.0.0",
+    "unist-util-visit": "5.1.0",
     "viem": "2.38.0",
     "wagmi": "^2.19.3"
   },
