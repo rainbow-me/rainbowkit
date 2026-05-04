@@ -616,8 +616,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       rehype-parse:
-        specifier: 9.0.0
-        version: 9.0.0
+        specifier: 9.0.1
+        version: 9.0.1
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
@@ -11431,8 +11431,8 @@ packages:
     resolution: {integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==}
     hasBin: true
 
-  rehype-parse@9.0.0:
-    resolution: {integrity: sha512-WG7nfvmWWkCR++KEkZevZb/uw41E8TsH4DsY9UxsTbIXCVGbAs4S+r8FrQ+OtH5EEQAs+5UxKC42VinkmpA1Yw==}
+  rehype-parse@9.0.1:
+    resolution: {integrity: sha512-ksCzCD0Fgfh7trPDxr2rSylbwq9iYDkSn8TCDmEJ49ljEUBxDVCzCHv7QNzZOfODanX4+bWQ4WZqLCRWYLfhag==}
 
   rehype-slug@6.0.0:
     resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
@@ -26950,7 +26950,7 @@ snapshots:
     dependencies:
       jsesc: 0.5.0
 
-  rehype-parse@9.0.0:
+  rehype-parse@9.0.1:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-from-html: 2.0.2
@@ -26961,7 +26961,7 @@ snapshots:
       '@types/hast': 3.0.4
       github-slugger: 2.0.0
       hast-util-heading-rank: 3.0.0
-      hast-util-to-string: 3.0.0
+      hast-util-to-string: 3.0.1
       unist-util-visit: 5.0.0
 
   rehype-stringify@10.0.1:
