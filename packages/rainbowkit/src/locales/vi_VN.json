@@ -1497,6 +1497,22 @@
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Install the Anchorage Digital extension",
+          "description": "We recommend pinning Anchorage Digital to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "Scan the QR code to login",
+          "description": "Securely connect your organization's wallets to dApps with institutional-grade security."
+        },
+        "step3": {
+          "title": "Làm mới trình duyệt của bạn",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
