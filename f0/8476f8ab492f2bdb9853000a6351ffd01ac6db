@@ -1,0 +1,25 @@
+site/contentlayer.config.ts
+  f3cdefa574a73266 2,67
+site/package.json
+  f3cdefa574a73266 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f08476f8ab492f2bdb9853000a6351ffd01ac6db",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 4,
+      "accepted_lines": 3,
+      "overriden_lines": 2
+    }
+  }
+}
