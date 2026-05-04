@@ -1510,7 +1510,7 @@
         },
         "step3": {
           "title": "刷新您的浏览器",
-          "description": "Once you log in, click below to refresh the browser and load up the extension."
+          "description": "登录后，点击下方刷新浏览器并加载扩展。"
         }
       }
     }
