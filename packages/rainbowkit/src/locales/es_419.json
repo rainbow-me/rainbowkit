@@ -1497,6 +1497,22 @@
           "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión Anchorage Digital",
+          "description": "Recomendamos anclar Anchorage Digital a tu barra de tareas para acceder más fácilmente a tu cartera."
+        },
+        "step2": {
+          "title": "Escanea el código QR para iniciar sesión",
+          "description": "Conecta de manera segura las carteras de tu organización a dApps con seguridad de nivel institucional."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
