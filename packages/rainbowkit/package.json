@@ -56,7 +56,7 @@
     "@types/ua-parser-js": "^0.7.39",
     "@vanilla-extract/css-utils": "0.1.6",
     "@vanilla-extract/private": "1.0.9",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.5.0",
     "dotenv": "^16.4.5",
     "jsdom": "^29.1.1",
     "msw": "^2.14.2",
