@@ -1497,6 +1497,22 @@
           "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Install the Anchorage Digital extension",
+          "description": "We recommend pinning Anchorage Digital to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "Scan the QR code to login",
+          "description": "Securely connect your organization's wallets to dApps with institutional-grade security."
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
