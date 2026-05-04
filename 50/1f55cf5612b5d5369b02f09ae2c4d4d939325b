@@ -1,0 +1,23 @@
+packages/rainbowkit/package.json
+  f3cdefa574a73266 62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "501f55cf5612b5d5369b02f09ae2c4d4d939325b",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
