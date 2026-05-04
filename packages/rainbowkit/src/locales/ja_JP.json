@@ -1501,16 +1501,16 @@
     "anchorage_digital": {
       "extension": {
         "step1": {
-          "title": "Install the Anchorage Digital extension",
-          "description": "We recommend pinning Anchorage Digital to your taskbar for easier access to your wallet."
+          "title": "アンカレッジデジタル拡張機能をインストール",
+          "description": "walletへのアクセスを簡単にするために、アンカレッジデジタルをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Scan the QR code to login",
-          "description": "Securely connect your organization's wallets to dApps with institutional-grade security."
+          "title": "QRコードをスキャンしてログイン",
+          "description": "組織のウォレットをdAppに、安全に接続し、機関レベルのセキュリティを確保します。"
         },
         "step3": {
           "title": "ブラウザを更新する",
-          "description": "Once you log in, click below to refresh the browser and load up the extension."
+          "description": "ログインしたら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
         }
       }
     }
