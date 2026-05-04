@@ -84,7 +84,12 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
     const direction = Math.random() <= 0.5 ? -1 : 1;
 
     const particle = document.createElement('div');
-    particle.innerHTML = `<img src="${imageUrl}" width="${size}" height="${size}" style="border-radius: 25%">`;
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.width = size;
+    img.height = size;
+    img.style.borderRadius = '25%';
+    particle.appendChild(img);
     particle.setAttribute(
       'style',
       [
