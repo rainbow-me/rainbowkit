@@ -58,7 +58,7 @@
     "@vanilla-extract/private": "1.0.9",
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.5",
-    "jsdom": "^25.0.0",
+    "jsdom": "^29.1.1",
     "msw": "^2.14.2",
     "nock": "^14.0.14",
     "postcss": "^8.5.5",
