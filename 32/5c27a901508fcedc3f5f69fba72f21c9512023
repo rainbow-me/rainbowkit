@@ -1,0 +1,43 @@
+examples/with-next-custom-button/package.json
+  f3cdefa574a73266 21
+examples/with-next-siwe-iron-session/package.json
+  f3cdefa574a73266 22
+examples/with-next-app/package.json
+  f3cdefa574a73266 21
+examples/with-next-rainbow-button/package.json
+  f3cdefa574a73266 21
+examples/with-next-mint-nft/package.json
+  f3cdefa574a73266 26
+examples/with-create-react-app/package.json
+  f3cdefa574a73266 12
+examples/with-next-app-i18n/package.json
+  f3cdefa574a73266 22
+examples/with-next-wallet-button/package.json
+  f3cdefa574a73266 21
+examples/with-remix/package.json
+  f3cdefa574a73266 25
+examples/with-next/package.json
+  f3cdefa574a73266 21
+examples/with-next-siwe-next-auth/package.json
+  f3cdefa574a73266 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "325c27a901508fcedc3f5f69fba72f21c9512023",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 11,
+      "accepted_lines": 11,
+      "overriden_lines": 0
+    }
+  }
+}
