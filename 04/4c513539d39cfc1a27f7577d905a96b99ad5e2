@@ -1,0 +1,23 @@
+vitest.config.ts
+  f3cdefa574a73266 25-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "044c513539d39cfc1a27f7577d905a96b99ad5e2",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 13,
+      "total_deletions": 25,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
