@@ -1497,6 +1497,22 @@
           "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "安装 Anchorage Digital 扩展",
+          "description": "我们建议将 Anchorage Digital 固定到任务栏，以便更轻松地访问您的钱包。"
+        },
+        "step2": {
+          "title": "扫描二维码登录",
+          "description": "使用机构级安全性安全地将您组织的钱包连接到 dApp。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
