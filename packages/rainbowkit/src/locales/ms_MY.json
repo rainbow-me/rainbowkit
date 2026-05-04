@@ -1497,6 +1497,22 @@
           "description": "Setelah anda mengimbas, prompt sambungan akan muncul untuk anda sambungkan dompet anda."
         }
       }
+    },
+    "anchorage_digital": {
+      "extension": {
+        "step1": {
+          "title": "Pasang sambungan Anchorage Digital",
+          "description": "Kami mengesyorkan menyematkan Anchorage Digital pada bar tugas anda untuk akses mudah ke dompet anda."
+        },
+        "step2": {
+          "title": "Imbas kod QR untuk log masuk",
+          "description": "Sambungkan dompet organisasi anda ke dApps dengan keselamatan setara institusi."
+        },
+        "step3": {
+          "title": "Segarkan pelayar anda",
+          "description": "Once you log in, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
