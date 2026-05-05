@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### 伺服器端訊息創建
+
+`createMessage` 也支持返回 `Promise`，使您可以在伺服器上構造 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 消息。為了更嚴格的安全性，伺服器端點應該推導或驗證像 `domain`、`nonce` 和 `issued-at` 時間戳這樣的安全關鍵字段，而不是信任由客戶端提供的值。更多細節請參閱 [SIWE 文檔](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation)。
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### 提供身份驗證狀態
 
 假設您的應用程式已經在某種程度上管理身份驗證生命週期，您可以將當前身份驗證狀態與自定義適配器一起傳遞給 `RainbowKitAuthenticationProvider`，包裹您的現有 `RainbowKitProvider`。
