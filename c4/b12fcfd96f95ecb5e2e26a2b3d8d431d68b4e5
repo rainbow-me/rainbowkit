@@ -1,0 +1,31 @@
+packages/rainbowkit/src/index.ts
+  f3cdefa574a73266 2-9
+.changeset/rainbow-button-public-types.md
+  f3cdefa574a73266 1-5
+packages/rainbow-button/src/components/RainbowButton.tsx
+  f3cdefa574a73266 1-5
+.changeset/rainbowkit-public-type-exports.md
+  f3cdefa574a73266 1-5
+packages/rainbowkit/src/components/WalletButton/WalletButton.tsx
+  f3cdefa574a73266 1,8-13,125-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "c4b12fcfd96f95ecb5e2e26a2b3d8d431d68b4e5",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 2,
+      "accepted_lines": 80,
+      "overriden_lines": 0
+    }
+  }
+}
