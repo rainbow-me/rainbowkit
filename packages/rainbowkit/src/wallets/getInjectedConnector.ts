@@ -74,6 +74,8 @@ function getInjectedProvider({
     const provider = getExplicitInjectedProvider(flag);
     if (provider) return provider;
   }
+  // Wallet-specific lookups should not fall back to another injected provider.
+  if (namespace || flag) return;
   if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
   return _window.ethereum;
