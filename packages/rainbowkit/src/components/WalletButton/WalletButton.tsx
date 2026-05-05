@@ -1,4 +1,4 @@
-import React, { type ReactNode, useContext } from 'react';
+import React, { type JSX, type ReactNode, useContext } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -12,7 +12,10 @@ import {
 
 export type { WalletButtonRendererProps } from './WalletButtonRenderer';
 
-export const WalletButton = ({ wallet }: { wallet?: string }) => {
+export const WalletButton: {
+  (props: { wallet?: string }): JSX.Element | undefined;
+  Custom: (props: WalletButtonRendererProps) => ReactNode;
+} = ({ wallet }) => {
   return (
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {
@@ -122,8 +125,4 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
   );
 };
 
-// Annotated as a function signature (rather than `typeof WalletButtonRenderer`)
-// so the emitted public type doesn't reference the internal Renderer module.
-const WalletButtonCustom: (props: WalletButtonRendererProps) => ReactNode =
-  WalletButtonRenderer;
-WalletButton.Custom = WalletButtonCustom;
+WalletButton.Custom = WalletButtonRenderer;
