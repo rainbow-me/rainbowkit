@@ -1,0 +1,25 @@
+packages/rainbowkit/src/hooks/useWindowSize.ts
+  f3cdefa574a73266 22-25
+packages/rainbowkit/src/utils/debounce.ts
+  f3cdefa574a73266 2,4,14-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "ca4f5b28c5a27dc88fab6206ab837a2382637095",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 3,
+      "accepted_lines": 15,
+      "overriden_lines": 0
+    }
+  }
+}
