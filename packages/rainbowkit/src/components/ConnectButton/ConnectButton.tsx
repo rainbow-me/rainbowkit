@@ -48,8 +48,8 @@ export function ConnectButton({
 
   useEffect(() => {
     setShowBalance(showBalance);
-    if (!ready) setReady(true);
-  }, [ready, showBalance, setShowBalance]);
+    setReady(true);
+  }, [showBalance, setShowBalance]);
 
   return ready ? (
     <ConnectButtonRenderer>
