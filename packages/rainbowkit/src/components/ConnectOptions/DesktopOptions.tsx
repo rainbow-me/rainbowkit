@@ -131,44 +131,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       } else if (!isBack && newWalletStep === WalletStep.Connect) {
         setInitialWalletStep(WalletStep.Connect);
       }
+      setConnectionError(false);
       setWalletStep(newWalletStep);
     },
     [clearSelectedWallet, initialWalletStep],
-  );
-
-  const onDesktopUri = useCallback(
-    async (wallet: WalletConnector) => {
-      const sWallet = wallets.find((w) => wallet.id === w.id);
-
-      if (!sWallet?.getDesktopUri) return;
-
-      setTimeout(async () => {
-        const uri = await sWallet?.getDesktopUri?.();
-        if (uri) window.open(uri, safari ? '_blank' : '_self');
-      }, 0);
-    },
-    [safari, wallets],
-  );
-
-  const onQrCode = useCallback(
-    async (wallet: WalletConnector) => {
-      const sWallet = wallets.find((w) => wallet.id === w.id);
-
-      const uri = await sWallet?.getQrCodeUri?.();
-
-      setQrCodeUri(uri);
-
-      // This timeout prevents the UI from flickering if connection is instant,
-      // otherwise users will see a flash of the "connecting" state.
-      setTimeout(
-        () => {
-          setSelectedWallet(sWallet);
-          changeWalletStep(WalletStep.Connect);
-        },
-        uri ? 0 : 50,
-      );
-    },
-    [changeWalletStep, wallets],
   );
 
   const selectWallet = useCallback(
@@ -177,11 +143,32 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       // green badge on our custom WalletButton API
       addLatestWalletId(wallet.id);
 
+      const sWallet = wallets.find((w) => wallet.id === w.id);
+
       // This ensures that we listen to the provider.once("display_uri")
       // before connecting to the wallet
       if (wallet.ready) {
-        onQrCode(wallet);
-        onDesktopUri(wallet);
+        const uri = await sWallet?.getQrCodeUri?.();
+
+        setQrCodeUri(uri);
+
+        // This timeout prevents the UI from flickering if connection is instant,
+        // otherwise users will see a flash of the "connecting" state.
+        setTimeout(
+          () => {
+            setSelectedWallet(sWallet);
+            changeWalletStep(WalletStep.Connect);
+          },
+          uri ? 0 : 50,
+        );
+
+        if (sWallet?.getDesktopUri) {
+          setTimeout(async () => {
+            const desktopUri = await sWallet?.getDesktopUri?.();
+            if (desktopUri)
+              window.open(desktopUri, safari ? '_blank' : '_self');
+          }, 0);
+        }
       }
 
       connectToWallet(wallet);
@@ -196,7 +183,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         );
       }
     },
-    [changeWalletStep, connectToWallet, onDesktopUri, onQrCode],
+    [changeWalletStep, connectToWallet, safari, wallets],
   );
 
   // If a user hasn't installed the extension we will get the
