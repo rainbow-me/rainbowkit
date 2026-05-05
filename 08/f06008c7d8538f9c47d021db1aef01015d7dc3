@@ -1,0 +1,36 @@
+.pnpmfile.cjs
+  05bf17f2d7c70e16 29-31,34,36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "08f06008c7d8538f9c47d021db1aef01015d7dc3",
+  "prompts": {
+    "05bf17f2d7c70e16": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df71c-80b8-7763-a96e-9bfce0294d50",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 6,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "8424b39b578ffc34": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6ac-6678-7bb0-a8f9-a879a9f9138d",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 2873,
+      "total_deletions": 521,
+      "accepted_lines": 2440,
+      "overriden_lines": 0
+    }
+  }
+}
