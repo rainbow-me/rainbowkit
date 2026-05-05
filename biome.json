@@ -107,6 +107,18 @@
           }
         }
       }
+    },
+    {
+      "includes": [
+        "packages/rainbowkit/src/components/ConnectOptions/DesktopOptions.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": "off"
+          }
+        }
+      }
     }
   ],
   "vcs": {
