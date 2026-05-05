@@ -1,5 +1,4 @@
 const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
-const withPlugins = require('next-compose-plugins');
 // TODO: update import https://github.com/contentlayerdev/contentlayer/issues/140
 const { withContentlayer } = require('next-contentlayer');
 
@@ -8,6 +7,9 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  logging: {
+    browserToTerminal: 'warn',
+  },
   i18n: {
     locales: [
       'en-US',
@@ -48,7 +50,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [withVanillaExtract, withContentlayer],
-  nextConfig,
-);
+module.exports = withVanillaExtract(withContentlayer(nextConfig));
