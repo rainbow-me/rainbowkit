@@ -49,30 +49,29 @@
     "wagmi": "^2.9.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/ua-parser-js": "^0.7.39",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@vanilla-extract/css-utils": "0.1.6",
     "@vanilla-extract/private": "1.0.9",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.5.0",
     "dotenv": "^16.4.5",
-    "jsdom": "^25.0.0",
-    "msw": "^2.11.2",
-    "nock": "^13.4.0",
-    "postcss": "^8.5.5",
-    "react": "^19.2.3",
-    "vitest": "2.1.9"
+    "jsdom": "^29.1.1",
+    "msw": "^2.14.2",
+    "nock": "^14.0.14",
+    "postcss": "^8.5.13",
+    "react": "^19.2.5",
+    "vitest": "4.1.5"
   },
   "dependencies": {
-    "@vanilla-extract/css": "1.18.0",
+    "@vanilla-extract/css": "1.20.1",
     "@vanilla-extract/dynamic": "2.1.5",
     "@vanilla-extract/sprinkles": "1.6.5",
     "clsx": "2.1.1",
     "cuer": "0.0.3",
-    "react-remove-scroll": "2.6.2",
-    "ua-parser-js": "^1.0.37"
+    "react-remove-scroll": "2.7.2",
+    "ua-parser-js": "^2.0.9"
   },
   "repository": {
     "type": "git",

@@ -9,20 +9,20 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^16.1.5",
-    "next-intl": "^4.6.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "next": "^16.2.4",
+    "next-intl": "^4.11.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "viem": "2.38.0",
     "wagmi": "^2.19.3",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
-    "@types/node": "^22.19.1",
-    "@types/react": "^19.2.7",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
     "typescript": "5.5.4"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }

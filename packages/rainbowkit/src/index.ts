@@ -1,6 +1,12 @@
 export { ConnectButton } from './components/ConnectButton/ConnectButton';
-export { WalletButton } from './components/WalletButton/WalletButton';
-export { RainbowKitProvider } from './components/RainbowKitProvider/RainbowKitProvider';
+export {
+  WalletButton,
+  type WalletButtonRendererProps,
+} from './components/WalletButton/WalletButton';
+export {
+  RainbowKitProvider,
+  type RainbowKitProviderProps,
+} from './components/RainbowKitProvider/RainbowKitProvider';
 export { getDefaultConfig } from './config/getDefaultConfig';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';

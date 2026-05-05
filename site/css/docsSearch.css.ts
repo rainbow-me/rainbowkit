@@ -49,7 +49,7 @@ globalStyle('.DocSearch-Container--Stalled .DocSearch-LoadingIndicator', {
   display: 'block',
 });
 
-globalStyle('.DocSearch-Reset', {
+globalStyle('.DocSearch-Reset, .DocSearch-Clear', {
   display: 'none',
 });
 
@@ -105,7 +105,7 @@ globalStyle(
   },
 );
 
-globalStyle('.DocSearch-Cancel', {
+globalStyle('.DocSearch-Cancel, .DocSearch-Close', {
   backgroundColor: vars.colors.fillSecondary,
   backgroundImage: Icon.Esc,
   backgroundPosition: 'center',
@@ -118,6 +118,11 @@ globalStyle('.DocSearch-Cancel', {
   fontSize: 0,
   height: 20,
   width: 32,
+});
+
+/* Hide the SVG icon inside the v4 close button — the background image above renders the Esc keyboard hint instead. */
+globalStyle('.DocSearch-Close svg', {
+  display: 'none',
 });
 
 globalStyle('.DocSearch-Footer', {

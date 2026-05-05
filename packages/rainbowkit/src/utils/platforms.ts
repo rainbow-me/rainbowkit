@@ -15,7 +15,7 @@ export function isWindows(): boolean {
 }
 
 export function isMacOS(): boolean {
-  return os.name === 'Mac OS';
+  return os.name === 'macOS';
 }
 
 export function isLinux(): boolean {

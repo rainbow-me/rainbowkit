@@ -10,23 +10,23 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@remix-run/node": "^2.17.2",
-    "@remix-run/react": "^2.17.2",
-    "@remix-run/serve": "^2.17.2",
+    "@remix-run/node": "^2.17.4",
+    "@remix-run/react": "^2.17.4",
+    "@remix-run/serve": "^2.17.4",
     "@tanstack/react-query": "^5.55.3",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "viem": "2.38.0",
     "wagmi": "^2.19.3"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.17.2",
-    "@types/react": "^19.2.7",
+    "@remix-run/dev": "^2.17.4",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "typescript": "5.5.4"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }

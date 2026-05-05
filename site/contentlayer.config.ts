@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import remarkSlug from 'remark-slug';
+import rehypeSlug from 'rehype-slug';
 import { rehypeHighlightCode } from './lib/rehype-highlight-code';
 import { rehypeMetaAttribute } from './lib/rehype-meta-attribute';
 
@@ -64,7 +64,6 @@ export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Doc, Guide],
   mdx: {
-    remarkPlugins: [remarkSlug],
-    rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],
+    rehypePlugins: [rehypeSlug, rehypeMetaAttribute, rehypeHighlightCode],
   },
 });

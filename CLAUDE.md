@@ -157,6 +157,6 @@ pnpm link:cli  # Makes `create-rainbowkit` available system-wide
 ## Additional Notes
 
 - Uses Biome for formatting/linting (replaces ESLint + Prettier)
-- React 19 and Next.js 15 compatible
+- React 19 and Next.js 16 compatible
 - Built on wagmi v2 and viem 2.x
-- Node.js >= 22 required
+- Node.js >= 24 required

@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "viem": "2.38.0",
     "wagmi": "^2.19.3",
     "@tanstack/react-query": "^5.55.3"
   },
   "devDependencies": {
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
+    "@vitejs/plugin-react": "^6.0.1",
     "typescript": "5.5.4",
-    "vite": "^7.3.0"
+    "vite": "^8.0.10"
   }
 }
