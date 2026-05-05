@@ -150,8 +150,18 @@ export default function Icons() {
                         size={120}
                         value="https://wevm.dev"
                       >
-                        <Cuer.Cells radius={1} />
-                        <Cuer.Finder radius={0.25} />
+                        <Cuer.Cells
+                          className={undefined}
+                          fill="currentColor"
+                          filter={undefined}
+                          radius={1}
+                        />
+                        <Cuer.Finder
+                          className={undefined}
+                          fill="currentColor"
+                          radius={0.25}
+                          stroke={undefined}
+                        />
                         <Cuer.Arena>
                           <img
                             src={icon}

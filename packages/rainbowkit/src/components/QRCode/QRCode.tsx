@@ -48,8 +48,18 @@ export function QRCode({
         userSelect="none"
       >
         <Cuer.Root errorCorrection={ecc} size={size} value={uri}>
-          <Cuer.Cells radius={1} />
-          <Cuer.Finder radius={0.25} />
+          <Cuer.Cells
+            className={undefined}
+            fill="currentColor"
+            filter={undefined}
+            radius={1}
+          />
+          <Cuer.Finder
+            className={undefined}
+            fill="currentColor"
+            radius={0.25}
+            stroke={undefined}
+          />
           {resolvedLogoUrl && (
             <Cuer.Arena>
               <img
