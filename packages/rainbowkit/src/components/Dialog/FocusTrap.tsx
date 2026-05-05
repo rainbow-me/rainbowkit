@@ -38,6 +38,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
 
   return (
     <>
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: focus sentinel */}
       <div
         onFocus={useCallback(
           () =>
@@ -53,6 +54,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         tabIndex={-1}
         {...props}
       />
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: focus sentinel */}
       <div
         onFocus={useCallback(
           () =>

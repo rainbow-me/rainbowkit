@@ -33,7 +33,7 @@ export const trustWallet = ({
     getUri: shouldUseWalletConnect ? getUriMobile : undefined,
   };
 
-  let qrConnector = undefined;
+  let qrConnector: Wallet['qrCode'];
 
   if (shouldUseWalletConnect) {
     qrConnector = {

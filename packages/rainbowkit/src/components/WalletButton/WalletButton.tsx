@@ -20,11 +20,12 @@ export const WalletButton: {
   (props: WalletButtonProps): JSX.Element | undefined;
   Custom: (props: WalletButtonRendererProps) => ReactNode;
 } = ({ wallet }) => {
+  const { i18n } = useContext(I18nContext);
+
   return (
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {
         const isDisabled = !ready || loading;
-        const { i18n } = useContext(I18nContext);
         const connectorName = connector?.name || '';
 
         // SSR mismatch issue in next.js:

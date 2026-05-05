@@ -37,6 +37,7 @@ export function ProfileDetails({
   onDisconnect,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
+  const { i18n } = useContext(I18nContext);
 
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
@@ -66,8 +67,6 @@ export function ProfileDetails({
     : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();
-
-  const { i18n } = useContext(I18nContext);
 
   return (
     <>

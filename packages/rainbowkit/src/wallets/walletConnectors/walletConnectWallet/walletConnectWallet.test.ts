@@ -7,7 +7,7 @@ describe('walletConnectWallet', () => {
 
   it('without projectId', () => {
     expect(() =>
-      // @ts-ignore
+      // @ts-expect-error
       walletConnectWallet({
         /* no project id */
       }),

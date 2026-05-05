@@ -343,10 +343,13 @@ function RainbowKitApp({
                     </tr>
                     <tr>
                       <td>
-                        <label style={{ userSelect: 'none' }}>locale</label>
+                        <label htmlFor="locale" style={{ userSelect: 'none' }}>
+                          locale
+                        </label>
                       </td>
                       <td>
                         <select
+                          id="locale"
                           onChange={(e) => {
                             setLocale(e.target.value as Locale);
                           }}

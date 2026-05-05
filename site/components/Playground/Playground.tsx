@@ -37,7 +37,6 @@ type Accents = NonNullable<NonNullable<ThemeOptions>['accentColor']>;
 type Radii = NonNullable<NonNullable<ThemeOptions>['borderRadius']>;
 type ModalSizes = 'compact' | 'wide';
 
-// @ts-ignore - Accents could be undefined
 const gradientColors: Record<Accents, any> = {
   blue: [
     [29, 100, 192],
@@ -377,7 +376,12 @@ function Radio({
   id,
   value,
   ...props
-}: { activeValue: string; id: string; value: string; [key: string]: any }) {
+}: {
+  activeValue: string;
+  id: string;
+  value: string;
+  [key: string]: any;
+}) {
   return (
     <div style={{ position: 'relative' }}>
       <RadioGroup.Item className={radio} value={value} {...props} />

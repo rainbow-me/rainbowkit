@@ -101,6 +101,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
+  // biome-ignore lint/correctness/useExhaustiveDependencies: run once per connector selection
   useEffect(() => {
     if (connector && !initialized.current) {
       changeWalletStep(WalletStep.Connect);
