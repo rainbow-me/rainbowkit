@@ -109,6 +109,7 @@ import {
   zora,
   zoraSepolia,
 } from 'wagmi/chains';
+import { createTransports } from './transports';
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
@@ -147,57 +148,60 @@ const avalanche = {
   },
 } as const satisfies Chain;
 
+const chains = [
+  mainnet,
+  base,
+  optimism,
+  arbitrum,
+  polygon,
+  apeChain,
+  avalanche,
+  berachain,
+  blast,
+  bsc,
+  degen,
+  gravity,
+  ink,
+  sanko,
+  superposition,
+  unichain,
+  zora,
+  linea,
+  gnosis,
+  scroll,
+  zksync,
+  lukso,
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+    ? [
+        sepolia,
+        holesky,
+        arbitrumSepolia,
+        avalancheFuji,
+        baseSepolia,
+        berachainTestnetbArtio,
+        blastSepolia,
+        bscTestnet,
+        curtis,
+        inkSepolia,
+        lineaSepolia,
+        monadTestnet,
+        optimismSepolia,
+        polygonMumbai,
+        scrollSepolia,
+        unichainSepolia,
+        zoraSepolia,
+      ]
+    : []),
+] as const satisfies readonly [Chain, ...Chain[]];
+
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
   walletConnectParameters: {
     telemetryEnabled: false,
   },
-  chains: [
-    mainnet,
-    base,
-    optimism,
-    arbitrum,
-    polygon,
-    apeChain,
-    avalanche,
-    berachain,
-    blast,
-    bsc,
-    degen,
-    gravity,
-    ink,
-    sanko,
-    superposition,
-    unichain,
-    zora,
-    linea,
-    gnosis,
-    scroll,
-    zksync,
-    lukso,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [
-          sepolia,
-          holesky,
-          arbitrumSepolia,
-          avalancheFuji,
-          baseSepolia,
-          berachainTestnetbArtio,
-          blastSepolia,
-          bscTestnet,
-          curtis,
-          inkSepolia,
-          lineaSepolia,
-          monadTestnet,
-          optimismSepolia,
-          polygonMumbai,
-          scrollSepolia,
-          unichainSepolia,
-          zoraSepolia,
-        ]
-      : []),
-  ],
+  chains,
+  transports: createTransports(chains),
   wallets: [
     {
       groupName: 'Popular',
