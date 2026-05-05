@@ -1,0 +1,21 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "055b0f5eb9f1321ffa49d99a990c903bd4c0c27b",
+  "prompts": {
+    "c262c6326922200d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df737-83ff-7ee2-afbf-390359e693aa",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 1131,
+      "total_deletions": 0,
+      "accepted_lines": 1131,
+      "overriden_lines": 0
+    }
+  }
+}
