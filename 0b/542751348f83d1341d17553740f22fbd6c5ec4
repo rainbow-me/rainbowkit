@@ -1,0 +1,29 @@
+packages/example/src/auth.ts
+  a3308f1ca9274246 34,63-66
+examples/with-next-siwe-next-auth/src/auth.ts
+  a3308f1ca9274246 34,63-66
+.changeset/upgrade-next-auth-v5.md
+  a3308f1ca9274246 11-12,16,20,37,70,73-76,78-89,92
+packages/rainbowkit-siwe-next-auth/src/nextAuthSiweConfig.test.ts
+  a3308f1ca9274246 90-180,184,188,196-198,223,254,264,273,279,306,318,327,336,345,350-351,354-358,360,362-366,368-369,374-381,393,403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "0b542751348f83d1341d17553740f22fbd6c5ec4",
+  "prompts": {
+    "a3308f1ca9274246": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df790-55d8-7e31-adbb-a303c03a8d6f",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 1514,
+      "total_deletions": 153,
+      "accepted_lines": 1578,
+      "overriden_lines": 0
+    }
+  }
+}
