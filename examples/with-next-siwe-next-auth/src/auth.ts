@@ -12,6 +12,8 @@ import {
 // Create a server-side public client for signature verification
 const publicClient = createPublicClient({
   chain: mainnet,
+  // Use your own RPC URL in production. ERC-1271 signature verification may
+  // require an eth_call, and public default RPCs can be slow or rate-limited.
   transport: http(),
 });
 

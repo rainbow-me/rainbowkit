@@ -1,18 +1,22 @@
 import NextAuth from 'next-auth';
 import type { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { createPublicClient, http } from 'viem';
+import { createPublicClient } from 'viem';
 import { mainnet } from 'viem/chains';
 import {
   type SiweMessage,
   parseSiweMessage,
   validateSiweMessage,
 } from 'viem/siwe';
+import { createTransports } from './transports';
 
-// Create a server-side public client for signature verification
+const transports = createTransports([mainnet]);
+
 const publicClient = createPublicClient({
   chain: mainnet,
-  transport: http(),
+  // Reuse the example's configured transport for ERC-1271 eth_call support
+  // instead of falling back to public default RPCs during server verification.
+  transport: transports[mainnet.id],
 });
 
 export const authOptions: NextAuthConfig = {
@@ -70,11 +74,31 @@ export const authOptions: NextAuthConfig = {
             return null;
           }
 
-          const valid = await publicClient.verifyMessage({
-            address: siweMessage?.address,
-            message: credentials?.message as string,
-            signature: credentials?.signature as `0x${string}`,
-          });
+          const verificationStartedAt = Date.now();
+          let valid: boolean;
+
+          try {
+            valid = await publicClient.verifyMessage({
+              address: siweMessage?.address,
+              message: credentials?.message as string,
+              signature: credentials?.signature as `0x${string}`,
+            });
+          } catch (error) {
+            const durationMs = Date.now() - verificationStartedAt;
+            const isTimeoutError =
+              error instanceof Error &&
+              /timeout|timed out|abort/i.test(error.message);
+
+            console.error(
+              isTimeoutError
+                ? 'siwe signature verification timed out'
+                : 'siwe signature verification failed',
+              { durationMs },
+              error,
+            );
+
+            return null;
+          }
 
           if (!valid) {
             return null;

@@ -62,7 +62,7 @@ export const authOptions: NextAuthConfig = {
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
 ```
 
-The complete [`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) shows how to validate the SIWE message with `viem`, compare the nonce against the `csrfToken` value that NextAuth v5 posts to the Credentials provider, and verify the signature.
+See the complete [`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) for SIWE validation, nonce checks, and server-side verification.
 
 #### Set up the provider
 
