@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { createElement } from 'react';
+import React from 'react';
 import type { ComponentProps } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';
+
+type ProviderProps = Omit<
+  ComponentProps<typeof RainbowKitSiweNextAuthProvider>,
+  'children'
+>;
 
 const mocks = vi.hoisted(() => {
   const providerProps: any[] = [];
@@ -48,21 +53,22 @@ vi.mock('viem/siwe', () => ({
   createSiweMessage: mocks.createSiweMessage,
 }));
 
-function getAdapter() {
-  const latestProviderProps = mocks.providerProps.at(-1);
+function getLatestProviderProps() {
+  const latestProviderProps =
+    mocks.providerProps[mocks.providerProps.length - 1];
   if (!latestProviderProps) throw new Error('Provider was not rendered');
-  return latestProviderProps.adapter;
+  return latestProviderProps;
 }
 
-function renderProvider(
-  props: Partial<ComponentProps<typeof RainbowKitSiweNextAuthProvider>> = {},
-) {
+function getAdapter() {
+  return getLatestProviderProps().adapter;
+}
+
+function renderProvider(props: Partial<ProviderProps> = {}) {
   return render(
-    createElement(
-      RainbowKitSiweNextAuthProvider,
-      props,
-      createElement('span', null, 'children'),
-    ),
+    <RainbowKitSiweNextAuthProvider {...props}>
+      <span>children</span>
+    </RainbowKitSiweNextAuthProvider>,
   );
 }
 
@@ -84,7 +90,7 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     renderProvider({ enabled: false });
 
     expect(screen.getByText('children')).toBeInTheDocument();
-    expect(mocks.providerProps.at(-1)).toMatchObject({
+    expect(getLatestProviderProps()).toMatchObject({
       enabled: false,
       status: 'authenticated',
     });
@@ -96,7 +102,7 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
 
     renderProvider();
 
-    expect(mocks.providerProps.at(-1)).toMatchObject({
+    expect(getLatestProviderProps()).toMatchObject({
       status: 'loading',
     });
   });
@@ -168,11 +174,11 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     const firstAdapter = getAdapter();
 
     rerender(
-      createElement(
-        RainbowKitSiweNextAuthProvider,
-        { getSiweMessageOptions },
-        createElement('span', null, 'updated children'),
-      ),
+      <RainbowKitSiweNextAuthProvider
+        getSiweMessageOptions={getSiweMessageOptions}
+      >
+        <span>updated children</span>
+      </RainbowKitSiweNextAuthProvider>,
     );
 
     expect(getAdapter()).toBe(firstAdapter);
@@ -188,11 +194,9 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     const firstAdapter = getAdapter();
 
     rerender(
-      createElement(
-        RainbowKitSiweNextAuthProvider,
-        { getSiweMessageOptions: secondOptions },
-        createElement('span', null, 'children'),
-      ),
+      <RainbowKitSiweNextAuthProvider getSiweMessageOptions={secondOptions}>
+        <span>children</span>
+      </RainbowKitSiweNextAuthProvider>,
     );
 
     expect(getAdapter()).not.toBe(firstAdapter);

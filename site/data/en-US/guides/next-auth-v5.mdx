@@ -1,0 +1,139 @@
+---
+title: Upgrading RainbowKit SIWE to NextAuth v5
+description: Migrate RainbowKit's NextAuth SIWE adapter from NextAuth v4 to v5
+---
+
+# Migrating RainbowKit SIWE to NextAuth v5
+
+RainbowKit's `@rainbow-me/rainbowkit-siwe-next-auth` package now supports NextAuth v5. This is a breaking upgrade for apps using the NextAuth SIWE adapter because NextAuth changed its server configuration API, session helper API, and internal CSRF flow.
+
+NextAuth.js is now part of the broader [Auth.js](https://authjs.dev) project. The package name remains `next-auth`, and the official NextAuth.js documentation is still available at [next-auth.js.org](https://next-auth.js.org). This guide uses the `next-auth` package names you install today while calling out the Auth.js transition where it affects cookie names and v5 APIs.
+
+Follow the steps below if your app currently uses `@rainbow-me/rainbowkit-siwe-next-auth` with NextAuth v4.
+
+**1. Upgrade dependencies**
+
+Install the NextAuth v5 package version supported by RainbowKit.
+
+```diff
+- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+```
+
+**2. Update your NextAuth server configuration**
+
+NextAuth v5, documented as part of the Auth.js project, uses the `NextAuthConfig` type, the `Credentials` provider export, and helpers returned from `NextAuth(authOptions)`.
+
+```diff
+- import type { NextAuthOptions } from 'next-auth';
+- import CredentialsProvider from 'next-auth/providers/credentials';
++ import NextAuth from 'next-auth';
++ import type { NextAuthConfig } from 'next-auth';
++ import Credentials from 'next-auth/providers/credentials';
+
+- export const authOptions: NextAuthOptions = {
++ export const authOptions: NextAuthConfig = {
+    providers: [
+-     CredentialsProvider({
++     Credentials({
+        name: 'Ethereum',
+        credentials: {
+          message: { label: 'Message', type: 'text' },
+          signature: { label: 'Signature', type: 'text' },
+        },
+        async authorize(credentials) {
+          /* Validate SIWE message, domain, nonce, and signature */
+        },
+      }),
+    ],
+  };
++
++ export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+For App Router route handlers, export the returned `GET` and `POST` handlers.
+
+```ts
+export const { GET, POST } = handlers;
+```
+
+For Pages Router API routes, pass your v5 `authOptions` to `NextAuth`.
+
+```ts
+export default NextAuth(authOptions);
+```
+
+**3. Update server-side session reads**
+
+If you read the authenticated address in `getServerSideProps`, switch from v4 session helpers to the v5 `auth` helper exported by your auth configuration.
+
+Pass `req` and `res` separately. Passing the full `GetServerSidePropsContext` object to `auth` is not supported by the v5 overloads.
+
+```diff
+- import { getServerSession } from 'next-auth';
+- import { authOptions } from '../auth';
++ import { auth } from '../auth';
+
+  export const getServerSideProps: GetServerSideProps = async (context) => {
+-   const session = await getServerSession(
+-     context.req,
+-     context.res,
+-     authOptions,
+-   );
++   const session = await auth(context.req, context.res);
+
+    return {
+      props: {
+        session,
+      },
+    };
+  };
+```
+
+**4. Update SIWE nonce validation**
+
+In the v4 implementation, RainbowKit examples compared the SIWE nonce against `getCsrfToken` inside `authorize`.
+
+In NextAuth v5, the Credentials provider receives the verified CSRF token as `credentials.csrfToken` after NextAuth validates the request's CSRF cookie.
+
+```diff
+- import { getCsrfToken } from 'next-auth/react';
+
+- if (
+-   siweMessage.nonce !==
+-   (await getCsrfToken({ req: { headers: req.headers } }))
+- ) {
+-   return null;
+- }
++ const csrfToken =
++   credentials && 'csrfToken' in credentials
++     ? credentials.csrfToken
++     : undefined;
++
++ if (siweMessage.nonce !== csrfToken) {
++   return null;
++ }
+```
+
+NextAuth v5 internal cookies use the Auth.js `authjs` prefix, including `authjs.csrf-token` or `__Host-authjs.csrf-token` depending on secure-cookie settings. You should not need to parse those cookies yourself for RainbowKit's SIWE flow.
+
+**5. Return the authenticated address on the session**
+
+If your app reads `session.address`, keep mapping the JWT subject onto the session in your NextAuth callbacks.
+
+```ts
+callbacks: {
+  async session({ session, token }) {
+    session.address = token.sub;
+    session.user = {
+      ...session.user,
+      name: token.sub,
+    };
+    return session;
+  },
+},
+```
+
+You can see the full NextAuth v5 setup in the [`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth).
+
+If you are also upgrading from an older RainbowKit SIWE integration, review the `0.5.0` changelog for the `viem/siwe` migration and the `0.3.0` changelog for the earlier `getCsrfToken` request-shape change.

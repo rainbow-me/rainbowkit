@@ -17,7 +17,7 @@ const failingWallet: WalletConnector = {
   ready: true,
   connect: connectMock,
   recent: false,
-};
+} as unknown as WalletConnector;
 
 describe('<WalletButton />', () => {
   it('catches rejected connect() calls', async () => {

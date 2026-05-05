@@ -30,8 +30,8 @@
     "prepare": "MINIFY_CSS=true pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
-    "typegen": "tsc --emitDeclarationOnly || true",
-    "typegen:watch": "tsc --emitDeclarationOnly --watch"
+    "typegen": "tsc --emitDeclarationOnly -p tsconfig.types.json || true",
+    "typegen:watch": "tsc --emitDeclarationOnly -p tsconfig.types.json --watch"
   },
   "keywords": [
     "ens",

@@ -10,6 +10,12 @@ import {
   validateSiweMessage,
 } from 'viem/siwe';
 
+declare module 'next-auth' {
+  interface Session {
+    address?: string;
+  }
+}
+
 const mocks = vi.hoisted(() => ({
   Credentials: vi.fn((config) => ({
     ...config,
@@ -262,7 +268,8 @@ describe('NextAuth SIWE config', () => {
 
   it('exports the helpers returned by NextAuth', async () => {
     const authModule = await createAuthModule();
-    const nextAuthResult = mocks.NextAuth.mock.results.at(-1)?.value;
+    const nextAuthResults = mocks.NextAuth.mock.results;
+    const nextAuthResult = nextAuthResults[nextAuthResults.length - 1]?.value;
 
     expect(authModule.auth).toBe(nextAuthResult.auth);
     expect(authModule.handlers).toBe(nextAuthResult.handlers);

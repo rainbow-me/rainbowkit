@@ -1,8 +1,16 @@
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next';
 import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await auth(context);
+  const session = await auth(
+    context.req as NextApiRequest,
+    context.res as NextApiResponse,
+  );
   const address = session?.address ?? null;
 
   return {

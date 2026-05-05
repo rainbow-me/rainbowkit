@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  type SpyInstance,
+  type MockInstance,
   afterAll,
   beforeAll,
   describe,
@@ -13,7 +13,7 @@ import { renderWithProviders } from '../../../test';
 import { mockWallet } from '../../../test/mockWallet';
 import { WalletButton } from './WalletButton';
 
-let mockError: ReturnType<SpyInstance['mockImplementation']>;
+let mockError: MockInstance;
 
 beforeAll(() => {
   // Silence the error logs if the component throws an error
