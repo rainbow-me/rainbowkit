@@ -1,7 +1,6 @@
 import React, {
   createContext,
   type ReactNode,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -68,19 +67,6 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     },
   });
 
-  const handleChangedAccount = useCallback(
-    (data: Parameters<Config['_internal']['events']['change']>[0]) => {
-      // Only if account changes
-      if (data.accounts) {
-        // If account is changed we automatically log user out.
-        // Current connector uid only should be available only at "authenticated"
-        setCurrentConnectorUid(undefined);
-        adapter.signOut();
-      }
-    },
-    [adapter],
-  );
-
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
@@ -94,6 +80,18 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
       // Set current connector uid
       setCurrentConnectorUid(connector?.uid);
 
+      const handleChangedAccount = (
+        data: Parameters<Config['_internal']['events']['change']>[0],
+      ) => {
+        // Only if account changes
+        if (data.accounts) {
+          // If account is changed we automatically log user out.
+          // Current connector uid only should be available only at "authenticated"
+          setCurrentConnectorUid(undefined);
+          adapter.signOut();
+        }
+      };
+
       // Attach the event listener when status is 'authenticated'
       connector.emitter.on('change', handleChangedAccount);
 
@@ -102,7 +100,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [connector?.emitter, connector?.uid, handleChangedAccount, status]);
+  }, [adapter, connector?.emitter, connector?.uid, status]);
 
   useEffect(() => {
     if (
