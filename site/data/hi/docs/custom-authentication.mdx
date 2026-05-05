@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### सर्वर-साइड संदेश निर्माण
+
+`createMessage` `Promise` लौटाने का समर्थन भी करता है, जिससे आपको सर्वर पर [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) संदेश बनाने की क्षमता मिलती है। अधिक सख्त सुरक्षा के लिए, सर्वर के अंतिम बिंदु को `domain`, `nonce`, और `issued-at` जैसे सुरक्षा-महत्वपूर्ण फ़ील्ड को उत्पन्न या सत्यापित करना चाहिए, बजाय इसके कि वह क्लाइंट द्वारा प्रदत्त मान्यताओं पर भरोसा करे। अधिक जानकारी के लिए [SIWE डाक्यूमेंटेशन](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) देखें।
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### प्रमाणीकरण स्थिति प्रदान कर रहे हैं
 
 मान लेते हैं कि आपका एप्लिकेशन पहले से ही किसी तरह से प्रमाणीकरण जीवनचक्र का प्रबंधन कर रहा है, आप अपने कस्टम एडाप्टर के साथ वर्तमान प्रमाणीकरण स्थिति `RainbowKitAuthenticationProvider` को पास कर सकते हैं, अपने मौजूदा `RainbowKitProvider` को रैप करते हुए।
