@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### ベース（旧コインベースウォレット）
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+このウォレットコネクタは、コインベーススマートウォレットの進化であるベースをサポートします。サブアカウントや支出許可といった強化された機能とシームレスな認証を提供します。
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+構成オプションは[Base SDKのリファレンス](https://docs.base.org/base-account/reference/core/createBaseAccount)に準拠しています。
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount`および`coinbaseWallet`は、後方互換のエイリアスとして引き続き利用可能です。
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Rainbow、MetaMask、Baseおよび一般的なフォールバックウォレットを表示します。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 `groupName` キーを使用して、異なるウォレットグループに名前を付けることができます。これにより、ユーザーに推奨するウォレットや他の可能なウォレットを伝えることができます。
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+RainbowとMetaMaskを推奨しますが、Baseと一般的なフォールバックウォレットも提供します。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
