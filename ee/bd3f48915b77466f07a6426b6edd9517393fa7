@@ -1,14 +1,27 @@
-packages/rainbowkit-siwe-next-auth/src/RainbowKitSiweNextAuthProvider.test.tsx
-  2598ddbd4cd26bfc 1,4-56,69-83,85-96,98-103,126,142-154,156-164,202-204,206-209,214,220,228-232,234-244,249,263-265,267-269,271-275,285
-  a3308f1ca9274246 2-3,57-68,84,97,104-125,127-141,155,165-201,205,210-213,215-219,221-227,233,245-248,250-262,266,270,276-283
 packages/rainbowkit-siwe-next-auth/src/nextAuthSiweConfig.test.ts
-  a3308f1ca9274246 90-95,152-171,194-218,258-268,280-316,326,328,351-362,388-403
+  a3308f1ca9274246 149-151,193,219-220,252,256-257,317-321,323-325,327,342-345,349-358,360-362,388-389,391-403,405-407
+packages/rainbowkit-siwe-next-auth/src/RainbowKitSiweNextAuthProvider.test.tsx
+  2598ddbd4cd26bfc 1,4-56,69-83,85-96,98-100,142-154,156-161,202-204,206-208,214,228-232,234-243,263-265,267-269,271-274,285,107-111,113-115,117,120-121,123-125,127,141,180,187,200,284
+  a3308f1ca9274246 101-103,162-164,209,220,244,249,2-3,57-68,84,97,104-106,112,116,118-119,122,128-140,155,165-179,181-186,188-199,201,205,210-213,215-219,221-227,233,245-248,250-262,266,270,276-283
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.3.4",
   "base_commit_sha": "eebd3f48915b77466f07a6426b6edd9517393fa7",
   "prompts": {
+    "2598ddbd4cd26bfc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df734-e001-7f12-9ffa-3dc105229310",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 1184,
+      "total_deletions": 52,
+      "accepted_lines": 20,
+      "overriden_lines": 0
+    },
     "a3308f1ca9274246": {
       "agent_id": {
         "tool": "codex",
@@ -19,7 +32,7 @@ packages/rainbowkit-siwe-next-auth/src/nextAuthSiweConfig.test.ts
       "messages": [],
       "total_additions": 270,
       "total_deletions": 62,
-      "accepted_lines": 265,
+      "accepted_lines": 218,
       "overriden_lines": 0
     }
   }

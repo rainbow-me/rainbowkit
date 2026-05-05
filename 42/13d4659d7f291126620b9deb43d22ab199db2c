@@ -1,0 +1,34 @@
+packages/rainbowkit-siwe-next-auth/src/nextAuthSiweConfig.test.ts
+  a3308f1ca9274246 250-252,287,326,328-329,389-392,394-395,397,410-413,415-423,425-426,452-453,455-467,469-471
+.changeset/upgrade-next-auth-v5.md
+  2598ddbd4cd26bfc 5
+  a3308f1ca9274246 9-10,13-15,17-19,21-36,38-69,71-72,77,90-92
+examples/with-next-siwe-next-auth/src/auth.ts
+  2598ddbd4cd26bfc 50
+  a3308f1ca9274246 34,63-66
+site/data/en-US/docs/authentication.mdx
+  2598ddbd4cd26bfc 12,14,140,183
+packages/example/src/auth.ts
+  2598ddbd4cd26bfc 50
+  a3308f1ca9274246 34,63-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "4213d4659d7f291126620b9deb43d22ab199db2c",
+  "prompts": {
+    "a3308f1ca9274246": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df790-55d8-7e31-adbb-a303c03a8d6f",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 1514,
+      "total_deletions": 153,
+      "accepted_lines": 168,
+      "overriden_lines": 0
+    }
+  }
+}

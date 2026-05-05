@@ -1,5 +1,6 @@
 .changeset/upgrade-next-auth-v5.md
-  a3308f1ca9274246 8-83
+  2598ddbd4cd26bfc 5
+  a3308f1ca9274246 9-10,12-14,16-18,20-35,37-68,70-71,76,79-80,82
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -16,7 +17,7 @@
       "messages": [],
       "total_additions": 152,
       "total_deletions": 81,
-      "accepted_lines": 76,
+      "accepted_lines": 62,
       "overriden_lines": 0
     }
   }
