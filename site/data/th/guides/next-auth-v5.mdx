@@ -1,0 +1,142 @@
+---
+title: อัปเกรด RainbowKit SIWE ไปที่ NextAuth v5
+description: ย้ายอะแดปเตอร์ SIWE ของ RainbowKit จาก NextAuth v4 ไปยัง v5
+---
+
+# กำลังย้าย RainbowKit SIWE ไปที่ NextAuth v5
+
+แพ็คเกจ RainbowKit's `@rainbow-me/rainbowkit-siwe-next-auth` ตอนนี้รองรับ NextAuth v5 การอัปเกรดนี้เป็นการเปลี่ยนแปลงที่สำคัญสำหรับแอปที่ใช้ NextAuth SIWE adapter เนื่องจาก NextAuth ได้เปลี่ยนแปลง API การกำหนดค่าเซิร์ฟเวอร์, การช่วยเหลือเซสชัน และการทำงานภายใน CSRF
+
+ปัจจุบัน NextAuth.js เป็นส่วนหนึ่งของโปรเจค [Auth.js](https://authjs.dev) โดยยังคงใช้ชื่อแพ็คเกจ `next-auth` อยู่ และสามารถดูเอกสารทางการของ NextAuth.js ได้ที่ [next-auth.js.org](https://next-auth.js.org) คู่มือนี้ใช้ชื่อแพ็คเกจ `next-auth` ที่คุณติดตั้งในวันนี้ พร้อมระบุการเปลี่ยนผ่านไปที่ Auth.js ในกรณีที่มีผลต่อชื่อคุกกี้และ APIs ของ v5
+
+ปฏิบัติตามขั้นตอนด้านล่างหากแอปของคุณใช้งาน `@rainbow-me/rainbowkit-siwe-next-auth` กับ NextAuth v4 ในปัจจุบัน
+
+**1. อัปเกรด dependencies**
+
+ติดตั้งเวอร์ชันแพ็กเกจ NextAuth v5 ที่รองรับโดย RainbowKit.
+
+```diff
+- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+```
+
+**2. อัปเดตกำหนดค่าของเซิร์ฟเวอร์ NextAuth**
+
+NextAuth v5 ที่เอกสารเป็นส่วนหนึ่งของโครงการ Auth.js ใช้ประเภท `NextAuthConfig` โปรไวเดอร์ `Credentials` ส่งออกและผู้ช่วยที่ส่งคืนจาก `NextAuth(authOptions)`.
+
+Auth.js แนะนำให้ใช้ตัวแปรสภาพแวดล้อม `AUTH_URL` และ `AUTH_SECRET`. หากคุณมีการปรับใช้ NextAuth v4 โดยใช้ `NEXTAUTH_URL` และ `NEXTAUTH_SECRET` อยู่แล้วให้เก็บไว้เป็นตัวสำรองในขณะที่คุณเปลี่ยนผ่าน.
+
+```diff
+- import type { NextAuthOptions } from 'next-auth';
+- import CredentialsProvider from 'next-auth/providers/credentials';
++ import NextAuth from 'next-auth';
++ import type { NextAuthConfig } from 'next-auth';
++ import Credentials from 'next-auth/providers/credentials';
+
+- export const authOptions: NextAuthOptions = {
++ export const authOptions: NextAuthConfig = {
+    providers: [
+-     CredentialsProvider({
++     Credentials({
+        name: 'Ethereum',
+        credentials: {
+          message: { label: 'Message', type: 'text' },
+          signature: { label: 'Signature', type: 'text' },
+        },
+        async authorize(credentials) {
+          /* Validate SIWE message, domain, nonce, and signature */
+        },
+      }),
+    ],
++   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  };
++
++ export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+สำหรับตัวจัดการเส้นทางของ App Router ให้ส่งออกผู้จัดการ `GET` และ `POST` ที่ส่งคืน.
+
+```ts
+export const { GET, POST } = handlers;
+```
+
+สำหรับเส้นทาง API ของ Pages Router ให้ส่งผ่าน `authOptions` v5 ของคุณไปยัง `NextAuth`.
+
+```ts
+export default NextAuth(authOptions);
+```
+
+**3. อัปเดตการอ่านเซสชันที่ฝั่งเซิร์ฟเวอร์**
+
+หากคุณอ่านที่อยู่ผู้รับรองที่ได้รับอนุมัติใน `getServerSideProps` ให้เปลี่ยนจากผู้ช่วยเซสชัน v4 เป็นผู้ช่วย `auth` v5 ที่ส่งออกโดยการกำหนดค่าการรับรองของคุณ.
+
+ส่ง `req` และ `res` แยกกัน. การส่งออบเจ็กต์ `GetServerSidePropsContext` แบบเต็มไปยัง `auth` ไม่ได้รับการสนับสนุนโดย v5 overloads.
+
+```diff
+- import { getServerSession } from 'next-auth';
+- import { authOptions } from '../auth';
++ import { auth } from '../auth';
+
+  export const getServerSideProps: GetServerSideProps = async (context) => {
+-   const session = await getServerSession(
+-     context.req,
+-     context.res,
+-     authOptions,
+-   );
++   const session = await auth(context.req, context.res);
+
+    return {
+      props: {
+        session,
+      },
+    };
+  };
+```
+
+**4. อัปเดตการตรวจสอบการเปลี่ยนแปลงของ SIWE**
+
+ใน v4 การเปรียบเทียบการเปลี่ยนแปลงของ SIWE ถูกเปรียบเทียบกับ `getCsrfToken` ภายใน `authorize` ในตัวอย่างของ RainbowKit.
+
+ใน NextAuth v5 ผู้ให้บริการ Credentials ได้รับโทเค็น CSRF ที่ตรวจสอบแล้วเป็น `credentials.csrfToken` หลังจาก NextAuth ตรวจสอบความถูกต้องของคุกกี้ CSRF ของคำขอ.
+
+```diff
+- import { getCsrfToken } from 'next-auth/react';
+
+- if (
+-   siweMessage.nonce !==
+-   (await getCsrfToken({ req: { headers: req.headers } }))
+- ) {
+-   return null;
+- }
++ const csrfToken =
++   credentials && 'csrfToken' in credentials
++     ? credentials.csrfToken
++     : undefined;
++
++ if (siweMessage.nonce !== csrfToken) {
++   return null;
++ }
+```
+
+คุกกี้ภายใน NextAuth v5 ใช้ส่วนหน้า `authjs` ของ Auth.js รวมถึง `authjs.csrf-token` หรือ `__Host-authjs.csrf-token` ตามการตั้งค่าคุกกี้ปลอดภัย. คุณไม่จำเป็นต้องแยกวิเคราะห์คุกกี้เหล่านั้นเองสำหรับกระบวนการ SIWE ของ RainbowKit.
+
+**5. ส่งคืนที่อยู่ผู้รับรองที่ได้รับอนุมัติในเซสชัน**
+
+หากแอปของคุณอ่าน `session.address` ให้คงการจับคู่ subject JWT ไว้ที่เซสชันในระบบย้อนกลับของ NextAuth ของคุณ.
+
+```ts
+callbacks: {
+  async session({ session, token }) {
+    session.address = token.sub;
+    session.user = {
+      ...session.user,
+      name: token.sub,
+    };
+    return session;
+  },
+},
+```
+
+คุณสามารถดูการตั้งค่า NextAuth v5 แบบเต็มในตัวอย่าง [`with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth).
+
+หากคุณกำลังอัปเกรดจากการรวม RainbowKit SIWE ที่เก่ากว่า ตรวจสอบบันทึกการเปลี่ยนแปลง `0.5.0` สำหรับการเปลี่ยนแปลง `viem/siwe` และบันทึกการเปลี่ยนแปลง `0.3.0` สำหรับการเปลี่ยนแปลงรูปร่างคำขอ `getCsrfToken` ก่อนหน้า.
