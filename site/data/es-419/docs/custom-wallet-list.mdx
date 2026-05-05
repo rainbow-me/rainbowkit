@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Cuenta Base (anteriormente Coinbase Wallet)
+#### Base (formerly Coinbase Wallet)
 
-Este conector de billetera soporta Cuenta Base, la evolución de Coinbase Smart Wallet. Proporciona autenticación sin problemas y funciones mejoradas como subcuentas y permisos de gasto.
+This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
 
-Las opciones de configuración se alinean con la [referencia del SDK de Cuenta Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostrar Rainbow, MetaMask y Base Account junto con billeteras de reserva genéricas.
+Show Rainbow, MetaMask and Base along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 Puedes usar la clave `groupName` para nombrar diferentes grupos de billeteras. Esto es útil si deseas comunicar a tus usuarios qué billeteras recomiendas, así como otras billeteras posibles.
 
-Recomendar Rainbow y MetaMask, pero también ofrecer Base Account junto con billeteras genéricas de reserva.
+Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
