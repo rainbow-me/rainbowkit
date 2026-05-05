@@ -1,0 +1,33 @@
+packages/rainbowkit/src/wallets/walletConnectors/coinbaseWallet/coinbaseWallet.ts
+  c8abb6fc981fd9b8 25
+.changeset/base-wallet-name.md
+  c8abb6fc981fd9b8 5
+site/data/en-US/docs/wallet-button.mdx
+  c8abb6fc981fd9b8 18
+packages/rainbowkit/src/wallets/connectorsForWallets.test.ts
+  c8abb6fc981fd9b8 2-3,6-8,99-136
+site/data/en-US/docs/custom-wallet-list.mdx
+  c8abb6fc981fd9b8 125
+packages/rainbowkit/src/wallets/walletConnectors/index.ts
+  c8abb6fc981fd9b8 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "daafbcefd2ca3ae2af713d4a4310474ff05aae96",
+  "prompts": {
+    "c8abb6fc981fd9b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6b5-c83e-7460-a1db-4dfbfa92fa1b",
+        "model": "unknown"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 50,
+      "total_deletions": 13,
+      "accepted_lines": 48,
+      "overriden_lines": 0
+    }
+  }
+}
