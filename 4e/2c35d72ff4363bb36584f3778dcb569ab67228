@@ -1,0 +1,25 @@
+packages/example/src/auth.ts
+  a3308f1ca9274246 12-15,19-24,82-109
+site/data/en-US/docs/authentication.mdx
+  a3308f1ca9274246 67-68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "4e2c35d72ff4363bb36584f3778dcb569ab67228",
+  "prompts": {
+    "a3308f1ca9274246": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df790-55d8-7e31-adbb-a303c03a8d6f",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 40,
+      "total_deletions": 6,
+      "accepted_lines": 2023,
+      "overriden_lines": 0
+    }
+  }
+}
