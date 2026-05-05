@@ -1,0 +1,27 @@
+packages/rainbowkit/src/components/SignIn/SignIn.test.tsx
+  ec79c8cd84f5530d 1-145
+.changeset/async-create-message.md
+  ec79c8cd84f5530d 2,6
+packages/rainbowkit/src/components/SignIn/SignIn.tsx
+  ec79c8cd84f5530d 25,74-94,98-99,140-141,144,226-229,232
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f739e83b31a4646f247f90b8bbcb435c6cc7a85e",
+  "prompts": {
+    "ec79c8cd84f5530d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df949-fce4-7a93-8e20-5ee3ec39dd46",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 212,
+      "total_deletions": 23,
+      "accepted_lines": 178,
+      "overriden_lines": 0
+    }
+  }
+}

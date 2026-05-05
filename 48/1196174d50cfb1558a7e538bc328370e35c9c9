@@ -1,0 +1,9 @@
+.changeset/async-create-message.md
+  ec79c8cd84f5530d 2,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "481196174d50cfb1558a7e538bc328370e35c9c9",
+  "prompts": {}
+}
