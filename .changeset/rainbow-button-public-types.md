@@ -2,4 +2,4 @@
 "@rainbow-me/rainbow-button": patch
 ---
 
-Removed deep imports from `@rainbow-me/rainbowkit/dist/...` so the package resolves under TypeScript `moduleResolution: "bundler"` (the Next.js 16.2 default).
+Fixed `RainbowButton.Custom` losing its types under TypeScript `moduleResolution: "bundler"` (Next.js 16.2's default).
