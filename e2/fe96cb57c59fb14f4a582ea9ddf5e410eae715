@@ -1,0 +1,63 @@
+site/components/DocsMobileMenu/DocsMobileMenu.tsx
+  cff40f8c24422c70 11-13
+examples/with-remix/app/styles/global.css
+  cff40f8c24422c70 3-5
+examples/with-next-app-i18n/src/styles/global.css
+  cff40f8c24422c70 3-5
+examples/with-next-siwe-next-auth/src/styles/global.css
+  cff40f8c24422c70 3-5
+examples/with-next-siwe-iron-session/src/styles/global.css
+  cff40f8c24422c70 3-5
+site/components/Search/Search.tsx
+  cff40f8c24422c70 163-167
+examples/with-create-react-app/src/index.css
+  cff40f8c24422c70 3-5
+biome.json
+  cff40f8c24422c70 4-16,45-50,68-78
+site/pages/guides/[slug].tsx
+  cff40f8c24422c70 40-43
+packages/create-rainbowkit/templates/next-app/src/styles/Home.module.css
+  cff40f8c24422c70 75-77
+examples/with-next-custom-button/src/styles/global.css
+  cff40f8c24422c70 3-5
+examples/with-react-router/app/app.css
+  cff40f8c24422c70 4-6
+examples/with-vite/src/global.css
+  cff40f8c24422c70 3-5
+examples/with-next-mint-nft/src/styles/global.css
+  cff40f8c24422c70 9-10,35,49,57,61-75,78-79,82-90,93-99
+examples/with-next-rainbow-button/src/styles/global.css
+  cff40f8c24422c70 3-5
+site/pages/docs/[slug].tsx
+  cff40f8c24422c70 59-62
+examples/with-next-app/src/styles/global.css
+  cff40f8c24422c70 3-5
+examples/with-next-wallet-button/src/styles/global.css
+  cff40f8c24422c70 3-5
+site/lib/prism-diff-highlight.js
+  cff40f8c24422c70 6
+examples/with-next/src/styles/global.css
+  cff40f8c24422c70 3-5
+packages/create-rainbowkit/templates/next-app/src/styles/globals.css
+  cff40f8c24422c70 5-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "e2fe96cb57c59fb14f4a582ea9ddf5e410eae715",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 167,
+      "total_deletions": 109,
+      "accepted_lines": 1542,
+      "overriden_lines": 0
+    }
+  }
+}
