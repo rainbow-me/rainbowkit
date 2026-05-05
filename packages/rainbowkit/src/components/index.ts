@@ -1,3 +1,8 @@
+// ============================ Provider Components ============================
+// Main provider for RainbowKit context, theming, and modals
+export { RainbowKitProvider } from './RainbowKitProvider/RainbowKitProvider';
+export type { RainbowKitProviderProps } from './RainbowKitProvider/RainbowKitProvider';
+
 // ============================ Button Components ============================
 // Main connect button with wallet connection flow
 export { ConnectButton } from './ConnectButton/ConnectButton';
