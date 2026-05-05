@@ -12,7 +12,7 @@ overrides:
   elliptic: 6.6.1
   '@remix-run/dev>esbuild': 0.25.5
 
-pnpmfileChecksum: sha256-EC2H7wVC8drIZpXpQ+rqUzp3UIufqGYBvXRDFxF8vBw=
+pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
 
 importers:
 
@@ -138,27 +138,18 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-app:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-app-i18n:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       next-intl:
         specifier: ^4.11.0
         version: 4.11.0(@swc/helpers@0.5.21)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)(typescript@5.5.4)
@@ -168,9 +159,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-mint-nft:
     dependencies:
@@ -180,9 +168,6 @@ importers:
       framer-motion:
         specifier: ^12.38.0
         version: 12.38.0(@emotion/is-prop-valid@0.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
     devDependencies:
       '@wagmi/cli':
         specifier: ^2.2.1
@@ -193,9 +178,6 @@ importers:
       '@rainbow-me/rainbow-button':
         specifier: workspace:*
         version: link:../../packages/rainbow-button
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-siwe-iron-session:
     dependencies:
@@ -205,9 +187,6 @@ importers:
       iron-session:
         specifier: ^6.3.1
         version: 6.3.1(express@4.21.2)(next@16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-siwe-next-auth:
     dependencies:
@@ -217,18 +196,12 @@ importers:
       '@rainbow-me/rainbowkit-siwe-next-auth':
         specifier: workspace:*
         version: link:../../packages/rainbowkit-siwe-next-auth
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-next-wallet-button:
     dependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      next:
-        specifier: ^16.2.4
-        version: 16.2.4(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   examples/with-react-router:
     dependencies:

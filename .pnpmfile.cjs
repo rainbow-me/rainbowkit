@@ -26,12 +26,14 @@ function omitRootDependencies(packageName, dependencies) {
   };
 
   const filteredDependencies = {};
-  const allowedDuplicatePackages = ['next'];
+  const allowedDuplicatePackages = [
+    // None for now
+  ];
 
   for (const dep of Object.keys(dependencies)) {
-    if (!rootDependencies[dep]) {
+    if (!rootDependencies[dep] || allowedDuplicatePackages.includes(dep)) {
       // Keep the dependency in the app template's package.json since it's not in the
-      // root package.json.
+      // root package.json (or in the list of allowed duplicate packages).
       filteredDependencies[dep] = dependencies[dep];
     } else if (rootDependencies[dep] !== dependencies[dep]) {
       throw new Error(
@@ -43,8 +45,6 @@ function omitRootDependencies(packageName, dependencies) {
           .filter(Boolean)
           .join('\n'),
       );
-    } else if (allowedDuplicatePackages.includes(dep)) {
-      filteredDependencies[dep] = dependencies[dep];
     }
   }
 
