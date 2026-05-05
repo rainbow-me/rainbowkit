@@ -22,7 +22,7 @@ export function SignIn({
 }) {
   const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
-    status: 'idle' | 'signing' | 'verifying';
+    status: 'idle' | 'creatingMessage' | 'signing' | 'verifying';
     errorMessage?: string;
     nonce?: string;
   }>({ status: 'idle' });
@@ -69,17 +69,34 @@ export function SignIn({
       setState((x) => ({
         ...x,
         errorMessage: undefined,
-        status: 'signing',
       }));
 
-      const message = await authAdapter.createMessage({
-        address,
-        chainId,
-        nonce,
-      });
+      let message: Awaited<ReturnType<typeof authAdapter.createMessage>>;
+      try {
+        const messageResult = authAdapter.createMessage({
+          address,
+          chainId,
+          nonce,
+        });
+
+        if (messageResult instanceof Promise) {
+          setState((x) => ({ ...x, status: 'creatingMessage' }));
+        }
+
+        message = await messageResult;
+      } catch {
+        return setState((x) => ({
+          ...x,
+          errorMessage: i18n.t('sign_in.message.preparing_error'),
+          status: 'idle',
+        }));
+      }
+
       let signature: string;
 
       try {
+        setState((x) => ({ ...x, status: 'signing' }));
+
         signature = await signMessageAsync({
           message,
         });
@@ -120,10 +137,11 @@ export function SignIn({
         }));
       }
     } catch {
-      setState({
+      setState((x) => ({
+        ...x,
         errorMessage: i18n.t('sign_in.signature.oops_error'),
         status: 'idle',
-      });
+      }));
     }
   };
 
@@ -205,10 +223,13 @@ export function SignIn({
         >
           <ActionButton
             disabled={
-              !state.nonce || status === 'signing' || status === 'verifying'
+              !state.nonce ||
+              status === 'creatingMessage' ||
+              status === 'signing' ||
+              status === 'verifying'
             }
             label={
-              !state.nonce
+              !state.nonce || status === 'creatingMessage'
                 ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
                   ? i18n.t('sign_in.signature.waiting')
