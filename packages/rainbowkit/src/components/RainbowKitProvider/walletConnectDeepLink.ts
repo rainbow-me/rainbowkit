@@ -7,7 +7,9 @@ export function setWalletConnectDeepLink({
   mobileUri: string;
   name: string;
 }) {
-  localStorage.setItem(
+  if (typeof window === 'undefined') return;
+
+  window.localStorage.setItem(
     storageKey,
     JSON.stringify({
       href: mobileUri.split('?')[0],
@@ -17,5 +19,7 @@ export function setWalletConnectDeepLink({
 }
 
 export function clearWalletConnectDeepLink() {
-  localStorage.removeItem(storageKey);
+  if (typeof window !== 'undefined') {
+    window.localStorage.removeItem(storageKey);
+  }
 }

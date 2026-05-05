@@ -26,8 +26,8 @@ function safeParseJsonData(string: string | null): Data {
 
 function loadData(): Data {
   return safeParseJsonData(
-    typeof localStorage !== 'undefined'
-      ? localStorage.getItem(storageKey)
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem(storageKey)
       : null,
   );
 }
@@ -203,7 +203,9 @@ export function createTransactionStore({
   }
 
   function persistData(): void {
-    localStorage.setItem(storageKey, JSON.stringify(data));
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(storageKey, JSON.stringify(data));
+    }
   }
 
   function notifyListeners(): void {

@@ -1,15 +1,19 @@
 const storageKey = 'rk-latest-id';
 
 export function getLatestWalletId(): string {
-  return typeof localStorage !== 'undefined'
-    ? localStorage.getItem(storageKey) || ''
+  return typeof window !== 'undefined'
+    ? window.localStorage.getItem(storageKey) || ''
     : '';
 }
 
 export function addLatestWalletId(walletId: string): void {
-  localStorage.setItem(storageKey, walletId);
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(storageKey, walletId);
+  }
 }
 
 export function clearLatestWalletId(): void {
-  localStorage.removeItem(storageKey);
+  if (typeof window !== 'undefined') {
+    window.localStorage.removeItem(storageKey);
+  }
 }
