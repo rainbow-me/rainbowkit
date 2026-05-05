@@ -1,0 +1,142 @@
+---
+title: 升級 RainbowKit SIWE 至 NextAuth v5
+description: 將 RainbowKit 的 NextAuth SIWE 適配器從 NextAuth v4 遷移至 v5
+---
+
+# 將 RainbowKit SIWE 遷移至 NextAuth v5
+
+RainbowKit 的 `@rainbow-me/rainbowkit-siwe-next-auth` 套件現在支持 NextAuth v5。對於使用 NextAuth SIWE 適配器的應用來說，這是一個重大升級，因為 NextAuth 更改了其服務器配置 API、會話幫助 API 和內部 CSRF 流程。
+
+NextAuth.js 現已成為更廣泛的 [Auth.js](https://authjs.dev) 項目的一部分。包名稱仍然是 `next-auth`，官方 NextAuth.js 文檔仍可在 [next-auth.js.org](https://next-auth.js.org) 上查看。本指南使用您今天安裝的 `next-auth` 包名稱，同時指出 Auth.js 過渡對 cookie 名稱和 v5 API 的影響。
+
+如果您的應用目前使用 `@rainbow-me/rainbowkit-siwe-next-auth` 並與 NextAuth v4 一起運行，請遵循以下步驟。
+
+**1. 升級依賴**
+
+安裝由RainbowKit支援的NextAuth v5套件版本。
+
+```diff
+- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+```
+
+**2. 更新你的NextAuth伺服器設定**
+
+NextAuth v5 作為 Auth.js 專案的一部分進行記錄，使用 `NextAuthConfig` 類型，`Credentials` 提供者匯出，以及由 `NextAuth(authOptions)` 返回的助手。
+
+Auth.js 建議使用 `AUTH_URL` 和 `AUTH_SECRET` 環境變數。如果你已經有使用 `NEXTAUTH_URL` 和 `NEXTAUTH_SECRET` 的 NextAuth v4 部署，遷移時保留它們作為後援。
+
+```diff
+- import type { NextAuthOptions } from 'next-auth';
+- import CredentialsProvider from 'next-auth/providers/credentials';
++ import NextAuth from 'next-auth';
++ import type { NextAuthConfig } from 'next-auth';
++ import Credentials from 'next-auth/providers/credentials';
+
+- export const authOptions: NextAuthOptions = {
++ export const authOptions: NextAuthConfig = {
+    providers: [
+-     CredentialsProvider({
++     Credentials({
+        name: 'Ethereum',
+        credentials: {
+          message: { label: 'Message', type: 'text' },
+          signature: { label: 'Signature', type: 'text' },
+        },
+        async authorize(credentials) {
+          /* Validate SIWE message, domain, nonce, and signature */
+        },
+      }),
+    ],
++   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  };
++
++ export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+對於應用程序路由器的路由處理程序，匯出返回的 `GET` 和 `POST` 處理程序。
+
+```ts
+export const { GET, POST } = handlers;
+```
+
+對於頁面路由器 API 路由，將你的 v5 `authOptions` 傳遞給 `NextAuth`。
+
+```ts
+export default NextAuth(authOptions);
+```
+
+**3. 更新伺服器端會話讀取**
+
+如果在 `getServerSideProps` 中讀取已驗證的位址，則從 v4 的會話助手切換到由你的驗證配置匯出的 v5 `auth`。
+
+分別傳遞 `req` 和 `res`。v5 重載不支援將完整的 `GetServerSidePropsContext` 對象傳遞給 `auth`。
+
+```diff
+- import { getServerSession } from 'next-auth';
+- import { authOptions } from '../auth';
++ import { auth } from '../auth';
+
+  export const getServerSideProps: GetServerSideProps = async (context) => {
+-   const session = await getServerSession(
+-     context.req,
+-     context.res,
+-     authOptions,
+-   );
++   const session = await auth(context.req, context.res);
+
+    return {
+      props: {
+        session,
+      },
+    };
+  };
+```
+
+**4. 更新 SIWE 隨機驗證**
+
+在 v4 實施中，RainbowKit 示例將 SIWE 隨機數與 `authorize` 中的 `getCsrfToken` 相比較。
+
+在 NextAuth v5 中，Credentials 提供者會在 NextAuth 驗證請求的 CSRF cookie 後接收驗證過的 CSRF token 作為 `credentials.csrfToken`。
+
+```diff
+- import { getCsrfToken } from 'next-auth/react';
+
+- if (
+-   siweMessage.nonce !==
+-   (await getCsrfToken({ req: { headers: req.headers } }))
+- ) {
+-   return null;
+- }
++ const csrfToken =
++   credentials && 'csrfToken' in credentials
++     ? credentials.csrfToken
++     : undefined;
++
++ if (siweMessage.nonce !== csrfToken) {
++   return null;
++ }
+```
+
+NextAuth v5 內部 cookie 使用 Auth.js `authjs` 前綴，包括 `authjs.csrf-token` 或 `__Host-authjs.csrf-token`（視安全 cookie 設置而定）。對於 RainbowKit 的 SIWE 流程，你不需要自己解析這些 cookie。
+
+**5. 在會話中返回已驗證的位址**
+
+如果你的應用程序讀取 `session.address`，請在 NextAuth 回調中繼續將 JWT 主體映射到會話中。
+
+```ts
+callbacks: {
+  async session({ session, token }) {
+    session.address = token.sub;
+    session.user = {
+      ...session.user,
+      name: token.sub,
+    };
+    return session;
+  },
+},
+```
+
+你可以在 [`with-next-siwe-next-auth` 示例](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth)中查看完整的 NextAuth v5 設置。
+
+如果你也在從早期的 RainbowKit SIWE 集成中升級，請查看 `0.5.0` 版本日誌中的 `viem/siwe` 遷移，以及 `0.3.0` 版本日誌中的早期 `getCsrfToken` 請求形狀更改。
