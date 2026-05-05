@@ -1,0 +1,27 @@
+packages/rainbowkit/src/transactions/transactionStore.ts
+  9bcd3471771b290f 2,19-29,151-153,157-158,177
+packages/rainbowkit/src/transactions/transactionStore.test.ts
+  9bcd3471771b290f 1-61
+.changeset/fix-recent-transaction-wait.md
+  9bcd3471771b290f 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "72938dbf9d35d83974556c6121bc385419ed2b9b",
+  "prompts": {
+    "9bcd3471771b290f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df9c9-d93a-71f1-a051-8b95c5923764",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 419,
+      "total_deletions": 8,
+      "accepted_lines": 414,
+      "overriden_lines": 0
+    }
+  }
+}
