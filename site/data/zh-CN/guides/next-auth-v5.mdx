@@ -1,0 +1,142 @@
+---
+title: 升级 RainbowKit SIWE 到 NextAuth v5
+description: 将 RainbowKit 的 NextAuth SIWE 适配器从 NextAuth v4 迁移到 v5
+---
+
+# 迁移 RainbowKit SIWE 到 NextAuth v5
+
+RainbowKit 的 `@rainbow-me/rainbowkit-siwe-next-auth` 包现在支持 NextAuth v5。这是一个重大升级，因为 NextAuth 改变了其服务器配置 API、会话辅助工具 API 和内部 CSRF 流程，这对使用 NextAuth SIWE 适配器的应用程序来说是重大变更。
+
+NextAuth.js现已成为更广泛的[Auth.js](https://authjs.dev)项目的一部分。软件包名称仍然是`next-auth`，官方网站 NextAuth.js 文档仍然可以在[next-auth.js.org](https://next-auth.js.org)获取。本指南使用您今天安装的`next-auth`包，并在影响 Cookie 名称和 v5 API 的变化中指出 Auth.js 的过渡。
+
+如果您的应用当前使用 `@rainbow-me/rainbowkit-siwe-next-auth` 与 NextAuth v4，请按照以下步骤操作。
+
+**1. 升级依赖项**
+
+安装RainbowKit支持的NextAuth v5版本包。
+
+```diff
+- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+```
+
+**2. 更新你的NextAuth服务器配置**
+
+NextAuth v5，被记录为Auth.js项目的一部分，使用`NextAuthConfig`类型，`Credentials`供应商导出，以及从`NextAuth(authOptions)`返回的辅助函数。
+
+Auth.js推荐使用`AUTH_URL`和`AUTH_SECRET`环境变量。如果你已经有一个使用`NEXTAUTH_URL`和`NEXTAUTH_SECRET`的NextAuth v4部署，在迁移时保持这些作为后备。
+
+```diff
+- import type { NextAuthOptions } from 'next-auth';
+- import CredentialsProvider from 'next-auth/providers/credentials';
++ import NextAuth from 'next-auth';
++ import type { NextAuthConfig } from 'next-auth';
++ import Credentials from 'next-auth/providers/credentials';
+
+- export const authOptions: NextAuthOptions = {
++ export const authOptions: NextAuthConfig = {
+    providers: [
+-     CredentialsProvider({
++     Credentials({
+        name: 'Ethereum',
+        credentials: {
+          message: { label: 'Message', type: 'text' },
+          signature: { label: 'Signature', type: 'text' },
+        },
+        async authorize(credentials) {
+          /* Validate SIWE message, domain, nonce, and signature */
+        },
+      }),
+    ],
++   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  };
++
++ export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+对于App Router路由处理程序，请导出返回的`GET`和`POST`处理程序。
+
+```ts
+export const { GET, POST } = handlers;
+```
+
+对于Pages Router API路由，将你的v5 `authOptions`传递给`NextAuth`。
+
+```ts
+export default NextAuth(authOptions);
+```
+
+**3. 更新服务器端会话读取**
+
+如果你在`getServerSideProps`中读取已认证的地址，请从v4会话辅助工具切换到你的身份验证配置导出的v5 `auth`辅助工具。
+
+分别传递`req`和`res`。v5重载不支持将完整的`GetServerSidePropsContext`对象传递给`auth`。
+
+```diff
+- import { getServerSession } from 'next-auth';
+- import { authOptions } from '../auth';
++ import { auth } from '../auth';
+
+  export const getServerSideProps: GetServerSideProps = async (context) => {
+-   const session = await getServerSession(
+-     context.req,
+-     context.res,
+-     authOptions,
+-   );
++   const session = await auth(context.req, context.res);
+
+    return {
+      props: {
+        session,
+      },
+    };
+  };
+```
+
+**4. 更新SIWE随机数验证**
+
+在v4实现中，RainbowKit示例将SIWE随机数与`authorize`中的`getCsrfToken`进行了比较。
+
+在NextAuth v5中，Credentials供应商在NextAuth验证请求的CSRF cookie后，以`credentials.csrfToken`接收经过验证的CSRF令牌。
+
+```diff
+- import { getCsrfToken } from 'next-auth/react';
+
+- if (
+-   siweMessage.nonce !==
+-   (await getCsrfToken({ req: { headers: req.headers } }))
+- ) {
+-   return null;
+- }
++ const csrfToken =
++   credentials && 'csrfToken' in credentials
++     ? credentials.csrfToken
++     : undefined;
++
++ if (siweMessage.nonce !== csrfToken) {
++   return null;
++ }
+```
+
+NextAuth v5内部cookie使用Auth.js `authjs`前缀，包括根据安全cookie设置的`authjs.csrf-token`或`__Host-authjs.csrf-token`。您无需自行解析这些cookie用于RainbowKit的SIWE流。
+
+**5. 返回会话上的已认证地址**
+
+如果你的应用程序读取`session.address`，在你的NextAuth回调中继续将JWT的主题映射到会话。
+
+```ts
+callbacks: {
+  async session({ session, token }) {
+    session.address = token.sub;
+    session.user = {
+      ...session.user,
+      name: token.sub,
+    };
+    return session;
+  },
+},
+```
+
+你可以在[`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth)中查看完整的NextAuth v5设置。
+
+如果你也在升级旧的RainbowKit SIWE集成，请查看`0.5.0`变更日志以了解`viem/siwe`迁移，以及早期`getCsrfToken`请求形状变化的`0.3.0`变更日志。
