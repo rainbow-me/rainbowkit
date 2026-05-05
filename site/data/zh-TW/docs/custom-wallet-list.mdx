@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base 帳戶（原 Coinbase Wallet）
+#### Base（前稱 Coinbase Wallet）
 
-此錢包連接器支持 Base 帳戶，即 Coinbase 智能錢包的演變。它提供流暢的身份驗證和增強功能，如子賬戶和支出許可。
+這個錢包連接器支持 Base，是 Coinbase 智能錢包的演進。它提供無縫的身份驗證和增強功能，如子帳戶和消費許可。
 
-配置選項與 [Base Account SDK 參考](https://docs.base.org/base-account/reference/core/createBaseAccount) 對齊。
+配置選項與 [Base SDK 參考](https://docs.base.org/base-account/reference/core/createBaseAccount) 相符。
+
+> `baseAccount` 和 `coinbaseWallet` 仍可用作向後兼容的別名。
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-顯示 Rainbow、MetaMask 和 Base 帳戶，以及通用回退錢包。
+Show Rainbow, MetaMask and Base along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 您可以使用 `groupName` 鍵為不同的錢包群組命名。如果您希望向用戶推薦某些錢包，以及顯示其他可能的錢包，這會很有用。
 
-推薦 Rainbow 和 MetaMask，但同時提供 Base 帳戶和通用回退錢包。
+Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
