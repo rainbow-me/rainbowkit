@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### Base (trước đây là Coinbase Wallet)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+Trình kết nối ví này hỗ trợ Base, bước tiến của Coinbase Smart Wallet. Nó cung cấp xác thực liền mạch và các tính năng nâng cao như tài khoản phụ và quyền chi tiêu.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Các tùy chọn cấu hình phù hợp với [tham chiếu SDK Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` và `coinbaseWallet` vẫn có sẵn như những bí danh tương thích ngược.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Hiện Rainbow, MetaMask và Base cùng với các ví dự phòng chung.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 Bạn có thể sử dụng khóa `groupName` để đặt tên cho các nhóm ví khác nhau. Điều này rất hữu ích nếu bạn muốn truyền đạt cho người dùng của bạn biết những ví bạn đề xuất, cũng như các ví khác có thể.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Khuyên dùng Rainbow và MetaMask, nhưng cũng cung cấp Base cùng với các ví dự phòng chung.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
