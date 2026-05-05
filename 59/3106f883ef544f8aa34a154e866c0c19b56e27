@@ -1,0 +1,27 @@
+.pnpmfile.cjs
+  d9db4281470b6067 29,32,34,46-47
+packages/rainbowkit/src/components/WalletButton/WalletButton.tsx
+  d9db4281470b6067 15-18,20
+.npmrc
+  d9db4281470b6067 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "593106f883ef544f8aa34a154e866c0c19b56e27",
+  "prompts": {
+    "d9db4281470b6067": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6b7-d24d-7b61-9d98-51a2341f7353",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 41791,
+      "total_deletions": 8,
+      "accepted_lines": 933,
+      "overriden_lines": 0
+    }
+  }
+}
