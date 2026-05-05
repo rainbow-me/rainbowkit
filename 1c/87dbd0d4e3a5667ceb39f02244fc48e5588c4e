@@ -1,0 +1,25 @@
+packages/example/src/wagmi.ts
+  a601d26e9e7f5bae 72,202-267
+.changeset/example-alchemy-mainnet-transport.md
+  a601d26e9e7f5bae 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "1c87dbd0d4e3a5667ceb39f02244fc48e5588c4e",
+  "prompts": {
+    "a601d26e9e7f5bae": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6c3-1b2e-77f1-854f-b2b9288be9a2",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 958,
+      "total_deletions": 294,
+      "accepted_lines": 758,
+      "overriden_lines": 0
+    }
+  }
+}
