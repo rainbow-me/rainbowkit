@@ -102,7 +102,7 @@ export function useWalletConnectors(
 
   const getWalletConnectUri = async (
     connector: Connector,
-    uriConverter: (uri: string) => string,
+    uriConverter: (uri: string) => string | Promise<string>,
   ): Promise<string> => {
     const provider = await connector.getProvider();
 

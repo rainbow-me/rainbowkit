@@ -10,12 +10,14 @@ export type InstructionStepName =
   | 'connect'
   | 'refresh';
 
+type WalletUri = string | Promise<string>;
+
 type RainbowKitConnector = {
   mobile?: {
-    getUri?: (uri: string) => string;
+    getUri?: (uri: string) => WalletUri;
   };
   desktop?: {
-    getUri?: (uri: string) => string;
+    getUri?: (uri: string) => WalletUri;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -26,7 +28,7 @@ type RainbowKitConnector = {
     };
   };
   qrCode?: {
-    getUri: (uri: string) => string;
+    getUri: (uri: string) => WalletUri;
     instructions?: {
       learnMoreUrl: string;
       steps: {

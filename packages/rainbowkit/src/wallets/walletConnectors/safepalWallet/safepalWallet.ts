@@ -25,7 +25,7 @@ export const safepalWallet = ({
     return `safepalwallet://wc?uri=${encodeURIComponent(uri)}`;
   };
 
-  const getUriQR = (uri: string) => {
+  const getUriQR = async (uri: string) => {
     return uri;
   };
 
