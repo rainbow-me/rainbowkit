@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### Base (anciennement Coinbase Wallet)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+Ce connecteur de portefeuille prend en charge Base, l'évolution de Coinbase Smart Wallet. Il offre une authentification transparente et des fonctionnalités améliorées telles que des sous-comptes et des autorisations de dépenses.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Les options de configuration s'alignent sur la [référence SDK Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` et `coinbaseWallet` restent disponibles en tant qu'alias rétrocompatibles.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Affichez Rainbow, MetaMask et Base ainsi que les portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 Vous pouvez utiliser la clé `groupName` pour nommer différents groupes de portefeuilles. C'est utile si vous souhaitez indiquer à vos utilisateurs quels portefeuilles vous recommandez, ainsi que d'autres portefeuilles possibles.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Recommandez Rainbow et MetaMask, mais proposez aussi Base ainsi que des portefeuilles génériques de secours.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
