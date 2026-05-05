@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### База (ранее Coinbase Wallet)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+Этот коннектор кошелька поддерживает Base, эволюцию Coinbase Smart Wallet. Он обеспечивает бесшовную аутентификацию и расширенные функции, такие как под-аккаунты и разрешения на траты.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Параметры конфигурации соответствуют [справочнику Base SDK](https://docs.base.org/base-account/reference/core/createBaseAccount).
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` и `coinbaseWallet` остаются доступными как обратно-совместимые псевдонимы.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Показать Rainbow, MetaMask и Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 Вы можете использовать ключ `groupName`, чтобы назвать различные группы кошельков. Это удобно, если вы хотите сообщить пользователям, какие кошельки вы рекомендуете, а также другие возможные кошельки.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Рекомендовать Rainbow и MetaMask, но также предлагать Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
