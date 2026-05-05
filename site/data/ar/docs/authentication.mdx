@@ -15,11 +15,54 @@ description: مصادقة المستخدمين الخاصين بك
 
 #### تثبيت
 
-قم بتثبيت حزمة `@rainbow-me/rainbowkit-siwe-next-auth`.
+قم بتثبيت حزمة `@rainbow-me/rainbowkit-siwe-next-auth` و NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+إذا كنت تقوم بتحديث دمج SIWE في NextAuth v4 الحالي، اتبع [دليل ترحيل NextAuth v5](/guides/next-auth-v5).
+
+#### إعداد NextAuth
+
+قم بإنشاء تكوين NextAuth الذي يستخدم موفر `Credentials` v5 ويصدر المُساعد `auth`. يجب أن تنفذ `authorize` للتحقق من صحة رسالة SIWE، وتوقيعها، والمجال، وnonce قبل إرجاع العنوان المعتمد.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+اطلع على المثال الكامل [`with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) للتحقق من صحة SIWE، وفحص nonce، والتحقق على جهة الخادم.
 
 #### إعداد الموفر
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### الوصول إلى الجلسة على الجانب الخادم
 
-يمكنك الوصول إلى رمز الجلسة باستخدام وظيفة `getToken` الخاصة بـ NextAuth المستوردة من `next-auth/jwt`. إذا كان المستخدم قد قام بالمصادقة بنجاح، سيكون خاصية `sub` في رمز الجلسة (الموضوع في الرمز، أي المستخدم) هو عنوان المستخدم.
+يمكنك الوصول إلى الجلسة باستخدام وظيفة `auth` التي تصدرها من تكوين المصادقة الخاص بك. إذا كان المستخدم قد نجح في المصادقة، ستكون خاصية `address` في الجلسة هي عنوان المستخدم.
 
 يمكنك أيضًا تمرير كائن الجلسة المستقر من الخادم عبر `getServerSideProps` بحيث لا يحتاج NextAuth إلى حله مرة أخرى على العميل.
 
@@ -102,15 +145,12 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 لمزيد من المعلومات حول إدارة الجلسة، يمكنك الرجوع إلى التوثيق التالي:
 
-- [دليل المصادقة Next.js](https://nextjs.org/docs/pages/guides/authentication)
+- [دليل مصادقة Next.js](https://nextjs.org/docs/app/guides/authentication)
 - [توثيق NextAuth](https://next-auth.js.org)
