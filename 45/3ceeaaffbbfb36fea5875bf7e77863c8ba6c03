@@ -1,0 +1,35 @@
+examples/with-next-custom-button/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next-mint-nft/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next-wallet-button/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next-siwe-next-auth/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next-rainbow-button/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next-siwe-iron-session/next-env.d.ts
+  f3cdefa574a73266 6
+examples/with-next/next-env.d.ts
+  f3cdefa574a73266 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "453ceeaaffbbfb36fea5875bf7e77863c8ba6c03",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 15,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
