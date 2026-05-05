@@ -1,0 +1,107 @@
+packages/rainbowkit-siwe-next-auth/src/index.ts
+  cff40f8c24422c70 2
+examples/with-next-mint-nft/src/wagmi.ts
+  cff40f8c24422c70 3
+site/pages/_app.tsx
+  cff40f8c24422c70 3,6
+examples/with-react-router/app/routes/home.tsx
+  cff40f8c24422c70 2
+examples/with-next-rainbow-button/src/pages/index.tsx
+  cff40f8c24422c70 5-6
+packages/rainbowkit/test/index.tsx
+  cff40f8c24422c70 4-5,20
+packages/example/src/pages/_app.tsx
+  cff40f8c24422c70 8,11,18-24
+packages/rainbow-button/src/index.ts
+  cff40f8c24422c70 1-4
+examples/with-next-rainbow-button/src/pages/_app.tsx
+  cff40f8c24422c70 3,6
+examples/with-next-siwe-iron-session/src/pages/_app.tsx
+  cff40f8c24422c70 6,9,11-13,15
+packages/rainbowkit/src/components/index.ts
+  cff40f8c24422c70 4-8,16,19-28
+packages/rainbowkit/src/index.ts
+  cff40f8c24422c70 1,3-7,9-19,24-27,29-36,40,43
+examples/with-next-app/src/app/providers.tsx
+  cff40f8c24422c70 3,5
+examples/with-next-siwe-next-auth/src/pages/_app.tsx
+  cff40f8c24422c70 6,8-12
+examples/with-remix/app/root.tsx
+  cff40f8c24422c70 2-13,15-16,22-23
+site/pages/docs/[slug].tsx
+  cff40f8c24422c70 1,7
+examples/with-next-wallet-button/src/pages/index.tsx
+  cff40f8c24422c70 2
+examples/with-next-wallet-button/src/pages/_app.tsx
+  cff40f8c24422c70 3,6
+examples/with-next-app-i18n/src/app/[locale]/layout.tsx
+  cff40f8c24422c70 2
+examples/with-vite/src/main.tsx
+  cff40f8c24422c70 3-4
+site/pages/index.tsx
+  cff40f8c24422c70 19
+examples/with-next-mint-nft/src/pages/index.tsx
+  cff40f8c24422c70 3-4,12
+site/css/sprinkles.css.ts
+  cff40f8c24422c70 8
+examples/with-next-rainbow-button/src/wagmi.ts
+  cff40f8c24422c70 1
+examples/with-vite/vite.config.ts
+  cff40f8c24422c70 2
+examples/with-react-router/app/routes.ts
+  cff40f8c24422c70 1
+packages/rainbowkit/src/locales/index.ts
+  cff40f8c24422c70 2
+packages/example/src/wagmi.ts
+  cff40f8c24422c70 19,35,50,54,59,62
+examples/with-next/src/pages/_app.tsx
+  cff40f8c24422c70 3-4
+examples/with-next-app-i18n/src/app/[locale]/providers.tsx
+  cff40f8c24422c70 3,5
+site/pages/guides/[slug].tsx
+  cff40f8c24422c70 1
+packages/example/src/pages/api/auth/[...nextauth].ts
+  cff40f8c24422c70 8
+examples/with-react-router/app/providers.tsx
+  cff40f8c24422c70 3,5
+packages/rainbowkit/src/css/sprinkles.css.ts
+  cff40f8c24422c70 7
+packages/create-rainbowkit/templates/next-app/src/pages/_app.tsx
+  cff40f8c24422c70 3,6
+packages/example/src/pages/providers.tsx
+  cff40f8c24422c70 9,12
+examples/with-create-react-app/src/index.tsx
+  cff40f8c24422c70 3-4
+packages/example/src/pages/index.tsx
+  cff40f8c24422c70 8
+examples/with-next-mint-nft/src/pages/_app.tsx
+  cff40f8c24422c70 3,6
+examples/with-next-app-i18n/src/proxy.ts
+  cff40f8c24422c70 2
+examples/with-next-custom-button/src/pages/_app.tsx
+  cff40f8c24422c70 3,6
+packages/example/src/pages/icons.tsx
+  cff40f8c24422c70 2-3
+examples/with-next-siwe-next-auth/src/pages/api/auth/[...nextauth].ts
+  cff40f8c24422c70 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f4209730ea07525c645c0a38afb686d58802b3f8",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 11466,
+      "total_deletions": 187,
+      "accepted_lines": 14141,
+      "overriden_lines": 0
+    }
+  }
+}
