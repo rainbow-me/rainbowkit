@@ -19,7 +19,7 @@
     "mipd": "^0.0.7"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build --webpack",
     "typecheck": "pnpm tsc --noEmit"
   },

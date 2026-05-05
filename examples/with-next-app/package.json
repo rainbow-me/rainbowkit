@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.55",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start"
   },

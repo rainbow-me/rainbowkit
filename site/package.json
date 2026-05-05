@@ -45,7 +45,7 @@
     "next-sitemap": "^4.2.3"
   },
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev --webpack --port 3001",
     "build": "INIT_CWD=$PWD contentlayer2 build && next build --webpack",
     "postbuild": "next-sitemap",
     "typecheck": "INIT_CWD=$PWD contentlayer2 build && pnpm tsc --noEmit"
