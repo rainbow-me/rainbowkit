@@ -1,0 +1,45 @@
+packages/create-rainbowkit/templates/next-app/package.json
+  2598ddbd4cd26bfc 7
+examples/with-create-react-app/package.json
+  2598ddbd4cd26bfc 14-15,32-34
+examples/with-next-siwe-next-auth/package.json
+  2598ddbd4cd26bfc 7
+packages/example/src/auth.ts
+  2598ddbd4cd26bfc 18-29,63,81,117
+examples/with-next-wallet-button/package.json
+  2598ddbd4cd26bfc 7
+site/pages/_document.tsx
+  2598ddbd4cd26bfc 8-12,18,20-21
+packages/create-rainbowkit/generated-test-app/package.json
+  2598ddbd4cd26bfc 7,25
+packages/example/package.json
+  2598ddbd4cd26bfc 23
+examples/with-next-rainbow-button/package.json
+  2598ddbd4cd26bfc 7
+examples/with-next-siwe-iron-session/package.json
+  2598ddbd4cd26bfc 7
+examples/with-next-siwe-next-auth/src/auth.ts
+  2598ddbd4cd26bfc 18-29,63,81,116
+examples/with-next-mint-nft/package.json
+  2598ddbd4cd26bfc 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "943d7797343b0704be07a0d9d36319db719a69fe",
+  "prompts": {
+    "2598ddbd4cd26bfc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df734-e001-7f12-9ffa-3dc105229310",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 388,
+      "total_deletions": 25,
+      "accepted_lines": 388,
+      "overriden_lines": 0
+    }
+  }
+}
