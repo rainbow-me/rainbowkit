@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### Base (sebelumnya dikenali sebagai Dompet Coinbase)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+Penyambung dompet ini menyokong Base, evolusi Dompet Pintar Coinbase. Ia menyediakan pengesahan tanpa batasan dan ciri-ciri tambahan seperti sub-akaun dan kebenaran perbelanjaan.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Pilihan konfigurasi sejajar dengan [rujukan SDK Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` dan `coinbaseWallet` kekal tersedia sebagai alias yang serasi ke belakang.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Tunjukkan Rainbow, MetaMask dan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 Anda boleh menggunakan kunci `groupName` untuk menamakan kumpulan dompet yang berbeza. Ini berguna jika anda mahu berkomunikasi kepada pengguna anda dompet mana yang anda cadangkan, serta kemungkinan dompet lain.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Saran Rainbow dan MetaMask, tetapi juga tawarkan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
