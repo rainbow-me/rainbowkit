@@ -47,6 +47,7 @@ export const authOptions: NextAuthConfig = {
           }
 
           const authUrl =
+            process.env.AUTH_URL ||
             process.env.NEXTAUTH_URL ||
             (process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}`
@@ -99,7 +100,7 @@ export const authOptions: NextAuthConfig = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
   session: {
     strategy: 'jwt',
   },

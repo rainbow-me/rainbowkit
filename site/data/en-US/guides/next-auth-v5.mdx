@@ -24,6 +24,8 @@ Install the NextAuth v5 package version supported by RainbowKit.
 
 NextAuth v5, documented as part of the Auth.js project, uses the `NextAuthConfig` type, the `Credentials` provider export, and helpers returned from `NextAuth(authOptions)`.
 
+Auth.js recommends the `AUTH_URL` and `AUTH_SECRET` environment variables. If you already have a NextAuth v4 deployment using `NEXTAUTH_URL` and `NEXTAUTH_SECRET`, keep those as fallbacks while you migrate.
+
 ```diff
 - import type { NextAuthOptions } from 'next-auth';
 - import CredentialsProvider from 'next-auth/providers/credentials';
@@ -46,6 +48,7 @@ NextAuth v5, documented as part of the Auth.js project, uses the `NextAuthConfig
         },
       }),
     ],
++   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
   };
 +
 + export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);

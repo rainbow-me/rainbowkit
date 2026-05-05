@@ -67,6 +67,7 @@ const credentials = {
   csrfToken: 'csrf-token',
   signature: '0xsignature',
 };
+const rpcUrl = 'https://ethereum-rpc.example';
 const request = new Request(
   'https://example.com/api/auth/callback/credentials',
 );
@@ -75,8 +76,11 @@ type EnvOverrides = Partial<NodeJS.ProcessEnv>;
 async function createAuthModule(env: EnvOverrides = {}) {
   process.env = {
     ...originalEnv,
+    AUTH_SECRET: undefined,
+    AUTH_URL: undefined,
     NEXTAUTH_SECRET: undefined,
     NEXTAUTH_URL: undefined,
+    ETHEREUM_RPC_URL: undefined,
     VERCEL_URL: undefined,
     ...env,
   };
@@ -121,6 +125,7 @@ async function createAuthModule(env: EnvOverrides = {}) {
             }
 
             const authUrl =
+              process.env.AUTH_URL ||
               process.env.NEXTAUTH_URL ||
               (process.env.VERCEL_URL
                 ? `https://${process.env.VERCEL_URL}`
@@ -172,7 +177,7 @@ async function createAuthModule(env: EnvOverrides = {}) {
         return session;
       },
     },
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
     session: {
       strategy: 'jwt',
     },
@@ -256,6 +261,15 @@ describe('NextAuth SIWE config', () => {
     });
   });
 
+  it('prefers the Auth.js secret env var while preserving NEXTAUTH_SECRET fallback', async () => {
+    const { authOptions } = await createAuthModule({
+      AUTH_SECRET: 'auth-secret',
+      NEXTAUTH_SECRET: 'nextauth-secret',
+    });
+
+    expect(authOptions.secret).toBe('auth-secret');
+  });
+
   it('creates the public client used for server-side signature verification', async () => {
     await createAuthModule();
 
@@ -265,6 +279,20 @@ describe('NextAuth SIWE config', () => {
       transport: 'http-transport',
     });
   });
+
+  it.fails(
+    'configures signature verification RPC with an explicit bounded transport',
+    async () => {
+      await createAuthModule({
+        ETHEREUM_RPC_URL: rpcUrl,
+      });
+
+      expect(mocks.http).toHaveBeenCalledWith(rpcUrl, {
+        retryCount: 0,
+        timeout: 3000,
+      });
+    },
+  );
 
   it('exports the helpers returned by NextAuth', async () => {
     const authModule = await createAuthModule();
@@ -303,12 +331,62 @@ describe('NextAuth SIWE config', () => {
     });
   });
 
+  it('uses public client signature verification so ERC-1271 wallets stay supported', async () => {
+    mockValidSiweMessage();
+    const authorize = await getAuthorize({
+      NEXTAUTH_URL: 'https://example.com',
+    });
+
+    await authorize(credentials, request);
+
+    expect(mocks.verifyMessage).toHaveBeenCalledWith({
+      address,
+      message: credentials.message,
+      signature: credentials.signature,
+    });
+  });
+
+  it.fails(
+    'returns null when signature verification RPC does not settle before the callback budget',
+    async () => {
+      mockValidSiweMessage();
+      mocks.verifyMessage.mockReturnValue(
+        new Promise<never>(() => {
+          // Intentionally unresolved to model a stalled RPC provider.
+        }),
+      );
+      const authorize = await getAuthorize({
+        NEXTAUTH_URL: 'https://example.com',
+      });
+
+      await expect(
+        Promise.race([
+          authorize(credentials, request),
+          new Promise((resolve) => setTimeout(() => resolve('timed-out'), 50)),
+        ]),
+      ).resolves.toBeNull();
+    },
+  );
+
   it.each([
+    [{ AUTH_URL: 'https://auth.example.com' }, 'auth.example.com'],
     [{ NEXTAUTH_URL: 'https://example.com' }, 'example.com'],
     [{ VERCEL_URL: 'vercel.example.com' }, 'vercel.example.com'],
   ])('uses supported auth URL env source %#', async (env, domain) => {
     mockValidSiweMessage({ domain });
     const authorize = await getAuthorize(env);
+
+    await expect(authorize(credentials, request)).resolves.toEqual({
+      id: address,
+    });
+  });
+
+  it('prefers AUTH_URL over legacy NEXTAUTH_URL for SIWE domain validation', async () => {
+    mockValidSiweMessage({ domain: 'auth.example.com' });
+    const authorize = await getAuthorize({
+      AUTH_URL: 'https://auth.example.com',
+      NEXTAUTH_URL: 'https://legacy.example.com',
+    });
 
     await expect(authorize(credentials, request)).resolves.toEqual({
       id: address,
