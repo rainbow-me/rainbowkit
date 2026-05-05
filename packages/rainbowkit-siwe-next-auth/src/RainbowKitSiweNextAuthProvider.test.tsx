@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { createElement } from 'react';
+import type { ComponentProps } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';
 
@@ -53,6 +54,18 @@ function getAdapter() {
   return latestProviderProps.adapter;
 }
 
+function renderProvider(
+  props: Partial<ComponentProps<typeof RainbowKitSiweNextAuthProvider>> = {},
+) {
+  return render(
+    createElement(
+      RainbowKitSiweNextAuthProvider,
+      props,
+      createElement('span', null, 'children'),
+    ),
+  );
+}
+
 describe('<RainbowKitSiweNextAuthProvider />', () => {
   beforeEach(() => {
     mocks.providerProps.length = 0;
@@ -68,11 +81,7 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
   it('passes the NextAuth session status and enabled flag through to RainbowKit', () => {
     mocks.useSession.mockReturnValue({ status: 'authenticated' });
 
-    render(
-      <RainbowKitSiweNextAuthProvider enabled={false}>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+    renderProvider({ enabled: false });
 
     expect(screen.getByText('children')).toBeInTheDocument();
     expect(mocks.providerProps.at(-1)).toMatchObject({
@@ -85,33 +94,51 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
   it('falls back to loading status when NextAuth has no session context yet', () => {
     mocks.useSession.mockReturnValue(undefined);
 
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+    renderProvider();
 
     expect(mocks.providerProps.at(-1)).toMatchObject({
       status: 'loading',
     });
   });
 
-  it('creates SIWE messages with defaults and keeps address, chainId, and nonce unconfigurable', () => {
-    render(
-      <RainbowKitSiweNextAuthProvider
-        getSiweMessageOptions={() =>
-          ({
-            address: '0x0000000000000000000000000000000000000000',
-            chainId: 999,
-            domain: 'custom.example',
-            nonce: 'bad-nonce',
-            statement: 'Custom statement',
-          }) as never
-        }
-      >
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
+  it('creates SIWE messages with default options', () => {
+    renderProvider();
+
+    const message = getAdapter().createMessage({
+      address: '0x1111111111111111111111111111111111111111',
+      chainId: 1,
+      nonce: 'csrf-nonce',
+    });
+
+    const expectedMessageOptions = {
+      address: '0x1111111111111111111111111111111111111111',
+      chainId: 1,
+      domain: window.location.host,
+      nonce: 'csrf-nonce',
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+    };
+
+    expect(JSON.parse(message)).toEqual(expectedMessageOptions);
+    expect(mocks.createSiweMessage).toHaveBeenCalledWith(
+      expectedMessageOptions,
     );
+  });
+
+  it('creates SIWE messages with defaults and keeps address, chainId, and nonce unconfigurable', () => {
+    renderProvider({
+      getSiweMessageOptions: () =>
+        ({
+          address: '0x0000000000000000000000000000000000000000',
+          chainId: 999,
+          domain: 'custom.example',
+          nonce: 'bad-nonce',
+          statement: 'Custom statement',
+          uri: 'https://custom.example',
+          version: '1',
+        }) as never,
+    });
 
     const message = getAdapter().createMessage({
       address: '0x1111111111111111111111111111111111111111',
@@ -125,7 +152,7 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
       domain: 'custom.example',
       nonce: 'csrf-nonce',
       statement: 'Custom statement',
-      uri: window.location.origin,
+      uri: 'https://custom.example',
       version: '1',
     };
 
@@ -135,38 +162,75 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     );
   });
 
+  it('reuses the adapter while SIWE message options are stable', () => {
+    const getSiweMessageOptions = vi.fn(() => ({ statement: 'Stable' }));
+    const { rerender } = renderProvider({ getSiweMessageOptions });
+    const firstAdapter = getAdapter();
+
+    rerender(
+      createElement(
+        RainbowKitSiweNextAuthProvider,
+        { getSiweMessageOptions },
+        createElement('span', null, 'updated children'),
+      ),
+    );
+
+    expect(getAdapter()).toBe(firstAdapter);
+    expect(mocks.createAuthenticationAdapter).toHaveBeenCalledTimes(1);
+  });
+
+  it('recreates the adapter when SIWE message options change', () => {
+    const firstOptions = () => ({ statement: 'First' });
+    const secondOptions = () => ({ statement: 'Second' });
+    const { rerender } = renderProvider({
+      getSiweMessageOptions: firstOptions,
+    });
+    const firstAdapter = getAdapter();
+
+    rerender(
+      createElement(
+        RainbowKitSiweNextAuthProvider,
+        { getSiweMessageOptions: secondOptions },
+        createElement('span', null, 'children'),
+      ),
+    );
+
+    expect(getAdapter()).not.toBe(firstAdapter);
+    expect(mocks.createAuthenticationAdapter).toHaveBeenCalledTimes(2);
+  });
+
   it('uses the NextAuth CSRF token as the RainbowKit nonce', async () => {
     mocks.getCsrfToken.mockResolvedValue('csrf-nonce');
 
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+    renderProvider();
 
     await expect(getAdapter().getNonce()).resolves.toBe('csrf-nonce');
   });
 
-  it('rejects nonce creation when NextAuth does not return a CSRF token', async () => {
-    mocks.getCsrfToken.mockResolvedValue(undefined);
+  it.each([undefined, null, ''])(
+    'rejects nonce creation when NextAuth returns %s',
+    async (nonce) => {
+      mocks.getCsrfToken.mockResolvedValue(nonce);
 
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+      renderProvider();
 
-    await expect(getAdapter().getNonce()).rejects.toThrow();
+      await expect(getAdapter().getNonce()).rejects.toThrow();
+    },
+  );
+
+  it('propagates CSRF token lookup failures', async () => {
+    const error = new Error('csrf failed');
+    mocks.getCsrfToken.mockRejectedValue(error);
+
+    renderProvider();
+
+    await expect(getAdapter().getNonce()).rejects.toThrow(error);
   });
 
   it('verifies SIWE credentials through the NextAuth credentials provider', async () => {
     mocks.signIn.mockResolvedValue({ ok: true });
 
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+    renderProvider();
 
     await expect(
       getAdapter().verify({ message: 'message', signature: '0xsig' }),
@@ -178,29 +242,44 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     });
   });
 
-  it('treats failed or missing NextAuth sign-in responses as failed verification', async () => {
-    mocks.signIn.mockResolvedValue(undefined);
+  it.each([undefined, null, { ok: false }, {}])(
+    'treats sign-in response %s as failed verification',
+    async (response) => {
+      mocks.signIn.mockResolvedValue(response);
 
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+      renderProvider();
+
+      await expect(
+        getAdapter().verify({ message: 'message', signature: '0xsig' }),
+      ).resolves.toBe(false);
+    },
+  );
+
+  it('propagates NextAuth sign-in failures', async () => {
+    const error = new Error('sign-in failed');
+    mocks.signIn.mockRejectedValue(error);
+
+    renderProvider();
 
     await expect(
       getAdapter().verify({ message: 'message', signature: '0xsig' }),
-    ).resolves.toBe(false);
+    ).rejects.toThrow(error);
   });
 
   it('signs out through NextAuth without redirecting', async () => {
-    render(
-      <RainbowKitSiweNextAuthProvider>
-        <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
-    );
+    renderProvider();
 
     await getAdapter().signOut();
 
     expect(mocks.signOut).toHaveBeenCalledWith({ redirect: false });
+  });
+
+  it('propagates NextAuth sign-out failures', async () => {
+    const error = new Error('sign-out failed');
+    mocks.signOut.mockRejectedValue(error);
+
+    renderProvider();
+
+    await expect(getAdapter().signOut()).rejects.toThrow(error);
   });
 });
