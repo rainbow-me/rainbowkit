@@ -1,0 +1,9 @@
+packages/example/src/pages/index.tsx
+  a3308f1ca9274246 397,401,416,432,437,447,457,461,477
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3bfa496290b346fde14481c11a924656cedc445f",
+  "prompts": {}
+}
