@@ -52,7 +52,6 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
           [],
         )}
         style={sentinelStyle}
-        tabIndex={0}
         type="button"
       />
       <div
@@ -69,7 +68,6 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
           [],
         )}
         style={sentinelStyle}
-        tabIndex={0}
         type="button"
       />
     </>
