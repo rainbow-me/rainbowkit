@@ -46,11 +46,10 @@ export function ConnectButton({
 
   const { i18n } = useContext(I18nContext);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setShowBalance(showBalance);
     if (!ready) setReady(true);
-  }, [showBalance, setShowBalance]);
+  }, [ready, showBalance, setShowBalance]);
 
   return ready ? (
     <ConnectButtonRenderer>

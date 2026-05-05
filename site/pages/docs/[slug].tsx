@@ -63,16 +63,11 @@ export async function getStaticProps({
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
-  const sectionName = docsRoutes.reduce((acc, curr) => {
-    for (const page of curr.pages) {
-      if (page.slug === params.slug) {
-        // biome-ignore lint/style/noParameterAssign: TODO
-        acc = doc.title;
-        break;
-      }
-    }
-    return acc;
-  }, '');
+  const sectionName = docsRoutes.some((route) =>
+    route.pages.some((page) => page.slug === params.slug),
+  )
+    ? doc.title
+    : '';
 
   return {
     props: {

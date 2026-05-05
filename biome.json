@@ -55,6 +55,9 @@
         "noConfusingVoidType": "off",
         "noExplicitAny": "off",
         "noRedeclare": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       }
     }
   },

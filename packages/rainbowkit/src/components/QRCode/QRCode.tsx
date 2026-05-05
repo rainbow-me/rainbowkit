@@ -18,7 +18,6 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
-  // biome-ignore lint/correctness/noUnusedVariables: API compatibility
   logoSize = 50,
   logoUrl,
   size: sizeProp = 200,
@@ -66,11 +65,11 @@ export function QRCode({
                 alt="Wallet Logo"
                 src={resolvedLogoUrl}
                 style={{
-                  objectFit: 'cover',
-                  height: '88%',
-                  width: '88%',
-                  borderRadius: '22.5%',
                   backgroundColor: logoBackground,
+                  borderRadius: '22.5%',
+                  height: logoSize,
+                  objectFit: 'cover',
+                  width: logoSize,
                 }}
               />
             </Cuer.Arena>

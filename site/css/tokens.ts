@@ -114,7 +114,6 @@ export const colors = {
   blueGray100: '#242529',
 };
 
-// biome-ignore format: design system keys
 export const tokens = {
   colors: {
     light: {
@@ -185,7 +184,7 @@ export const tokens = {
   },
   space: {
     '0': '0px',
-    'px': '1px',
+    px: '1px',
     '1': '2px',
     '2': '4px',
     '3': '8px',
@@ -198,7 +197,7 @@ export const tokens = {
     '10': '40px',
     '11': '64px',
     '12': '128px',
-    '_48': '48px',
+    _48: '48px',
   },
   borderWidths: {
     '0': '0px',
@@ -214,7 +213,7 @@ export const tokens = {
     '5': '16px',
     '6': '20px',
     '7': '24px',
-    'round': '9999px',
+    round: '9999px',
   },
   fontSizes: {
     '1': '11px',

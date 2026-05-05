@@ -692,8 +692,8 @@ export default function DS() {
 }
 
 const IconTag = ({ size = '17' }) => (
-  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
+    aria-hidden="true"
     width={size}
     height={size}
     viewBox="0 0 17 17"
@@ -722,8 +722,8 @@ const IconTag = ({ size = '17' }) => (
 );
 
 const IconQR = () => (
-  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
+    aria-hidden="true"
     width="14"
     height="14"
     viewBox="0 0 14 14"

@@ -16,7 +16,6 @@ const localStorageMock: Storage = {
     delete store[key];
   },
   clear: (): void => {},
-  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   key: (index: number): string | null => '',
   length: Object.keys(store).length,
   // Easier to get number realtime, due to single object
@@ -25,8 +24,7 @@ const localStorageMock: Storage = {
 };
 
 beforeAll((): void => {
-  // biome-ignore lint/suspicious/noGlobalAssign: TODO
-  localStorage = localStorageMock;
+  vi.stubGlobal('localStorage', localStorageMock);
 });
 
 describe('ens', () => {

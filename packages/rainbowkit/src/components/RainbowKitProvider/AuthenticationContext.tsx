@@ -1,6 +1,7 @@
 import React, {
   type ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -67,22 +68,22 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     },
   });
 
-  const handleChangedAccount = (
-    data: Parameters<Config['_internal']['events']['change']>[0],
-  ) => {
-    // Only if account changes
-    if (data.accounts) {
-      // If account is changed we automatically log user out.
-      // Current connector uid only should be available only at "authenticated"
-      setCurrentConnectorUid(undefined);
-      adapter.signOut();
-    }
-  };
+  const handleChangedAccount = useCallback(
+    (data: Parameters<Config['_internal']['events']['change']>[0]) => {
+      // Only if account changes
+      if (data.accounts) {
+        // If account is changed we automatically log user out.
+        // Current connector uid only should be available only at "authenticated"
+        setCurrentConnectorUid(undefined);
+        adapter.signOut();
+      }
+    },
+    [adapter],
+  );
 
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     // Wagmi renders emitter's partially on page load. We wanna make sure
     // the event emitters gets updated before proceeding
@@ -101,9 +102,8 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [connector?.emitter, status]);
+  }, [connector?.emitter, connector?.uid, handleChangedAccount, status]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (
       currentConnectorUid &&
@@ -117,7 +117,13 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         adapter.signOut();
       }
     }
-  }, [connector?.emitter, currentConnectorUid, status]);
+  }, [
+    adapter,
+    connector?.emitter,
+    connector?.uid,
+    currentConnectorUid,
+    status,
+  ]);
 
   return (
     <AuthenticationContext.Provider
