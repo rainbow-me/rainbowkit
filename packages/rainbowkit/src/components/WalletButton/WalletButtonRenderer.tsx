@@ -54,7 +54,9 @@ export function WalletButtonRenderer({
     .filter(
       (_wallet) =>
         _wallet.id.toLowerCase() === wallet.toLowerCase() ||
-        _wallet.aliases?.some((alias) => alias.toLowerCase() === walletId),
+        _wallet.aliases?.some(
+          (alias) => alias.toLowerCase() === wallet.toLowerCase(),
+        ),
     )
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
