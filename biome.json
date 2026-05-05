@@ -1,18 +1,19 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "CHANGELOG.md",
-      "pnpm-lock.yaml",
-      "package.json",
-      "tsconfig.json",
-      "tsconfig.*.json",
-      "./packages/create-rainbowkit/generated-test-app/",
-      "build/",
-      ".react-router",
-      "examples/with-next-mint-nft/contract/",
-      "packages/rainbowkit/assets/wallets/registry.json",
-      "**/next-env.d.ts"
+    "includes": [
+      "**",
+      "!CHANGELOG.md",
+      "!pnpm-lock.yaml",
+      "!**/package.json",
+      "!**/tsconfig.json",
+      "!**/tsconfig.*.json",
+      "!packages/create-rainbowkit/generated-test-app",
+      "!!build",
+      "!!.react-router",
+      "!examples/with-next-mint-nft/contract",
+      "!packages/rainbowkit/assets/wallets/registry.json",
+      "!**/next-env.d.ts"
     ]
   },
   "formatter": {
@@ -41,7 +42,12 @@
       },
       "style": {
         "noNonNullAssertion": "off",
-        "useShorthandArrayType": "error"
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "shorthand"
+          }
+        }
       },
       "suspicious": {
         "noArrayIndexKey": "off",
@@ -59,8 +65,17 @@
       "semicolons": "always"
     }
   },
-  "organizeImports": {
-    "enabled": false
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
   },
   "vcs": {
     "enabled": true,

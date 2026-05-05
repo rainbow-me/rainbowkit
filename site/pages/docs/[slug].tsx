@@ -56,7 +56,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
   locale,
-}: { params: any; locale: any }) {
+}: {
+  params: any;
+  locale: any;
+}) {
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
