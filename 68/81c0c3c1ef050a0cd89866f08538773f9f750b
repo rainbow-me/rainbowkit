@@ -1,0 +1,23 @@
+packages/rainbowkit/src/components/WalletButton/WalletButtonRenderer.tsx
+  8424b39b578ffc34 57-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "6881c0c3c1ef050a0cd89866f08538773f9f750b",
+  "prompts": {
+    "8424b39b578ffc34": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6ac-6678-7bb0-a8f9-a879a9f9138d",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 157,
+      "total_deletions": 1,
+      "accepted_lines": 158,
+      "overriden_lines": 0
+    }
+  }
+}
