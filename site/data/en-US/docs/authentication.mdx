@@ -15,11 +15,52 @@ While it's possible to [integrate with custom back-ends and message formats,](/d
 
 #### Install
 
-Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
+Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+#### Set up NextAuth
+
+Create a NextAuth configuration that uses the v5 `Credentials` provider and exports the `auth` helper. Your `authorize` implementation should validate the SIWE message, signature, domain, and nonce before returning the authenticated address.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+The complete [`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) shows how to validate the SIWE message with `viem`, compare the nonce against the `csrfToken` value that NextAuth v5 posts to the Credentials provider, and verify the signature.
 
 #### Set up the provider
 
@@ -39,9 +80,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +103,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -105,7 +146,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await auth(context);
+  const session = await auth(context.req, context.res);
 
   const address = session?.address ?? null;
   // If you have a value for "address" here, your

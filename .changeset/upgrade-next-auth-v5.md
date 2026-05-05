@@ -5,18 +5,19 @@
 Upgraded to NextAuth v5. This is a breaking change.
 
 Key changes:
-- Requires NextAuth v5 beta (`next-auth >=5.0.0-0 <6`); NextAuth v4 apps must migrate before upgrading.
+- Requires NextAuth v5 (`next-auth >=5.0.0-0 <6`); NextAuth v4 apps must migrate before upgrading.
 - NextAuth server configuration now uses v5 APIs like `NextAuthConfig`, `Credentials`, and the exported `auth` helper.
 - Pages Router server calls must pass `req` and `res` separately to `auth`; passing the full `GetServerSidePropsContext` is no longer valid.
-- CSRF nonce validation now reads the v5 `authjs.csrf-token` cookie, including secure-prefixed variants, instead of the v4 `next-auth.csrf-token` cookie.
+- NextAuth v5 internal cookies use `authjs` names, including `authjs.csrf-token` or `__Host-authjs.csrf-token` for CSRF depending on secure-cookie settings.
+- CSRF nonce validation now compares the SIWE nonce against the `csrfToken` value that NextAuth v5 posts to the Credentials provider, instead of parsing CSRF cookies from request headers.
 
 Migration guide:
 
-1. Upgrade `next-auth` to the latest v5 beta and upgrade `@rainbow-me/rainbowkit-siwe-next-auth`.
+1. Upgrade `next-auth` to v5 and upgrade `@rainbow-me/rainbowkit-siwe-next-auth`.
 
 ```diff
 - npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
-+ npm install next-auth@beta @rainbow-me/rainbowkit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
 2. Update your NextAuth server configuration to the v5 API.
@@ -33,7 +34,7 @@ Migration guide:
     providers: [
 -     CredentialsProvider({
 +     Credentials({
-        async authorize(credentials, request) {
+        async authorize(credentials) {
           /* your SIWE validation */
         },
       }),
@@ -66,18 +67,26 @@ Migration guide:
   };
 ```
 
-4. Update any server-side SIWE nonce checks that read the CSRF cookie directly. NextAuth v5 uses the `authjs.csrf-token` cookie name, including `__Host-` and `__Secure-` prefixed variants.
+4. Update any server-side SIWE nonce checks that read the CSRF cookie directly. When using `signIn('credentials', ...)`, NextAuth v5 validates the CSRF cookie before `authorize` runs and includes the verified token in `credentials.csrfToken`.
 
 ```diff
-  const csrfTokenCookie = cookieHeader
-    ?.split(';')
-    .map((cookie) => cookie.trim())
-    .find((cookie) =>
+- const csrfTokenCookie = cookieHeader
+-   ?.split(';')
+-   .map((cookie) => cookie.trim())
+-   .find((cookie) =>
 -     /^(?:__Host-|__Secure-)?next-auth\.csrf-token=/.test(cookie),
-+     /^(?:__Host-|__Secure-)?authjs\.csrf-token=/.test(cookie),
-    );
+-   );
+- const csrfToken = csrfTokenCookie
+-   ? decodeURIComponent(csrfTokenCookie.split('=')[1]).split('|')[0]
+-   : null;
++ const csrfToken =
++   credentials && 'csrfToken' in credentials
++     ? credentials.csrfToken
++     : undefined;
+
+  if (siweMessage.nonce !== csrfToken) {
+    return null;
+  }
 ```
 
-5. Keep using your existing `NEXTAUTH_URL` and `NEXTAUTH_SECRET` values.
-
-6. If upgrading from before `@rainbow-me/rainbowkit-siwe-next-auth@0.5.0`, also follow the `0.5.0` changelog entry for the `viem/siwe` migration and the `0.3.0` changelog entry for the earlier `getCsrfToken` request-shape change.
+5. If upgrading from before `@rainbow-me/rainbowkit-siwe-next-auth@0.5.0`, also follow the `0.5.0` changelog entry for the `viem/siwe` migration and the `0.3.0` changelog entry for the earlier `getCsrfToken` request-shape change.

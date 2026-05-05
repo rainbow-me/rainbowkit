@@ -12,11 +12,17 @@
 
 ### Install
 
-Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
+Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+### Set up NextAuth
+
+Create a NextAuth configuration that uses the v5 `Credentials` provider and exports the `auth` helper. Your `authorize` implementation should validate the SIWE message, signature, domain, and nonce before returning the authenticated address.
+
+The complete [`with-next-siwe-next-auth` example](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) shows how to validate the SIWE message with `viem`, compare the nonce against the `csrfToken` value that NextAuth v5 posts to the Credentials provider, and verify the signature.
 
 ### Set up the provider
 
@@ -34,7 +40,13 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
-import { WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export default function App({
   Component,
@@ -43,15 +55,17 @@ export default function App({
   session: Session;
 }>) {
   return (
-    <WagmiConfig {...etc}>
+    <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
-        <RainbowKitSiweNextAuthProvider>
-          <RainbowKitProvider {...etc}>
-            <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitSiweNextAuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider {...etc}>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </QueryClientProvider>
       </SessionProvider>
-    </WagmiConfig>
+    </WagmiProvider>
   );
 }
 ```
@@ -81,7 +95,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 ### Access the session server-side
 
-You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+You can access the session using the `auth` function exported from your auth configuration. If the user has successfully authenticated, the session's `address` property will be the user's address.
 
 You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
 
@@ -89,15 +103,12 @@ For example:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -126,7 +137,7 @@ export default function AuthenticatedPage({ address }: AuthenticatedPageProps) {
 
 For more information about managing the session, you can refer to the following documentation:
 
-- [Next.js authentication guide](https://nextjs.org/docs/app/building-your-application/authentication)
+- [Next.js authentication guide](https://nextjs.org/docs/app/guides/authentication)
 - [NextAuth documentation](https://next-auth.js.org)
 
 ## Contributing

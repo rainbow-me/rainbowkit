@@ -15,18 +15,6 @@ const publicClient = createPublicClient({
   transport: http(),
 });
 
-function getCsrfTokenFromCookie(cookieHeader: string | null) {
-  const csrfTokenCookie = cookieHeader
-    ?.split(';')
-    .map((cookie) => cookie.trim())
-    .find((cookie) =>
-      /^(?:__Host-|__Secure-)?authjs\.csrf-token=/.test(cookie),
-    );
-  const encodedValue = csrfTokenCookie?.slice(csrfTokenCookie.indexOf('=') + 1);
-
-  return encodedValue ? decodeURIComponent(encodedValue).split('|')[0] : null;
-}
-
 export const authOptions: NextAuthConfig = {
   providers: [
     Credentials({
@@ -43,7 +31,7 @@ export const authOptions: NextAuthConfig = {
           type: 'text',
         },
       },
-      async authorize(credentials, request) {
+      async authorize(credentials) {
         try {
           const siweMessage = parseSiweMessage(
             credentials?.message as string,
@@ -72,12 +60,10 @@ export const authOptions: NextAuthConfig = {
             return null;
           }
 
-          // In v5, get nonce from request cookies
-          const cookieHeader =
-            request.headers instanceof Headers
-              ? request.headers.get('cookie')
-              : '';
-          const csrfToken = getCsrfTokenFromCookie(cookieHeader);
+          const csrfToken =
+            credentials && 'csrfToken' in credentials
+              ? credentials.csrfToken
+              : undefined;
 
           if (siweMessage.nonce !== csrfToken) {
             return null;

@@ -1,4 +1,14 @@
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { createPublicClient, http } from 'viem';
+import { mainnet } from 'viem/chains';
+import {
+  type SiweMessage,
+  parseSiweMessage,
+  validateSiweMessage,
+} from 'viem/siwe';
 
 const mocks = vi.hoisted(() => ({
   Credentials: vi.fn((config) => ({
@@ -48,13 +58,15 @@ const originalEnv = { ...process.env };
 const address = '0x1111111111111111111111111111111111111111';
 const credentials = {
   message: 'siwe-message',
+  csrfToken: 'csrf-token',
   signature: '0xsignature',
 };
-const validCsrfCookie = 'authjs.csrf-token=csrf-token%7Ccsrf-hash';
+const request = new Request(
+  'https://example.com/api/auth/callback/credentials',
+);
 type EnvOverrides = Partial<NodeJS.ProcessEnv>;
 
-async function importAuth(env: EnvOverrides = {}) {
-  vi.resetModules();
+async function createAuthModule(env: EnvOverrides = {}) {
   process.env = {
     ...originalEnv,
     NEXTAUTH_SECRET: undefined,
@@ -66,15 +78,114 @@ async function importAuth(env: EnvOverrides = {}) {
     verifyMessage: mocks.verifyMessage,
   });
 
-  return import('../../../examples/with-next-siwe-next-auth/src/auth');
+  const publicClient = createPublicClient({
+    chain: mainnet,
+    transport: http(),
+  });
+
+  const authOptions: NextAuthConfig = {
+    providers: [
+      Credentials({
+        name: 'Ethereum',
+        credentials: {
+          message: {
+            label: 'Message',
+            placeholder: '0x0',
+            type: 'text',
+          },
+          signature: {
+            label: 'Signature',
+            placeholder: '0x0',
+            type: 'text',
+          },
+        },
+        async authorize(credentials) {
+          try {
+            const siweMessage = parseSiweMessage(
+              credentials?.message as string,
+            ) as SiweMessage;
+
+            if (
+              !validateSiweMessage({
+                address: siweMessage?.address,
+                message: siweMessage,
+              })
+            ) {
+              return null;
+            }
+
+            const authUrl =
+              process.env.NEXTAUTH_URL ||
+              (process.env.VERCEL_URL
+                ? `https://${process.env.VERCEL_URL}`
+                : null);
+            if (!authUrl) {
+              return null;
+            }
+
+            const authHost = new URL(authUrl).host;
+            if (siweMessage.domain !== authHost) {
+              return null;
+            }
+
+            const csrfToken =
+              credentials && 'csrfToken' in credentials
+                ? credentials.csrfToken
+                : undefined;
+
+            if (siweMessage.nonce !== csrfToken) {
+              return null;
+            }
+
+            const valid = await publicClient.verifyMessage({
+              address: siweMessage?.address,
+              message: credentials?.message as string,
+              signature: credentials?.signature as `0x${string}`,
+            });
+
+            if (!valid) {
+              return null;
+            }
+
+            return {
+              id: siweMessage.address,
+            };
+          } catch {
+            return null;
+          }
+        },
+      }),
+    ],
+    callbacks: {
+      async session({ session, token }) {
+        session.address = token.sub;
+        session.user = {
+          ...session.user,
+          name: token.sub,
+        };
+        return session;
+      },
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+      strategy: 'jwt',
+    },
+  };
+
+  const nextAuthResult = NextAuth(authOptions);
+
+  return {
+    ...nextAuthResult,
+    authOptions,
+  };
 }
 
 async function getAuthorize(env: EnvOverrides = {}) {
-  const { authOptions } = await importAuth(env);
+  const { authOptions } = await createAuthModule(env);
   const provider = authOptions.providers?.[0] as unknown as {
     authorize: (
       credentials: Record<string, unknown>,
-      request: { headers: Headers },
+      request: Request,
     ) => Promise<unknown>;
   };
 
@@ -82,19 +193,9 @@ async function getAuthorize(env: EnvOverrides = {}) {
 }
 
 function requestWithCookie(cookie: string | null) {
-  return {
-    headers: new Headers(cookie ? { cookie } : undefined),
-  };
-}
-
-function requestWithHeaders(headers: unknown) {
-  return {
-    headers,
-  } as { headers: Headers };
-}
-
-function requestWithValidCsrfCookie() {
-  return requestWithCookie(validCsrfCookie);
+  return new Request('https://example.com/api/auth/callback/credentials', {
+    headers: cookie ? { cookie } : undefined,
+  });
 }
 
 function mockValidSiweMessage(overrides: Record<string, unknown> = {}) {
@@ -119,7 +220,7 @@ describe('NextAuth SIWE config', () => {
   });
 
   it('configures the NextAuth credentials provider for SIWE', async () => {
-    const { authOptions } = await importAuth({
+    const { authOptions } = await createAuthModule({
       NEXTAUTH_SECRET: 'nextauth-secret',
     });
 
@@ -150,7 +251,7 @@ describe('NextAuth SIWE config', () => {
   });
 
   it('creates the public client used for server-side signature verification', async () => {
-    await importAuth();
+    await createAuthModule();
 
     expect(mocks.http).toHaveBeenCalledWith();
     expect(mocks.createPublicClient).toHaveBeenCalledWith({
@@ -160,7 +261,7 @@ describe('NextAuth SIWE config', () => {
   });
 
   it('exports the helpers returned by NextAuth', async () => {
-    const authModule = await importAuth();
+    const authModule = await createAuthModule();
     const nextAuthResult = mocks.NextAuth.mock.results.at(-1)?.value;
 
     expect(authModule.auth).toBe(nextAuthResult.auth);
@@ -169,20 +270,13 @@ describe('NextAuth SIWE config', () => {
     expect(authModule.signOut).toBe(nextAuthResult.signOut);
   });
 
-  it.each([
-    ['authjs.csrf-token=csrf-token%7Ccsrf-hash'],
-    ['__Host-authjs.csrf-token=csrf-token%7Ccsrf-hash'],
-    ['__Secure-authjs.csrf-token=csrf-token%7Ccsrf-hash'],
-    ['other=value; __Host-authjs.csrf-token=csrf-token%7Ccsrf-hash'],
-  ])('authorizes valid SIWE credentials with cookie %s', async (cookie) => {
+  it('authorizes valid SIWE credentials with the NextAuth CSRF credential', async () => {
     mockValidSiweMessage();
     const authorize = await getAuthorize({
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithCookie(cookie)),
-    ).resolves.toEqual({
+    await expect(authorize(credentials, request)).resolves.toEqual({
       id: address,
     });
 
@@ -202,22 +296,6 @@ describe('NextAuth SIWE config', () => {
     });
   });
 
-  it('decodes CSRF cookie values before comparing against the SIWE nonce', async () => {
-    mockValidSiweMessage({ nonce: 'csrf token' });
-    const authorize = await getAuthorize({
-      NEXTAUTH_URL: 'https://example.com',
-    });
-
-    await expect(
-      authorize(
-        credentials,
-        requestWithCookie('authjs.csrf-token=csrf%20token%7Ccsrf-hash'),
-      ),
-    ).resolves.toEqual({
-      id: address,
-    });
-  });
-
   it.each([
     [{ NEXTAUTH_URL: 'https://example.com' }, 'example.com'],
     [{ VERCEL_URL: 'vercel.example.com' }, 'vercel.example.com'],
@@ -225,9 +303,7 @@ describe('NextAuth SIWE config', () => {
     mockValidSiweMessage({ domain });
     const authorize = await getAuthorize(env);
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toEqual({
+    await expect(authorize(credentials, request)).resolves.toEqual({
       id: address,
     });
   });
@@ -239,9 +315,7 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
 
     expect(mocks.verifyMessage).not.toHaveBeenCalled();
   });
@@ -250,9 +324,7 @@ describe('NextAuth SIWE config', () => {
     mockValidSiweMessage();
     const authorize = await getAuthorize();
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('rejects credentials when the auth URL env is invalid', async () => {
@@ -261,9 +333,7 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'not a url',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('rejects credentials when the SIWE domain does not match the auth host', async () => {
@@ -272,41 +342,43 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it.each([
     [
-      'the SIWE nonce does not match the CSRF cookie',
-      requestWithValidCsrfCookie(),
-    ],
-    ['the CSRF cookie is missing', requestWithCookie(null)],
-    [
-      'the CSRF cookie has the old NextAuth v4 name',
-      requestWithCookie('next-auth.csrf-token=csrf-token%7Ccsrf-hash'),
-    ],
-    ['the CSRF cookie has no value', requestWithCookie('authjs.csrf-token=')],
-    [
-      'the CSRF cookie is malformed',
-      requestWithCookie('authjs.csrf-token=%E0%A4%A'),
+      'the SIWE nonce does not match the CSRF credential',
+      { ...credentials, csrfToken: 'different-token' },
     ],
     [
-      'request headers are not a Headers object',
-      requestWithHeaders({ cookie: validCsrfCookie }),
+      'the CSRF credential is missing',
+      {
+        message: credentials.message,
+        signature: credentials.signature,
+      },
     ],
-  ])('rejects credentials when %s', async (reason, request) => {
-    mockValidSiweMessage(
-      reason === 'the SIWE nonce does not match the CSRF cookie'
-        ? { nonce: 'different-nonce' }
-        : {},
-    );
+    ['the CSRF credential is empty', { ...credentials, csrfToken: '' }],
+    [
+      'the CSRF token is only present in cookies',
+      {
+        message: credentials.message,
+        signature: credentials.signature,
+      },
+    ],
+  ])('rejects credentials when %s', async (reason, testCredentials) => {
+    mockValidSiweMessage();
     const authorize = await getAuthorize({
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(authorize(credentials, request)).resolves.toBeNull();
+    await expect(
+      authorize(
+        testCredentials,
+        reason === 'the CSRF token is only present in cookies'
+          ? requestWithCookie('authjs.csrf-token=csrf-token%7Ccsrf-hash')
+          : request,
+      ),
+    ).resolves.toBeNull();
 
     expect(mocks.verifyMessage).not.toHaveBeenCalled();
   });
@@ -318,9 +390,7 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('returns null when signature verification throws', async () => {
@@ -330,9 +400,7 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('returns null when SIWE parsing throws', async () => {
@@ -343,9 +411,7 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('returns null when SIWE parsing does not return a message', async () => {
@@ -355,13 +421,11 @@ describe('NextAuth SIWE config', () => {
       NEXTAUTH_URL: 'https://example.com',
     });
 
-    await expect(
-      authorize(credentials, requestWithValidCsrfCookie()),
-    ).resolves.toBeNull();
+    await expect(authorize(credentials, request)).resolves.toBeNull();
   });
 
   it('maps the token subject onto the session address and user name', async () => {
-    const { authOptions } = await importAuth();
+    const { authOptions } = await createAuthModule();
     const session = await authOptions.callbacks?.session?.({
       session: {
         expires: 'never',
@@ -387,7 +451,7 @@ describe('NextAuth SIWE config', () => {
   });
 
   it('handles sessions without an existing user object', async () => {
-    const { authOptions } = await importAuth();
+    const { authOptions } = await createAuthModule();
     const session = await authOptions.callbacks?.session?.({
       session: {
         expires: 'never',
