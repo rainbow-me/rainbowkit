@@ -1,7 +1,7 @@
 export function debounce(fn: () => void, ms: number) {
-  let timer: NodeJS.Timeout | null;
+  let timer: ReturnType<typeof setTimeout> | null = null;
 
-  return () => {
+  const debounced = () => {
     if (timer) {
       clearTimeout(timer);
     }
@@ -11,4 +11,13 @@ export function debounce(fn: () => void, ms: number) {
       fn();
     }, ms);
   };
+
+  debounced.cancel = () => {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+  };
+
+  return debounced;
 }

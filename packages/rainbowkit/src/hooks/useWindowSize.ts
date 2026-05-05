@@ -19,7 +19,10 @@ export const useWindowSize = () => {
     }, 500); // 500ms debounce by default
     window.addEventListener('resize', handleResize);
     handleResize();
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      handleResize.cancel();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
   return windowSize;
 };
