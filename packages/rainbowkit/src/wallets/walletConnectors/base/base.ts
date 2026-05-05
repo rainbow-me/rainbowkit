@@ -5,35 +5,33 @@ import {
 } from 'wagmi/connectors';
 import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
-export interface BaseAccountOptions {
+export interface BaseOptions {
   appName: string;
   appIcon?: string;
 }
 
 // supports preference, paymasterUrls, subAccounts
-type AcceptedBaseAccountParameters = Omit<
+type AcceptedBaseParameters = Omit<
   BaseAccountParameters,
   'appName' | 'appLogoUrl'
 >;
 
-interface BaseAccount extends AcceptedBaseAccountParameters {
-  (params: BaseAccountOptions): Wallet;
+interface Base extends AcceptedBaseParameters {
+  (params: BaseOptions): Wallet;
 }
 
-export const baseAccount: BaseAccount = ({
-  appName,
-  appIcon,
-}: BaseAccountOptions): Wallet => {
-  // Extract all AcceptedBaseAccountParameters from baseAccount
+export const base: Base = ({ appName, appIcon }: BaseOptions): Wallet => {
+  // Extract all AcceptedBaseParameters from base
   // This approach avoids type errors for properties not yet in upstream connector
-  const { preference, ...optionalConfig } = baseAccount;
+  const { preference, ...optionalConfig } = base;
 
   return {
-    id: 'baseAccount',
-    name: 'Base Account',
-    shortName: 'Base Account',
+    id: 'base',
+    aliases: ['baseAccount'],
+    name: 'Base',
+    shortName: 'Base',
     rdns: 'app.base.account',
-    iconUrl: async () => (await import('./baseAccount.svg')).default,
+    iconUrl: async () => (await import('./base.svg')).default,
     iconAccent: '#0000FF',
     iconBackground: '#0000FF',
     // a popup will appear prompting the user to connect or create a wallet via passkey.
@@ -56,3 +54,8 @@ export const baseAccount: BaseAccount = ({
     },
   };
 };
+
+/**
+ * @deprecated Use `base` instead. This alias will be removed in a future version.
+ */
+export const baseAccount = base;

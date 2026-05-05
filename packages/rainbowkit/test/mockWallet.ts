@@ -9,9 +9,10 @@ export const mockedAccounts: readonly [Address, ...Address[]] = [
   '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
 ];
 
-export const mockWallet = (id: string, name: string) => {
+export const mockWallet = (id: string, name: string, aliases?: string[]) => {
   return (): Wallet => ({
     id,
+    aliases,
     name,
     iconBackground: '#fff',
     iconUrl: '',

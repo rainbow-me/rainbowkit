@@ -25,12 +25,20 @@ afterAll(() => {
 });
 
 describe('<WalletButton />', () => {
-  const getWalletButtonLabel = async (connectorId?: string) => {
+  const getWalletButtonLabel = async (
+    connectorId?: string,
+    resolvedConnectorId = connectorId,
+  ) => {
     const wallets = [
       { id: 'rainbow', name: 'Rainbow' },
       { id: 'metaMask', name: 'MetaMask' },
-      { id: 'coinbase', name: 'Coinbase Wallet' },
-    ].map(({ id, name }) => mockWallet(id, name));
+      { id: 'base', name: 'Base', aliases: ['baseAccount'] },
+      {
+        id: 'coinbase',
+        name: 'Coinbase Wallet',
+        aliases: ['coinbaseWallet'],
+      },
+    ].map(({ id, name, aliases }) => mockWallet(id, name, aliases));
 
     const { findByTestId } = renderWithProviders(
       <WalletButton wallet={connectorId} />,
@@ -41,7 +49,7 @@ describe('<WalletButton />', () => {
     );
 
     const labelElement = await findByTestId(
-      `rk-wallet-button-label-${connectorId}`,
+      `rk-wallet-button-label-${resolvedConnectorId}`,
     );
 
     return labelElement.textContent;
@@ -64,6 +72,21 @@ describe('<WalletButton />', () => {
 
   it("should display 'Coinbase Wallet' when `wallet` prop is 'coinbase'", async () => {
     const label = await getWalletButtonLabel('coinbase');
+    expect(label).toBe('Coinbase Wallet');
+  });
+
+  it("should display 'Base' when `wallet` prop is the legacy 'baseAccount' id", async () => {
+    const label = await getWalletButtonLabel('baseAccount', 'base');
+    expect(label).toBe('Base');
+  });
+
+  it("should display 'Base' when `wallet` prop is a lowercased legacy 'baseAccount' id", async () => {
+    const label = await getWalletButtonLabel('baseaccount', 'base');
+    expect(label).toBe('Base');
+  });
+
+  it("should display 'Coinbase Wallet' when `wallet` prop is the legacy 'coinbaseWallet' id", async () => {
+    const label = await getWalletButtonLabel('coinbaseWallet', 'coinbase');
     expect(label).toBe('Coinbase Wallet');
   });
 

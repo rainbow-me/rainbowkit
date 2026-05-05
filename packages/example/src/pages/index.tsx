@@ -241,7 +241,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             gap: '20px',
           }}
         >
-          {['rainbow', 'metamask', 'baseAccount'].map((connector) => {
+          {['rainbow', 'metamask', 'base'].map((connector) => {
             return <WalletButton key={connector} wallet={connector} />;
           })}
         </div>
@@ -251,7 +251,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
         <h3 style={{ fontFamily: 'sans-serif' }}>Custom wallet buttons</h3>
 
         <div style={{ display: 'flex', gap: 12 }}>
-          {['rainbow', 'metamask', 'baseAccount'].map((wallet) => {
+          {['rainbow', 'metamask', 'base'].map((wallet) => {
             return (
               <WalletButton.Custom key={wallet} wallet={wallet}>
                 {({ connect, ready }) => {
@@ -262,7 +262,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                         {
                           rainbow: 'Rainbow',
                           metamask: 'MetaMask',
-                          baseAccount: 'Base Account',
+                          base: 'Base',
                         }[wallet]
                       }
                     </button>
