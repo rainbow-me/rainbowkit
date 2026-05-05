@@ -1,0 +1,53 @@
+examples/with-next-rainbow-button/package.json
+  2598ddbd4cd26bfc 7
+examples/with-next-siwe-next-auth/src/auth.test.ts
+  2598ddbd4cd26bfc 1-279
+examples/with-next-mint-nft/package.json
+  2598ddbd4cd26bfc 7
+examples/with-next-siwe-iron-session/package.json
+  2598ddbd4cd26bfc 7
+packages/rainbowkit-siwe-next-auth/src/RainbowKitSiweNextAuthProvider.test.tsx
+  2598ddbd4cd26bfc 1-206
+packages/example/package.json
+  2598ddbd4cd26bfc 23
+examples/with-next-siwe-next-auth/src/auth.ts
+  2598ddbd4cd26bfc 18-29,62
+packages/example/src/auth.ts
+  2598ddbd4cd26bfc 18-29,62
+examples/with-next-wallet-button/package.json
+  2598ddbd4cd26bfc 7
+.changeset/upgrade-next-auth-v5.md
+  2598ddbd4cd26bfc 5,9,12
+packages/create-rainbowkit/templates/next-app/package.json
+  2598ddbd4cd26bfc 7
+packages/create-rainbowkit/generated-test-app/package.json
+  2598ddbd4cd26bfc 7,25
+examples/with-next-siwe-next-auth/package.json
+  2598ddbd4cd26bfc 7
+packages/rainbowkit-siwe-next-auth/tsconfig.json
+  2598ddbd4cd26bfc 11
+site/data/en-US/docs/authentication.mdx
+  2598ddbd4cd26bfc 12,14,99,108,142
+site/pages/_document.tsx
+  2598ddbd4cd26bfc 8-12,18,20-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "ed967764807af63802caec23b6387fcd7123dd23",
+  "prompts": {
+    "2598ddbd4cd26bfc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df734-e001-7f12-9ffa-3dc105229310",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 903,
+      "total_deletions": 50,
+      "accepted_lines": 888,
+      "overriden_lines": 0
+    }
+  }
+}
