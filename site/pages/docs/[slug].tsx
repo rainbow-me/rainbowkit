@@ -5,7 +5,6 @@ import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { docsRoutes } from 'lib/docsRoutes';
 import Head from 'next/head';
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
-import React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
 
 const RAINBOWKIT_VERSION = pckg.version as string;
@@ -64,12 +63,16 @@ export async function getStaticProps({
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
   const sectionName = docsRoutes.reduce((acc, curr) => {
+    let sectionTitle = acc;
+
     for (const page of curr.pages) {
       if (page.slug === params.slug) {
-        return doc.title;
+        sectionTitle = doc.title;
+        break;
       }
     }
-    return acc;
+
+    return sectionTitle;
   }, '');
 
   return {

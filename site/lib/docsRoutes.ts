@@ -45,6 +45,7 @@ export const docsRoutes: RouteProps[] = [
   },
 ];
 
-export const allDocsRoutes: PartialDoc[] = docsRoutes.flatMap(
-  (route) => route.pages,
+export const allDocsRoutes: PartialDoc[] = docsRoutes.reduce(
+  (acc: PartialDoc[], curr) => acc.concat(curr.pages),
+  [],
 );

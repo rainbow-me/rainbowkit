@@ -1,5 +1,4 @@
 import { Cuer } from 'cuer';
-import React from 'react';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
@@ -18,7 +17,7 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
-  logoSize = 50,
+  logoSize: _logoSize = 50,
   logoUrl,
   size: sizeProp = 200,
   uri,
@@ -67,9 +66,9 @@ export function QRCode({
                 style={{
                   backgroundColor: logoBackground,
                   borderRadius: '22.5%',
-                  height: logoSize,
+                  height: '88%',
                   objectFit: 'cover',
-                  width: logoSize,
+                  width: '88%',
                 }}
               />
             </Cuer.Arena>
