@@ -63,11 +63,14 @@ export async function getStaticProps({
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
-  const sectionName = docsRoutes.some((route) =>
-    route.pages.some((page) => page.slug === params.slug),
-  )
-    ? doc.title
-    : '';
+  const sectionName = docsRoutes.reduce((acc, curr) => {
+    for (const page of curr.pages) {
+      if (page.slug === params.slug) {
+        return doc.title;
+      }
+    }
+    return acc;
+  }, '');
 
   return {
     props: {
