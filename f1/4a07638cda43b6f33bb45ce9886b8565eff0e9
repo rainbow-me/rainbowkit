@@ -1,0 +1,35 @@
+examples/with-next/package.json
+  05bf17f2d7c70e16 7
+examples/with-next-app/package.json
+  05bf17f2d7c70e16 7
+examples/with-next-app-i18n/package.json
+  05bf17f2d7c70e16 7
+examples/with-react-router/vite.config.ts
+  05bf17f2d7c70e16 6-9
+site/next.config.js
+  05bf17f2d7c70e16 10-12,53
+examples/with-react-router/package.json
+  05bf17f2d7c70e16 16,21,23,33
+examples/with-next-custom-button/package.json
+  05bf17f2d7c70e16 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f14a07638cda43b6f33bb45ce9886b8565eff0e9",
+  "prompts": {
+    "05bf17f2d7c70e16": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df71c-80b8-7763-a96e-9bfce0294d50",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 2005,
+      "total_deletions": 46,
+      "accepted_lines": 1914,
+      "overriden_lines": 0
+    }
+  }
+}
