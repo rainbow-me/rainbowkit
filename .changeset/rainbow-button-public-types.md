@@ -2,4 +2,4 @@
 "@rainbow-me/rainbow-button": patch
 ---
 
-Fixed `RainbowButton.Custom` losing its types under TypeScript `moduleResolution: "bundler"` (Next.js 16.2's default).
+Fixed `RainbowButton.Custom` types in Next.js 16.2 projects.
