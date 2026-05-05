@@ -126,6 +126,12 @@ importers:
       '@types/jest':
         specifier: ^30.0.0
         version: 30.0.0
+      buffer:
+        specifier: 6.0.3
+        version: 6.0.3
+      events:
+        specifier: 3.3.0
+        version: 3.3.0
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.24.7(@babel/core@7.28.5))(@babel/plugin-transform-react-jsx@7.25.2(@babel/core@7.28.5))(@types/babel__core@7.20.5)(bufferutil@4.0.9)(esbuild@0.28.0)(eslint@8.57.0)(react@19.2.5)(type-fest@4.26.1)(typescript@5.5.4)(utf-8-validate@5.0.10)
@@ -214,6 +220,12 @@ importers:
       '@react-router/serve':
         specifier: ^7.14.2
         version: 7.14.2(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@5.5.4)
+      buffer:
+        specifier: 6.0.3
+        version: 6.0.3
+      events:
+        specifier: 3.3.0
+        version: 3.3.0
       isbot:
         specifier: ^5.1.39
         version: 5.1.39
@@ -261,6 +273,12 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
+      buffer:
+        specifier: 6.0.3
+        version: 6.0.3
+      events:
+        specifier: 3.3.0
+        version: 3.3.0
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^6.0.1

@@ -11,6 +11,8 @@
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
+    "buffer": "6.0.3",
+    "events": "3.3.0",
     "react-dom": "^19.2.5",
     "react-scripts": "5.0.1",
     "react": "^19.2.5",
