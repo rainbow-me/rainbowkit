@@ -1,0 +1,23 @@
+packages/example/src/pages/icons.tsx
+  a601d26e9e7f5bae 153-164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "8053ee0ba994788c76792b0f64164bf0d2db72e5",
+  "prompts": {
+    "a601d26e9e7f5bae": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df6c3-1b2e-77f1-854f-b2b9288be9a2",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 828,
+      "total_deletions": 4,
+      "accepted_lines": 824,
+      "overriden_lines": 0
+    }
+  }
+}
