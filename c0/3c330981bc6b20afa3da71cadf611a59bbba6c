@@ -1,0 +1,68 @@
+examples/with-next-siwe-next-auth/.env.local.example
+  2598ddbd4cd26bfc 1-2
+packages/example/src/auth.ts
+  2598ddbd4cd26bfc 18-29,62
+examples/with-next-siwe-iron-session/package.json
+  2598ddbd4cd26bfc 7
+packages/example/src/pages/index.tsx
+  a3308f1ca9274246 397,401,416,432,437,447,457,461,477
+examples/with-next-siwe-next-auth/package.json
+  2598ddbd4cd26bfc 7
+examples/with-next-rainbow-button/package.json
+  2598ddbd4cd26bfc 7
+packages/example/package.json
+  2598ddbd4cd26bfc 23
+packages/rainbowkit-siwe-next-auth/tsconfig.json
+  2598ddbd4cd26bfc 11
+site/pages/_document.tsx
+  2598ddbd4cd26bfc 8-12,18,20-21
+packages/rainbowkit-siwe-next-auth/src/RainbowKitSiweNextAuthProvider.test.tsx
+  2598ddbd4cd26bfc 1-206
+examples/with-next-siwe-next-auth/src/auth.ts
+  2598ddbd4cd26bfc 18-29,62
+examples/with-next-mint-nft/package.json
+  2598ddbd4cd26bfc 7
+packages/create-rainbowkit/templates/next-app/package.json
+  2598ddbd4cd26bfc 7
+.changeset/upgrade-next-auth-v5.md
+  2598ddbd4cd26bfc 5,9,12
+site/data/en-US/docs/authentication.mdx
+  2598ddbd4cd26bfc 12,14,99,108,142
+examples/with-next-wallet-button/package.json
+  2598ddbd4cd26bfc 7
+packages/create-rainbowkit/generated-test-app/package.json
+  2598ddbd4cd26bfc 7,25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "c03c330981bc6b20afa3da71cadf611a59bbba6c",
+  "prompts": {
+    "2598ddbd4cd26bfc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df734-e001-7f12-9ffa-3dc105229310",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 1184,
+      "total_deletions": 52,
+      "accepted_lines": 260,
+      "overriden_lines": 0
+    },
+    "a3308f1ca9274246": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df790-55d8-7e31-adbb-a303c03a8d6f",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 11,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
