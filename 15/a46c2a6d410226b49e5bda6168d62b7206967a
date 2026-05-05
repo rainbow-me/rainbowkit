@@ -1,0 +1,23 @@
+packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx
+  cff40f8c24422c70 129-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "15a46c2a6d410226b49e5bda6168d62b7206967a",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 51,
+      "total_deletions": 34,
+      "accepted_lines": 13992,
+      "overriden_lines": 1
+    }
+  }
+}
