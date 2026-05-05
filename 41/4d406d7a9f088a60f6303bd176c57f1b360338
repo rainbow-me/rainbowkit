@@ -1,0 +1,27 @@
+.changeset/usewindowsize-cancel-debounce.md
+  f3cdefa574a73266 1-5
+packages/rainbowkit/src/utils/debounce.ts
+  f3cdefa574a73266 2,4,14-22
+packages/rainbowkit/src/hooks/useWindowSize.ts
+  f3cdefa574a73266 22-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "414d406d7a9f088a60f6303bd176c57f1b360338",
+  "prompts": {
+    "f3cdefa574a73266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76a131bc-d3ed-46a8-a933-c1f567eabec8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 3,
+      "accepted_lines": 20,
+      "overriden_lines": 0
+    }
+  }
+}
