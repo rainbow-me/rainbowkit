@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### 기본 (이전의 Coinbase Wallet)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+이 지갑 커넥터는 Coinbase 스마트 월렛의 진화인 Base를 지원합니다. 계정 인증과 하위 계정 및 지출 권한 같은 향상된 기능을 매끄럽게 제공합니다.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+구성 옵션은 [Base SDK 참조](https://docs.base.org/base-account/reference/core/createBaseAccount)와 일치합니다.
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` 와 `coinbaseWallet` 은 하위 호환 가능한 별칭으로 계속 사용 가능합니다.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Rainbow, MetaMask 및 Base를 일반적인 백업 지갑과 함께 표시합니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 `groupName` 키를 사용하여 다양한 지갑 그룹의 이름을 지정할 수 있습니다. 이는 사용자가 추천하는 지갑 및 다른 가능한 지갑을 사용자에게 전달하려 할 때 유용합니다.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Rainbow과 MetaMask를 추천하되, 일반적인 백업 지갑과 함께 Base도 제공합니다.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
