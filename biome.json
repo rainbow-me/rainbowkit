@@ -73,13 +73,6 @@
       "tailwindDirectives": true
     }
   },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "off"
-      }
-    }
-  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",

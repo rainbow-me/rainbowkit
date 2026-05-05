@@ -1,5 +1,5 @@
-import { Welcome } from '../welcome/welcome';
 import { Providers } from '~/providers';
+import { Welcome } from '../welcome/welcome';
 import '@rainbow-me/rainbowkit/styles.css';
 
 export function meta() {

@@ -1,6 +1,6 @@
-import { porto, type PortoParameters } from 'wagmi/connectors';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
 import { createConnector } from 'wagmi';
+import { type PortoParameters, porto } from 'wagmi/connectors';
+import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export const portoWallet = (parameters: PortoParameters): Wallet => {
   return {

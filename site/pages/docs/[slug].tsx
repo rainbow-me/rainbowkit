@@ -1,12 +1,12 @@
+import { allDocs, type Doc } from '.contentlayer/generated';
 import { Box } from 'components/Box/Box';
 import { components } from 'components/MdxComponents/MdxComponents';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { docsRoutes } from 'lib/docsRoutes';
-import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
+import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
-import { type Doc, allDocs } from '.contentlayer/generated';
 
 const RAINBOWKIT_VERSION = pckg.version as string;
 

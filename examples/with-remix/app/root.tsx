@@ -1,25 +1,26 @@
-import { useState } from 'react';
 import {
-  Meta,
+  ConnectButton,
+  getDefaultConfig,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node';
+import { json } from '@remix-run/node';
+import {
   Links,
+  LiveReload,
+  Meta,
   Outlet,
   Scripts,
-  LiveReload,
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
-import { json } from '@remix-run/node';
-import type {
-  MetaFunction,
-  LinksFunction,
-  LoaderFunction,
-} from '@remix-run/node';
-
-import {
-  RainbowKitProvider,
-  ConnectButton,
-  getDefaultConfig,
-} from '@rainbow-me/rainbowkit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useState } from 'react';
 import { WagmiProvider } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
 import {
@@ -30,10 +31,7 @@ import {
   polygon,
   sepolia,
 } from 'wagmi/chains';
-
 import globalStylesUrl from './styles/global.css';
-import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 

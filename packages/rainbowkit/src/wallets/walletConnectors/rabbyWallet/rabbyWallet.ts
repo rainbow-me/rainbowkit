@@ -1,8 +1,8 @@
-import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
+import type { Wallet } from '../../Wallet';
 
 export const rabbyWallet = (): Wallet => ({
   id: 'rabby',

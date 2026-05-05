@@ -1,10 +1,10 @@
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
-  type RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,
   defineProperties,
+  type RequiredConditionalValue,
 } from '@vanilla-extract/sprinkles';
 
 import './reset.css';

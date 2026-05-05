@@ -1,11 +1,10 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { NextIntlClientProvider } from 'next-intl';
+import { Provider } from 'components/Provider/Provider';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import { NextIntlClientProvider } from 'next-intl';
 import React, { useEffect } from 'react';
-
-import { Provider } from 'components/Provider/Provider';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 

@@ -9,9 +9,10 @@ import React, {
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -29,8 +30,6 @@ import {
 } from '../RainbowKitProvider/ModalSizeContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
-
-import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   ConnectDetail,
   DownloadDetail,

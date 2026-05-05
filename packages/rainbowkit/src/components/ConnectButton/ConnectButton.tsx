@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  type ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
+  type ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';

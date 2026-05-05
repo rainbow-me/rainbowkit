@@ -1,10 +1,10 @@
-import type { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { DefaultWalletOptions } from './../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { DefaultWalletOptions } from './../../Wallet';
+import type { Wallet } from '../../Wallet';
 
 export type UniversalProfilesWalletOptions = DefaultWalletOptions;
 

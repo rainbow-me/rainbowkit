@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useAccount, useDisconnect, useSwitchChain } from 'wagmi';
-import { useConfig } from 'wagmi';
+import { useAccount, useConfig, useDisconnect, useSwitchChain } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';

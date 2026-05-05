@@ -15,8 +15,8 @@ import {
   getLatestWalletId,
 } from '../../wallets/latestWalletId';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import {
   useConnectModal,

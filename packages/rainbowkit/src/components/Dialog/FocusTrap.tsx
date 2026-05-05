@@ -1,5 +1,4 @@
-import React, { type JSX } from 'react';
-import { useCallback, useEffect, useRef } from 'react';
+import React, { type JSX, useCallback, useEffect, useRef } from 'react';
 
 const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
   const focusableElements = element.querySelectorAll(

@@ -1,5 +1,5 @@
-import { argentWallet } from './argentWallet/argentWallet';
 import { anchorageDigitalWallet } from './anchorageDigitalWallet/anchorageDigitalWallet';
+import { argentWallet } from './argentWallet/argentWallet';
 import { backpackWallet } from './backpackWallet/backpackWallet';
 import { base, baseAccount } from './base/base';
 import { berasigWallet } from './berasigWallet/berasigWallet';
@@ -17,6 +17,7 @@ import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { compassWallet } from './compassWallet/compassWallet';
 import { coreWallet } from './coreWallet/coreWallet';
+import { ctrlWallet, xdefiWallet } from './ctrlWallet/ctrlWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
@@ -34,9 +35,9 @@ import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { magicEdenWallet } from './magicEdenWallet/magicEdenWallet';
+import { mecoWallet } from './mecoWallet/mecoWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
-import { mecoWallet } from './mecoWallet/mecoWallet';
 import { nestWallet } from './nestWallet/nestWallet';
 import { novaWallet } from './novaWallet/novaWallet';
 import { oktoWallet } from './oktoWallet/oktoWallet';
@@ -45,37 +46,36 @@ import { omniWallet } from './omniWallet/omniWallet';
 import { oneInchWallet } from './oneInchWallet/oneInchWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { paraSwapWallet } from './paraSwapWallet/paraswapWallet';
-import { portoWallet } from './portoWallet/portoWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
+import { portoWallet } from './portoWallet/portoWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
-import { readyWallet } from './readyWallet/readyWallet';
 import { ramperWallet } from './ramperWallet/ramperWallet';
+import { readyWallet } from './readyWallet/readyWallet';
 import { roninWallet } from './roninWallet/roninWallet';
-import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
+import { safeWallet } from './safeWallet/safeWallet';
 import { seifWallet } from './seifWallet/seifWallet';
 import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
-import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { tokenaryWallet } from './tokenaryWallet/tokenaryWallet';
+import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { trustWallet } from './trustWallet/trustWallet';
-import { universalProfilesWallet } from './universalProfilesWallet/universalProfilesWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
+import { universalProfilesWallet } from './universalProfilesWallet/universalProfilesWallet';
 import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { wigwamWallet } from './wigwamWallet/wigwamWallet';
-import { ctrlWallet, xdefiWallet } from './ctrlWallet/ctrlWallet';
 import { xPortalWallet } from './xPortalWallet/xPortalWallet';
+import { zilPayWallet } from './ZilPayWallet/zilPayWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
-import { zilPayWallet } from './ZilPayWallet/zilPayWallet';
 
 export {
-  argentWallet,
   anchorageDigitalWallet,
+  argentWallet,
   backpackWallet,
   base,
   baseAccount,
@@ -112,9 +112,9 @@ export {
   kresusWallet,
   ledgerWallet,
   magicEdenWallet,
+  mecoWallet,
   metaMaskWallet,
   mewWallet,
-  mecoWallet,
   nestWallet,
   novaWallet,
   oktoWallet,
@@ -127,8 +127,8 @@ export {
   portoWallet,
   rabbyWallet,
   rainbowWallet,
-  readyWallet,
   ramperWallet,
+  readyWallet,
   roninWallet,
   safeheronWallet,
   safepalWallet,
@@ -140,8 +140,8 @@ export {
   tokenaryWallet,
   tokenPocketWallet,
   trustWallet,
-  universalProfilesWallet,
   uniswapWallet,
+  universalProfilesWallet,
   valoraWallet,
   walletConnectWallet,
   wigwamWallet,

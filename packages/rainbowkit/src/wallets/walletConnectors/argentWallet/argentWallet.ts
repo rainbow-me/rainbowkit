@@ -1,7 +1,7 @@
 import type { Wallet } from '../../Wallet';
 import {
-  readyWallet,
   type ReadyWalletOptions,
+  readyWallet,
 } from '../readyWallet/readyWallet';
 
 export type ArgentWalletOptions = ReadyWalletOptions;

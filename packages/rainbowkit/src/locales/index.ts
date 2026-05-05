@@ -1,5 +1,5 @@
-import { I18n } from './I18n';
 import en_US from './en_US.json';
+import { I18n } from './I18n';
 
 export type Locale =
   | 'ar'

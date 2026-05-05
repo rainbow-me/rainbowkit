@@ -9,8 +9,8 @@
  * Following Wagmi's approach: https://github.com/wevm/wagmi/blob/main/packages/connectors/src/walletConnect.test.ts
  */
 
+import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
-import { http, HttpResponse } from 'msw';
 import { vi } from 'vitest';
 
 // WalletConnect relay and API mock handlers

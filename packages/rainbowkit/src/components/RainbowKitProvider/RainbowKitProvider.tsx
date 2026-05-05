@@ -1,4 +1,4 @@
-import React, { type ReactNode, createContext, useContext } from 'react';
+import React, { createContext, type ReactNode, useContext } from 'react';
 import { useAccountEffect } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
@@ -27,9 +27,9 @@ import {
 import { RainbowKitChainProvider } from './RainbowKitChainContext';
 import { ShowBalanceProvider } from './ShowBalanceContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
-import { WalletButtonProvider } from './WalletButtonContext';
 import { useFingerprint } from './useFingerprint';
 import { usePreloadImages } from './usePreloadImages';
+import { WalletButtonProvider } from './WalletButtonContext';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);

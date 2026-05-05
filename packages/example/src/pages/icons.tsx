@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Cuer } from 'cuer';
 import * as wallets from '@rainbow-me/rainbowkit/wallets';
+import { Cuer } from 'cuer';
+import { useEffect, useState } from 'react';
 
 const names = Object.keys(wallets)
   .filter((k) => typeof (wallets as Record<string, unknown>)[k] === 'function')

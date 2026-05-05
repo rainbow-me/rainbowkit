@@ -1,7 +1,7 @@
-import React from 'react';
 import { Cuer } from 'cuer';
-import { Box, type BoxProps } from '../Box/Box';
+import React from 'react';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
+import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 export type ErrorCorrectionLevel = 'low' | 'medium' | 'quartile' | 'high';

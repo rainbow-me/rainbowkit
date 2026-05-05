@@ -1,11 +1,11 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
-  type Locale,
-  RainbowKitProvider,
   __private__,
   darkTheme,
+  type Locale,
   lightTheme,
   midnightTheme,
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
@@ -15,8 +15,8 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
-import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
 import type React from 'react';
 import { useState } from 'react';
 import { CompactIcon } from './CompactIcon';

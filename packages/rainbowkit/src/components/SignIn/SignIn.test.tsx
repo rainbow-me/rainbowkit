@@ -9,8 +9,8 @@ import React from 'react';
 import type { Address } from 'viem';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
-  RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
 } from '../RainbowKitProvider/AuthenticationContext';
 import { SignIn } from './SignIn';
 

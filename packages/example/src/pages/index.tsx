@@ -1,11 +1,11 @@
 import { RainbowButton } from '@rainbow-me/rainbow-button';
 import {
   ConnectButton,
-  WalletButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
   useConnectModal,
+  WalletButton,
 } from '@rainbow-me/rainbowkit';
 import { useSession } from 'next-auth/react';
 import type React from 'react';

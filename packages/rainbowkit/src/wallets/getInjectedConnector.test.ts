@@ -1,7 +1,7 @@
-import { createConfig, http } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
 import type { EIP1193EventMap, EIP1193Provider } from 'viem';
 import { describe, expect, it, vi } from 'vitest';
+import { createConfig, http } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import {
   getInjectedConnector,
   hasInjectedProvider,

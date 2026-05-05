@@ -1,10 +1,10 @@
+import type { WindowProvider } from '../../../types/utils';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WindowProvider } from '../../../types/utils';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 
 export type NovaWalletOptions = DefaultWalletOptions;
 

@@ -6,9 +6,10 @@
 //   it does not overwrite an existing snapshot.
 // - On the server, no window is available, so SSR renders a fallback. On the client, the snapshot
 //   exists before hydration; we hydrate state from it after mount to avoid hydration mismatch.
-import { useEffect, useState, type CSSProperties } from 'react';
+
 import { createStore, type EIP6963ProviderDetail } from 'mipd';
 import Script from 'next/script';
+import { type CSSProperties, useEffect, useState } from 'react';
 
 function extractFlags(obj: Record<string, unknown>) {
   const flags: Record<string, boolean> = {};
