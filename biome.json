@@ -95,6 +95,18 @@
           }
         }
       }
+    },
+    {
+      "includes": [
+        "packages/rainbowkit/src/components/RainbowKitProvider/AuthenticationContext.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": "off"
+          }
+        }
+      }
     }
   ],
   "vcs": {

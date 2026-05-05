@@ -67,6 +67,18 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     },
   });
 
+  const handleChangedAccount = (
+    data: Parameters<Config['_internal']['events']['change']>[0],
+  ) => {
+    // Only if account changes
+    if (data.accounts) {
+      // If account is changed we automatically log user out.
+      // Current connector uid only should be available only at "authenticated"
+      setCurrentConnectorUid(undefined);
+      adapter.signOut();
+    }
+  };
+
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
@@ -80,18 +92,6 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
       // Set current connector uid
       setCurrentConnectorUid(connector?.uid);
 
-      const handleChangedAccount = (
-        data: Parameters<Config['_internal']['events']['change']>[0],
-      ) => {
-        // Only if account changes
-        if (data.accounts) {
-          // If account is changed we automatically log user out.
-          // Current connector uid only should be available only at "authenticated"
-          setCurrentConnectorUid(undefined);
-          adapter.signOut();
-        }
-      };
-
       // Attach the event listener when status is 'authenticated'
       connector.emitter.on('change', handleChangedAccount);
 
@@ -100,7 +100,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [adapter, connector?.emitter, connector?.uid, status]);
+  }, [connector?.emitter, status]);
 
   useEffect(() => {
     if (
@@ -115,13 +115,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         adapter.signOut();
       }
     }
-  }, [
-    adapter,
-    connector?.emitter,
-    connector?.uid,
-    currentConnectorUid,
-    status,
-  ]);
+  }, [connector?.emitter, currentConnectorUid, status]);
 
   return (
     <AuthenticationContext.Provider
