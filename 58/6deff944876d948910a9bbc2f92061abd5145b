@@ -1,0 +1,27 @@
+packages/rainbowkit/src/wallets/getInjectedConnector.ts
+  0ff69fe8a4f378f1 77-78
+.changeset/fix-injected-provider-targeting.md
+  0ff69fe8a4f378f1 1-7
+packages/rainbowkit/src/wallets/getInjectedConnector.test.ts
+  0ff69fe8a4f378f1 1-4,10-62,79-169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "586deff944876d948910a9bbc2f92061abd5145b",
+  "prompts": {
+    "0ff69fe8a4f378f1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df460-c7cd-7800-8a1b-5384d1720270",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 437,
+      "total_deletions": 165,
+      "accepted_lines": 272,
+      "overriden_lines": 0
+    }
+  }
+}
