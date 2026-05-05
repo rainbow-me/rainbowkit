@@ -1,10 +1,17 @@
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next';
+import { auth } from '../auth';
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const token = await getToken({ req });
-  const address = token?.sub ?? null;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await auth(
+    context.req as NextApiRequest,
+    context.res as NextApiResponse,
+  );
+  const address = session?.address ?? null;
 
   return {
     props: {
