@@ -83,6 +83,18 @@
           }
         }
       }
+    },
+    {
+      "includes": [
+        "packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          }
+        }
+      }
     }
   ],
   "vcs": {
