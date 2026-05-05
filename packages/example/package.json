@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "typecheck": "pnpm tsc --noEmit"
   },
   "keywords": [],

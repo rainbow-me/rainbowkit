@@ -5,16 +5,20 @@ import {
   default as NextDocument,
   NextScript,
 } from 'next/document';
-import React from 'react';
+import type React from 'react';
+
+const DocumentHead = Head as unknown as React.ComponentType;
+const DocumentMain = Main as unknown as React.ComponentType;
+const DocumentNextScript = NextScript as unknown as React.ComponentType;
 
 class Document extends NextDocument {
   render() {
     return (
       <Html data-mode="light">
-        <Head />
+        <DocumentHead />
         <body>
-          <Main />
-          <NextScript />
+          <DocumentMain />
+          <DocumentNextScript />
         </body>
       </Html>
     );

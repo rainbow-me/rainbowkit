@@ -15,6 +15,18 @@ const publicClient = createPublicClient({
   transport: http(),
 });
 
+function getCsrfTokenFromCookie(cookieHeader: string | null) {
+  const csrfTokenCookie = cookieHeader
+    ?.split(';')
+    .map((cookie) => cookie.trim())
+    .find((cookie) =>
+      /^(?:__Host-|__Secure-)?authjs\.csrf-token=/.test(cookie),
+    );
+  const encodedValue = csrfTokenCookie?.slice(csrfTokenCookie.indexOf('=') + 1);
+
+  return encodedValue ? decodeURIComponent(encodedValue).split('|')[0] : null;
+}
+
 export const authOptions: NextAuthConfig = {
   providers: [
     Credentials({
@@ -47,7 +59,7 @@ export const authOptions: NextAuthConfig = {
           }
 
           const authUrl =
-            process.env.AUTH_URL ||
+            process.env.NEXTAUTH_URL ||
             (process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}`
               : null);
@@ -65,11 +77,7 @@ export const authOptions: NextAuthConfig = {
             request.headers instanceof Headers
               ? request.headers.get('cookie')
               : '';
-          const cookies = cookieHeader || '';
-          const csrfTokenCookie = cookies
-            .split(';')
-            .find((c) => c.trim().startsWith('authjs.csrf-token='));
-          const csrfToken = csrfTokenCookie?.split('=')[1]?.split('%')[0];
+          const csrfToken = getCsrfTokenFromCookie(cookieHeader);
 
           if (siweMessage.nonce !== csrfToken) {
             return null;
@@ -105,7 +113,7 @@ export const authOptions: NextAuthConfig = {
       return session;
     },
   },
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: 'jwt',
   },
