@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### Base (ชื่อเดิมคือกระเป๋าเงิน Coinbase)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+ตัวเชื่อมกระเป๋าเงินนี้รองรับ Base การพัฒนาต่อเนื่องของกระเป๋าเงินอัจฉริยะ Coinbase โดยมีการยืนยันตัวตนที่ราบรื่นและคุณสมบัติพิเศษที่ปรับปรุงขึ้น เช่น บัญชีย่อยและการตั้งค่าสิทธิ์การใช้จ่าย
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+ตัวเลือกการตั้งค่าสอดคล้องกับ [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` และ `coinbaseWallet` ยังสามารถใช้งานได้ในฐานะชื่อเทียบที่เข้ากันได้กับรุ่นก่อน.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+แสดง Rainbow, MetaMask และ Base พร้อมกับกระเป๋าเงิน fallback ทั่วไป.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 คุณสามารถใช้คีย์ `groupName` เพื่อรับชมกลุ่มกระเป๋าเงินที่แตกต่างกันได้ นี่เป็นประโยชน์ถ้าคุณต้องการสื่อให้ผู้ใช้ของคุณรู้ว่ากระเป๋าเงินไหนที่แนะนำใช้ได้พร้อมกับที่เป็นไปได้อื่นๆ.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+แนะนำให้ใช้ Rainbow และ MetaMask, แต่ยังเสนอ Base พร้อมกับกระเป๋าเงิน fallback ทั่วไป.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
