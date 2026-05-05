@@ -116,13 +116,13 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Base (formerly Coinbase Wallet)
+#### Base (eskiden Coinbase Wallet olarak bilinir)
 
-This wallet connector supports Base, the evolution of Coinbase Smart Wallet. It provides seamless authentication and enhanced features like sub-accounts and spend permissions.
+Bu cüzdan bağlayıcı, Coinbase Smart Wallet'ın evrimi olan Base'i destekler. Alt hesaplar ve harcama izinleri gibi gelişmiş özellikler ve sorunsuz kimlik doğrulama sağlar.
 
-Configuration options align with the [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Yapılandırma seçenekleri, [Base SDK referansı](https://docs.base.org/base-account/reference/core/createBaseAccount) ile uyumludur.
 
-> `baseAccount` and `coinbaseWallet` remain available as backwards-compatible aliases.
+> `baseAccount` ve `coinbaseWallet` geriye dönük uyumlu takma adlar olarak kalır.
 
 ```tsx
 import { base } from '@rainbow-me/rainbowkit/wallets';
@@ -522,7 +522,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Show Rainbow, MetaMask and Base along with generic fallback wallets.
+Rainbow, MetaMask ve Base'i, genel yedek cüzdanlarla birlikte gösterin.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -555,7 +555,7 @@ const connectors = connectorsForWallets(
 
 Kullanıcılara önerdiğiniz cüzdanları ve diğer olası cüzdanları iletmek istiyorsanız `groupName` anahtarını farklı cüzdan gruplarını adlandırmak için kullanabilirsiniz.
 
-Recommend Rainbow and MetaMask, but also offer Base along with generic fallback wallets.
+Rainbow ve MetaMask'i önerin, ancak Base'i de genel yedek cüzdanlarla birlikte sunun.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
