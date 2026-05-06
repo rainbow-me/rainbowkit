@@ -154,6 +154,15 @@ Link CLI globally for testing:
 pnpm link:cli  # Makes `create-rainbowkit` available system-wide
 ```
 
+## Local Environment
+
+- **Node.js**: v24+ required. If using nvm, source it and select v24 before running any commands in this repo:
+  ```bash
+  export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh"
+  nvm use 24
+  ```
+- **pnpm**: managed via Corepack. Activate the lockfile-pinned version once: `corepack enable pnpm`.
+
 ## Additional Notes
 
 - Uses Biome for formatting/linting (replaces ESLint + Prettier)
