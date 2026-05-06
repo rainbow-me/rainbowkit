@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         <WalletButton.Custom wallet="ready">
           {({ ready, connect, connector }) => {
             return (
-              <button disabled={!ready} onClick={connect}>
+              <button type="button" disabled={!ready} onClick={connect}>
                 {connector.name}
               </button>
             );
@@ -45,6 +45,7 @@ const Home: NextPage = () => {
         <span>Wagmi Connectors</span>
 
         <button
+          type="button"
           onClick={() => connect({ connector: metaMaskConnector })}
           key={metaMaskConnector.id}
         >
@@ -52,6 +53,7 @@ const Home: NextPage = () => {
         </button>
 
         <button
+          type="button"
           onClick={() => connect({ connector: coinbaseConnector })}
           key={coinbaseConnector.id}
         >
@@ -59,7 +61,9 @@ const Home: NextPage = () => {
         </button>
 
         {isConnected && (
-          <button onClick={() => disconnect()}>Disconnect</button>
+          <button type="button" onClick={() => disconnect()}>
+            Disconnect
+          </button>
         )}
       </div>
     </div>

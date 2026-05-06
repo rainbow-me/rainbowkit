@@ -36,34 +36,34 @@
  * ensuring proper wallet detection and connector selection logic.
  */
 
-import { screen, waitFor, fireEvent } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
   describe,
   expect,
   it,
   vi,
-  beforeEach,
-  afterEach,
-  beforeAll,
-  afterAll,
 } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import {
-  rainbowWallet,
-  mockWallet,
   mockRainbow1193Provider,
   mockRainbow6963Provider,
+  mockWallet,
   rainbowTestAccounts,
+  rainbowWallet,
 } from '../../../test/mockRainbow';
 import {
-  walletConnectServer,
-  setupMatchMedia,
   setupLocalStorage,
+  setupMatchMedia,
+  walletConnectServer,
 } from '../../../test/mockWalletConnect';
-import { ConnectModal } from './ConnectModal';
 import { ConnectButton } from '../ConnectButton/ConnectButton';
+import { ConnectModal } from './ConnectModal';
 
 describe('Connect Flow Tests', () => {
   beforeAll(() => {

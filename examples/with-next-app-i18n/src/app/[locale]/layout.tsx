@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@rainbow-me/rainbowkit';
+
 import { Providers } from './providers';
 
 export function generateStaticParams() {

@@ -1,10 +1,10 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 
 export type BitgetWalletOptions = DefaultWalletOptions;
 

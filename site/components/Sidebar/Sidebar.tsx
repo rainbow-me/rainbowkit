@@ -1,14 +1,14 @@
+import { allDocs } from '.contentlayer/generated';
 import { Box } from 'components/Box/Box';
 import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';
 import { Text } from 'components/Text/Text';
 import type { RouteProps } from 'lib/docsRoutes';
-import { useTranslations } from 'next-intl';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
 import type React from 'react';
 import { link } from './Sidebar.css';
-import { allDocs } from '.contentlayer/generated';
 
 export function Sidebar({ routes }: { routes: RouteProps[] }) {
   const { locale } = useRouter();

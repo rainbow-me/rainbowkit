@@ -6,9 +6,11 @@
 //   it does not overwrite an existing snapshot.
 // - On the server, no window is available, so SSR renders a fallback. On the client, the snapshot
 //   exists before hydration; we hydrate state from it after mount to avoid hydration mismatch.
-import { useEffect, useState, type CSSProperties } from 'react';
+
 import { createStore, type EIP6963ProviderDetail } from 'mipd';
+import Image from 'next/image';
 import Script from 'next/script';
+import { type CSSProperties, useEffect, useState } from 'react';
 
 function extractFlags(obj: Record<string, unknown>) {
   const flags: Record<string, boolean> = {};
@@ -146,9 +148,10 @@ export default function EthereumProviders() {
               </tr>
             </thead>
             <tbody>
-              {providerFlags.map((flags, idx) =>
-                Object.entries(flags).map(([key, value], i) => (
-                  <tr key={`${idx}-${key}`}>
+              {providerFlags.map((flags, idx) => {
+                const flagsKey = Object.keys(flags).join('|');
+                return Object.entries(flags).map(([key, value], i) => (
+                  <tr key={`${flagsKey}-${key}`}>
                     {i === 0 && (
                       <td style={cellStyle} rowSpan={Object.keys(flags).length}>
                         {idx}
@@ -157,8 +160,8 @@ export default function EthereumProviders() {
                     <td style={cellStyle}>{key}</td>
                     <td style={cellStyle}>{String(value)}</td>
                   </tr>
-                )),
-              )}
+                ));
+              })}
             </tbody>
           </table>
         ) : (
@@ -182,9 +185,12 @@ export default function EthereumProviders() {
                   <td style={cellStyle}>{info.rdns}</td>
                   <td style={cellStyle}>{info.name}</td>
                   <td style={cellStyle}>
-                    <img
+                    <Image
                       alt={info.name}
+                      height={32}
                       src={info.icon}
+                      unoptimized
+                      width={32}
                       style={{ width: 32, height: 32 }}
                     />
                   </td>

@@ -1,13 +1,13 @@
 import { createConnector } from 'wagmi';
 import { type MetaMaskParameters, metaMask } from 'wagmi/connectors';
+import type { WindowProvider } from '../../../types/utils';
+import { isMobile } from '../../../utils/isMobile';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
   DefaultWalletOptions,
   Wallet,
   WalletDetailsParams,
 } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import { isMobile } from '../../../utils/isMobile';
-import type { WindowProvider } from '../../../types/utils';
 
 export type MetaMaskWalletOptions = DefaultWalletOptions;
 

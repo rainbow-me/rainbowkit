@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createConfig, http, type CreateConnectorFn } from 'wagmi';
+import { type CreateConnectorFn, createConfig, http } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { walletConnect } from 'wagmi/connectors';
 import { connectorsForWallets } from '..';

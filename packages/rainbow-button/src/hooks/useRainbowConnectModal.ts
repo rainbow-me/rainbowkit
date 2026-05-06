@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useCallback } from 'react';
 
 export function useRainbowConnectModal() {
   const { openConnectModal, connectModalOpen } = useConnectModal();

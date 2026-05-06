@@ -1,5 +1,5 @@
-import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 
 export interface WalletConnectWalletOptions {
   projectId: string;

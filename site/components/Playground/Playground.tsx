@@ -1,11 +1,11 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
-  type Locale,
-  RainbowKitProvider,
   __private__,
   darkTheme,
+  type Locale,
   lightTheme,
   midnightTheme,
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
@@ -15,8 +15,8 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
-import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
 import type React from 'react';
 import { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
@@ -37,7 +37,6 @@ type Accents = NonNullable<NonNullable<ThemeOptions>['accentColor']>;
 type Radii = NonNullable<NonNullable<ThemeOptions>['borderRadius']>;
 type ModalSizes = 'compact' | 'wide';
 
-// @ts-ignore - Accents could be undefined
 const gradientColors: Record<Accents, any> = {
   blue: [
     [29, 100, 192],
@@ -377,7 +376,12 @@ function Radio({
   id,
   value,
   ...props
-}: { activeValue: string; id: string; value: string; [key: string]: any }) {
+}: {
+  activeValue: string;
+  id: string;
+  value: string;
+  [key: string]: any;
+}) {
   return (
     <div style={{ position: 'relative' }}>
       <RadioGroup.Item className={radio} value={value} {...props} />

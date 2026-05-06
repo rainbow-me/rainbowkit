@@ -34,14 +34,13 @@ const appearance = style({
   appearance: 'none',
 });
 
-// biome-ignore format: design system keys
 const field = style([
   appearance,
   {
     '::placeholder': {
       opacity: 1,
     },
-    'outline': 'none',
+    outline: 'none',
   },
 ]);
 
@@ -50,14 +49,13 @@ const mark = style({
   color: 'inherit',
 });
 
-// biome-ignore format: design system keys
 const select = style([
   field,
   {
     ':disabled': {
       opacity: 1,
     },
-    'selectors': {
+    selectors: {
       '&::-ms-expand': {
         display: 'none',
       },

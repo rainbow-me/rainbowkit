@@ -1,9 +1,9 @@
 import { isIOS } from '../../../utils/isMobile';
-import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
+import type { Wallet } from '../../Wallet';
 
 export const dawnWallet = (): Wallet => ({
   id: 'dawn',

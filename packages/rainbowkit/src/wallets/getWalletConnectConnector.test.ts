@@ -1,6 +1,6 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import type { CreateConnector } from './Wallet';
 import { getWalletConnectConnector } from './getWalletConnectConnector';
+import type { CreateConnector } from './Wallet';
 
 /*
  * Be careful when writing these tests. This util caches the connector

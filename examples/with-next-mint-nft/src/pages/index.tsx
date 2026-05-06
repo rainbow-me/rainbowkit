@@ -79,6 +79,7 @@ const Home: NextPage = () => {
 
             {mounted && isConnected && !isMinted && (
               <button
+                type="button"
                 style={{ marginTop: 24 }}
                 disabled={!mint || isMintLoading || isMintStarted}
                 className="button"

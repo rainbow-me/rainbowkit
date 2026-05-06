@@ -160,7 +160,11 @@ function useDocSearchKeyboardEvents({
   isOpen,
   onClose,
   onOpen,
-}: { isOpen: boolean; onClose: () => void; onOpen: () => void }) {
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
+}) {
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (

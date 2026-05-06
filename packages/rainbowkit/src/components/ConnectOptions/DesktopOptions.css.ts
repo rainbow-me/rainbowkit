@@ -18,7 +18,6 @@ export const ScrollClassName = style([
   },
 ]);
 
-// biome-ignore format: design system keys
 export const sidebar = style({
   minWidth: '287px',
 });

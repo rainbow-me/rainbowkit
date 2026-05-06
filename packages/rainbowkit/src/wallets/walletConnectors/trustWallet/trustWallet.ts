@@ -1,14 +1,14 @@
 import { isMobile } from '../../../utils/isMobile';
-import type {
-  DefaultWalletOptions,
-  InstructionStepName,
-  Wallet,
-} from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  DefaultWalletOptions,
+  InstructionStepName,
+  Wallet,
+} from '../../Wallet';
 
 export type TrustWalletOptions = DefaultWalletOptions;
 
@@ -33,7 +33,7 @@ export const trustWallet = ({
     getUri: shouldUseWalletConnect ? getUriMobile : undefined,
   };
 
-  let qrConnector = undefined;
+  let qrConnector: Wallet['qrCode'];
 
   if (shouldUseWalletConnect) {
     qrConnector = {

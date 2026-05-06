@@ -115,10 +115,10 @@ export const mockWallet = {
 
 // Re-export WalletConnect mocking utilities from dedicated module
 export {
-  walletConnectServer,
-  setupMatchMedia,
-  setupLocalStorage,
-  setupWalletConnectMocks,
   cleanupWalletConnectMocks,
   closeWalletConnectServer,
+  setupLocalStorage,
+  setupMatchMedia,
+  setupWalletConnectMocks,
+  walletConnectServer,
 } from './mockWalletConnect';

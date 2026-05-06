@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  type MockInstance,
   afterAll,
   beforeAll,
   describe,
   expect,
   it,
+  type MockInstance,
   vi,
 } from 'vitest';
 import { mainnet } from 'wagmi/chains';

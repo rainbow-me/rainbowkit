@@ -14,9 +14,9 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
-import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
 import NextLink from 'next/link';
+import { useTranslations } from 'next-intl';
 import React, { type Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
 

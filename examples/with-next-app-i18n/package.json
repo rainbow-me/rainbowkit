@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
-    "typescript": "5.5.4"
+    "typescript": "5.9.3"
   },
   "engines": {
     "node": ">=24"

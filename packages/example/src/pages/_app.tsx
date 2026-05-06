@@ -1,28 +1,27 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import './global.css';
 
-import type { Session } from 'next-auth';
-import { SessionProvider, signOut } from 'next-auth/react';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-
 import {
   type AvatarComponent,
   type DisclaimerComponent,
-  type Locale,
-  RainbowKitProvider,
   darkTheme,
+  type Locale,
   lightTheme,
   midnightTheme,
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import {
   type GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, useDisconnect } from 'wagmi';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import type { Session } from 'next-auth';
+import { SessionProvider, signOut } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { useDisconnect, WagmiProvider } from 'wagmi';
 
 import type { AppContextProps } from '../lib/AppContextProps';
 import { config } from '../wagmi';
@@ -343,10 +342,13 @@ function RainbowKitApp({
                     </tr>
                     <tr>
                       <td>
-                        <label style={{ userSelect: 'none' }}>locale</label>
+                        <label htmlFor="locale" style={{ userSelect: 'none' }}>
+                          locale
+                        </label>
                       </td>
                       <td>
                         <select
+                          id="locale"
                           onChange={(e) => {
                             setLocale(e.target.value as Locale);
                           }}

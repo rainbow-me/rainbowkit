@@ -1,8 +1,8 @@
 import {
   type AccentColor,
   type AccentColorPreset,
-  type ThemeOptions,
   baseTheme,
+  type ThemeOptions,
 } from './baseTheme';
 
 const accentColors: Record<AccentColorPreset, AccentColor> = {

@@ -1,5 +1,4 @@
-import React, { type JSX } from 'react';
-import { useCallback, useEffect, useRef } from 'react';
+import React, { type JSX, useCallback, useEffect, useRef } from 'react';
 
 const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
   const focusableElements = element.querySelectorAll(
@@ -38,13 +37,14 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
 
   return (
     <>
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: Preserve focus trap sentinel behavior. */}
       <div
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'end'),
           [],
         )}
-        // biome-ignore lint/a11y/noNoninteractiveTabindex: incorrect
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: Preserve focus trap sentinel behavior.
         tabIndex={0}
       />
       <div
@@ -53,13 +53,14 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         tabIndex={-1}
         {...props}
       />
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: Preserve focus trap sentinel behavior. */}
       <div
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'start'),
           [],
         )}
-        // biome-ignore lint/a11y/noNoninteractiveTabindex: incorrect
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: Preserve focus trap sentinel behavior.
         tabIndex={0}
       />
     </>

@@ -1,5 +1,5 @@
-import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 
 export type KresusWalletOptions = DefaultWalletOptions;
 

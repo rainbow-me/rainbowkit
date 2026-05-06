@@ -7,7 +7,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from 'components/Popover/Popover';
-import React from 'react';
 import { regionWrapper, table, td, th } from './PropsTable.css';
 
 type PropDef = {
@@ -50,18 +49,15 @@ export function PropsTable({
         </Box>
         <Box as="tbody">
           {data.map(
-            (
-              {
-                default: defaultValue,
-                description,
-                name,
-                required,
-                type,
-                typeSimple,
-              },
-              i,
-            ) => (
-              <Box as="tr" key={`${name}-${i}`}>
+            ({
+              default: defaultValue,
+              description,
+              name,
+              required,
+              type,
+              typeSimple,
+            }) => (
+              <Box as="tr" key={name}>
                 <Box as="td" className={td}>
                   <Code>
                     {name}

@@ -1,6 +1,6 @@
 import React, {
-  type ReactNode,
   createContext,
+  type ReactNode,
   useContext,
   useEffect,
   useMemo,
@@ -82,7 +82,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Preserve existing account-change listener lifecycle.
   useEffect(() => {
     // Wagmi renders emitter's partially on page load. We wanna make sure
     // the event emitters gets updated before proceeding
@@ -103,7 +103,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     }
   }, [connector?.emitter, status]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Preserve existing connector UID tracking behavior.
   useEffect(() => {
     if (
       currentConnectorUid &&

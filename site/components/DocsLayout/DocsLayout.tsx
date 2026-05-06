@@ -1,3 +1,4 @@
+import { allDocs } from '.contentlayer/generated';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
@@ -27,7 +28,6 @@ import {
   navigationSidebarScroller,
   paginationItem,
 } from './DocsLayout.css';
-import { allDocs } from '.contentlayer/generated';
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();

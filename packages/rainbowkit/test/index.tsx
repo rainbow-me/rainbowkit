@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { render, type RenderResult } from '@testing-library/react';
+import { type RenderResult, render } from '@testing-library/react';
 import React, { type ReactElement } from 'react';
-import { http, type Chain } from 'viem';
-import { WagmiProvider, createConfig } from 'wagmi';
+import { type Chain, http } from 'viem';
+import { createConfig, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   avalanche,
@@ -16,8 +16,8 @@ import {
 import { mock } from 'wagmi/connectors';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import type { WalletList } from '../src/wallets/Wallet';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
+import type { WalletList } from '../src/wallets/Wallet';
 import { mockedAccounts } from './mockWallet';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [

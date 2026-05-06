@@ -1,14 +1,14 @@
 import type { CreateConnectorFn } from 'wagmi';
-import type { WalletList } from './Wallet';
 import {
   type ConnectorsForWalletsParameters,
   connectorsForWallets,
 } from './connectorsForWallets';
+import type { WalletList } from './Wallet';
+import { base } from './walletConnectors/base/base';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
 import { safeWallet } from './walletConnectors/safeWallet/safeWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
-import { base } from './walletConnectors/base/base';
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: CreateConnectorFn[];

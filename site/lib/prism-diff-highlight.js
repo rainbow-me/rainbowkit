@@ -3,7 +3,7 @@
 module.exports = (Prism) => {
   const LANGUAGE_REGEX = /diff-([\w-]+)/i;
   const HTML_TAG =
-    /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/gi;
+    /<\/?(?!\d)[^\s>/=$<%]+(?:\s(?:\s*[^\s>/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/gi;
   //this will match a line plus the line break while ignoring the line breaks HTML tags may contain.
   const HTML_LINE = RegExp(
     /(?:__|[^\r\n<])*(?:\r\n?|\n|(?:__|[^\r\n<])(?![^\r\n]))/.source.replace(
@@ -18,13 +18,13 @@ module.exports = (Prism) => {
   Prism.hooks.add('before-sanity-check', (env) => {
     const lang = env.language;
     if (LANGUAGE_REGEX.test(lang) && !env.grammar) {
-      env.grammar = Prism.languages[lang] = Prism.languages['diff'];
+      env.grammar = Prism.languages[lang] = Prism.languages.diff;
     }
   });
   Prism.hooks.add('before-tokenize', (env) => {
     const lang = env.language;
     if (LANGUAGE_REGEX.test(lang) && !Prism.languages[lang]) {
-      Prism.languages[lang] = Prism.languages['diff'];
+      Prism.languages[lang] = Prism.languages.diff;
     }
   });
 
@@ -71,8 +71,10 @@ module.exports = (Prism) => {
       const lines = [];
       let m;
       HTML_LINE.lastIndex = 0;
-      while ((m = HTML_LINE.exec(highlighted))) {
+      m = HTML_LINE.exec(highlighted);
+      while (m) {
         lines.push(prefix + m[0]);
+        m = HTML_LINE.exec(highlighted);
       }
       if (/(?:^|[\r\n]).$/.test(decoded)) {
         // because both "+a\n+" and "+a\n" will map to "a\n" after the line prefixes are removed

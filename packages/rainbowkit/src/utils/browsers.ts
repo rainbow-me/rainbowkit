@@ -29,7 +29,7 @@ export function getBrowser(): BrowserType {
   // bail out if `navigator` or `navigator.userAgent` is not available
   if (typeof navigator === 'undefined') return BrowserType.Browser;
   const ua = navigator.userAgent?.toLowerCase();
-  // @ts-ignore - brave is not in the navigator type
+  // @ts-expect-error - brave is not in the navigator type
   if (navigator.brave?.isBrave) return BrowserType.Brave;
   if (ua?.indexOf('edg/') > -1) return BrowserType.Edge;
   if (ua?.indexOf('op') > -1) return BrowserType.Opera;

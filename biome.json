@@ -1,18 +1,19 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "CHANGELOG.md",
-      "pnpm-lock.yaml",
-      "package.json",
-      "tsconfig.json",
-      "tsconfig.*.json",
-      "./packages/create-rainbowkit/generated-test-app/",
-      "build/",
-      ".react-router",
-      "examples/with-next-mint-nft/contract/",
-      "packages/rainbowkit/assets/wallets/registry.json",
-      "**/next-env.d.ts"
+    "includes": [
+      "**",
+      "!CHANGELOG.md",
+      "!pnpm-lock.yaml",
+      "!**/package.json",
+      "!**/tsconfig.json",
+      "!**/tsconfig.*.json",
+      "!packages/create-rainbowkit/generated-test-app",
+      "!**/build",
+      "!**/.react-router",
+      "!examples/with-next-mint-nft/contract",
+      "!packages/rainbowkit/assets/wallets/registry.json",
+      "!**/next-env.d.ts"
     ]
   },
   "formatter": {
@@ -26,29 +27,8 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "a11y": {
-        "useButtonType": "off"
-      },
-      "complexity": {
-        "noBannedTypes": "off",
-        "useLiteralKeys": "off"
-      },
-      "correctness": {
-        "noUnusedVariables": "error"
-      },
-      "performance": {
-        "noDelete": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off",
-        "useShorthandArrayType": "error"
-      },
-      "suspicious": {
-        "noArrayIndexKey": "off",
-        "noAssignInExpressions": "off",
-        "noConfusingVoidType": "off",
-        "noExplicitAny": "off",
-        "noRedeclare": "off"
+      "security": {
+        "noDangerouslySetInnerHtml": "error"
       }
     }
   },
@@ -59,9 +39,32 @@
       "semicolons": "always"
     }
   },
-  "organizeImports": {
-    "enabled": false
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
+  "overrides": [
+    {
+      "includes": [
+        "examples/**",
+        "packages/example/**",
+        "packages/create-rainbowkit/templates/**",
+        "packages/rainbowkit/src/index.ts",
+        "packages/rainbowkit/src/components/index.ts",
+        "packages/rainbowkit/src/wallets/walletConnectors/index.ts",
+        "packages/rainbow-button/src/index.ts",
+        "packages/rainbowkit-siwe-next-auth/src/index.ts"
+      ],
+      "assist": {
+        "actions": {
+          "source": {
+            "organizeImports": "off"
+          }
+        }
+      }
+    }
+  ],
   "vcs": {
     "enabled": true,
     "clientKind": "git",

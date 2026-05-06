@@ -3,8 +3,8 @@ import type { PublicClient, TransactionReceipt } from 'viem';
 import { useAccount, useBalance, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import {
-  type TransactionStore,
   createTransactionStore,
+  type TransactionStore,
 } from './transactionStore';
 
 // Only allow a single instance of the store to exist at once
@@ -33,10 +33,12 @@ export function TransactionStoreProvider({
   });
 
   // Use existing store if it exists, or lazily create one
-  const [store] = React.useState(
-    () =>
-      storeSingleton ?? (storeSingleton = createTransactionStore({ provider })),
-  );
+  const [store] = React.useState(() => {
+    if (!storeSingleton) {
+      storeSingleton = createTransactionStore({ provider });
+    }
+    return storeSingleton;
+  });
 
   const onTransactionStatus = React.useCallback(
     (txStatus: TransactionReceipt['status']) => {

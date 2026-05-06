@@ -1,4 +1,4 @@
-import React, { type ReactNode, createContext, useMemo, useState } from 'react';
+import React, { createContext, type ReactNode, useMemo, useState } from 'react';
 import type { WalletConnector } from '../../wallets/useWalletConnectors';
 
 interface WalletButtonContextValue {

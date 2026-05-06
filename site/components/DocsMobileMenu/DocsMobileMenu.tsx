@@ -8,7 +8,9 @@ export const DocsMobileMenuContext = React.createContext<
 
 export function DocsMobileMenuSlot({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const docsMobileMenuRef = React.useContext(DocsMobileMenuContext);
   const isMounted = useIsMounted();
 

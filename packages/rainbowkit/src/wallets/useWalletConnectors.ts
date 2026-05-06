@@ -1,11 +1,10 @@
 import { type Connector, useConnect } from 'wagmi';
 import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
-import { indexBy } from '../utils/indexBy';
 import {
   useInitialChainId,
   useRainbowKitChains,
 } from './../components/RainbowKitProvider/RainbowKitChainContext';
-import type { WagmiConnectorInstance, WalletInstance } from './Wallet';
+import { indexBy } from '../utils/indexBy';
 import {
   getDesktopDownloadUrl,
   getExtensionDownloadUrl,
@@ -19,6 +18,7 @@ import {
   rainbowKitConnectorWithWalletConnect,
 } from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
+import type { WagmiConnectorInstance, WalletInstance } from './Wallet';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
@@ -204,7 +204,7 @@ export function useWalletConnectors(
       groupName: wallet.groupName,
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
       getQrCodeUri: wallet.qrCode?.getUri
-        ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri!)
+        ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri)
         : undefined,
       getDesktopUri: wallet.desktop?.getUri
         ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)

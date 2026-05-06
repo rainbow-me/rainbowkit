@@ -2,7 +2,7 @@ import user from '@testing-library/user-event';
 import React, { Fragment } from 'react';
 import { describe, expect, it } from 'vitest';
 import { useConnect } from 'wagmi';
-import { type Chain, arbitrum, mainnet, optimism } from 'wagmi/chains';
+import { arbitrum, type Chain, mainnet, optimism } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test/';
 import { ChainModal } from './ChainModal';
 
@@ -18,6 +18,7 @@ const ChainModalWithConnectButton = ({ onClose }: { onClose?: () => void }) => {
         open
       />
       <button
+        type="button"
         onClick={() => connect({ connector: connectors[0] })}
         data-testid="rk-connect-btn"
       >

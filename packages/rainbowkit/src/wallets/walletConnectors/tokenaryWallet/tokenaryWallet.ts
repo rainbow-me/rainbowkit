@@ -1,9 +1,9 @@
 import { isSafari } from '../../../utils/browsers';
-import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
+import type { Wallet } from '../../Wallet';
 
 export const tokenaryWallet = (): Wallet => ({
   id: 'tokenary',

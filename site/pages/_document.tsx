@@ -1,10 +1,4 @@
-import {
-  Head,
-  Html,
-  Main,
-  default as NextDocument,
-  NextScript,
-} from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 import type React from 'react';
 
 const DocumentHead = Head as unknown as React.ComponentType;

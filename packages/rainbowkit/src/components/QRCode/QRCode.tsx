@@ -1,7 +1,7 @@
-import React from 'react';
 import { Cuer } from 'cuer';
-import { Box, type BoxProps } from '../Box/Box';
+import React from 'react';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
+import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 export type ErrorCorrectionLevel = 'low' | 'medium' | 'quartile' | 'high';
@@ -18,8 +18,7 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
-  // biome-ignore lint/correctness/noUnusedVariables: API compatibility
-  logoSize = 50,
+  logoSize: _logoSize = 50,
   logoUrl,
   size: sizeProp = 200,
   uri,
@@ -66,11 +65,11 @@ export function QRCode({
                 alt="Wallet Logo"
                 src={resolvedLogoUrl}
                 style={{
-                  objectFit: 'cover',
-                  height: '88%',
-                  width: '88%',
-                  borderRadius: '22.5%',
                   backgroundColor: logoBackground,
+                  borderRadius: '22.5%',
+                  height: '88%',
+                  objectFit: 'cover',
+                  width: '88%',
                 }}
               />
             </Cuer.Arena>

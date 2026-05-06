@@ -1,12 +1,12 @@
 import React, {
-  type ReactNode,
   createContext,
+  type ReactNode,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 
-import { type Locale, i18n, setLocale } from '../../locales';
+import { i18n, type Locale, setLocale } from '../../locales';
 import { detectedBrowserLocale } from '../../utils/locale';
 
 export const I18nContext = createContext<{ i18n: typeof i18n }>({ i18n });
@@ -39,7 +39,7 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
     }
   }, [locale, browserLocale]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: incorrect warning
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Recompute when i18n emits a locale update.
   const memoizedValue = useMemo(() => {
     const t = (key: string, options?: any) => i18n.t(key, options);
     return { t, i18n };

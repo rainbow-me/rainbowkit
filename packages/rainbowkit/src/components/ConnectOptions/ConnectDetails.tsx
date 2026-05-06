@@ -3,20 +3,20 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
-import { PlatformType, getPlatform } from '../../utils/platforms';
-import type { InstructionStepName } from '../../wallets/Wallet';
+import { getPlatform, PlatformType } from '../../utils/platforms';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
+import type { InstructionStepName } from '../../wallets/Wallet';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, type BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { ConnectIcon, preloadConnectIcon } from '../Icons/Connect';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
-import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
-import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
+import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
+import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
@@ -840,13 +840,13 @@ export function InstructionMobileDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.qrCode?.instructions?.steps.map((d, idx) => (
+        {wallet?.qrCode?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"
@@ -931,13 +931,13 @@ export function InstructionExtensionDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.extension?.instructions?.steps.map((d, idx) => (
+        {wallet?.extension?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"
@@ -1024,13 +1024,13 @@ export function InstructionDesktopDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.desktop?.instructions?.steps.map((d, idx) => (
+        {wallet?.desktop?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"

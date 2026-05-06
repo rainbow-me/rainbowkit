@@ -1,5 +1,5 @@
-import { createConnector } from 'wagmi';
 import type { CreateConnectorFn } from 'wagmi';
+import { createConnector } from 'wagmi';
 import {
   mock,
   type WalletConnectParameters,

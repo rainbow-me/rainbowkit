@@ -4,7 +4,7 @@ import { Code } from 'components/Code/Code';
 import { Link } from 'components/Link/Link';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DS() {
   const [mode, setMode] = useState('light');
@@ -692,8 +692,8 @@ export default function DS() {
 }
 
 const IconTag = ({ size = '17' }) => (
-  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
+    aria-hidden="true"
     width={size}
     height={size}
     viewBox="0 0 17 17"
@@ -722,8 +722,8 @@ const IconTag = ({ size = '17' }) => (
 );
 
 const IconQR = () => (
-  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
+    aria-hidden="true"
     width="14"
     height="14"
     viewBox="0 0 14 14"
