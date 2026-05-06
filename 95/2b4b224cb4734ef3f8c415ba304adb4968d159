@@ -1,0 +1,9 @@
+packages/rainbowkit/src/components/RainbowKitProvider/I18nContext.tsx
+  cff40f8c24422c70 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "952b4b224cb4734ef3f8c415ba304adb4968d159",
+  "prompts": {}
+}

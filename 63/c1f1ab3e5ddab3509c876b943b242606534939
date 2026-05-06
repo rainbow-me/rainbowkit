@@ -1,0 +1,43 @@
+packages/rainbowkit/src/components/WalletButton/WalletButton.tsx
+  cff40f8c24422c70 23-24
+packages/example/src/pages/_app.tsx
+  cff40f8c24422c70 346-348,352
+packages/rainbowkit/src/transactions/transactionStore.ts
+  cff40f8c24422c70 162
+site/components/Playground/Playground.tsx
+  cff40f8c24422c70 379-384
+packages/rainbowkit/src/components/Dialog/FocusTrap.tsx
+  cff40f8c24422c70 42,49,58,65
+packages/rainbowkit/src/utils/browsers.ts
+  cff40f8c24422c70 32
+packages/rainbowkit/src/components/ConnectOptions/DesktopOptions.tsx
+  cff40f8c24422c70 126-172,174,193-216,223-225
+packages/rainbowkit/src/utils/omitUndefinedValues.ts
+  cff40f8c24422c70 3
+packages/rainbowkit/src/wallets/walletConnectors/walletConnectWallet/walletConnectWallet.test.ts
+  cff40f8c24422c70 10
+site/pages/_document.tsx
+  cff40f8c24422c70 1,3,12,15
+packages/rainbowkit/src/components/ProfileDetails/ProfileDetails.tsx
+  cff40f8c24422c70 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "63c1f1ab3e5ddab3509c876b943b242606534939",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 31,
+      "total_deletions": 24,
+      "accepted_lines": 18,
+      "overriden_lines": 0
+    }
+  }
+}

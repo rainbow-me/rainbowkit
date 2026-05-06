@@ -1,0 +1,53 @@
+packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx
+  cff40f8c24422c70 129-150
+packages/rainbowkit/src/utils/ens.test.ts
+  cff40f8c24422c70 27
+site/css/sprinkles.css.ts
+  cff40f8c24422c70 49-54,160,212
+packages/rainbowkit/src/components/ConnectButton/ConnectButton.tsx
+  cff40f8c24422c70 51
+site/pages/ds.tsx
+  cff40f8c24422c70 696,726
+site/css/reset.css.ts
+  cff40f8c24422c70 46,61
+packages/rainbowkit/src/css/reset.css.ts
+  cff40f8c24422c70 43,58
+packages/rainbowkit/src/components/QRCode/QRCode.tsx
+  cff40f8c24422c70 1
+site/pages/docs/[slug].tsx
+  cff40f8c24422c70 59-62
+packages/rainbowkit/src/components/RainbowKitProvider/I18nContext.tsx
+  cff40f8c24422c70 1
+packages/rainbowkit/src/components/ConnectOptions/DesktopOptions.tsx
+  cff40f8c24422c70 139,143,145,153,157,159,161,174,202,205
+biome.json
+  cff40f8c24422c70 4-16,45-50,71-73,81-82
+packages/rainbowkit/src/components/Dialog/FocusTrap.tsx
+  cff40f8c24422c70 56,73
+site/css/tokens.ts
+  cff40f8c24422c70 187,200,216
+packages/rainbowkit/src/utils/colors.ts
+  cff40f8c24422c70 13-14,16
+packages/rainbowkit/src/css/sprinkles.css.ts
+  cff40f8c24422c70 118-119,160
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "b9352f30885c1c10298a0a04338c35283b9c4935",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 1396,
+      "total_deletions": 75,
+      "accepted_lines": 41,
+      "overriden_lines": 0
+    }
+  }
+}

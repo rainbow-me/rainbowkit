@@ -1,0 +1,9 @@
+biome.json
+  cff40f8c24422c70 4-16,45-50,71-73,81-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "65ff1de7200d7a5024f57e965e27ccbef18efe70",
+  "prompts": {}
+}
