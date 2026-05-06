@@ -1,0 +1,78 @@
+packages/rainbowkit/src/wallets/walletConnectors/subWallet/subWallet.ts
+  cff40f8c24422c70 33
+packages/example/src/auth.ts
+  cff40f8c24422c70 2,8
+packages/example/src/pages/icons.tsx
+  cff40f8c24422c70 3,111,113-116,170,172-175
+packages/rainbowkit/src/components/Dialog/FocusTrap.tsx
+  cff40f8c24422c70 40-41,47-48,56-57,63-64
+packages/rainbowkit/src/components/index.ts
+  5640878fb988e39d 3
+packages/rainbowkit/src/components/RainbowKitProvider/AuthenticationContext.tsx
+  cff40f8c24422c70 85,106
+packages/rainbowkit/src/components/RainbowKitProvider/I18nContext.tsx
+  cff40f8c24422c70 1,20,42-46
+packages/rainbowkit/src/wallets/Wallet.ts
+  cff40f8c24422c70 15,18,29
+packages/example/src/pages/index.tsx
+  cff40f8c24422c70 10,181,183,185-186
+examples/with-react-router/vite.config.ts
+  cff40f8c24422c70 1
+packages/rainbowkit/src/components/QRCode/QRCode.tsx
+  cff40f8c24422c70 2
+packages/rainbowkit/src/wallets/walletConnectors/trustWallet/trustWallet.ts
+  cff40f8c24422c70 36
+packages/rainbowkit/test/index.tsx
+  cff40f8c24422c70 2
+packages/rainbowkit/src/wallets/useWalletConnectors.ts
+  cff40f8c24422c70 105
+packages/example/src/pages/providers.tsx
+  cff40f8c24422c70 11,187,189,191-192
+examples/with-next-siwe-next-auth/src/auth.ts
+  cff40f8c24422c70 2,8
+packages/rainbowkit/src/components/ConnectOptions/DesktopOptions.tsx
+  cff40f8c24422c70 103,220
+packages/rainbowkit-siwe-next-auth/src/RainbowKitSiweNextAuthProvider.test.tsx
+  cff40f8c24422c70 2-3,214-219,221,223-224,250-256,258,260-263
+packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx
+  cff40f8c24422c70 130
+packages/rainbowkit/src/components/ConnectButton/ConnectButton.tsx
+  cff40f8c24422c70 49,52
+packages/rainbowkit-siwe-next-auth/src/nextAuthSiweConfig.test.ts
+  cff40f8c24422c70 2,8,11,283-292,346-363
+packages/rainbowkit/src/wallets/walletConnectors/safepalWallet/safepalWallet.ts
+  cff40f8c24422c70 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "eed73340e675be952b27134c3af56043894317a5",
+  "prompts": {
+    "5640878fb988e39d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c9905e3-7027-499a-98ba-bf4f71d4e522",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 326,
+      "total_deletions": 326,
+      "accepted_lines": 16,
+      "overriden_lines": 0
+    },
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 30,
+      "total_deletions": 14,
+      "accepted_lines": 261,
+      "overriden_lines": 0
+    }
+  }
+}
