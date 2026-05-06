@@ -1,9 +1,10 @@
 'use client';
 
-import { type Locale, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider, type Locale } from '@rainbow-me/rainbowkit';
 
 import { config } from '../../wagmi';
 
