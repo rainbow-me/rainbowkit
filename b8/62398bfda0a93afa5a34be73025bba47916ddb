@@ -1,0 +1,9 @@
+packages/rainbowkit/package.json
+  cff40f8c24422c70 61,65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "b862398bfda0a93afa5a34be73025bba47916ddb",
+  "prompts": {}
+}

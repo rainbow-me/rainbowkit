@@ -1,0 +1,23 @@
+biome.json
+  cff40f8c24422c70 4-16,45-50,71-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "8d9469a2120defdf8aa4ce342c25e767229a46af",
+  "prompts": {
+    "cff40f8c24422c70": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019df999-5d54-7f10-aa49-deae1b659787",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 29,
+      "total_deletions": 45,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
