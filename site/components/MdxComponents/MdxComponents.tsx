@@ -2,6 +2,7 @@ import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
 import { CoolMode } from 'components/CoolMode/CoolMode';
+import { WalletButtonDemo } from 'components/Demo/WalletButton';
 import { CheckIcon } from 'components/Icons/Check';
 import { CopyIcon } from 'components/Icons/Copy';
 import { Link } from 'components/Link/Link';
@@ -11,18 +12,9 @@ import { Table } from 'components/Table/Table';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
-import dynamic from 'next/dynamic';
 import NextImage from 'next/legacy/image';
 import React, { useState } from 'react';
 import { Announcement } from '../Announcement/Announcement';
-
-const WalletButtonDemo = dynamic(
-  () =>
-    import('components/Demo/WalletButton').then(
-      (module) => module.WalletButtonDemo,
-    ),
-  { ssr: false },
-);
 
 export const components = {
   a: (props: React.ComponentProps<typeof Link>) => <Link {...props} />,
