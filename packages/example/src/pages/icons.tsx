@@ -188,6 +188,7 @@ export default function Icons() {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() =>
                   navigator.clipboard.writeText(
                     `packages/rainbowkit/src/wallets/walletConnectors/${name}/${name}.svg`,

@@ -840,13 +840,13 @@ export function InstructionMobileDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.qrCode?.instructions?.steps.map((d, idx) => (
+        {wallet?.qrCode?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"
@@ -931,13 +931,13 @@ export function InstructionExtensionDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.extension?.instructions?.steps.map((d, idx) => (
+        {wallet?.extension?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"
@@ -1024,13 +1024,13 @@ export function InstructionDesktopDetail({
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
-        {wallet?.desktop?.instructions?.steps.map((d, idx) => (
+        {wallet?.desktop?.instructions?.steps.map((d) => (
           <Box
             alignItems="center"
             display="flex"
             flexDirection="row"
             gap="16"
-            key={idx}
+            key={d.title}
           >
             <Box
               borderRadius="10"

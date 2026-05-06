@@ -18,6 +18,7 @@ const ChainModalWithConnectButton = ({ onClose }: { onClose?: () => void }) => {
         open
       />
       <button
+        type="button"
         onClick={() => connect({ connector: connectors[0] })}
         data-testid="rk-connect-btn"
       >

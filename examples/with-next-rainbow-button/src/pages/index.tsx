@@ -22,8 +22,14 @@ const Home: NextPage = () => {
       }}
     >
       <RainbowButton />
-      <button onClick={connect}>Custom Connect Button</button>
-      {isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
+      <button type="button" onClick={connect}>
+        Custom Connect Button
+      </button>
+      {isConnected && (
+        <button type="button" onClick={() => disconnect()}>
+          Disconnect
+        </button>
+      )}
     </div>
   );
 };

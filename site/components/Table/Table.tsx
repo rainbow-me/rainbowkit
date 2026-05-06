@@ -1,7 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Code } from 'components/Code/Code';
 import { Text } from 'components/Text/Text';
-import React from 'react';
 import { regionWrapper, table, td, th } from './Table.css';
 
 type HeaderDef = string[];
@@ -20,7 +19,7 @@ function TableRow({
   return (
     <Box as="tr" key={key}>
       {data.map((value, i) => (
-        <Box as="td" className={td} key={i}>
+        <Box as="td" className={td} key={`${dataTypes[i]}-${value}`}>
           {dataTypes[i] === 'code' ? (
             <Code>{value}</Code>
           ) : (
@@ -56,19 +55,19 @@ export function Table({
       <Box as="table" className={table}>
         <Box as="thead">
           <Box as="tr">
-            {header.map((headerName, i) => (
-              <Box as="th" className={th} key={i}>
+            {header.map((headerName) => (
+              <Box as="th" className={th} key={headerName}>
                 {headerName}
               </Box>
             ))}
           </Box>
         </Box>
         <Box as="tbody">
-          {data.map((props, i) => (
+          {data.map((props) => (
             <TableRow
               data={props}
               dataTypes={dataTypes}
-              key={`${props[0]}-${i}`}
+              key={props.join('-')}
             />
           ))}
         </Box>

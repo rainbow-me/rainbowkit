@@ -204,7 +204,7 @@ export function useWalletConnectors(
       groupName: wallet.groupName,
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
       getQrCodeUri: wallet.qrCode?.getUri
-        ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri!)
+        ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri)
         : undefined,
       getDesktopUri: wallet.desktop?.getUri
         ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)

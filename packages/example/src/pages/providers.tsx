@@ -148,9 +148,10 @@ export default function EthereumProviders() {
               </tr>
             </thead>
             <tbody>
-              {providerFlags.map((flags, idx) =>
-                Object.entries(flags).map(([key, value], i) => (
-                  <tr key={`${idx}-${key}`}>
+              {providerFlags.map((flags, idx) => {
+                const flagsKey = Object.keys(flags).join('|');
+                return Object.entries(flags).map(([key, value], i) => (
+                  <tr key={`${flagsKey}-${key}`}>
                     {i === 0 && (
                       <td style={cellStyle} rowSpan={Object.keys(flags).length}>
                         {idx}
@@ -159,8 +160,8 @@ export default function EthereumProviders() {
                     <td style={cellStyle}>{key}</td>
                     <td style={cellStyle}>{String(value)}</td>
                   </tr>
-                )),
-              )}
+                ));
+              })}
             </tbody>
           </table>
         ) : (
