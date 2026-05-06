@@ -23,6 +23,7 @@ import {
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
+import { setWalletConnectConnected } from '../RainbowKitProvider/walletConnectConnectionStatus';
 
 export interface WalletButtonRendererProps {
   wallet?: string;
@@ -81,6 +82,7 @@ export function WalletButtonRenderer({
 
   useAccountEffect({
     onConnect: () => {
+      setWalletConnectConnected();
       // If you get error on desktop and then switch to mobile view
       // and connect your wallet the error will remain there. We will
       // reset the error in case that happens.
