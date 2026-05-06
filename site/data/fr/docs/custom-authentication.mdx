@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### Création de messages côté serveur
+
+`createMessage` prend également en charge le retour d'une `Promise`, vous permettant de construire des messages [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) sur le serveur. Pour une sécurité plus stricte, le point de terminaison du serveur devrait dériver ou valider des champs critiques pour la sécurité comme `domain`, `nonce`, et les horodatages `issued-at` au lieu de faire confiance aux valeurs fournies par le client. Voir [documentation SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) pour plus de détails.
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### Fourniture de l'état d'authentification
 
 En supposant que votre application gère déjà le cycle de vie de l'authentification d'une manière ou d'une autre, vous pouvez transmettre le statut actuel de l'authentification avec votre adaptateur personnalisé à `RainbowKitAuthenticationProvider`, enveloppant votre `RainbowKitProvider` existant.

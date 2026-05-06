@@ -15,11 +15,54 @@ description: 사용자 인증
 
 #### 설치
 
-`@rainbow-me/rainbowkit-siwe-next-auth` 패키지를 설치하세요.
+`@rainbow-me/rainbowkit-siwe-next-auth` 패키지와 NextAuth v5를 설치하세요.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+기존 NextAuth v4 SIWE 통합을 업그레이드 중이라면, [NextAuth v5 마이그레이션 가이드](/guides/next-auth-v5)를 따르세요.
+
+#### NextAuth 설정
+
+v5 `Credentials` 공급자를 사용하는 NextAuth 구성을 생성하고 `auth` 헬퍼를 내보내세요. `authorize` 구현은 SIWE 메시지, 서명, 도메인 및 nonce를 검증한 후 인증된 주소를 반환해야 합니다.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+SIWE 검증, nonce 점검, 서버 측 검증에 대한 완전한 [`with-next-siwe-next-auth` 예제](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth)을 참조하세요.
 
 #### 프로바이더 설정
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 세션 서버에 접근
 
-사용자가 성공적으로 인증하면, 세션 토큰의 `sub` 속성 (토큰의 "subject", 즉 사용자)이 사용자의 주소가 될 것입니다.
+`auth` 구성을 내보낸 `auth` 함수를 사용해 세션에 접근할 수 있습니다. 사용자가 성공적으로 인증되었으면, 세션의 `address` 속성에는 사용자의 주소가 저장됩니다.
 
 또한, `getServerSideProps`를 통해 서버에서 해결된 세션 객체를 클라이언트로 전달하여 NextAuth가 클라이언트에서 다시 해석할 필요가 없게 할 수 있습니다.
 
@@ -102,15 +145,12 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 세션 관리에 대한 자세한 정보는 다음 문서를 참조하십시오:
 
-- [Next.js 인증 가이드](https://nextjs.org/docs/pages/guides/authentication)
+- [Next.js 인증 가이드](https://nextjs.org/docs/app/guides/authentication)
 - [NextAuth 문서](https://next-auth.js.org)

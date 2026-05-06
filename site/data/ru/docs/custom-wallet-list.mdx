@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Базовый аккаунт (ранее Coinbase Wallet)
+#### База (ранее Coinbase Wallet)
 
-Этот коннектор для кошелька поддерживает Базовый аккаунт, который является развитием Coinbase Smart Wallet. Он обеспечивает беспрепятственную аутентификацию и улучшенные функции, такие как подаккаунты и разрешения на расходы.
+Этот коннектор кошелька поддерживает Base, эволюцию Coinbase Smart Wallet. Он обеспечивает бесшовную аутентификацию и расширенные функции, такие как под-аккаунты и разрешения на траты.
 
-Настройки конфигурации соответствуют [ссылочному руководству SDK Базового аккаунта](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Параметры конфигурации соответствуют [справочнику Base SDK](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> `baseAccount` и `coinbaseWallet` остаются доступными как обратно-совместимые псевдонимы.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Показать Rainbow, MetaMask и аккаунт Base вместе с общими резервными кошельками.
+Показать Rainbow, MetaMask и Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 Вы можете использовать ключ `groupName`, чтобы назвать различные группы кошельков. Это удобно, если вы хотите сообщить пользователям, какие кошельки вы рекомендуете, а также другие возможные кошельки.
 
-Рекомендовать Rainbow и MetaMask, но также предлагать аккаунт Base вместе с общими резервными кошельками.
+Рекомендовать Rainbow и MetaMask, но также предлагать Base вместе с общими резервными кошельками.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Базовий рахунок (раніше Coinbase Wallet)
+#### Base (колишній Coinbase Wallet)
 
-Цей конектор гаманця підтримує Базовий рахунок, еволюцію Coinbase Smart Wallet. Забезпечує безперебійну аутентифікацію та розширені функції, такі як підрахунки і права витрат.
+Цей конектор гаманця підтримує Base, наступний етап розвитку Coinbase Smart Wallet. Забезпечує безперебійну автентифікацію та розширені функції, такі як підрахункові акаунти та дозвіл на витрати.
 
-Опції конфігурації відповідають [довідці SDK для Базового рахунку](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Параметри конфігурації відповідають [документації Base SDK](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> `baseAccount` та `coinbaseWallet` залишаються доступними як зворотно-сумісні псевдоніми.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Показати Rainbow, MetaMask та Base Account разом з загальними запасними гаманцями.
+Показати Rainbow, MetaMask та Base разом із загальними запасними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 Ви можете використовувати ключ `groupName` для назви різних груп гаманців. Це корисно, якщо ви хочете спілкуватися з користувачами, які гаманці ви рекомендуєте, а також інші можливі гаманці.
 
-Рекомендуємо Rainbow та MetaMask, але також пропонуємо Base Account разом із загальними запасними гаманцями.
+Рекомендуємо Rainbow та MetaMask, але також пропонуємо Base разом із загальнодоступними гаманцями.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

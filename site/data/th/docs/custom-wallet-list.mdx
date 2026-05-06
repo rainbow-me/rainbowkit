@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### บัญชีพื้นฐาน (เดิมชื่อกระเป๋าเงิน Coinbase)
+#### Base (ชื่อเดิมคือกระเป๋าเงิน Coinbase)
 
-ตัวเชื่อมกระเป๋าเงินนี้รองรับบัญชีพื้นฐาน พัฒนาการใหม่ของกระเป๋าเงิน Coinbase อัจฉริยะ มอบการตรวจสอบสิทธิ์ที่ไม่มีสะดุดและฟีเจอร์เพิ่มเติม เช่น บัญชีย่อยและการอนุญาตการใช้จ่าย
+ตัวเชื่อมกระเป๋าเงินนี้รองรับ Base การพัฒนาต่อเนื่องของกระเป๋าเงินอัจฉริยะ Coinbase โดยมีการยืนยันตัวตนที่ราบรื่นและคุณสมบัติพิเศษที่ปรับปรุงขึ้น เช่น บัญชีย่อยและการตั้งค่าสิทธิ์การใช้จ่าย
 
-ตัวเลือกการกำหนดค่าเข้ากันได้กับ [เอกสารอ้างอิง Base Account SDK](https://docs.base.org/base-account/reference/core/createBaseAccount)
+ตัวเลือกการตั้งค่าสอดคล้องกับ [Base SDK reference](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> `baseAccount` และ `coinbaseWallet` ยังสามารถใช้งานได้ในฐานะชื่อเทียบที่เข้ากันได้กับรุ่นก่อน.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-แสดง Rainbow, MetaMask และ Base Account พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+แสดง Rainbow, MetaMask และ Base พร้อมกับกระเป๋าเงิน fallback ทั่วไป.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 คุณสามารถใช้คีย์ `groupName` เพื่อรับชมกลุ่มกระเป๋าเงินที่แตกต่างกันได้ นี่เป็นประโยชน์ถ้าคุณต้องการสื่อให้ผู้ใช้ของคุณรู้ว่ากระเป๋าเงินไหนที่แนะนำใช้ได้พร้อมกับที่เป็นไปได้อื่นๆ.
 
-แนะนำ Rainbow และ MetaMask แต่ยังเสนอ Base Account พร้อมกับกระเป๋าเงิน fallback ทั่วไป
+แนะนำให้ใช้ Rainbow และ MetaMask, แต่ยังเสนอ Base พร้อมกับกระเป๋าเงิน fallback ทั่วไป.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

@@ -15,11 +15,54 @@ Trong khi có thể [tích hợp với các back-end tuỳ chỉnh và định d
 
 #### Cài đặt
 
-Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth`.
+Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth` và NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+Nếu bạn đang nâng cấp một tích hợp SIWE NextAuth v4 hiện có, hãy làm theo [hướng dẫn di chuyển NextAuth v5](/guides/next-auth-v5).
+
+#### Thiết lập NextAuth
+
+Tạo một cấu hình NextAuth sử dụng provider `Credentials` v5 và xuất `auth` helper. Thực thi `authorize` của bạn nên xác thực thông điệp SIWE, chữ ký, miền và nonce trước khi trả về địa chỉ đã xác thực.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+Xem [ví dụ hoàn chỉnh `with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) để xác thực SIWE, kiểm tra nonce và xác minh phía máy chủ.
 
 #### Thiết lập nhà cung cấp
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Truy cập phiên từ phía máy chủ
 
-Bạn có thể truy cập mã thông báo phiên với hàm `getToken` của NextAuth được nhập từ `next-auth/jwt`. Nếu người dùng đã xác thực thành công, thuộc tính `sub` của mã thông báo phiên (đối tượng "chủ thể" của mã, tức là người dùng) sẽ là địa chỉ của người dùng.
+Bạn có thể truy cập phiên bằng cách sử dụng hàm `auth` được xuất từ cấu hình auth của bạn. Nếu người dùng đã xác thực thành công, thuộc tính `address` của phiên sẽ là địa chỉ của người dùng.
 
 Bạn cũng có thể chuyển đối tượng phiên đã giải quyết từ máy chủ thông qua `getServerSideProps` để NextAuth không cần phải giải quyết lại trên phía máy khách.
 
@@ -102,15 +145,12 @@ Ví dụ:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 Để biết thêm thông tin về quản lý phiên, bạn có thể tham khảo tài liệu sau:
 
-- [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/pages/guides/authentication)
+- [Hướng dẫn xác thực Next.js](https://nextjs.org/docs/app/guides/authentication)
 - [Tài liệu NextAuth](https://next-auth.js.org)

@@ -15,11 +15,54 @@ Während es möglich ist, [mit benutzerdefinierten Back-Ends und Nachrichtenform
 
 #### Installieren
 
-Installieren Sie das Paket `@rainbow-me/rainbowkit-siwe-next-auth`.
+Installieren Sie das Paket `@rainbow-me/rainbowkit-siwe-next-auth` und NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+Wenn Sie eine bestehende NextAuth v4 SIWE-Integration aktualisieren, folgen Sie dem [NextAuth v5 Migrationsleitfaden](/guides/next-auth-v5).
+
+#### Richten Sie NextAuth ein
+
+Erstellen Sie eine NextAuth-Konfiguration, die den v5 `Credentials` Anbieter verwendet und den `auth`-Helfer exportiert. Ihre `authorize`-Implementierung sollte die SIWE-Nachricht, Signatur, Domain und Nonce validieren, bevor die authentifizierte Adresse zurückgegeben wird.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+Sehen Sie sich das vollständige [`with-next-siwe-next-auth` Beispiel](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) für SIWE-Validierung, Nonce-Prüfungen und serverseitige Verifizierung an.
 
 #### Richten Sie den Provider ein
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Zugriff auf die Sitzung serverseitig
 
-Sie können auf das Sitzungstoken mit der `getToken`-Funktion von NextAuth zugreifen, die aus `next-auth/jwt` importiert wird. Wenn der Benutzer erfolgreich authentifiziert wurde, wird die `sub` Eigenschaft des Sitzungstokens (das "Subject" des Tokens, also der Benutzer) die Adresse des Benutzers sein.
+Sie können auf die Sitzung über die aus Ihrer Auth-Konfiguration exportierte `auth`-Funktion zugreifen. Wenn der Benutzer erfolgreich authentifiziert wurde, ist die `address`-Eigenschaft der Sitzung die Adresse des Benutzers.
 
 Sie können auch das aufgelöste Sitzungsobjekt vom Server über `getServerSideProps` weiterreichen, damit NextAuth es nicht erneut auf dem Client lösen muss.
 
@@ -102,15 +145,12 @@ Zum Beispiel:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 Für weitere Informationen zur Verwaltung der Sitzung können Sie die folgende Dokumentation konsultieren:
 
-- [Next.js-Authentifizierungsleitfaden](https://nextjs.org/docs/pages/guides/authentication)
+- [Next.js-Authentifizierungsleitfaden](https://nextjs.org/docs/app/guides/authentication)
 - [NextAuth Dokumentation](https://next-auth.js.org)

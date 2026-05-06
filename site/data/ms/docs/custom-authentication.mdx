@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### Penciptaan mesej pelayan-sisi
+
+`createMessage` juga menyokong pemulangan `Promise`, membolehkan anda membina mesej [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) pada pelayan. Untuk keselamatan yang lebih ketat, titik akhir pelayan seharusnya mendapatkan atau mengesahkan medan penting-keselamatan seperti `domain`, `nonce`, dan cap masa `issued-at` daripada mempercayai nilai yang diberikan oleh klien. Lihat [dokumentasi SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) untuk maklumat lanjut.
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### Menyediakan status pengesahan
 
 Mengandaikan aplikasi anda sudah menguruskan kitaran hayat pengesahan dengan cara tertentu, anda boleh menghantar status pengesahan semasa bersama penyesuai tersuai anda kepada `RainbowKitAuthenticationProvider`, membungkus `RainbowKitProvider` sedia ada anda.

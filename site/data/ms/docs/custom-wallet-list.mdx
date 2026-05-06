@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Akaun Asas (dahulu dikenali sebagai Dompet Coinbase)
+#### Base (sebelumnya dikenali sebagai Dompet Coinbase)
 
-Penyambungan dompet ini menyokong Akaun Asas, evolusi Dompet Pintar Coinbase. Ia menyediakan pengesahan yang lancar dan ciri-ciri dipertingkatkan seperti sub-akaun dan kebenaran perbelanjaan.
+Penyambung dompet ini menyokong Base, evolusi Dompet Pintar Coinbase. Ia menyediakan pengesahan tanpa batasan dan ciri-ciri tambahan seperti sub-akaun dan kebenaran perbelanjaan.
 
-Pilihan konfigurasi selaras dengan [rujukan SDK Akaun Asas](https://docs.base.org/base-account/reference/core/createBaseAccount).
+Pilihan konfigurasi sejajar dengan [rujukan SDK Base](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> `baseAccount` dan `coinbaseWallet` kekal tersedia sebagai alias yang serasi ke belakang.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Tunjukkan Rainbow, MetaMask, dan Akaun Asas bersama dengan dompet fallback generik.
+Tunjukkan Rainbow, MetaMask dan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 Anda boleh menggunakan kunci `groupName` untuk menamakan kumpulan dompet yang berbeza. Ini berguna jika anda mahu berkomunikasi kepada pengguna anda dompet mana yang anda cadangkan, serta kemungkinan dompet lain.
 
-Cadangkan Rainbow dan MetaMask, tetapi juga tawarkan Akaun Asas bersama dompet fallback generik.
+Saran Rainbow dan MetaMask, tetapi juga tawarkan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### การสร้างข้อความฝั่งเซิร์ฟเวอร์
+
+`createMessage` ยังรองรับการคืนค่าเป็น `Promise` ซึ่งช่วยให้คุณสร้างข้อความ [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) บนเซิร์ฟเวอร์ได้ เพื่อความปลอดภัยที่เข้มงวดกว่า ควรกำหนดหรือยืนยันฟิลด์ที่สำคัญด้านความปลอดภัย เช่น `domain`, `nonce` และ `issued-at` ตามที่เซิร์ฟเวอร์กำหนด แทนที่จะเชื่อถือค่าที่ย่อมาจากลูกค้า ดู [เอกสาร SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) สำหรับข้อมูลเพิ่มเติม
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### การให้สถานะการยืนยันตัวตน
 
 หากว่าแอปพลิเคชันของคุณสามารถจัดการรอบการยืนยันตัวตนได้แล้ว คุณสามารถส่งสถานะการยืนยันปัจจุบันพร้อมกับอแดปเตอร์ไปยัง `RainbowKitAuthenticationProvider` เพื่อหุ้ม

@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### إنشاء رسالة على الخادم
+
+يدعم `createMessage` أيضًا إرجاع `وعد` (Promise)، مما يسمح لك ببناء رسائل [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) على الخادم. لضمان أمان أكثر صرامة، يجب أن يستنتج الخادم الحقول الحيوية للأمان مثل `المجال` و`الرقم العشوائي` والوقت المصدّر بدلاً من الاعتماد على القيم الموفرة من العميل. انظر [وثائق SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) لمزيد من التفاصيل.
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### توفير حالة الاستيثاق
 
 على افتراض أن تطبيقك يدير بالفعل دورة حياة الاستيثاق بطريقة معينة، يمكنك تمرير حالة الاستيثاق الحالية مع مزود المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، تغليف مزود RainbowKit الحالي الخاص بك.

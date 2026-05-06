@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### बेस खाता (पूर्व में कॉइनबेस वॉलेट)
+#### बेस (पूर्व में कॉइनबेस वॉलेट)
 
-यह वॉलेट कनेक्टर बेस खाता का समर्थन करता है, जो कॉइनबेस स्मार्ट वॉलेट का विकास है। यह सहज प्रमाणीकरण और उप-खाते और खर्च अनुमतियों जैसी उन्नत सुविधाएं प्रदान करता है।
+यह वॉलेट कनेक्टर बेस को समर्थन देता है, जो कॉइनबेस स्मार्ट वॉलेट का उन्नत संस्करण है। यह सहज प्रमाणीकरण और उप-खातों तथा खर्च अनुज्ञाओं जैसी उन्नत सुविधाएँ प्रदान करता है।
 
-कॉन्फिगरेशन विकल्प [बेस खाता SDK संदर्भ](https://docs.base.org/base-account/reference/core/createBaseAccount) के अनुरूप हैं।
+कॉन्फ़िगरेशन विकल्प [बेस एसडीके संदर्भ](https://docs.base.org/base-account/reference/core/createBaseAccount) के साथ तालमेल रखते हैं।
+
+> `baseAccount` और `coinbaseWallet` पिछड़े-मान्य उपनामों के रूप में उपलब्ध रहते हैं।
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-रेनबो, मेटामास्क और बेस अकाउंट के साथ सामान्य फ़ॉलबैक वॉलेट्स दिखाएं।
+रेनबो, मेटामास्क और बेस के साथ सामान्य फॉलबैक वॉलेट्स दिखाएं।
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 आप `groupName` कुंजी का उपयोग करके विभिन्न वॉलेट समूहों को नाम दे सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं को यह सूचित करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स।
 
-रेनबो और मेटामास्क की सिफारिश करें, लेकिन बेस अकाउंट के साथ सामान्य फ़ॉलबैक वॉलेट्स भी ऑफ़र करें।
+रेनबो और मेटामास्क की सिफारिश करें, लेकिन बेस के साथ सामान्य फॉलबैक वॉलेट्स भी प्रदान करें।
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

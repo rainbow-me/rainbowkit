@@ -53,6 +53,26 @@ const authenticationAdapter = createAuthenticationAdapter({
 });
 ```
 
+#### Pembuatan pesan sisi server
+
+`createMessage` juga mendukung pengembalian `Promise`, memungkinkan Anda untuk membuat pesan [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) di server. Untuk keamanan yang lebih ketat, endpoint server harus menurunkan atau memvalidasi bidang-bidang kritis keamanan seperti `domain`, `nonce`, dan stempel waktu `issued-at` daripada mempercayai nilai-nilai yang disediakan klien. Lihat [dokumentasi SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) untuk detail lebih lanjut.
+
+```tsx
+  createMessage: async ({ address, chainId }) => {
+    const response = await fetch('/api/siwe/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address, chainId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create message');
+    }
+
+    return await response.text();
+  },
+```
+
 #### Menyediakan status otentikasi
 
 Dengan asumsi aplikasi Anda sudah mengelola siklus hidup otentikasi dengan cara tertentu, Anda dapat mengoperkan status otentikasi saat ini bersamaan dengan adaptor kustom Anda ke `RainbowKitAuthenticationProvider`, mengemas `RainbowKitProvider` yang ada.

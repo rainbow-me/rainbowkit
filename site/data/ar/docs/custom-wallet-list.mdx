@@ -116,35 +116,38 @@ import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
 import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### الحساب الأساسي (المعروف سابقًا باسم محفظة كوين بيس)
+#### باس (الذي كان يُعرف سابقاً بمحفظة كوين بيس)
 
-يدعم موصل المحفظة هذا حسابًا أساسيًا، وهو تطور لمحفظة كوين بيس الذكية. يوفر مصادقة سهلة ويتميز بإمكانيات متقدمة مثل الحسابات الفرعية وصلاحيات الإنفاق.
+يدعم موصل المحفظة هذا باس، وهو تطور لمحفظة كوين بيس الذكية. يتيح المصادقة السلسة وميزات محسّنة مثل الحسابات الفرعية وأذونات الإنفاق.
 
-تتماشى خيارات التكوين مع [مرجع الحساب الأساسي SDK](https://docs.base.org/base-account/reference/core/createBaseAccount).
+تتوافق خيارات التكوين مع [دليل SDK لباس](https://docs.base.org/base-account/reference/core/createBaseAccount).
+
+> تظل `baseAccount` و `coinbaseWallet` متاحتين كأسماء مستعارة متوافقة مع الإصدارات السابقة.
 
 ```tsx
-import { baseAccount } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
-baseAccount.preference = {
+base.preference = {
   attribution: { auto: true }, // Smart Wallet generates origin-based identifier
 };
 
 // Or use custom attribution
-baseAccount.preference = {
+base.preference = {
   attribution: { dataSuffix: '0x1234567890abcdef' }, // 16-byte hex identifier
 };
 
 // Configure sub-accounts
-baseAccount.subAccounts = {
+base.subAccounts = {
   creation: 'on-connect', // or 'manual'
   defaultAccount: 'sub', // or 'universal'
   funding: 'spend-permissions', // or 'manual'
 };
 
 // Configure paymaster URLs for gasless transactions
-baseAccount.paymasterUrls = {
-  [base.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
+base.paymasterUrls = {
+  [baseChain.id]: 'https://api.developer.coinbase.com/rpc/v1/base/...',
 };
 ```
 
@@ -519,14 +522,14 @@ const connectors = connectorsForWallets(
 );
 ```
 
-عرض Rainbow و MetaMask و Base Account بالإضافة إلى المحافظ العامة الأخرى.
+عرض Rainbow و MetaMask و Base بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -537,7 +540,7 @@ const connectors = connectorsForWallets(
       wallets: [
         rainbowWallet,
         metaMaskWallet,
-        baseAccount,
+        base,
         walletConnectWallet,
       ],
     },
@@ -552,14 +555,14 @@ const connectors = connectorsForWallets(
 
 يمكنك استخدام مفتاح `groupName` لتسمية مجموعات محافظ مختلفة. هذا مفيد إذا كنت ترغب في التواصل مع المستخدمين حول المحافظ التي توصي بها، بالإضافة إلى المحافظ الأخرى المحتملة.
 
-أوصي بRainbow و MetaMask، ولكن أقدم أيضاً Base Account بالإضافة إلى المحافظ العامة الأخرى.
+أوصي بRainbow و MetaMask، ولكن أقدم أيضاً Base بالإضافة إلى المحافظ العامة الأخرى.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   metaMaskWallet,
-  baseAccount,
+  base,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -571,7 +574,7 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Others',
-      wallets: [baseAccount, walletConnectWallet],
+      wallets: [base, walletConnectWallet],
     },
   ],
   { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },

@@ -15,11 +15,54 @@ description: 认证您的用户
 
 #### 安装
 
-安装 `@rainbow-me/rainbowkit-siwe-next-auth` 包。
+安装 `@rainbow-me/rainbowkit-siwe-next-auth` 包和 NextAuth v5。
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+如果您正在升级现有的 NextAuth v4 SIWE 集成，请遵循 [NextAuth v5 迁移指南](/guides/next-auth-v5)。
+
+#### 设置 NextAuth
+
+创建一个使用 v5 `Credentials` 提供程序并导出 `auth` 辅助工具的 NextAuth 配置。在返回经过身份验证的地址之前，您的 `authorize` 实现应验证 SIWE 消息、签名、域及 nonce。
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+查看完整的 [`with-next-siwe-next-auth` 示例](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) 以了解 SIWE 验证、nonce 检查和服务器端验证。
 
 #### 设置提供者
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 在服务器端访问会话
 
-您可以使用NextAuth的`getToken`函数（从`next-auth/jwt`中导入）来访问会话令牌。如果用户已成功认证，会话令牌的`sub`属性（即令牌的"subject"，即用户）将是用户的地址。
+您可以使用从身份验证配置中导出的 `auth` 函数访问会话。如果用户成功通过身份验证，会话的 `address` 属性将是用户的地址。
 
 您还可以通过`getServerSideProps`从服务器传递已解析的会话对象，以便NextAuth不需要在客户端再次解析它。
 
@@ -102,15 +145,12 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 有关管理会话的更多信息，您可以参考以下文档：
 
-- [Next.js 身份验证指南](https://nextjs.org/docs/pages/guides/authentication)
+- [Next.js 身份验证指南](https://nextjs.org/docs/app/guides/authentication)
 - [NextAuth文档](https://next-auth.js.org)

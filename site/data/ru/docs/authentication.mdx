@@ -15,11 +15,54 @@ description: Аутентификация ваших пользователей
 
 #### Установить
 
-Установите пакет `@rainbow-me/rainbowkit-siwe-next-auth`.
+Установите пакет `@rainbow-me/rainbowkit-siwe-next-auth` и NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+Если вы обновляете существующую интеграцию SIWE на NextAuth v4, следуйте [руководству по миграции на NextAuth v5](/guides/next-auth-v5).
+
+#### Настройка NextAuth
+
+Создайте конфигурацию NextAuth, использующую провайдер v5 `Credentials` и экспортирующую помощник `auth`. Ваша реализация `authorize` должна проверять сообщение SIWE, подпись, домен и nonce перед возвратом аутентифицированного адреса.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+Посмотрите полный [пример `with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth), включающий проверку SIWE, проверку nonce и серверную верификацию.
 
 #### Настройте провайдера
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Доступ к серверной сессии
 
-Вы можете получить доступ к токену сессии с помощью функции NextAuth `getToken`, импортированной из `next-auth/jwt`. Если пользователь успешно прошел аутентификацию, свойство `sub` токена сессии ("субъект" токена, т.е. пользователь) будет адресом пользователя.
+Вы можете получить доступ к сессии, используя функцию `auth`, экспортированную из вашей конфигурации аутентификации. Если пользователь успешно аутентифицировался, свойство `address` сессии будет содержать адрес пользователя.
 
 Вы также можете передать объект сессии, разрешенный на сервере, через `getServerSideProps`, чтобы NextAuth не нужно было разрешать его снова на клиенте.
 
@@ -102,15 +145,12 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 Для получения дополнительной информации о управлении сессией вы можете обратиться к следующей документации:
 
-- [Руководство по аутентификации Next.js](https://nextjs.org/docs/pages/guides/authentication)
+- [Руководство по аутентификации Next.js](https://nextjs.org/docs/app/guides/authentication)
 - [Документация NextAuth.js](https://next-auth.js.org)

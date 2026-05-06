@@ -15,11 +15,54 @@ Sementara itu mungkin untuk [mengintegrasikan dengan back-end dan format pesan k
 
 #### Instal
 
-Instal paket `@rainbow-me/rainbowkit-siwe-next-auth`.
+Instal paket `@rainbow-me/rainbowkit-siwe-next-auth` dan NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
+
+Jika Anda memperbarui integrasi SIWE NextAuth v4 yang sudah ada, ikuti [panduan migrasi NextAuth v5](/guides/next-auth-v5).
+
+#### Siapkan NextAuth
+
+Buat konfigurasi NextAuth yang menggunakan penyedia `Credentials` v5 dan ekspor helper `auth`. Implementasi `authorize` Anda harus memvalidasi pesan SIWE, tanda tangan, domain, dan nonce sebelum mengembalikan alamat yang terautentikasi.
+
+```tsx
+import NextAuth from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+export const authOptions: NextAuthConfig = {
+  providers: [
+    Credentials({
+      name: 'Ethereum',
+      credentials: {
+        message: { label: 'Message', type: 'text' },
+        signature: { label: 'Signature', type: 'text' },
+      },
+      async authorize(credentials) {
+        const siweMessage = await validateSiweCredentials(credentials);
+
+        if (!siweMessage) {
+          return null;
+        }
+
+        return {
+          id: siweMessage.address,
+        };
+      },
+    }),
+  ],
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+};
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+```
+
+Lihat contoh lengkap [`with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) untuk validasi SIWE, pemeriksaan nonce, dan verifikasi sisi server.
 
 #### Atur penyedia
 
@@ -39,9 +82,9 @@ import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
@@ -62,7 +105,7 @@ export default function App({
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
-    </WagmiProvider>;
+    </WagmiProvider>
   );
 }
 ```
@@ -94,7 +137,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Akses sesi dari sisi server
 
-Anda dapat mengakses token sesi dengan fungsi `getToken` dari NextAuth yang diimpor dari `next-auth/jwt`. Jika pengguna telah berhasil mengautentikasi, properti `sub` dari token sesi ("subjek" dari token, yaitu pengguna) akan menjadi alamat pengguna.
+Anda dapat mengakses sesi menggunakan fungsi `auth` yang diekspor dari konfigurasi otentikasi Anda. Jika pengguna telah berhasil terautentikasi, properti `address` di sesi akan menjadi alamat pengguna.
 
 Anda juga dapat meneruskan objek sesi yang telah diselesaikan dari server melalui `getServerSideProps` sehingga NextAuth tidak perlu menyelesaikannya lagi di klien.
 
@@ -102,15 +145,12 @@ Sebagai contoh:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
-import React from 'react';
+import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context);
-  const token = await getToken({ req: context.req });
+  const session = await auth(context.req, context.res);
 
-  const address = token?.sub ?? null;
+  const address = session?.address ?? null;
   // If you have a value for "address" here, your
   // server knows the user is authenticated.
 
@@ -141,5 +181,5 @@ export default function AuthenticatedPage({
 
 Untuk informasi lebih lanjut tentang mengelola sesi, Anda dapat merujuk ke dokumentasi berikut:
 
-- [Panduan otentikasi Next.js](https://nextjs.org/docs/pages/guides/authentication)
+- [Panduan otentikasi Next.js](https://nextjs.org/docs/app/guides/authentication)
 - [Dokumentasi NextAuth](https://next-auth.js.org)
