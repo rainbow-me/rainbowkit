@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  transpilePackages: ['next-auth'],
+  transpilePackages: [
+    'next-auth',
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbow-button',
+    'wagmi',
+    '@wagmi/core',
+    '@wagmi/connectors',
+  ],
   reactStrictMode: true,
   i18n: {
     defaultLocale: 'en-US',
