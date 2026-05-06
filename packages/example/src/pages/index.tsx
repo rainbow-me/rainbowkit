@@ -7,7 +7,6 @@ import {
   useConnectModal,
   WalletButton,
 } from '@rainbow-me/rainbowkit';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { type ComponentProps, useEffect, useState } from 'react';
@@ -568,7 +567,4 @@ function ManageTransactions() {
   );
 }
 
-// Skip SSG for the demo page. It exercises the full wagmi hook surface and
-// hits `WagmiProviderNotFoundError` under Next 16 parallel SSG; this is a
-// dev demo, not user-facing routing, so prerendering offers no benefit.
-export default dynamic(() => Promise.resolve(Example), { ssr: false });
+export default Example;
