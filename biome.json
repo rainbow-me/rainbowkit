@@ -23,13 +23,6 @@
     "indentWidth": 2,
     "lineWidth": 80
   },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "off"
-      }
-    }
-  },
   "linter": {
     "enabled": true,
     "rules": {
@@ -80,6 +73,18 @@
       "tailwindDirectives": true
     }
   },
+  "overrides": [
+    {
+      "includes": [
+        "examples/**",
+        "packages/rainbowkit/src/index.ts",
+        "packages/rainbowkit/src/components/index.ts",
+        "packages/rainbow-button/src/index.ts",
+        "packages/rainbowkit-siwe-next-auth/src/index.ts"
+      ],
+      "assist": { "actions": { "source": { "organizeImports": "off" } } }
+    }
+  ],
   "vcs": {
     "enabled": true,
     "clientKind": "git",

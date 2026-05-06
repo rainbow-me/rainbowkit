@@ -1,14 +1,14 @@
 'use client';
 
+import type React from 'react';
+import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import {
-  type GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
+  type GetSiweMessageOptions,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { SessionProvider } from 'next-auth/react';
-import type React from 'react';
-import { WagmiProvider } from 'wagmi';
 
 import { config } from '../wagmi';
 

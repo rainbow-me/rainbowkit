@@ -1,10 +1,11 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { type Locale, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider, type Locale } from '@rainbow-me/rainbowkit';
 
 import { config } from '../wagmi';
 

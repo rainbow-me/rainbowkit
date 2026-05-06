@@ -1,9 +1,9 @@
+import type { NextPage } from 'next';
+import { useAccount, useDisconnect } from 'wagmi';
 import {
   RainbowButton,
   useRainbowConnectModal,
 } from '@rainbow-me/rainbow-button';
-import type { NextPage } from 'next';
-import { useAccount, useDisconnect } from 'wagmi';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
