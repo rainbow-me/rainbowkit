@@ -185,7 +185,6 @@
 
 ### Patch Changes
 
-- Updated dependencies [90d6931]
 - Updated dependencies [82153ed]
   - @rainbow-me/rainbowkit@2.1.0
 
@@ -315,8 +314,6 @@
 
 ### Patch Changes
 
-- Updated dependencies [12912b3]
-- Updated dependencies [fcfc13d]
 - Updated dependencies [3f9013f]
   - @rainbow-me/rainbowkit@0.5.2
 
@@ -324,8 +321,6 @@
 
 ### Patch Changes
 
-- Updated dependencies [8060ccd]
-- Updated dependencies [4dfe834]
 - Updated dependencies [8060ccd]
   - @rainbow-me/rainbowkit@0.5.1
 
@@ -337,6 +332,5 @@
 
 ### Patch Changes
 
-- Updated dependencies [737a1d6]
 - Updated dependencies [488c5a1]
   - @rainbow-me/rainbowkit@0.5.0
