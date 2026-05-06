@@ -1,6 +1,6 @@
-import { createRequire } from 'node:module';
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
+import { createRequire } from 'node:module';
 import { defineConfig } from 'vite';
 
 const require = createRequire(import.meta.url);
