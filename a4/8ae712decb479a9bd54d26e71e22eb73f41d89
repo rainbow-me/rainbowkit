@@ -1,0 +1,23 @@
+examples/with-next-siwe-next-auth/next-env.d.ts
+  1dddd79241c89a5b 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "a48ae712decb479a9bd54d26e71e22eb73f41d89",
+  "prompts": {
+    "1dddd79241c89a5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2c33c5e3-845e-43ab-8bac-4ff865b9e914",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 175,
+      "total_deletions": 1,
+      "accepted_lines": 10649,
+      "overriden_lines": 0
+    }
+  }
+}
