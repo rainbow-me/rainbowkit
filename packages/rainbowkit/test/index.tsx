@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { render, type RenderResult } from '@testing-library/react';
+import { type RenderResult, render } from '@testing-library/react';
 import React, { type ReactElement } from 'react';
 import { type Chain, http } from 'viem';
 import { createConfig, WagmiProvider } from 'wagmi';

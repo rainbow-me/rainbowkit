@@ -46,9 +46,10 @@ export function ConnectButton({
 
   const { i18n } = useContext(I18nContext);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Preserve existing ready guard behavior.
   useEffect(() => {
     setShowBalance(showBalance);
-    setReady(true);
+    if (!ready) setReady(true);
   }, [showBalance, setShowBalance]);
 
   return ready ? (

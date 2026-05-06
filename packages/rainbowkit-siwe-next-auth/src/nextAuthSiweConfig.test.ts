@@ -1,14 +1,14 @@
-import NextAuth from 'next-auth';
 import type { NextAuthConfig } from 'next-auth';
+import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createPublicClient, http } from 'viem';
 import { mainnet } from 'viem/chains';
 import {
-  type SiweMessage,
   parseSiweMessage,
+  type SiweMessage,
   validateSiweMessage,
 } from 'viem/siwe';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 declare module 'next-auth' {
   interface Session {
@@ -280,19 +280,16 @@ describe('NextAuth SIWE config', () => {
     });
   });
 
-  it.fails(
-    'configures signature verification RPC with an explicit bounded transport',
-    async () => {
-      await createAuthModule({
-        ETHEREUM_RPC_URL: rpcUrl,
-      });
+  it.fails('configures signature verification RPC with an explicit bounded transport', async () => {
+    await createAuthModule({
+      ETHEREUM_RPC_URL: rpcUrl,
+    });
 
-      expect(mocks.http).toHaveBeenCalledWith(rpcUrl, {
-        retryCount: 0,
-        timeout: 3000,
-      });
-    },
-  );
+    expect(mocks.http).toHaveBeenCalledWith(rpcUrl, {
+      retryCount: 0,
+      timeout: 3000,
+    });
+  });
 
   it('exports the helpers returned by NextAuth', async () => {
     const authModule = await createAuthModule();
@@ -346,27 +343,24 @@ describe('NextAuth SIWE config', () => {
     });
   });
 
-  it.fails(
-    'returns null when signature verification RPC does not settle before the callback budget',
-    async () => {
-      mockValidSiweMessage();
-      mocks.verifyMessage.mockReturnValue(
-        new Promise<never>(() => {
-          // Intentionally unresolved to model a stalled RPC provider.
-        }),
-      );
-      const authorize = await getAuthorize({
-        NEXTAUTH_URL: 'https://example.com',
-      });
+  it.fails('returns null when signature verification RPC does not settle before the callback budget', async () => {
+    mockValidSiweMessage();
+    mocks.verifyMessage.mockReturnValue(
+      new Promise<never>(() => {
+        // Intentionally unresolved to model a stalled RPC provider.
+      }),
+    );
+    const authorize = await getAuthorize({
+      NEXTAUTH_URL: 'https://example.com',
+    });
 
-      await expect(
-        Promise.race([
-          authorize(credentials, request),
-          new Promise((resolve) => setTimeout(() => resolve('timed-out'), 50)),
-        ]),
-      ).resolves.toBeNull();
-    },
-  );
+    await expect(
+      Promise.race([
+        authorize(credentials, request),
+        new Promise((resolve) => setTimeout(() => resolve('timed-out'), 50)),
+      ]),
+    ).resolves.toBeNull();
+  });
 
   it.each([
     [{ AUTH_URL: 'https://auth.example.com' }, 'auth.example.com'],

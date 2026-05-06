@@ -1,11 +1,11 @@
-import NextAuth from 'next-auth';
 import type { NextAuthConfig } from 'next-auth';
+import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { createPublicClient, http } from 'viem';
 import { mainnet } from 'viem/chains';
 import {
-  type SiweMessage,
   parseSiweMessage,
+  type SiweMessage,
   validateSiweMessage,
 } from 'viem/siwe';
 

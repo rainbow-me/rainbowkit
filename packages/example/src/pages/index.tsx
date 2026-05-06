@@ -7,8 +7,8 @@ import {
   useConnectModal,
   WalletButton,
 } from '@rainbow-me/rainbowkit';
+import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import type React from 'react';
 import { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
@@ -178,9 +178,12 @@ const Example = ({ authEnabled }: AppContextProps) => {
                               }}
                             >
                               {chain.iconUrl && (
-                                <img
+                                <Image
                                   alt={chain.name ?? 'Chain icon'}
+                                  height={12}
                                   src={chain.iconUrl}
+                                  unoptimized
+                                  width={12}
                                   style={{ height: 12, width: 12 }}
                                 />
                               )}

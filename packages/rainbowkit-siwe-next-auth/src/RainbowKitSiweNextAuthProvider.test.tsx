@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
-import type { ComponentProps } from 'react';
+// biome-ignore lint/style/useImportType: Required by the package JSX transform.
+import React, { type ComponentProps } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';
 
@@ -211,16 +211,17 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     await expect(getAdapter().getNonce()).resolves.toBe('csrf-nonce');
   });
 
-  it.each([undefined, null, ''])(
-    'rejects nonce creation when NextAuth returns %s',
-    async (nonce) => {
-      mocks.getCsrfToken.mockResolvedValue(nonce);
+  it.each([
+    undefined,
+    null,
+    '',
+  ])('rejects nonce creation when NextAuth returns %s', async (nonce) => {
+    mocks.getCsrfToken.mockResolvedValue(nonce);
 
-      renderProvider();
+    renderProvider();
 
-      await expect(getAdapter().getNonce()).rejects.toThrow();
-    },
-  );
+    await expect(getAdapter().getNonce()).rejects.toThrow();
+  });
 
   it('propagates CSRF token lookup failures', async () => {
     const error = new Error('csrf failed');
@@ -246,18 +247,20 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     });
   });
 
-  it.each([undefined, null, { ok: false }, {}])(
-    'treats sign-in response %s as failed verification',
-    async (response) => {
-      mocks.signIn.mockResolvedValue(response);
+  it.each([
+    undefined,
+    null,
+    { ok: false },
+    {},
+  ])('treats sign-in response %s as failed verification', async (response) => {
+    mocks.signIn.mockResolvedValue(response);
 
-      renderProvider();
+    renderProvider();
 
-      await expect(
-        getAdapter().verify({ message: 'message', signature: '0xsig' }),
-      ).resolves.toBe(false);
-    },
-  );
+    await expect(
+      getAdapter().verify({ message: 'message', signature: '0xsig' }),
+    ).resolves.toBe(false);
+  });
 
   it('propagates NextAuth sign-in failures', async () => {
     const error = new Error('sign-in failed');

@@ -100,6 +100,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Preserve one-time wallet initialization behavior.
   useEffect(() => {
     if (connector && !initialized.current) {
       changeWalletStep(WalletStep.Connect);
@@ -216,6 +217,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerLabel = null;
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Reset connection error when the visible wallet step changes.
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);

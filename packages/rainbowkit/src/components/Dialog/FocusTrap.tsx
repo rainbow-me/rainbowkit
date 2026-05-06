@@ -14,13 +14,6 @@ const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
 
 export function FocusTrap(props: JSX.IntrinsicElements['div']) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const sentinelStyle = {
-    height: 1,
-    opacity: 0,
-    pointerEvents: 'none',
-    position: 'fixed',
-    width: 1,
-  } as const;
 
   useEffect(() => {
     const previouslyActiveElement = document.activeElement;
@@ -44,15 +37,15 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
 
   return (
     <>
-      <button
-        aria-label="Focus modal content"
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: Preserve focus trap sentinel behavior. */}
+      <div
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'end'),
           [],
         )}
-        style={sentinelStyle}
-        type="button"
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: Preserve focus trap sentinel behavior.
+        tabIndex={0}
       />
       <div
         ref={contentRef}
@@ -60,15 +53,15 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         tabIndex={-1}
         {...props}
       />
-      <button
-        aria-label="Focus modal content"
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: Preserve focus trap sentinel behavior. */}
+      <div
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'start'),
           [],
         )}
-        style={sentinelStyle}
-        type="button"
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: Preserve focus trap sentinel behavior.
+        tabIndex={0}
       />
     </>
   );

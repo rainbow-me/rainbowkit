@@ -73,54 +73,6 @@
       "tailwindDirectives": true
     }
   },
-  "overrides": [
-    {
-      "includes": ["packages/rainbowkit/src/components/index.ts"],
-      "assist": {
-        "actions": {
-          "source": {
-            "organizeImports": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx"
-      ],
-      "linter": {
-        "rules": {
-          "security": {
-            "noDangerouslySetInnerHtml": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "packages/rainbowkit/src/components/RainbowKitProvider/AuthenticationContext.tsx"
-      ],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "useExhaustiveDependencies": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "packages/rainbowkit/src/components/ConnectOptions/DesktopOptions.tsx"
-      ],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "useExhaustiveDependencies": "off"
-          }
-        }
-      }
-    }
-  ],
   "vcs": {
     "enabled": true,
     "clientKind": "git",

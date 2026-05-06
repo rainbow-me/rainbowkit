@@ -1,5 +1,6 @@
 import * as wallets from '@rainbow-me/rainbowkit/wallets';
 import { Cuer } from 'cuer';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const names = Object.keys(wallets)
@@ -107,9 +108,12 @@ export default function Icons() {
                       }}
                     >
                       {icon && (
-                        <img
-                          src={icon}
+                        <Image
                           alt={name}
+                          height={s}
+                          src={icon}
+                          unoptimized
+                          width={s}
                           style={{
                             width: s,
                             height: s,
@@ -163,9 +167,12 @@ export default function Icons() {
                           stroke={undefined}
                         />
                         <Cuer.Arena>
-                          <img
-                            src={icon}
+                          <Image
                             alt={name}
+                            height={120}
+                            src={icon}
+                            unoptimized
+                            width={120}
                             style={{
                               objectFit: 'cover',
                               height: '88%',

@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   type ReactNode,
   useEffect,
@@ -17,7 +17,7 @@ interface I18nProviderProps {
 }
 
 export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
-  const [, setUpdateCount] = useState(0);
+  const [updateCount, setUpdateCount] = useState(0);
 
   const browserLocale: Locale = useMemo(
     () => detectedBrowserLocale() as Locale,
@@ -39,8 +39,11 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
     }
   }, [locale, browserLocale]);
 
-  const t = (key: string, options?: any) => i18n.t(key, options);
-  const memoizedValue = { t, i18n };
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Recompute when i18n emits a locale update.
+  const memoizedValue = useMemo(() => {
+    const t = (key: string, options?: any) => i18n.t(key, options);
+    return { t, i18n };
+  }, [updateCount]);
 
   return (
     <I18nContext.Provider value={memoizedValue}>

@@ -1,4 +1,5 @@
 import { Cuer } from 'cuer';
+import React from 'react';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';

@@ -8,6 +8,7 @@
 //   exists before hydration; we hydrate state from it after mount to avoid hydration mismatch.
 
 import { createStore, type EIP6963ProviderDetail } from 'mipd';
+import Image from 'next/image';
 import Script from 'next/script';
 import { type CSSProperties, useEffect, useState } from 'react';
 
@@ -183,9 +184,12 @@ export default function EthereumProviders() {
                   <td style={cellStyle}>{info.rdns}</td>
                   <td style={cellStyle}>{info.name}</td>
                   <td style={cellStyle}>
-                    <img
+                    <Image
                       alt={info.name}
+                      height={32}
                       src={info.icon}
+                      unoptimized
+                      width={32}
                       style={{ width: 32, height: 32 }}
                     />
                   </td>
