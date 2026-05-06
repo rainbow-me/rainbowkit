@@ -1,0 +1,25 @@
+packages/example/next.config.js
+  6c5ff9d3f083bd11 1-2,14-27
+packages/example/src/pages/index.tsx
+  6c5ff9d3f083bd11 570
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "9a347773cbe7bfc1c5edc8799a262497696f0851",
+  "prompts": {
+    "6c5ff9d3f083bd11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9aa48b6c-8938-4710-9473-f05385a4e5ba",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 17,
+      "total_deletions": 5,
+      "accepted_lines": 17,
+      "overriden_lines": 0
+    }
+  }
+}
