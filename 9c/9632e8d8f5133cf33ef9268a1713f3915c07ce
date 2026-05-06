@@ -1,0 +1,14 @@
+AGENTS.md
+  h_d88019ef24e871 168
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "9c9632e8d8f5133cf33ef9268a1713f3915c07ce",
+  "prompts": {},
+  "humans": {
+    "h_d88019ef24e871": {
+      "author": "Daniel Sinclair"
+    }
+  }
+}
