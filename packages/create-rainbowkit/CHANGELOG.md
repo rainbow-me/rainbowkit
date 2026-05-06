@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.17
+
+### Patch Changes
+
+- f52657f: Updated the Next.js scaffolding template to use `moduleResolution: "bundler"` to match Next.js 16.2's modern default.
+
 ## 0.3.16
 
 ### Patch Changes
