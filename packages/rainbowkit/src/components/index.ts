@@ -1,6 +1,5 @@
 // ============================ Provider Components ============================
 // Main provider for RainbowKit context, theming, and modals
-// biome-ignore assist/source/organizeImports: Preserve manually organized public exports.
 export { RainbowKitProvider } from './RainbowKitProvider/RainbowKitProvider';
 export type { RainbowKitProviderProps } from './RainbowKitProvider/RainbowKitProvider';
 

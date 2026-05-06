@@ -23,6 +23,13 @@
     "indentWidth": 2,
     "lineWidth": 80
   },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
