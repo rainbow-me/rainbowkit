@@ -7,6 +7,15 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Transpile rainbowkit + wagmi through Next so the `'use client'` chunks
+  // share a single `WagmiContext` identity across server and client bundles.
+  // Avoids `WagmiProviderNotFoundError` during parallel SSG on Next 16.
+  transpilePackages: [
+    '@rainbow-me/rainbowkit',
+    'wagmi',
+    '@wagmi/core',
+    '@wagmi/connectors',
+  ],
   logging: {
     browserToTerminal: 'warn',
   },
