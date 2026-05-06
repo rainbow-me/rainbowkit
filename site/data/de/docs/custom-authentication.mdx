@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Serverseitige Nachrichtenerstellung
 
-`createMessage` also supports returning a `Promise`, allowing you to construct [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) messages on the server. For stricter security, the server endpoint should derive or validate security-critical fields like `domain`, `nonce`, and `issued-at` timestamps instead of trusting client-provided values. See [SIWE documentation](https://docs.siwe.xyz/security-considerations#server-side-message-generation) for more details.
+`createMessage` unterstützt auch das Zurückgeben eines `Promise`, wodurch Sie [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) Botschaften auf dem Server erstellen können. Für eine strengere Sicherheit sollte der Server-Endpunkt sicherheitskritische Felder wie `domain`, `nonce` und `issued-at` Zeitstempel ableiten oder validieren, anstatt sich auf clientseitig bereitgestellte Werte zu verlassen. Weitere Details finden Sie in der [SIWE-Dokumentation](https://docs.siwe.xyz/security-considerations#server-side-message-generation).
 
 ```tsx
   createMessage: async ({ address, chainId }) => {
