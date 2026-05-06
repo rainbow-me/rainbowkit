@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### サーバーサイドでのメッセージ作成
 
-`createMessage` は `Promise` を返すこともサポートしており、サーバー上で [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) メッセージを構築できます。より厳しいセキュリティを実現するために、サーバーエンドポイントは、クライアントが提供する値を信用せずに、`domain`、`nonce`、および `issued-at` タイムスタンプなどのセキュリティクリティカルなフィールドを導出または検証する必要があります。詳細については、[SIWE ドキュメント](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) を参照してください。
+`createMessage` は、`Promise` を返すことも可能です。これにより、サーバーで [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) メッセージを構築できます。より厳密なセキュリティのために、サーバーエンドポイントは `domain`、`nonce`、および `issued-at` タイムスタンプのようなセキュリティ関連の重要なフィールドを、クライアントから提供された値ではなく導出または検証する必要があります。詳細は [SIWE ドキュメント](https://docs.siwe.xyz/security-considerations#server-side-message-generation) を参照してください。
 
 ```tsx
   createMessage: async ({ address, chainId }) => {
@@ -86,9 +86,9 @@ import {
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */

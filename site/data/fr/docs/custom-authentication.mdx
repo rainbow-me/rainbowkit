@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Création de messages côté serveur
 
-`createMessage` prend également en charge le retour d'une `Promise`, vous permettant de construire des messages [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) sur le serveur. Pour une sécurité plus stricte, le point de terminaison du serveur devrait dériver ou valider des champs critiques pour la sécurité comme `domain`, `nonce`, et les horodatages `issued-at` au lieu de faire confiance aux valeurs fournies par le client. Voir [documentation SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) pour plus de détails.
+`createMessage` prend également en charge le retour d'une `Promise`, vous permettant de construire des messages [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) sur le serveur. Pour une sécurité plus stricte, le point de terminaison du serveur devrait dériver ou valider des champs critiques pour la sécurité comme le `domaine`, le `nonce` et les horodatages `émis-à` plutôt que de se fier aux valeurs fournies par le client. Consultez la [documentation SIWE](https://docs.siwe.xyz/security-considerations#server-side-message-generation) pour plus de détails.
 
 ```tsx
   createMessage: async ({ address, chainId }) => {
@@ -86,9 +86,9 @@ import {
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */

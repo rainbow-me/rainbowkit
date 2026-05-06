@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### 伺服器端訊息創建
 
-`createMessage` 也支持返回 `Promise`，使您可以在伺服器上構造 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 消息。為了更嚴格的安全性，伺服器端點應該推導或驗證像 `domain`、`nonce` 和 `issued-at` 時間戳這樣的安全關鍵字段，而不是信任由客戶端提供的值。更多細節請參閱 [SIWE 文檔](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation)。
+`createMessage` 也支持傳回一個 `Promise`，使您能夠在伺服器上構建 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 消息。為了更嚴格的安全性，伺服器端點應該推導或驗證安全關鍵字段如 `domain`、`nonce` 和 `issued-at` 時戳，而不是信任客戶端提供的值。詳情請參閱 [SIWE 文檔](https://docs.siwe.xyz/security-considerations#server-side-message-generation)。
 
 ```tsx
   createMessage: async ({ address, chainId }) => {
@@ -86,9 +86,9 @@ import {
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */

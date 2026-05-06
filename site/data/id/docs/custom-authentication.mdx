@@ -55,7 +55,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Pembuatan pesan sisi server
 
-`createMessage` juga mendukung pengembalian `Promise`, memungkinkan Anda untuk membuat pesan [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) di server. Untuk keamanan yang lebih ketat, endpoint server harus menurunkan atau memvalidasi bidang-bidang kritis keamanan seperti `domain`, `nonce`, dan stempel waktu `issued-at` daripada mempercayai nilai-nilai yang disediakan klien. Lihat [dokumentasi SIWE](https://docs.siwe.xyz/quickstart/creating-messages#server-side-message-creation) untuk detail lebih lanjut.
+`createMessage` juga mendukung pengembalian `Promise`, memungkinkan Anda untuk membuat pesan [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) di server. Untuk keamanan yang lebih ketat, endpoint server seharusnya menentukan atau memvalidasi bidang-bidang yang penting untuk keamanan seperti `domain`, `nonce`, dan stempel waktu `issued-at` daripada mempercayai nilai yang disediakan oleh klien. Lihat [dokumentasi SIWE](https://docs.siwe.xyz/security-considerations#server-side-message-generation) untuk lebih detailnya.
 
 ```tsx
   createMessage: async ({ address, chainId }) => {
@@ -86,9 +86,9 @@ import {
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
-  QueryClientProvider,
   QueryClient,
-} from "@tanstack/react-query";
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */
