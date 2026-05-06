@@ -1,0 +1,23 @@
+CLAUDE.md
+  6c5ff9d3f083bd11 157-165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "dfe3c94d320542b7b1216639e169b35397a47c5c",
+  "prompts": {
+    "6c5ff9d3f083bd11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9aa48b6c-8938-4710-9473-f05385a4e5ba",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 1,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
