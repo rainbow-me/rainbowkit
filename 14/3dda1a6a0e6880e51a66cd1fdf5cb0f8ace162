@@ -1,0 +1,25 @@
+site/data/en-US/docs/migration-guide.mdx
+  21465d3a25eca600 28
+site/data/en-US/guides/rainbowkit-wagmi-v3.mdx
+  21465d3a25eca600 26,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "143dda1a6a0e6880e51a66cd1fdf5cb0f8ace162",
+  "prompts": {
+    "21465d3a25eca600": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dfbf3-f4f7-7cf3-8ae9-99187338d49f",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 354,
+      "total_deletions": 212,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
