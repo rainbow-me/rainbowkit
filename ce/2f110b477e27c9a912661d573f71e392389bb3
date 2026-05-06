@@ -1,0 +1,14 @@
+packages/rainbowkit/CHANGELOG.md
+  h_d88019ef24e871 7,9-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "ce2f110b477e27c9a912661d573f71e392389bb3",
+  "prompts": {},
+  "humans": {
+    "h_d88019ef24e871": {
+      "author": "Daniel Sinclair"
+    }
+  }
+}
