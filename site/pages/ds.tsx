@@ -4,7 +4,7 @@ import { Code } from 'components/Code/Code';
 import { Link } from 'components/Link/Link';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DS() {
   const [mode, setMode] = useState('light');

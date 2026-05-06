@@ -4,7 +4,7 @@ import { Provider } from 'components/Provider/Provider';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { NextIntlClientProvider } from 'next-intl';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
