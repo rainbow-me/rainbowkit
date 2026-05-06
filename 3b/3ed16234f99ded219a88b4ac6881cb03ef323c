@@ -1,0 +1,115 @@
+tsconfig.json
+  21465d3a25eca600 4
+examples/with-react-router/package.json
+  21465d3a25eca600 16,24-25
+packages/create-rainbowkit/templates/next-app/package.json
+  21465d3a25eca600 12,16-17
+packages/rainbowkit/src/components/ChainModal/ChainModal.tsx
+  21465d3a25eca600 2-3,26
+examples/with-next-wallet-button/package.json
+  21465d3a25eca600 15-17
+packages/rainbowkit/src/components/AccountModal/AccountModal.tsx
+  21465d3a25eca600 2,14
+examples/with-next-mint-nft/package.json
+  21465d3a25eca600 20-22
+packages/rainbowkit/src/components/WalletButton/WalletButtonRenderer.tsx
+  21465d3a25eca600 8,80,82
+packages/rainbow-button/tsconfig.json
+  21465d3a25eca600 5
+examples/with-next-siwe-next-auth/package.json
+  21465d3a25eca600 17-19
+packages/rainbowkit/src/wallets/walletConnectors/novaWallet/novaWallet.ts
+  21465d3a25eca600 22-24
+packages/example/package.json
+  21465d3a25eca600 11,17-18
+packages/rainbowkit/src/transactions/useAddRecentTransaction.ts
+  21465d3a25eca600 2,11
+packages/rainbowkit/src/hooks/useConnectionStatus.ts
+  21465d3a25eca600 1,12
+packages/rainbowkit/src/config/getDefaultConfig.ts
+  21465d3a25eca600 2-3,71
+packages/rainbowkit/src/components/ConnectButton/ConnectButtonRenderer.tsx
+  21465d3a25eca600 2,64,66
+examples/with-next-siwe-iron-session/package.json
+  21465d3a25eca600 16-18
+examples/with-next-app/package.json
+  21465d3a25eca600 15-17
+package.json
+  21465d3a25eca600 49,73,76
+examples/with-vite/package.json
+  21465d3a25eca600 17-19
+packages/rainbowkit/tsconfig.json
+  21465d3a25eca600 5
+site/package.json
+  21465d3a25eca600 15,39-40
+packages/rainbowkit/src/components/SignIn/SignIn.tsx
+  21465d3a25eca600 3,57
+packages/rainbowkit/src/transactions/useRecentTransactions.ts
+  21465d3a25eca600 2,9
+packages/rainbowkit/src/hooks/useProfile.ts
+  21465d3a25eca600 1,11-17,21,25-30
+packages/create-rainbowkit/generated-test-app/package.json
+  21465d3a25eca600 12,16-17
+packages/rainbowkit/src/components/ConnectModal/ConnectModal.tsx
+  21465d3a25eca600 2,19
+examples/with-remix/package.json
+  21465d3a25eca600 16,20-21
+packages/rainbowkit/src/wallets/walletConnectors/geminiWallet/geminiWallet.ts
+  21465d3a25eca600 1-13,87-252
+packages/rainbowkit/src/transactions/useClearRecentTransactions.ts
+  21465d3a25eca600 2,8
+examples/with-next/package.json
+  21465d3a25eca600 15-17
+packages/rainbowkit/src/components/RainbowKitProvider/AuthenticationContext.tsx
+  21465d3a25eca600 10,58,63
+packages/rainbowkit/src/transactions/TransactionStoreContext.tsx
+  21465d3a25eca600 3,26
+packages/rainbowkit-siwe-next-auth/tsconfig.json
+  21465d3a25eca600 5
+packages/rainbowkit/src/components/RainbowKitProvider/RainbowKitProvider.tsx
+  21465d3a25eca600 2,95
+examples/with-next-rainbow-button/package.json
+  21465d3a25eca600 15-17
+packages/rainbowkit/src/components/ProfileDetails/ProfileDetails.tsx
+  21465d3a25eca600 4,23
+packages/rainbowkit/src/components/Txs/TxItem.tsx
+  21465d3a25eca600 2,35
+packages/rainbowkit/src/hooks/useChainId.ts
+  21465d3a25eca600 1,4
+packages/rainbowkit/src/components/Txs/TxList.tsx
+  21465d3a25eca600 2,18,24
+packages/rainbow-button/package.json
+  21465d3a25eca600 45-46
+examples/with-next-custom-button/package.json
+  21465d3a25eca600 15-17
+examples/with-next-app-i18n/package.json
+  21465d3a25eca600 16-18
+packages/rainbowkit/src/components/RainbowKitProvider/ModalContext.tsx
+  21465d3a25eca600 10,74,96
+packages/rainbowkit/package.json
+  21465d3a25eca600 50-51,70-75,79-80,83
+examples/with-create-react-app/package.json
+  21465d3a25eca600 21-23
+packages/rainbowkit/src/wallets/walletConnectors/metaMaskWallet/metaMaskWallet.ts
+  21465d3a25eca600 96-98
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3b3ed16234f99ded219a88b4ac6881cb03ef323c",
+  "prompts": {
+    "21465d3a25eca600": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dfbf3-f4f7-7cf3-8ae9-99187338d49f",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Daniel Sinclair",
+      "messages": [],
+      "total_additions": 23022,
+      "total_deletions": 237,
+      "accepted_lines": 22905,
+      "overriden_lines": 0
+    }
+  }
+}
