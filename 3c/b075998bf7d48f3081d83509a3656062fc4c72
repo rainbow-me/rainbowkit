@@ -1,0 +1,9 @@
+packages/rainbowkit/src/wallets/walletConnectors/safepalWallet/safepalWallet.ts
+  cff40f8c24422c70 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3cb075998bf7d48f3081d83509a3656062fc4c72",
+  "prompts": {}
+}
