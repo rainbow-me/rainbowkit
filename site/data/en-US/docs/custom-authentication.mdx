@@ -57,7 +57,10 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 `createMessage` also supports returning a `Promise`, allowing you to construct [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) messages on the server. For stricter security, the server endpoint should derive or validate security-critical fields like `domain`, `nonce`, and `issued-at` timestamps instead of trusting client-provided values. See [SIWE documentation](https://docs.siwe.xyz/security-considerations#server-side-message-generation) for more details.
 
+When the server generates the nonce alongside the message, you can omit `getNonce`. RainbowKit will skip nonce pre-fetching and call `createMessage` directly with `{ address, chainId }`:
+
 ```tsx
+const authenticationAdapter = createAuthenticationAdapter({
   createMessage: async ({ address, chainId }) => {
     const response = await fetch('/api/siwe/message', {
       method: 'POST',
@@ -71,7 +74,18 @@ const authenticationAdapter = createAuthenticationAdapter({
 
     return await response.text();
   },
+
+  verify: async ({ message, signature }) => {
+    /* ... */
+  },
+
+  signOut: async () => {
+    /* ... */
+  },
+});
 ```
+
+If you still want the client to fetch a nonce separately (for example, to keep the existing `/api/nonce` endpoint), keep `getNonce` and continue to receive `nonce` in `createMessage` args.
 
 #### Providing the authentication state
 
