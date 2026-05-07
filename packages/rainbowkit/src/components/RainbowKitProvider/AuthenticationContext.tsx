@@ -14,16 +14,32 @@ export type AuthenticationStatus =
   | 'unauthenticated'
   | 'authenticated';
 
-export interface AuthenticationAdapter<Message> {
-  getNonce: () => Promise<string>;
-  createMessage: (args: {
-    nonce: string;
-    address: Address;
-    chainId: number;
-  }) => Promise<Message> | Message;
+interface AuthenticationAdapterBase<Message> {
   verify: (args: { message: Message; signature: string }) => Promise<boolean>;
   signOut: () => Promise<void>;
 }
+
+// When `getNonce` is omitted, RainbowKit skips client-side nonce pre-fetching
+// and calls `createMessage` directly with `{ address, chainId }`
+export type AuthenticationAdapter<Message> =
+  AuthenticationAdapterBase<Message> &
+    (
+      | {
+          getNonce: () => Promise<string>;
+          createMessage: (args: {
+            nonce: string;
+            address: Address;
+            chainId: number;
+          }) => Promise<Message> | Message;
+        }
+      | {
+          getNonce?: undefined;
+          createMessage: (args: {
+            address: Address;
+            chainId: number;
+          }) => Promise<Message> | Message;
+        }
+    );
 
 export interface AuthenticationConfig<Message> {
   adapter: AuthenticationAdapter<Message>;

@@ -30,6 +30,8 @@ export function SignIn({
   const authAdapter = useAuthenticationAdapter();
 
   const getNonce = useCallback(async () => {
+    if (!authAdapter.getNonce) return;
+
     try {
       const nonce = await authAdapter.getNonce();
       setState((x) => ({ ...x, nonce }));
@@ -62,9 +64,10 @@ export function SignIn({
       const chainId = activeChain?.id;
       const { nonce } = state;
 
-      if (!address || !chainId || !nonce) {
-        return;
-      }
+      if (!address || !chainId) return;
+
+      // Block when the adapter expects a pre-fetched nonce that hasn't arrived.
+      if (authAdapter.getNonce && !nonce) return;
 
       setState((x) => ({
         ...x,
@@ -73,11 +76,18 @@ export function SignIn({
 
       let message: Awaited<ReturnType<typeof authAdapter.createMessage>>;
       try {
-        const messageResult = authAdapter.createMessage({
-          address,
-          chainId,
-          nonce,
-        });
+        let messageResult: ReturnType<typeof authAdapter.createMessage>;
+        if (authAdapter.getNonce) {
+          // This isn't reachable in practice, but for type safety.
+          if (!nonce) return;
+          messageResult = authAdapter.createMessage({
+            address,
+            chainId,
+            nonce,
+          });
+        } else {
+          messageResult = authAdapter.createMessage({ address, chainId });
+        }
 
         if (messageResult instanceof Promise) {
           setState((x) => ({ ...x, status: 'creatingMessage' }));
@@ -223,13 +233,14 @@ export function SignIn({
         >
           <ActionButton
             disabled={
-              !state.nonce ||
+              (authAdapter.getNonce && !state.nonce) ||
               status === 'creatingMessage' ||
               status === 'signing' ||
               status === 'verifying'
             }
             label={
-              !state.nonce || status === 'creatingMessage'
+              (authAdapter.getNonce && !state.nonce) ||
+              status === 'creatingMessage'
                 ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
                   ? i18n.t('sign_in.signature.waiting')

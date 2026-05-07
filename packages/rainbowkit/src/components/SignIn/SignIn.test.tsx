@@ -32,19 +32,34 @@ const address = '0x0000000000000000000000000000000000000001' as Address;
 
 function renderSignIn({
   createMessage,
+  getNonce = async () => 'nonce',
 }: {
   createMessage: (args: {
-    nonce: string;
+    nonce?: string;
     address: Address;
     chainId: number;
   }) => string | Promise<string>;
+  // Pass `null` to omit `getNonce` entirely (server-side message creation).
+  getNonce?: (() => Promise<string>) | null;
 }) {
-  const adapter = createAuthenticationAdapter<string>({
-    createMessage,
-    getNonce: async () => 'nonce',
-    signOut: async () => {},
-    verify: async () => true,
-  });
+  const adapter = createAuthenticationAdapter<string>(
+    getNonce === null
+      ? {
+          createMessage,
+          signOut: async () => {},
+          verify: async () => true,
+        }
+      : {
+          createMessage: createMessage as (args: {
+            nonce: string;
+            address: Address;
+            chainId: number;
+          }) => string | Promise<string>,
+          getNonce,
+          signOut: async () => {},
+          verify: async () => true,
+        },
+  );
 
   return render(
     <RainbowKitAuthenticationProvider
@@ -78,6 +93,11 @@ describe('SignIn', () => {
     fireEvent.click(button);
 
     expect(createMessage).toHaveBeenCalledOnce();
+    expect(createMessage).toHaveBeenCalledWith({
+      address,
+      chainId: 1,
+      nonce: 'nonce',
+    });
     await waitFor(() =>
       expect(wagmiMocks.signMessageAsync).toHaveBeenCalledWith({
         message: 'message',
@@ -141,5 +161,31 @@ describe('SignIn', () => {
     fireEvent.click(button);
 
     expect(createMessage).toHaveBeenCalledTimes(2);
+  });
+
+  it('enables sign-in immediately when getNonce is omitted', async () => {
+    const createMessage = vi.fn(() => 'message');
+    wagmiMocks.signMessageAsync.mockReturnValue(new Promise(() => {}));
+
+    renderSignIn({ createMessage, getNonce: null });
+
+    const button = await screen.findByTestId('rk-auth-message-button');
+    expect(button).toHaveTextContent('Sign message');
+    expect(button).not.toBeDisabled();
+
+    fireEvent.click(button);
+
+    expect(createMessage).toHaveBeenCalledOnce();
+    // No nonce should be passed to createMessage when getNonce is omitted.
+    expect(createMessage).toHaveBeenCalledWith({
+      address,
+      chainId: 1,
+    });
+
+    await waitFor(() =>
+      expect(wagmiMocks.signMessageAsync).toHaveBeenCalledWith({
+        message: 'message',
+      }),
+    );
   });
 });
