@@ -103,6 +103,13 @@
     ],
     "overrides": {
       "@remix-run/dev>esbuild": "0.25.5"
+    },
+    "packageExtensions": {
+      "@metamask/connect-multichain@0.12.1": {
+        "dependencies": {
+          "debug": "^4.4.3"
+        }
+      }
     }
   },
   "engines": {

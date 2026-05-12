@@ -14,6 +14,7 @@
     "buffer": "6.0.3",
     "events": "3.3.0",
     "react-dom": "^19.2.5",
+    "react-app-rewired": "^2.2.1",
     "react-scripts": "5.0.1",
     "react": "^19.2.5",
     "typescript": "5.9.3",
@@ -23,10 +24,10 @@
     "@tanstack/react-query": "5.100.9"
   },
   "scripts": {
-    "dev": "GENERATE_SOURCEMAP=false react-scripts start",
-    "start": "GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
+    "dev": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
+    "test": "react-app-rewired test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
     "eject": "react-scripts eject"
   },
   "browserslist": {
