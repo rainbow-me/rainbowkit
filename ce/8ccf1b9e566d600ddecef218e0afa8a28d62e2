@@ -1,0 +1,47 @@
+packages/rainbowkit/src/components/ChainModal/Chain.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 15
+packages/rainbowkit/src/wallets/walletConnectors/metaMaskWallet/metaMaskWallet.ts
+  s_ca79afcc630056::t_93d5026bda2a93 18,21,23-26,94,196-198,202-205
+packages/rainbowkit/src/components/ConnectButton/ConnectButtonRenderer.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2
+packages/rainbowkit/src/transactions/TransactionStoreContext.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3
+packages/rainbowkit/src/components/ChainModal/ChainModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2,28,47
+packages/rainbowkit/src/testing-library.d.ts
+  s_ca79afcc630056::t_93d5026bda2a93 3-6,8-11
+packages/rainbowkit/src/wallets/walletConnectors/geminiWallet/geminiWallet.ts
+  s_ca79afcc630056::t_93d5026bda2a93 7,10-14,120,132-140,156-164,167,223-224,226-233
+packages/rainbowkit/src/components/SignIn/SignIn.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 58
+packages/rainbowkit/src/wallets/useWalletConnectors.ts
+  s_ca79afcc630056::t_93d5026bda2a93 1,41-42
+packages/rainbowkit/src/components/RainbowKitProvider/ModalContext.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 10
+packages/rainbowkit/src/components/ChainModal/ChainModal.test.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 4,10-11
+packages/rainbowkit/src/config/getDefaultConfig.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2-7
+packages/rainbowkit/src/components/SignIn/SignIn.test.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 20-21,26-27,29,64,67,70
+packages/rainbowkit/src/components/ConnectModal/ConnectModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 18
+packages/rainbowkit/src/components/AccountModal/AccountModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "ce8ccf1b9e566d600ddecef218e0afa8a28d62e2",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
