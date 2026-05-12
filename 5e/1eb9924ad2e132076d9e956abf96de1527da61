@@ -1,0 +1,58 @@
+examples/with-create-react-app/config-overrides.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-7,13
+  s_ca79afcc630056::t_75a63257491b08 8-12
+packages/create-rainbowkit/generated-test-app/src/styles/globals.css
+  s_ca79afcc630056::t_93d5026bda2a93 5-16
+packages/create-rainbowkit/templates/next-app/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2,12
+packages/create-rainbowkit/generated-test-app/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2,12
+packages/example/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 15,31-35,60,66,72
+examples/with-next-rainbow-button/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2,9-10
+examples/with-next-app/src/app/page.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-8
+examples/with-vite/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 3
+examples/with-next-mint-nft/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 6,24,28
+examples/with-next-siwe-iron-session/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 19-24
+packages/create-rainbowkit/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 4,10
+examples/with-next-app-i18n/src/app/layout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3,6-12
+examples/with-next-wallet-button/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 27
+examples/with-next-app-i18n/src/app/providers.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3-15
+packages/create-rainbowkit/generated-test-app/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 25-27
+examples/with-remix/remix.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 16
+packages/create-rainbowkit/generated-test-app/src/styles/Home.module.css
+  s_ca79afcc630056::t_93d5026bda2a93 75-77
+examples/with-next-wallet-button/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3,6-9
+examples/with-next-app-i18n/src/app/page.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-8,11-21
+packages/example/src/pages/_app.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "5e1eb9924ad2e132076d9e956abf96de1527da61",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
