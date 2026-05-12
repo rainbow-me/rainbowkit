@@ -1,13 +1,13 @@
 import type { NextPage } from 'next';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useConnection, useDisconnect } from 'wagmi';
 import {
   RainbowButton,
   useRainbowConnectModal,
 } from '@rainbow-me/rainbow-button';
 
 const Home: NextPage = () => {
-  const { isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
+  const { isConnected } = useConnection();
+  const { mutate: disconnect } = useDisconnect();
   const { connect } = useRainbowConnectModal();
 
   return (

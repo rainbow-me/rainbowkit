@@ -3,7 +3,7 @@ import Image from 'next/legacy/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { GetServerSideProps, NextPage } from 'next';
 import {
-  useAccount,
+  useConnection,
   useReadContract,
   useWaitForTransactionReceipt,
   useWriteContract,
@@ -21,11 +21,11 @@ const Home: NextPage = () => {
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(BigInt(0));
-  const { isConnected } = useAccount();
+  const { isConnected } = useConnection();
 
   const {
     data: hash,
-    writeContract: mint,
+    mutate: mint,
     isPending: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,

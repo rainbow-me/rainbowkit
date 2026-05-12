@@ -102,7 +102,7 @@ function RainbowKitApp({
 }>) {
   const router = useRouter();
 
-  const { disconnect } = useDisconnect();
+  const { mutate: disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');

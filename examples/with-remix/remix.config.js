@@ -13,7 +13,7 @@ export default {
     v3_fetcherPersist: true,
   },
   browserNodeBuiltinsPolyfill: {
-    modules: { buffer: true, events: true, http: true },
+    modules: { buffer: true, events: true, http: true, punycode: true },
   },
   serverDependenciesToBundle: ['@base-org/account', /^@base-org\/account\/.*/],
 };

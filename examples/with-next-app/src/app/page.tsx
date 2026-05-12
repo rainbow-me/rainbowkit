@@ -1,4 +1,11 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const ConnectButton = dynamic(
+  () => import('@rainbow-me/rainbowkit').then((mod) => mod.ConnectButton),
+  { ssr: false },
+);
 
 function Page() {
   return (
