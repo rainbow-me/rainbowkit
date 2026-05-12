@@ -1,7 +1,22 @@
+packages/example/next.config.js
+  6c5ff9d3f083bd11 3-9
 ---
 {
   "schema_version": "authorship/3.0.0",
-  "git_ai_version": "1.3.4",
+  "git_ai_version": "1.4.4",
   "base_commit_sha": "2586248185adf17ba34de62d90bafba7a2944ffb",
-  "prompts": {}
+  "prompts": {
+    "6c5ff9d3f083bd11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9aa48b6c-8938-4710-9473-f05385a4e5ba",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Sinclair",
+      "total_additions": 7,
+      "total_deletions": 1,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
 }
