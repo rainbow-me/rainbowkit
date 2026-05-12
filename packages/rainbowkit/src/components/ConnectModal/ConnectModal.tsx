@@ -15,7 +15,7 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
 
-  const { disconnect } = useDisconnect();
+  const { mutate: disconnect } = useDisconnect();
   const { isConnecting } = useConnection();
 
   // when a user cancels or dismisses the SignIn modal for SIWE, disconnect and call onClose

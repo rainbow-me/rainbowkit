@@ -15,10 +15,15 @@ type AcceptedMetaMaskParameters = Omit<
   MetaMaskParameters,
   | 'checkInstallationImmediately'
   | 'connectWith'
+  | 'dapp'
   | 'dappMetadata'
   | 'headless'
+  | 'logging'
   | 'preferDesktop'
->;
+  | 'ui'
+> & {
+  ui?: Omit<NonNullable<MetaMaskParameters['ui']>, 'headless'>;
+};
 
 interface MetaMaskWallet extends AcceptedMetaMaskParameters {
   (params: MetaMaskWalletOptions): Wallet;
@@ -86,7 +91,7 @@ export const metaMaskWallet: MetaMaskWallet = ({
 }: MetaMaskWalletOptions): Wallet => {
   // Extract all AcceptedMetaMaskParameters from metaMaskWallet
   // This approach avoids type errors for properties not yet in upstream connector
-  const { ...optionalConfig } = metaMaskWallet;
+  const { ui, ...optionalConfig } = metaMaskWallet;
 
   // Custom logic to explicitly detect MetaMask
   // Whereas hasInjectedProvider only checks for impersonated `isMetaMask`
@@ -188,13 +193,16 @@ export const metaMaskWallet: MetaMaskWallet = ({
         (walletDetails: WalletDetailsParams) => {
           return createConnector((config) => {
             const metamaskConnector = metaMask({
-              dappMetadata: {
-                name: walletConnectParameters?.metadata?.name,
+              ...optionalConfig,
+              dapp: {
+                name: walletConnectParameters?.metadata?.name ?? 'RainbowKit',
                 iconUrl: walletConnectParameters?.metadata?.icons[0],
                 url: walletConnectParameters?.metadata?.url,
               },
-              headless: true,
-              ...optionalConfig,
+              ui: {
+                ...ui,
+                headless: true,
+              },
             })(config);
 
             /**

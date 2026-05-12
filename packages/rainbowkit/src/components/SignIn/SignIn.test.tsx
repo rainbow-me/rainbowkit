@@ -16,15 +16,17 @@ import { SignIn } from './SignIn';
 
 const wagmiMocks = vi.hoisted(() => ({
   signMessageAsync: vi.fn(),
-  useAccount: vi.fn(),
   useAccountEffect: vi.fn(),
+  useConnection: vi.fn(),
+  useConnectionEffect: vi.fn(),
 }));
 
 vi.mock('wagmi', () => ({
-  useAccount: wagmiMocks.useAccount,
   useAccountEffect: wagmiMocks.useAccountEffect,
+  useConnection: wagmiMocks.useConnection,
+  useConnectionEffect: wagmiMocks.useConnectionEffect,
   useSignMessage: () => ({
-    signMessageAsync: wagmiMocks.signMessageAsync,
+    mutateAsync: wagmiMocks.signMessageAsync,
   }),
 }));
 
@@ -59,11 +61,13 @@ function renderSignIn({
 describe('SignIn', () => {
   beforeEach(() => {
     wagmiMocks.signMessageAsync.mockReset();
-    wagmiMocks.useAccount.mockReturnValue({
+    wagmiMocks.useConnection.mockReturnValue({
       address,
       chain: { id: 1 },
+      connector: undefined,
     });
     wagmiMocks.useAccountEffect.mockReset();
+    wagmiMocks.useConnectionEffect.mockReset();
   });
 
   it('skips message preparation state when message creation is synchronous', async () => {

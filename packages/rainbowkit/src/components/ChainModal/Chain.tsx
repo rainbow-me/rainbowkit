@@ -12,7 +12,7 @@ import { Text } from '../Text/Text';
 interface ChainProps {
   chainId: number;
   currentChainId: number;
-  switchChain: ReturnType<typeof useSwitchChain>['switchChain'];
+  switchChain: ReturnType<typeof useSwitchChain>['mutate'];
   chainIconSize: BoxProps['height'];
   name: string | undefined;
   isLoading: boolean;

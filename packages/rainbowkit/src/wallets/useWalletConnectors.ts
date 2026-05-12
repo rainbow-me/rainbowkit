@@ -1,4 +1,4 @@
-import { type Connector, useConnect } from 'wagmi';
+import { type Connector, useConnect, useConnectors } from 'wagmi';
 import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import {
   useInitialChainId,
@@ -38,7 +38,8 @@ export function useWalletConnectors(
 ): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
-  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
+  const { mutateAsync: connectAsync } = useConnect();
+  const defaultConnectors_untyped = useConnectors();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
 

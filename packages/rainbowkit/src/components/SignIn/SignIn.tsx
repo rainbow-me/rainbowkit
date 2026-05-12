@@ -55,7 +55,7 @@ export function SignIn({
 
   const mobile = isMobile();
   const { address, chain: activeChain } = useConnection();
-  const { signMessageAsync } = useSignMessage();
+  const { mutateAsync: signMessageAsync } = useSignMessage();
 
   const signIn = async () => {
     try {

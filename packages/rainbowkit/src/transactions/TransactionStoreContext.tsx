@@ -1,6 +1,6 @@
 import React from 'react';
 import type { PublicClient, TransactionReceipt } from 'viem';
-import { useConnection, useBalance, usePublicClient } from 'wagmi';
+import { useBalance, useConnection, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import {
   createTransactionStore,

@@ -1,5 +1,5 @@
 import React, { type ReactNode, useContext } from 'react';
-import { useConnection, useConfig } from 'wagmi';
+import { useConfig, useConnection } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useProfile } from '../../hooks/useProfile';

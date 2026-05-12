@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useConnection, useConnectionEffect, useConfig } from 'wagmi';
+import { useConfig, useConnection, useConnectionEffect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';

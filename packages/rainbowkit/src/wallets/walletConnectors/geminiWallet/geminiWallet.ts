@@ -1,16 +1,17 @@
 import { GeminiWalletProvider } from '@gemini-wallet/core';
 import {
-  ChainNotConfiguredError,
-  type CreateConnectorFn,
-  createConnector,
-} from 'wagmi';
-import {
   type Address,
   getAddress,
   type Hex,
   numberToHex,
+  SwitchChainError,
   UserRejectedRequestError,
 } from 'viem';
+import {
+  ChainNotConfiguredError,
+  type CreateConnectorFn,
+  createConnector,
+} from 'wagmi';
 import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export interface GeminiWalletOptions {
@@ -116,7 +117,7 @@ export const geminiWallet = ({
             name: 'Gemini Wallet',
             rdns: 'com.gemini.wallet',
             type: 'gemini',
-            async connect({ chainId } = {}) {
+            async connect({ chainId, withCapabilities } = {}) {
               const provider = getProvider();
 
               try {
@@ -128,8 +129,15 @@ export const geminiWallet = ({
                 let currentChainId = await this.getChainId();
 
                 if (chainId && currentChainId !== chainId) {
-                  const chain = await this.switchChain!({ chainId });
-                  currentChainId = chain.id;
+                  const chain = await this.switchChain!({ chainId }).catch(
+                    (error) => {
+                      if (error.code === UserRejectedRequestError.code) {
+                        throw error;
+                      }
+                      return { id: currentChainId };
+                    },
+                  );
+                  currentChainId = chain?.id ?? currentChainId;
                 }
 
                 if (!accountsChanged) {
@@ -145,10 +153,18 @@ export const geminiWallet = ({
                   provider.on('disconnect', disconnect);
                 }
 
-                return { accounts: accounts as never, chainId: currentChainId };
+                return {
+                  accounts: (withCapabilities
+                    ? accounts.map((address) => ({
+                        address,
+                        capabilities: {},
+                      }))
+                    : accounts) as never,
+                  chainId: currentChainId,
+                };
               } catch (error) {
                 if (
-                  /(user closed modal|user denied account|request rejected|cancelled)/i.test(
+                  /(user closed modal|accounts received is empty|user denied account|request rejected|cancelled)/i.test(
                     (error as Error).message,
                   )
                 ) {
@@ -204,12 +220,17 @@ export const geminiWallet = ({
             async switchChain({ chainId }) {
               const provider = getProvider();
               const chain = config.chains.find((chain) => chain.id === chainId);
-              if (!chain) throw new ChainNotConfiguredError();
+              if (!chain)
+                throw new SwitchChainError(new ChainNotConfiguredError());
 
-              await provider.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: numberToHex(chainId) }],
-              });
+              try {
+                await provider.request({
+                  method: 'wallet_switchEthereumChain',
+                  params: [{ chainId: numberToHex(chainId) }],
+                });
+              } catch (error) {
+                throw new SwitchChainError(error as Error);
+              }
 
               return chain;
             },
