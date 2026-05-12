@@ -1,7 +1,4 @@
-const createNextIntlPlugin = require('next-intl/plugin');
-
-// Explicitly specify the i18n config path for Turbopack compatibility
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+const { withWagmiAliases } = require('../../scripts/nextWagmiAliases.cjs');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,4 +13,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = withWagmiAliases(nextConfig, __dirname);

@@ -1,4 +1,5 @@
 const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
+const { withWagmiAliases } = require('../scripts/nextWagmiAliases.cjs');
 // TODO: update import https://github.com/contentlayerdev/contentlayer/issues/140
 const { withContentlayer } = require('next-contentlayer');
 
@@ -59,4 +60,6 @@ const nextConfig = {
   },
 };
 
-module.exports = withVanillaExtract(withContentlayer(nextConfig));
+module.exports = withVanillaExtract(
+  withContentlayer(withWagmiAliases(nextConfig, __dirname)),
+);
