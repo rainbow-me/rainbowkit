@@ -1,0 +1,29 @@
+packages/create-rainbowkit/generated-test-app/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 25
+package.json
+  s_ca79afcc630056::t_93d5026bda2a93 106-112
+examples/with-next-app-i18n/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 7
+examples/with-create-react-app/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 17,27-30
+packages/rainbowkit-siwe-next-auth/package.json
+  s_ca79afcc630056::t_ecf50f32476cbe 32
+packages/rainbowkit/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 47-56,62-90,92-97,104-105,111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "5723b7116591b852aa3e75674daff4e6c589930a",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
