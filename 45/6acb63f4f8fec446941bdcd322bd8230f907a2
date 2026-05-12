@@ -1,0 +1,51 @@
+examples/with-next-rainbow-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+examples/with-next-siwe-iron-session/src/pages/_error.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-17
+examples/with-next-custom-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+examples/with-next-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,16
+examples/with-next-mint-nft/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+examples/with-next-app/src/app/not-found.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-3
+scripts/nextWagmiAliases.cjs
+  s_ca79afcc630056::t_93d5026bda2a93 1-42
+site/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 2,63-65
+examples/with-next-app-i18n/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1,16
+examples/with-next-wallet-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+site/pages/_error.tsx
+  s_ca79afcc630056::t_0fa10f2e4eb1b8 1-12
+packages/create-rainbowkit/generated-test-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-20,24-36
+examples/with-next-siwe-next-auth/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,16
+packages/create-rainbowkit/templates/next-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-20,24-36
+examples/with-next/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,12
+examples/with-next-app-i18n/src/app/not-found.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-3
+examples/with-next-siwe-iron-session/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "456acb63f4f8fec446941bdcd322bd8230f907a2",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
