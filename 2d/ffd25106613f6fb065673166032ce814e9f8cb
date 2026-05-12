@@ -1,0 +1,35 @@
+site/data/en-US/guides/rainbowkit-wagmi-v3.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 16,19-20,23,29-35,37,39,41-47,49-53,55,57-59,61-62,65-69,71
+site/public/sitemap-0.xml
+  s_ca79afcc630056::t_93d5026bda2a93 28
+.changeset/wagmi-v3-migration.md
+  s_ca79afcc630056::t_ecf50f32476cbe 47
+  s_ca79afcc630056::t_f70c4b26a67a9f 3-4,6,42-46
+  s_ca79afcc630056::t_93d5026bda2a93 5,9,11,13,15,17-19,21,23,25,27-41
+site/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 21,34
+site/components/DocsLayout/DocsLayout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 24,53
+site/components/GuidesLayout/GuidesLayout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 7,11
+site/data/en-US/docs/migration-guide.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 21-22,25,31-69,71,73,75
+site/data/en-US/docs/modal-hooks.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "2dffd25106613f6fb065673166032ce814e9f8cb",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
