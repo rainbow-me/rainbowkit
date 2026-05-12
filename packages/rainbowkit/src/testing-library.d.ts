@@ -1,6 +1,14 @@
 import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers';
 
+type TestInjectedProvider = Record<string, unknown> & {
+  providers?: TestInjectedProvider[];
+};
+
 declare global {
+  interface Window {
+    ethereum?: TestInjectedProvider;
+  }
+
   namespace Chai {
     interface Assertion extends TestingLibraryMatchers<any, any> {}
   }

@@ -19,7 +19,9 @@ export const novaWallet = ({
   walletConnectParameters,
 }: NovaWalletOptions): Wallet => {
   const isNovaWalletInjected =
-    typeof window !== 'undefined' ? isNovaWallet(window.ethereum) : false;
+    typeof window !== 'undefined'
+      ? isNovaWallet((window as WindowProvider).ethereum)
+      : false;
 
   const shouldUseWalletConnect = !isNovaWalletInjected;
 

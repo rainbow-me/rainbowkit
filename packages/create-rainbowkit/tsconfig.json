@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2022",
     "preserveSymlinks": false,
     "outDir": "dist"
   },

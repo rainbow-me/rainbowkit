@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import { WalletButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useConnect, useConnection, useConnectors, useDisconnect } from 'wagmi';
 
 const Home: NextPage = () => {
-  const { isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
-  const { connectors, connect } = useConnect();
+  const { isConnected } = useConnection();
+  const { mutate: disconnect } = useDisconnect();
+  const connectors = useConnectors();
+  const { mutate: connect } = useConnect();
   const [metaMaskConnector, coinbaseConnector] = connectors.slice(2);
 
   return (

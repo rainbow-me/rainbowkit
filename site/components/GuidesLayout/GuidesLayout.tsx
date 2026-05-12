@@ -4,11 +4,11 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { useCoolMode } from 'lib/useCoolMode';
 import type React from 'react';
 import type { Ref } from 'react';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 import { content } from './GuidesLayout.css';
 
 export function GuidesLayout({ children }: { children: React.ReactNode }) {
-  const { isConnected } = useAccount();
+  const { isConnected } = useConnection();
   const ref = useCoolMode(
     '/rainbow.svg',
     !isConnected,

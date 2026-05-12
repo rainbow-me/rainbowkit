@@ -18,7 +18,7 @@ import NextImage from 'next/legacy/image';
 import NextLink from 'next/link';
 import { useTranslations } from 'next-intl';
 import React, { type Ref, useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 
 export async function getStaticProps(context: { locale: string }) {
   return {
@@ -31,7 +31,7 @@ export async function getStaticProps(context: { locale: string }) {
 export default function Home() {
   const t = useTranslations('landing');
 
-  const { isConnected } = useAccount();
+  const { isConnected } = useConnection();
   const ref = useCoolMode('/rainbow.svg', !isConnected) as Ref<HTMLDivElement>;
 
   return (

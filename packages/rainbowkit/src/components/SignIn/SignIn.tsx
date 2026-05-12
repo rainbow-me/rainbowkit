@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
-import { useAccount, useSignMessage } from 'wagmi';
+import { useConnection, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -54,8 +54,8 @@ export function SignIn({
   }, [getNonce]);
 
   const mobile = isMobile();
-  const { address, chain: activeChain } = useAccount();
-  const { signMessageAsync } = useSignMessage();
+  const { address, chain: activeChain } = useConnection();
+  const { mutateAsync: signMessageAsync } = useSignMessage();
 
   const signIn = async () => {
     try {

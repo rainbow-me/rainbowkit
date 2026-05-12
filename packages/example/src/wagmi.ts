@@ -125,9 +125,6 @@ base.preference = {
   attribution: { auto: true },
 };
 
-// Configure MetaMask analytics
-metaMaskWallet.enableAnalytics = false;
-
 const avalanche = {
   id: 43_114,
   name: 'Avalanche',

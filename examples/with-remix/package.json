@@ -13,12 +13,12 @@
     "@remix-run/node": "^2.17.4",
     "@remix-run/react": "^2.17.4",
     "@remix-run/serve": "^2.17.4",
-    "@tanstack/react-query": "^5.55.3",
+    "@tanstack/react-query": "5.100.9",
     "@react-native-async-storage/async-storage": "npm:empty-module@0.0.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "viem": "2.38.0",
-    "wagmi": "^2.19.3"
+    "viem": "2.48.8",
+    "wagmi": "3.6.9"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.17.4",

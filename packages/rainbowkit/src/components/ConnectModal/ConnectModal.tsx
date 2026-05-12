@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useConnection, useDisconnect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
@@ -15,8 +15,8 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
 
-  const { disconnect } = useDisconnect();
-  const { isConnecting } = useAccount();
+  const { mutate: disconnect } = useDisconnect();
+  const { isConnecting } = useConnection();
 
   // when a user cancels or dismisses the SignIn modal for SIWE, disconnect and call onClose
   const onAuthCancel = React.useCallback(() => {

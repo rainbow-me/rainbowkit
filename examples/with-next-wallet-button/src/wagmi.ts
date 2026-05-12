@@ -24,7 +24,7 @@ export const config = createConfig({
   connectors: [
     ...connectors,
     metaMask({
-      dappMetadata: { name: appName },
+      dapp: { name: appName },
     }),
     baseAccount({
       appName,

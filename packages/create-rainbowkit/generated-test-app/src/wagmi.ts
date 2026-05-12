@@ -1,4 +1,5 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import type { Config } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -8,7 +9,7 @@ import {
   sepolia,
 } from 'wagmi/chains';
 
-export const config = getDefaultConfig({
+export const config: Config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [

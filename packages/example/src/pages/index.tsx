@@ -12,7 +12,7 @@ import { useSession } from 'next-auth/react';
 import { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
-  useAccount,
+  useConnection,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
@@ -28,7 +28,11 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openAccountModal, accountModalOpen } = useAccountModal();
   const { openChainModal, chainModalOpen } = useChainModal();
   const { openConnectModal, connectModalOpen } = useConnectModal();
-  const { address, isConnected: isWagmiConnected } = useAccount();
+  const {
+    address,
+    chain: activeChain,
+    isConnected: isWagmiConnected,
+  } = useConnection();
   const { status } = useSession() ?? { status: 'loading' as const };
 
   const defaultProps = ConnectButton.__defaultProps;
@@ -50,24 +54,22 @@ const Example = ({ authEnabled }: AppContextProps) => {
     defaultProps.showBalance.largeScreen,
   );
 
-  const { chain: activeChain } = useAccount();
-
   const {
     data: transactionData,
     error: transactionError,
-    sendTransaction,
+    mutate: sendTransaction,
   } = useSendTransaction();
 
   const {
     data: signingData,
     error: signingError,
-    signMessage,
+    mutate: signMessage,
   } = useSignMessage();
 
   const {
     data: typedData,
     error: typedError,
-    signTypedData,
+    mutate: signTypedData,
   } = useSignTypedData();
 
   const [mounted, setMounted] = useState(false);
