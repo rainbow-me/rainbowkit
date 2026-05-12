@@ -1,0 +1,151 @@
+examples/with-next-app/src/app/page.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-8
+packages/create-rainbowkit/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 4,10
+site/components/DocsLayout/DocsLayout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 24,53
+examples/with-next-siwe-iron-session/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 19-24
+examples/with-next-siwe-iron-session/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+packages/create-rainbowkit/generated-test-app/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 25
+site/components/GuidesLayout/GuidesLayout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 7,11
+packages/rainbowkit/src/components/ConnectModal/ConnectModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 18
+examples/with-next-wallet-button/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 27
+examples/with-next-siwe-next-auth/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,16
+packages/create-rainbowkit/generated-test-app/src/styles/Home.module.css
+  s_ca79afcc630056::t_93d5026bda2a93 75-77
+examples/with-remix/remix.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 16
+.changeset/wagmi-v3-migration.md
+  s_ca79afcc630056::t_f70c4b26a67a9f 3-4,6,42-46
+  s_ca79afcc630056::t_93d5026bda2a93 5,9,11,13,15,17-19,21,23,25,27-41
+  s_ca79afcc630056::t_ecf50f32476cbe 47
+packages/create-rainbowkit/templates/next-app/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2,12
+examples/with-next-wallet-button/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3,6-9
+package.json
+  s_ca79afcc630056::t_93d5026bda2a93 106-112
+packages/example/src/pages/_app.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 105
+packages/rainbowkit/src/config/getDefaultConfig.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2-7
+packages/rainbowkit/src/testing-library.d.ts
+  s_ca79afcc630056::t_93d5026bda2a93 3-6,8-11
+packages/rainbowkit/src/transactions/TransactionStoreContext.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3
+packages/rainbowkit/src/wallets/useWalletConnectors.ts
+  s_ca79afcc630056::t_93d5026bda2a93 1,41-42
+packages/rainbowkit/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 47-56,62-90,92-97,104-105,111
+packages/create-rainbowkit/generated-test-app/src/styles/globals.css
+  s_ca79afcc630056::t_93d5026bda2a93 5-16
+packages/rainbowkit/src/components/RainbowKitProvider/ModalContext.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 10
+site/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 2,63-65
+packages/rainbowkit/src/components/ChainModal/Chain.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 15
+packages/rainbowkit/src/components/ChainModal/ChainModal.test.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 4,10-11
+examples/with-next/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,12
+examples/with-next-wallet-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+examples/with-next-app-i18n/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1,16
+packages/rainbowkit/src/components/AccountModal/AccountModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 19
+site/data/en-US/docs/modal-hooks.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 54
+examples/with-next-mint-nft/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+packages/rainbowkit-siwe-next-auth/package.json
+  s_ca79afcc630056::t_ecf50f32476cbe 32
+examples/with-create-react-app/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 17,27-30
+site/public/sitemap-0.xml
+  s_ca79afcc630056::t_93d5026bda2a93 28
+examples/with-next-rainbow-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+site/data/en-US/guides/rainbowkit-wagmi-v3.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 16,19-20,23,29-35,37,39,41-47,49-53,55,57-59,61-62,65-69,71
+examples/with-next-app/src/app/not-found.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-3
+packages/create-rainbowkit/generated-test-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-20,24-36
+examples/with-next-app-i18n/src/app/layout.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3,6-12
+scripts/nextWagmiAliases.cjs
+  s_ca79afcc630056::t_93d5026bda2a93 1,3-6,9-20,23-38,42
+examples/with-next-custom-button/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,8
+examples/with-next-app-i18n/src/app/not-found.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-3
+examples/with-create-react-app/config-overrides.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-6,8
+packages/rainbowkit/src/components/ConnectButton/ConnectButtonRenderer.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2
+packages/rainbowkit/src/wallets/walletConnectors/geminiWallet/geminiWallet.ts
+  s_ca79afcc630056::t_93d5026bda2a93 7,10-14,120,132-140,156-164,167,223-224,226-233
+WAGMI_V3_PR_NOTES.md
+  s_ca79afcc630056::t_5b7f1e218f9140 1-162
+packages/rainbowkit/src/wallets/walletConnectors/metaMaskWallet/metaMaskWallet.ts
+  s_ca79afcc630056::t_93d5026bda2a93 18,21,23-26,94,196-198,202-205
+packages/create-rainbowkit/generated-test-app/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 25-27
+examples/with-next-app-i18n/src/app/providers.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 3,5,7,11,15
+packages/example/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 15,31-35,60,66,72
+examples/with-next-rainbow-button/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2,9-10
+packages/rainbowkit/src/components/ChainModal/ChainModal.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 2,28,47
+examples/with-next-app-i18n/src/app/page.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1-8,11-21
+site/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 21,34
+packages/rainbowkit/src/components/SignIn/SignIn.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 58
+examples/with-next-siwe-iron-session/src/pages/_error.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 1,3-5,7-9,11,13,15-17
+packages/create-rainbowkit/templates/next-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-20,24-36
+examples/with-vite/tsconfig.json
+  s_ca79afcc630056::t_93d5026bda2a93 3
+packages/create-rainbowkit/generated-test-app/src/wagmi.ts
+  s_ca79afcc630056::t_93d5026bda2a93 2,12
+examples/with-next-mint-nft/src/pages/index.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 6,24,28
+site/data/en-US/docs/migration-guide.mdx
+  s_ca79afcc630056::t_93d5026bda2a93 21-22,25,31-69,71,73,75
+packages/rainbowkit/src/components/SignIn/SignIn.test.tsx
+  s_ca79afcc630056::t_93d5026bda2a93 20-21,26-27,29,64,67,70
+examples/with-next-app/next.config.js
+  s_ca79afcc630056::t_93d5026bda2a93 1-2,16
+examples/with-next-app-i18n/package.json
+  s_ca79afcc630056::t_93d5026bda2a93 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "11e648b53c41d31bd6a7f56fafec0965a287bebf",
+  "prompts": {},
+  "sessions": {
+    "s_ca79afcc630056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e1ae5-8c73-7a91-aa15-6455549c7ead",
+        "model": "gpt-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
