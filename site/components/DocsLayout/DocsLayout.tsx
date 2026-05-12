@@ -21,7 +21,7 @@ import { useCoolMode } from 'lib/useCoolMode';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { type Ref, useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import { useConnection } from 'wagmi';
 import {
   content,
   navigationSidebar,
@@ -50,7 +50,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     null,
   ) as React.RefObject<HTMLDivElement>;
 
-  const { isConnected } = useAccount();
+  const { isConnected } = useConnection();
   const ref = useCoolMode(
     '/rainbow.svg',
     !isConnected,
