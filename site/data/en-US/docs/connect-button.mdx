@@ -112,6 +112,11 @@ Hide the chain UI entirely.
 <ConnectButton chainStatus="__none__" />
 ```
 
+> Note: when only a single chain is configured the chain selector is hidden by
+> default. Pass any `chainStatus` value explicitly (for example `"full"`,
+> `"icon"`, or `"name"`) to force the selector to render so the current
+> network is always visible.
+
 #### Show balance
 
 Use the `showBalance` prop to hide/show the balance.
