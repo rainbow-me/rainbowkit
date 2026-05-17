@@ -11,6 +11,7 @@ overrides:
   react-dom: ^19.2.5
   elliptic: 6.6.1
   '@remix-run/dev>esbuild': 0.25.5
+  qr: 0.4.2
 
 pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
 
@@ -469,6 +470,9 @@ importers:
       cuer:
         specifier: 0.0.3
         version: 0.0.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
+      qr:
+        specifier: 0.4.2
+        version: 0.4.2
       react-dom:
         specifier: ^19.2.5
         version: 19.2.5(react@19.2.5)
