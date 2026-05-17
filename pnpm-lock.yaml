@@ -11,7 +11,7 @@ overrides:
   react-dom: ^19.2.5
   elliptic: 6.6.1
   '@remix-run/dev>esbuild': 0.25.5
-  qr: 0.5.5
+  qr: 0.4.2
 
 pnpmfileChecksum: sha256-ROa84Qg+MkpzIsPst6Z16qq0lhN6UZ8989JrwPM2pZU=
 
@@ -471,8 +471,8 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
       qr:
-        specifier: 0.5.5
-        version: 0.5.5
+        specifier: 0.4.2
+        version: 0.4.2
       react-dom:
         specifier: ^19.2.5
         version: 19.2.5(react@19.2.5)
@@ -11115,9 +11115,8 @@ packages:
     resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
 
-  qr@0.5.5:
-    resolution: {integrity: sha512-iQBvKj7MRKO+co+MY0IZpyLO+ezvttxsmV86WywrgPuAmgBkv0pytyi03wourniSoPgzffeBW6cBgIkpqcvjTg==}
-    engines: {node: '>= 20.19.0'}
+  qr@0.4.2:
+    resolution: {integrity: sha512-wCv4rt7IcPNGT0J8JiTBHx7YrZzYuzpof38y/MFYd5Sp7OTyAFYL1e110In8PrAG/ffIOVl1ha3joJ2zpYxKMQ==}
 
   qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
@@ -21061,7 +21060,7 @@ snapshots:
 
   cuer@0.0.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3):
     dependencies:
-      qr: 0.5.5
+      qr: 0.4.2
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
     optionalDependencies:
@@ -26386,7 +26385,7 @@ snapshots:
 
   q@1.5.1: {}
 
-  qr@0.5.5: {}
+  qr@0.4.2: {}
 
   qrcode@1.5.3:
     dependencies:

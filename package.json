@@ -103,7 +103,7 @@
     ],
     "overrides": {
       "@remix-run/dev>esbuild": "0.25.5",
-      "qr": "0.5.5"
+      "qr": "0.4.2"
     }
   },
   "engines": {
