@@ -72,6 +72,7 @@
     "@vanilla-extract/sprinkles": "1.6.5",
     "clsx": "2.1.1",
     "cuer": "0.0.3",
+    "qr": "0.5.5",
     "react-remove-scroll": "2.7.2",
     "ua-parser-js": "^2.0.9"
   },
