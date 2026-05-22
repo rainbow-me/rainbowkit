@@ -39,7 +39,8 @@
       "verifying": "Verifying signature...",
       "signing_error": "Error signing message, please retry!",
       "verifying_error": "Error verifying signature, please retry!",
-      "oops_error": "Oops, something went wrong!"
+      "oops_error": "Oops, something went wrong!",
+      "unsupported_chain_error": "Your wallet is on an unsupported network. Switch to a supported network and try again."
     }
   },
 

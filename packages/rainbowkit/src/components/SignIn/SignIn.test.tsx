@@ -142,4 +142,31 @@ describe('SignIn', () => {
 
     expect(createMessage).toHaveBeenCalledTimes(2);
   });
+
+  it('shows an error message when the wallet is on an unsupported chain', async () => {
+    wagmiMocks.useAccount.mockReturnValue({
+      address,
+      chain: undefined,
+    });
+    const createMessage = vi.fn(() => 'message');
+    wagmiMocks.signMessageAsync.mockReturnValue(new Promise(() => {}));
+
+    renderSignIn({ createMessage });
+
+    const button = await screen.findByTestId('rk-auth-message-button');
+    await waitFor(() => expect(button).toHaveTextContent('Sign message'));
+
+    fireEvent.click(button);
+
+    await waitFor(() =>
+      expect(
+        screen.getByText(
+          'Your wallet is on an unsupported network. Switch to a supported network and try again.',
+        ),
+      ).toBeInTheDocument(),
+    );
+    expect(createMessage).not.toHaveBeenCalled();
+    expect(wagmiMocks.signMessageAsync).not.toHaveBeenCalled();
+    expect(button).toHaveTextContent('Sign message');
+  });
 });

@@ -62,8 +62,19 @@ export function SignIn({
       const chainId = activeChain?.id;
       const { nonce } = state;
 
-      if (!address || !chainId || !nonce) {
+      if (!address || !nonce) {
         return;
+      }
+
+      if (!chainId) {
+        // The wallet is connected on a chain that is not in the
+        // configured chains list, so wagmi reports chain as undefined.
+        // Surface an actionable error rather than bailing silently.
+        return setState((x) => ({
+          ...x,
+          errorMessage: i18n.t('sign_in.signature.unsupported_chain_error'),
+          status: 'idle',
+        }));
       }
 
       setState((x) => ({
