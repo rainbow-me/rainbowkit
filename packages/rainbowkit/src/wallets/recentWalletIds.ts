@@ -1,3 +1,5 @@
+import { getStorageItem, setStorageItem } from './safeLocalStorage';
+
 const storageKey = 'rk-recent';
 
 function safeParseJsonArray<T>(string: string | null): T[] {
@@ -10,9 +12,7 @@ function safeParseJsonArray<T>(string: string | null): T[] {
 }
 
 export function getRecentWalletIds(): string[] {
-  return typeof window !== 'undefined'
-    ? safeParseJsonArray(window.localStorage.getItem(storageKey))
-    : [];
+  return safeParseJsonArray(getStorageItem(storageKey));
 }
 
 function dedupe<T>(array: T[]): T[] {
@@ -22,7 +22,5 @@ function dedupe<T>(array: T[]): T[] {
 export function addRecentWalletId(walletId: string): void {
   const newValue = dedupe([walletId, ...getRecentWalletIds()]);
 
-  if (typeof window !== 'undefined') {
-    window.localStorage.setItem(storageKey, JSON.stringify(newValue));
-  }
+  setStorageItem(storageKey, JSON.stringify(newValue));
 }
