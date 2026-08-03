@@ -199,7 +199,7 @@ export function createTransactionStore({
       .filter(({ status }) => {
         return status === 'pending'
           ? true
-          : completedTransactionCount++ <= MAX_COMPLETED_TRANSACTIONS;
+          : completedTransactionCount++ < MAX_COMPLETED_TRANSACTIONS;
       });
 
     data[account][chainId] = transactions.length > 0 ? transactions : undefined;
