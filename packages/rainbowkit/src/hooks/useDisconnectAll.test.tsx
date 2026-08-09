@@ -182,7 +182,7 @@ describe('useDisconnectAll', () => {
     });
   });
 
-  it('keeps clearing remaining connections if one disconnect fails', async () => {
+  it('clears a connection even when its connector disconnect fails', async () => {
     const config = createWalletConnectConfig();
     seedRestoredWalletConnectConnections(config);
 
@@ -213,6 +213,9 @@ describe('useDisconnectAll', () => {
       for (const connector of remainingConnectors) {
         expect(connector.disconnect).toHaveBeenCalled();
       }
+      expect(screen.getByTestId('connection-count').textContent).toBe('0');
+      expect(screen.getByTestId('connected').textContent).toBe('false');
+      expect(screen.getByTestId('status').textContent).toBe('disconnected');
     });
   });
 
