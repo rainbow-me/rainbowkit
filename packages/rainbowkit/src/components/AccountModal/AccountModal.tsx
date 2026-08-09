@@ -1,5 +1,6 @@
 import React from 'react';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useAccount } from 'wagmi';
+import { useDisconnectAll } from '../../hooks/useDisconnectAll';
 import { useProfile } from '../../hooks/useProfile';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
@@ -16,7 +17,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
     address,
     includeBalance: open,
   });
-  const { disconnect } = useDisconnect();
+  const disconnectAll = useDisconnectAll();
 
   if (!address) {
     return null;
@@ -35,7 +36,9 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
               ensName={ensName}
               balance={balance}
               onClose={onClose}
-              onDisconnect={disconnect}
+              onDisconnect={() => {
+                void disconnectAll();
+              }}
             />
           </DialogContent>
         </Dialog>
