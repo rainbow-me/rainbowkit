@@ -18,7 +18,11 @@ export function useDisconnectAll() {
     }
 
     for (const { connector } of connections) {
-      await disconnectAsync({ connector });
+      try {
+        await disconnectAsync({ connector });
+      } catch {
+        // One stale provider teardown must not block clearing the rest.
+      }
     }
   }, [config, disconnectAsync]);
 }

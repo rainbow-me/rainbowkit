@@ -182,6 +182,40 @@ describe('useDisconnectAll', () => {
     });
   });
 
+  it('keeps clearing remaining connections if one disconnect fails', async () => {
+    const config = createWalletConnectConfig();
+    seedRestoredWalletConnectConnections(config);
+
+    const walletConnectConnectors = config.connectors.filter(
+      (connector) => connector.id === 'walletConnect',
+    );
+    const [failingConnector, ...remainingConnectors] = walletConnectConnectors;
+    if (!failingConnector || remainingConnectors.length === 0) {
+      throw new Error('Expected multiple WalletConnect connectors');
+    }
+
+    failingConnector.disconnect = vi
+      .fn()
+      .mockRejectedValue(new Error('teardown failed'));
+
+    render(
+      <WagmiProvider config={config} reconnectOnMount={false}>
+        <QueryClientProvider client={queryClient}>
+          <DisconnectHarness mode="all" />
+        </QueryClientProvider>
+      </WagmiProvider>,
+    );
+
+    fireEvent.click(screen.getByTestId('disconnect'));
+
+    await waitFor(() => {
+      expect(failingConnector.disconnect).toHaveBeenCalled();
+      for (const connector of remainingConnectors) {
+        expect(connector.disconnect).toHaveBeenCalled();
+      }
+    });
+  });
+
   it('cancels a pending connect when there are no connections yet', async () => {
     const config = createWalletConnectConfig();
 
