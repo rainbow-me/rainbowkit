@@ -181,4 +181,33 @@ describe('useDisconnectAll', () => {
       expect(screen.getByTestId('status').textContent).toBe('disconnected');
     });
   });
+
+  it('cancels a pending connect when there are no connections yet', async () => {
+    const config = createWalletConnectConfig();
+
+    config.setState({
+      chainId: mainnet.id,
+      connections: new Map(),
+      current: null,
+      status: 'connecting',
+    });
+
+    render(
+      <WagmiProvider config={config} reconnectOnMount={false}>
+        <QueryClientProvider client={queryClient}>
+          <DisconnectHarness mode="all" />
+        </QueryClientProvider>
+      </WagmiProvider>,
+    );
+
+    expect(screen.getByTestId('connection-count').textContent).toBe('0');
+    expect(screen.getByTestId('status').textContent).toBe('connecting');
+
+    fireEvent.click(screen.getByTestId('disconnect'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('status').textContent).toBe('disconnected');
+      expect(screen.getByTestId('connected').textContent).toBe('false');
+    });
+  });
 });

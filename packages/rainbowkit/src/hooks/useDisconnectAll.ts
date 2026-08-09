@@ -10,6 +10,13 @@ export function useDisconnectAll() {
   return useCallback(async () => {
     const connections = Array.from(config.state.connections.values());
 
+    // Pending WalletButton / QR connect can set status to connecting before
+    // anything lands in connections. Bare disconnect still cancels that.
+    if (connections.length === 0) {
+      await disconnectAsync();
+      return;
+    }
+
     for (const { connector } of connections) {
       await disconnectAsync({ connector });
     }
