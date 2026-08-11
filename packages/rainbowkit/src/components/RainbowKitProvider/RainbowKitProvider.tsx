@@ -125,7 +125,10 @@ export function RainbowKitProvider({
                         <ShowBalanceProvider>
                           <ModalProvider>
                             {theme ? (
-                              <div {...createThemeRootProps(id)}>
+                              <div
+                                {...createThemeRootProps(id)}
+                                style={{ display: 'contents' }}
+                              >
                                 <style
                                   // biome-ignore lint/security/noDangerouslySetInnerHtml: CSS string is generated from sanitized theme selectors and values.
                                   dangerouslySetInnerHTML={{
