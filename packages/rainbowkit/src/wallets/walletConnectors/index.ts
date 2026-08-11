@@ -65,6 +65,7 @@ import { trustWallet } from './trustWallet/trustWallet';
 import { universalProfilesWallet } from './universalProfilesWallet/universalProfilesWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { valoraWallet } from './valoraWallet/valoraWallet';
+import { vultisigWallet } from './vultisigWallet/vultisigWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { wigwamWallet } from './wigwamWallet/wigwamWallet';
 import { ctrlWallet, xdefiWallet } from './ctrlWallet/ctrlWallet';
@@ -143,6 +144,7 @@ export {
   universalProfilesWallet,
   uniswapWallet,
   valoraWallet,
+  vultisigWallet,
   walletConnectWallet,
   wigwamWallet,
   xdefiWallet,

@@ -1598,6 +1598,23 @@
           "description": "Once you log in, click below to refresh the browser and load up the extension."
         }
       }
+    },
+
+    "vultisig": {
+      "extension": {
+        "step1": {
+          "title": "Install the Vultisig extension",
+          "description": "We recommend pinning Vultisig to your taskbar for easier access to your vault."
+        },
+        "step2": {
+          "title": "Create or import a vault",
+          "description": "Vultisig secures vaults with threshold signatures across your devices instead of a seed phrase."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your vault, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
