@@ -18,6 +18,7 @@ import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { compassWallet } from './compassWallet/compassWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { deboxWallet } from './deboxWallet/deboxWallet';
 import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
@@ -96,6 +97,7 @@ export {
   coreWallet,
   ctrlWallet,
   dawnWallet,
+  deboxWallet,
   desigWallet,
   enkryptWallet,
   foxWallet,

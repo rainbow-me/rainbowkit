@@ -29,6 +29,7 @@ export type WalletProviderFlags =
   | 'isBraveWallet'
   | 'isCoinbaseWallet'
   | 'isDawn'
+  | 'isDeBox'
   | 'isEnkrypt'
   | 'isExodus'
   | 'isFrame'
