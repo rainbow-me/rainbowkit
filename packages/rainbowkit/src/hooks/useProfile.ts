@@ -12,7 +12,10 @@ export function useProfile({ address, includeBalance }: UseProfileParameters) {
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { data: balance } = useBalance({
-    address: includeBalance ? address : undefined,
+    address,
+    query: {
+      enabled: includeBalance !== false,
+    },
   });
 
   return { ensName, ensAvatar, balance };
