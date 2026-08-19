@@ -80,7 +80,7 @@ export function ConnectButton({
           >
             {ready && account && connectionStatus === 'connected' ? (
               <>
-                {chain && (chains.length > 1 || unsupportedChain) && (
+                {chain && (
                   <Box
                     alignItems="center"
                     aria-label="Chain Selector"
