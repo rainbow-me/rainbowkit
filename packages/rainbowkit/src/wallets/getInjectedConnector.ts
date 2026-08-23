@@ -1,5 +1,5 @@
 import { createConnector } from 'wagmi';
-import { injected } from 'wagmi/connectors';
+import { type InjectedParameters, injected } from 'wagmi/connectors';
 import type { WalletProviderFlags, WindowProvider } from '../types/utils';
 import type { CreateConnector, WalletDetailsParams } from './Wallet';
 
@@ -81,24 +81,67 @@ function getInjectedProvider({
   return _window.ethereum;
 }
 
-function createInjectedConnector(provider?: any): CreateConnector {
+function createInjectedConnector(
+  provider?: any,
+  injectedParameters?: InjectedParameters,
+  transformProviderDuringConnect?: (
+    provider: any,
+    isConnecting: () => boolean,
+  ) => any,
+): CreateConnector {
   return (walletDetails: WalletDetailsParams) => {
-    // Create the injected configuration object conditionally based on the provider.
-    const injectedConfig = provider
-      ? {
-          target: () => ({
-            id: walletDetails.rkDetails.id,
-            name: walletDetails.rkDetails.name,
-            provider,
-          }),
-        }
-      : {};
+    let isConnecting = false;
+    const transformedProvider = provider
+      ? transformProviderDuringConnect?.(provider, () => isConnecting)
+      : undefined;
+    const injectedProvider = provider
+      ? transformedProvider
+        ? () => (isConnecting ? transformedProvider : provider)
+        : provider
+      : undefined;
 
-    return createConnector((config) => ({
-      // Spread the injectedConfig object, which may be empty or contain the target function
-      ...injected(injectedConfig)(config),
-      ...walletDetails,
-    }));
+    // Create the injected configuration object conditionally based on the provider.
+    const injectedConfig: InjectedParameters = {
+      ...(injectedParameters ?? {}),
+      ...(injectedProvider
+        ? {
+            target: () => ({
+              id: walletDetails.rkDetails.id,
+              name: walletDetails.rkDetails.name,
+              provider: injectedProvider,
+            }),
+          }
+        : {}),
+    };
+
+    return createConnector((config) => {
+      const connector = injected(injectedConfig)(config);
+
+      if (!transformProviderDuringConnect) {
+        return {
+          // Spread the injectedConfig object, which may be empty or contain the target function
+          ...connector,
+          ...walletDetails,
+        };
+      }
+
+      const connect = connector.connect.bind(connector);
+
+      return {
+        // Spread the injectedConfig object, which may be empty or contain the target function
+        ...connector,
+        async connect(parameters) {
+          isConnecting = true;
+
+          try {
+            return await connect(parameters);
+          } finally {
+            isConnecting = false;
+          }
+        },
+        ...walletDetails,
+      };
+    });
   };
 }
 
@@ -106,11 +149,22 @@ export function getInjectedConnector({
   flag,
   namespace,
   target,
+  injectedParameters,
+  transformProviderDuringConnect,
 }: {
   flag?: WalletProviderFlags;
   namespace?: string;
   target?: any;
+  injectedParameters?: InjectedParameters;
+  transformProviderDuringConnect?: (
+    provider: any,
+    isConnecting: () => boolean,
+  ) => any;
 }): CreateConnector {
   const provider = target ? target : getInjectedProvider({ flag, namespace });
-  return createInjectedConnector(provider);
+  return createInjectedConnector(
+    provider,
+    injectedParameters,
+    transformProviderDuringConnect,
+  );
 }
