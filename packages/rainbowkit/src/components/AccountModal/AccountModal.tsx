@@ -36,6 +36,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
               balance={balance}
               onClose={onClose}
               onDisconnect={disconnect}
+              titleId={titleId}
             />
           </DialogContent>
         </Dialog>
