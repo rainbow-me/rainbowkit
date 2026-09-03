@@ -26,6 +26,7 @@ interface ProfileDetailsProps {
   balance: ReturnType<typeof useProfile>['balance'];
   onClose: () => void;
   onDisconnect: () => void;
+  titleId: string;
 }
 
 export function ProfileDetails({
@@ -35,6 +36,7 @@ export function ProfileDetails({
   balance,
   onClose,
   onDisconnect,
+  titleId,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const { i18n } = useContext(I18nContext);
@@ -65,7 +67,6 @@ export function ProfileDetails({
   const displayBalance = ethBalance
     ? abbreviateETHBalance(Number.parseFloat(ethBalance))
     : undefined;
-  const titleId = 'rk_profile_title';
   const mobile = isMobile();
 
   return (
@@ -120,7 +121,6 @@ export function ProfileDetails({
                   <Text
                     as="h1"
                     color="modalTextSecondary"
-                    id={titleId}
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
