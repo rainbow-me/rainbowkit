@@ -35,7 +35,7 @@ All API changes should also include updates to the documentation site. Documenta
 
 ## Coding standards
 
-Our code formatting rules are defined in [`biome.json`](../.biome.json). You can check your code against these standards by running:
+Our code formatting rules are defined in [`biome.json`](../biome.json). You can check your code against these standards by running:
 
 ```bash
 pnpm lint
@@ -121,7 +121,7 @@ The first time a PR with a changeset is merged after a release, a new PR will au
 
 **This section is only relevant for library maintainers who are releasing new versions of the library.**
 
-When you’re ready to publish, the `chore: version packages` PR should be reviewed to double check that the version number(s) are correct and that the release notes are correct. Since we’re currently in beta, version numbers should remain within the `v0.x` range.
+When you’re ready to publish, the `chore: version packages` PR should be reviewed to double check that the version number(s) are correct and that the release notes are correct. Version numbers should remain within the `v2.x` range, consistent with the changeset guidance above.
 
 Once you’ve merged the version packages PR, you’ll need to run the release step locally. First ensure you’re in the main branch with the latest changes.
 
@@ -136,7 +136,7 @@ Next, run the `release:test` script. This will clean the repo and reinstall depe
 pnpm release:test
 ```
 
-If everything’s looking good, you can now run the `release` script. Note that the automated `prerelease` script will verify that you’re in the correct branch with no uncommitted changes before testing and rebuilding everything.
+If everything’s looking good, you can now run the `release` script. Note that the automated `release:verify-git` script (invoked by `release`) will verify that you’re in the correct branch with no uncommitted changes before testing and rebuilding everything.
 
 ```bash
 pnpm release
