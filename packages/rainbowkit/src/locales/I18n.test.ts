@@ -77,6 +77,25 @@ describe('I18n', () => {
       expect(i18n.t('hello')).toBe(`[missing: "ja-JP.hello" translation]`);
     });
 
+    it.each([
+      '$&',
+      '$$',
+      '$`',
+      "$'",
+    ])('preserves literal replacement text (%s)', (wallet) => {
+      const i18n = new I18n({ en: { connect: 'Connect %{wallet}' } });
+      expect(i18n.t('connect', { wallet })).toBe(`Connect ${wallet}`);
+    });
+
+    it('preserves literal replacement text in fallback translations', () => {
+      const i18n = new I18n({ en: { connect: 'Connect %{wallet}' } });
+      i18n.locale = 'fr';
+      i18n.enableFallback = true;
+      expect(i18n.t('connect', { wallet: 'Wallet $&' })).toBe(
+        'Connect Wallet $&',
+      );
+    });
+
     it('should translate with replacement', () => {
       const i18n = new I18n({
         'en-US': {
