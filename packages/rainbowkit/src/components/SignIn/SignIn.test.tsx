@@ -8,10 +8,12 @@ import {
 import React from 'react';
 import type { Address } from 'viem';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { I18n } from '../../locales/I18n';
 import {
   createAuthenticationAdapter,
   RainbowKitAuthenticationProvider,
 } from '../RainbowKitProvider/AuthenticationContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { SignIn } from './SignIn';
 
 const wagmiMocks = vi.hoisted(() => ({
@@ -26,6 +28,13 @@ vi.mock('wagmi', () => ({
   useSignMessage: () => ({
     signMessageAsync: wagmiMocks.signMessageAsync,
   }),
+}));
+
+const deviceMocks = vi.hoisted(() => ({ isMobile: vi.fn() }));
+
+vi.mock('../../utils/isMobile', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../../utils/isMobile')>()),
+  isMobile: deviceMocks.isMobile,
 }));
 
 const address = '0x0000000000000000000000000000000000000001' as Address;
@@ -58,12 +67,45 @@ function renderSignIn({
 
 describe('SignIn', () => {
   beforeEach(() => {
+    deviceMocks.isMobile.mockReturnValue(false);
     wagmiMocks.signMessageAsync.mockReset();
     wagmiMocks.useAccount.mockReturnValue({
       address,
       chain: { id: 1 },
     });
     wagmiMocks.useAccountEffect.mockReset();
+  });
+
+  it.each([
+    false,
+    true,
+  ])('translates cancel and closes the flow (mobile: %s)', async (mobile) => {
+    deviceMocks.isMobile.mockReturnValue(mobile);
+    const onClose = vi.fn();
+    const i18n = new I18n({
+      fr: { sign_in: { message: { cancel: 'Annuler' } } },
+    });
+    i18n.locale = 'fr';
+    const adapter = createAuthenticationAdapter<string>({
+      createMessage: () => 'message',
+      getNonce: async () => 'nonce',
+      signOut: async () => {},
+      verify: async () => true,
+    });
+
+    render(
+      <I18nContext.Provider value={{ i18n }}>
+        <RainbowKitAuthenticationProvider
+          adapter={adapter}
+          status="unauthenticated"
+        >
+          <SignIn onClose={onClose} onCloseModal={() => {}} />
+        </RainbowKitAuthenticationProvider>
+      </I18nContext.Provider>,
+    );
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Annuler' }));
+    expect(onClose).toHaveBeenCalledOnce();
   });
 
   it('skips message preparation state when message creation is synchronous', async () => {
