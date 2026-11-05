@@ -71,7 +71,7 @@ export class I18n {
       const replacementValue = replacements[placeholder];
       translatedString = translatedString.replace(
         `%{${placeholder}}`,
-        replacementValue,
+        () => replacementValue,
       );
     }
     return translatedString;
