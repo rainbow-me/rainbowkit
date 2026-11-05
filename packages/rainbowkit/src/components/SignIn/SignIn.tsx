@@ -243,7 +243,7 @@ export function SignIn({
           />
           {mobile ? (
             <ActionButton
-              label="Cancel"
+              label={i18n.t('sign_in.message.cancel')}
               onClick={onClose}
               size="large"
               type="secondary"
