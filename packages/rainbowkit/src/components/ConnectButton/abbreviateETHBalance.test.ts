@@ -6,6 +6,12 @@ const M = 1000 * K;
 const B = 1000 * M;
 
 describe('abbreviateETHBalance', () => {
+  it.each([
+    1e-18, 1e-7, 9e-7, 1e-6,
+  ])('truncates tiny balances (%s) without scientific notation', (balance) => {
+    expect(abbreviateETHBalance(balance)).toBe('0');
+  });
+
   it('truncates to 3 decimal places for numbers under 1', () => {
     expect(abbreviateETHBalance(0.002)).toEqual('0.002');
     expect(abbreviateETHBalance(0.9009)).toEqual('0.9');
