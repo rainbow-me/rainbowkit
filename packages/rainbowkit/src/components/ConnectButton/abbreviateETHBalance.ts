@@ -4,6 +4,8 @@
 const units = ['k', 'm', 'b', 't'];
 
 export function toPrecision(number: number, precision = 1) {
+  if (Math.abs(number) < 10 ** -precision) return '0';
+
   return number
     .toString()
     .replace(new RegExp(`(.+\\.\\d{${precision}})\\d+`), '$1')
