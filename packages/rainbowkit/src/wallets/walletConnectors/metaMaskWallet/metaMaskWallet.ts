@@ -50,6 +50,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isHyperPay) return false;
   if (ethereum.isImToken) return false;
   if (ethereum.isKuCoinWallet) return false;
+  if (ethereum.isLockerWallet) return false;
   if (ethereum.isMathWallet) return false;
   if (ethereum.isNestWallet) return false;
   if (ethereum.isOkxWallet || ethereum.isOKExWallet) return false;

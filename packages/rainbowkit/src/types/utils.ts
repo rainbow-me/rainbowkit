@@ -37,6 +37,7 @@ export type WalletProviderFlags =
   | 'isHyperPay'
   | 'isImToken'
   | 'isKuCoinWallet'
+  | 'isLockerWallet'
   | 'isMathWallet'
   | 'isMetaMask'
   | 'isNestWallet'
