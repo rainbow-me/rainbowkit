@@ -9,4 +9,10 @@ describe('isMetaMask', () => {
     const wallet = metaMaskWallet({ projectId });
     expect(wallet.installed).toBeUndefined();
   });
+
+  it('returns undefined for Locker Wallet, which also sets isMetaMask', () => {
+    window.ethereum = { isMetaMask: true, isLockerWallet: true } as any;
+    const wallet = metaMaskWallet({ projectId });
+    expect(wallet.installed).toBeUndefined();
+  });
 });

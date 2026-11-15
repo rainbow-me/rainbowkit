@@ -1598,6 +1598,23 @@
           "description": "Once you log in, click below to refresh the browser and load up the extension."
         }
       }
+    },
+
+    "locker": {
+      "extension": {
+        "step1": {
+          "title": "Install the Locker Wallet extension",
+          "description": "We recommend pinning Locker Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "Scan the sync QR code of Locker Vault",
+          "description": "Create your account in Locker Vault, the app that keeps your keys on an offline phone, then scan its sync QR code with the extension. Your keys never enter the browser."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
+        }
+      }
     }
   }
 }
