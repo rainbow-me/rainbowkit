@@ -2,6 +2,7 @@ import React, {
   createContext,
   type ReactNode,
   useContext,
+  useMemo,
   useState,
 } from 'react';
 import type { ResponsiveValue } from '../../css/sprinkles.css';
@@ -24,7 +25,9 @@ export function ShowBalanceProvider({ children }: ShowBalanceProviderProps) {
   const [showBalance, setShowBalance] = useState<ResponsiveValue<boolean>>();
 
   return (
-    <ShowBalanceContext.Provider value={{ showBalance, setShowBalance }}>
+    <ShowBalanceContext.Provider
+      value={useMemo(() => ({ showBalance, setShowBalance }), [showBalance])}
+    >
       {children}
     </ShowBalanceContext.Provider>
   );
