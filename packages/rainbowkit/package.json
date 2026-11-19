@@ -30,7 +30,7 @@
     "prepare": "MINIFY_CSS=true pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
-    "typegen": "tsc --emitDeclarationOnly -p tsconfig.types.json || true",
+    "typegen": "(tsc --emitDeclarationOnly -p tsconfig.types.json || true) && node ../../scripts/fix-declaration-imports.js dist",
     "typegen:watch": "tsc --emitDeclarationOnly -p tsconfig.types.json --watch"
   },
   "keywords": [

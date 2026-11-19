@@ -33,7 +33,7 @@
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
-    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen": "(tsc --emitDeclarationOnly || true) && node ../../scripts/fix-declaration-imports.js dist",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "dependencies": {
