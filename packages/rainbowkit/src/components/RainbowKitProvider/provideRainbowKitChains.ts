@@ -75,8 +75,7 @@ type ChainName =
   | 'zkSync'
   | 'zkSyncTestnet'
   | 'zora'
-  | 'zoraSepolia'
-  | 'zoraTestnet';
+  | 'zoraSepolia';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -338,7 +337,6 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraSepolia: { chainId: 999999999, ...zoraIcon },
-  zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
